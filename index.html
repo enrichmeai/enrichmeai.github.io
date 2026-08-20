@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EnrichMeAI. Code got cheap. Judgment didn't.</title>
-<meta name="description" content="EnrichMeAI builds open-source libraries and frameworks for the AI era. Code is cheap now; the contracts, tests and operational judgment inside a good library are not.">
+<title>EnrichMeAI. AI, enriched by you.</title>
+<meta name="description" content="EnrichMeAI builds open infrastructure for the AI era: Cistern, the gateway that makes AI agents ask before touching your data, and Culvert, the cloud-agnostic data-pipeline framework. Open, self-hostable, proof over claims.">
 <style>
   :root{
     --ground:#E8EBEF; --surface:#F4F6F8; --raise:#FFFFFF;
@@ -35,13 +35,14 @@
   .navlinks{display:flex;align-items:center;gap:20px;font-family:var(--font-mono);font-size:13px;color:var(--muted)}
   .navlinks a{text-decoration:none}
   .navlinks a:hover{color:var(--accent)}
+  @media(max-width:860px){.navlinks a.wide{display:none}}
   .themebtn{font-family:var(--font-mono);font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:2px;padding:6px 9px;cursor:pointer}
   .themebtn:hover{border-color:var(--accent);color:var(--accent)}
 
   .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
   h1{font-weight:800;letter-spacing:-.03em;line-height:1.04;text-wrap:balance;font-size:clamp(38px,6.2vw,68px);max-width:18ch}
-  h1 .strike{position:relative;white-space:nowrap}
-  h1 .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.09em;background:var(--accent);transform:rotate(-1.2deg)}
+  .strike{position:relative;white-space:nowrap}
+  .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.09em;background:var(--accent);transform:rotate(-1.2deg)}
   .lede{max-width:58ch;margin-top:24px;font-size:clamp(17px,2vw,20px);color:var(--muted)}
   .lede b{color:var(--ink);font-weight:600}
 
@@ -62,7 +63,18 @@
   .thesis .dear li{color:var(--ink)}
   @media(max-width:640px){.thesis{grid-template-columns:1fr}}
 
-  .product{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:start;margin-top:8px}
+  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:34px}
+  .ways>div{background:var(--surface);padding:26px}
+  .ways .k{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .ways p{margin-top:12px;font-size:15.5px;color:var(--muted)}
+  .ways a{color:var(--flow)}
+  @media(max-width:760px){.ways{grid-template-columns:1fr}}
+
+  .shelf{margin-top:44px}
+  .shelf:first-of-type{margin-top:8px}
+  .shelf-k{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px}
+
+  .product{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:start}
   .product h3{font-size:clamp(20px,2.6vw,26px);font-weight:750;letter-spacing:-.015em}
   .product .mono-sub{font-family:var(--font-mono);font-size:13px;color:var(--flow);margin-top:6px}
   .product p{color:var(--muted);margin-top:14px;max-width:52ch}
@@ -101,9 +113,10 @@
   <div class="wrap">
     <span class="brand">enrichme<span class="dot">·</span>ai</span>
     <nav class="navlinks">
-      <a href="#thesis">Thesis</a>
-      <a href="#work">Products</a>
-      <a href="#writing">Writing</a>
+      <a href="#work">What we build</a>
+      <a href="#run" class="wide">How you run it</a>
+      <a href="#how" class="wide">How we build</a>
+      <a href="#writing" class="wide">Writing</a>
       <a href="#services">Work with us</a>
       <a href="https://github.com/enrichmeai">GitHub ↗</a>
       <button class="themebtn" id="theme" aria-label="Toggle colour theme">◐</button>
@@ -111,21 +124,108 @@
   </div>
 </header>
 
-<div class="hero">
+<div class="hero" id="mission">
   <div class="wrap">
-    <span class="eyebrow">Good libraries, built in the open</span>
-    <h1 style="margin-top:14px">Code got <span class="strike">expensive</span> cheap.<br>Judgment didn't.</h1>
-    <p class="lede">AI can write a thousand lines in a minute. What it can't do is stand behind them: keep an interface stable for years, catch the failure the emulator never shows, ship an artifact a stranger can depend on. That takes <b>judgment</b>, and libraries are where judgment collects. EnrichMeAI builds them in the open.</p>
+    <span class="eyebrow">Open infrastructure for the AI era</span>
+    <h1 style="margin-top:14px">AI, enriched by you.<br>On your terms.</h1>
+    <p class="lede">AI is only as useful as what it knows about you &mdash; and what it knows should never stop being yours. EnrichMeAI builds the open infrastructure that makes that deal possible: a <b>gateway</b> that stands between AI agents and your data and makes them ask first, and hardened <b>frameworks</b> for the systems underneath. Embed it, self-host it, or have us run it &mdash; every claim on this page is backed by something you can run.</p>
   </div>
 </div>
 
 <main>
-  <section id="thesis">
+  <section id="work">
     <div class="wrap">
-      <h2>Why libraries, when anyone can generate code?</h2>
+      <span class="eyebrow">What we build</span>
+      <h2 style="margin-top:14px">Two shelves: infrastructure you run, frameworks you embed.</h2>
+      <div class="prose" style="margin-bottom:6px">
+        <p><b>Infrastructure you run</b>: servers you deploy, where your data stays under your authority. <b>Frameworks you embed</b>: libraries that live inside your codebase and harden its seams. Cistern leads the first shelf. Culvert shipped first on the second, and carries the receipts.</p>
+      </div>
+
+      <div class="shelf">
+        <span class="shelf-k">Infrastructure you run</span>
+        <div class="product">
+          <div>
+            <h3>Cistern</h3>
+            <div class="mono-sub">the gateway between AI agents and your data · open &amp; self-hostable · Java · Apache 2.0</div>
+            <p>Cistern stands in front of what&rsquo;s yours, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule &mdash; <i>this assistant, this folder</i> &mdash; and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications &mdash; Solid for the data and its access rules; the MCP front door for assistants is the next milestone. No vendor sits between you and your own decisions.</p>
+            <div class="btns">
+              <a class="btn primary" href="cistern/">Explore Cistern →</a>
+              <a class="btn" href="https://github.com/enrichmeai/cistern/releases/tag/v0.1.0">Release v0.1.0 ↗</a>
+              <a class="btn" href="https://github.com/enrichmeai/cistern">Source ↗</a>
+            </div>
+          </div>
+          <aside class="proof">
+            <span class="k">Receipts, not claims</span>
+            <ul>
+              <li><span class="mono">docker pull ghcr.io/enrichmeai/cistern:0.1.0</span> is live on GHCR &mdash; runs enforcing with three environment variables</li>
+              <li>Held to a stranger test before it was named here: pull, run, grant, refuse, revoke, receipt &mdash; from the published artifacts alone, with 1,797 green tests behind it</li>
+              <li>Every decision is receipted &mdash; literally: who read what, under which rule, when, queryable by the owner</li>
+              <li>Apache 2.0 · built against the official Solid conformance suite, score public and only moving forward · honest limitations in the release notes</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+
+      <div class="shelf">
+        <span class="shelf-k">Frameworks you embed</span>
+        <div class="product">
+          <div>
+            <h3>Culvert</h3>
+            <div class="mono-sub">cloud-agnostic data-pipeline framework · Java + Python · Apache 2.0</div>
+            <p>Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Sixteen interfaces, implemented in Java and Python. GCP today, AWS alongside it.</p>
+            <div class="btns">
+              <a class="btn primary" href="culvert/">Explore Culvert →</a>
+              <a class="btn" href="https://pypi.org/project/culvert/">PyPI ↗</a>
+              <a class="btn" href="https://github.com/enrichmeai/culvert">Source ↗</a>
+            </div>
+          </div>
+          <aside class="proof">
+            <span class="k">Receipts, not claims</span>
+            <ul>
+              <li><span class="mono">pip install culvert</span> is live on PyPI</li>
+              <li><span class="mono">com.enrichmeai.culvert:*</span> is the Java twin on Maven Central</li>
+              <li>Proven end-to-end on a real cloud project before release. That deploy caught 8 bugs which 1,145 green tests had missed</li>
+              <li>Apache 2.0 · honest limitations documented per adapter</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:30px">
+        <p>These shelves grow slowly on purpose: nothing joins them before it has run on real infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="run">
+    <div class="wrap">
+      <span class="eyebrow">How you run it</span>
+      <h2 style="margin-top:14px">Open on your terms, too.</h2>
+      <div class="ways">
+        <div>
+          <span class="k">Embed</span>
+          <p>Add the dependency, own the stack. The frameworks are ordinary libraries in your build &mdash; no agents, no server, nothing phoning home.</p>
+        </div>
+        <div>
+          <span class="k">Self-host</span>
+          <p><span class="mono">docker compose up</span> and Cistern is yours: your hardware, your keys, your rules. Everything it does is inspectable, down to the audit trail.</p>
+        </div>
+        <div>
+          <span class="k">Run by us</span>
+          <p>Some teams want the authority without the operations. We deploy, operate, and upgrade it &mdash; in your cloud or ours &mdash; with the maintainers on the other end of the line. Today that&rsquo;s an engagement, not a sign-up form: <a href="#services">talk to us</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <span class="eyebrow">How we build</span>
+      <h2 style="margin-top:14px">Code got <span class="strike">expensive</span> cheap. Judgment didn't.</h2>
       <div class="prose">
+        <p>AI can write a thousand lines in a minute. What it can't do is stand behind them: keep an interface stable for years, catch the failure the emulator never shows, ship an artifact a stranger can depend on.</p>
         <p>Systems rarely break in the middle of a function. They break at the <b>seams</b>: between your logic and the cloud SDK, between the schema Terraform provisioned and the schema the code writes, between what passed on your laptop and what runs on a serialised worker with real IAM. Generated code adds more seams. It doesn't harden any of them.</p>
-        <p>A good library is where the hardening lives: a stable contract, a conformance suite every implementation has to pass, honest notes about what <i>doesn't</i> work, and a signed, versioned artifact. None of that is typing. We build our own libraries with AI agents, and it only works because the agents are held to the same contracts and gates.</p>
+        <p>Good infrastructure is where the hardening lives: a stable contract, a conformance suite every implementation has to pass, honest notes about what <i>doesn't</i> work, and a signed, versioned artifact. None of that is typing. We build our own with AI agents, and it only works because the agents are held to the same contracts and gates.</p>
       </div>
       <div class="thesis">
         <div class="cheap">
@@ -144,60 +244,9 @@
             <li>Tests that catch what emulators can't</li>
             <li>Production scars, written down honestly</li>
             <li>Signed artifacts a stranger can trust</li>
+            <li>Consented access to your data</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="wrap">
-      <span class="eyebrow">Products</span>
-      <h2 style="margin-top:14px">Software shouldn't be hard.</h2>
-      <div class="prose" style="margin-bottom:26px">
-        <p>Most of what makes software hard is the same plumbing, rebuilt badly on every project. We build libraries that solve that plumbing once, so you never rebuild it again: libraries for data pipelines, libraries for messaging systems, libraries for microservices. Cistern leads &mdash; the authority layer the AI era needs now. Culvert, the data-pipeline library, shipped first and carries the receipts. The rest are on the way.</p>
-      </div>
-      <div class="product" style="margin-top:8px">
-        <div>
-          <h3>Cistern</h3>
-          <div class="mono-sub">personal data, back in personal hands · open authority layer for the AI era · Java</div>
-          <p>An open, self-hostable server that keeps a person&rsquo;s data where <i>they</i> decide, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule &mdash; <i>this assistant, this folder</i> &mdash; and the server enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built on the Solid specifications; applications integrate over plain HTTP today, and the MCP front door for assistants is the next milestone.</p>
-          <div class="btns">
-            <a class="btn primary" href="cistern/">Explore Cistern →</a>
-            <a class="btn" href="https://github.com/enrichmeai/cistern/releases/tag/v0.1.0">Release v0.1.0 ↗</a>
-            <a class="btn" href="https://github.com/enrichmeai/cistern">Source ↗</a>
-          </div>
-        </div>
-        <aside class="proof">
-          <span class="k">Receipts, not claims</span>
-          <ul>
-            <li><span class="mono">docker pull ghcr.io/enrichmeai/cistern:0.1.0</span> is live on GHCR &mdash; runs enforcing with three environment variables</li>
-            <li>Held to a stranger test before it was named here: pull, run, grant, refuse, revoke, receipt &mdash; from the published artifacts alone, with 1,797 green tests behind it</li>
-            <li>Every decision is receipted &mdash; literally: who read what, under which rule, when, queryable by the owner</li>
-            <li>Apache 2.0 · built against the official Solid conformance suite, score public and only moving forward · honest limitations in the release notes</li>
-          </ul>
-        </aside>
-      </div>
-      <div class="product" style="margin-top:28px">
-        <div>
-          <h3>Culvert</h3>
-          <div class="mono-sub">cloud-agnostic data-pipeline framework · Java + Python</div>
-          <p>Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Sixteen interfaces, implemented in Java and Python. GCP today, AWS alongside it, Azure on the roadmap.</p>
-          <div class="btns">
-            <a class="btn primary" href="culvert/">Explore Culvert →</a>
-            <a class="btn" href="https://pypi.org/project/culvert/">PyPI ↗</a>
-            <a class="btn" href="https://github.com/enrichmeai/culvert">Source ↗</a>
-          </div>
-        </div>
-        <aside class="proof">
-          <span class="k">Receipts, not claims</span>
-          <ul>
-            <li><span class="mono">pip install culvert</span> is live on PyPI</li>
-            <li><span class="mono">com.enrichmeai.culvert:*</span> is the Java twin on Maven Central</li>
-            <li>Proven end-to-end on a real cloud project before release. That deploy caught 8 bugs which 1,145 green tests had missed</li>
-            <li>MIT licensed · honest limitations documented per adapter</li>
-          </ul>
-        </aside>
       </div>
     </div>
   </section>
@@ -207,7 +256,7 @@
       <span class="eyebrow">Work with us</span>
       <h2 style="margin-top:14px">Free to use. Supported if you want backup.</h2>
       <div class="prose">
-        <p>Culvert is MIT licensed. Free for commercial use, no strings, no open-core bait. If you're putting it to work inside an organisation and want backup, EnrichMeAI offers <b>enterprise support</b> (prioritised fixes, upgrade help, direct maintainer access), <b>integration engagements</b>, and <b>sponsored features</b>.</p>
+        <p>Cistern and Culvert are Apache 2.0. Free for commercial use, no strings, no open-core bait. If you're putting them to work inside an organisation and want backup, EnrichMeAI offers <b>enterprise support</b> (prioritised fixes, upgrade help, direct maintainer access), <b>integration engagements</b>, <b>sponsored features</b>, and <b>managed deployments</b> &mdash; the &ldquo;run by us&rdquo; path above.</p>
         <p>Start with <a href="https://github.com/enrichmeai/culvert/blob/main/COMMERCIAL.md" style="color:var(--flow)">COMMERCIAL.md</a> or open a GitHub issue labelled <span class="mono" style="font-size:14px">commercial</span>.</p>
       </div>
     </div>
@@ -233,7 +282,7 @@
         </aside>
       </div>
       <div class="prose" style="margin-top:34px">
-        <p><b>Who is behind this?</b> I&rsquo;m Joseph Aruja. Twenty-five years building software for banks and enterprises, too much of it the same scaffolding rebuilt on every new platform. EnrichMeAI is where that experience turns into things other people can use: libraries, writing, and the occasional strong opinion. All in the open.</p>
+        <p><b>Who is behind this?</b> I&rsquo;m Joseph Aruja. Twenty-five years building software for banks and enterprises, too much of it the same scaffolding rebuilt on every new platform. EnrichMeAI is where that experience turns into things other people can use: open infrastructure, frameworks, writing, and the occasional strong opinion. All in the open.</p>
       </div>
     </div>
   </section>
@@ -251,13 +300,14 @@
 <footer>
   <div class="wrap foot">
     <div>
+      <a href="cistern/">Cistern, the personal data gateway</a>
       <a href="culvert/">Culvert, the data-pipeline framework</a>
       <a href="https://github.com/enrichmeai/culvert/blob/main/COMMERCIAL.md">Work with us ↗</a>
       <a href="https://github.com/enrichmeai">github.com/enrichmeai ↗</a>
       <a href="https://pypi.org/project/culvert/">pypi.org/project/culvert ↗</a>
     </div>
     <div class="meta">
-      EnrichMeAI · built in the open · MIT<br>
+      EnrichMeAI · built in the open · Apache-2.0<br>
       EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>
       registered in England &amp; Wales, company no. 09702990.
     </div>
