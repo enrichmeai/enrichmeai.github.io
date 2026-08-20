@@ -207,15 +207,15 @@
   <div class="wrap hero-inner">
     <span class="eyebrow">Open · self-hostable · conformance-first</span>
     <h1>Every AI assistant acts <span class="accent">as you</span>.<br><span class="soft">Cistern makes it ask.</span></h1>
-    <p class="lede">Cistern is an open server that keeps a person's data where <b>they</b> decide, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule — <b>this assistant, this folder</b> — and the server enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built on the Solid specifications; applications integrate over plain HTTP today, and the MCP front door for assistants is the next milestone.</p>
+    <p class="lede">Cistern is an open server that keeps a person's data where <b>they</b> decide, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule — <b>this assistant, this folder</b> — and the server enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built on the Solid specifications; assistants connect over MCP, applications over plain HTTP &mdash; one gatekeeper for both.</p>
     <div class="cmd">
       <span class="prompt">$</span>
-      <code id="pipcmd">docker pull ghcr.io/enrichmeai/cistern:0.1.0</code>
+      <code id="pipcmd">docker pull ghcr.io/enrichmeai/cistern:0.2.0</code>
       <button id="copybtn" aria-label="Copy install command">Copy</button>
     </div>
   </div>
   <div class="channel" aria-hidden="true">
-    <div class="terrain top"><span>any app · HTTP</span><span class="dim">any assistant · MCP, next</span><span class="dim">one gatekeeper</span></div>
+    <div class="terrain top"><span>any assistant · MCP</span><span>any app · HTTP</span><span class="dim">one gatekeeper</span></div>
     <canvas id="flow"></canvas>
     <div class="terrain bot"><span class="dim">the grant</span><span>the owner's rule carries the authority</span><span class="dim">the vault</span></div>
   </div>
@@ -227,7 +227,7 @@
       <div class="sechead"><span class="num">01</span><h2>The refusal is the product</h2></div>
       <div class="prose">
         <p>Today an assistant logs in as its user: whatever the person can see, it can see. One prompt injection has the authority of the whole person; revoking one assistant means revoking yourself; and afterwards nobody can say which agent read what. The protocols will not fix this — MCP defines how an assistant connects, not what the <i>person</i> allows it to touch.</p>
-        <p>Cistern puts one gatekeeper between every caller and the data. Who is asking &rarr; the owner’s permission file &rarr; allow or refuse — decided fresh on every request, never cached, with the deciding rule named in a receipt. There is no privileged path around it: every caller crosses the same filter &mdash; and when the MCP front door lands, it will be a peer behind that same filter, by architecture decision, not a bolt-on.</p>
+        <p>Cistern puts one gatekeeper between every caller and the data. Who is asking &rarr; the owner’s permission file &rarr; allow or refuse — decided fresh on every request, never cached, with the deciding rule named in a receipt. There is no privileged path around it: the MCP front door and plain HTTP cross the same filter &mdash; an MCP tool call shows up in the receipts exactly like a curl.</p>
       </div>
       <div class="cards">
         <div class="card"><span class="k">Owner-authored</span><h3>The person writes the rule</h3><p>This assistant, this folder — not a developer’s scope list, not an IT admin’s console. Grants can only narrow the owner’s own authority.</p></div>
@@ -251,7 +251,7 @@
   -e CISTERN_OWNER_WEBID=<span class="s">'https://you.example/profile#me'</span> \
   -e CISTERN_OWNER_TOKEN=<span class="s">"$(openssl rand -hex 32)"</span> \
   -e CISTERN_BASE_URL=<span class="s">'http://localhost:3737'</span> \
-  -v cistern-data:/data ghcr.io/enrichmeai/cistern:0.1.0
+  -v cistern-data:/data ghcr.io/enrichmeai/cistern:0.2.0
 
 <span class="c"># grant, and take it back — the CLI is a release asset</span>
 <span class="k">java</span> -jar cistern-cli-0.1.0.jar grant &lt;webid&gt; --read /matters/2026-114/
@@ -273,12 +273,12 @@
       <div class="sechead"><span class="num">03</span><h2>What’s real, stated plainly</h2></div>
       <div class="prose"><p>This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise.</p></div>
       <div class="spec">
-        <div class="row"><div class="lab">Release</div><div class="val"><code style="font-family:var(--font-mono)">ghcr.io/enrichmeai/cistern:0.1.0</code> — multi-arch image, jars, CLI and checksums <span class="tag live">live</span></div></div>
+        <div class="row"><div class="lab">Release</div><div class="val"><code style="font-family:var(--font-mono)">ghcr.io/enrichmeai/cistern:0.2.0</code> — multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag live">live</span></div></div>
         <div class="row"><div class="lab">Identity</div><div class="val">Logins from any OpenID Connect issuer + per-application service principals <span class="tag live">live</span> · Solid-OIDC/DPoP interop <span class="tag soon">next</span></div></div>
         <div class="row"><div class="lab">Authority</div><div class="val">Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable <span class="tag live">live</span></div></div>
-        <div class="row"><div class="lab">Agents</div><div class="val">Applications over HTTP <span class="tag live">live</span> · the MCP front door for assistants <span class="tag soon">next milestone</span></div></div>
+        <div class="row"><div class="lab">Agents</div><div class="val">The MCP front door — seven tools, structured refusals, revocation on the very next call — and plain HTTP, behind one filter <span class="tag live">live</span></div></div>
         <div class="row"><div class="lab">Conformance</div><div class="val">Built against the official Solid conformance suite; the score is public and only moves forward — it starts counting when Solid-OIDC lands, and we say so.</div></div>
-        <div class="row"><div class="lab">Proof</div><div class="val">v0.1.0 was held to a <b>stranger test</b> before this page named it: pull, run, grant, refuse, revoke, receipt — from the published artifacts alone, following only the shipped docs. 1,797 green tests behind it.</div></div>
+        <div class="row"><div class="lab">Proof</div><div class="val">Every release is held to a <b>stranger test</b> before this page names it — v0.2.0 included: pull, run, grant, refuse, revoke, receipt — from the published artifacts alone, following only the shipped docs. 1,797 green tests behind it.</div></div>
         <div class="row"><div class="lab">Licence</div><div class="val">Apache 2.0 — free for any use, including commercial. Support, integration and hosting are how the company earns.</div></div>
       </div>
 
@@ -295,7 +295,7 @@
     <div class="cols">
       <div>
         <h4>Get it</h4>
-        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.1.0">Release v0.1.0: image · jars · CLI ↗</a>
+        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release v0.2.0: image · jars · CLI · MCP bridge ↗</a>
         <a href="https://github.com/enrichmeai/cistern">GitHub: source ↗</a>
         <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">The integration playbook ↗</a>
       </div>
@@ -307,7 +307,7 @@
       </div>
     </div>
     <div class="meta">
-      cistern 0.1.0 · Apache 2.0 · built in the open<br>
+      cistern 0.2.0 · Apache 2.0 · built in the open<br>
       EnrichMeAI<br>
       EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>
       registered in England &amp; Wales, company no. 09702990.
