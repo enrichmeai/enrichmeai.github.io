@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EnrichMeAI. AI, enriched by you.</title>
-<meta name="description" content="EnrichMeAI builds open infrastructure for the AI era: Cistern, the gateway that makes AI agents ask before touching your data, and Culvert, the cloud-agnostic data-pipeline framework. Open, self-hostable, proof over claims.">
+<meta name="description" content="EnrichMeAI builds open infrastructure for the AI era. Cistern is the gateway that makes AI agents ask before touching your data — open, self-hostable, Apache 2.0. Proof over claims: nothing is announced before it has run on real infrastructure.">
 <style>
   :root{
     --ground:#E8EBEF; --surface:#F4F6F8; --raise:#FFFFFF;
@@ -89,6 +89,7 @@
   .proof li{padding:8px 0;border-top:1px solid var(--line);font-size:14.5px}
   .proof li:first-child{border-top:0}
   .proof .mono{font-size:13px;color:var(--flow)}
+  .product.solo{grid-template-columns:1fr}
   @media(max-width:760px){.product{grid-template-columns:1fr}}
 
   .nextcard{border:1px dashed var(--line);border-radius:4px;background:transparent;padding:20px 22px;margin-top:16px}
@@ -168,26 +169,16 @@
 
       <div class="shelf">
         <span class="shelf-k">Frameworks you embed</span>
-        <div class="product">
+        <div class="product solo">
           <div>
             <h3>Culvert</h3>
             <div class="mono-sub">cloud-agnostic data-pipeline framework · Java + Python · Apache 2.0</div>
-            <p>Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Sixteen interfaces, implemented in Java and Python. GCP today, AWS alongside it.</p>
+            <p>Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Shipped on PyPI and Maven Central — after a real deploy caught eight bugs that 1,145 green tests never saw. The full account, contracts through honest status, is on its own page.</p>
             <div class="btns">
               <a class="btn primary" href="culvert/">Explore Culvert →</a>
-              <a class="btn" href="https://pypi.org/project/culvert/">PyPI ↗</a>
               <a class="btn" href="https://github.com/enrichmeai/culvert">Source ↗</a>
             </div>
           </div>
-          <aside class="proof">
-            <span class="k">Receipts, not claims</span>
-            <ul>
-              <li><span class="mono">pip install culvert</span> is live on PyPI</li>
-              <li><span class="mono">com.enrichmeai.culvert:*</span> is the Java twin on Maven Central</li>
-              <li>Proven end-to-end on a real cloud project before release. That deploy caught 8 bugs which 1,145 green tests had missed</li>
-              <li>Apache 2.0 · honest limitations documented per adapter</li>
-            </ul>
-          </aside>
         </div>
       </div>
 
@@ -257,7 +248,7 @@
       <h2 style="margin-top:14px">Free to use. Supported if you want backup.</h2>
       <div class="prose">
         <p>Cistern and Culvert are Apache 2.0. Free for commercial use, no strings, no open-core bait. If you're putting them to work inside an organisation and want backup, EnrichMeAI offers <b>enterprise support</b> (prioritised fixes, upgrade help, direct maintainer access), <b>integration engagements</b>, <b>sponsored features</b>, and <b>managed deployments</b> &mdash; the &ldquo;run by us&rdquo; path above.</p>
-        <p>Start with <a href="https://github.com/enrichmeai/culvert/blob/main/COMMERCIAL.md" style="color:var(--flow)">COMMERCIAL.md</a> or open a GitHub issue labelled <span class="mono" style="font-size:14px">commercial</span>.</p>
+        <p>Start with <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md" style="color:var(--flow)">COMMERCIAL.md</a> or open a GitHub issue labelled <span class="mono" style="font-size:14px">commercial</span>.</p>
       </div>
     </div>
   </section>
@@ -266,20 +257,9 @@
     <div class="wrap">
       <span class="eyebrow">Writing</span>
       <h2 style="margin-top:14px">The code is one part. The thinking is the product.</h2>
-      <div class="product" style="margin-top:8px">
-        <div>
-          <h3>The book: building Culvert, honestly</h3>
-          <div class="mono-sub">a practitioner&rsquo;s account · in progress</div>
-          <p>Twenty-one chapters on designing a cloud-agnostic framework in the open: where the contract boundary sits, why the two languages split the work the way they do, an honest review of my own code, and what building with AI agents actually looks like when they're held to contracts and gates. Every technical claim cites the real source tree. It publishes once the 0.x line settles.</p>
-        </div>
-        <aside class="proof">
-          <span class="k">Essay series, starting soon</span>
-          <ul>
-            <li>Why is there no Spring for data pipelines?</li>
-            <li>1,145 green tests. The first real deploy failed 8 different ways.</li>
-            <li>Follow along: <a href="https://github.com/enrichmeai/culvert" style="color:var(--flow)">github.com/enrichmeai ↗</a></li>
-          </ul>
-        </aside>
+      <div class="prose" style="margin-top:8px">
+        <p>Building infrastructure in the open means writing down more than the code: the decisions, the seams that turned out to be load-bearing, and the failures that only production showed. That record is a deliberate output here, not a marketing afterthought — every technical claim cites the real source tree.</p>
+        <p>The first long-form piece is a practitioner&rsquo;s account of building Culvert — twenty-one chapters, in progress, with an essay series alongside it. <a href="culvert/#writing" style="color:var(--flow)">Read what it covers →</a></p>
       </div>
       <div class="prose" style="margin-top:34px">
         <p><b>Who is behind this?</b> I&rsquo;m Joseph Aruja. Twenty-five years building software for banks and enterprises, too much of it the same scaffolding rebuilt on every new platform. EnrichMeAI is where that experience turns into things other people can use: open infrastructure, frameworks, writing, and the occasional strong opinion. All in the open.</p>
@@ -302,9 +282,8 @@
     <div>
       <a href="cistern/">Cistern, the personal data gateway</a>
       <a href="culvert/">Culvert, the data-pipeline framework</a>
-      <a href="https://github.com/enrichmeai/culvert/blob/main/COMMERCIAL.md">Work with us ↗</a>
+      <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md">Work with us ↗</a>
       <a href="https://github.com/enrichmeai">github.com/enrichmeai ↗</a>
-      <a href="https://pypi.org/project/culvert/">pypi.org/project/culvert ↗</a>
     </div>
     <div class="meta">
       EnrichMeAI · built in the open · Apache-2.0<br>
