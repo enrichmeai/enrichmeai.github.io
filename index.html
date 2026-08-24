@@ -88,7 +88,9 @@
   .proof ul{list-style:none;margin-top:10px}
   .proof li{padding:8px 0;border-top:1px solid var(--line);font-size:14.5px}
   .proof li:first-child{border-top:0}
-  .proof .mono{font-size:13px;color:var(--flow)}
+  .proof .mono{font-size:13px;color:var(--flow);overflow-wrap:anywhere}
+  /* Long unbreakable tokens (image refs, coordinates) must not widen the page on a phone. */
+  .mono{overflow-wrap:anywhere}
   .product.solo{grid-template-columns:1fr}
   @media(max-width:760px){.product{grid-template-columns:1fr}}
 
@@ -152,7 +154,7 @@
           <div>
             <h3>Cistern</h3>
             <div class="mono-sub">the gateway between AI agents and your data · open &amp; self-hostable · Java · Apache 2.0</div>
-            <p>Cistern stands in front of what&rsquo;s yours, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule &mdash; <i>this assistant, this folder</i> &mdash; and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications &mdash; Solid for the data and its access rules; the MCP front door for assistants is the next milestone. No vendor sits between you and your own decisions.</p>
+            <p>Cistern stands in front of what&rsquo;s yours, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule &mdash; <i>this assistant, this folder</i> &mdash; and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications &mdash; Solid for the data and its access rules, and an MCP front door so any assistant that speaks it reaches the pod through the same enforcement as everything else. No vendor sits between you and your own decisions.</p>
             <div class="btns">
               <a class="btn primary" href="cistern/">Explore Cistern →</a>
               <a class="btn" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release v0.2.0 ↗</a>
