@@ -196,6 +196,7 @@
       <a href="#idea">The idea</a>
       <a href="#install">Install</a>
       <a href="#status">Status</a>
+      <a href="#writing">The book</a>
       <a class="pill" href="https://github.com/enrichmeai/culvert">GitHub ↗</a>
       <button class="themebtn" id="theme" aria-label="Toggle colour theme">◐ theme</button>
     </nav>
@@ -283,6 +284,31 @@ blob_store = autoconfig.discover().first(<span class="s">"blob_store"</span>)
       <div class="creed" style="margin-top:40px">
         <p>“Both halves shipped only after the whole thing had run on real infrastructure. The first real deploy failed in eight ways that 1,145 green tests never saw. Releases here carry receipts, not promises.”</p>
         <div class="by">the release gate, in one sentence</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="wrap">
+      <div class="sechead"><span class="num">04</span><h2>The book: building Culvert, honestly</h2></div>
+      <div class="prose">
+        <p>A practitioner&rsquo;s account of designing this framework in the open &mdash; <b>twenty-one chapters, in progress</b>. Where the contract boundary sits and why. Why the two languages deliberately don&rsquo;t do the same job. An honest review of my own code. And what building with AI agents actually looks like when they&rsquo;re held to the same contracts and gates as everyone else.</p>
+        <p>Every technical claim cites the real source tree. It publishes once the 0.x line settles &mdash; the same rule the code ships under.</p>
+      </div>
+      <div class="cards" style="margin-top:26px">
+        <div class="card">
+          <span class="k">Essay &middot; starting soon</span>
+          <h3>Why is there no Spring for data pipelines?</h3>
+          <p>Every other tier got its framework. The one that moves the data got engines and a habit of welding logic to whichever SDK was in fashion.</p>
+        </div>
+        <div class="card">
+          <span class="k">Essay &middot; starting soon</span>
+          <h3>1,145 green tests. The first real deploy failed 8 different ways.</h3>
+          <p>What emulators cannot show you, written down as it happened &mdash; and why that deploy became the release gate.</p>
+        </div>
+      </div>
+      <div class="prose" style="margin-top:22px">
+        <p>Follow along at <a href="https://github.com/enrichmeai/culvert" style="color:var(--flow)">github.com/enrichmeai/culvert ↗</a>.</p>
       </div>
     </div>
   </section>
