@@ -177,18 +177,21 @@
         <span class="shelf-k">Accountability &mdash; the agent side</span>
         <div class="product">
           <div>
-            <h3>The coding agent <span class="tag next">not yet released</span></h3>
+            <h3>The coding agent <span class="tag next">source open, no release yet</span></h3>
             <div class="mono-sub">self-hosted coding agent, and the reference client for governed access &middot; Java &middot; Spring Boot</div>
             <p>Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach &mdash; CI hooks, chat commands, scheduled triage &mdash; against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
             <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind &mdash; and the shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
-            <p>Not something you can pull yet. Today it runs in-house.</p>
+            <p>The source is open and the code is there to read. There is no tagged release behind it yet &mdash; it runs in-house, and nothing here gets a version number before a stranger can deploy it from published artifacts alone.</p>
+            <div class="btns">
+              <a class="btn" href="https://github.com/enrichmeai/ai-coding-agent">Source ↗</a>
+            </div>
           </div>
           <aside class="proof">
             <span class="k">Where it stands</span>
             <ul>
-              <li><b>Today</b> &mdash; running in-house: three surfaces (web, REST, streaming), pluggable models, an audit log of every model and tool call</li>
+              <li><b>Today</b> &mdash; open source and running in-house: three surfaces (web, REST, streaming), pluggable models, an audit log of every model and tool call</li>
               <li><b>Next</b> &mdash; the reference connector: it reaches a Cistern pod over MCP as its own principal, so what it read is receipted on the owner&rsquo;s side. Any client needing scoped, accountable access to someone else&rsquo;s data follows the same shape</li>
-              <li><b>Later</b> &mdash; open sourced on the same terms as everything else here, so the pattern is one you can read rather than one you take our word for</li>
+              <li><b>Later</b> &mdash; a tagged release, once it clears the same gate Cistern ships under: a stranger deploys and uses it from the published artifacts alone</li>
             </ul>
           </aside>
         </div>
