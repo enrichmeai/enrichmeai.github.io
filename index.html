@@ -178,16 +178,17 @@
         <div class="product">
           <div>
             <h3>The coding agent <span class="tag next">not yet released</span></h3>
-            <div class="mono-sub">self-hosted, centrally governed coding agent &middot; Java &middot; Spring Boot</div>
+            <div class="mono-sub">self-hosted coding agent, and the reference client for governed access &middot; Java &middot; Spring Boot</div>
             <p>Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach &mdash; CI hooks, chat commands, scheduled triage &mdash; against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
-            <p>It is not here as something you can pull yet. Today it runs in-house. The work that makes it a peer of Cistern is joining the two &mdash; the agent asking Cistern for what it needs, as itself, and being refused when the answer is no. That loop is the point; neither half is worth much alone.</p>
+            <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind &mdash; and the shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
+            <p>Not something you can pull yet. Today it runs in-house.</p>
           </div>
           <aside class="proof">
             <span class="k">Where it stands</span>
             <ul>
               <li><b>Today</b> &mdash; running in-house: three surfaces (web, REST, streaming), pluggable models, an audit log of every model and tool call</li>
-              <li><b>Next</b> &mdash; it consumes Cistern as an MCP client, authenticating as itself, so what it read is receipted on the owner&rsquo;s side too</li>
-              <li><b>Later</b> &mdash; open source, on the same terms as everything else here</li>
+              <li><b>Next</b> &mdash; the reference connector: it reaches a Cistern pod over MCP as its own principal, so what it read is receipted on the owner&rsquo;s side. Any client needing scoped, accountable access to someone else&rsquo;s data follows the same shape</li>
+              <li><b>Later</b> &mdash; open sourced on the same terms as everything else here, so the pattern is one you can read rather than one you take our word for</li>
             </ul>
           </aside>
         </div>
@@ -275,6 +276,7 @@
       <div class="prose">
         <p>The objective is narrow, and it is not a licence pitch: <b>an organisation should be able to let agents work on its data and still answer, afterwards, for everything they touched.</b> Most cannot today &mdash; not for want of policies, but because nothing underneath produces the evidence. That is what we build, and it only counts if you can run it yourself. Everything here is Apache 2.0, free for commercial use, no strings and no open-core bait.</p>
         <p>Where we work with organisations directly it is in service of that: <b>integration engagements</b> when the loop has to close inside an estate that already exists, <b>enterprise support</b> when something load-bearing depends on it, <b>sponsored features</b> when a real deployment needs the roadmap bent toward it, and <b>managed deployments</b> for teams who want the authority without the operations.</p>
+        <p>There is no paid tier holding anything back, and there is not going to be one. Software that decides who may read your data has to be software you can read, so all of it is yours. It keeps being built because the organisations that come to rely on it choose to work with us &mdash; that is the whole arrangement, and it is a fair one.</p>
         <p>Start with <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md" style="color:var(--flow)">COMMERCIAL.md</a> or open a GitHub issue labelled <span class="mono" style="font-size:14px">commercial</span>.</p>
       </div>
     </div>
