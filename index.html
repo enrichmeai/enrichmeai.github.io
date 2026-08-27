@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EnrichMeAI. AI, enriched by you.</title>
-<meta name="description" content="Agents are doing the work; someone should be able to check. EnrichMeAI builds open infrastructure that keeps AI agents accountable at both ends — Cistern governs and receipts what they read of your data, and a self-hosted coding agent records what it did. Apache 2.0, self-hostable, nothing announced before it runs.">
+<meta name="description" content="Agents are doing the work; someone should be able to check. EnrichMeAI builds open infrastructure that keeps AI agents accountable at both ends — Cistern governs and receipts what they read of your data, and Penstock, the agent that does the work, records what it did. Apache 2.0, self-hostable, nothing announced before it runs.">
 <style>
   :root{
     --ground:#E8EBEF; --surface:#F4F6F8; --raise:#FFFFFF;
@@ -145,7 +145,7 @@
       <span class="eyebrow">What we build</span>
       <h2 style="margin-top:14px">Accountability at both ends, and the frameworks underneath.</h2>
       <div class="prose" style="margin-bottom:6px">
-        <p>An agent reading your data and an agent writing your code are one problem seen from two sides: work is being done by something that does not remember, does not explain itself, and cannot be asked afterwards. <b>Cistern</b> answers for the data &mdash; every read permitted in advance, and receipted after. <b>The coding agent</b> answers for the work &mdash; every model call and tool invocation written down. Beneath both, <b>frameworks</b> harden the systems they run on.</p>
+        <p>An agent reading your data and an agent writing your code are one problem seen from two sides: work is being done by something that does not remember, does not explain itself, and cannot be asked afterwards. <b>Cistern</b> answers for the data &mdash; every read permitted in advance, and receipted after. <b>Penstock</b> answers for the work &mdash; every model call and tool invocation written down. Those two are the AI-era work; <b>Culvert</b>, below, is a data-pipeline framework with no AI in it, and it is here because it is where the practice these two are held to was proven.</p>
       </div>
 
       <div class="shelf">
@@ -177,13 +177,13 @@
         <span class="shelf-k">Accountability &mdash; the agent side</span>
         <div class="product">
           <div>
-            <h3>The coding agent <span class="tag next">source open, no release yet</span></h3>
-            <div class="mono-sub">self-hosted coding agent, and the reference client for governed access &middot; Java &middot; Spring Boot</div>
+            <h3>Penstock <span class="tag next">source open, no release yet</span></h3>
+            <div class="mono-sub">the agent that does the work, and the reference client for governed access &middot; Java &middot; Spring Boot</div>
             <p>Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach &mdash; CI hooks, chat commands, scheduled triage &mdash; against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
             <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind &mdash; and the shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
             <p>The source is open and the code is there to read. There is no tagged release behind it yet &mdash; it runs in-house, and nothing here gets a version number before a stranger can deploy it from published artifacts alone.</p>
             <div class="btns">
-              <a class="btn" href="https://github.com/enrichmeai/ai-coding-agent">Source ↗</a>
+              <a class="btn" href="https://github.com/enrichmeai/penstock">Source ↗</a>
             </div>
           </div>
           <aside class="proof">
@@ -198,7 +198,7 @@
       </div>
 
       <div class="shelf">
-        <span class="shelf-k">Frameworks you embed</span>
+        <span class="shelf-k">A separate line &mdash; data infrastructure</span>
         <div class="product solo">
           <div>
             <h3>Culvert</h3>
@@ -313,7 +313,7 @@
   <div class="wrap foot">
     <div>
       <a href="cistern/">Cistern, the personal data gateway</a>
-      <a href="https://github.com/enrichmeai/ai-coding-agent">The coding agent, the reference client ↗</a>
+      <a href="https://github.com/enrichmeai/penstock">Penstock, the agent that answers for its work ↗</a>
       <a href="culvert/">Culvert, the data-pipeline framework</a>
       <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md">Work with us ↗</a>
       <a href="https://github.com/enrichmeai">github.com/enrichmeai ↗</a>
