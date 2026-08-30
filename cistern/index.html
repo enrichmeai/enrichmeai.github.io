@@ -134,6 +134,14 @@
       <pre><div class="cmt"># run enforcing: setting the owner turns Web Access Control on</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:3737:3000 \</div><div>  -e CISTERN_OWNER_WEBID=<span class="tok">'https://you.example/profile#me'</span> \</div><div>  -e CISTERN_OWNER_TOKEN=<span class="tok">"$(openssl rand -hex 32)"</span> \</div><div>  -e CISTERN_BASE_URL=<span class="tok">'http://127.0.0.1:3737'</span> \</div><div>  -v cistern-data:/data ghcr.io/enrichmeai/cistern:0.2.0</div><div class="sep"></div><div class="cmt"># grant, and take it back: the CLI is a release asset</div><div><span class="tok">java</span> -jar cistern-cli-0.2.0.jar grant &lt;webid&gt; --read /matters/2026-114/</div><div><span class="tok">java</span> -jar cistern-cli-0.2.0.jar revoke &lt;webid&gt; /matters/2026-114/</div></pre>
     </div>
     <p class="note"><strong style="font-weight:600">127.0.0.1, not localhost.</strong> On a Mac localhost resolves to ::1 first while Docker binds IPv4 only, so any other process on the port answers instead, with a 401 that looks exactly like this server misbehaving.</p>
+
+    <div class="blueprint" style="position:relative;padding:24px;margin-top:24px;max-width:76ch">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="frame-kicker">What do I put for the WebID?</div>
+      <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800)">A WebID is a URL that names a person or an agent. For the command above, <strong style="font-weight:600;color:var(--color-text)">it is only a name, and nothing has to be published at it.</strong> Cistern writes it into the root permission file so the rules have somebody to belong to, and the owner token is what proves you are that somebody. Put your own domain in and carry on; the five minutes stay five minutes.</p>
+      <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800);margin-top:12px">It starts to matter when a <em>second</em> party is involved. Once other people or agents sign in through an identity provider, their WebID has to resolve, because Cistern reads it to learn which provider is allowed to issue tokens for them. At that point you want a real one: an identity provider issues it, or you host the document yourself, and Cistern can seed one inside the pod for you when the WebID lives here rather than at a provider.</p>
+      <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800);margin-top:12px">The <a href="https://solidproject.org/users/get-a-pod">Solid project lists providers who will issue you one</a>, and the <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">integration playbook</a> covers wiring a provider to a pod.</p>
+    </div>
     <div class="blueprint code-frame" style="margin-top:24px">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>the whole loop, against a real identity provider</span><span>integration-kit/</span></div>
@@ -253,6 +261,10 @@
         <div class="faq-item">
           <h3>What does revocation actually cost?</h3>
           <p>One line deleted. There is no token lifetime to wait out and no cache to purge, because the rule is read at enforcement time on every request.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need a WebID before I can start?</h3>
+          <p>No. For the quickstart the WebID is only a name: nothing has to be published at that URL, and the owner token is what proves you are its owner. You need a WebID that resolves once other people or agents sign in through an identity provider, because Cistern reads the document to learn which provider may issue tokens for them.</p>
         </div>
         <div class="faq-item">
           <h3>Where does the data physically live?</h3>
