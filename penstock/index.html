@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penstock · an agent that writes down what it did</title>
+<meta name="description" content="Copilot beyond the IDE, and the reference client for governed access. Every model call and tool invocation is written to an audit log the owner reads back.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <span class="product-label">Penstock</span>
+    <nav class="site-nav">
+      <a href="#idea">The idea</a>
+      <a href="#run">Run it</a>
+      <a href="#surface">Surfaces</a>
+      <a href="#status">Status</a>
+      <a href="#scans">Scan record</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="spacer"></div>
+    <a href="https://github.com/enrichmeai/penstock" class="btn btn-primary" style="font-size:14px">GitHub →</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Open source · self-hosted · v0.2.0</p>
+      <div class="blueprint caveat">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span>Run it on your own machine, not on a network. It has not cleared the stranger test yet.</span>
+      </div>
+      <h1>An agent that <span class="accent">writes down</span> what it did.</h1>
+    </div>
+    <p class="hero-rail">Copilot beyond the IDE, and the reference client for governed access. Every model call and tool invocation is written to an audit log the owner reads back.</p>
+  </div>
+
+  <div class="hero-below">
+    <p class="lede">Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach (CI hooks, chat commands, scheduled triage) against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk.</p>
+    <div class="stack">
+      <div class="blueprint pad-frame">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker" style="margin-bottom:10px">What v0.2.0 ships</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">A signed jar, a bill of materials, and a multi-architecture image.</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.2.0" class="btn btn-primary btn-lg">Release v0.2.0 →</a>
+        <a href="https://github.com/enrichmeai/penstock" class="btn btn-secondary btn-lg">Source →</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="idea" class="section-rule">
+    <span class="name">The idea</span><span class="num">01</span>
+  </div>
+
+  <div class="heading-row align-start" style="padding:42px 0 44px">
+    <h2 class="section-h2" style="max-width:15ch">The first thing to ask Cistern for something</h2>
+    <div class="prose-col">
+      <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind. The shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
+      <p>So there are two things in one repository, on purpose. An agent worth running, and the reference implementation of how a client should ask for someone else's data. Neither would prove much alone.</p>
+    </div>
+  </div>
+
+  <div class="blueprint stage-diagram" style="margin-bottom:76px">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="frame-kicker" style="margin-bottom:26px">Two records, one job</div>
+    <div class="two-records">
+      <div class="record">
+        <span class="role">On the agent's side</span>
+        <span class="title">The audit log</span>
+        <p>Every model call and every tool invocation, attributed to the authenticated user. What the agent did, in its own words, on the record.</p>
+      </div>
+      <div class="record is-accent">
+        <span class="role">On the owner's side</span>
+        <span class="title">The receipt</span>
+        <p>What it was allowed to read, under which rule, recorded by Cistern rather than by the agent. The half an agent cannot write for itself, and the half that stays true if the agent is wrong about what happened.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="run" class="section-rule">
+    <span class="name">Run it</span><span class="num">02</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">On your own machine, for now</h2>
+      <p class="intro">The release carries a signed jar, a bill of materials and a multi-architecture image. Until it clears the stranger test, treat it as something to run locally rather than expose.</p>
+    </div>
+    <div class="blueprint code-frame">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>shell</span><span>Java · Spring Boot</span></div>
+      <pre><div class="cmt"># the signed jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.2.0.jar</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.2.0</div></pre>
+    </div>
+    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.2.0">v0.2.0 →</a>.</p>
+  </div>
+
+  <div id="surface" class="section-rule">
+    <span class="name">Surfaces</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Three surfaces, one log</h2>
+      <p class="intro">However the work arrives, it is written down the same way and attributed to the authenticated user.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>Surface</th><th>What it is for</th><th>Written to the audit log</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Web</td><td>A person working with the agent directly</td><td>Every model call and tool invocation</td></tr>
+          <tr><td>REST</td><td>CI hooks and scheduled triage</td><td>Every model call and tool invocation</td></tr>
+          <tr><td>Streaming</td><td>Chat commands and long-running work</td><td>Every model call and tool invocation</td></tr>
+          <tr><td>Models</td><td>Pluggable, including a local one</td><td>The call is logged whichever model served it</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="status" class="section-rule">
+    <span class="name">Status</span><span class="num">04</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Where it stands</h2>
+      <p class="intro">This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise.</p>
+    </div>
+    <dl class="spec-list">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Today</dt>
+        <dd>Open source: three surfaces (web, REST, streaming), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable from the app itself. <span class="tag tag-live">live</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Release</dt>
+        <dd>v0.2.0: a signed jar, a bill of materials, and a multi-architecture image. <span class="tag tag-live">live</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Governed access</dt>
+        <dd>The pod tool has shipped. Penstock asks a Cistern pod for a file over plain HTTPS as its own principal, is refused outside its grant, and what it read is receipted on the owner's side. That is application-level consent: the receipt names the application, not the person who asked it. Per-user credentials are available by configuration for deployments that want attribution per person. <span class="tag tag-live">live</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Later</dt>
+        <dd>The stranger test: deploy and use it from the published artifacts alone, following only the shipped docs. Cistern is held to it; Penstock has not cleared it yet, which is why this page says to run it locally. <span class="tag tag-next">later</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Licence</dt>
+        <dd>Apache 2.0, free for any use including commercial.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div id="scans" class="section-rule">
+    <span class="name">Scan record</span><span class="num">05</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row" style="align-items:start;margin-bottom:40px">
+      <h2 class="section-h2">Yours to read, not ours to claim</h2>
+      <div class="prose-col" style="max-width:60ch">
+        <p>Everything with a fix available has been fixed: across four releases, 138 findings down to 85 and the criticals from fourteen to one. That one is waiting on an upstream release that does not exist yet, so there is nothing to apply rather than something left undone.</p>
+        <p>Every scan is attached to its release, so the whole series is yours to read rather than ours to claim.</p>
+      </div>
+    </div>
+    <div class="rule-cols c3">
+      <div class="rule-column">
+        <span class="kicker" style="color:var(--color-neutral-700)">Across four releases</span>
+        <span class="figure-num">138 <span class="to">→</span> 85</span>
+        <p>Total findings.</p>
+      </div>
+      <div class="rule-column is-accent">
+        <span class="kicker">Criticals</span>
+        <span class="figure-num accent">14 <span class="to">→</span> 1</span>
+        <p>The remaining one waits on an upstream release that does not exist yet.</p>
+      </div>
+      <div class="rule-column">
+        <span class="kicker" style="color:var(--color-neutral-700)">Published</span>
+        <span class="figure-num">Every scan</span>
+        <p>Attached to its release. <a href="https://github.com/enrichmeai/penstock/releases">Read the series →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="faq" class="section-rule">
+    <span class="name">FAQ</span><span class="num">06</span>
+  </div>
+
+  <div class="section-body">
+    <div class="faq-grid">
+      <div class="faq-col">
+        <div class="faq-item">
+          <h3>Can I put this on a network?</h3>
+          <p>Not yet. It has not cleared the stranger test that Cistern is held to, so it is a thing to run on your own machine for now.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How is this different from an IDE copilot?</h3>
+          <p>An organisation runs it itself, and it drives the workflows an editor cannot reach: CI hooks, chat commands, scheduled triage, against its own internal systems.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I have to send anything to a model provider?</h3>
+          <p>Models are pluggable and one of them is local. Whichever serves the call, the call is written to the audit log.</p>
+        </div>
+      </div>
+      <div class="faq-col">
+        <div class="faq-item">
+          <h3>Do I need Cistern to use it?</h3>
+          <p>No. It is an agent in its own right. The pod tool is what makes what the agent read receipted on the owner's side, and it is what turns the audit log into two records that can be checked against each other. <a href="/cistern/">See Cistern →</a></p>
+        </div>
+        <div class="faq-item">
+          <h3>Why publish a critical finding rather than close it quietly?</h3>
+          <p>Because there is no fix to apply. It waits on an upstream release that does not exist yet, and saying so is more useful than a clean dashboard.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is any of it held back for a paid tier?</h3>
+          <p>No. Apache 2.0, free for commercial use. Support, integration and hosting are how the company earns. <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md">COMMERCIAL.md →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">penstock 0.2.0 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+    <div class="footer-navs">
+      <nav>
+        <h4>Get it</h4>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.2.0">Release v0.2.0: jar · SBOM · image →</a>
+        <a href="https://github.com/enrichmeai/penstock">GitHub: source →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases">The scan series →</a>
+      </nav>
+      <nav>
+        <h4>Related</h4>
+        <a href="/cistern/">Cistern, the data gateway</a>
+        <a href="/culvert/">Culvert, the pipeline framework</a>
+        <a href="/">The register</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

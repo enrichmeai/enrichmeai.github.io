@@ -1,340 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EnrichMeAI. AI, enriched by you.</title>
-<meta name="description" content="Agents are doing the work; someone should be able to check. EnrichMeAI builds open infrastructure that keeps AI agents accountable at both ends — Cistern governs and receipts what they read of your data, and Penstock, the agent that does the work, records what it did. Apache 2.0, self-hostable, nothing announced before it runs.">
-<style>
-  :root{
-    --ground:#E8EBEF; --surface:#F4F6F8; --raise:#FFFFFF;
-    --ink:#191C21; --muted:#59616D; --line:#CFD6DE;
-    --accent:#B25E12; --flow:#0F6E78;
-    --font-display:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --font-mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{--ground:#14171B;--surface:#1A1E23;--raise:#20252B;--ink:#EAEDF1;--muted:#98A2AE;--line:#2A313A;--accent:#E39149;--flow:#3BA9B3}
-  }
-  :root[data-theme="light"]{--ground:#E8EBEF;--surface:#F4F6F8;--raise:#FFFFFF;--ink:#191C21;--muted:#59616D;--line:#CFD6DE;--accent:#B25E12;--flow:#0F6E78}
-  :root[data-theme="dark"]{--ground:#14171B;--surface:#1A1E23;--raise:#20252B;--ink:#EAEDF1;--muted:#98A2AE;--line:#2A313A;--accent:#E39149;--flow:#3BA9B3}
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--ground);color:var(--ink);font-family:var(--font-display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-  a{color:inherit}
-  ::selection{background:var(--accent);color:var(--ground)}
-  .wrap{max-width:1020px;margin:0 auto;padding:0 28px}
-  .mono{font-family:var(--font-mono)}
-  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .accent{color:var(--accent)}
-
-  header.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 86%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .brand{font-family:var(--font-mono);font-weight:700;letter-spacing:-.01em}
-  .brand .dot{color:var(--accent)}
-  .navlinks{display:flex;align-items:center;gap:20px;font-family:var(--font-mono);font-size:13px;color:var(--muted)}
-  .navlinks a{text-decoration:none}
-  .navlinks a:hover{color:var(--accent)}
-  @media(max-width:860px){.navlinks a.wide{display:none}}
-  .themebtn{font-family:var(--font-mono);font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:2px;padding:6px 9px;cursor:pointer}
-  .themebtn:hover{border-color:var(--accent);color:var(--accent)}
-
-  .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
-  h1{font-weight:800;letter-spacing:-.03em;line-height:1.04;text-wrap:balance;font-size:clamp(38px,6.2vw,68px);max-width:18ch}
-  .strike{position:relative;white-space:nowrap}
-  .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.09em;background:var(--accent);transform:rotate(-1.2deg)}
-  .lede{max-width:58ch;margin-top:24px;font-size:clamp(17px,2vw,20px);color:var(--muted)}
-  .lede b{color:var(--ink);font-weight:600}
-
-  section{padding:64px 0;border-bottom:1px solid var(--line)}
-  h2{font-weight:750;font-size:clamp(23px,3.2vw,32px);letter-spacing:-.02em;text-wrap:balance;margin-bottom:22px}
-  .prose{max-width:64ch;color:var(--muted);font-size:18px}
-  .prose p+p{margin-top:16px}
-  .prose b{color:var(--ink);font-weight:600}
-
-  .thesis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:34px}
-  .thesis>div{background:var(--surface);padding:26px}
-  .thesis .k{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-  .thesis .cheap .k{color:var(--muted)}
-  .thesis .dear .k{color:var(--accent)}
-  .thesis ul{list-style:none;margin-top:14px}
-  .thesis li{padding:7px 0;border-top:1px solid var(--line);font-size:15.5px;color:var(--muted)}
-  .thesis li:first-child{border-top:0}
-  .thesis .dear li{color:var(--ink)}
-  @media(max-width:640px){.thesis{grid-template-columns:1fr}}
-
-  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:34px}
-  .ways>div{background:var(--surface);padding:26px}
-  .ways .k{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .ways p{margin-top:12px;font-size:15.5px;color:var(--muted)}
-  .ways a{color:var(--flow)}
-  @media(max-width:760px){.ways{grid-template-columns:1fr}}
-
-  .shelf{margin-top:44px}
-  .shelf:first-of-type{margin-top:8px}
-  .shelf-k{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px}
-
-  .product{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:start}
-  .product h3{font-size:clamp(20px,2.6vw,26px);font-weight:750;letter-spacing:-.015em}
-  .product .mono-sub{font-family:var(--font-mono);font-size:13px;color:var(--flow);margin-top:6px}
-  .product p{color:var(--muted);margin-top:14px;max-width:52ch}
-  .btns{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-  .btn{font-family:var(--font-mono);font-size:13px;text-decoration:none;border-radius:2px;padding:10px 16px;border:1px solid var(--line)}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--ground);font-weight:600}
-  .btn.primary:hover{filter:brightness(1.06)}
-  .btn:not(.primary):hover{border-color:var(--accent);color:var(--accent)}
-  .proof{border:1px solid var(--line);border-radius:4px;background:var(--surface);padding:20px 22px}
-  .proof .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .proof ul{list-style:none;margin-top:10px}
-  .proof li{padding:8px 0;border-top:1px solid var(--line);font-size:14.5px}
-  .proof li:first-child{border-top:0}
-  .proof .mono{font-size:13px;color:var(--flow);overflow-wrap:anywhere}
-  /* Long unbreakable tokens (image refs, coordinates) must not widen the page on a phone. */
-  .mono{overflow-wrap:anywhere}
-  .product.solo{grid-template-columns:1fr}
-  @media(max-width:760px){.product{grid-template-columns:1fr}}
-
-  .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-    border:1px solid var(--line);border-radius:2px;padding:3px 7px;vertical-align:middle;color:var(--muted);font-weight:400}
-  .tag.next{border-color:var(--flow);color:var(--flow)}
-
-  .nextcard{border:1px dashed var(--line);border-radius:4px;background:transparent;padding:20px 22px;margin-top:16px}
-
-  .creed{border-left:3px solid var(--accent);padding:6px 0 6px 24px;max-width:56ch}
-  .creed p{font-weight:600;font-size:clamp(19px,2.5vw,25px);letter-spacing:-.015em;line-height:1.36}
-  .creed .by{margin-top:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
-
-  footer{padding:44px 0 60px;color:var(--muted)}
-  .foot{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;font-size:14px}
-  .foot a{text-decoration:none;display:block;padding:3px 0}
-  .foot a:hover{color:var(--accent)}
-  .foot .meta{font-family:var(--font-mono);font-size:12px;line-height:1.9;text-align:right}
-  @media(max-width:620px){.foot .meta{text-align:left}}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<title>EnrichMeAI · open accountability infrastructure for the AI era</title>
+<meta name="description" content="Cistern governs what agents read of your data. Penstock records what an agent did. Both Apache 2.0, both self-hostable, neither announced before it ran.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
-<header class="bar">
-  <div class="wrap">
-    <span class="brand">enrichme<span class="dot">·</span>ai</span>
-    <nav class="navlinks">
+<header class="site-header">
+  <div class="container">
+    <a href="#top" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <nav class="site-nav">
       <a href="#work">What we build</a>
-      <a href="#run" class="wide">How you run it</a>
-      <a href="#how" class="wide">How we build</a>
-      <a href="#writing" class="wide">Writing</a>
-      <a href="#services">Work with us</a>
-      <a href="https://github.com/enrichmeai">GitHub ↗</a>
-      <button class="themebtn" id="theme" aria-label="Toggle colour theme">◐</button>
+      <a href="#where">Where this goes</a>
+      <a href="#run">How you run it</a>
+      <a href="#how">How we build</a>
+      <a href="#writing">Writing</a>
     </nav>
+    <div class="spacer"></div>
+    <a href="https://github.com/enrichmeai" class="site-nav-link" style="font-size:15px;color:var(--color-neutral-700)">GitHub →</a>
+    <a href="#services" class="btn btn-primary" style="font-size:14px">Work with us</a>
   </div>
 </header>
 
-<div class="hero" id="mission">
-  <div class="wrap">
-    <span class="eyebrow">Open infrastructure for the AI era</span>
-    <h1 style="margin-top:14px">Agents are doing the work.<br>Someone should be able to check.</h1>
-    <p class="lede">Software is increasingly written and run by agents. That is a good thing, and it holds only if the work stays as accountable as it was when people did it &mdash; if you can still see what touched your data, under whose authority, and take it back. EnrichMeAI builds that accountability in the open, at both ends: the <b>data side</b>, where agents must ask before they read, and the <b>agent side</b>, where what an agent did is written down. Embed it, self-host it, or have us run it &mdash; nothing here is announced before it runs.</p>
+<main id="top" class="container">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow" style="margin-bottom:26px">Open infrastructure for the AI era</p>
+      <h1 style="max-width:15ch">Agents are doing the work. <span class="accent">Someone should be able to check.</span></h1>
+    </div>
+    <p class="hero-rail">Cistern governs what agents read of your data. Penstock records what an agent did. Both Apache 2.0, both self-hostable, neither announced before it ran.</p>
   </div>
-</div>
 
-<main>
-  <section id="work">
-    <div class="wrap">
-      <span class="eyebrow">What we build</span>
-      <h2 style="margin-top:14px">Accountability at both ends, and the frameworks underneath.</h2>
-      <div class="prose" style="margin-bottom:6px">
-        <p>An agent reading your data and an agent writing your code are one problem seen from two sides: work is being done by something that does not remember, does not explain itself, and cannot be asked afterwards. <b>Cistern</b> answers for the data &mdash; every read permitted in advance, and receipted after. <b>Penstock</b> answers for the work &mdash; every model call and tool invocation written down. Those two are the AI-era work; <b>Culvert</b>, below, is a data-pipeline framework with no AI in it, and it is here because it is where the practice these two are held to was proven.</p>
-      </div>
-
-      <div class="shelf">
-        <span class="shelf-k">Accountability &mdash; the data side</span>
-        <div class="product">
-          <div>
-            <h3>Cistern</h3>
-            <div class="mono-sub">the gateway between AI agents and your data · open &amp; self-hostable · Java · Apache 2.0</div>
-            <p>Cistern stands in front of what&rsquo;s yours, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule &mdash; <i>this assistant, this folder</i> &mdash; and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications &mdash; Solid for the data and its access rules, and an MCP front door so any assistant that speaks it reaches the pod through the same enforcement as everything else. No vendor sits between you and your own decisions.</p>
-            <div class="btns">
-              <a class="btn primary" href="cistern/">Explore Cistern →</a>
-              <a class="btn" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release v0.2.0 ↗</a>
-              <a class="btn" href="https://github.com/enrichmeai/cistern">Source ↗</a>
-            </div>
-          </div>
-          <aside class="proof">
-            <span class="k">Receipts, not claims</span>
-            <ul>
-              <li><span class="mono">docker pull ghcr.io/enrichmeai/cistern:0.2.0</span> is live on GHCR &mdash; runs enforcing with three environment variables</li>
-              <li>Held to a stranger test before it was named here: pull, run, grant, refuse, revoke, receipt &mdash; from the published artifacts alone, with 1,797 green tests behind it</li>
-              <li>Every decision is receipted &mdash; literally: who read what, under which rule, when, queryable by the owner</li>
-              <li>Apache 2.0 · built against the official Solid conformance suite, score public and only moving forward · limitations stated plainly in the release notes</li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-
-      <div class="shelf">
-        <span class="shelf-k">Accountability &mdash; the agent side</span>
-        <div class="product">
-          <div>
-            <h3>Penstock <span class="tag next">v0.1.2</span></h3>
-            <div class="mono-sub">the agent that does the work, and the reference client for governed access &middot; Java &middot; Spring Boot</div>
-            <p>Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach &mdash; CI hooks, chat commands, scheduled triage &mdash; against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
-            <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind &mdash; and the shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
-            <p>v0.1.2 is live: a signed jar, a bill of materials, and a multi-architecture image. It has not yet cleared the stranger test Cistern is held to &mdash; deploy and use it from the published artifacts alone, following only the shipped docs &mdash; so it is a thing to run on your own machine for now, not to put on a network.</p>
-            <div class="btns">
-              <a class="btn" href="https://github.com/enrichmeai/penstock/releases/tag/v0.1.2">Release v0.1.2 ↗</a>
-              <a class="btn" href="https://github.com/enrichmeai/penstock">Source ↗</a>
-            </div>
-          </div>
-          <aside class="proof">
-            <span class="k">Where it stands</span>
-            <ul>
-              <li><b>Today</b> &mdash; open source, v0.1.0 tagged: three surfaces (web, REST, streaming), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user</li>
-              <li><b>Next</b> &mdash; the reference connector: it reaches a Cistern pod over MCP as its own principal, so what it read is receipted on the owner&rsquo;s side. Any client needing scoped, accountable access to someone else&rsquo;s data follows the same shape</li>
-              <li><b>Later</b> &mdash; the stranger test. Everything with a fix available has been fixed: across three releases, 138 findings down to 85 and the criticals from fourteen to one. That one is waiting on an upstream release that does not exist yet, so there is nothing to apply. Every scan is attached to its release, so the whole series is yours to read rather than ours to claim</li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-
-      <div class="shelf">
-        <span class="shelf-k">A separate line &mdash; data infrastructure</span>
-        <div class="product solo">
-          <div>
-            <h3>Culvert</h3>
-            <div class="mono-sub">cloud-agnostic data-pipeline framework · Java + Python · Apache 2.0</div>
-            <p>Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Shipped on PyPI and Maven Central — after a real deploy caught eight bugs that 1,145 green tests never saw. The full account, contracts through honest status, is on its own page.</p>
-            <div class="btns">
-              <a class="btn primary" href="culvert/">Explore Culvert →</a>
-              <a class="btn" href="https://github.com/enrichmeai/culvert">Source ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prose" style="margin-top:30px">
-        <p>These grow slowly on purpose: nothing is named here before it has run on real infrastructure, and what has not shipped says so.</p>
+  <div class="hero-below">
+    <div>
+      <p class="lede" style="max-width:none">Software is increasingly written and run by agents. That is a good thing, and it holds only if the work stays as accountable as it was when people did it. You should still be able to see what touched your data, under whose authority, and take it back. EnrichMeAI builds that accountability in the open, at both ends: the <strong style="font-weight:600;color:var(--color-text)">data side</strong>, where agents must ask before they read, and the <strong style="font-weight:600;color:var(--color-text)">agent side</strong>, where what an agent did is written down. Embed it, self-host it, or have us run it. Nothing here is announced before it runs.</p>
+      <div class="btn-row" style="margin-top:34px">
+        <a href="/cistern/" class="btn btn-primary btn-lg">Explore Cistern →</a>
+        <a href="https://github.com/enrichmeai" class="btn btn-secondary btn-lg">Read the source →</a>
       </div>
     </div>
-  </section>
+    <div class="blueprint spec-sheet" style="padding:22px 22px 18px;margin-top:6px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="frame-kicker" style="color:var(--color-neutral-700);margin-bottom:14px">Shipping now</div>
+      <dl>
+        <dt>Cistern</dt><dd>v0.2.0 · GHCR</dd>
+        <dt>Penstock</dt><dd>v0.2.0 · signed jar</dd>
+        <dt>Culvert</dt><dd>PyPI · Maven</dd>
+        <dt>Licence</dt><dd>Apache 2.0</dd>
+      </dl>
+    </div>
+  </div>
 
-  <section id="run">
-    <div class="wrap">
-      <span class="eyebrow">How you run it</span>
-      <h2 style="margin-top:14px">Open on your terms, too.</h2>
-      <div class="ways">
-        <div>
-          <span class="k">Embed</span>
-          <p>Add the dependency, own the stack. The frameworks are ordinary libraries in your build &mdash; no agents, no server, nothing phoning home.</p>
-        </div>
-        <div>
-          <span class="k">Self-host</span>
-          <p><span class="mono">docker compose up</span> and Cistern is yours: your hardware, your keys, your rules. Everything it does is inspectable, down to the audit trail.</p>
-        </div>
-        <div>
-          <span class="k">Run by us</span>
-          <p>Some teams want the authority without the operations. We deploy, operate, and upgrade it &mdash; in your cloud or ours &mdash; with the maintainers on the other end of the line. Today that&rsquo;s an engagement, not a sign-up form: <a href="#services">talk to us</a>.</p>
-        </div>
+  <div id="work" class="section-rule">
+    <span class="name">What we build</span><span class="num">01</span>
+  </div>
+
+  <div class="heading-row grid-105" style="padding:42px 0 68px">
+    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:none">Accountability at both ends, and the frameworks underneath.</h2>
+    <p style="font-size:17px;color:var(--color-neutral-800);max-width:63ch">An agent reading your data and an agent writing your code are one problem seen from two sides: work is being done by something that does not remember, does not explain itself, and cannot be asked afterwards. <strong style="font-weight:600;color:var(--color-text)">Cistern</strong> answers for the data: every read permitted in advance, and receipted after. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> answers for the work: every model call and tool invocation written down. Those two are the AI-era work; <strong style="font-weight:600;color:var(--color-text)">Culvert</strong>, below, is a data-pipeline framework with no AI in it, and it is here because it is where the practice these two are held to was proven.</p>
+  </div>
+
+  <article class="register-entry">
+    <div class="hung">
+      <span class="no">01</span>
+      <span class="role">The data side</span>
+      <span class="status">v0.2.0 · live</span>
+    </div>
+    <div class="body">
+      <h3>Cistern</h3>
+      <p class="descriptor">the gateway between AI agents and your data · open &amp; self-hostable · Java · Apache 2.0</p>
+      <p class="prose">Cistern stands in front of what's yours, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule (<em>this assistant, this folder</em>) and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications: Solid for the data and its access rules, and an MCP front door so any assistant that speaks it reaches the pod through the same enforcement as everything else. No vendor sits between you and your own decisions.</p>
+      <div class="blueprint" style="padding:24px 24px 22px;margin-top:6px;max-width:70ch">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker">Receipts, not claims</div>
+        <ul class="marker-list">
+          <li><span class="mk">+</span><span><code style="font-size:13.5px;color:var(--color-text)">docker pull ghcr.io/enrichmeai/cistern:0.2.0</code> is live on GHCR. It runs enforcing with three environment variables</span></li>
+          <li><span class="mk">+</span><span>Held to a stranger test before it was named here: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, with 1,987 green tests behind it</span></li>
+          <li><span class="mk">+</span><span>Every decision is receipted, literally: who read what, under which rule, when, queryable by the owner</span></li>
+          <li><span class="mk">+</span><span>Apache 2.0 · built against the official Solid conformance suite, score public and only moving forward · limitations stated plainly in the release notes</span></li>
+        </ul>
+      </div>
+      <div class="btn-row" style="margin-top:6px">
+        <a href="/cistern/" class="btn btn-primary btn-md">Explore Cistern →</a>
+        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" style="font-size:15px">Release v0.2.0 →</a>
+        <a href="https://github.com/enrichmeai/cistern" style="font-size:15px">Source →</a>
       </div>
     </div>
-  </section>
+  </article>
 
-  <section id="how">
-    <div class="wrap">
-      <span class="eyebrow">How we build</span>
-      <h2 style="margin-top:14px">Code got <span class="strike">expensive</span> cheap. Judgment didn't.</h2>
-      <div class="prose">
-        <p>AI can write a thousand lines in a minute. What it can't do is stand behind them: keep an interface stable for years, catch the failure the emulator never shows, ship an artifact a stranger can depend on.</p>
-        <p>Systems rarely break in the middle of a function. They break at the <b>seams</b>: between your logic and the cloud SDK, between the schema Terraform provisioned and the schema the code writes, between what passed on your laptop and what runs on a serialised worker with real IAM. Generated code adds more seams. It doesn't harden any of them.</p>
-        <p>Good infrastructure is where the hardening lives: a stable contract, a conformance suite every implementation has to pass, honest notes about what <i>doesn't</i> work, and a signed, versioned artifact. None of that is typing. We build our own with AI agents, and it only works because the agents are held to the same contracts and gates.</p>
+  <article class="register-entry divide-top">
+    <div class="hung">
+      <span class="no">02</span>
+      <span class="role">The agent side</span>
+      <span class="status">v0.2.0</span>
+    </div>
+    <div class="body">
+      <h3>Penstock</h3>
+      <p class="descriptor">the agent that does the work, and the reference client for governed access · Java · Spring Boot</p>
+      <div class="split-2">
+        <p>Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach (CI hooks, chat commands, scheduled triage) against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
+        <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind. The shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
       </div>
-      <div class="thesis">
-        <div class="cheap">
-          <span class="k">What got cheap</span>
-          <ul>
-            <li>Lines of code</li>
-            <li>Boilerplate &amp; scaffolding</li>
-            <li>First drafts of anything</li>
-            <li>Plausible-looking implementations</li>
-          </ul>
+      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">v0.2.0 is live: a signed jar, a bill of materials, and a multi-architecture image. It has not yet cleared the stranger test Cistern is held to (deploy and use it from the published artifacts alone, following only the shipped docs), so it is a thing to run on your own machine for now, not to put on a network.</p>
+      <div class="blueprint" style="padding:24px;margin-top:6px;max-width:76ch">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker">Where it stands</div>
+        <ul class="stands-list">
+          <li><span class="term">Today</span><span>three surfaces (web, REST, streaming), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable in the app</span></li>
+          <li><span class="term">Now</span><span>the pod tool has shipped: Penstock asks a Cistern pod for a file over plain HTTPS as its own principal, is refused outside its grant, and what it read is receipted on the owner's side. Any client needing scoped, accountable access to someone else's data follows the same shape</span></li>
+          <li><span class="term">Later</span><span>the stranger test. Everything with a fix available has been fixed: across four releases, 138 findings down to 85 and the criticals from fourteen to one. That one is waiting on an upstream release that does not exist yet, so there is nothing to apply. Every scan is attached to its release, so the whole series is yours to read rather than ours to claim</span></li>
+        </ul>
+      </div>
+      <div class="btn-row" style="margin-top:6px">
+        <a href="/penstock/" class="btn btn-secondary btn-md">Explore Penstock →</a>
+        <a href="https://github.com/enrichmeai/penstock" style="font-size:15px">Source →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="register-entry divide-top">
+    <div class="hung">
+      <span class="no">03</span>
+      <span class="role">A separate line</span>
+      <span class="status">data infrastructure</span>
+    </div>
+    <div class="heading-row grid-11">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:var(--fs-h3-culvert);line-height:0.98;letter-spacing:-0.02em">Culvert</h3>
+        <p class="descriptor">cloud-agnostic data-pipeline framework · Java + Python · Apache 2.0</p>
+        <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800)">Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Shipped on PyPI and Maven Central, after a real deploy caught eight bugs that 1,145 green tests never saw. The full account, contracts through honest status, is on its own page.</p>
+        <div class="btn-row" style="margin-top:4px">
+          <a href="/culvert/" class="btn btn-secondary btn-md">Explore Culvert →</a>
+          <a href="https://github.com/enrichmeai/culvert" style="font-size:15px">Source →</a>
         </div>
-        <div class="dear">
-          <span class="k">What didn't</span>
-          <ul>
-            <li>Contracts that hold across clouds &amp; years</li>
-            <li>Tests that catch what emulators can't</li>
-            <li>Production scars, written down honestly</li>
-            <li>Signed artifacts a stranger can trust</li>
-            <li>Consented access to your data</li>
-          </ul>
-        </div>
+      </div>
+      <div class="reserved">
+        <span class="label">04 · reserved</span>
+        <h4>The next framework</h4>
+        <p>The register is open-ended on purpose. Each new framework takes the next number and the same treatment: what it is, where it stands, and what a stranger can run today.</p>
       </div>
     </div>
-  </section>
+  </article>
 
-  <section id="services">
-    <div class="wrap">
-      <span class="eyebrow">Work with us</span>
-      <h2 style="margin-top:14px">Answer for what your agents did.</h2>
-      <div class="prose">
-        <p>The objective is narrow, and it is not a licence pitch: <b>an organisation should be able to let agents work on its data and still answer, afterwards, for everything they touched.</b> Most cannot today &mdash; not for want of policies, but because nothing underneath produces the evidence. That is what we build, and it only counts if you can run it yourself. Everything here is Apache 2.0, free for commercial use, no strings and no open-core bait.</p>
-        <p>Where we work with organisations directly it is in service of that: <b>integration engagements</b> when the loop has to close inside an estate that already exists, <b>enterprise support</b> when something load-bearing depends on it, <b>sponsored features</b> when a real deployment needs the roadmap bent toward it, and <b>managed deployments</b> for teams who want the authority without the operations.</p>
-        <p>There is no paid tier holding anything back, and there is not going to be one. Software that decides who may read your data has to be software you can read, so all of it is yours. It keeps being built because the organisations that come to rely on it choose to work with us &mdash; that is the whole arrangement, and it is a fair one.</p>
-        <p>Start with <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md" style="color:var(--flow)">COMMERCIAL.md</a> or open a GitHub issue labelled <span class="mono" style="font-size:14px">commercial</span>.</p>
-      </div>
-    </div>
-  </section>
+  <p class="closing-note">These grow slowly on purpose: nothing is named here before it has run on real infrastructure, and what has not shipped says so.</p>
 
-  <section id="writing">
-    <div class="wrap">
-      <span class="eyebrow">Writing</span>
-      <h2 style="margin-top:14px">The code is one part. The thinking is the product.</h2>
-      <div class="prose" style="margin-top:8px">
-        <p>Building infrastructure in the open means writing down more than the code: the decisions, the seams that turned out to be load-bearing, and the failures that only production showed. That record is a deliberate output here, not a marketing afterthought — every technical claim cites the real source tree.</p>
-        <p>The first long-form piece is a practitioner&rsquo;s account of building one of these systems in the open — twenty-one chapters, in progress, with an essay series alongside it. <a href="culvert/#writing" style="color:var(--flow)">Read what it covers →</a></p>
-      </div>
-      <div class="prose" style="margin-top:34px">
-        <p><b>Who is behind this?</b> I&rsquo;m Joseph Aruja. Twenty-five years building software for banks and enterprises, too much of it the same scaffolding rebuilt on every new platform. EnrichMeAI is where that experience turns into things other people can use: open infrastructure, frameworks, writing, and the occasional strong opinion. All in the open.</p>
-      </div>
-    </div>
-  </section>
+  <div id="where" class="section-rule">
+    <span class="name">Where this goes</span><span class="num">02 · direction, not release</span>
+  </div>
 
-  <section>
-    <div class="wrap">
-      <div class="creed">
-        <p>“Nothing here is announced before it has run on real infrastructure. Claims are cheap now. Proof isn't.”</p>
-        <div class="by">house rule</div>
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2" style="font-size:var(--fs-h2-pods);line-height:0.99;max-width:15ch">Community pods: data held by the people it is about.</h2>
+      <p class="descriptor" style="max-width:42ch">Nothing here has shipped. It is written down so you can see what the released work is for.</p>
+    </div>
+    <div class="prose-col" style="max-width:66ch;margin-left:auto;gap:18px">
+      <p style="font-size:18px">A pod per person is the easy half. The harder and more useful case is a pod a community runs for itself: a union, a patient group, a co-operative, a neighbourhood. There the data is about many people at once, and the rules over it are decided by them rather than for them.</p>
+      <p style="font-size:18px">That needs three things underneath: an owner who can be more than one person, rules that survive a change of membership, and a record every member can read. Cistern already enforces and receipts; what a community adds is who gets to write the rule in the first place.</p>
+      <p style="font-size:18px">It is the direction the released work is pointed at, and it will be named properly here when it runs.</p>
+    </div>
+  </div>
+
+  <div id="run" class="section-rule">
+    <span class="name">How you run it</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;margin-bottom:40px;max-width:20ch">Open on your terms, too.</h2>
+    <div class="rule-cols c3">
+      <div class="rule-column">
+        <h4>Embed</h4>
+        <p style="font-size:16.5px;line-height:1.6">Add the dependency, own the stack. The frameworks are ordinary libraries in your build. No agents, no server, nothing phoning home.</p>
+      </div>
+      <div class="rule-column">
+        <h4>Self-host</h4>
+        <p style="font-size:16.5px;line-height:1.6"><code style="font-size:14px;color:var(--color-text)">docker compose up</code> and Cistern is yours: your hardware, your keys, your rules. Everything it does is inspectable, down to the audit trail.</p>
+      </div>
+      <div class="rule-column is-accent">
+        <h4 class="accent">Run by us</h4>
+        <p style="font-size:16.5px;line-height:1.6">Some teams want the authority without the operations. We deploy, operate, and upgrade it, in your cloud or ours, with the maintainers on the other end of the line. Today that's an engagement, not a sign-up form: <a href="#services">talk to us</a>.</p>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div id="how" class="section-rule">
+    <span class="name">How we build</span><span class="num">04</span>
+  </div>
+
+  <div class="heading-row grid-125" style="padding:42px 0 88px">
+    <div class="prose-col" style="gap:20px;max-width:none">
+      <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02">Code got expensive cheap. Judgment didn't.</h2>
+      <p>AI can write a thousand lines in a minute. What it can't do is stand behind them: keep an interface stable for years, catch the failure the emulator never shows, ship an artifact a stranger can depend on.</p>
+      <p>Systems rarely break in the middle of a function. They break at the <strong style="font-weight:600;color:var(--color-text)">seams</strong>: between your logic and the cloud SDK, between the schema Terraform provisioned and the schema the code writes, between what passed on your laptop and what runs on a serialised worker with real IAM. Generated code adds more seams. It doesn't harden any of them.</p>
+      <p>Good infrastructure is where the hardening lives: a stable contract, a conformance suite every implementation has to pass, honest notes about what <em>doesn't</em> work, and a signed, versioned artifact. None of that is typing. We build our own with AI agents, and it only works because the agents are held to the same contracts and gates.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:34px;padding-top:8px">
+      <div>
+        <div class="frame-kicker" style="color:var(--color-neutral-700);padding-bottom:12px;border-bottom:1px solid var(--color-divider);margin-bottom:0">What got cheap</div>
+        <ul class="marker-list" style="gap:9px;padding-top:14px">
+          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-600)">Lines of code</span></li>
+          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-600)">Boilerplate and scaffolding</span></li>
+          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-600)">First drafts of anything</span></li>
+          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-600)">Plausible-looking implementations</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="frame-kicker" style="padding-bottom:12px;border-bottom:1px solid var(--color-accent);margin-bottom:0">What didn't</div>
+        <ul class="marker-list" style="gap:9px;padding-top:14px">
+          <li><span class="mk">+</span><span style="color:var(--color-text)">Contracts that hold across clouds and years</span></li>
+          <li><span class="mk">+</span><span style="color:var(--color-text)">Tests that catch what emulators can't</span></li>
+          <li><span class="mk">+</span><span style="color:var(--color-text)">Production scars, written down honestly</span></li>
+          <li><span class="mk">+</span><span style="color:var(--color-text)">Signed artifacts a stranger can trust</span></li>
+          <li><span class="mk">+</span><span style="color:var(--color-text)">Consented access to your data</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <div>
-      <a href="cistern/">Cistern, the personal data gateway</a>
-      <a href="https://github.com/enrichmeai/penstock">Penstock, the agent that answers for its work ↗</a>
-      <a href="culvert/">Culvert, the data-pipeline framework</a>
-      <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md">Work with us ↗</a>
-      <a href="https://github.com/enrichmeai">github.com/enrichmeai ↗</a>
+<section id="services" class="band">
+  <div class="container">
+    <div class="section-rule">
+      <span class="name">Work with us</span><span class="num">05</span>
     </div>
-    <div class="meta">
-      EnrichMeAI · built in the open · Apache-2.0<br>
-      EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>
-      registered in England &amp; Wales, company no. 09702990.
+    <div class="band-grid">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <h2>Answer for what your agents did.</h2>
+        <p class="lead">The objective is narrow, and it is not a licence pitch: <strong>an organisation should be able to let agents work on its data and still answer, afterwards, for everything they touched.</strong> Most cannot today, not for want of policies, but because nothing underneath produces the evidence. That is what we build, and it only counts if you can run it yourself. Everything here is Apache 2.0, free for commercial use, no strings and no open-core bait.</p>
+        <p class="muted">There is no paid tier holding anything back, and there is not going to be one. Software that decides who may read your data has to be software you can read, so all of it is yours. It keeps being built because the organisations that come to rely on it choose to work with us. That is the whole arrangement, and it is a fair one.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p style="font-size:17px;line-height:1.6;color:var(--color-accent-300)">Where we work with organisations directly it is in service of that:</p>
+        <ul class="band-list">
+          <li><span class="term">Integration engagements</span><span class="desc">when the loop has to close inside an estate that already exists</span></li>
+          <li><span class="term">Enterprise support</span><span class="desc">when something load-bearing depends on it</span></li>
+          <li><span class="term">Sponsored features</span><span class="desc">when a real deployment needs the roadmap bent toward it</span></li>
+          <li><span class="term">Managed deployments</span><span class="desc">for teams who want the authority without the operations</span></li>
+        </ul>
+        <div class="btn-row" style="margin-top:4px">
+          <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md" class="btn btn-inverted btn-lg">Start with COMMERCIAL.md →</a>
+          <span style="font-size:15.5px;color:var(--color-accent-400)">or open a GitHub issue labelled <code>commercial</code>.</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section id="writing" class="container">
+  <div style="padding-top:84px">
+    <div class="section-rule">
+      <span class="name">Writing</span><span class="num">06</span>
+    </div>
+    <div class="heading-row grid-115" style="padding:42px 0 76px">
+      <div class="prose-col" style="gap:20px;max-width:none">
+        <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:18ch">The code is one part. The thinking is the product.</h2>
+        <p style="max-width:60ch">Building infrastructure in the open means writing down more than the code: the decisions, the seams that turned out to be load-bearing, and the failures that only production showed. That record is a deliberate output here, not a marketing afterthought. Every technical claim cites the real source tree.</p>
+        <p style="max-width:60ch">The first long-form piece is a practitioner's account of building one of these systems in the open: twenty-one chapters, in progress, with an essay series alongside it. <a href="/culvert/#writing">Read what it covers →</a></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:6px">
+        <div class="frame-kicker" style="color:var(--color-neutral-700);margin-bottom:0">Who is behind this?</div>
+        <h4 style="font-family:var(--font-heading);font-weight:600;font-size:34px">Joseph Aruja</h4>
+        <p style="font-size:16.5px;line-height:1.62;color:var(--color-neutral-800)">I'm Joseph Aruja. Twenty-five years building software for banks and enterprises, too much of it the same scaffolding rebuilt on every new platform. EnrichMeAI is where that experience turns into things other people can use: open infrastructure, frameworks, writing, and the occasional strong opinion. All in the open.</p>
+      </div>
+    </div>
+    <blockquote class="pull-quote" style="border-top:1px solid var(--color-divider);padding:44px 0 76px;margin:0">
+      <span class="label">House rule</span>
+      <p style="font-size:var(--fs-quote);line-height:1.14;max-width:26ch">"Nothing here is announced before it has run on real infrastructure. Claims are cheap now. Proof isn't."</p>
+    </blockquote>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span class="wordmark">enrichme<span class="dot">·</span>ai</span>
+      <span class="reg">EnrichMeAI · built in the open · Apache-2.0<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+    <nav class="footer-grid">
+      <a href="/cistern/">Cistern, the personal data gateway</a>
+      <a href="/penstock/">Penstock, the agent that answers for its work</a>
+      <a href="/culvert/">Culvert, the data-pipeline framework</a>
+      <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md">Work with us →</a>
+      <a href="https://github.com/enrichmeai">github.com/enrichmeai →</a>
+    </nav>
   </div>
 </footer>
 
-<script>
-(function(){
-  var root=document.documentElement;
-  document.getElementById('theme').addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    root.setAttribute('data-theme',cur==='dark'?'light':'dark');
-  });
-})();
-</script>
 </body>
 </html>
