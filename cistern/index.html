@@ -1,386 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cistern, the authority layer for personal data in the AI era</title>
-<meta name="description" content="Cistern: an open, self-hostable server that keeps a person's data where they decide and makes every application and AI assistant ask permission — enforced per request, revocable instantly, receipted. docker pull ghcr.io/enrichmeai/cistern.">
-<style>
-  :root{
-    --ground:#E8EBEF; --surface:#F4F6F8; --raise:#FFFFFF;
-    --ink:#191C21; --muted:#59616D; --line:#CFD6DE;
-    --accent:#B25E12; --accent-ink:#8A480C; --flow:#0F6E78;
-    --font-display:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --font-mono:ui-monospace,"SF Mono","Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
-    --measure:66ch;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --ground:#14171B; --surface:#1A1E23; --raise:#20252B;
-      --ink:#EAEDF1; --muted:#98A2AE; --line:#2A313A;
-      --accent:#E39149; --accent-ink:#F0A967; --flow:#3BA9B3;
-    }
-  }
-  :root[data-theme="light"]{
-    --ground:#E8EBEF; --surface:#F4F6F8; --raise:#FFFFFF;
-    --ink:#191C21; --muted:#59616D; --line:#CFD6DE;
-    --accent:#B25E12; --accent-ink:#8A480C; --flow:#0F6E78;
-  }
-  :root[data-theme="dark"]{
-    --ground:#14171B; --surface:#1A1E23; --raise:#20252B;
-    --ink:#EAEDF1; --muted:#98A2AE; --line:#2A313A;
-    --accent:#E39149; --accent-ink:#F0A967; --flow:#3BA9B3;
-  }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    background:var(--ground); color:var(--ink);
-    font-family:var(--font-body); font-size:17px; line-height:1.6;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  a{color:inherit}
-  ::selection{background:var(--accent);color:var(--ground)}
-
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-  .rule{border:0;border-top:1px solid var(--line)}
-  .mono{font-family:var(--font-mono)}
-  .eyebrow{
-    font-family:var(--font-mono); font-size:12px; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--muted);
-  }
-  .accent{color:var(--accent)}
-
-  /* ---- top bar ---- */
-  header.bar{
-    position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 86%,transparent);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
-  }
-  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-mono);font-weight:600;letter-spacing:-.01em}
-  .brand .glyph{width:26px;height:14px;flex:0 0 auto}
-  .brand b{font-weight:700}
-  .navlinks{display:flex;align-items:center;gap:22px;font-family:var(--font-mono);font-size:13px;color:var(--muted)}
-  .navlinks a{text-decoration:none}
-  .navlinks a:hover{color:var(--ink)}
-  .navlinks a.pill{
-    color:var(--ink);border:1px solid var(--line);border-radius:2px;
-    padding:6px 11px;background:var(--surface)
-  }
-  .navlinks a.pill:hover{border-color:var(--accent);color:var(--accent)}
-  .themebtn{
-    font-family:var(--font-mono);font-size:12px;color:var(--muted);
-    background:transparent;border:1px solid var(--line);border-radius:2px;
-    padding:6px 9px;cursor:pointer
-  }
-  .themebtn:hover{border-color:var(--accent);color:var(--accent)}
-  @media(max-width:720px){.navlinks a:not(.pill){display:none}}
-
-  /* ---- hero ---- */
-  .hero{position:relative;padding:76px 0 30px;overflow:hidden}
-  .hero .grid-tick{position:absolute;inset:0;pointer-events:none;
-    background-image:linear-gradient(var(--line) 1px,transparent 1px);
-    background-size:100% 112px;opacity:.35;mask-image:linear-gradient(180deg,transparent,#000 40%,#000 60%,transparent)}
-  .hero-inner{position:relative;z-index:2}
-  h1{
-    font-family:var(--font-display); font-weight:800; letter-spacing:-.028em;
-    line-height:1.02; text-wrap:balance; margin:16px 0 0;
-    font-size:clamp(40px,6.4vw,74px);
-  }
-  h1 .soft{color:var(--muted)}
-  .lede{max-width:60ch;margin:22px 0 0;font-size:clamp(17px,2vw,20px);color:var(--muted)}
-  .lede b{color:var(--ink);font-weight:600}
-
-  .cmd{
-    margin-top:30px;display:inline-flex;align-items:stretch;gap:0;
-    border:1px solid var(--line);border-radius:3px;background:var(--raise);
-    font-family:var(--font-mono);overflow:hidden;max-width:100%;
-  }
-  .cmd .prompt{padding:14px 10px 14px 16px;color:var(--accent);user-select:none}
-  .cmd code{padding:14px 8px;font-size:15px;white-space:nowrap;overflow-x:auto}
-  .cmd button{
-    border:0;border-left:1px solid var(--line);background:var(--surface);
-    color:var(--muted);font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;padding:0 16px;cursor:pointer
-  }
-  .cmd button:hover{color:var(--accent)}
-  .cmd button.copied{color:var(--flow)}
-
-  /* ---- channel canvas ---- */
-  .channel{position:relative;margin:44px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    background:var(--surface)}
-  .channel canvas{display:block;width:100%;height:172px}
-  .channel .terrain{position:absolute;left:0;right:0;display:flex;justify-content:space-between;
-    font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-    padding:0 16px;pointer-events:none}
-  .channel .terrain.top{top:9px}.channel .terrain.bot{bottom:9px}
-  .channel .terrain .dim{opacity:.5}
-
-  /* ---- sections ---- */
-  section{padding:64px 0}
-  .sechead{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
-  .sechead .num{font-family:var(--font-mono);font-size:13px;color:var(--accent)}
-  h2{font-family:var(--font-display);font-weight:750;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;text-wrap:balance}
-  .prose{max-width:var(--measure);color:var(--muted);font-size:18px}
-  .prose p+p{margin-top:16px}
-  .prose b{color:var(--ink);font-weight:600}
-  .prose code{font-family:var(--font-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);
-    border-radius:3px;padding:1px 5px;color:var(--ink)}
-
-  /* division of labour cards */
-  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
-    border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
-  .card{background:var(--surface);padding:22px 22px 24px}
-  .card .k{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-  .card h3{font-family:var(--font-display);font-weight:700;font-size:19px;margin:8px 0 6px;letter-spacing:-.01em}
-  .card p{color:var(--muted);font-size:15px}
-  @media(max-width:680px){.cards{grid-template-columns:1fr}}
-
-  /* install block */
-  .code{background:var(--raise);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-top:8px}
-  .code .head{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;border-bottom:1px solid var(--line);
-    font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
-  .code pre{margin:0;padding:18px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.75}
-  .code .c{color:var(--muted)}
-  .code .k{color:var(--accent)}
-  .code .s{color:var(--flow)}
-
-  /* status spec table */
-  .spec{border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
-  .spec .row{display:grid;grid-template-columns:220px 1fr;gap:0;border-top:1px solid var(--line)}
-  .spec .row:first-child{border-top:0}
-  .spec .lab{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
-    padding:15px 18px;background:var(--surface);border-right:1px solid var(--line)}
-  .spec .val{padding:15px 18px;font-size:15.5px}
-  .spec .val .tag{font-family:var(--font-mono);font-size:11px;padding:2px 7px;border-radius:2px;border:1px solid var(--line);
-    color:var(--muted);margin-left:2px}
-  .spec .val .live{color:var(--flow);border-color:color-mix(in srgb,var(--flow) 45%,var(--line))}
-  .spec .val .soon{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
-  @media(max-width:620px){.spec .row{grid-template-columns:1fr}.spec .lab{border-right:0;border-bottom:1px solid var(--line)}}
-
-  /* honesty pull-quote */
-  .creed{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:8px;max-width:60ch}
-  .creed p{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.015em;line-height:1.34}
-  .creed .by{margin-top:14px;font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
-
-  /* footer */
-  footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted)}
-  .foot{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-start;justify-content:space-between}
-  .foot .cols{display:flex;gap:56px;flex-wrap:wrap}
-  .foot h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
-  .foot a{display:block;text-decoration:none;color:var(--muted);font-size:14px;padding:3px 0}
-  .foot a:hover{color:var(--accent)}
-  .foot .meta{font-family:var(--font-mono);font-size:12px;line-height:1.9;text-align:right}
-  @media(max-width:620px){.foot .meta{text-align:left}}
-
-  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<title>Cistern · the gateway between AI agents and your data</title>
+<meta name="description" content="One gatekeeper between every caller and the data. Decided fresh on every request, never cached, with the deciding rule named in a receipt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
-<header class="bar">
-  <div class="wrap">
-    <span class="brand">
-      <svg class="glyph" viewBox="0 0 52 28" aria-hidden="true" fill="none">
-        <rect x="1" y="1" width="50" height="26" rx="2" stroke="var(--line)"/>
-        <path d="M1 14 H51" stroke="var(--flow)" stroke-dasharray="4 5" stroke-width="1.5"/>
-        <circle cx="14" cy="14" r="2.4" fill="var(--accent)"/>
-        <circle cx="30" cy="14" r="2.4" fill="var(--accent)"/>
-        <circle cx="44" cy="14" r="2.4" fill="var(--accent)"/>
-      </svg>
-      <b>cistern</b>
-    </span>
-    <nav class="navlinks">
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <span class="product-label">Cistern</span>
+    <nav class="site-nav">
       <a href="#idea">The idea</a>
-      <a href="#install">Run it</a>
+      <a href="#run">Run it</a>
+      <a href="#surface">Surface</a>
       <a href="#status">Status</a>
-      <a class="pill" href="https://github.com/enrichmeai/cistern">GitHub ↗</a>
-      <button class="themebtn" id="theme" aria-label="Toggle colour theme">◐ theme</button>
+      <a href="#next">What's next</a>
+      <a href="#faq">FAQ</a>
     </nav>
+    <div class="spacer"></div>
+    <a href="https://github.com/enrichmeai/cistern" class="btn btn-primary" style="font-size:14px">GitHub →</a>
   </div>
 </header>
 
-<div class="hero">
-  <div class="grid-tick"></div>
-  <div class="wrap hero-inner">
-    <span class="eyebrow">Open · self-hostable · conformance-first</span>
-    <h1>Every AI assistant acts <span class="accent">as you</span>.<br><span class="soft">Cistern makes it ask.</span></h1>
-    <p class="lede">Cistern is an open server that keeps a person's data where <b>they</b> decide, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule — <b>this assistant, this folder</b> — and the server enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built on the Solid specifications; assistants connect over MCP, applications over plain HTTP &mdash; one gatekeeper for both.</p>
-    <div class="cmd">
-      <span class="prompt">$</span>
-      <code id="pipcmd">docker pull ghcr.io/enrichmeai/cistern:0.2.0</code>
-      <button id="copybtn" aria-label="Copy install command">Copy</button>
+<main class="container">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow" style="margin-bottom:26px">Open · self-hostable · conformance-first</p>
+      <h1>Every AI assistant acts <span class="accent">as you</span>. Cistern makes it ask.</h1>
+    </div>
+    <p class="hero-rail">One gatekeeper between every caller and the data. Decided fresh on every request, never cached, with the deciding rule named in a receipt.</p>
+  </div>
+
+  <div class="hero-below">
+    <p class="lede">Cistern is an open server that keeps a person's data where <strong style="font-weight:600;color:var(--color-text)">they</strong> decide, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule (<strong style="font-weight:600;color:var(--color-text)">this assistant, this folder</strong>) and the server enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built on the Solid specifications; assistants connect over MCP, applications over plain HTTP: one gatekeeper for both.</p>
+    <div class="stack">
+      <div class="blueprint pad-frame">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker" style="margin-bottom:10px">Pull it</div>
+        <code style="font-size:14.5px;color:var(--color-text);word-break:break-all">docker pull ghcr.io/enrichmeai/cistern:0.2.0</code>
+      </div>
+      <div class="btn-row">
+        <a href="#run" class="btn btn-primary btn-lg">Run it in five minutes →</a>
+        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" class="btn btn-secondary btn-lg">Release v0.2.0 →</a>
+      </div>
     </div>
   </div>
-  <div class="channel" aria-hidden="true">
-    <div class="terrain top"><span>any assistant · MCP</span><span>any app · HTTP</span><span class="dim">one gatekeeper</span></div>
-    <canvas id="flow"></canvas>
-    <div class="terrain bot"><span class="dim">the grant</span><span>the owner's rule carries the authority</span><span class="dim">the vault</span></div>
+
+  <div id="idea" class="section-rule">
+    <span class="name">The idea</span><span class="num">01</span>
   </div>
-</div>
 
-<main>
-  <section id="idea">
-    <div class="wrap">
-      <div class="sechead"><span class="num">01</span><h2>The refusal is the product</h2></div>
-      <div class="prose">
-        <p>Today an assistant logs in as its user: whatever the person can see, it can see. One prompt injection has the authority of the whole person; revoking one assistant means revoking yourself; and afterwards nobody can say which agent read what. The protocols will not fix this — MCP defines how an assistant connects, not what the <i>person</i> allows it to touch.</p>
-        <p>Cistern puts one gatekeeper between every caller and the data. Who is asking &rarr; the owner’s permission file &rarr; allow or refuse — decided fresh on every request, never cached, with the deciding rule named in a receipt. There is no privileged path around it: the MCP front door and plain HTTP cross the same filter &mdash; an MCP tool call shows up in the receipts exactly like a curl.</p>
+  <div class="heading-row align-start" style="padding:42px 0 44px">
+    <h2 class="section-h2" style="max-width:14ch">The refusal is the product</h2>
+    <div class="prose-col">
+      <p>Today an assistant logs in as its user: whatever the person can see, it can see. One prompt injection has the authority of the whole person; revoking one assistant means revoking yourself; and afterwards nobody can say which agent read what. The protocols will not fix this. MCP defines how an assistant connects, not what the <em>person</em> allows it to touch.</p>
+      <p>Cistern puts one gatekeeper between every caller and the data. Who is asking, then the owner's permission file, then allow or refuse: decided fresh on every request, never cached, with the deciding rule named in a receipt. There is no privileged path around it. The MCP front door and plain HTTP cross the same filter, so an MCP tool call shows up in the receipts exactly like a curl.</p>
+    </div>
+  </div>
+
+  <div class="blueprint stage-diagram" style="margin-bottom:76px">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="frame-kicker" style="margin-bottom:26px">The path of one request</div>
+    <div class="stages s4">
+      <div class="stage">
+        <span class="role">Caller</span>
+        <span class="title">Any assistant<br>or any app</span>
+        <p>MCP or plain HTTP. Same door, no privileged path.</p>
       </div>
-      <div class="cards">
-        <div class="card"><span class="k">Owner-authored</span><h3>The person writes the rule</h3><p>This assistant, this folder — not a developer’s scope list, not an IT admin’s console. Grants can only narrow the owner’s own authority.</p></div>
-        <div class="card"><span class="k">Enforced at the store</span><h3>Deny by default</h3><p>The rule lives next to the data and is read at enforcement time. An assistant outside its grant gets a refusal, not an empty folder.</p></div>
-        <div class="card"><span class="k">Revoked in one request</span><h3>No token to wait out</h3><p>Delete the rule and the very next request is refused. No restart, no reissue, no cache to purge — there is none.</p></div>
-        <div class="card"><span class="k">Receipted</span><h3>Who read what, under which rule</h3><p>Every allow and every deny is recorded with the rule that decided it, queryable by the owner. Audit is a query, not a forensic exercise.</p></div>
+      <div class="arrow"><span class="right">→</span><span class="down">↓</span></div>
+      <div class="stage">
+        <span class="role">Identity</span>
+        <span class="title">Who is<br>asking</span>
+        <p>Its own principal, not the owner's login.</p>
+      </div>
+      <div class="arrow"><span class="right">→</span><span class="down">↓</span></div>
+      <div class="stage is-accent">
+        <span class="role">Authority</span>
+        <span class="title">The owner's<br>rule</span>
+        <p>Read at enforcement time, next to the data. Deny by default.</p>
+      </div>
+      <div class="arrow"><span class="right">→</span><span class="down">↓</span></div>
+      <div class="stage">
+        <span class="role">Outcome</span>
+        <span class="title">Allow or<br>refuse</span>
+        <p>Receipted either way, with the rule that decided it.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <hr class="rule">
+  <div class="rule-cols c4" style="padding-bottom:80px">
+    <div class="rule-column">
+      <span class="kicker">Owner-authored</span>
+      <h3>The person writes the rule</h3>
+      <p>This assistant, this folder. Not a developer's scope list, not an IT admin's console. Grants can only narrow the owner's own authority.</p>
+    </div>
+    <div class="rule-column">
+      <span class="kicker">Enforced at the store</span>
+      <h3>Deny by default</h3>
+      <p>The rule lives next to the data and is read at enforcement time. An assistant outside its grant gets a refusal, not an empty folder.</p>
+    </div>
+    <div class="rule-column">
+      <span class="kicker">Revoked in one request</span>
+      <h3>No token to wait out</h3>
+      <p>Delete the rule and the very next request is refused. No restart, no reissue, no cache to purge, because there is none.</p>
+    </div>
+    <div class="rule-column is-accent">
+      <span class="kicker">Receipted</span>
+      <h3>Who read what, under which rule</h3>
+      <p>Every allow and every deny is recorded with the rule that decided it, queryable by the owner. Audit is a query, not a forensic exercise.</p>
+    </div>
+  </div>
 
-  <section id="install">
-    <div class="wrap">
-      <div class="sechead"><span class="num">02</span><h2>Run it in five minutes</h2></div>
-      <div class="prose"><p>One container, three environment variables, and the server is enforcing. The CLI ships with the release — no build required.</p></div>
-      <div class="code">
-        <div class="head"><span>shell</span><span>Docker · Java 25 for the CLI</span></div>
-<pre><span class="c"># run enforcing: setting the owner turns Web Access Control on</span>
-<span class="k">docker</span> run --rm -p 127.0.0.1:3737:3000 \
-  -e CISTERN_OWNER_WEBID=<span class="s">'https://you.example/profile#me'</span> \
-  -e CISTERN_OWNER_TOKEN=<span class="s">"$(openssl rand -hex 32)"</span> \
-  -e CISTERN_BASE_URL=<span class="s">'http://localhost:3737'</span> \
-  -v cistern-data:/data ghcr.io/enrichmeai/cistern:0.2.0
+  <div id="run" class="section-rule">
+    <span class="name">Run it</span><span class="num">02</span>
+  </div>
 
-<span class="c"># grant, and take it back — the CLI is a release asset</span>
-<span class="k">java</span> -jar cistern-cli-0.2.0.jar grant &lt;webid&gt; --read /matters/2026-114/
-<span class="k">java</span> -jar cistern-cli-0.2.0.jar revoke &lt;webid&gt; /matters/2026-114/</pre>
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Run it in five minutes</h2>
+      <p class="intro">One container, three environment variables, and the server is enforcing. The CLI ships with the release, so no build is required.</p>
+    </div>
+    <div class="blueprint code-frame">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>shell</span><span>Docker · Java 25 for the CLI</span></div>
+      <pre><div class="cmt"># run enforcing: setting the owner turns Web Access Control on</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:3737:3000 \</div><div>  -e CISTERN_OWNER_WEBID=<span class="tok">'https://you.example/profile#me'</span> \</div><div>  -e CISTERN_OWNER_TOKEN=<span class="tok">"$(openssl rand -hex 32)"</span> \</div><div>  -e CISTERN_BASE_URL=<span class="tok">'http://127.0.0.1:3737'</span> \</div><div>  -v cistern-data:/data ghcr.io/enrichmeai/cistern:0.2.0</div><div class="sep"></div><div class="cmt"># grant, and take it back: the CLI is a release asset</div><div><span class="tok">java</span> -jar cistern-cli-0.2.0.jar grant &lt;webid&gt; --read /matters/2026-114/</div><div><span class="tok">java</span> -jar cistern-cli-0.2.0.jar revoke &lt;webid&gt; /matters/2026-114/</div></pre>
+    </div>
+    <p class="note"><strong style="font-weight:600">127.0.0.1, not localhost.</strong> On a Mac localhost resolves to ::1 first while Docker binds IPv4 only, so any other process on the port answers instead, with a 401 that looks exactly like this server misbehaving.</p>
+    <div class="blueprint code-frame" style="margin-top:24px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>the whole loop, against a real identity provider</span><span>integration-kit/</span></div>
+      <pre><div><span class="tok">docker</span> compose up -d --build   <span class="cmt"># Cistern + Keycloak, loopback only</span></div><div>./seed.sh &amp;&amp; ./sample-app/run.sh <span class="cmt"># two named apps: allowed inside the grant,</span></div><div>                                 <span class="cmt"># refused outside it, revoked, receipted: 15 checks</span></div></pre>
+    </div>
+  </div>
+
+  <div id="surface" class="section-rule">
+    <span class="name">Surface</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">What a caller can reach</h2>
+      <p class="intro">Two front doors, one filter. Everything below is subject to the same rule read and the same receipt.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>Surface</th><th>How a caller authenticates</th><th>What it can do</th><th>On refusal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MCP front door</td><td>A service principal of its own, issued per application</td><td>Seven tools over the granted paths</td><td>A structured refusal, not an empty result</td></tr>
+          <tr><td>Plain HTTP</td><td>Any OpenID Connect issuer, or a service principal</td><td>Read and write within Web Access Control</td><td>An HTTP refusal naming no more than it must</td></tr>
+          <tr><td>CLI</td><td>The owner token set at startup</td><td>Create pods, grant, revoke, read receipts</td><td>Not applicable: the owner holds the authority</td></tr>
+          <tr><td>Receipts</td><td>The owner, over the same filter</td><td>Query every allow and deny by rule, caller or path</td><td>Not applicable</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">The authoritative reference is the shipped documentation: <a href="https://github.com/enrichmeai/cistern/tree/main/docs">docs →</a> and <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">the integration playbook →</a>.</p>
+  </div>
+
+  <div id="status" class="section-rule">
+    <span class="name">Status</span><span class="num">04</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">What's real, stated plainly</h2>
+      <p class="intro">This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise. Rows say whether they describe the released image or the current source.</p>
+    </div>
+    <dl class="spec-list">
+      <div class="spec-row">
+        <dt>Release</dt>
+        <dd><code style="font-size:14.5px">ghcr.io/enrichmeai/cistern:0.2.0</code> multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag tag-live">live</span></dd>
       </div>
-      <div class="code" style="margin-top:18px">
-        <div class="head"><span>the whole loop, against a real identity provider</span><span>integration-kit/</span></div>
-<pre><span class="k">docker</span> compose up -d --build   <span class="c"># Cistern + Keycloak, loopback only</span>
-./seed.sh && ./sample-app/run.sh <span class="c"># two named apps: allowed inside the grant,</span>
-                                 <span class="c"># refused outside it, revoked, receipted — 15 checks</span></pre>
+      <div class="spec-row">
+        <dt>Identity</dt>
+        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in v0.2.0</span> · Solid-OIDC token validation and DPoP proofs are merged on <code style="font-size:14.5px">main</code> and will ship in the next release, so they are not in the image above <span class="tag tag-next">on main</span></dd>
+      </div>
+      <div class="spec-row">
+        <dt>Authority</dt>
+        <dd>Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable <span class="tag tag-live">in v0.2.0</span></dd>
+      </div>
+      <div class="spec-row">
+        <dt>Agents</dt>
+        <dd>The MCP front door with seven tools, structured refusals and revocation on the very next call, and plain HTTP, behind one filter <span class="tag tag-live">in v0.2.0</span></dd>
+      </div>
+      <div class="spec-row">
+        <dt>Conformance</dt>
+        <dd>Built against the official Solid conformance suite, and the score only moves forward. As of the run recorded on 28 August 2026 it reads <strong style="font-weight:600">0 of 41 executed</strong>, and what changed is worth stating: the suite's client registration now <strong style="font-weight:600">passes</strong>, where before it could not. The run halts one step later, because the suite's own client sends DPoP proofs without the <code style="font-size:14.5px">ath</code> claim that RFC 9449 requires a resource server to check, and Cistern checks it. We have offered the one-line fix upstream rather than working around it. Until an unmodified harness produces a number, this one stands at zero.</dd>
+      </div>
+      <div class="spec-row">
+        <dt>Proof</dt>
+        <dd>Every release is held to a <strong style="font-weight:600">stranger test</strong> before this page names it, v0.2.0 included: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, following only the shipped docs. 1,987 green tests behind it.</dd>
+      </div>
+      <div class="spec-row">
+        <dt>Licence</dt>
+        <dd>Apache 2.0, free for any use including commercial. Support, integration and hosting are how the company earns.</dd>
+      </div>
+    </dl>
+    <blockquote class="pull-quote">
+      <span class="label">The release gate, in one sentence</span>
+      <p>"An agent could read exactly what it was granted and nothing else, and the owner took it back in the time it took to delete one line, with a receipt naming the rule. Releases here carry receipts. In this product, literally."</p>
+    </blockquote>
+  </div>
+
+  <div id="next" class="section-rule">
+    <span class="name">What's next</span><span class="num">05 · direction, not release</span>
+  </div>
+
+  <div class="section-body">
+    <div class="rule-cols c3">
+      <div class="rule-column">
+        <span class="kicker">Next</span>
+        <h3>A release carrying Solid-OIDC</h3>
+        <p>Token validation, DPoP proofs and WebID checks are merged and tested on main. The next tagged release is what puts them in an image you can pull.</p>
+      </div>
+      <div class="rule-column">
+        <span class="kicker">Next</span>
+        <h3>Penstock as the reference client</h3>
+        <p>An agent asking for a file as its own principal, refused outside its grant, receipted on the owner's side. <a href="/penstock/">See Penstock →</a></p>
+      </div>
+      <div class="rule-column is-accent">
+        <span class="kicker">Direction</span>
+        <h3>Community pods</h3>
+        <p>An owner who can be more than one person, rules that survive a change of membership, and a record every member can read. Nothing shipped yet. <a href="/#where">The thinking →</a></p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <hr class="rule">
+  <div id="faq" class="section-rule">
+    <span class="name">FAQ</span><span class="num">06</span>
+  </div>
 
-  <section id="status">
-    <div class="wrap">
-      <div class="sechead"><span class="num">03</span><h2>What’s real, stated plainly</h2></div>
-      <div class="prose"><p>This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise.</p></div>
-      <div class="spec">
-        <div class="row"><div class="lab">Release</div><div class="val"><code style="font-family:var(--font-mono)">ghcr.io/enrichmeai/cistern:0.2.0</code> — multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag live">live</span></div></div>
-        <div class="row"><div class="lab">Identity</div><div class="val">Logins from any OpenID Connect issuer + per-application service principals <span class="tag live">live</span> · Solid-OIDC/DPoP interop <span class="tag soon">next</span></div></div>
-        <div class="row"><div class="lab">Authority</div><div class="val">Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable <span class="tag live">live</span></div></div>
-        <div class="row"><div class="lab">Agents</div><div class="val">The MCP front door — seven tools, structured refusals, revocation on the very next call — and plain HTTP, behind one filter <span class="tag live">live</span></div></div>
-        <div class="row"><div class="lab">Conformance</div><div class="val">Built against the official Solid conformance suite; the score is public and only moves forward. It reads <b>0 of 41 executed</b> today, and the reason is worth knowing: the harness authenticates its test clients before it runs a single assertion, so until Solid-OIDC existed the run stopped before the first check. That work is now written and merged — awaiting its first harness run, and whatever that returns is the number this page will carry.</div></div>
-        <div class="row"><div class="lab">Proof</div><div class="val">Every release is held to a <b>stranger test</b> before this page names it — v0.2.0 included: pull, run, grant, refuse, revoke, receipt — from the published artifacts alone, following only the shipped docs. 1,797 green tests behind it.</div></div>
-        <div class="row"><div class="lab">Licence</div><div class="val">Apache 2.0 — free for any use, including commercial. Support, integration and hosting are how the company earns.</div></div>
+  <div class="section-body">
+    <div class="faq-grid">
+      <div class="faq-col">
+        <div class="faq-item">
+          <h3>Is this a replacement for my identity provider?</h3>
+          <p>No. Cistern authenticates against any OpenID Connect issuer you already run, and issues per-application service principals on top. It decides what a caller may touch, not who your people are.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does the assistant have to know about Cistern?</h3>
+          <p>Only that it speaks MCP. Any assistant that does reaches the pod through the same enforcement as everything else, and gets a structured refusal when it asks outside its grant.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What does revocation actually cost?</h3>
+          <p>One line deleted. There is no token lifetime to wait out and no cache to purge, because the rule is read at enforcement time on every request.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Where does the data physically live?</h3>
+          <p>Wherever you run the container. It is one image with a volume, on your hardware or your cloud, with your keys. Nothing phones home.</p>
+        </div>
       </div>
-
-      <div class="creed" style="margin-top:40px">
-        <p>“An agent could read exactly what it was granted and nothing else, and the owner took it back in the time it took to delete one line — with a receipt naming the rule. Releases here carry receipts. In this product, literally.”</p>
-        <div class="by">the release gate, in one sentence</div>
+      <div class="faq-col">
+        <div class="faq-item">
+          <h3>Why does the conformance score read zero?</h3>
+          <p>The suite authenticates its test clients before it runs a single assertion, and that step now passes. It stops one step later on a detail of the DPoP proofs its client sends: RFC 9449 requires a resource server to reject a proof without the <code style="font-size:14.5px">ath</code> claim, and Cistern does. We have sent the fix upstream. The number stays on this page either way.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Why build on Solid at all?</h3>
+          <p>Because the work was already done, in the open. A community agreed on how data ownership and access rules should work, wrote it down precisely enough to implement, published a suite that says when an implementation is wrong, and shipped a reference server. Cistern is a different implementation of that design, and it exists because those three things existed first.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is any of it held back for a paid tier?</h3>
+          <p>No, and there is not going to be one. All of it is Apache 2.0 and free for commercial use. Support, integration and hosting are how the company earns.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I put v0.2.0 on a network?</h3>
+          <p>It has cleared the stranger test, so a stranger can pull, run, grant, refuse, revoke and read receipts from the published artifacts alone. Read the release notes for the limitations, which are stated plainly.</p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <div class="cols">
-      <div>
-        <h4>Get it</h4>
-        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release v0.2.0: image · jars · CLI · MCP bridge ↗</a>
-        <a href="https://github.com/enrichmeai/cistern">GitHub: source ↗</a>
-        <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">The integration playbook ↗</a>
-      </div>
-      <div>
-        <h4>Read it</h4>
-        <a href="https://github.com/enrichmeai/cistern/tree/main/docs">Documentation ↗</a>
-        <a href="https://github.com/enrichmeai/cistern/blob/main/CONTRIBUTING.md">Contributing ↗</a>
-        <a href="https://github.com/enrichmeai/cistern/blob/main/RELEASE.md">Release process ↗</a>
-      </div>
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">cistern 0.2.0 · Apache 2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
-    <div class="meta">
-      cistern 0.2.0 · Apache 2.0 · built in the open<br>
-      EnrichMeAI<br>
-      EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>
-      registered in England &amp; Wales, company no. 09702990.
+    <div class="footer-navs">
+      <nav>
+        <h4>Get it</h4>
+        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release v0.2.0: image · jars · CLI · MCP bridge →</a>
+        <a href="https://github.com/enrichmeai/cistern">GitHub: source →</a>
+        <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">The integration playbook →</a>
+      </nav>
+      <nav>
+        <h4>Read it</h4>
+        <a href="https://github.com/enrichmeai/cistern/tree/main/docs">Documentation →</a>
+        <a href="https://github.com/enrichmeai/cistern/blob/main/CONTRIBUTING.md">Contributing →</a>
+        <a href="https://github.com/enrichmeai/cistern/blob/main/RELEASE.md">Release process →</a>
+      </nav>
     </div>
   </div>
 </footer>
 
-<script>
-(function(){
-  // theme toggle: stamps data-theme, overriding the media query both ways
-  var root=document.documentElement, btn=document.getElementById('theme');
-  btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme');
-    if(!cur){cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
-    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
-  });
-
-  // copy install command
-  var cbtn=document.getElementById('copybtn'), cmd=document.getElementById('pipcmd');
-  cbtn.addEventListener('click',function(){
-    navigator.clipboard&&navigator.clipboard.writeText(cmd.textContent).then(function(){
-      cbtn.textContent='Copied'; cbtn.classList.add('copied');
-      setTimeout(function(){cbtn.textContent='Copy'; cbtn.classList.remove('copied');},1400);
-    });
-  });
-
-  // the flow: data particles carried through a concrete channel
-  var cv=document.getElementById('flow'), ctx=cv.getContext('2d');
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var W,H,DPR,parts=[];
-  function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
-  function size(){
-    DPR=Math.min(2,window.devicePixelRatio||1);
-    W=cv.clientWidth; H=cv.clientHeight;
-    cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-  }
-  function seed(){
-    parts=[]; var n=Math.max(26,Math.round(W/26));
-    for(var i=0;i<n;i++){parts.push(mk(Math.random()*W));}
-  }
-  function mk(x){
-    var lanes=5, lane=Math.floor(Math.random()*lanes);
-    var pad=42, band=H-pad*2;
-    return {x:x, y:pad+ (lane+ .5)*(band/lanes) + (Math.random()*6-3),
-            v:.35+Math.random()*1.15, w:6+Math.random()*16, a:.25+Math.random()*.6};
-  }
-  function frame(){
-    ctx.clearRect(0,0,W,H);
-    var accent=css('--accent'), flow=css('--flow'), line=css('--line');
-    // channel guide lines
-    ctx.strokeStyle=line; ctx.lineWidth=1;
-    ctx.beginPath();ctx.moveTo(0,34.5);ctx.lineTo(W,34.5);
-    ctx.moveTo(0,H-34.5);ctx.lineTo(W,H-34.5);ctx.stroke();
-    for(var i=0;i<parts.length;i++){
-      var p=parts[i];
-      p.x+=p.v; if(p.x-p.w>W){p.x=-p.w; p.y=mk(0).y;}
-      var c = (i%7===0)? flow : accent;
-      ctx.globalAlpha=p.a;
-      ctx.fillStyle=c;
-      roundRect(p.x,p.y-1.4,p.w,2.8,1.4); ctx.fill();
-      ctx.globalAlpha=p.a*.5;
-      ctx.fillRect(p.x-p.w*.7,p.y-.5,p.w*.7,1); // trail
-    }
-    ctx.globalAlpha=1;
-    if(!reduce) raf=requestAnimationFrame(frame);
-  }
-  function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);
-    ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
-  var raf;
-  function boot(){size();seed();cancelAnimationFrame(raf);frame();}
-  window.addEventListener('resize',function(){clearTimeout(window.__rt);window.__rt=setTimeout(boot,150);});
-  boot();
-})();
-</script>
 </body>
 </html>
