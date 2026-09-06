@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>enrich-test-api · cloud tests that never name a cloud</title>
+<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Private alpha: AWS only, emulator only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <span class="product-label">enrich-test-api</span>
+    <nav class="site-nav">
+      <a href="#idea">The idea</a>
+      <a href="#test">A test</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#status">Where it stands</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="spacer"></div>
+    <a href="https://github.com/enrichmeai/enrich-test-api" class="btn btn-primary" style="font-size:14px">GitHub →</a>
+  </div>
+</header>
+
+<main id="main" class="container">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Open source · private alpha · 0.3.0-alpha1-private.1</p>
+      <div class="blueprint caveat">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span>Not published to Maven Central or any other registry. One provider, AWS. Emulator only. Build it from source or do not use it yet.</span>
+      </div>
+      <h1>Cloud tests that <span class="accent">never name</span> a cloud.</h1>
+    </div>
+    <p class="hero-rail">A Java test asks for a bucket or a queue and gets one, backed by a container the library started. Nothing on its compile classpath knows which cloud that was.</p>
+  </div>
+
+  <div class="hero-below">
+    <p class="lede">Testing cloud-backed Java usually means choosing between a mock that tests itself and a real account that is slow, costly and unavailable offline. This takes the third path: real service semantics against a local emulator, behind interfaces that carry no vendor SDK. A test compiled against those interfaces has no compile-time knowledge of a provider, so changing provider is a classpath change rather than a rewrite.</p>
+    <div class="stack">
+      <div class="blueprint pad-frame">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker" style="margin-bottom:10px">What the alpha does</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">Four capabilities against AWS, run on LocalStack via Testcontainers, from JUnit 5 or Cucumber.</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://github.com/enrichmeai/enrich-test-api" class="btn btn-primary btn-lg">Source →</a>
+        <a href="https://github.com/enrichmeai/enrich-test-api/blob/main/docs/specs/architecture.md" class="btn btn-secondary btn-lg">Architecture →</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="idea" class="section-rule">
+    <span class="name">The idea</span><span class="num">01</span>
+  </div>
+
+  <div class="heading-row align-start" style="padding:42px 0 44px">
+    <h2 class="section-h2" style="max-width:15ch">The seam is the product</h2>
+    <div class="prose-col">
+      <p>Testcontainers already runs LocalStack. That part is not the contribution. What this adds is a dependency direction it enforces: the module holding the capability interfaces has no cloud SDK on its classpath at all, and the AWS SDK lives in a separate module found at runtime through Java's own <code>ServiceLoader</code>.</p>
+      <p>The consequence is small to describe and hard to retrofit. A test that says <code>storage.putObject(...)</code> compiles against an interface, not against Amazon's client. The same test would run on a second provider by putting a different jar on the classpath. Whether that claim survives contact with a second implementation is the open question below, and the repository says so rather than assuming it.</p>
+    </div>
+  </div>
+
+  <div id="test" class="section-rule">
+    <span class="name">A test</span><span class="num">02</span>
+  </div>
+
+  <div class="section-body">
+    <div class="blueprint code-frame">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>java</span><span>JUnit 5 · no provider named</span></div>
+      <pre><div><span class="tok">@WithCloud</span>(provider = AWS, mode = EMULATOR)</div><div><span class="tok">class</span> OrderServiceIT {</div><div class="sep"></div><div>  <span class="tok">@Test</span></div><div>  <span class="tok">void</span> storesTheReceipt(BlobStorage storage) {</div><div>    storage.ensureBucket(<span class="tok">"receipts"</span>);</div><div>    storage.putObject(<span class="tok">"receipts"</span>, <span class="tok">"o-1.json"</span>, body, <span class="tok">"application/json"</span>);</div><div>    assertTrue(storage.exists(<span class="tok">"receipts"</span>, <span class="tok">"o-1.json"</span>));</div><div>  }</div><div>}</div></pre>
+    </div>
+    <div class="blueprint code-frame" style="margin-top:24px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>gherkin</span><span>the same infrastructure, from a feature file</span></div>
+      <pre><div><span class="tok">Given</span> cloud provider is <span class="tok">"aws"</span></div><div><span class="tok">And</span> cloud mode is <span class="tok">"emulator"</span></div><div><span class="tok">And</span> cloud region is <span class="tok">"eu-west-1"</span></div><div class="sep"></div><div class="cmt"># the steps below mention no AWS service by name</div></pre>
+    </div>
+    <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:26px">The extension resolves the parameter, <code>ServiceLoader</code> finds the AWS adapter on the classpath, and the adapter starts one LocalStack container per JVM and shares it. Docker has to be running. There is no credential to configure, because there is no account.</p>
+  </div>
+
+  <div id="capabilities" class="section-rule">
+    <span class="name">Capabilities</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <p class="lede" style="margin-bottom:30px">Four, deliberately small. A method earns its place only if it is implementable on more than one provider's emulator.</p>
+    <dl class="spec-list">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>BlobStorage</dt>
+        <dd>Ensure and delete a bucket, put an object from bytes or a stream, get, delete, list by prefix, test existence. On AWS this is S3. <span class="tag tag-live">works</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Queue</dt>
+        <dd>Ensure and delete a queue, send, receive, receive with a timeout. On AWS this is SQS. <span class="tag tag-live">works</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>PubSub</dt>
+        <dd>Ensure and delete a topic, ensure a subscription, publish, receive with or without a timeout. On AWS this is SNS delivering to SQS. <span class="tag tag-live">works</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>NoSqlTable</dt>
+        <dd>Ensure a table with a partition key and optional sort key, put, get, delete, scan, query. On AWS this is DynamoDB. <span class="tag tag-live">works</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Secrets, key management</dt>
+        <dd>Named in the service-type enum with no interface behind them. Placeholders, not features. <span class="tag tag-next">not built</span></dd>
+      </div>
+    </dl>
+  </div>
+
+  <div id="status" class="section-rule">
+    <span class="name">Where it stands</span><span class="num">04</span>
+  </div>
+
+  <div class="section-body">
+    <dl class="spec-list">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Build</dt>
+        <dd>A plain <code>mvn -B verify</code> is green with no skip flags and runs 21 tests: 8 unit, 6 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Coverage</dt>
+        <dd>Line 0.58 and branch 0.30 in the core module; line 0.66 and branch 0.35 in the AWS adapter. The target is 0.80 and 0.70 and neither module meets it. The build enforces the measured numbers as a floor that can only move up, so the gate is honest rather than aspirational. <span class="tag tag-neutral">below target</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Providers</dt>
+        <dd>One. The enum names Azure and GCP; no adapter implements either. Until a second exists, the claim that a test is portable across providers is a design intention, not a demonstrated property. That is the largest open risk in the architecture and it is recorded as such. <span class="tag tag-next">one only</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Modes</dt>
+        <dd>Emulator only. A live mode is declared in the enum with no tested path behind it, and it needs a credential story and a guardrail against destructive operations before it means anything. <span class="tag tag-next">emulator only</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Distribution</dt>
+        <dd>Not published. No Maven Central release, no private registry. Build it from source. <span class="tag tag-next">unpublished</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Supply chain</dt>
+        <dd>An OWASP Dependency-Check audit is wired into CI behind a profile, and is skipped until an NVD API key is configured. It has not yet audited anything, and the page says so rather than implying a clean report. <span class="tag tag-next">not yet run</span></dd>
+      </div>
+    </dl>
+    <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:30px">The planning documents are in the repository rather than summarised here: a product brief, a PRD with numbered requirements, an architecture spine with its decisions, and a backlog of six epics covering the gaps above. <a href="https://github.com/enrichmeai/enrich-test-api/tree/main/docs/specs">Read the specs →</a></p>
+  </div>
+
+  <div id="faq" class="section-rule">
+    <span class="name">FAQ</span><span class="num">05</span>
+  </div>
+
+  <div class="section-body">
+    <div class="faq-grid">
+      <div class="faq-col">
+        <div class="faq-item">
+          <h3>Can I use this today?</h3>
+          <p>Only by building it from source, and only against AWS in emulator mode. It is a private alpha and nothing is published.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Why not just mock the SDK?</h3>
+          <p>Because a mock passes whether or not the key encoding, the pagination or the visibility timeout is right. The point of running against an emulator is that the test can fail for a real reason.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need a cloud account?</h3>
+          <p>No, and there is nowhere to put credentials. Docker has to be running; the first run pulls a LocalStack image of roughly 1.3 GB.</p>
+        </div>
+      </div>
+      <div class="faq-col">
+        <div class="faq-item">
+          <h3>Is it really provider-neutral?</h3>
+          <p>By construction, yes: the core module has no vendor SDK and adapters are found at runtime. By demonstration, not yet. One adapter cannot prove portability, and the repository treats that as its main open risk rather than a settled claim.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Why is the coverage number on this page?</h3>
+          <p>Because the alternative was a badge that says nothing. The floors in the build are the measured values, so they cannot quietly slip, and the distance to the target is visible instead of hidden.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How does it relate to the rest of the register?</h3>
+          <p>It does not. It is a testing tool, not part of the data-access line. It sits here because it is ours and it is open. <a href="/">The register →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">enrich-test-api 0.3.0-alpha1-private.1 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+    <div class="footer-navs">
+      <nav>
+        <h4>Get it</h4>
+        <a href="https://github.com/enrichmeai/enrich-test-api">GitHub: source →</a>
+        <a href="https://github.com/enrichmeai/enrich-test-api/tree/main/docs/specs">The specs →</a>
+        <a href="https://github.com/enrichmeai/enrich-test-api/blob/main/docs/adr">Architecture decisions →</a>
+      </nav>
+      <nav>
+        <h4>Related</h4>
+        <a href="/cistern/">Cistern, the data gateway</a>
+        <a href="/penstock/">Penstock, the agent that answers for its work</a>
+        <a href="/">The register</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
