@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Cistern mark">
+  <path d="M32 9 V19" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 19 H47 A4 4 0 0 1 51 23 V48 A4 4 0 0 1 47 52 H17 A4 4 0 0 1 13 48 V23 A4 4 0 0 1 17 19 Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 38 Q22.25 34 25.5 38 T32 38 T38.5 38 T45 38" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
