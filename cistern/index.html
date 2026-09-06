@@ -167,7 +167,7 @@
           <tr><th>Surface</th><th>How a caller authenticates</th><th>What it can do</th><th>On refusal</th></tr>
         </thead>
         <tbody>
-          <tr><td>MCP front door</td><td>A service principal of its own, issued per application</td><td>Seven tools over the granted paths</td><td>A structured refusal, not an empty result</td></tr>
+          <tr><td>MCP front door</td><td>A service principal of its own, issued per application</td><td>Seven tools over the granted paths, over stdio for a desktop client or Streamable HTTP for one on another machine</td><td>A structured refusal, not an empty result</td></tr>
           <tr><td>Plain HTTP</td><td>Any OpenID Connect issuer, or a service principal</td><td>Read and write within Web Access Control</td><td>An HTTP refusal naming no more than it must</td></tr>
           <tr><td>CLI</td><td>The owner token set at startup</td><td>Create pods, grant, revoke, read receipts</td><td>Not applicable: the owner holds the authority</td></tr>
           <tr><td>Receipts</td><td>The owner, over the same filter</td><td>Query every allow and deny by rule, caller or path</td><td>Not applicable</td></tr>
@@ -193,7 +193,7 @@
       </div>
       <div class="spec-row">
         <dt>Identity</dt>
-        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in v0.2.0</span> · Solid-OIDC token validation and DPoP proofs are merged on <code style="font-size:14.5px">main</code> and will ship in the next release, so they are not in the image above <span class="tag tag-next">on main</span></dd>
+        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in v0.2.0</span> · Solid-OIDC token validation and DPoP proofs are on <code style="font-size:14.5px">main</code>, merged after the 0.2.0 tag, so the image above predates them <span class="tag tag-next">on main</span></dd>
       </div>
       <div class="spec-row">
         <dt>Authority</dt>
