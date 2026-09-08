@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>enrich-test-api · cloud tests that never name a cloud</title>
-<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Private alpha: AWS only, emulator only.">
+<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Private alpha: AWS only, emulator only, and it tests cloud calls rather than configuring your application.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
       <p class="eyebrow">Open source · private alpha · 0.3.0-alpha1-private.1</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <span>Not published to Maven Central or any other registry. One provider, AWS. Emulator only. Build it from source or do not use it yet.</span>
+        <span>Not published to Maven Central or any other registry. One provider, AWS. Emulator only. It tests your cloud calls; it cannot configure your application under test. Build it from source or do not use it yet.</span>
       </div>
       <h1>Cloud tests that <span class="accent">never name</span> a cloud.</h1>
     </div>
@@ -135,6 +135,14 @@
         <dd>Line 0.58 and branch 0.30 in the core module; line 0.66 and branch 0.35 in the AWS adapter. The target is 0.80 and 0.70 and neither module meets it. The build enforces the measured numbers as a floor that can only move up, so the gate is honest rather than aspirational. <span class="tag tag-neutral">below target</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
+        <dt>Scope</dt>
+        <dd>It tests cloud interactions, not applications. A test asks for a <code>BlobStorage</code> and drives it directly, so you can assert your code writes what you meant. It cannot point a Spring Boot, Quarkus or Micronaut context at the emulator: no endpoint and no credential is reachable from the provider-neutral API, and the only route to one crosses into an internal package and undoes the neutrality the library exists for. Closing that is specified and undecided. <span class="tag tag-next">not yet</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Known defects</dt>
+        <dd>The multi-test-class case, which is the case it is aimed at. The emulator container is shared for the whole JVM, the JUnit extension never releases topics or tables, and <code>ensureTable</code> does not check that an existing table's key schema matches the one asked for — so a second test class can silently inherit the first's table and fail later, somewhere else, with a message that names neither. Found by reading the code for this page's own backlog, and recorded rather than left for a user to hit. <span class="tag tag-next">open</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
         <dt>Providers</dt>
         <dd>One. The enum names Azure and GCP; no adapter implements either. Until a second exists, the claim that a test is portable across providers is a design intention, not a demonstrated property. That is the largest open risk in the architecture and it is recorded as such. <span class="tag tag-next">one only</span></dd>
       </div>
@@ -151,7 +159,7 @@
         <dd>An OWASP Dependency-Check audit is wired into CI behind a profile, and is skipped until an NVD API key is configured. It has not yet audited anything, and the page says so rather than implying a clean report. <span class="tag tag-next">not yet run</span></dd>
       </div>
     </dl>
-    <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:30px">The planning documents are in the repository rather than summarised here: a product brief, a PRD with numbered requirements, an architecture spine with its decisions, and a backlog of six epics covering the gaps above. <a href="https://github.com/enrichmeai/enrich-test-api/tree/main/docs/specs">Read the specs →</a></p>
+    <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:30px">The planning documents are in the repository rather than summarised here: a product brief, a PRD with numbered requirements, an architecture spine with its decisions, and a backlog of eight epics covering the gaps above. <a href="https://github.com/enrichmeai/enrich-test-api/tree/main/docs/specs">Read the specs →</a></p>
   </div>
 
   <div id="faq" class="section-rule">
@@ -163,7 +171,11 @@
       <div class="faq-col">
         <div class="faq-item">
           <h3>Can I use this today?</h3>
-          <p>Only by building it from source, and only against AWS in emulator mode. It is a private alpha and nothing is published.</p>
+          <p>Only by building it from source, and only against AWS in emulator mode. It is a private alpha and nothing is published. It also has open defects in the several-test-classes-in-one-run case, which is listed above rather than left for you to find.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I test my Spring Boot app with it?</h3>
+          <p>Not yet. It drives cloud capabilities directly; it does not configure an application under test, because nothing in the provider-neutral API hands you an endpoint or a credential. For that today, use Testcontainers' LocalStack module. Adding a provider-neutral connection accessor is specified and open.</p>
         </div>
         <div class="faq-item">
           <h3>Why not just mock the SDK?</h3>
