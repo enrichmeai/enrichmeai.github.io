@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>enrich-test-api · cloud tests that never name a cloud</title>
-<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Private alpha: AWS only, emulator only, and it tests cloud calls rather than configuring your application.">
+<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Alpha: AWS only, emulator only, unpublished until its first tag, and it tests cloud calls rather than configuring your application.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -35,10 +35,10 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · private alpha · 0.3.0-alpha1-private.1</p>
+      <p class="eyebrow">Open source · alpha · 0.3.0-alpha1-SNAPSHOT on main · unpublished</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <span>Not published to Maven Central or any other registry. One provider, AWS. Emulator only. It tests your cloud calls; it cannot configure your application under test. Build it from source or do not use it yet.</span>
+        <span>Not yet on Maven Central: the release path is built and rehearsed, and nothing has been tagged. One provider, AWS. Emulator only. It tests your cloud calls; it cannot configure your application under test. Build it from source, or wait for 0.3.0-alpha1.</span>
       </div>
       <h1>Cloud tests that <span class="accent">never name</span> a cloud.</h1>
     </div>
@@ -128,11 +128,11 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Build</dt>
-        <dd>A plain <code>mvn -B verify</code> is green with no skip flags and runs 21 tests: 8 unit, 6 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
+        <dd>A plain <code>mvn -B verify</code> on JDK 17, which is also what CI builds on, is green with no skip flags and runs 36 tests: 18 unit, 11 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Coverage</dt>
-        <dd>Line 0.58 and branch 0.30 in the core module; line 0.66 and branch 0.35 in the AWS adapter. The target is 0.80 and 0.70 and neither module meets it. The build enforces the measured numbers as a floor that can only move up, so the gate is honest rather than aspirational. <span class="tag tag-neutral">below target</span></dd>
+        <dd>Measured: line 0.81 and branch 0.67 in the core module; line 0.72 and branch 0.44 in the AWS adapter. The target is 0.80 and 0.70: the core now meets it on lines and not on branches, the adapter meets neither. The floors the build enforces are still the values measured before the cleanup work, 0.58/0.30 and 0.66/0.35, so for the moment the gate is honest but slack; raising it to the new numbers is its own item and is listed rather than assumed. <span class="tag tag-neutral">below target</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Scope</dt>
@@ -140,7 +140,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Known defects</dt>
-        <dd>The multi-test-class case, which is the case it is aimed at. The emulator container is shared for the whole JVM, the JUnit extension never releases topics or tables, and <code>ensureTable</code> does not check that an existing table's key schema matches the one asked for — so a second test class can silently inherit the first's table and fail later, somewhere else, with a message that names neither. Found by reading the code for this page's own backlog, and recorded rather than left for a user to hit. <span class="tag tag-next">open</span></dd>
+        <dd>The multi-test-class case, which is the case it is aimed at, misbehaved: the emulator container is shared for the whole JVM, the JUnit extension never released topics or tables, and <code>ensureTable</code> did not check that an existing table's key schema matched the one asked for — so a second test class could silently inherit the first's table and fail later, somewhere else, with a message that named neither. Found by reading the code for this page's own backlog, listed here, and now fixed: every capability's resources are released after the class, a release that fails is reported with the resource name and cause instead of being swallowed, and a schema mismatch fails in <code>ensureTable</code> naming the table and both schemas. Two questions from that work are open and recorded: whether a failed teardown should fail the build, and whether a mismatch should recreate the table rather than refuse. <span class="tag tag-live">fixed</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Providers</dt>
@@ -151,8 +151,12 @@
         <dd>Emulator only. A live mode is declared in the enum with no tested path behind it, and it needs a credential story and a guardrail against destructive operations before it means anything. <span class="tag tag-next">emulator only</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
+        <dt>Packages</dt>
+        <dd><code>com.enrichmeai.*</code>, matching the Maven coordinates. They were <code>org.deveasy.*</code> until the release was prepared; the rename is free while nothing is published and permanent after the first publish, which is why it landed before the tag rather than after. <span class="tag tag-live">done</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
         <dt>Distribution</dt>
-        <dd>Not published. No Maven Central release, no private registry. Build it from source. <span class="tag tag-next">unpublished</span></dd>
+        <dd>Not published, but no longer for lack of a path. A tag now builds on JDK 17, runs the full verify, signs, and uploads to Maven Central through the Sonatype Central Portal, with a person pressing Publish on the Portal as the last step. The path was rehearsed against a local stand-in for the Portal, not against Sonatype; the first real tag, <code>0.3.0-alpha1</code>, waits on credentials only the maintainer can create. Until it exists, build from source. <span class="tag tag-next">path built, untagged</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Supply chain</dt>
@@ -171,7 +175,7 @@
       <div class="faq-col">
         <div class="faq-item">
           <h3>Can I use this today?</h3>
-          <p>Only by building it from source, and only against AWS in emulator mode. It is a private alpha and nothing is published. It also has open defects in the several-test-classes-in-one-run case, which is listed above rather than left for you to find.</p>
+          <p>Only by building it from source, and only against AWS in emulator mode. Nothing is published yet: the release path to Maven Central is built and rehearsed, and the first tag has not been pushed. The defects this page used to list in the several-test-classes-in-one-run case are fixed; what remains open is listed above rather than left for you to find.</p>
         </div>
         <div class="faq-item">
           <h3>Can I test my Spring Boot app with it?</h3>
@@ -208,7 +212,7 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">enrich-test-api 0.3.0-alpha1-private.1 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">enrich-test-api 0.3.0-alpha1-SNAPSHOT · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
