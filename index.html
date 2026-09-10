@@ -149,7 +149,7 @@
     <div class="hung">
       <span class="no">04</span>
       <span class="role">Tooling</span>
-      <span class="status">private alpha</span>
+      <span class="status">alpha · unpublished</span>
     </div>
     <div class="body">
       <h3>enrich-test-api</h3>
@@ -158,14 +158,14 @@
         <p>A Java test asks for a bucket or a queue and gets one, backed by a container the library started. The capability interfaces carry no cloud SDK, so a test compiled against them has no compile-time knowledge of a provider, and the AWS SDK is found at runtime through Java&rsquo;s own <code>ServiceLoader</code>.</p>
         <p>It exists because the usual options are a mock that passes whether or not the code is right, or a real account that is slow, costly and unavailable offline. Running against a local emulator lets a test fail for a reason that matters.</p>
       </div>
-      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">This one is earlier than the rest of the register and its page says so throughout. Four capabilities work against AWS on LocalStack; nothing is published to a registry; coverage sits below its own target and the build enforces the measured number rather than the intended one.</p>
+      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">This one is earlier than the rest of the register and its page says so throughout. Four capabilities work against AWS on LocalStack; the release path to Maven Central is built and nothing has been tagged, so nothing is published yet; coverage sits below its own branch target and the floors the build enforces have not yet been raised to the new measurement.</p>
       <div class="blueprint" style="padding:24px;margin-top:6px;max-width:76ch">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker">Where it stands</div>
         <ul class="stands-list">
-          <li><span class="term">Today</span><span>four capabilities against AWS in emulator mode: object storage, queue, publish/subscribe and a NoSQL table. A plain verify runs 21 tests, including six integration tests and seven Cucumber scenarios against LocalStack, with formatting, style, dependency convergence and coverage floors all enforced</span></li>
-          <li><span class="term">Honestly</span><span>one provider, so the portability claim is a design intention rather than a demonstrated property. Emulator only. Nothing published. Line coverage 0.58 in the core against a 0.80 target, and the gate enforces the real number so it cannot quietly slip</span></li>
-          <li><span class="term">Later</span><span>a second adapter, which is the only thing that can prove the seam holds. Then the coverage gap, and a live mode that needs a credential story before it means anything</span></li>
+          <li><span class="term">Today</span><span>four capabilities against AWS in emulator mode: object storage, queue, publish/subscribe and a NoSQL table. A plain verify on JDK 17 runs 36 tests, including eleven integration tests and seven Cucumber scenarios against LocalStack, with formatting, style, dependency convergence and coverage floors all enforced. The multi-test-class case it is aimed at, which used to misbehave, now cleans up after every class</span></li>
+          <li><span class="term">Honestly</span><span>one provider, so the portability claim is a design intention rather than a demonstrated property. Emulator only. Nothing published yet: the release path is built and waits on a tag. Branch coverage 0.67 in the core against a 0.70 target and 0.44 in the adapter, and the floors the gate enforces are still the older measured values, so the number can slip back to them before it can slip further</span></li>
+          <li><span class="term">Later</span><span>the first tag, 0.3.0-alpha1, once the Portal credentials exist. Then a second adapter, which is the only thing that can prove the seam holds, the coverage floors, and a live mode that needs a credential story before it means anything</span></li>
         </ul>
       </div>
       <div class="btn-row" style="margin-top:6px">
