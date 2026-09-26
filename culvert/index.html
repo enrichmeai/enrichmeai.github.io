@@ -23,6 +23,8 @@
       <a href="#idea">The idea</a>
       <a href="#install">Install</a>
       <a href="#contracts">Contracts</a>
+      <a href="#libraries">Libraries</a>
+      <a href="#whats-new">What's new</a>
       <a href="#status">Status</a>
       <a href="#writing">The book</a>
       <a href="#faq">FAQ</a>
@@ -128,7 +130,7 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Python 3.10 or newer</span></div>
-      <pre><div class="cmt"># core contracts only, no cloud SDKs</div><div><span class="tok">pip</span> install culvert</div><div class="sep"></div><div class="cmt"># + BigQuery, GCS, Pub/Sub, Secret Manager, observability</div><div><span class="tok">pip</span> install <span class="tok">culvert[gcp]</span></div><div class="sep"></div><div class="cmt"># + Airflow-side DAG factory / operators / sensors, or dbt</div><div><span class="tok">pip</span> install <span class="tok">culvert[orchestration]</span></div><div><span class="tok">pip</span> install <span class="tok">culvert[transform]</span></div></pre>
+      <pre><div class="cmt"># core contracts only, no cloud SDKs</div><div><span class="tok">pip</span> install culvert</div><div class="sep"></div><div class="cmt"># + BigQuery, GCS, Pub/Sub, Secret Manager, observability</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="gcp">culvert[gcp]</span></div><div class="sep"></div><div class="cmt"># + Airflow-side DAG factory / operators / sensors, or dbt</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="orchestration">culvert[orchestration]</span></div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="transform">culvert[transform]</span></div><div class="sep"></div><div class="cmt"># test fixtures, and the conformance suite for your own adapters</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="tester">culvert[tester]</span></div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="contract-tests">culvert[contract-tests]</span></div><div class="sep"></div><div class="cmt"># gcp + orchestration + transform</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="all">culvert[all]</span></div></pre>
     </div>
     <div class="blueprint code-frame" style="margin-top:24px">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -152,12 +154,12 @@
           <tr><th>Contract</th><th>GCP</th><th>AWS</th><th>Azure</th></tr>
         </thead>
         <tbody>
-          <tr><td><code style="font-size:14.5px">BlobStore</code></td><td>GCS</td><td>S3</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
+          <tr><td><code style="font-size:14.5px">BlobStore</code></td><td>GCS</td><td>S3</td><td><span style="color:var(--color-neutral-700)">skeleton</span></td></tr>
           <tr><td><code style="font-size:14.5px">Warehouse</code></td><td>BigQuery</td><td>Athena</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
           <tr><td><code style="font-size:14.5px">Source</code> · <code style="font-size:14.5px">Sink</code></td><td>Pub/Sub</td><td>SQS</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
-          <tr><td><code style="font-size:14.5px">JobControlRepository</code></td><td>Firestore</td><td>DynamoDB</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
+          <tr><td><code style="font-size:14.5px">JobControlRepository</code></td><td>BigQuery</td><td>DynamoDB · Athena</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
           <tr><td>Observability</td><td>Cloud Monitoring</td><td>CloudWatch</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
-          <tr><td>Secrets</td><td>Secret Manager</td><td><span style="color:var(--color-neutral-700)">next</span></td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
+          <tr><td>Secrets</td><td>Secret Manager</td><td>Secrets Manager</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
           <tr><td style="color:var(--color-neutral-700)">Eleven more, plus a metrics record</td><td>Full implementation</td><td>Java adapter family</td><td><span style="color:var(--color-neutral-700)">roadmap</span></td></tr>
         </tbody>
       </table>
@@ -165,8 +167,87 @@
     <p class="note">The authoritative list is the spec itself: <a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md">CONTRACT.md →</a>. Adapters are discovered through entry points, so installing an extra is all the wiring there is.</p>
   </div>
 
+  <div id="libraries" class="section-rule">
+    <span class="name">Libraries</span><span class="num">04</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Every library, and where it stands</h2>
+      <p class="intro">The Java side ships as separate artifacts under <code style="font-size:14.5px">com.enrichmeai.culvert</code> on Maven Central; the Python side ships as one <code style="font-size:14.5px">culvert</code> package with the extras above. This table is checked against both registries every day.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>Maven artifact</th><th>Area</th><th>What it is</th><th>Released</th></tr>
+        </thead>
+        <tbody>
+          <tr data-culvert-artifact="data-pipeline-core" data-state="released"><td><code style="font-size:14.5px">data-pipeline-core</code></td><td>Core</td><td>The cloud-neutral kernel: every contract, the shared records, governance policies and auto-discovery.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-contract-tests" data-state="released"><td><code style="font-size:14.5px">data-pipeline-contract-tests</code></td><td>Core</td><td>The conformance suite. Abstract JUnit tests every adapter must pass.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-tester" data-state="released"><td><code style="font-size:14.5px">data-pipeline-tester</code></td><td>Core</td><td>Mockito fixture builders for the contracts, for your own unit tests.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-it-support" data-state="released"><td><code style="font-size:14.5px">data-pipeline-it-support</code></td><td>Core</td><td>Testcontainers emulators (BigQuery, GCS) for integration tests.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-orchestration" data-state="released"><td><code style="font-size:14.5px">data-pipeline-orchestration</code></td><td>Core</td><td>A cloud-neutral DAG model, rendered to Airflow, Composer or other substrates.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-gcs" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-gcs</code></td><td>GCP</td><td>Cloud Storage: <code>BlobStore</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-bigquery" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-bigquery</code></td><td>GCP</td><td>BigQuery: <code>Warehouse</code>, <code>JobControlRepository</code>, FinOps and audit sinks.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-pubsub" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-pubsub</code></td><td>GCP</td><td>Pub/Sub: <code>Source</code> and <code>Sink</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-secrets" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-secrets</code></td><td>GCP</td><td>Secret Manager: <code>SecretProvider</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-observability" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-observability</code></td><td>GCP</td><td>Cloud Trace, Cloud Monitoring and Data Catalog lineage.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-dataflow" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-dataflow</code></td><td>GCP</td><td>Dataflow: the Beam execution layer (<code>Pipeline</code>).</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-s3" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-s3</code></td><td>AWS</td><td>S3: <code>BlobStore</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-athena" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-athena</code></td><td>AWS</td><td>Athena: <code>Warehouse</code> and <code>JobControlRepository</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-dynamodb" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-dynamodb</code></td><td>AWS</td><td>DynamoDB: <code>JobControlRepository</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-sqs" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-sqs</code></td><td>AWS</td><td>SQS: <code>Source</code> and <code>Sink</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-secrets" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-secrets</code></td><td>AWS</td><td>Secrets Manager: <code>SecretProvider</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-cloudwatch" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-cloudwatch</code></td><td>AWS</td><td>CloudWatch: observability and stage metrics.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-azure-blob" data-state="released"><td><code style="font-size:14.5px">data-pipeline-azure-blob</code></td><td>Azure</td><td>Blob Storage <code>BlobStore</code>, a skeleton: it proves the seam, and its methods throw until it is built out.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Add it with Maven: <code>com.enrichmeai.culvert:&lt;artifact&gt;:<span data-culvert="maven-version">0.2.0</span></code>. Source for each: <a href="https://github.com/enrichmeai/culvert/tree/main/data-pipeline-libraries-java">data-pipeline-libraries-java →</a></p>
+  </div>
+
+  <div id="whats-new" class="section-rule">
+    <span class="name">What's new</span><span class="num">05</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">What each release added</h2>
+      <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
+    </div>
+    <section class="spec-list" data-culvert-release="0.2.0" aria-label="Culvert 0.2.0">
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.2.0 <span class="tag tag-live">Java, on Maven Central</span></h3>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>Breaking</dt>
+          <dd><code style="font-size:14.5px">Warehouse.loadFromUri</code> takes a required <code style="font-size:14.5px">LoadOptions</code>. A defaulted write disposition is what let a re-run extract silently double its data, so there is deliberately no default. <code style="font-size:14.5px">LoadOptions.append()</code> keeps the 0.1 behaviour. Backends that cannot honour a disposition now throw instead of appending. <a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md">Upgrading →</a></dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd><code style="font-size:14.5px">BlobStore.head(uri)</code>: size, version token, last-modified and metadata without reading the object, for loaders that must be idempotent by object version. Implemented for GCS and S3.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd><code style="font-size:14.5px">NoOpJobControlRepository</code>, for deployments whose run state an external orchestrator writes. Registered explicitly, never discovered.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd>The orchestration substrate (Composer 2 with GKE pods, Composer 3, or Cloud Run jobs) is chosen by configuration rather than hard-coded.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Fixed</dt>
+          <dd>A failed load can no longer be reported as succeeded: reconciliation runs before the target is written, and a later row cannot hide a recorded failure.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Licence</dt>
+          <dd>The first release under Apache 2.0. Versions published before it remain MIT.</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+
   <div id="status" class="section-rule">
-    <span class="name">Status</span><span class="num">04</span>
+    <span class="name">Status</span><span class="num">06</span>
   </div>
 
   <div class="section-body">
@@ -177,15 +258,15 @@
     <dl class="spec-list">
       <div class="spec-row">
         <dt>Python</dt>
-        <dd>Released: <code style="font-size:14.5px">culvert 0.1.0</code> on PyPI <span class="tag tag-live">live</span></dd>
+        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.1.1</span></code> on PyPI <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Java</dt>
-        <dd>Released: <code style="font-size:14.5px">com.enrichmeai.culvert:*</code> on Maven Central <span class="tag tag-live">live</span></dd>
+        <dd>Released: <code style="font-size:14.5px">com.enrichmeai.culvert:* <span data-culvert="maven-version">0.2.0</span></code> on Maven Central <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Clouds</dt>
-        <dd>GCP: full implementation <span class="tag tag-live">live</span> · AWS: Java adapter family <span class="tag tag-neutral">S3 · Athena · SQS · DynamoDB · CloudWatch</span> · Azure <span class="tag tag-next">roadmap</span></dd>
+        <dd>GCP: full implementation <span class="tag tag-live">live</span> · AWS: Java adapter family <span class="tag tag-neutral">S3 · Athena · SQS · DynamoDB · Secrets Manager · CloudWatch</span> · Azure <span class="tag tag-next">skeleton</span></dd>
       </div>
       <div class="spec-row">
         <dt>Proof</dt>
@@ -193,7 +274,7 @@
       </div>
       <div class="spec-row">
         <dt>Licence</dt>
-        <dd>Apache 2.0</dd>
+        <dd>Apache 2.0 from the Java 0.2 line on. Earlier releases, including <code style="font-size:14.5px">culvert</code> on PyPI so far, were published under MIT.</dd>
       </div>
     </dl>
     <blockquote class="pull-quote">
@@ -203,7 +284,7 @@
   </div>
 
   <div id="writing" class="section-rule">
-    <span class="name">The book</span><span class="num">05</span>
+    <span class="name">The book</span><span class="num">07</span>
   </div>
 
   <div class="section-body">
@@ -230,7 +311,7 @@
   </div>
 
   <div id="faq" class="section-rule">
-    <span class="name">FAQ</span><span class="num">06</span>
+    <span class="name">FAQ</span><span class="num">08</span>
   </div>
 
   <div class="section-body">
@@ -252,11 +333,11 @@
       <div class="faq-col">
         <div class="faq-item">
           <h3>How portable is portable, really?</h3>
-          <p>As portable as the conformance suite is strict. Every adapter has to pass the same suite, so a contract behaves the same on either cloud or it is not shipped as an adapter. GCP is fully implemented; AWS has the Java adapter family; Azure is roadmap.</p>
+          <p>As portable as the conformance suite is strict. Every adapter has to pass the same suite, so a contract behaves the same on either cloud or it is not shipped as an adapter. GCP is fully implemented; AWS has the Java adapter family; Azure has a Blob Storage skeleton and is otherwise roadmap.</p>
         </div>
         <div class="faq-item">
-          <h3>Is 0.1.0 safe to build on?</h3>
-          <p>It shipped only after running end-to-end on real infrastructure, which caught eight bugs the local tests never saw. It is a 0.x line, so expect the contracts to firm up before 1.0.</p>
+          <h3>Is the 0.x line safe to build on?</h3>
+          <p>The first release shipped only after running end-to-end on real infrastructure, which caught eight bugs the local tests never saw. It is a 0.x line, so expect the contracts to firm up before 1.0.</p>
         </div>
         <div class="faq-item">
           <h3>Does Culvert have anything to do with the AI work?</h3>
@@ -271,7 +352,7 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">culvert 0.1.0 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">culvert · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>

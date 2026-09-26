@@ -35,10 +35,10 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · alpha · 0.3.0-alpha1-SNAPSHOT on main · unpublished</p>
+      <p class="eyebrow">Open source · alpha · <span data-eta="main-version">0.3.0-alpha1-SNAPSHOT</span> on main · <span data-eta="maven-version">unpublished</span></p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <span>Not yet on Maven Central: the release path is built and rehearsed, and nothing has been tagged. One provider, AWS. Emulator only. It tests your cloud calls; it cannot configure your application under test. Build it from source, or wait for the <code>v0.3.0-alpha1</code> release tag.</span>
+        <span>Not yet on Maven Central: the release path is built and rehearsed, and nothing has been tagged. One provider, AWS. Emulator only. It tests your cloud calls; it cannot configure your application under test. Build it from source, or wait for the <code>v<span data-eta="next-version">0.3.0-alpha1</span></code> release tag.</span>
       </div>
       <h1>Cloud tests that <span class="accent">never name</span> a cloud.</h1>
     </div>
@@ -98,19 +98,19 @@
     <p class="lede" style="margin-bottom:30px">Four, deliberately small. A method earns its place only if it is implementable on more than one provider's emulator.</p>
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
-        <dt>BlobStorage</dt>
+        <dt data-eta-capability="BlobStorage">BlobStorage</dt>
         <dd>Ensure and delete a bucket, put an object from bytes or a stream, get, delete, list by prefix, test existence. On AWS this is S3. <span class="tag tag-live">works</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
-        <dt>Queue</dt>
+        <dt data-eta-capability="Queue">Queue</dt>
         <dd>Ensure and delete a queue, send, receive, receive with a timeout. On AWS this is SQS. <span class="tag tag-live">works</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
-        <dt>PubSub</dt>
+        <dt data-eta-capability="PubSub">PubSub</dt>
         <dd>Ensure and delete a topic, ensure a subscription, publish, receive with or without a timeout. On AWS this is SNS delivering to SQS. <span class="tag tag-live">works</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
-        <dt>NoSqlTable</dt>
+        <dt data-eta-capability="NoSqlTable">NoSqlTable</dt>
         <dd>Ensure a table with a partition key and optional sort key, put, get, delete, scan, query. On AWS this is DynamoDB. <span class="tag tag-live">works</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
@@ -156,7 +156,11 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Distribution</dt>
-        <dd>Not published, but no longer for lack of a path. A tag now builds on JDK 17, runs the full verify, signs, and uploads to Maven Central through the Sonatype Central Portal, with a person pressing Publish on the Portal as the last step. The path was rehearsed against a local stand-in for the Portal, not against Sonatype; the first real tag, <code>0.3.0-alpha1</code>, waits on credentials only the maintainer can create. Until it exists, build from source. <span class="tag tag-next">path built, untagged</span></dd>
+        <dd>Not published, but no longer for lack of a path. A tag now builds on JDK 17, runs the full verify, signs, and uploads to Maven Central through the Sonatype Central Portal, with a person pressing Publish on the Portal as the last step. The path was rehearsed against a local stand-in for the Portal, not against Sonatype; the first real tag, <code data-eta="next-version">0.3.0-alpha1</code>, waits on credentials only the maintainer can create. Until it exists, build from source. <span class="tag tag-next">path built, untagged</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Artifacts</dt>
+        <dd><code data-eta-artifact="test-core" data-state="unreleased">com.enrichmeai:test-core</code>, the provider-neutral capabilities and the JUnit 5 extension, and <code data-eta-artifact="test-cloud-aws" data-state="unreleased">com.enrichmeai:test-cloud-aws</code>, the AWS adapter, are what a tag publishes. <code>test-feature</code> has no main sources and is not published. <span class="tag tag-next">not yet on Maven Central</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Supply chain</dt>
@@ -212,7 +216,7 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">enrich-test-api 0.3.0-alpha1-SNAPSHOT · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">enrich-test-api · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>

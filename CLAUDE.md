@@ -41,6 +41,7 @@ edit → `reviewer` → fix (max 3 attempts) → `/compound` → PR → `merge-g
 | Changed | Command |
 |---|---|
 | any page, CSS, SVG, JSON, YAML | `python3 scripts/site_check.py` (the whole site: a moved id breaks links on pages nobody edited) |
+| `culvert/`, `enrich-test-api/`, `tools/check-release-page.py` | `python3 tools/check-release-page.py <project> --repo ../<project>` and `python3 -m unittest tools/test_check_release_page.py` (§ "Project releases") |
 | `scripts/site_check*` | `scripts/site_check_test.sh` (add a fixture for every new rule, and prove it RED first) |
 | `.claude/hooks/**`, `.claude/settings.json` | `.claude/hooks/test-hooks.sh` (add a case for every new guard, and prove it RED first) |
 | a page's look | `python3 -m http.server 8000`, then screenshots at 375 px and 1280 px |
@@ -95,6 +96,28 @@ blocked the others, so the first session that can reach them re-checks them and 
 
 If a source cannot be read, the "verify before you write" gate **did not run**. Say so and treat
 it as a blocker.
+
+## Project releases (Joseph, 2026-09-26)
+
+**Every release of a project reaches its page: the new version, every new library, and the new features.**
+Covered today: Culvert (`/culvert/`) and enrich-test-api (`/enrich-test-api/`).
+
+- Each page marks the facts it states (prefix `data-culvert` / `data-eta`): the released versions, the
+  version on `main`, one row per library, the pip extras or the capabilities, and a "what's new" block per
+  release. `tools/check-release-page.py <project>` compares those markers with Maven Central, PyPI and
+  the project's `main`. Never hard-code a project version outside a marker: the checker fails on it.
+- `.github/workflows/release-sync.yml` runs the check every day and on every PR that touches a page.
+  When a page is behind, it opens (or updates) one issue labelled `<project>-sync` saying what is missing,
+  and closes it once the page is back in step.
+- The fix is the `/release-sync <project>` skill (`.claude/skills/release-sync/SKILL.md`). Adding the
+  `claude` label to the sync issue has the builder (`.github/workflows/claude.yml`) do it. It goes through
+  the loop above like any task: `site_check.py` and the checker both at 0, reviewer, founder merges.
+- Rule 1's "latest release tag" still holds for claims about what a product does. The `main-version` and
+  `next-version` markers are the one deliberate exception: they state what is on `main`, and say so.
+
+Run locally: `python3 tools/check-release-page.py culvert --repo ../gcp-pipeline-reference` (Joseph's local
+Culvert folder), `python3 tools/check-release-page.py enrich-test-api --repo ../enrich-test-api`.
+Tests: `python3 -m unittest tools/test_check_release_page.py`.
 
 ## Voice
 
