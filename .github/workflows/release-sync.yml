@@ -1,0 +1,97 @@
+# Keeps each project page in step with what the project has released (CLAUDE.md § "Project releases").
+#
+# Every day, and on any PR that touches a project page or the checker, tools/check-release-page.py
+# compares each page with the registries (Maven Central, PyPI) and the project's main branch: the
+# versions, every library, pip extras, capabilities, and a "what's new" block for the newest release.
+#   - on a PR: a red check, so a change cannot leave a page stale;
+#   - on the schedule: one open issue per project, labelled `<project>-sync`, created or updated with
+#     what is behind and closed once the page is back in step. That issue is the prompt to run
+#     /release-sync <project> (or to label it `claude` for the builder).
+# Read-only except for issues: no deploy, no push, no secrets.
+name: release-sync
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'culvert/**'
+      - 'enrich-test-api/**'
+      - 'tools/check-release-page.py'
+      - 'tools/test_check_release_page.py'
+      - '.github/workflows/release-sync.yml'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checker's own tests
+        run: python3 -m unittest tools/test_check_release_page.py -v
+
+  page:
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [culvert, enrich-test-api]
+    concurrency:
+      group: release-sync-${{ matrix.project }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out ${{ matrix.project }} (public, read-only)
+        run: git clone --quiet --depth 1 "https://github.com/enrichmeai/${{ matrix.project }}.git" "$RUNNER_TEMP/repo"
+
+      - name: Page against the registries
+        id: check
+        run: |
+          set +e
+          python3 tools/check-release-page.py "${{ matrix.project }}" --repo "$RUNNER_TEMP/repo" > "$RUNNER_TEMP/report.txt" 2>&1
+          rc=$?
+          cat "$RUNNER_TEMP/report.txt"
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+
+      - name: Open or update the ${{ matrix.project }}-sync issue
+        if: always() && github.event_name != 'pull_request' && steps.check.outputs.rc == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LABEL: ${{ matrix.project }}-sync
+          PROJECT: ${{ matrix.project }}
+        run: |
+          gh label create "$LABEL" --color C5DEF5 --description "/$PROJECT/ is behind a $PROJECT release" 2>/dev/null || true
+          {
+            echo "The daily check found \`/$PROJECT/\` behind what $PROJECT has released. Run \`/release-sync $PROJECT\` (CLAUDE.md § \"Project releases\"), or add the \`claude\` label to have the builder do it."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/report.txt"
+            echo '```'
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > "$RUNNER_TEMP/body.md"
+          n=$(gh issue list --label "$LABEL" --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue edit "$n" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh issue create --title "/$PROJECT/ is behind the latest release" --label "$LABEL" --body-file "$RUNNER_TEMP/body.md"
+          fi
+
+      - name: Close the ${{ matrix.project }}-sync issue once the page is in step
+        if: github.event_name != 'pull_request' && steps.check.outputs.rc == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LABEL: ${{ matrix.project }}-sync
+        run: |
+          for n in $(gh issue list --label "$LABEL" --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --reason completed --comment "The page is in step again (run ${{ github.run_id }})."
+          done

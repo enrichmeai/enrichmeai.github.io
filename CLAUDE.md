@@ -11,19 +11,21 @@ checked against that project's source or its registry, never copied from an olde
 project cannot do yet (see #18, "say on the page what the library cannot do"). Keep the layout at phone
 width with no new horizontal scroll, and keep the colours on the tokens in `assets/site.css`.
 
-## Culvert releases (Joseph, 2026-09-26)
+## Project releases (Joseph, 2026-09-26)
 
-**Every Culvert release reaches `/culvert/`: the new version, every new library, and the new features.**
+**Every release of a project reaches its page: the new version, every new library, and the new features.**
+Covered today: Culvert (`/culvert/`) and enrich-test-api (`/enrich-test-api/`).
 
-- The page marks each fact it states (`data-culvert="pypi-version"`, `data-culvert="maven-version"`,
-  a `data-culvert-artifact` row per library, `data-culvert-extra` per pip extra, and a
-  `data-culvert-release` "what's new" block per release). `tools/check-culvert-page.py` compares those
-  markers with PyPI, Maven Central and Culvert's `main`. Never hard-code a Culvert version outside a
-  marker: the checker fails on it.
-- `.github/workflows/culvert-sync.yml` runs the check every day and on every PR that touches the page.
-  When the page is behind, it opens (or updates) one issue labelled `culvert-sync` that says what is
-  missing, and it closes that issue once the page is back in step.
-- The fix is the `/culvert-sync` skill (`.claude/skills/culvert-sync/SKILL.md`).
+- Each page marks the facts it states (prefix `data-culvert` / `data-eta`): the released versions, the
+  version on main, one row per library, the pip extras or the capabilities, and a "what's new" block per
+  release. `tools/check-release-page.py <project>` compares those markers with Maven Central, PyPI and
+  the project's `main`. Never hard-code a project version outside a marker: the checker fails on it.
+- `.github/workflows/release-sync.yml` runs the check every day and on every PR that touches a page.
+  When a page is behind, it opens (or updates) one issue labelled `<project>-sync` saying what is missing,
+  and closes it once the page is back in step.
+- The fix is the `/release-sync <project>` skill (`.claude/skills/release-sync/SKILL.md`). Adding the
+  `claude` label to the sync issue has the builder (`.github/workflows/claude.yml`) do it.
 
-Run locally: `python3 tools/check-culvert-page.py --culvert ../gcp-pipeline-reference` (Joseph's local
-Culvert folder; `../culvert` in a fresh clone). Tests: `python3 -m unittest tools/test_check_culvert_page.py`.
+Run locally: `python3 tools/check-release-page.py culvert --repo ../gcp-pipeline-reference` (Joseph's local
+Culvert folder), `python3 tools/check-release-page.py enrich-test-api --repo ../enrich-test-api`.
+Tests: `python3 -m unittest tools/test_check_release_page.py`.
