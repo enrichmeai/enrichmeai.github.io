@@ -63,9 +63,14 @@ class Culvert(unittest.TestCase):
         self.assertTrue(any("data-pipeline-core row shows version" in x for x in e), e)
         self.assertTrue(any('data-culvert-release="0.3.0"' in x for x in e), e)
 
-    def test_new_library_without_a_row(self):
-        facts = dict(CULVERT, maven={**CULVERT["maven"], "data-pipeline-azure-queue": None})
+    def test_released_library_without_a_row(self):
+        facts = dict(CULVERT, maven={**CULVERT["maven"], "data-pipeline-azure-queue": "0.2.0"})
         self.assertTrue(any("data-pipeline-azure-queue" in x for x in culvert(facts=facts)))
+
+    def test_unreleased_library_needs_no_row_yet(self):
+        # Releases are batched: a module merged on main waits for the release that publishes it.
+        facts = dict(CULVERT, maven={**CULVERT["maven"], "data-pipeline-azure-queue": None})
+        self.assertEqual(culvert(facts=facts), [])
 
     def test_library_released_but_row_says_unreleased(self):
         facts = dict(CULVERT, maven={**CULVERT["maven"], "data-pipeline-new": "0.2.0"})

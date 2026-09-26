@@ -20,8 +20,8 @@ P (for example `data-culvert`):
   <dt P-capability="BlobStorage">           one per capability interface   (projects with capabilities)
   <section P-release="0.2.0">               what's new in that release
 
-Rules: every marker equals the truth; every library has a row and no row names a library that is
-gone; extras and capabilities match exactly; the newest release has a "what's new" block; and no other
+Rules: every marker equals the truth; every released library has a row (an unreleased one may have one,
+but releases are batched, so it need not), and no row names a library that is gone; extras and capabilities match exactly; the newest release has a "what's new" block; and no other
 version appears on the page outside a marker or a "what's new" block, so nothing can go stale unseen.
 
 Usage:
@@ -248,7 +248,10 @@ def check(html: str, facts: dict, project: str) -> list[str]:
     for a, v in facts["maven"].items():
         row = rows.get(a)
         if row is None:
-            errors.append(f"library {a} ({'released ' + v if v else 'unreleased'}) has no {P}-artifact row")
+            # Releases are batched: a library merged on main reaches the page with the release that
+            # publishes it, not before. An unreleased library may have a row, but does not need one.
+            if v:
+                errors.append(f"library {a} (released {v}) has no {P}-artifact row")
             continue
         state = row.attrs.get("data-state")
         shown = [n.text().strip() for n in row.walk() if n.attrs.get(P) == "artifact-version"]

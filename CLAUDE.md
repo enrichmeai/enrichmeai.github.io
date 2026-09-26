@@ -112,6 +112,9 @@ Covered today: Culvert (`/culvert/`) and enrich-test-api (`/enrich-test-api/`).
 - The fix is the `/release-sync <project>` skill (`.claude/skills/release-sync/SKILL.md`). Adding the
   `claude` label to the sync issue has the builder (`.github/workflows/claude.yml`) do it. It goes through
   the loop above like any task: `site_check.py` and the checker both at 0, reviewer, founder merges.
+- **Releases are batched** in the product repos: features merge one PR at a time, and a release ships a
+  chunk of them when the founder says go, with the Maven Central publish done by hand. So a sync issue
+  appears after a release, not after every merge. A library that is on `main` but unreleased needs no row yet.
 - Rule 1's "latest release tag" still holds for claims about what a product does. The `main-version` and
   `next-version` markers are the one deliberate exception: they state what is on `main`, and say so.
 
