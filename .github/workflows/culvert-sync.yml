@@ -1,0 +1,83 @@
+# Keeps /culvert/ in step with what Culvert has released (CLAUDE.md § "Culvert releases").
+#
+# Every day, and on any PR that touches the page or the checker, tools/check-culvert-page.py compares
+# culvert/index.html with PyPI, Maven Central and Culvert's main branch: the versions, every library,
+# every pip extra, and a "what's new" block for the newest release.
+#   - on a PR: a red check, so a change cannot make the page stale;
+#   - on the schedule: one open issue labelled `culvert-sync`, created or updated with what is behind,
+#     and closed again once the page is back in step. That issue is the prompt to run /culvert-sync.
+# Read-only except for issues: no deploy, no push, no secrets.
+name: culvert-sync
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'culvert/**'
+      - 'tools/check-culvert-page.py'
+      - 'tools/test_check_culvert_page.py'
+      - '.github/workflows/culvert-sync.yml'
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: culvert-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out Culvert (public, read-only)
+        run: git clone --quiet --depth 1 https://github.com/enrichmeai/culvert.git "$RUNNER_TEMP/culvert"
+
+      - name: Checker's own tests
+        run: python3 -m unittest tools/test_check_culvert_page.py -v
+
+      - name: Page against the registries
+        id: check
+        run: |
+          set +e
+          python3 tools/check-culvert-page.py --culvert "$RUNNER_TEMP/culvert" > "$RUNNER_TEMP/report.txt" 2>&1
+          rc=$?
+          cat "$RUNNER_TEMP/report.txt"
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+
+      - name: Open or update the culvert-sync issue
+        if: always() && github.event_name != 'pull_request' && steps.check.outputs.rc == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create culvert-sync --color C5DEF5 --description "The /culvert/ page is behind a Culvert release" 2>/dev/null || true
+          {
+            echo "The daily check found \`/culvert/\` behind what Culvert has released. Run \`/culvert-sync\` (CLAUDE.md § \"Culvert releases\")."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/report.txt"
+            echo '```'
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > "$RUNNER_TEMP/body.md"
+          n=$(gh issue list --label culvert-sync --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue edit "$n" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh issue create --title "Culvert page is behind the latest release" --label culvert-sync --body-file "$RUNNER_TEMP/body.md"
+          fi
+
+      - name: Close the culvert-sync issue once the page is in step
+        if: github.event_name != 'pull_request' && steps.check.outputs.rc == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --label culvert-sync --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --reason completed --comment "The page is in step again (run ${{ github.run_id }})."
+          done
