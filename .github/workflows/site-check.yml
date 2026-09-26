@@ -1,0 +1,25 @@
+# The fast gate in CI: the same checks the hooks run locally, on every PR and every push to main.
+# A merge to main deploys enrichmeai.com (pages.yml), so this is the last look before visitors do.
+name: Site check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  site-check:
+    name: Site check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checker fixtures (the checker catches what it claims to)
+        run: scripts/site_check_test.sh
+      - name: Hook fixtures
+        run: .claude/hooks/test-hooks.sh
+      - name: Whole site
+        run: python3 scripts/site_check.py

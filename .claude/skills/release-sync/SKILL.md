@@ -41,6 +41,8 @@ Say so, never report it as passing.
 
 ## 3. Re-check, look, hand over
 - `python3 tools/check-release-page.py $P --repo "$R"` → 0 errors, and `python3 -m unittest tools/test_check_release_page.py`.
-- Look at the page at 390 px and 1280 px (Playwright; in the cloud `executablePath: '/opt/pw-browsers/chromium'`).
+- `python3 scripts/site_check.py` → 0 findings (the site's own gate: markup, ids, links, anchors).
+- Look at the page at 375 px and 1280 px (Playwright; in the cloud `executablePath: '/opt/pw-browsers/chromium'`).
   No new horizontal scroll.
-- One PR titled `site: <project> <version> — …` with `Closes #<the sync issue>`. Joseph merges; the merge deploys.
+- Then the site loop's own steps: the `reviewer` agent, `/compound`, and one PR titled `site: <project> <version> — …`
+  with `Closes #<the sync issue>`. The founder merges (or delegates through `merge-gate`); the merge deploys.

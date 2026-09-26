@@ -1,15 +1,20 @@
-# Claude builds site changes; Joseph merges (the merge deploys). Same builder as enrichmeai/culvert and
-# enrichmeai/culvert-book, ported from enrichmeai/valuedocs (2026-09-26).
+# Claude builds; the reviewer agent verifies; the founder merges or delegates via merge-gate
+# (CLAUDE.md § "Autonomous build loop"). Ported from enrichmeai/valuedocs.
 #
-# Trigger: a comment that STARTS with "@claude", or the `claude` label on an issue, and only when the
-# actor is Joseph's account. The issue or PR must be his, or be a `<project>-sync` issue opened by this
-# repository's own release-sync workflow (github-actions[bot]), whose body is the checker's output.
+# Trigger: a comment that STARTS with "@claude" on an issue or PR, or the `claude` label on an issue,
+# and only when the actor is the founder's account and the issue/PR is his, or is a `<project>-sync`
+# issue opened by this repo's own release-sync workflow (github-actions[bot]; its body is checker output).
 #
-# Needs the repository secret CLAUDE_CODE_OAUTH_TOKEN (`claude setup-token`).
+# What this workflow can NOT do, by construction:
+#   - deploy: a merge to main deploys the site, and merging is disallowed below; branch protection
+#     on main should also require a PR with the `Site check` status.
+#   - edit workflows: GITHUB_TOKEN has no `workflows` permission, so a push that changes
+#     .github/workflows/ is refused by GitHub.
+#   - run two at once: one concurrency group per repository, never cancelled mid-run.
 #
-# What this workflow can NOT do, by construction: deploy (pages.yml deploys main only, on merge),
-# edit workflows (GITHUB_TOKEN has no `workflows` permission), merge, tag, or dispatch a workflow
-# (disallowed below), or run two at once (one concurrency group, never cancelled mid-run).
+# Note: pushes made with GITHUB_TOKEN do not start other workflows. `Site check` runs when the
+# founder's account opens the PR from Claude's branch.
+# (Docs: code.claude.com/docs/en/github-actions § "CI not running on Claude's commits".)
 name: Claude
 
 on:
@@ -43,20 +48,21 @@ jobs:
         (github.event_name == 'issues' && github.event.label.name == 'claude')
       )
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # The projects the pages describe, read-only, beside the site, for /release-sync.
-      - name: Check out the projects (public, read-only)
+      # The products the release-sync pages describe, read-only, beside the site (CLAUDE.md § "Project releases").
+      - name: Check out the products (public, read-only)
         run: |
           for p in culvert enrich-test-api; do
-            git clone --quiet --depth 1 "https://github.com/enrichmeai/$p.git" "$GITHUB_WORKSPACE/../$p"
+            git clone --quiet "https://github.com/enrichmeai/$p.git" "$GITHUB_WORKSPACE/../$p"
           done
 
-      # Pinned to the commit behind the v1 tag (the same pin valuedocs uses, 2026-09-24).
+      # Pinned by SHA (the commit behind the v1 tag, as pinned in enrichmeai/valuedocs on
+      # 2026-09-24): a third-party action that receives a write token is not pinned by a movable tag.
       - uses: anthropics/claude-code-action@8cf3482550831fb35a4fc3fbf7ca139cf8028b4c # v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -69,5 +75,5 @@ jobs:
             --max-turns 80
             --add-dir ../culvert
             --add-dir ../enrich-test-api
-            --disallowedTools "Bash(gh pr merge:*),Bash(gh workflow:*),Bash(gh api:*),Bash(gh release:*),Bash(git tag:*),Bash(git push origin main:*),Bash(git push --tags:*),Bash(curl -X:*)"
-            --append-system-prompt "You are the builder for the EnrichMeAI site; Joseph merges, and the merge deploys. CLAUDE.md in this repository governs what you do. For a <project>-sync issue, follow the /release-sync skill with the project checked out at ../<project> (--repo ../culvert or ../enrich-test-api): every fact on a page comes from the project's source or its registry, never from memory, and tools/check-release-page.py must report 0 errors before you open the PR. Work only on the task in the triggering issue or comment; if it is ambiguous, reply with the question and stop. One branch and one PR per task, titled 'site: …', closing the issue. Never merge, tag, dispatch a workflow, or touch .github/workflows. You cannot take screenshots here: say the visual check at 390 px and 1280 px is left for Joseph. End every reply with: branch, head SHA, files changed, the checker's result line, and anything left for Joseph."
+            --disallowedTools "Bash(gh pr merge:*),Bash(gh workflow run:*),Bash(gh api:*),Bash(gh release:*),Bash(git tag:*),Bash(git push origin main:*),Bash(git push --tags:*),Bash(curl:*)"
+            --append-system-prompt "You are the builder: Claude builds, the reviewer agent verifies, the founder merges. CLAUDE.md in this repository governs everything you do; follow the /build-task skill (check every claim against the product repo's release tag and every web behaviour against the pinned docs first, red then green, run the reviewer agent before replying, at most 3 fix attempts then a Blocker summary, then /compound). Work only on the task in the triggering issue or comment; if it is ambiguous, reply with the question and stop. One branch per task. Never relax a check, never widen a permission, never merge, tag, dispatch a workflow, or touch .github/workflows or CNAME. A merge to main deploys enrichmeai.com. End every reply with: branch, head SHA, files changed, checks run with their result, and anything left for the founder."
