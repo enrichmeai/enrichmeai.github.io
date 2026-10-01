@@ -108,7 +108,7 @@
       <h3>Penstock</h3>
       <p class="descriptor">the agent that does the work, and the reference client for governed access · Java · Spring Boot</p>
       <div class="split-2">
-        <p>Copilot beyond the IDE: an agent an organisation runs itself, driving the workflows an editor cannot reach (CI hooks, chat commands, scheduled triage) against its own internal systems. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
+        <p>Penstock runs your agents on your data, with receipts: a self-hosted agent runtime for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage) against your own internal systems, on models you choose. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
         <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind. The shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
       </div>
       <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">v0.2.0 is live: a signed jar, a bill of materials, and a multi-architecture image. It has not yet cleared the stranger test Cistern is held to (deploy and use it from the published artifacts alone, following only the shipped docs), so it is a thing to run on your own machine for now, not to put on a network.</p>
@@ -118,6 +118,7 @@
         <ul class="stands-list">
           <li><span class="term">Today</span><span>three surfaces (web, REST, streaming), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable in the app</span></li>
           <li><span class="term">Now</span><span>the pod tool has shipped: Penstock asks a Cistern pod for a file over plain HTTPS as its own principal, is refused outside its grant, and what it read is receipted on the owner's side. Any client needing scoped, accountable access to someone else's data follows the same shape</span></li>
+          <li><span class="term">On main</span><span>it speaks the Agent Client Protocol, so it can run as a selectable agent inside JetBrains Air or Zed, read-only tools first. Merged after the 0.2.0 tag, not yet in a release</span></li>
           <li><span class="term">Later</span><span>the stranger test. Everything with a fix available has been fixed: across four releases, 138 findings down to 85 and the criticals from fourteen to one. That one is waiting on an upstream release that does not exist yet, so there is nothing to apply. Every scan is attached to its release, so the whole series is yours to read rather than ours to claim</span></li>
         </ul>
       </div>
