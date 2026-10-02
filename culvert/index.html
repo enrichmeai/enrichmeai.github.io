@@ -182,28 +182,28 @@
           <tr><th>Maven artifact</th><th>Area</th><th>What it is</th><th>Released</th></tr>
         </thead>
         <tbody>
-          <tr data-culvert-artifact="data-pipeline-core" data-state="released"><td><code style="font-size:14.5px">data-pipeline-core</code></td><td>Core</td><td>The cloud-neutral kernel: every contract, the shared records, governance policies and auto-discovery.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-contract-tests" data-state="released"><td><code style="font-size:14.5px">data-pipeline-contract-tests</code></td><td>Core</td><td>The conformance suite. Abstract JUnit tests every adapter must pass.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-tester" data-state="released"><td><code style="font-size:14.5px">data-pipeline-tester</code></td><td>Core</td><td>Mockito fixture builders for the contracts, for your own unit tests.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-it-support" data-state="released"><td><code style="font-size:14.5px">data-pipeline-it-support</code></td><td>Core</td><td>Testcontainers emulators (BigQuery, GCS) for integration tests.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-orchestration" data-state="released"><td><code style="font-size:14.5px">data-pipeline-orchestration</code></td><td>Core</td><td>A cloud-neutral DAG model, rendered to Airflow, Composer or other substrates.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-gcp-gcs" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-gcs</code></td><td>GCP</td><td>Cloud Storage: <code>BlobStore</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-gcp-bigquery" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-bigquery</code></td><td>GCP</td><td>BigQuery: <code>Warehouse</code>, <code>JobControlRepository</code>, FinOps and audit sinks.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-gcp-pubsub" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-pubsub</code></td><td>GCP</td><td>Pub/Sub: <code>Source</code> and <code>Sink</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-gcp-secrets" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-secrets</code></td><td>GCP</td><td>Secret Manager: <code>SecretProvider</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-gcp-observability" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-observability</code></td><td>GCP</td><td>Cloud Trace, Cloud Monitoring and Data Catalog lineage.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-gcp-dataflow" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-dataflow</code></td><td>GCP</td><td>Dataflow: the Beam execution layer (<code>Pipeline</code>).</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-aws-s3" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-s3</code></td><td>AWS</td><td>S3: <code>BlobStore</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-aws-athena" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-athena</code></td><td>AWS</td><td>Athena: <code>Warehouse</code> and <code>JobControlRepository</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-aws-dynamodb" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-dynamodb</code></td><td>AWS</td><td>DynamoDB: <code>JobControlRepository</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-aws-sqs" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-sqs</code></td><td>AWS</td><td>SQS: <code>Source</code> and <code>Sink</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-aws-secrets" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-secrets</code></td><td>AWS</td><td>Secrets Manager: <code>SecretProvider</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-aws-cloudwatch" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-cloudwatch</code></td><td>AWS</td><td>CloudWatch: observability and stage metrics.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
-          <tr data-culvert-artifact="data-pipeline-azure-blob" data-state="released"><td><code style="font-size:14.5px">data-pipeline-azure-blob</code></td><td>Azure</td><td>Blob Storage <code>BlobStore</code>, a skeleton: it proves the seam, and its methods throw until it is built out.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.2.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-core" data-state="released"><td><code style="font-size:14.5px">data-pipeline-core</code></td><td>Core</td><td>The cloud-neutral kernel: every contract, the shared records, governance policies and auto-discovery.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-contract-tests" data-state="released"><td><code style="font-size:14.5px">data-pipeline-contract-tests</code></td><td>Core</td><td>The conformance suite. Abstract JUnit tests every adapter must pass.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-tester" data-state="released"><td><code style="font-size:14.5px">data-pipeline-tester</code></td><td>Core</td><td>Mockito fixture builders for the contracts, for your own unit tests.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-it-support" data-state="released"><td><code style="font-size:14.5px">data-pipeline-it-support</code></td><td>Core</td><td>Testcontainers emulators (BigQuery, GCS) for integration tests.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-orchestration" data-state="released"><td><code style="font-size:14.5px">data-pipeline-orchestration</code></td><td>Core</td><td>A cloud-neutral DAG model, rendered to Airflow, Composer or other substrates.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-gcs" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-gcs</code></td><td>GCP</td><td>Cloud Storage: <code>BlobStore</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-bigquery" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-bigquery</code></td><td>GCP</td><td>BigQuery: <code>Warehouse</code>, <code>JobControlRepository</code>, FinOps and audit sinks.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-pubsub" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-pubsub</code></td><td>GCP</td><td>Pub/Sub: <code>Source</code> and <code>Sink</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-secrets" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-secrets</code></td><td>GCP</td><td>Secret Manager: <code>SecretProvider</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-observability" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-observability</code></td><td>GCP</td><td>Cloud Trace, Cloud Monitoring and Data Catalog lineage.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-gcp-dataflow" data-state="released"><td><code style="font-size:14.5px">data-pipeline-gcp-dataflow</code></td><td>GCP</td><td>Dataflow: the Beam execution layer (<code>Pipeline</code>).</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-s3" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-s3</code></td><td>AWS</td><td>S3: <code>BlobStore</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-athena" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-athena</code></td><td>AWS</td><td>Athena: <code>Warehouse</code> and <code>JobControlRepository</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-dynamodb" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-dynamodb</code></td><td>AWS</td><td>DynamoDB: <code>JobControlRepository</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-sqs" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-sqs</code></td><td>AWS</td><td>SQS: <code>Source</code> and <code>Sink</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-secrets" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-secrets</code></td><td>AWS</td><td>Secrets Manager: <code>SecretProvider</code>.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-aws-cloudwatch" data-state="released"><td><code style="font-size:14.5px">data-pipeline-aws-cloudwatch</code></td><td>AWS</td><td>CloudWatch: observability and stage metrics.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
+          <tr data-culvert-artifact="data-pipeline-azure-blob" data-state="released"><td><code style="font-size:14.5px">data-pipeline-azure-blob</code></td><td>Azure</td><td>Blob Storage <code>BlobStore</code>, a skeleton: it proves the seam, and its methods throw until it is built out.</td><td><span class="tag tag-live" data-culvert="artifact-version">0.3.0</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Add it with Maven: <code>com.enrichmeai.culvert:&lt;artifact&gt;:<span data-culvert="maven-version">0.2.0</span></code>. Source for each: <a href="https://github.com/enrichmeai/culvert/tree/main/data-pipeline-libraries-java">data-pipeline-libraries-java →</a></p>
+    <p class="note">Add it with Maven: <code>com.enrichmeai.culvert:&lt;artifact&gt;:<span data-culvert="maven-version">0.3.0</span></code>. Source for each: <a href="https://github.com/enrichmeai/culvert/tree/main/data-pipeline-libraries-java">data-pipeline-libraries-java →</a></p>
   </div>
 
   <div id="whats-new" class="section-rule">
@@ -216,7 +216,7 @@
       <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
     </div>
     <section class="spec-list" data-culvert-release="0.3.0" aria-label="Culvert 0.3.0">
-      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0 <span class="tag tag-live">Python, on PyPI</span> <span class="tag tag-next">Java: not on Maven Central yet</span></h3>
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0 <span class="tag tag-live">Java and Python, on Maven Central and PyPI</span></h3>
       <dl class="spec-list">
         <div class="spec-row">
           <dt>Python</dt>
@@ -224,7 +224,7 @@
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd><code style="font-size:14.5px">BigQueryWarehouse.merge()</code> works in Python, and in Java 0.3.0, which is not on Maven Central yet. It upserts with one <code style="font-size:14.5px">MERGE</code>, takes the columns from the target table, and refuses a key that is not a target column before anything runs. It used to throw. Athena declares <code style="font-size:14.5px">merge</code> unsupported and throws.</dd>
+          <dd><code style="font-size:14.5px">BigQueryWarehouse.merge()</code> works in Java and Python. It upserts with one <code style="font-size:14.5px">MERGE</code>, takes the columns from the target table, and refuses a key that is not a target column before anything runs. It used to throw. Athena declares <code style="font-size:14.5px">merge</code> unsupported and throws.</dd>
         </div>
         <div class="spec-row">
           <dt>Added</dt>
@@ -232,7 +232,7 @@
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd>In Java 0.3.0, not on Maven Central yet: contract tests for <code style="font-size:14.5px">Source</code> and <code style="font-size:14.5px">Sink</code>, observability, lineage, FinOps and audit. The Pub/Sub, SQS, Cloud Trace, Cloud Monitoring, CloudWatch, Data Catalog and BigQuery adapters pass them.</dd>
+          <dd>Java contract tests for <code style="font-size:14.5px">Source</code> and <code style="font-size:14.5px">Sink</code>, observability, lineage, FinOps and audit. The Pub/Sub, SQS, Cloud Trace, Cloud Monitoring, CloudWatch, Data Catalog and BigQuery adapters pass them.</dd>
         </div>
       </dl>
     </section>
@@ -283,7 +283,7 @@
       </div>
       <div class="spec-row">
         <dt>Java</dt>
-        <dd>Released: <code style="font-size:14.5px">com.enrichmeai.culvert:* <span data-culvert="maven-version">0.2.0</span></code> on Maven Central <span class="tag tag-live">live</span></dd>
+        <dd>Released: <code style="font-size:14.5px">com.enrichmeai.culvert:* <span data-culvert="maven-version">0.3.0</span></code> on Maven Central <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Clouds</dt>
