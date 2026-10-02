@@ -36,7 +36,7 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · self-hosted · v0.2.0</p>
+      <p class="eyebrow">Open source · self-hosted · v0.3.0</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span>Run it on your own machine, not on a network. It has not cleared the stranger test yet.</span>
@@ -51,11 +51,11 @@
     <div class="stack">
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div class="frame-kicker" style="margin-bottom:10px">What v0.2.0 ships</div>
-        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">A signed jar, a bill of materials, and a multi-architecture image.</span>
+        <div class="frame-kicker" style="margin-bottom:10px">What v0.3.0 ships</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">A signed jar, a bill of materials, a multi-architecture image, and the Agent Client Protocol: the same agent runs inside JetBrains Air or Zed.</span>
       </div>
       <div class="btn-row">
-        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.2.0" class="btn btn-primary btn-lg">Release v0.2.0 →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.3.0" class="btn btn-primary btn-lg">Release v0.3.0 →</a>
         <a href="https://github.com/enrichmeai/penstock" class="btn btn-secondary btn-lg">Source →</a>
       </div>
     </div>
@@ -123,9 +123,9 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Java · Spring Boot</span></div>
-      <pre><div class="cmt"># the signed jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.2.0.jar</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.2.0</div></pre>
+      <pre><div class="cmt"># the signed jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.3.0.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside JetBrains Air or Zed, over stdio</div><div><span class="tok">java</span> -jar penstock-0.3.0.jar --acp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.3.0</div></pre>
     </div>
-    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.2.0">v0.2.0 →</a>.</p>
+    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.3.0">v0.3.0 →</a>.</p>
   </div>
 
   <div id="surface" class="section-rule">
@@ -168,7 +168,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Release</dt>
-        <dd>v0.2.0: a signed jar, a bill of materials, and a multi-architecture image. <span class="tag tag-live">live</span></dd>
+        <dd>v0.3.0: a signed jar, a bill of materials, a multi-architecture image, and the Agent Client Protocol mode. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Governed access</dt>
@@ -176,7 +176,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>In your IDE</dt>
-        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio, with the read-only tools and the pod tool first; the mutating tools arrive behind the editor's own permission prompt next. Merged after the 0.2.0 tag, so the release above predates it. <span class="tag tag-next">on main</span></dd>
+        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a href="https://github.com/enrichmeai/penstock/blob/v0.3.0/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live">v0.3.0</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Later</dt>
@@ -266,12 +266,12 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">penstock 0.2.0 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">penstock 0.3.0 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get it</h4>
-        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.2.0">Release v0.2.0: jar · SBOM · image →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.3.0">Release v0.3.0: jar · SBOM · image →</a>
         <a href="https://github.com/enrichmeai/penstock">GitHub: source →</a>
         <a href="https://github.com/enrichmeai/penstock/releases">The scan series →</a>
       </nav>
