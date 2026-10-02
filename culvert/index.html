@@ -215,6 +215,27 @@
       <h2 class="section-h2">What each release added</h2>
       <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
     </div>
+    <section class="spec-list" data-culvert-release="0.3.0" aria-label="Culvert 0.3.0">
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0 <span class="tag tag-live">Python, on PyPI</span> <span class="tag tag-next">Java: not on Maven Central yet</span></h3>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>Python</dt>
+          <dd>PyPI goes from 0.1.1 straight to 0.3.0, because Python was not published at 0.2.0. So 0.3.0 also brings 0.2.0's Python changes, including the breaking one: <code style="font-size:14.5px">load_from_uri</code> takes a required <code style="font-size:14.5px">LoadOptions</code>. <a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md">Upgrading →</a></dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd><code style="font-size:14.5px">BigQueryWarehouse.merge()</code> works in Python, and in Java 0.3.0, which is not on Maven Central yet. It upserts with one <code style="font-size:14.5px">MERGE</code>, takes the columns from the target table, and refuses a key that is not a target column before anything runs. It used to throw. Athena declares <code style="font-size:14.5px">merge</code> unsupported and throws.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd>Python <code style="font-size:14.5px">BlobStore.head(uri)</code>, matching Java's field for field: size, version token, last-modified and metadata without reading the object. Implemented for GCS.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd>In Java 0.3.0, not on Maven Central yet: contract tests for <code style="font-size:14.5px">Source</code> and <code style="font-size:14.5px">Sink</code>, observability, lineage, FinOps and audit. The Pub/Sub, SQS, Cloud Trace, Cloud Monitoring, CloudWatch, Data Catalog and BigQuery adapters pass them.</dd>
+        </div>
+      </dl>
+    </section>
     <section class="spec-list" data-culvert-release="0.2.0" aria-label="Culvert 0.2.0">
       <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.2.0 <span class="tag tag-live">Java, on Maven Central</span></h3>
       <dl class="spec-list">
@@ -258,7 +279,7 @@
     <dl class="spec-list">
       <div class="spec-row">
         <dt>Python</dt>
-        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.1.1</span></code> on PyPI <span class="tag tag-live">live</span></dd>
+        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.3.0</span></code> on PyPI <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Java</dt>
@@ -274,7 +295,7 @@
       </div>
       <div class="spec-row">
         <dt>Licence</dt>
-        <dd>Apache 2.0 from the Java 0.2 line on. Earlier releases, including <code style="font-size:14.5px">culvert</code> on PyPI so far, were published under MIT.</dd>
+        <dd>Apache 2.0 for the releases above, in both languages. The 0.1 releases, Java and Python, were published under MIT.</dd>
       </div>
     </dl>
     <blockquote class="pull-quote">
