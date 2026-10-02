@@ -36,6 +36,10 @@ Say so, never report it as passing.
   enrich-test-api's first release also turns its "unpublished" wording (hero caveat, Distribution row,
   FAQ "Can I use this today?", and its entry in the register on `/index.html`) into install instructions,
   and it needs a what's-new section: add one in the style of `/culvert/#whats-new`.
+- **Prose the markers do not cover:** re-read the Status block's Licence row and every sentence that says
+  "so far", "not yet" or "only". The checker cannot see them. In culvert 0.3.0 the Licence row still said
+  PyPI was MIT after the first Apache-2.0 PyPI release. Keep version numbers out of that prose: the checker
+  fails a hard-coded version outside a marker.
 - A new project page: add its entry to `PROJECTS`, its markers to the page, test cases to
   `tools/test_check_release_page.py`, and its name to the matrix in `release-sync.yml`.
 
