@@ -215,6 +215,35 @@
       <h2 class="section-h2">What each release added</h2>
       <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
     </div>
+    <section class="spec-list" data-culvert-release="0.4.0" aria-label="Culvert 0.4.0">
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.4.0 <span class="tag tag-next">on PyPI · Maven Central to follow</span></h3>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>PostgreSQL</dt>
+          <dd>A new library, <code style="font-size:14.5px">data-pipeline-postgres</code>: <code style="font-size:14.5px">JobControlRepository</code> in plain JDBC, the same on Cloud SQL, RDS or your own server. It passes the shared contract tests unchanged. Each transition locks the run's opening row, so writers racing the same transition are serialised, which the BigQuery, Athena and DynamoDB backends cannot do.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd><code style="font-size:14.5px">StageClaim</code>: one stage of one unit for one period cannot start twice. A second claimant waits, or is told the stage is held or already done. When a claimant's database session ends, its claim is released. There is no lease, so a claimant that hangs while still connected keeps its claim. Optional, on PostgreSQL only, and Java only for now.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd><code style="font-size:14.5px">InputReadiness</code>: whether every input a unit expects for a period is produced and validated. It names each input that is missing, failed or still running, rather than counting rows. A failure is replaced only by a later attempt that names it as a retry, and the input is ready once that attempt validates; a later success that does not name it leaves the input failed. On PostgreSQL only, and no gate uses it yet.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd>Orchestration: a task can list the stages that must be done before it runs. Airflow and Composer renderers given a stage gate make the task fail while any of them is not done; the pod and Cloud Run renderer refuses gated tasks. <code style="font-size:14.5px">max_concurrency</code> sets how many of a DAG's tasks may run at once (1 for one at a time), as a ceiling the scheduler can hold lower.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd><code style="font-size:14.5px">data-pipeline-console</code>: read-only operator views over job control (<code style="font-size:14.5px">ConsoleReadService</code>), and a <code style="font-size:14.5px">culvert</code> command line with <code style="font-size:14.5px">runs</code>, <code style="font-size:14.5px">run</code>, <code style="font-size:14.5px">entities</code>, <code style="font-size:14.5px">failures</code> and <code style="font-size:14.5px">adapters</code>. It never writes, and its build fails if a cloud SDK reaches it.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Status</dt>
+          <dd>The PostgreSQL code is tested against a real PostgreSQL 16 server. The changelog records no run of it in a deployment. Python has no changes in this release; it moves to 0.4.0 so the two stay on one version.</dd>
+        </div>
+      </dl>
+    </section>
     <section class="spec-list" data-culvert-release="0.3.0" aria-label="Culvert 0.3.0">
       <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0 <span class="tag tag-live">Java and Python, on Maven Central and PyPI</span></h3>
       <dl class="spec-list">
@@ -279,7 +308,7 @@
     <dl class="spec-list">
       <div class="spec-row">
         <dt>Python</dt>
-        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.3.0</span></code> on PyPI <span class="tag tag-live">live</span></dd>
+        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.4.0</span></code> on PyPI <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Java</dt>
