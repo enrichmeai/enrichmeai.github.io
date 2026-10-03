@@ -387,6 +387,20 @@ table.table td:first-child { font-family: var(--font-heading); font-weight: 600;
   .stands-list li { grid-template-columns: minmax(0,1fr); gap: 4px; }
   table.table td:first-child { font-size: 17px; }
 }
+/* The header is one flex row. Below 620px the wordmark, the product label and the header button
+   did not fit in a 375px viewport, and the page scrolled sideways (measured: up to 412px wide).
+   Tighter gaps, a smaller label and a compact button keep it inside the gutter. */
+@media (max-width: 620px) {
+  .site-header .container { gap: 12px; }
+  .wordmark, .site-header .btn { flex-shrink: 0; }
+  /* A long name (ENRICH-TEST-API) breaks at its hyphens onto two short lines, never three. */
+  .product-label { font-size: 12px; letter-spacing: 0.08em; line-height: 1.2; min-width: 0; }
+  .site-header .btn { padding: 8px 10px; letter-spacing: 0.04em; white-space: nowrap; }
+  /* The plain-text GitHub link in the home and brand headers. Each page links the same place again
+     (home: the hero's "Read the source" and the footer; brand: github.com/enrichmeai in the body),
+     so below 620px it gives way. */
+  .header-text-link { display: none; }
+}
 
 /* ── Asymmetric heading grids ───────────────────────────────────────────────
    These were inline in the prototypes. Inline styles beat media queries, so a
