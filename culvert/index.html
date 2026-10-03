@@ -220,27 +220,27 @@
       <dl class="spec-list">
         <div class="spec-row">
           <dt>PostgreSQL</dt>
-          <dd>A new library, <code style="font-size:14.5px">data-pipeline-postgres</code>: <code style="font-size:14.5px">JobControlRepository</code> in plain JDBC, the same on Cloud SQL, RDS or your own server. It passes the shared contract tests unchanged, and it is the first job-control backend that serialises two writers racing the same run.</dd>
+          <dd>A new library, <code style="font-size:14.5px">data-pipeline-postgres</code>: <code style="font-size:14.5px">JobControlRepository</code> in plain JDBC, the same on Cloud SQL, RDS or your own server. It passes the shared contract tests unchanged. Each transition locks the run's opening row, so writers racing the same transition are serialised, which the BigQuery, Athena and DynamoDB backends cannot do.</dd>
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd><code style="font-size:14.5px">StageClaim</code>: one stage of one unit for one period cannot start twice. A second claimant waits, or is told the stage is held or already done. A claimant that dies releases its claim. Optional, and on PostgreSQL only: BigQuery, Athena and DynamoDB cannot lock.</dd>
+          <dd><code style="font-size:14.5px">StageClaim</code>: one stage of one unit for one period cannot start twice. A second claimant waits, or is told the stage is held or already done. When a claimant's database session ends, its claim is released. There is no lease, so a claimant that hangs while still connected keeps its claim. Optional, on PostgreSQL only, and Java only for now.</dd>
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd><code style="font-size:14.5px">InputReadiness</code>: whether every input a unit expects for a period is produced and validated. It names each input that is missing, failed or still running, rather than counting rows. A failure stays failed until a retry that names it succeeds. On PostgreSQL only, and nothing gates on it yet.</dd>
+          <dd><code style="font-size:14.5px">InputReadiness</code>: whether every input a unit expects for a period is produced and validated. It names each input that is missing, failed or still running, rather than counting rows. A failure is cleared only by a later attempt that names it as a retry and validates. On PostgreSQL only, and no gate uses it yet.</dd>
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd>Orchestration: a task can list the stages that must be done before it runs, and the rendered Airflow or Composer DAG checks them again just before the task starts. <code style="font-size:14.5px">max_concurrency</code> caps how many of a DAG's tasks run at once, from one at a time up to all of them.</dd>
+          <dd>Orchestration: a task can list the stages that must be done before it runs. Airflow and Composer renderers given a stage gate make the task fail while any of them is not done; the pod and Cloud Run renderer refuses gated tasks. <code style="font-size:14.5px">max_concurrency</code> sets how many of a DAG's tasks may run at once (1 for one at a time), as a ceiling the scheduler can hold lower.</dd>
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd>A read-only operator console, <code style="font-size:14.5px">data-pipeline-console</code>, and a <code style="font-size:14.5px">culvert</code> command line over job control: <code style="font-size:14.5px">runs</code>, <code style="font-size:14.5px">run</code>, <code style="font-size:14.5px">entities</code>, <code style="font-size:14.5px">failures</code> and <code style="font-size:14.5px">adapters</code>. It never writes, and it cannot depend on a cloud SDK.</dd>
+          <dd><code style="font-size:14.5px">data-pipeline-console</code>: read-only operator views over job control (<code style="font-size:14.5px">ConsoleReadService</code>), and a <code style="font-size:14.5px">culvert</code> command line with <code style="font-size:14.5px">runs</code>, <code style="font-size:14.5px">run</code>, <code style="font-size:14.5px">entities</code>, <code style="font-size:14.5px">failures</code> and <code style="font-size:14.5px">adapters</code>. It never writes, and its build fails if a cloud SDK reaches it.</dd>
         </div>
         <div class="spec-row">
           <dt>Status</dt>
-          <dd>Tested against a real PostgreSQL 16 server, not yet run end to end in a deployment. That proof is the next phase of the work. Python has no changes in this release; it moves to 0.4.0 so the two stay on one version.</dd>
+          <dd>The PostgreSQL code is tested against a real PostgreSQL 16 server. The changelog records no run of it in a deployment. Python has no changes in this release; it moves to 0.4.0 so the two stay on one version.</dd>
         </div>
       </dl>
     </section>
