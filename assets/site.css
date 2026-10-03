@@ -58,6 +58,9 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-heading); }
 p { margin: 0; text-wrap: pretty; }
 ul { margin: 0; padding: 0; list-style: none; }
 code { font-family: monospace; }
+/* An inline command or path is one long word; on a narrow screen it may break anywhere rather
+   than push the page sideways. Code blocks keep their own scrolling. */
+:not(pre) > code { overflow-wrap: break-word; }
 a { color: var(--color-accent-700); text-decoration: none; text-underline-offset: 3px; }
 a:hover { color: var(--color-accent-900); text-decoration: underline; }
 :focus { outline: none; }
@@ -199,7 +202,7 @@ h1, .h1 {
 /* ── Marker list ────────────────────────────────────────────────────────── */
 .marker-list { display: flex; flex-direction: column; gap: 13px; }
 .marker-list li {
-  display: grid; grid-template-columns: 14px 1fr; gap: 12px;
+  display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 12px;
   font-size: 16px; line-height: 1.52; color: var(--color-neutral-800);
 }
 .marker-list .mk { color: var(--color-accent); }
@@ -386,6 +389,20 @@ table.table td:first-child { font-family: var(--font-heading); font-weight: 600;
   .footer-navs { flex-direction: column; gap: 28px; }
   .stands-list li { grid-template-columns: minmax(0,1fr); gap: 4px; }
   table.table td:first-child { font-size: 17px; }
+}
+/* The header is one flex row. Below 620px the wordmark, the product label and the header button
+   did not fit in a 375px viewport, and the page scrolled sideways (measured: up to 412px wide).
+   Tighter gaps, a smaller label and a compact button keep it inside the gutter. */
+@media (max-width: 620px) {
+  .site-header .container { gap: 12px; }
+  .wordmark, .site-header .btn { flex-shrink: 0; }
+  /* A long name (ENRICH-TEST-API) breaks at its hyphens onto two short lines, never three. */
+  .product-label { font-size: 12px; letter-spacing: 0.08em; line-height: 1.2; min-width: 0; }
+  .site-header .btn { padding: 8px 10px; letter-spacing: 0.04em; white-space: nowrap; }
+  /* The plain-text GitHub link in the home and brand headers. Each page links the same place again
+     (home: the hero's "Read the source" and the footer; brand: github.com/enrichmeai in the body),
+     so below 620px it gives way. */
+  .header-text-link { display: none; }
 }
 
 /* ── Asymmetric heading grids ───────────────────────────────────────────────

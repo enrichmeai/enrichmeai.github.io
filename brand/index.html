@@ -24,6 +24,8 @@
   .mark-card .swatch-line i { display: inline-block; width: 14px; height: 14px; border: 1px solid var(--color-divider); }
   .mark-card .files { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 14.5px; }
   .mark-card .files a + a::before { content: "·"; margin: 0 8px; color: var(--color-neutral-500); }
+  /* At 320px the 96px tile left a 116px column for a 30px name, which ran past the screen. */
+  @media (max-width: 420px) { .mark-card { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
   .mark-card .small { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
   .mark-card .small svg { display: block; }
   .mark-card .small .mono { color: var(--color-text); }
@@ -83,7 +85,7 @@
       <a href="/brand/" aria-current="page">Brand</a>
     </nav>
     <div class="spacer"></div>
-    <a href="https://github.com/enrichmeai" style="font-size:15px;color:var(--color-neutral-700)">GitHub →</a>
+    <a href="https://github.com/enrichmeai" class="header-text-link" style="font-size:15px;color:var(--color-neutral-700)">GitHub →</a>
   </div>
 </header>
 
