@@ -136,7 +136,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Scope</dt>
-        <dd>It tests cloud interactions, not applications. A test asks for a <code>BlobStorage</code> and drives it directly, so you can assert your code writes what you meant. It cannot point a Spring Boot, Quarkus or Micronaut context at the emulator: no endpoint and no credential is reachable from the provider-neutral API, and the only route to one crosses into an internal package and undoes the neutrality the library exists for. Closing that is specified and undecided. <span class="tag tag-next">not yet</span></dd>
+        <dd>It tests cloud interactions, not applications. A test asks for a <code>BlobStorage</code> and drives it directly, so you can assert your code writes what you meant. It cannot point a Spring Boot, Quarkus or Micronaut context at the emulator: no endpoint and no credential is reachable from the provider-neutral API, and the only route to one crosses into an internal package and undoes the neutrality the library exists for. The fix is decided, a flat map of provider-neutral connection properties, and built with a worked Spring Boot and Quarkus example each, in pull requests that are not yet merged or released. <span class="tag tag-next">not yet</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Known defects</dt>
@@ -183,7 +183,7 @@
         </div>
         <div class="faq-item">
           <h3>Can I test my Spring Boot app with it?</h3>
-          <p>Not yet. It drives cloud capabilities directly; it does not configure an application under test, because nothing in the provider-neutral API hands you an endpoint or a credential. For that today, use Testcontainers' LocalStack module. Adding a provider-neutral connection accessor is specified and open.</p>
+          <p>Not yet. It drives cloud capabilities directly; it does not configure an application under test, because nothing in the provider-neutral API hands you an endpoint or a credential. For that today, use Testcontainers' LocalStack module. A provider-neutral connection accessor is decided and built, with Spring Boot and Quarkus examples, and is in review: it reaches this page when a release carries it.</p>
         </div>
         <div class="faq-item">
           <h3>Why not just mock the SDK?</h3>
