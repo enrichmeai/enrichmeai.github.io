@@ -58,6 +58,9 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-heading); }
 p { margin: 0; text-wrap: pretty; }
 ul { margin: 0; padding: 0; list-style: none; }
 code { font-family: monospace; }
+/* An inline command or path is one long word; on a narrow screen it may break anywhere rather
+   than push the page sideways. Code blocks keep their own scrolling. */
+:not(pre) > code { overflow-wrap: break-word; }
 a { color: var(--color-accent-700); text-decoration: none; text-underline-offset: 3px; }
 a:hover { color: var(--color-accent-900); text-decoration: underline; }
 :focus { outline: none; }
@@ -199,7 +202,7 @@ h1, .h1 {
 /* ── Marker list ────────────────────────────────────────────────────────── */
 .marker-list { display: flex; flex-direction: column; gap: 13px; }
 .marker-list li {
-  display: grid; grid-template-columns: 14px 1fr; gap: 12px;
+  display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 12px;
   font-size: 16px; line-height: 1.52; color: var(--color-neutral-800);
 }
 .marker-list .mk { color: var(--color-accent); }
