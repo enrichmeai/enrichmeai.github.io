@@ -228,7 +228,7 @@
         </div>
         <div class="spec-row">
           <dt>Added</dt>
-          <dd><code style="font-size:14.5px">InputReadiness</code>: whether every input a unit expects for a period is produced and validated. It names each input that is missing, failed or still running, rather than counting rows. A failure is cleared only by a later attempt that names it as a retry and validates. On PostgreSQL only, and no gate uses it yet.</dd>
+          <dd><code style="font-size:14.5px">InputReadiness</code>: whether every input a unit expects for a period is produced and validated. It names each input that is missing, failed or still running, rather than counting rows. A failure is replaced only by a later attempt that names it as a retry, and the input is ready once that attempt validates; a later success that does not name it leaves the input failed. On PostgreSQL only, and no gate uses it yet.</dd>
         </div>
         <div class="spec-row">
           <dt>Added</dt>
