@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>enrich-test-api · cloud tests that never name a cloud</title>
-<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Alpha: AWS only, emulator only, unpublished until its first tag, and it tests cloud calls rather than configuring your application.">
+<meta name="description" content="A Java test library for exercising real cloud service semantics against local emulators. The capability interfaces carry no vendor SDK, so a test compiled against them names no provider. Alpha on Maven Central: AWS only, emulator only, and it can point your Spring Boot or Quarkus application at the same emulator.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -24,6 +24,7 @@
       <a href="#test">A test</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#status">Where it stands</a>
+      <a href="#whats-new">What's new</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="spacer"></div>
@@ -35,10 +36,10 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · alpha · <span data-eta="main-version">0.3.0-alpha1</span> on main · <span data-eta="maven-version">unpublished</span></p>
+      <p class="eyebrow">Open source · alpha · <span data-eta="maven-version">0.3.0-alpha1</span> on Maven Central · <span data-eta="main-version">0.3.0-alpha2-SNAPSHOT</span> on main</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <span>Not yet on Maven Central: the release path is built and rehearsed, and nothing has been tagged. One provider, AWS. Emulator only. It tests your cloud calls; it cannot configure your application under test. Build it from source, or wait for the <code>v<span data-eta="next-version">0.3.0-alpha1</span></code> release tag.</span>
+        <span>An alpha, on Maven Central. One provider, AWS. Emulator only. It tests your cloud calls, and it can hand your application under test the emulator&rsquo;s endpoints and credentials. One adapter cannot yet prove the seam holds for a second cloud.</span>
       </div>
       <h1>Cloud tests that <span class="accent">never name</span> a cloud.</h1>
     </div>
@@ -77,6 +78,11 @@
   </div>
 
   <div class="section-body">
+    <div class="blueprint code-frame" style="margin-bottom:24px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>maven</span><span>Java 17 · Docker running</span></div>
+      <pre><div class="cmt">&lt;!-- the capabilities, the SPI and the JUnit 5 extension --&gt;</div><div>&lt;dependency&gt;</div><div>  &lt;groupId&gt;com.enrichmeai&lt;/groupId&gt; &lt;artifactId&gt;<span class="tok">test-core</span>&lt;/artifactId&gt;</div><div>  &lt;version&gt;<span data-eta="maven-version">0.3.0-alpha1</span>&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt;</div><div>&lt;/dependency&gt;</div><div class="cmt">&lt;!-- the AWS adapter, found at runtime; your tests never import it --&gt;</div><div>&lt;dependency&gt;</div><div>  &lt;groupId&gt;com.enrichmeai&lt;/groupId&gt; &lt;artifactId&gt;<span class="tok">test-cloud-aws</span>&lt;/artifactId&gt;</div><div>  &lt;version&gt;<span data-eta="maven-version">0.3.0-alpha1</span>&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt;</div><div>&lt;/dependency&gt;</div></pre>
+    </div>
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>java</span><span>JUnit 5 · no provider named</span></div>
@@ -86,6 +92,11 @@
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>gherkin</span><span>the same infrastructure, from a feature file</span></div>
       <pre><div><span class="tok">Given</span> cloud provider is <span class="tok">"aws"</span></div><div><span class="tok">And</span> cloud mode is <span class="tok">"emulator"</span></div><div><span class="tok">And</span> cloud region is <span class="tok">"eu-west-1"</span></div><div class="sep"></div><div class="cmt"># the steps below mention no AWS service by name</div></pre>
+    </div>
+    <div class="blueprint code-frame" style="margin-top:24px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>java</span><span>your Spring Boot app, pointed at the same emulator</span></div>
+      <pre><div class="cmt">// abridged from examples/spring-boot in the repository</div><div><span class="tok">@DynamicPropertySource</span></div><div><span class="tok">static void</span> cloud(DynamicPropertyRegistry r) {</div><div>  Map&lt;String, String&gt; c = CloudAdapters.get(AWS, config).connectionProperties();</div><div>  r.add(<span class="tok">"app.storage.endpoint"</span>, () -&gt; c.get(endpoint(STORAGE)));</div><div>  r.add(<span class="tok">"app.storage.access-key"</span>, () -&gt; c.get(CREDENTIALS_KEY));</div><div>}</div><div class="cmt">// Quarkus: return the same map from a QuarkusTestResourceLifecycleManager</div></pre>
     </div>
     <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:26px">The extension resolves the parameter, <code>ServiceLoader</code> finds the AWS adapter on the classpath, and the adapter starts one LocalStack container per JVM and shares it. Docker has to be running. There is no credential to configure, because there is no account.</p>
   </div>
@@ -128,7 +139,7 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Build</dt>
-        <dd>A plain <code>mvn -B verify</code> on JDK 17, which is also what CI builds on, is green with no skip flags and runs 36 tests: 18 unit, 11 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
+        <dd>A plain <code>mvn -B verify</code> on JDK 17, which is also what CI builds on, is green with no skip flags and runs 47 tests: 26 unit, 14 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Coverage</dt>
@@ -136,7 +147,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Scope</dt>
-        <dd>It tests cloud interactions, not applications. A test asks for a <code>BlobStorage</code> and drives it directly, so you can assert your code writes what you meant. It cannot point a Spring Boot, Quarkus or Micronaut context at the emulator: no endpoint and no credential is reachable from the provider-neutral API, and the only route to one crosses into an internal package and undoes the neutrality the library exists for. The fix is decided, a flat map of provider-neutral connection properties, and built with a worked Spring Boot and Quarkus example each, in pull requests that are not yet merged or released. <span class="tag tag-next">not yet</span></dd>
+        <dd>Cloud interactions and the application under test. A test drives a <code>BlobStorage</code> directly to assert your code wrote what you meant, and <code>connectionProperties()</code> hands your application the same emulator&rsquo;s endpoints, region and credentials under provider-neutral keys, with no vendor SDK type, no Testcontainers type and nothing from an internal package. The repository has a worked example for each of Spring Boot 4 and Quarkus, built and tested in CI against every commit. Micronaut has no example. <span class="tag tag-live">released</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Known defects</dt>
@@ -156,11 +167,11 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Distribution</dt>
-        <dd>Not published, but no longer for lack of a path. A tag now builds on JDK 17, runs the full verify, signs, and uploads to Maven Central through the Sonatype Central Portal, with a person pressing Publish on the Portal as the last step. The path was rehearsed against a local stand-in for the Portal, not against Sonatype; the first real tag, <code data-eta="next-version">0.3.0-alpha1</code>, waits on credentials only the maintainer can create. Until it exists, build from source. <span class="tag tag-next">path built, untagged</span></dd>
+        <dd>On Maven Central. Merging a release pull request builds on JDK 17, runs the full verify, signs, uploads through the Sonatype Central Portal and tags the commit; a person presses Publish on the Portal as the last step, and did for the first release on 4 October 2026. <span class="tag tag-live">published</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Artifacts</dt>
-        <dd><code data-eta-artifact="test-core" data-state="unreleased">com.enrichmeai:test-core</code>, the provider-neutral capabilities and the JUnit 5 extension, and <code data-eta-artifact="test-cloud-aws" data-state="unreleased">com.enrichmeai:test-cloud-aws</code>, the AWS adapter, are what a tag publishes. <code>test-feature</code> has no main sources and is not published. <span class="tag tag-next">not yet on Maven Central</span></dd>
+        <dd><span data-eta-artifact="test-core" data-state="released"><code>com.enrichmeai:test-core</code>, the provider-neutral capabilities, the SPI and the JUnit 5 extension, <span class="tag tag-live" data-eta="artifact-version">0.3.0-alpha1</span></span>; <span data-eta-artifact="test-cloud-aws" data-state="released"><code>com.enrichmeai:test-cloud-aws</code>, the AWS adapter, <span class="tag tag-live" data-eta="artifact-version">0.3.0-alpha1</span></span>. <code>test-feature</code> has no main sources and is not published.</dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Supply chain</dt>
@@ -170,8 +181,40 @@
     <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:30px">The planning documents are in the repository rather than summarised here: a product brief, a PRD with numbered requirements, an architecture spine with its decisions, and a backlog of eight epics covering the gaps above. <a href="https://github.com/enrichmeai/enrich-test-api/tree/main/docs/specs">Read the specs →</a></p>
   </div>
 
+  <div id="whats-new" class="section-rule">
+    <span class="name">What's new</span><span class="num">05</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">What each release added</h2>
+      <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/enrich-test-api/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
+    </div>
+    <section class="spec-list" data-eta-release="0.3.0-alpha1" aria-label="enrich-test-api 0.3.0-alpha1">
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0-alpha1 <span class="tag tag-live">the first release, on Maven Central</span></h3>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd>Your application under test can reach the emulator. <code style="font-size:14.5px">CloudAdapter.connectionProperties()</code> returns the endpoints, region and credentials under provider-neutral keys, the constants in <code style="font-size:14.5px">ConnectionProperties</code>, ready for a Spring Boot <code style="font-size:14.5px">@DynamicPropertySource</code> or a Quarkus <code style="font-size:14.5px">QuarkusTestResourceLifecycleManager</code>.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Added</dt>
+          <dd>Worked examples for Spring Boot 4 and Quarkus, standalone projects in <code style="font-size:14.5px">examples/</code> that configure a real service only from those properties, built and tested in CI against every commit.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Changed</dt>
+          <dd>Testcontainers 2, the line Spring Boot 4 and Quarkus 3.31 onwards manage. A project still on Testcontainers 1 gets 2 through this library.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Breaking</dt>
+          <dd>The Maven coordinates and the Java packages are <code style="font-size:14.5px">com.enrichmeai</code>, no longer <code style="font-size:14.5px">org.deveasy</code>; settled before the first publish because publishing makes them permanent.</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+
   <div id="faq" class="section-rule">
-    <span class="name">FAQ</span><span class="num">05</span>
+    <span class="name">FAQ</span><span class="num">06</span>
   </div>
 
   <div class="section-body">
@@ -179,11 +222,11 @@
       <div class="faq-col">
         <div class="faq-item">
           <h3>Can I use this today?</h3>
-          <p>Only by building it from source, and only against AWS in emulator mode. Nothing is published yet: the release path to Maven Central is built and rehearsed, and the first tag has not been pushed. The defects this page used to list in the several-test-classes-in-one-run case are fixed; what remains open is listed above rather than left for you to find.</p>
+          <p>Yes, as an alpha, against AWS in emulator mode: add <code>test-core</code> and <code>test-cloud-aws</code> from Maven Central with test scope (above), and have Docker running. What remains open is listed above rather than left for you to find.</p>
         </div>
         <div class="faq-item">
           <h3>Can I test my Spring Boot app with it?</h3>
-          <p>Not yet. It drives cloud capabilities directly; it does not configure an application under test, because nothing in the provider-neutral API hands you an endpoint or a credential. For that today, use Testcontainers' LocalStack module. A provider-neutral connection accessor is decided and built, with Spring Boot and Quarkus examples, and is in review: it reaches this page when a release carries it.</p>
+          <p>Yes. <code>connectionProperties()</code> gives you the emulator&rsquo;s endpoints, region and credentials; copy them into your application&rsquo;s own keys from a <code>@DynamicPropertySource</code>, as the Spring Boot 4 example in the repository does. Quarkus works the same way through a test resource, and has its own example.</p>
         </div>
         <div class="faq-item">
           <h3>Why not just mock the SDK?</h3>
