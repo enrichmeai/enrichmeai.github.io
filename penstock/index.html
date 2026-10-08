@@ -22,6 +22,7 @@
     <nav class="site-nav">
       <a href="#idea">The idea</a>
       <a href="#run">Run it</a>
+      <a href="#memory">Memory</a>
       <a href="#surface">Surfaces</a>
       <a href="#status">Status</a>
       <a href="#scans">Scan record</a>
@@ -36,7 +37,7 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · self-hosted · v0.3.0</p>
+      <p class="eyebrow">Open source · self-hosted · v0.5.0</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span>Run it on your own machine, not on a network. It has not cleared the stranger test yet.</span>
@@ -47,15 +48,15 @@
   </div>
 
   <div class="hero-below">
-    <p class="lede">Penstock runs your agents on your data, with receipts. A self-hosted agent runtime for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage, webhooks) against your own internal systems, on models you choose: Copilot, Claude, OpenAI, or a local one. Three things define it. <strong style="font-weight:600;color:var(--color-text)">Where it runs</strong>: headless, not at a developer's keyboard. <strong style="font-weight:600;color:var(--color-text)">Whose hardware</strong>: yours; the transcript, the audit log and the credentials never leave the deployment. <strong style="font-weight:600;color:var(--color-text)">Whose data, provably</strong>: through the pod tool it reads a person's own data in a Cistern pod under rules that person wrote, and every access is receipted on their side, not ours. And it keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk.</p>
+    <p class="lede">Penstock runs your agents on your data, with receipts. A self-hosted agent runtime for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage, webhooks) against your own internal systems, on models you choose: Copilot, Claude, OpenAI, or a local one. Three things define it. <strong style="font-weight:600;color:var(--color-text)">Where it runs</strong>: headless, not at a developer's keyboard. <strong style="font-weight:600;color:var(--color-text)">Whose hardware</strong>: yours; the transcript, the audit log and the credentials never leave the deployment. <strong style="font-weight:600;color:var(--color-text)">Whose data, provably</strong>: through the pod tool it reads a person's own data in a Cistern pod under rules that person wrote, and every access is receipted on their side, not ours. And it keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk. Since v0.4.0 it also remembers: before every model call it recalls your own notes from a memory you keep as plain files, and the log shows what it recalled.</p>
     <div class="stack">
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div class="frame-kicker" style="margin-bottom:10px">What v0.3.0 ships</div>
-        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">A signed jar, a bill of materials, a multi-architecture image, and the Agent Client Protocol: the same agent runs inside JetBrains Air or Zed.</span>
+        <div class="frame-kicker" style="margin-bottom:10px">What v0.5.0 ships</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">Your memory follows your rules: each project you declare gets only the notes its audience may see. And the same memory reaches Claude Code and Claude Desktop through a local MCP server. A jar, a bill of materials and a multi-architecture image, as before.</span>
       </div>
       <div class="btn-row">
-        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.3.0" class="btn btn-primary btn-lg">Release v0.3.0 →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.0" class="btn btn-primary btn-lg">Release v0.5.0 →</a>
         <a href="https://github.com/enrichmeai/penstock" class="btn btn-secondary btn-lg">Source →</a>
       </div>
     </div>
@@ -106,7 +107,7 @@
         <tr><td>Where it runs</td><td>Headless: CI, chat, cron, webhooks. No editor needed.</td><td>Inside JetBrains IDEs, the browser, or the Air desktop app (<a href="https://www.jetbrains.com/help/air/ways-to-reach-air-teams.html">docs</a>)</td></tr>
         <tr><td>Whose hardware</td><td>Yours. Self-hosted, Apache 2.0; nothing leaves the deployment.</td><td>Cloud environments: "a Docker container that runs on a virtual machine in the cloud" (<a href="https://www.jetbrains.com/help/air/configure-environments.html">docs</a>)</td></tr>
         <tr><td>What is governed</td><td>Whose data an agent touches, under rules that person wrote, receipted on their side through the pod tool and a <a href="/cistern/">Cistern</a> pod</td><td>Agent and model permissions, spend and auditability for the organisation (<a href="https://blog.jetbrains.com/blog/2026/09/22/introducing-jetbrains-air/">announcement</a>, <a href="https://www.jetbrains.com/air/">product page</a>)</td></tr>
-        <tr><td>Together</td><td colspan="2">Penstock speaks the Agent Client Protocol, so it can run as one of the agents Air or Zed offers. The first cut is on <code style="font-size:14.5px">main</code>, not yet in a release; see Status below.</td></tr>
+        <tr><td>Together</td><td colspan="2">Penstock speaks the Agent Client Protocol, so it can run as one of the agents Air or Zed offers. It has been in the releases since v0.3.0; see Status below.</td></tr>
       </tbody>
     </table>
   </div>
@@ -118,23 +119,100 @@
   <div class="section-body">
     <div class="heading-row">
       <h2 class="section-h2">On your own machine, for now</h2>
-      <p class="intro">The release carries a signed jar, a bill of materials and a multi-architecture image. Until it clears the stranger test, treat it as something to run locally rather than expose.</p>
+      <p class="intro">The release carries a jar, a bill of materials and a multi-architecture image. Until it clears the stranger test, treat it as something to run locally rather than expose.</p>
     </div>
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Java · Spring Boot</span></div>
-      <pre><div class="cmt"># the signed jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.3.0.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside JetBrains Air or Zed, over stdio</div><div><span class="tok">java</span> -jar penstock-0.3.0.jar --acp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.3.0</div></pre>
+      <pre><div class="cmt"># the jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.5.0.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside JetBrains Air or Zed, over stdio</div><div><span class="tok">java</span> -jar penstock-0.5.0.jar --acp</div><div class="sep"></div><div class="cmt"># or as a memory server for Claude Code or Claude Desktop, over stdio</div><div><span class="tok">java</span> -jar penstock-0.5.0.jar --mcp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.5.0</div></pre>
     </div>
-    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.3.0">v0.3.0 →</a>.</p>
+    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.0">v0.5.0 →</a>.</p>
+    <div class="blueprint caveat" style="margin-top:24px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span>Security fix in v0.4.0: from v0.1.0 to v0.3.0, the pod tool and the Jira tool also sent the model provider's request headers, which with Anthropic includes the API key. If you ran one of those versions with the Jira tool configured, treat that provider key as exposed to the Jira server and rotate it. <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.4.0">The v0.4.0 notes →</a></span>
+    </div>
+  </div>
+
+  <div id="memory" class="section-rule">
+    <span class="name">Memory</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row align-start" style="margin-bottom:40px">
+      <h2 class="section-h2" style="max-width:15ch">It remembers, in files you own</h2>
+      <div class="prose-col">
+        <p>With memory on (<code style="font-size:14.5px">AGENT_MEMORY_ENABLED=true</code>), Penstock recalls before every model call. It loads matching facts, the latest episodes of the project you are in, and matching patterns into the system prompt. Every card it loads is written to the audit log, and the web UI's Audit view lists them ahead of the model call they went into.</p>
+        <p>The memory is plain files in a folder or a private git repository you own: <code style="font-size:14.5px">estate/</code> for what holds everywhere, and one <code style="font-size:14.5px">projects/&lt;name&gt;/</code> per project. Every card carries a format version and a visibility, the JSON Schemas ship in the repository, and nothing in the format depends on one model.</p>
+      </div>
+    </div>
+
+    <div class="heading-row align-start" style="margin-bottom:28px">
+      <h3 class="section-h2" style="max-width:15ch;font-size:28px">Who sees which card</h3>
+      <div class="prose-col">
+        <p>Since v0.5.0, your root's <code style="font-size:14.5px">memory.yaml</code> can declare your projects and the audience that sees each one's output. A card loads into a project only if everyone who sees that project's output may see the card. Every turn records each section as loaded or refused, with the reason, and the Audit view shows both.</p>
+      </div>
+    </div>
+    <div class="table-wrap" style="margin-bottom:28px">
+      <table class="table">
+        <thead>
+          <tr><th>Into a project that is</th><th>public</th><th>private</th><th>private, <code style="font-size:14.5px">personal: none</code></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Its own project's cards</td><td>Loaded</td><td>Loaded</td><td>Loaded</td></tr>
+          <tr><td>A public project it <code style="font-size:14.5px">uses</code></td><td>Loaded</td><td>Loaded</td><td>Loaded</td></tr>
+          <tr><td>A private project it <code style="font-size:14.5px">uses</code></td><td>Refused</td><td>Loaded</td><td>Loaded</td></tr>
+          <tr><td>Your personal cards marked shareable or public</td><td>Loaded</td><td>Loaded</td><td>Not loaded</td></tr>
+          <tr><td>Your private personal cards</td><td>Not loaded, by default</td><td>Loaded</td><td>Not loaded</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blueprint code-frame" style="margin-bottom:20px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>memory.yaml</span><span>format 1</span></div>
+      <pre><div><span class="tok">projects</span>:</div><div>  oss-lib:    { audience: public }</div><div>  platform:   { audience: private, uses: [oss-lib] }</div><div>  standalone: { audience: private, personal: none, uses: [oss-lib] }</div></pre>
+    </div>
+    <p class="note" style="margin-bottom:56px">An explicit <code style="font-size:14.5px">personal: all</code> loads every personal card, so leave it off a public project. A root without a <code style="font-size:14.5px">projects:</code> block behaves as it did in v0.4.0. The rules are in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.0/docs/memory-root.md#projects-and-who-sees-them">the shipped docs</a>.</p>
+
+    <div class="heading-row align-start" style="margin-bottom:28px">
+      <h3 class="section-h2" style="max-width:15ch;font-size:28px">How it gets better</h3>
+      <div class="prose-col">
+        <p>Memory grows from the work, and you decide what stays. Nothing is promoted on its own.</p>
+      </div>
+    </div>
+    <div class="rule-cols c3" style="margin-bottom:56px">
+      <div class="rule-column">
+        <span class="kicker" style="color:var(--color-neutral-700)">1 · Write it down</span>
+        <p><code style="font-size:14.5px">write-episode.sh --root</code> drafts a dated record of the work as a file. From Claude Code, the <code style="font-size:14.5px">draft_episode</code> tool does the same and never overwrites.</p>
+      </div>
+      <div class="rule-column">
+        <span class="kicker" style="color:var(--color-neutral-700)">2 · Propose facts</span>
+        <p><code style="font-size:14.5px">consolidate.sh --root --write</code> turns what an episode learned into proposed facts in the same project's <code style="font-size:14.5px">facts/</code>.</p>
+      </div>
+      <div class="rule-column is-accent">
+        <span class="kicker">3 · You review and commit</span>
+        <p>Both are files for you to read and commit. A line that looks like a credential stops the run before anything is written: a pattern check, not a guarantee.</p>
+      </div>
+    </div>
+
+    <div class="heading-row align-start" style="margin-bottom:28px">
+      <h3 class="section-h2" style="max-width:15ch;font-size:28px">In Claude Code and Claude Desktop</h3>
+      <div class="prose-col">
+        <p><code style="font-size:14.5px">--mcp</code> runs Penstock as a local MCP server over stdio. The client starts it on your machine, so there is no network listener and no credential. <code style="font-size:14.5px">recall</code> returns the memory a Penstock turn would give its model for the question, built by the same code under the same project rules, and read-only. A <code style="font-size:14.5px">start-with-memory</code> prompt asks the client to call it before it plans. Every call is audited. The <code style="font-size:14.5px">claude mcp add</code> command is in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.0/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
+      </div>
+    </div>
+    <div class="blueprint caveat">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span>What it does not do yet. Run the jar for <code style="font-size:14.5px">--mcp</code>, not the Docker image: the image's entrypoint writes to stdout, which belongs to MCP messages. With MCP the client decides when to call <code style="font-size:14.5px">recall</code>; inside Penstock, recall still happens before every model call. Hosted sessions and Claude Cowork cannot read the memory yet, and there is no memory browser or review inbox in the web UI: review happens in the files.</span>
+    </div>
   </div>
 
   <div id="surface" class="section-rule">
-    <span class="name">Surfaces</span><span class="num">03</span>
+    <span class="name">Surfaces</span><span class="num">04</span>
   </div>
 
   <div class="section-body">
     <div class="heading-row">
-      <h2 class="section-h2">Three surfaces, one log</h2>
+      <h2 class="section-h2">Every surface, one log</h2>
       <p class="intro">However the work arrives, it is written down the same way and attributed to the authenticated user.</p>
     </div>
     <div class="table-wrap">
@@ -146,6 +224,8 @@
           <tr><td>Web</td><td>A person working with the agent directly</td><td>Every model call and tool invocation</td></tr>
           <tr><td>REST</td><td>CI hooks and scheduled triage</td><td>Every model call and tool invocation</td></tr>
           <tr><td>Streaming</td><td>Chat commands and long-running work</td><td>Every model call and tool invocation</td></tr>
+          <tr><td>Editor (<code style="font-size:14.5px">--acp</code>)</td><td>The agent inside JetBrains Air or Zed</td><td>Every model call and tool invocation</td></tr>
+          <tr><td>Memory server (<code style="font-size:14.5px">--mcp</code>)</td><td>Your memory in Claude Code or Claude Desktop</td><td>Every recall and draft, with the sections and cards a recall returned</td></tr>
           <tr><td>Models</td><td>Pluggable, including a local one</td><td>The call is logged whichever model served it</td></tr>
         </tbody>
       </table>
@@ -153,7 +233,7 @@
   </div>
 
   <div id="status" class="section-rule">
-    <span class="name">Status</span><span class="num">04</span>
+    <span class="name">Status</span><span class="num">05</span>
   </div>
 
   <div class="section-body">
@@ -164,11 +244,11 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Today</dt>
-        <dd>Open source: three surfaces (web, REST, streaming), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable from the app itself. <span class="tag tag-live">live</span></dd>
+        <dd>Open source: five surfaces (web, REST, streaming, the editor over ACP and the memory server over MCP), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable from the app itself. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Release</dt>
-        <dd>v0.3.0: a signed jar, a bill of materials, a multi-architecture image, and the Agent Client Protocol mode. <span class="tag tag-live">live</span></dd>
+        <dd>v0.5.0: a jar, a bill of materials and a multi-architecture image, with project audiences for memory and the MCP mode. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Governed access</dt>
@@ -176,7 +256,15 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>In your IDE</dt>
-        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a href="https://github.com/enrichmeai/penstock/blob/v0.3.0/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live">v0.3.0</span></dd>
+        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.0/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live">v0.3.0</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Memory</dt>
+        <dd>Recall before every model call from a memory root you own, with each loaded card on the audit log (v0.4.0). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (v0.5.0). <span class="tag tag-live">v0.5.0</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Planned</dt>
+        <dd>Not in a release, and named here so the gap is visible. Hosted sessions and Claude Cowork reading the memory from a pod (<a href="https://github.com/enrichmeai/penstock/issues/89">#89</a>). A memory browser and a review inbox in the web UI (<a href="https://github.com/enrichmeai/penstock/issues/107">#107</a>, <a href="https://github.com/enrichmeai/penstock/issues/108">#108</a>). Falling back to a local model when no key is set (<a href="https://github.com/enrichmeai/penstock/issues/106">#106</a>). A Gemini provider and a Perplexity search tool (<a href="https://github.com/enrichmeai/penstock/issues/114">#114</a>, <a href="https://github.com/enrichmeai/penstock/issues/115">#115</a>). <span class="tag tag-next">planned</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Later</dt>
@@ -190,27 +278,28 @@
   </div>
 
   <div id="scans" class="section-rule">
-    <span class="name">Scan record</span><span class="num">05</span>
+    <span class="name">Scan record</span><span class="num">06</span>
   </div>
 
   <div class="section-body">
     <div class="heading-row" style="align-items:start;margin-bottom:40px">
       <h2 class="section-h2">Yours to read, not ours to claim</h2>
       <div class="prose-col" style="max-width:60ch">
-        <p>Everything with a fix available has been fixed: across four releases, 138 findings down to 85 and the criticals from fourteen to one. That one is waiting on an upstream release that does not exist yet, so there is nothing to apply rather than something left undone.</p>
+        <p>Each release's image is scanned for high and critical findings, and the report is attached to the release. From v0.1.0 to v0.5.0 the report total went from 138 to 61. A report counts a finding once for each copy of the library it finds in the image, so its totals run higher than the number of distinct vulnerabilities.</p>
+        <p>Six distinct critical vulnerabilities are open in v0.5.0, which the report totals as 12. Five are in libraries the application ships: three in Tomcat and one in Netty, where the scanner lists a fixed version that has not been applied yet, and one in Spring Web MVC, where it lists a fix only in Spring Framework 7. The sixth is in BouncyCastle inside the Gradle toolchain the image carries, with a listed fix in 1.85. Earlier versions of this page said every finding with a fix had been fixed. The v0.3.0 report already showed that was no longer true.</p>
         <p>Every scan is attached to its release, so the whole series is yours to read rather than ours to claim.</p>
       </div>
     </div>
     <div class="rule-cols c3">
       <div class="rule-column">
-        <span class="kicker" style="color:var(--color-neutral-700)">Across four releases</span>
-        <span class="figure-num">138 <span class="to">→</span> 85</span>
-        <p>Total findings.</p>
+        <span class="kicker" style="color:var(--color-neutral-700)">v0.1.0 to v0.5.0</span>
+        <span class="figure-num">138 <span class="to">→</span> 61</span>
+        <p>High and critical findings, as each report totals them, counting every copy.</p>
       </div>
       <div class="rule-column is-accent">
-        <span class="kicker">Criticals</span>
-        <span class="figure-num accent">14 <span class="to">→</span> 1</span>
-        <p>The remaining one waits on an upstream release that does not exist yet.</p>
+        <span class="kicker">Distinct criticals, open in v0.5.0</span>
+        <span class="figure-num accent">6</span>
+        <p>The report totals 12, one per copy. Five have a listed fix that is not applied yet; Spring Web MVC's listed fix needs Spring Framework 7.</p>
       </div>
       <div class="rule-column">
         <span class="kicker" style="color:var(--color-neutral-700)">Published</span>
@@ -221,7 +310,7 @@
   </div>
 
   <div id="faq" class="section-rule">
-    <span class="name">FAQ</span><span class="num">06</span>
+    <span class="name">FAQ</span><span class="num">07</span>
   </div>
 
   <div class="section-body">
@@ -237,7 +326,11 @@
         </div>
         <div class="faq-item">
           <h3>Can I run it inside my editor?</h3>
-          <p>On <code style="font-size:14.5px">main</code>, yes: <code style="font-size:14.5px">--acp</code> speaks the Agent Client Protocol over stdio to JetBrains Air or Zed, with the read-only tools and the pod tool first. It is not in a release yet, so build from source or wait for the next tag.</p>
+          <p>Yes, since v0.3.0: <code style="font-size:14.5px">--acp</code> speaks the Agent Client Protocol over stdio to JetBrains Air or Zed. The read-only tools and pod reads run unprompted; writes, shell and git go through the editor's permission prompt first.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can Claude Code use my memory?</h3>
+          <p>Yes, since v0.5.0: register <code style="font-size:14.5px">java -jar penstock-0.5.0.jar --mcp</code> as a local MCP server, and <code style="font-size:14.5px">recall</code> answers from your memory root under the same project rules. The client decides when to call it, which a Penstock turn does not leave to chance.</p>
         </div>
         <div class="faq-item">
           <h3>Do I have to send anything to a model provider?</h3>
@@ -250,8 +343,12 @@
           <p>No. It is an agent in its own right. The pod tool is what makes what the agent read receipted on the owner's side, and it is what turns the audit log into two records that can be checked against each other. <a href="/cistern/">See Cistern →</a></p>
         </div>
         <div class="faq-item">
-          <h3>Why publish a critical finding rather than close it quietly?</h3>
-          <p>Because there is no fix to apply. It waits on an upstream release that does not exist yet, and saying so is more useful than a clean dashboard.</p>
+          <h3>Can my open-source work see my private notes?</h3>
+          <p>Not if you declare it public. A public project never loads a private project's cards, and by default gets only the personal cards you marked shareable or public. Each refusal is recorded with its reason.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Why publish open critical findings?</h3>
+          <p>Because the reports are attached to the releases anyway, and a page that disagreed with them would be the thing not to trust. Six are open in v0.5.0; the scan record above says which, and which have a fix to apply.</p>
         </div>
         <div class="faq-item">
           <h3>Is any of it held back for a paid tier?</h3>
@@ -266,12 +363,12 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">penstock 0.3.0 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">penstock 0.5.0 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get it</h4>
-        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.3.0">Release v0.3.0: jar · SBOM · image →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.0">Release v0.5.0: jar · SBOM · image →</a>
         <a href="https://github.com/enrichmeai/penstock">GitHub: source →</a>
         <a href="https://github.com/enrichmeai/penstock/releases">The scan series →</a>
       </nav>
