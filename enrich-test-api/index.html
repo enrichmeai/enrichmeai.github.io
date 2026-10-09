@@ -36,7 +36,7 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · alpha · <span data-eta="maven-version">0.3.0-alpha1</span> on Maven Central · <span data-eta="main-version">0.3.0-alpha2-SNAPSHOT</span> on main</p>
+      <p class="eyebrow">Open source · alpha · <span data-eta="maven-version">0.3.0-alpha2</span> on Maven Central · <span data-eta="main-version">0.3.0-alpha3-SNAPSHOT</span> on main</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span>An alpha, on Maven Central. One provider, AWS. Emulator only. It tests your cloud calls, and it can hand your application under test the emulator&rsquo;s endpoints and credentials. One adapter cannot yet prove the seam holds for a second cloud.</span>
@@ -81,7 +81,7 @@
     <div class="blueprint code-frame" style="margin-bottom:24px">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>maven</span><span>Java 17 · Docker running</span></div>
-      <pre><div class="cmt">&lt;!-- the capabilities, the SPI and the JUnit 5 extension --&gt;</div><div>&lt;dependency&gt;</div><div>  &lt;groupId&gt;com.enrichmeai&lt;/groupId&gt; &lt;artifactId&gt;<span class="tok">test-core</span>&lt;/artifactId&gt;</div><div>  &lt;version&gt;<span data-eta="maven-version">0.3.0-alpha1</span>&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt;</div><div>&lt;/dependency&gt;</div><div class="cmt">&lt;!-- the AWS adapter, found at runtime; your tests never import it --&gt;</div><div>&lt;dependency&gt;</div><div>  &lt;groupId&gt;com.enrichmeai&lt;/groupId&gt; &lt;artifactId&gt;<span class="tok">test-cloud-aws</span>&lt;/artifactId&gt;</div><div>  &lt;version&gt;<span data-eta="maven-version">0.3.0-alpha1</span>&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt;</div><div>&lt;/dependency&gt;</div></pre>
+      <pre><div class="cmt">&lt;!-- the capabilities, the SPI and the JUnit 5 extension --&gt;</div><div>&lt;dependency&gt;</div><div>  &lt;groupId&gt;com.enrichmeai&lt;/groupId&gt; &lt;artifactId&gt;<span class="tok">test-core</span>&lt;/artifactId&gt;</div><div>  &lt;version&gt;<span data-eta="maven-version">0.3.0-alpha2</span>&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt;</div><div>&lt;/dependency&gt;</div><div class="cmt">&lt;!-- the AWS adapter, found at runtime; your tests never import it --&gt;</div><div>&lt;dependency&gt;</div><div>  &lt;groupId&gt;com.enrichmeai&lt;/groupId&gt; &lt;artifactId&gt;<span class="tok">test-cloud-aws</span>&lt;/artifactId&gt;</div><div>  &lt;version&gt;<span data-eta="maven-version">0.3.0-alpha2</span>&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt;</div><div>&lt;/dependency&gt;</div></pre>
     </div>
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -139,11 +139,11 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Build</dt>
-        <dd>A plain <code>mvn -B verify</code> on JDK 17, which is also what CI builds on, is green with no skip flags and runs 47 tests: 26 unit, 14 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
+        <dd>A plain <code>mvn -B verify</code> on JDK 17, which is also what CI builds on, is green with no skip flags and runs 85 tests: 49 unit, 29 integration against LocalStack, 7 Cucumber scenarios. Formatting, style, dependency convergence and coverage floors are all enforced in that one command. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Coverage</dt>
-        <dd>Measured: line 0.81 and branch 0.67 in the core module; line 0.72 and branch 0.44 in the AWS adapter. The target is 0.80 and 0.70: the core now meets it on lines and not on branches, the adapter meets neither. The floors the build enforces are still the values measured before the cleanup work, 0.58/0.30 and 0.66/0.35, so for the moment the gate is honest but slack; raising it to the new numbers is its own item and is listed rather than assumed. <span class="tag tag-neutral">below target</span></dd>
+        <dd>Measured: every line and every branch in the core module; line 0.93 and branch 0.75 in the AWS adapter. The target is 0.80 and 0.70, and both modules meet it. The floors the build enforces are those measured values, cut to two decimal places: 1.00 and 1.00 for the core, 0.92 and 0.74 for the adapter, so a drop below these values fails the build. What the adapter still misses is mostly provider-error paths the emulator does not produce on demand. <span class="tag tag-live">target met</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Scope</dt>
@@ -167,11 +167,11 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Distribution</dt>
-        <dd>On Maven Central. Merging a release pull request builds on JDK 17, runs the full verify, signs, uploads through the Sonatype Central Portal and tags the commit; a person presses Publish on the Portal as the last step, and did for the first release on 4 October 2026. <span class="tag tag-live">published</span></dd>
+        <dd>On Maven Central. Merging a release pull request builds on JDK 17, runs the full verify, signs, uploads through the Sonatype Central Portal and tags the commit; a person presses Publish on the Portal as the last step, and did on 4 October 2026 for the first release and on 7 October for the second. <span class="tag tag-live">published</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Artifacts</dt>
-        <dd><span data-eta-artifact="test-core" data-state="released"><code>com.enrichmeai:test-core</code>, the provider-neutral capabilities, the SPI and the JUnit 5 extension, <span class="tag tag-live" data-eta="artifact-version">0.3.0-alpha1</span></span>; <span data-eta-artifact="test-cloud-aws" data-state="released"><code>com.enrichmeai:test-cloud-aws</code>, the AWS adapter, <span class="tag tag-live" data-eta="artifact-version">0.3.0-alpha1</span></span>. <code>test-feature</code> has no main sources and is not published.</dd>
+        <dd><span data-eta-artifact="test-core" data-state="released"><code>com.enrichmeai:test-core</code>, the provider-neutral capabilities, the SPI and the JUnit 5 extension, <span class="tag tag-live" data-eta="artifact-version">0.3.0-alpha2</span></span>; <span data-eta-artifact="test-cloud-aws" data-state="released"><code>com.enrichmeai:test-cloud-aws</code>, the AWS adapter, <span class="tag tag-live" data-eta="artifact-version">0.3.0-alpha2</span></span>. <code>test-feature</code> has no main sources and is not published.</dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Supply chain</dt>
@@ -190,6 +190,19 @@
       <h2 class="section-h2">What each release added</h2>
       <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/enrich-test-api/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
     </div>
+    <section class="spec-list" data-eta-release="0.3.0-alpha2" aria-label="enrich-test-api 0.3.0-alpha2" style="margin-bottom:40px">
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0-alpha2 <span class="tag tag-neutral">no API change</span></h3>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>Changed</dt>
+          <dd>The coverage floors the build enforces rise to what the tests now measure: every line and branch in the core module, 0.92 line and 0.74 branch in the AWS adapter. Both modules meet the 0.80 / 0.70 target.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Tests</dt>
+          <dd>New tests for the paths a user meets when something is missing or fails: no <code style="font-size:14.5px">@WithCloud</code>, an adapter without a capability, a table, key, bucket or queue that is not there, results across more than one page, and a race to start the emulator. One of them pinned a behaviour reported on its pull request: a DynamoDB number beyond the <code style="font-size:14.5px">long</code> range reads back as text.</dd>
+        </div>
+      </dl>
+    </section>
     <section class="spec-list" data-eta-release="0.3.0-alpha1" aria-label="enrich-test-api 0.3.0-alpha1">
       <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.3.0-alpha1 <span class="tag tag-live">the first release, on Maven Central</span></h3>
       <dl class="spec-list">
@@ -244,7 +257,7 @@
         </div>
         <div class="faq-item">
           <h3>Why is the coverage number on this page?</h3>
-          <p>Because the alternative was a badge that says nothing. The floors in the build are the measured values, so they cannot quietly slip, and the distance to the target is visible instead of hidden.</p>
+          <p>Because the alternative was a badge that says nothing. The floors in the build are the measured values, so they cannot quietly slip, and the page shows what the build enforces rather than what it hopes for.</p>
         </div>
         <div class="faq-item">
           <h3>How does it relate to the rest of the register?</h3>
