@@ -37,7 +37,7 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Open source · self-hosted · v0.5.1</p>
+      <p class="eyebrow">Open source · self-hosted · v0.5.2</p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span>Run it on your own machine, not on a network. It has not cleared the stranger test yet.</span>
@@ -52,11 +52,11 @@
     <div class="stack">
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div class="frame-kicker" style="margin-bottom:10px">What v0.5.1 ships</div>
-        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">Security fixes from the v0.5.0 image scan, and no new features: newer Tomcat, Netty, Jackson and Postgres driver in the application, and Gradle 8.14.6 in the image. The scan total falls from 61 to 18. v0.5.0 brought project audiences for memory and the local MCP server for Claude Code and Claude Desktop.</span>
+        <div class="frame-kicker" style="margin-bottom:10px">What v0.5.2 ships</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">With memory on, the memory block now tells the model how to use your record: end each decision in a plan with the card it rests on, or mark it as an assumption with a question for you, and propose an episode for your review rather than write a belief itself. Nothing checks those markers yet; you read them. No dependency changes. v0.5.1 brought security fixes (the scan total fell from 61 to 18), and v0.5.0 project audiences and the local MCP server for Claude Code and Claude Desktop.</span>
       </div>
       <div class="btn-row">
-        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.1" class="btn btn-primary btn-lg">Release v0.5.1 →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2" class="btn btn-primary btn-lg">Release v0.5.2 →</a>
         <a href="https://github.com/enrichmeai/penstock" class="btn btn-secondary btn-lg">Source →</a>
       </div>
     </div>
@@ -124,9 +124,9 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Java · Spring Boot</span></div>
-      <pre><div class="cmt"># the jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.5.1.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside JetBrains Air or Zed, over stdio</div><div><span class="tok">java</span> -jar penstock-0.5.1.jar --acp</div><div class="sep"></div><div class="cmt"># or as a memory server for Claude Code or Claude Desktop, over stdio</div><div><span class="tok">java</span> -jar penstock-0.5.1.jar --mcp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.5.1</div></pre>
+      <pre><div class="cmt"># the jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-0.5.2.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside JetBrains Air or Zed, over stdio</div><div><span class="tok">java</span> -jar penstock-0.5.2.jar --acp</div><div class="sep"></div><div class="cmt"># or as a memory server for Claude Code or Claude Desktop, over stdio</div><div><span class="tok">java</span> -jar penstock-0.5.2.jar --mcp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:0.5.2</div></pre>
     </div>
-    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.1">v0.5.1 →</a>.</p>
+    <p class="note">Since v0.2.0 the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2">v0.5.2 →</a>.</p>
     <div class="blueprint caveat" style="margin-top:24px">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <span>Security fix in v0.4.0: from v0.1.0 to v0.3.0, the pod tool and the Jira tool also sent the model provider's request headers, which with Anthropic includes the API key. If you ran one of those versions with the Jira tool configured, treat that provider key as exposed to the Jira server and rotate it. <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.4.0">The v0.4.0 notes →</a></span>
@@ -171,7 +171,7 @@
       <div class="strip"><span>memory.yaml</span><span>format 1</span></div>
       <pre><div><span class="tok">projects</span>:</div><div>  oss-lib:    { audience: public }</div><div>  platform:   { audience: private, uses: [oss-lib] }</div><div>  standalone: { audience: private, personal: none, uses: [oss-lib] }</div></pre>
     </div>
-    <p class="note" style="margin-bottom:56px">An explicit <code style="font-size:14.5px">personal: all</code> loads every personal card, so leave it off a public project. A root without a <code style="font-size:14.5px">projects:</code> block behaves as it did in v0.4.0. The rules are in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.1/docs/memory-root.md#projects-and-who-sees-them">the shipped docs</a>.</p>
+    <p class="note" style="margin-bottom:56px">An explicit <code style="font-size:14.5px">personal: all</code> loads every personal card, so leave it off a public project. A root without a <code style="font-size:14.5px">projects:</code> block behaves as it did in v0.4.0. The rules are in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/memory-root.md#projects-and-who-sees-them">the shipped docs</a>.</p>
 
     <div class="heading-row align-start" style="margin-bottom:28px">
       <h3 class="section-h2" style="max-width:15ch;font-size:28px">How it gets better</h3>
@@ -197,7 +197,7 @@
     <div class="heading-row align-start" style="margin-bottom:28px">
       <h3 class="section-h2" style="max-width:15ch;font-size:28px">In Claude Code and Claude Desktop</h3>
       <div class="prose-col">
-        <p><code style="font-size:14.5px">--mcp</code> runs Penstock as a local MCP server over stdio. The client starts it on your machine, so there is no network listener and no credential. <code style="font-size:14.5px">recall</code> returns the memory a Penstock turn would give its model for the question, built by the same code under the same project rules, and read-only. A <code style="font-size:14.5px">start-with-memory</code> prompt asks the client to call it before it plans. Every call is audited. The <code style="font-size:14.5px">claude mcp add</code> command is in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.1/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
+        <p><code style="font-size:14.5px">--mcp</code> runs Penstock as a local MCP server over stdio. The client starts it on your machine, so there is no network listener and no credential. <code style="font-size:14.5px">recall</code> returns the memory a Penstock turn would give its model for the question, built by the same code under the same project rules, and read-only. A <code style="font-size:14.5px">start-with-memory</code> prompt asks the client to call it before it plans. Every call is audited. The <code style="font-size:14.5px">claude mcp add</code> command is in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
       </div>
     </div>
     <div class="blueprint caveat">
@@ -248,7 +248,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Release</dt>
-        <dd>v0.5.1: a jar, a bill of materials and a multi-architecture image. Security fixes on top of v0.5.0, which brought project audiences for memory and the MCP mode. <span class="tag tag-live">live</span></dd>
+        <dd>v0.5.2: a jar, a bill of materials and a multi-architecture image. The memory block now asks the model to cite the cards it uses and to propose episodes rather than write facts. It builds on v0.5.1's security fixes and v0.5.0's project audiences and MCP mode. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Governed access</dt>
@@ -256,15 +256,15 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>In your IDE</dt>
-        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.1/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live">v0.3.0</span></dd>
+        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live">v0.3.0</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Memory</dt>
-        <dd>Recall before every model call from a memory root you own, with each loaded card on the audit log (v0.4.0). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (v0.5.0). <span class="tag tag-live">v0.5.0</span></dd>
+        <dd>Recall before every model call from a memory root you own, with each loaded card on the audit log (v0.4.0). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (v0.5.0). The block asks the model to cite each card it relies on, or to mark an assumption, and to propose an episode rather than write a fact (v0.5.2). <span class="tag tag-live">v0.5.0</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Planned</dt>
-        <dd>Not in a release, and named here so the gap is visible. Hosted sessions and Claude Cowork reading the memory from a pod (<a href="https://github.com/enrichmeai/penstock/issues/89">#89</a>). A memory browser and a review inbox in the web UI (<a href="https://github.com/enrichmeai/penstock/issues/107">#107</a>, <a href="https://github.com/enrichmeai/penstock/issues/108">#108</a>). Falling back to a local model when no key is set (<a href="https://github.com/enrichmeai/penstock/issues/106">#106</a>). A Gemini provider and a Perplexity search tool (<a href="https://github.com/enrichmeai/penstock/issues/114">#114</a>, <a href="https://github.com/enrichmeai/penstock/issues/115">#115</a>). The move to Spring Boot 4, for the three Spring criticals the scan still lists (<a href="https://github.com/enrichmeai/penstock/blob/v0.5.1/docs/adr/0004-spring-framework-7.md">ADR 0004</a>, <a href="https://github.com/enrichmeai/penstock/issues/128">#128</a>). <span class="tag tag-next">planned</span></dd>
+        <dd>Not in a release, and named here so the gap is visible. Hosted sessions and Claude Cowork reading the memory from a pod (<a href="https://github.com/enrichmeai/penstock/issues/89">#89</a>). A memory browser and a review inbox in the web UI (<a href="https://github.com/enrichmeai/penstock/issues/107">#107</a>, <a href="https://github.com/enrichmeai/penstock/issues/108">#108</a>). Falling back to a local model when no key is set (<a href="https://github.com/enrichmeai/penstock/issues/106">#106</a>). A Gemini provider and a Perplexity search tool (<a href="https://github.com/enrichmeai/penstock/issues/114">#114</a>, <a href="https://github.com/enrichmeai/penstock/issues/115">#115</a>). The move to Spring Boot 4, for the three Spring criticals the scan still lists (<a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/adr/0004-spring-framework-7.md">ADR 0004</a>, <a href="https://github.com/enrichmeai/penstock/issues/128">#128</a>). <span class="tag tag-next">planned</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Later</dt>
@@ -285,19 +285,19 @@
     <div class="heading-row" style="align-items:start;margin-bottom:40px">
       <h2 class="section-h2">Yours to read, not ours to claim</h2>
       <div class="prose-col" style="max-width:60ch">
-        <p>Each release's image is scanned for high and critical findings, and the report is attached to the release. From v0.1.0 to v0.5.1 the report total went from 138 to 18. A report counts a finding once for each copy of the library it finds in the image, so its totals run higher than the number of distinct vulnerabilities.</p>
-        <p>v0.5.1 moved Tomcat, Netty, Jackson and the Postgres driver in the application to the fixed versions the v0.5.0 report listed, and moved the image's Gradle to 8.14.6. Three distinct critical vulnerabilities remain, which the report totals as 8. All three are in Spring Framework 6.2, and the only fix listed for each is Spring Framework 7, which needs Spring Boot 4. One, in <code style="font-size:14.5px">XsltView</code>, is not reachable because Penstock renders no XSLT view, and a test fails the build if one is ever added (ADR 0004). The other two were not in the v0.5.0 report, and whether either is reachable is still being checked (<a href="https://github.com/enrichmeai/penstock/issues/128">#128</a>). The ten highs all have listed fixes that are not applied yet. Nine are build-time copies of Jackson and httpcore5 in the image's seeded Gradle home, not in the application, and they will be handled separately. One is in libssl3 in the Ubuntu base, and its fix comes with a refreshed base image. Earlier versions of this page said every finding with a fix had been fixed. The v0.3.0 report already showed that was no longer true.</p>
+        <p>Each release's image is scanned for high and critical findings, and the report is attached to the release. From v0.1.0 to v0.5.2 the report total went from 138 to 18. A report counts a finding once for each copy of the library it finds in the image, so its totals run higher than the number of distinct vulnerabilities.</p>
+        <p>v0.5.2 changes no dependency, and its report lists the same 18 findings as v0.5.1. v0.5.1 moved Tomcat, Netty, Jackson and the Postgres driver in the application to the fixed versions the v0.5.0 report listed, and moved the image's Gradle to 8.14.6. Three distinct critical vulnerabilities remain, which the report totals as 8. All three are in Spring Framework 6.2, and the only fix listed for each is Spring Framework 7, which needs Spring Boot 4. One, in <code style="font-size:14.5px">XsltView</code>, is not reachable because Penstock renders no XSLT view, and a test fails the build if one is ever added (ADR 0004). The other two were not in the v0.5.0 report, and whether either is reachable is still being checked (<a href="https://github.com/enrichmeai/penstock/issues/128">#128</a>). The ten highs all have listed fixes that are not applied yet. Nine are build-time copies of Jackson and httpcore5 in the image's seeded Gradle home, not in the application, and they will be handled separately. One is in libssl3 in the Ubuntu base, and its fix comes with a refreshed base image. Earlier versions of this page said every finding with a fix had been fixed. The v0.3.0 report already showed that was no longer true.</p>
         <p>Every scan is attached to its release, so the whole series is yours to read rather than ours to claim.</p>
       </div>
     </div>
     <div class="rule-cols c3">
       <div class="rule-column">
-        <span class="kicker" style="color:var(--color-neutral-700)">v0.1.0 to v0.5.1</span>
+        <span class="kicker" style="color:var(--color-neutral-700)">v0.1.0 to v0.5.2</span>
         <span class="figure-num">138 <span class="to">→</span> 18</span>
         <p>High and critical findings, as each report totals them, counting every copy.</p>
       </div>
       <div class="rule-column is-accent">
-        <span class="kicker">Distinct criticals, open in v0.5.1</span>
+        <span class="kicker">Distinct criticals, open in v0.5.2</span>
         <span class="figure-num accent">3</span>
         <p>All in Spring Framework 6.2, with a fix listed only in Spring Framework 7. One is not reachable and guarded by a test; two are being checked.</p>
       </div>
@@ -330,7 +330,7 @@
         </div>
         <div class="faq-item">
           <h3>Can Claude Code use my memory?</h3>
-          <p>Yes, since v0.5.0: register <code style="font-size:14.5px">java -jar penstock-0.5.1.jar --mcp</code> as a local MCP server, and <code style="font-size:14.5px">recall</code> answers from your memory root under the same project rules. The client decides when to call it, which a Penstock turn does not leave to chance.</p>
+          <p>Yes, since v0.5.0: register <code style="font-size:14.5px">java -jar penstock-0.5.2.jar --mcp</code> as a local MCP server, and <code style="font-size:14.5px">recall</code> answers from your memory root under the same project rules. The client decides when to call it, which a Penstock turn does not leave to chance.</p>
         </div>
         <div class="faq-item">
           <h3>Do I have to send anything to a model provider?</h3>
@@ -348,7 +348,7 @@
         </div>
         <div class="faq-item">
           <h3>Why publish open critical findings?</h3>
-          <p>Because the reports are attached to the releases anyway, and a page that disagreed with them would be the thing not to trust. Three criticals are open in v0.5.1; the scan record above says which, and why none of them has a fix that applies to Spring Boot 3.5.</p>
+          <p>Because the reports are attached to the releases anyway, and a page that disagreed with them would be the thing not to trust. Three criticals are open in v0.5.2; the scan record above says which, and why none of them has a fix that applies to Spring Boot 3.5.</p>
         </div>
         <div class="faq-item">
           <h3>Is any of it held back for a paid tier?</h3>
@@ -363,12 +363,12 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">penstock 0.5.1 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">penstock 0.5.2 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get it</h4>
-        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.1">Release v0.5.1: jar · SBOM · image →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2">Release v0.5.2: jar · SBOM · image →</a>
         <a href="https://github.com/enrichmeai/penstock">GitHub: source →</a>
         <a href="https://github.com/enrichmeai/penstock/releases">The scan series →</a>
       </nav>
