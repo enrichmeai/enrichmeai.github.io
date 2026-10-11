@@ -9,6 +9,7 @@ and the brand assets. There is no build step. **A merge to `main` is a productio
 | Home | `index.html` | the register of products, how we build, services |
 | Cistern | `cistern/index.html` | `enrichmeai/cistern` |
 | Penstock | `penstock/index.html` | `enrichmeai/penstock` |
+| Persona | `persona/index.html` | the record and the planned persona, in `enrichmeai/penstock` |
 | Culvert | `culvert/index.html` | `enrichmeai/culvert` |
 | enrich-test-api | `enrich-test-api/index.html` | `enrichmeai/enrich-test-api` |
 | Brand | `brand/index.html` | `assets/brand/` (see its README) |
