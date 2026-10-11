@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The record your AI starts from · enrichmeai</title>
+<meta name="description" content="Generating code got cheap; knowing why it is the way it is did not. Penstock keeps what was asked, decided, refused and learned as plain files you own, and recalls them before the model writes. The persona that speaks from that record is planned.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <span class="product-label">Persona</span>
+    <nav class="site-nav">
+      <a href="#problem">The problem</a>
+      <a href="#record">The record</a>
+      <a href="#recall">Recall</a>
+      <a href="#persona">The persona</a>
+      <a href="#status">Status</a>
+    </nav>
+    <div class="spacer"></div>
+    <a href="/penstock/" class="btn btn-primary" style="font-size:14px">Penstock →</a>
+  </div>
+</header>
+
+<main id="main" class="container">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Built into Penstock · v0.5.2</p>
+      <div class="blueprint caveat">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span>The persona is planned. Everything else on this page has shipped, with the release beside it.</span>
+      </div>
+      <h1>Your AI starts from <span class="accent">why</span>, not from zero.</h1>
+    </div>
+    <p class="hero-rail">Generating code got cheap. Knowing why it is the way it is did not. Penstock keeps the reasons as plain files you own, and puts them in front of the model before it writes.</p>
+  </div>
+
+  <div class="hero-below">
+    <p class="lede">An agent can write an implementation in seconds. What it cannot see in the code is why the last one was written differently, which approach was tried and dropped, and what broke the time before. That knowledge lives in people's heads, old pull requests and chat threads, and it is the part that makes reviewing someone else's diff slow. Penstock writes it down as you work: each piece of work becomes an <strong style="font-weight:600;color:var(--color-text)">episode</strong> that records what was asked, what was decided and why, what was refused and why, what was learned and what is still open. Beliefs that hold up become <strong style="font-weight:600;color:var(--color-text)">facts</strong>, each one quoting the episode it came from. Before every model call, Penstock recalls the ones that matter, under rules you set, and the audit log shows exactly what it recalled.</p>
+    <div class="stack">
+      <div class="blueprint pad-frame">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker" style="margin-bottom:10px">From Penstock's own record</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)"><strong style="font-weight:600">Decided:</strong> agent.memory.enabled defaults to false.<br><strong style="font-weight:600">Why:</strong> these folders are this project's own build memory, not every deployment's.<br><br><strong style="font-weight:600">Refused:</strong> walking the workspace once per signature glob.<br><strong style="font-weight:600">Why:</strong> one walk per assemble() is enough and an UncheckedIOException must not abort the turn.</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/episodes/2026-10-02-memory-2-retrieve-before-reason.yaml" class="btn btn-primary btn-lg">Read the episode →</a>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2" class="btn btn-secondary btn-lg">Release v0.5.2 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="problem" class="section-rule">
+    <span class="name">The problem</span><span class="num">01</span>
+  </div>
+
+  <div class="heading-row align-start" style="padding:42px 0 44px">
+    <h2 class="section-h2" style="max-width:15ch">Reading the code tells you what. Not why.</h2>
+    <div class="prose-col">
+      <p>More of a developer's day now goes on reading diffs they did not write and deciding whether they are good enough. The diff shows what changed. Whether it repeats a mistake the team already made, or undoes a choice made on purpose, depends on reasons that were never in the code.</p>
+      <p>A tool that reads the code can tell an agent what calls what. It cannot tell it that an approach was tried and refused, or why, unless someone wrote that down when it happened. Penstock is built to write it down, as part of the work rather than after it, and to keep it where you can read, correct and own it.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap" style="margin-bottom:76px">
+    <table class="table">
+      <thead>
+        <tr><th></th><th>Reading the code</th><th>Keeping the record</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Answers</td><td>What is here, and what depends on what</td><td>Why it is like this, what was ruled out, what is still open</td></tr>
+        <tr><td>Source</td><td>The current files</td><td>The work as it happened: the issue, the pull request, and the <code style="font-size:14.5px">Decided:</code>, <code style="font-size:14.5px">Refused:</code>, <code style="font-size:14.5px">Learned:</code> and <code style="font-size:14.5px">Open:</code> lines in commit messages</td></tr>
+        <tr><td>Who writes it</td><td>Nobody; it is derived</td><td>A script drafts it from that evidence; you review and commit it</td></tr>
+        <tr><td>When the model changes</td><td>Re-derived</td><td>Unchanged: plain YAML files with a published schema, not tied to any model</td></tr>
+        <tr><td>Together</td><td colspan="2">They answer different questions, and an agent needs both. Penstock also reads the workspace: a pattern loads when its file signatures match the code in front of it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="record" class="section-rule">
+    <span class="name">The record</span><span class="num">02</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Small cards, in files you own</h2>
+      <p class="intro">Every card is a YAML file with a JSON Schema, kept in a folder or a private git repository of yours. Nothing enters it without your review. Shipping since v0.4.0.</p>
+    </div>
+    <dl class="spec-list">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Episodes</dt>
+        <dd>One per piece of work: asked, built, decided and why, refused and why, learned, open. <code style="font-size:14.5px">write-episode.sh</code> drafts it from the issue, the pull request and the commit messages; from Claude Code or Claude Desktop, <code style="font-size:14.5px">draft_episode</code> writes one new draft and never overwrites (v0.5.0). <span class="tag tag-live">v0.4.0</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Facts</dt>
+        <dd>One belief each, with a confidence, the date it was last confirmed, and provenance that quotes the episode it was learned from. <code style="font-size:14.5px">consolidate.sh</code> proposes new, confirmed or superseding facts; you decide. A changed belief supersedes the old one rather than overwriting it, so the record keeps what you used to think and when that changed. <span class="tag tag-live">v0.4.0</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Patterns</dt>
+        <dd>How a kind of thing was built, with the release it was last verified against; a pattern behind the newest release is flagged as stale. <span class="tag tag-live">v0.4.0</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Boundaries</dt>
+        <dd>Each card carries a visibility, and your <code style="font-size:14.5px">memory.yaml</code> gives each project an audience. A public project never loads a private one's cards, and a credential-shaped value stops a write before anything is saved. <span class="tag tag-live">v0.5.0</span></dd>
+      </div>
+    </dl>
+    <p class="note">Penstock keeps its own record in the open: 5 episodes, 14 facts (one superseded) and 1 pattern, last verified against v0.3.0 and so flagged stale, in <a href="https://github.com/enrichmeai/penstock/tree/v0.5.2">the repository at v0.5.2</a>. The format is in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/memory-format.md">the shipped docs</a>.</p>
+  </div>
+
+  <div id="recall" class="section-rule">
+    <span class="name">Recall</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Before the model writes a line</h2>
+      <p class="intro">In a Penstock turn, code chooses what the model sees, not the model. The choice is deterministic: trigger words, scope and recency, never an embedding or another model call.</p>
+    </div>
+    <div class="rule-cols c3">
+      <div class="rule-column">
+        <span class="kicker" style="color:var(--color-neutral-700)">Recalled</span>
+        <span class="figure-num">Every turn</span>
+        <p>Matching facts, the project's latest episodes and the patterns its files fit, in one block of at most 12,000 characters, ahead of the model call. With memory on (v0.4.0).</p>
+      </div>
+      <div class="rule-column is-accent">
+        <span class="kicker">Cited</span>
+        <span class="figure-num accent">[card: id]</span>
+        <p>The block asks the model to end each plan decision with the card it rests on, or to mark it as an assumption with a question for you, and to propose an episode rather than write a fact (v0.5.2). Nothing checks the markers yet; you read them.</p>
+      </div>
+      <div class="rule-column">
+        <span class="kicker" style="color:var(--color-neutral-700)">On the record</span>
+        <span class="figure-num">Audited</span>
+        <p>Every section loaded or kept out, with the reason, and every card loaded, shown in the web UI's Audit view (v0.5.0).</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:28px">The same record reaches Claude Code and Claude Desktop: <code style="font-size:14.5px">java -jar penstock-0.5.2.jar --mcp</code> runs a local MCP server whose <code style="font-size:14.5px">recall</code> builds the same block under the same project rules (v0.5.0). There the host decides when to call it. Setup is in <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
+  </div>
+
+  <div id="persona" class="section-rule">
+    <span class="name">The persona</span><span class="num">04</span>
+  </div>
+
+  <div class="heading-row align-start" style="padding:42px 0 44px">
+    <h2 class="section-h2" style="max-width:15ch">Planned: a companion that speaks from your record</h2>
+    <div class="prose-col">
+      <p>Planned, and named here so the direction is plain (<a href="https://github.com/enrichmeai/penstock/issues/93">penstock#93</a>). You name the companion once, in a card. From then on it opens with where things stand, answers from your record before the web and says which it used, cites the card behind each decision, and asks one question when the record is silent, then writes the answer down. Its voice and its judgement come from principles you hold as cards, with provenance, in domains you choose.</p>
+      <p>It is a projection of the record, not a separate model. When the record improves, the companion sharpens, and a change in its voice is a dated line you can read. Nothing about it lives anywhere you cannot read, edit or delete.</p>
+    </div>
+  </div>
+
+  <div id="status" class="section-rule">
+    <span class="name">Status</span><span class="num">05</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Where it stands</h2>
+      <p class="intro">Nothing on this site is announced before it has run. This is the honest state.</p>
+    </div>
+    <dl class="spec-list">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Shipped</dt>
+        <dd>Episodes, facts and patterns with schemas and a checker; drafting from the work's own evidence; recall before every model call; project audiences; the MCP server for Claude Code and Claude Desktop; the cite-or-assume and propose-don't-write rules. In <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2">Penstock v0.5.2</a>. <span class="tag tag-live">live</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Its limits</dt>
+        <dd>The record knows only what was written down: work done before you started keeping it is not in it. Recall reads the current message, not the whole conversation. Memory is off by default in the web and IDE modes and on for <code style="font-size:14.5px">--mcp</code>. Reviewing drafts happens in the files for now. Penstock itself should run on your own machine, not on a network, until it clears the stranger test.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Planned</dt>
+        <dd>The persona (<a href="https://github.com/enrichmeai/penstock/issues/93">#93</a>). A script that checks the citation markers (<a href="https://github.com/enrichmeai/penstock/issues/92">#92</a>). A review inbox and a memory browser in the web UI (<a href="https://github.com/enrichmeai/penstock/issues/108">#108</a>, <a href="https://github.com/enrichmeai/penstock/issues/107">#107</a>). Hosted sessions and Claude Cowork reading the record from a pod (<a href="https://github.com/enrichmeai/penstock/issues/89">#89</a>). <span class="tag tag-next">planned</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Licence</dt>
+        <dd>Apache 2.0, free for any use including commercial.</dd>
+      </div>
+    </dl>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">penstock 0.5.2 · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+    <div class="footer-navs">
+      <nav>
+        <h4>Get it</h4>
+        <a href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2">Penstock v0.5.2: jar · SBOM · image →</a>
+        <a href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/memory-format.md">The memory format →</a>
+      </nav>
+      <nav>
+        <h4>Related</h4>
+        <a href="/penstock/">Penstock, the agent</a>
+        <a href="/cistern/">Cistern, the data gateway</a>
+        <a href="/">The register</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
