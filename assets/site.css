@@ -102,9 +102,16 @@ html { scroll-behavior: smooth; }
   font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--color-accent-700);
 }
-.site-nav { display: flex; gap: 20px; font-size: 15px; }
-.site-nav a { color: var(--color-neutral-700); }
+.site-nav { display: flex; gap: 16px; font-size: 15px; }
+.site-nav a { color: var(--color-neutral-700); white-space: nowrap; }
 .spacer { flex: 1; }
+/* Header items never wrap inside themselves: the home header carries six links, the GitHub link and
+   the button on one line. */
+.header-text-link, .site-header .btn { white-space: nowrap; flex-shrink: 0; }
+/* Between the 1040px breakpoint (nav hidden below it) and 1200px there is no room for all three, so the
+   plain-text GitHub link gives way; the home page links it again in the hero and the footer, and the
+   brand page in its body. */
+@media (min-width: 1041px) and (max-width: 1199px) { .header-text-link { display: none; } .site-nav { gap: 13px; } }
 
 /* ── Buttons ────────────────────────────────────────────────────────────── */
 .btn {
