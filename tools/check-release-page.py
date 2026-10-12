@@ -20,6 +20,22 @@ P (for example `data-culvert`):
   <dt P-capability="BlobStorage">           one per capability interface   (projects with capabilities)
   <section P-release="0.2.0">               what's new in that release
 
+Projects that release on GitHub rather than Maven Central (kind "github": Penstock, Cistern) are
+checked against their latest GitHub release instead, with two markers:
+
+  <span P="release-version">v0.5.2</span>  the latest GitHub release (a leading "v" is ignored)
+  <section P-release="0.5.2">              what's new in that release
+  <… P-history>                            an earlier release named on purpose (a scan record, "since");
+                                           it may not name a release newer than the latest
+  <a data-link-<project>="release|history" href="…/<repo>/…/v0.5.2…">
+                                           a link into the project's repository that names a version:
+                                           "release" links must name the latest release, "history" an older one
+
+Pages that repeat a project's facts (the home page, /persona/) are listed under "also": their markers
+are checked against the same truth, and a version on them outside every project's markers is an error,
+so the home page cannot keep an old version after the project page moves on. Markers are required
+only on the project's own page.
+
 Rules: every marker equals the truth; every released library has a row (an unreleased one may have one,
 but releases are batched, so it need not), and no row names a library that is gone; extras and capabilities match exactly; the newest release has a "what's new" block; and no other
 version appears on the page outside a marker or a "what's new" block, so nothing can go stale unseen.
@@ -27,6 +43,7 @@ version appears on the page outside a marker or a "what's new" block, so nothing
 Usage:
   tools/check-release-page.py culvert --repo ../culvert
   tools/check-release-page.py enrich-test-api --repo ../enrich-test-api
+  tools/check-release-page.py penstock            (kind "github": no --repo needed)
   … --dump-facts          print the gathered facts as JSON
   … --facts facts.json    offline (tests)
 Exit 1 when the page is behind; 2 when the facts could not be gathered (never reported as passing).
@@ -35,6 +52,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
@@ -54,6 +72,7 @@ PROJECTS = {
         "reactor": "data-pipeline-libraries-java/pom.xml",
         "pypi": "culvert",
         "extras": "python-culvert/pyproject.toml",
+        "also": ["index.html"],
     },
     "enrich-test-api": {
         "repo": "enrichmeai/enrich-test-api",
@@ -65,8 +84,26 @@ PROJECTS = {
         "unpublished": ["test-feature"],
         "main_version": "pom.xml",
         "capabilities": "test-core/src/main/java/com/enrichmeai/test/core/cloud/capability",
+        "also": ["index.html"],
+    },
+    "penstock": {
+        "repo": "enrichmeai/penstock",
+        "page": "penstock/index.html",
+        "attr": "data-penstock",
+        "kind": "github",
+        "also": ["index.html", "persona/index.html"],
+    },
+    "cistern": {
+        "repo": "enrichmeai/cistern",
+        "page": "cistern/index.html",
+        "attr": "data-cistern",
+        "kind": "github",
+        "also": ["index.html", "persona/index.html", "penstock/index.html"],
     },
 }
+# Every project's markers, plus data-other-version for a version that is not any project's own
+# (a build tool's, say), so a page states it on purpose rather than by accident.
+PREFIXES = tuple(cfg["attr"] for cfg in PROJECTS.values()) + ("data-other-version",)
 
 # A release-shaped version: 0.2.0, v0.3.0-alpha1, 0.3.0-alpha1-SNAPSHOT. Two-part numbers (Python
 # 3.10, Airflow 2.9.x, a 0.81 coverage figure) are not versions of the project.
@@ -120,7 +157,10 @@ def fetch(url: str, attempts: int = 5) -> str | None:
     """GET a registry URL. 404 means "not published"; 429/5xx are retried with backoff."""
     for i in range(attempts):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "enrichmeai-site-release-check"})
+            headers = {"User-Agent": "enrichmeai-site-release-check"}
+            if url.startswith("https://api.github.com/") and os.environ.get("GITHUB_TOKEN"):
+                headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=30) as r:  # noqa: S310 — fixed https URLs
                 return r.read().decode("utf-8")
         except urllib.error.HTTPError as e:
@@ -133,8 +173,14 @@ def fetch(url: str, attempts: int = 5) -> str | None:
     return None
 
 
-def gather(project: str, repo: Path) -> dict:
+def gather(project: str, repo: Path | None) -> dict:
     cfg = PROJECTS[project]
+    if cfg.get("kind") == "github":
+        latest = json.loads(fetch(f"https://api.github.com/repos/{cfg['repo']}/releases/latest") or "{}")
+        tag = latest.get("tag_name")
+        if not tag:
+            raise ValueError(f"{cfg['repo']} has no latest release")
+        return {"release": tag.lstrip("v")}
     facts: dict = {"maven": {}}
     for a in reactor_libraries(repo, cfg):
         meta = fetch(f"https://repo1.maven.org/maven2/{cfg['group'].replace('.', '/')}/{a}/maven-metadata.xml")
@@ -203,18 +249,28 @@ def parse(html: str) -> Node:
     return t.root
 
 
-def stray_versions(node: Node, prefix: str, out: list[str]) -> None:
-    """Versions in text outside markers, "what's new" blocks, scripts and styles."""
-    if node.tag in ("script", "style") or any(k.startswith(prefix) for k in node.attrs):
+def stray_versions(node: Node, prefixes: tuple, out: list[str]) -> None:
+    """Versions in text outside every project's markers, "what's new" and history blocks, scripts and styles."""
+    if node.tag in ("script", "style") or any(k.startswith(prefixes) for k in node.attrs):
         return
     for c in node.children:
         if isinstance(c, str):
             out += VERSION.findall(c)
         else:
-            stray_versions(c, prefix, out)
+            stray_versions(c, prefixes, out)
 
 
-def check(html: str, facts: dict, project: str) -> list[str]:
+def collapse(errors: list[str]) -> list[str]:
+    """One line per distinct error, with a count when it repeats (a release bump repeats one error per marker)."""
+    counts: dict[str, int] = {}
+    for e in errors:
+        counts[e] = counts.get(e, 0) + 1
+    return [e if c == 1 else f"{e} (×{c})" for e, c in counts.items()]
+
+
+def check(html: str, facts: dict, project: str, primary: bool = True) -> list[str]:
+    """Errors for one page. On the project's own page (primary) markers and "what's new" are required;
+    on a page that only repeats its facts, the markers present must be true and no version may stray."""
     P = PROJECTS[project]["attr"]
     errors: list[str] = []
     root = parse(html)
@@ -222,6 +278,52 @@ def check(html: str, facts: dict, project: str) -> list[str]:
 
     def marks(key):
         return [n for n in nodes if n.attrs.get(P) == key]
+
+    if PROJECTS[project].get("kind") == "github":
+        want = facts["release"]
+        repo, name = PROJECTS[project]["repo"], P[len("data-"):]
+        # Links into the repository that name a version (a release page, docs at a tag) go stale like
+        # text does, and the link text alone would not show it.
+        for n in nodes:
+            for a in ("href", "src"):
+                url = n.attrs.get(a, "")
+                if f"github.com/{repo}/" not in url:
+                    continue
+                vs = [v.lstrip("v") for v in VERSION.findall(url)]
+                if not vs:
+                    continue
+                kind = n.attrs.get(f"data-link-{name}")
+                if kind == "release":
+                    for v in vs:
+                        if v != want:
+                            errors.append(f'link {url} (data-link-{name}="release") names {v}, the truth is {want}')
+                elif kind == "history":
+                    for v in vs:
+                        if vkey(v) > vkey(want):
+                            errors.append(f'link {url} is marked history but names {v}, newer than the latest release {want}')
+                else:
+                    errors.append(f'link {url} names version {vs[0]} without data-link-{name}="release|history"')
+        # History names an earlier release; one that is not older than the latest is a stale marker.
+        for n in nodes:
+            if f"{P}-history" in n.attrs:
+                pieces = [c for d in n.walk() for c in d.children if isinstance(c, str)]
+                for v in (v for t in pieces for v in VERSION.findall(t)):
+                    if vkey(v.lstrip("v")) > vkey(want):
+                        errors.append(f"{P}-history says {v}, newer than the latest release {want}")
+        found = marks("release-version")
+        if not found and primary:
+            errors.append(f'no {P}="release-version" marker on the page (the truth is {want})')
+        for n in found:
+            if n.text().strip().lstrip("v") != want:
+                errors.append(f'{P}="release-version" says {n.text().strip()!r}, the truth is {want}')
+        blocks = {n.attrs[f"{P}-release"].lstrip("v") for n in nodes if f"{P}-release" in n.attrs}
+        if primary and want not in blocks:
+            errors.append(f"no \"what's new\" block ({P}-release=\"{want}\") for the newest release, {want}")
+        stray: list[str] = []
+        stray_versions(root, PREFIXES, stray)
+        for v in sorted(set(stray), key=lambda s: vkey(s.lstrip("v"))):
+            errors.append(f"version {v} is hard-coded outside a project marker — mark it ({P}=…, {P}-history), or drop it")
+        return collapse(errors)
 
     released = {a: v for a, v in facts["maven"].items() if v}
     maven_version = max(released.values(), key=vkey) if released else None
@@ -233,7 +335,7 @@ def check(html: str, facts: dict, project: str) -> list[str]:
     if "main_version" in facts:
         expected["main-version"] = facts["main_version"]
         expected["next-version"] = re.sub(r"-SNAPSHOT$", "", facts["main_version"])
-    required = {"maven-version", "pypi-version", "main-version"}
+    required = {"maven-version", "pypi-version", "main-version"} if primary else set()
     for key, want in expected.items():
         found = marks(key)
         if not found and key in required:
@@ -242,6 +344,13 @@ def check(html: str, facts: dict, project: str) -> list[str]:
             got = n.text().strip().lstrip("v") if key == "next-version" else n.text().strip()
             if got != want:
                 errors.append(f'{P}="{key}" says {n.text().strip()!r}, the truth is {want}')
+
+    if not primary:  # libraries, extras, capabilities and "what's new" live on the project's own page
+        stray = []
+        stray_versions(root, PREFIXES, stray)
+        for v in sorted(set(stray), key=lambda s: vkey(s.lstrip("v"))):
+            errors.append(f"version {v} is hard-coded outside a project marker — mark it, or drop it")
+        return errors
 
     # 2. libraries
     rows = {n.attrs[f"{P}-artifact"]: n for n in nodes if f"{P}-artifact" in n.attrs}
@@ -289,7 +398,7 @@ def check(html: str, facts: dict, project: str) -> list[str]:
 
     # 6. hard-coded versions
     stray: list[str] = []
-    stray_versions(root, P, stray)
+    stray_versions(root, PREFIXES, stray)
     for v in sorted(set(stray), key=lambda s: vkey(s.lstrip("v"))):
         errors.append(f"version {v} is hard-coded outside a {P} marker — mark it, or drop it")
     return errors
@@ -298,15 +407,18 @@ def check(html: str, facts: dict, project: str) -> list[str]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("project", choices=sorted(PROJECTS))
-    ap.add_argument("--repo", required=True, help="a checkout of the project's repository (main)")
+    ap.add_argument("--repo", help="a checkout of the project's repository (main); not needed for kind github")
     ap.add_argument("--facts", help="read the facts from this JSON file instead of gathering them")
     ap.add_argument("--dump-facts", action="store_true", help="print the gathered facts as JSON and exit")
     ap.add_argument("--page", help="override the page path")
     args = ap.parse_args()
 
     cfg = PROJECTS[args.project]
+    if cfg.get("kind") != "github" and not args.repo and not args.facts:
+        ap.error(f"{args.project} needs --repo")
     try:
-        facts = json.loads(Path(args.facts).read_text()) if args.facts else gather(args.project, Path(args.repo))
+        facts = json.loads(Path(args.facts).read_text()) if args.facts else gather(
+            args.project, Path(args.repo) if args.repo else None)
     except (OSError, urllib.error.URLError, ValueError, AttributeError) as e:
         print(f"check-release-page: could not gather the facts ({e}) — the check did NOT run", file=sys.stderr)
         return 2
@@ -314,10 +426,18 @@ def main() -> int:
         print(json.dumps(facts, indent=2))
         return 0
 
-    page = Path(args.page) if args.page else ROOT / cfg["page"]
-    errors = check(page.read_text(encoding="utf-8"), facts, args.project)
+    pages = [(Path(args.page), True)] if args.page else \
+        [(ROOT / cfg["page"], True)] + [(ROOT / p, False) for p in cfg.get("also", [])]
+    errors = []
+    for page, primary in pages:
+        for e in check(page.read_text(encoding="utf-8"), facts, args.project, primary=primary):
+            errors.append(f"{page.relative_to(ROOT) if page.is_relative_to(ROOT) else page}: {e}")
     for e in errors:
         print(f"ERROR {e}")
+    if cfg.get("kind") == "github":
+        print(f"check-release-page {args.project}: GitHub release {facts['release']} · "
+              f"{len(pages)} page(s) — {len(errors)} error(s)")
+        return 1 if errors else 0
     released = {a: v for a, v in facts["maven"].items() if v}
     summary = [
         f"Maven {max(released.values(), key=vkey) if released else 'unpublished'} "

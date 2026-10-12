@@ -54,8 +54,8 @@
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="frame-kicker" style="color:var(--color-neutral-700);margin-bottom:14px">Shipping now</div>
       <dl>
-        <dt>Cistern</dt><dd>v0.2.0 · GHCR</dd>
-        <dt>Penstock</dt><dd>v0.3.0 · signed jar</dd>
+        <dt>Cistern</dt><dd><span data-cistern="release-version">v0.2.0</span> · GHCR</dd>
+        <dt>Penstock</dt><dd><span data-penstock="release-version">v0.5.2</span> · GHCR</dd>
         <dt>Culvert</dt><dd>PyPI · Maven</dd>
         <dt>Licence</dt><dd>Apache 2.0</dd>
       </dl>
@@ -75,7 +75,7 @@
     <div class="hung">
       <span class="no">01</span>
       <span class="role">The data side</span>
-      <span class="status">v0.2.0 · live</span>
+      <span class="status"><span data-cistern="release-version">v0.2.0</span> · live</span>
     </div>
     <div class="body">
       <h3>Cistern</h3>
@@ -85,7 +85,7 @@
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker">Receipts, not claims</div>
         <ul class="marker-list">
-          <li><span class="mk">+</span><span><code style="font-size:13.5px;color:var(--color-text)">docker pull ghcr.io/enrichmeai/cistern:0.2.0</code> is live on GHCR. It runs enforcing with three environment variables</span></li>
+          <li><span class="mk">+</span><span><code style="font-size:13.5px;color:var(--color-text)">docker pull ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></code> is live on GHCR. It runs enforcing with three environment variables</span></li>
           <li><span class="mk">+</span><span>Held to a stranger test before it was named here: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, with 1,987 green tests behind it</span></li>
           <li><span class="mk">+</span><span>Every decision is receipted, literally: who read what, under which rule, when, queryable by the owner</span></li>
           <li><span class="mk">+</span><span>Apache 2.0 · built against the official Solid conformance suite, score public and only moving forward · limitations stated plainly in the release notes</span></li>
@@ -93,7 +93,7 @@
       </div>
       <div class="btn-row" style="margin-top:6px">
         <a href="/cistern/" class="btn btn-primary btn-md">Explore Cistern →</a>
-        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" style="font-size:15px">Release v0.2.0 →</a>
+        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" style="font-size:15px">Release <span data-cistern="release-version">v0.2.0</span> →</a>
         <a href="https://github.com/enrichmeai/cistern" style="font-size:15px">Source →</a>
       </div>
     </div>
@@ -103,7 +103,7 @@
     <div class="hung">
       <span class="no">02</span>
       <span class="role">The agent side</span>
-      <span class="status">v0.3.0</span>
+      <span class="status"><span data-penstock="release-version">v0.5.2</span></span>
     </div>
     <div class="body">
       <h3>Penstock</h3>
@@ -112,15 +112,16 @@
         <p>Penstock runs your agents on your data, with receipts: a self-hosted agent runtime for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage) against your own internal systems, on models you choose. It keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back.</p>
         <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind. The shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
       </div>
-      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">v0.3.0 is live: a signed jar, a bill of materials, a multi-architecture image, and the Agent Client Protocol mode for JetBrains Air and Zed. It has not yet cleared the stranger test Cistern is held to (deploy and use it from the published artifacts alone, following only the shipped docs), so it is a thing to run on your own machine for now, not to put on a network.</p>
+      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch"><span data-penstock="release-version">v0.5.2</span> is live: a jar, a bill of materials, a multi-architecture image, the Agent Client Protocol mode for JetBrains Air and Zed, and a local MCP server that gives Claude Code and Claude Desktop the memory it keeps. It has not yet cleared the stranger test Cistern is held to (deploy and use it from the published artifacts alone, following only the shipped docs), so it is a thing to run on your own machine for now, not to put on a network.</p>
       <div class="blueprint" style="padding:24px;margin-top:6px;max-width:76ch">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker">Where it stands</div>
         <ul class="stands-list">
           <li><span class="term">Today</span><span>three surfaces (web, REST, streaming), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable in the app</span></li>
           <li><span class="term">Now</span><span>the pod tool has shipped: Penstock asks a Cistern pod for a file over plain HTTPS as its own principal, is refused outside its grant, and what it read is receipted on the owner's side. Any client needing scoped, accountable access to someone else's data follows the same shape</span></li>
-          <li><span class="term">v0.3.0</span><span>it speaks the Agent Client Protocol, so it runs as a selectable agent inside JetBrains Air or Zed: read-only tools unprompted, every mutating tool behind the editor's own permission prompt</span></li>
-          <li><span class="term">Later</span><span>the stranger test. Everything with a fix available has been fixed: across four releases, 138 findings down to 85 and the criticals from fourteen to one. That one is waiting on an upstream release that does not exist yet, so there is nothing to apply. Every scan is attached to its release, so the whole series is yours to read rather than ours to claim</span></li>
+          <li><span class="term">Since <span data-penstock-history>v0.3.0</span></span><span>it speaks the Agent Client Protocol, so it runs as a selectable agent inside JetBrains Air or Zed: read-only tools unprompted, every mutating tool behind the editor's own permission prompt</span></li>
+          <li><span class="term">Since <span data-penstock-history>v0.4.0</span></span><span>it remembers. With memory switched on it recalls the facts, recent episodes and patterns for the project from a memory root you own before each model call; since <span data-penstock-history>v0.5.0</span> it gives Claude Code and Claude Desktop the same memory over MCP; and since <span data-penstock-history>v0.5.2</span> the model is asked to cite the card behind each decision and to propose what it learned, never to write a fact</span></li>
+          <li><span class="term">Later</span><span>the stranger test. Each release's image is scanned and the report attached: from <span data-penstock-history>v0.1.0</span> to <span data-penstock="release-version">v0.5.2</span> the high and critical total went from 138 to 18. Three distinct criticals remain, all in Spring Framework 6.2 with a fix listed only in Spring Framework 7: one is not reachable and guarded by a test, two are being checked. Every scan is attached to its release, so the whole series is yours to read rather than ours to claim</span></li>
         </ul>
       </div>
       <div class="btn-row" style="margin-top:6px">
@@ -152,7 +153,7 @@
     <div class="hung">
       <span class="no">04</span>
       <span class="role">Tooling</span>
-      <span class="status">v0.3.0-alpha2 · alpha</span>
+      <span class="status">v<span data-eta="maven-version">0.3.0-alpha2</span> · alpha</span>
     </div>
     <div class="body">
       <h3>enrich-test-api</h3>

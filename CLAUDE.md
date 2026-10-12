@@ -104,8 +104,19 @@ it as a blocker.
 ## Project releases (Joseph, 2026-09-26)
 
 **Every release of a project reaches its page: the new version, every new library, and the new features.**
-Covered today: Culvert (`/culvert/`) and enrich-test-api (`/enrich-test-api/`).
+Covered: Culvert (`/culvert/`) and enrich-test-api (`/enrich-test-api/`) against Maven Central and PyPI;
+Penstock (`/penstock/`) and Cistern (`/cistern/`) against their latest GitHub release. The home page and
+`/persona/` repeat those facts and are checked with each project, so they cannot keep an old version.
 
+- Penstock and Cistern pages mark the release with `data-penstock="release-version"` /
+  `data-cistern="release-version"`, the newest "what's new" block with `data-<p>-release="<version>"`,
+  and an earlier release named on purpose (a scan record, a "since") with `data-<p>-history`. A version
+  that is no project's own (a build tool's) is `data-other-version`. A link into the project's repository
+  that names a version carries `data-link-<p>="release"` (must be the latest) or `="history"`. Any other
+  version on these pages fails. A rule of thumb: `release-version` for what is current ("v0.5.2 is live",
+  a download command), `-history` for what stays true after the next release ("since v0.4.0", "(v0.5.2)").
+  The home page is also checked for Culvert's and enrich-test-api's markers. Any project's marker exempts
+  its text from the stray-version rule on every checked page, so mark each version with its own project.
 - Each page marks the facts it states (prefix `data-culvert` / `data-eta`): the released versions, the
   version on `main`, one row per library, the pip extras or the capabilities, and a "what's new" block per
   release. `tools/check-release-page.py <project>` compares those markers with Maven Central, PyPI and
@@ -123,7 +134,8 @@ Covered today: Culvert (`/culvert/`) and enrich-test-api (`/enrich-test-api/`).
   `next-version` markers are the one deliberate exception: they state what is on `main`, and say so.
 
 Run locally: `python3 tools/check-release-page.py culvert --repo ../gcp-pipeline-reference` (Joseph's local
-Culvert folder), `python3 tools/check-release-page.py enrich-test-api --repo ../enrich-test-api`.
+Culvert folder), `python3 tools/check-release-page.py enrich-test-api --repo ../enrich-test-api`,
+`python3 tools/check-release-page.py penstock`, `python3 tools/check-release-page.py cistern` (no checkout needed).
 Tests: `python3 -m unittest tools/test_check_release_page.py`.
 
 ## Voice
