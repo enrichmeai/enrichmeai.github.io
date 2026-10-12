@@ -65,24 +65,25 @@
   </div>
 
   <div class="heading-row align-start" style="padding:42px 0 44px">
-    <h2 class="section-h2" style="max-width:15ch">Reading the code tells you what. Not why.</h2>
+    <h2 class="section-h2" style="max-width:15ch">A codebase index and your own record answer different questions.</h2>
     <div class="prose-col">
       <p>More of a developer's day now goes on reading diffs they did not write and deciding whether they are good enough. The diff shows what changed. Whether it repeats a mistake the team already made, or undoes a choice made on purpose, depends on reasons that were never in the code.</p>
-      <p>A tool that reads the code can tell an agent what calls what. It cannot tell it that an approach was tried and refused, or why, unless someone wrote that down when it happened. Penstock is built to write it down, as part of the work rather than after it, and to keep it where you can read, correct and own it.</p>
+      <p>Tools that index a codebase answer what calls what and what a change might break, and some also mine the reasons recorded in its commits and design notes. That is useful work on the code. Penstock keeps a different record: yours, across every project, written down as part of the work, with nothing entering it until you have reviewed it, and with rules for which project may see which part. It lives in files you can read, correct and own.</p>
     </div>
   </div>
 
   <div class="table-wrap" style="margin-bottom:76px">
     <table class="table">
       <thead>
-        <tr><th></th><th>Reading the code</th><th>Keeping the record</th></tr>
+        <tr><th></th><th>Your record, in Penstock</th></tr>
       </thead>
       <tbody>
-        <tr><td>Answers</td><td>What is here, and what depends on what</td><td>Why it is like this, what was ruled out, what is still open</td></tr>
-        <tr><td>Source</td><td>The current files</td><td>The work as it happened: the issue, the pull request, and the <code style="font-size:14.5px">Decided:</code>, <code style="font-size:14.5px">Refused:</code>, <code style="font-size:14.5px">Learned:</code> and <code style="font-size:14.5px">Open:</code> lines in commit messages</td></tr>
-        <tr><td>Who writes it</td><td>Nobody; it is derived</td><td>A script drafts it from that evidence; you review and commit it</td></tr>
-        <tr><td>When the model changes</td><td>Re-derived</td><td>Unchanged: plain YAML files with a published schema, not tied to any model</td></tr>
-        <tr><td>Together</td><td colspan="2">They answer different questions, and an agent needs both. Penstock also reads the workspace: a pattern loads when its file signatures match the code in front of it.</td></tr>
+        <tr><td>Scope</td><td>You: every project, plus the facts, conventions and principles that hold across them</td></tr>
+        <tr><td>Source</td><td>The work as it happened: the issue, the pull request, and the <code style="font-size:14.5px">Decided:</code>, <code style="font-size:14.5px">Refused:</code>, <code style="font-size:14.5px">Learned:</code> and <code style="font-size:14.5px">Open:</code> lines in commit messages</td></tr>
+        <tr><td>What makes it true</td><td>Your review: a script drafts from the evidence, nothing enters until you commit it, and each fact quotes the episode it came from</td></tr>
+        <tr><td>Who sees what</td><td>Rules per project: a public project never loads a private one's cards, and every load or refusal is on the audit log</td></tr>
+        <tr><td>When the model changes</td><td>Unchanged: plain YAML files with a published schema, not tied to any model</td></tr>
+        <tr><td>With an index</td><td>An index and the record answer different questions, and an agent can use both. Penstock also reads the workspace: a pattern loads when its file signatures match the code in front of it.</td></tr>
       </tbody>
     </table>
   </div>
