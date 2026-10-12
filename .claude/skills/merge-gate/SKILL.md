@@ -51,8 +51,11 @@ concurrent session reading the repo then sees intent, not just effects.
 ## Then verify, then merge
 ```bash
 gh pr checks <PR>                         # Site check must be green on the CURRENT head
-gh pr merge <PR> --squash --delete-branch
+gh pr merge <PR> --squash --delete-branch --subject "<PR title> (#<PR>)" \
+  --body "Signed-off-by: Joseph Antony Aruja <joseph.a.aruja@gmail.com>"
 ```
+The subject and body are passed so GitHub's default squash message (every branch commit's message and
+its `Co-authored-by:` lines) never reaches `main`: CLAUDE.md § Conventions, commit identity.
 A head branch last updated days ago is refreshed first: `MERGEABLE` means no textual conflict,
 never "the links still resolve". Update it and let `Site check` run again.
 
