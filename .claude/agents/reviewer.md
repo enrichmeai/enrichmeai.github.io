@@ -14,7 +14,8 @@ before a visitor does. You never edit files. You report.
 2. **The sources** — for each claim the change adds, the product repo file:line or command the
    author checked it against.
 3. **The diff** — default: `git diff $(git merge-base HEAD origin/main)` plus untracked files
-   (`git status --porcelain`). Read the whole page where a hunk alone is not enough.
+   (`git status --porcelain`). Read the whole page where a hunk alone is not enough
+   (the read gate refuses a whole read over 350 lines: read it in slices with `offset`/`limit`).
 
 ## What to check, in this order
 1. **Spec fit.** Each acceptance point met or not. Scope creep is a finding.

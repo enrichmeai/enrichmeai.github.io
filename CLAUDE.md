@@ -54,6 +54,9 @@ edit → `reviewer` → fix (max 3 attempts) → `/compound` → PR → `merge-g
 - **When the turn ends:** the whole-site check, plus the checker's and the hooks' own fixtures when
   those changed. It skips when nothing changed since the last clean run, blocks the stop at most
   once, and can be turned off with `CLAUDE_SKIP_STOP_GATES=1`.
+- **Before a Read or a bare `cat`:** `read-gate.sh` refuses a whole read of a text file over 350 lines
+  and says to read a slice (`offset`/`limit`) or `grep -n` first: a whole read stays in the context
+  for the rest of the session. `CLAUDE_SKIP_READ_GATE=1` turns it off; `CLAUDE_READ_GATE_LINES` moves the limit.
 - **Before a Bash command:** `guard-destructive.sh` asks for approval, even when an allow rule
   matches, before: force pushes, any push to `main` (that is a deploy), deleting refs or tags,
   `reset --hard`, `clean -f`, recursive `rm`, cloud CLIs, `gh release|workflow|secret|variable`,
