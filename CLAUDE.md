@@ -120,7 +120,7 @@ Penstock (`/penstock/`) and Cistern (`/cistern/`) against their latest GitHub re
 - Each page marks the facts it states (prefix `data-culvert` / `data-eta`): the released versions, the
   version on `main`, one row per library, the pip extras or the capabilities, and a "what's new" block per
   release. `tools/check-release-page.py <project>` compares those markers with Maven Central, PyPI and
-  the project's `main`. Never hard-code a project version outside a marker: the checker fails on it.
+  the project's `main` (pip extras with the PyPI release, so an extra merged after it waits for the next one). Never hard-code a project version outside a marker: the checker fails on it.
 - `.github/workflows/release-sync.yml` runs the check every day and on every PR that touches a page.
   When a page is behind, it opens (or updates) one issue labelled `<project>-sync` saying what is missing,
   and closes it once the page is back in step.

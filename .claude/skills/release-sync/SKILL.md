@@ -27,7 +27,8 @@ Say so, never report it as passing.
   `data-state="released|unreleased"` beside the others. Describe it from its `pom.xml` `<description>`
   and its public classes: the service, then the contract or capability it implements. A skeleton says so.
 - **A removed library:** delete its row and every other mention of it.
-- **Extras or capabilities changed:** mirror the source exactly (`python-culvert/pyproject.toml` extras;
+- **Extras or capabilities changed:** mirror the source exactly (pip extras as the PyPI release declares them,
+  never main's `python-culvert/pyproject.toml`: an extra merged after the release waits for the next one;
   enrich-test-api's `test-core/.../capability/*` interfaces). A new capability gets its own row saying what
   it does and which service backs it on each provider, with an honest status tag.
 - **The newest release has no "what's new" block:** add `<section <prefix>-release="X.Y.Z">` at the top of
