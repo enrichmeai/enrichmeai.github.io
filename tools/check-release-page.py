@@ -5,8 +5,10 @@ Every release reaches this site: the version, every library, and the new feature
 § "Project releases"). This checks a project page against the truth:
 
   * the registries (Maven Central, and PyPI where the project publishes there) — what is released;
-  * a checkout of the project's repository — which libraries, pip extras and capabilities exist,
-    and the version on its main branch.
+  * a checkout of the project's repository — which libraries and capabilities exist, and the
+    version on its main branch;
+  * pip extras come from the PyPI release itself, not from main: an extra merged after the release
+    is not on the page until a release ships it (CLAUDE.md § Voice: never run ahead of a release).
 
 The page marks every fact it states, so nothing is scraped from prose. With the project's prefix
 P (for example `data-culvert`):
@@ -137,7 +139,19 @@ def reactor_libraries(repo: Path, cfg: dict) -> list[str]:
 def pip_extras(repo: Path, cfg: dict) -> list[str]:
     text = (repo / cfg["extras"]).read_text(encoding="utf-8")
     block = re.search(r"^\[project\.optional-dependencies\]\s*$(.*?)^\[", text, re.S | re.M)
-    return re.findall(r"^([A-Za-z0-9_-]+)\s*=\s*\[", block.group(1), re.M) if block else []
+    return [norm_extra(x) for x in re.findall(r"^([A-Za-z0-9_.-]+)\s*=\s*\[", block.group(1), re.M)] if block else []
+
+
+def released_extras(pypi_info: dict) -> list[str] | None:
+    """The extras the latest PyPI release declares (its Provides-Extra), or None when it is not published."""
+    if not pypi_info.get("version"):
+        return None
+    return sorted(norm_extra(x) for x in pypi_info.get("provides_extra") or [])
+
+
+def norm_extra(name: str) -> str:
+    """An extra's name as PEP 685 compares it: lower case, runs of -_. as one hyphen."""
+    return re.sub(r"[-_.]+", "-", name).lower()
 
 
 def main_version(repo: Path, cfg: dict) -> str:
@@ -186,12 +200,14 @@ def gather(project: str, repo: Path | None) -> dict:
         meta = fetch(f"https://repo1.maven.org/maven2/{cfg['group'].replace('.', '/')}/{a}/maven-metadata.xml")
         m = re.search(r"<release>([^<]+)</release>", meta or "")
         facts["maven"][a] = m.group(1) if m else None
+    pypi_info: dict = {}
     if "pypi" in cfg:
-        facts["pypi_version"] = json.loads(fetch(f"https://pypi.org/pypi/{cfg['pypi']}/json") or "{}").get(
-            "info", {}
-        ).get("version")
+        pypi_info = json.loads(fetch(f"https://pypi.org/pypi/{cfg['pypi']}/json") or "{}").get("info", {})
+        facts["pypi_version"] = pypi_info.get("version")
     if "extras" in cfg:
-        facts["extras"] = pip_extras(repo, cfg)
+        # The released set; main's pyproject only while nothing is on PyPI yet.
+        released = released_extras(pypi_info)
+        facts["extras"] = released if released is not None else pip_extras(repo, cfg)
     if "main_version" in cfg:
         facts["main_version"] = main_version(repo, cfg)
     if "capabilities" in cfg:
@@ -377,7 +393,7 @@ def check(html: str, facts: dict, project: str, primary: bool = True) -> list[st
     for a in sorted(set(rows) - set(facts["maven"])):
         errors.append(f"the page lists {a}, which is not a published library in the project any more")
 
-    # 3. pip extras / 4. capabilities: exactly the set in the source
+    # 3. pip extras (as released) / 4. capabilities: exactly the set in the source
     for key, what in (("extras", "pip extra"), ("capabilities", "capability")):
         if key not in facts:
             continue

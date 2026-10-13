@@ -80,6 +80,14 @@ class Culvert(unittest.TestCase):
         facts = dict(CULVERT, maven={k: v for k, v in CULVERT["maven"].items() if k != "data-pipeline-new"})
         self.assertTrue(any("not a published library" in x for x in culvert(facts=facts)))
 
+    def test_extras_come_from_the_release_not_main(self):
+        # culvert 0.4.0 on PyPI has no postgres extra; main added one after the release (#39).
+        info = {"version": "0.4.0", "provides_extra": ["transform", "gcp", "all"]}
+        self.assertEqual(crp.released_extras(info), ["all", "gcp", "transform"])
+        self.assertIsNone(crp.released_extras({}))
+        self.assertEqual(crp.released_extras({"version": "0.1.0", "provides_extra": None}), [])
+        self.assertEqual(crp.released_extras({"version": "0.1.0", "provides_extra": ["Contract_Tests"]}), ["contract-tests"])
+
     def test_extras_both_ways(self):
         self.assertTrue(any("pip extra aws is missing" in x for x in culvert(facts=dict(CULVERT, extras=["gcp", "all", "aws"]))))
         self.assertTrue(any("pip extra all" in x and "no longer" in x for x in culvert(facts=dict(CULVERT, extras=["gcp"]))))
