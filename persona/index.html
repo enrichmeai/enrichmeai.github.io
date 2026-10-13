@@ -46,7 +46,7 @@
   </div>
 
   <div class="hero-below">
-    <p class="lede">An agent can write an implementation in seconds. What it cannot see in the code is why the last one was written differently, which approach was tried and dropped, and what broke the time before. That knowledge lives in people's heads, old pull requests and chat threads, and it is the part that makes reviewing someone else's diff slow. Penstock writes it down as you work: each piece of work becomes an <strong style="font-weight:600;color:var(--color-text)">episode</strong> that records what was asked, what was decided and why, what was refused and why, what was learned and what is still open. Beliefs that hold up become <strong style="font-weight:600;color:var(--color-text)">facts</strong>, each one quoting the episode it came from. Before every model call, Penstock recalls the ones that matter, under rules you set, and the audit log shows exactly what it recalled.</p>
+    <p class="lede">An agent can write an implementation in seconds. What it cannot see in the code is why the last one was written differently, which approach was tried and dropped, and what broke the time before. That knowledge lives in people's heads, old pull requests and chat threads, and it is the part that makes reviewing someone else's diff slow. Penstock writes it down as you work: each piece of work becomes an <strong style="font-weight:600;color:var(--color-text)">episode</strong> that records what was asked, what was decided and why, what was refused and why, what was learned and what is still open. Beliefs that hold up become <strong style="font-weight:600;color:var(--color-text)">facts</strong>, each one quoting the episode it came from. Before every model call, Penstock recalls the ones that matter, under rules you set, and its log shows exactly what it recalled.</p>
     <div class="stack">
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -81,7 +81,7 @@
         <tr><td>Scope</td><td>You: every project, plus the facts, conventions and principles that hold across them</td></tr>
         <tr><td>Source</td><td>The work as it happened: the issue, the pull request, and the <code style="font-size:14.5px">Decided:</code>, <code style="font-size:14.5px">Refused:</code>, <code style="font-size:14.5px">Learned:</code> and <code style="font-size:14.5px">Open:</code> lines in commit messages</td></tr>
         <tr><td>What makes it true</td><td>Your review: a script drafts from the evidence, nothing enters until you commit it, and each fact quotes the episode it came from</td></tr>
-        <tr><td>Who sees what</td><td>Rules per project: a public project never loads a private one's cards, and every load or refusal is on the audit log</td></tr>
+        <tr><td>Who sees what</td><td>Rules per project: a public project never loads a private one's cards, and every load or refusal is logged, and on the audit log with database storage</td></tr>
         <tr><td>When the model changes</td><td>Unchanged: plain YAML files with a published schema, not tied to any model</td></tr>
         <tr><td>With an index</td><td>An index and the record answer different questions, and an agent can use both. Penstock also reads the workspace: a pattern loads when its file signatures match the code in front of it.</td></tr>
       </tbody>
@@ -140,8 +140,8 @@
       </div>
       <div class="rule-column">
         <span class="kicker" style="color:var(--color-neutral-700)">On the record</span>
-        <span class="figure-num">Audited</span>
-        <p>Every section loaded or kept out, with the reason, and every card loaded, shown in the web UI's Audit view (<span data-penstock-history>v0.5.0</span>).</p>
+        <span class="figure-num">Logged</span>
+        <p>Every section loaded or kept out, with the reason, and every card loaded, logged, and with database storage shown in the web UI's Audit view (<span data-penstock-history>v0.5.0</span>).</p>
       </div>
     </div>
     <p class="note" style="margin-top:28px">The same record reaches Claude Code and Claude Desktop: <code style="font-size:14.5px">java -jar penstock-<span data-penstock="release-version">0.5.2</span>.jar --mcp</code> runs a local MCP server whose <code style="font-size:14.5px">recall</code> builds the same block under the same project rules (<span data-penstock-history>v0.5.0</span>). There the host decides when to call it. Setup is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>

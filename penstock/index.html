@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Penstock · an agent that writes down what it did</title>
-<meta name="description" content="Runs your agents on your data, with receipts: headless, self-hosted, and the reference client for governed access. Every model call and tool invocation is written to an audit log the owner reads back.">
+<meta name="description" content="Runs your agents on your data, with receipts: headless, self-hosted, and the reference client for governed access. With database storage, every model call and tool invocation is written to an audit log the owner reads back.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -44,11 +44,11 @@
       </div>
       <h1>An agent that <span class="accent">writes down</span> what it did.</h1>
     </div>
-    <p class="hero-rail">Runs your agents on your data, with receipts: headless, self-hosted, and the reference client for governed access. Every model call and tool invocation is written to an audit log the owner reads back.</p>
+    <p class="hero-rail">Runs your agents on your data, with receipts: headless, self-hosted, and the reference client for governed access. With database storage, every model call and tool invocation is written to an audit log the owner reads back.</p>
   </div>
 
   <div class="hero-below">
-    <p class="lede">Penstock runs your agents on your data, with receipts. A self-hosted agent runtime for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage, webhooks) against your own internal systems, on models you choose: Copilot, Claude, OpenAI, or a local one. Three things define it. <strong style="font-weight:600;color:var(--color-text)">Where it runs</strong>: headless, not at a developer's keyboard. <strong style="font-weight:600;color:var(--color-text)">Whose hardware</strong>: yours; the transcript, the audit log and the credentials never leave the deployment. <strong style="font-weight:600;color:var(--color-text)">Whose data, provably</strong>: through the pod tool it reads a person's own data in a Cistern pod under rules that person wrote, and every access is receipted on their side, not ours. And it keeps the record its work deserves: every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk. Since <span data-penstock-history>v0.4.0</span> it also remembers: before every model call it recalls your own notes from a memory you keep as plain files, and the log shows what it recalled.</p>
+    <p class="lede">Penstock runs your agents on your data, with receipts. A self-hosted agent runtime for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage, webhooks) against your own internal systems, on models you choose: Copilot, Claude, OpenAI, or a local one. Three things define it. <strong style="font-weight:600;color:var(--color-text)">Where it runs</strong>: headless, not at a developer's keyboard. <strong style="font-weight:600;color:var(--color-text)">Whose hardware</strong>: yours; the transcript, the audit log and the credentials never leave the deployment. <strong style="font-weight:600;color:var(--color-text)">Whose data, provably</strong>: through the pod tool it reads a person's own data in a Cistern pod under rules that person wrote, and every access is receipted on their side, not ours. And it keeps the record its work deserves: with database storage, every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk. Since <span data-penstock-history>v0.4.0</span> it also remembers: before every model call it recalls your own notes from a memory you keep as plain files, and the log shows what it recalled.</p>
     <div class="stack">
       <div class="blueprint pad-frame" data-penstock-release="0.5.2">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -81,7 +81,7 @@
       <div class="record">
         <span class="role">On the agent's side</span>
         <span class="title">The audit log</span>
-        <p>Every model call and every tool invocation, attributed to the authenticated user. What the agent did, in its own words, on the record.</p>
+        <p>Every model call and every tool invocation, attributed to the authenticated user. What the agent did, in its own words, on the record. It needs database storage: SQLite, as the shipped Compose file sets, or Postgres.</p>
       </div>
       <div class="record is-accent">
         <span class="role">On the owner's side</span>
@@ -141,7 +141,7 @@
     <div class="heading-row align-start" style="margin-bottom:40px">
       <h2 class="section-h2" style="max-width:15ch">It remembers, in files you own</h2>
       <div class="prose-col">
-        <p>With memory on (<code style="font-size:14.5px">AGENT_MEMORY_ENABLED=true</code>), Penstock recalls before every model call. It loads matching facts, the latest episodes of the project you are in, and matching patterns into the system prompt. Every card it loads is written to the audit log, and the web UI's Audit view lists them ahead of the model call they went into.</p>
+        <p>With memory on (<code style="font-size:14.5px">AGENT_MEMORY_ENABLED=true</code>), Penstock recalls before every model call. It loads matching facts, the latest episodes of the project you are in, and matching patterns into the system prompt. Every card it loads is logged. With database storage it also goes to the audit log, and the web UI's Audit view lists the cards ahead of the model call they went into.</p>
         <p>The memory is plain files in a folder or a private git repository you own: <code style="font-size:14.5px">estate/</code> for what holds everywhere, and one <code style="font-size:14.5px">projects/&lt;name&gt;/</code> per project. Every card carries a format version and a visibility, the JSON Schemas ship in the repository, and nothing in the format depends on one model.</p>
       </div>
     </div>
@@ -149,7 +149,7 @@
     <div class="heading-row align-start" style="margin-bottom:28px">
       <h3 class="section-h2" style="max-width:15ch;font-size:28px">Who sees which card</h3>
       <div class="prose-col">
-        <p>Since <span data-penstock-history>v0.5.0</span>, your root's <code style="font-size:14.5px">memory.yaml</code> can declare your projects and the audience that sees each one's output. A card loads into a project only if everyone who sees that project's output may see the card. Every turn records each section as loaded or refused, with the reason, and the Audit view shows both.</p>
+        <p>Since <span data-penstock-history>v0.5.0</span>, your root's <code style="font-size:14.5px">memory.yaml</code> can declare your projects and the audience that sees each one's output. A card loads into a project only if everyone who sees that project's output may see the card. Every turn logs each section as loaded or refused, with the reason, and with database storage the Audit view shows both.</p>
       </div>
     </div>
     <div class="table-wrap" style="margin-bottom:28px">
@@ -197,7 +197,7 @@
     <div class="heading-row align-start" style="margin-bottom:28px">
       <h3 class="section-h2" style="max-width:15ch;font-size:28px">In Claude Code and Claude Desktop</h3>
       <div class="prose-col">
-        <p><code style="font-size:14.5px">--mcp</code> runs Penstock as a local MCP server over stdio. The client starts it on your machine, so there is no network listener and no credential. <code style="font-size:14.5px">recall</code> returns the memory a Penstock turn would give its model for the question, built by the same code under the same project rules, and read-only. A <code style="font-size:14.5px">start-with-memory</code> prompt asks the client to call it before it plans. Every call is audited. The <code style="font-size:14.5px">claude mcp add</code> command is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
+        <p><code style="font-size:14.5px">--mcp</code> runs Penstock as a local MCP server over stdio. The client starts it on your machine, so there is no network listener and no credential. <code style="font-size:14.5px">recall</code> returns the memory a Penstock turn would give its model for the question, built by the same code under the same project rules, and read-only. A <code style="font-size:14.5px">start-with-memory</code> prompt asks the client to call it before it plans. Every call is logged: to stderr with the default in-memory storage, to the audit log with database storage. The <code style="font-size:14.5px">claude mcp add</code> command is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
       </div>
     </div>
     <div class="blueprint caveat">
@@ -218,15 +218,15 @@
     <div class="table-wrap">
       <table class="table">
         <thead>
-          <tr><th>Surface</th><th>What it is for</th><th>Written to the audit log</th></tr>
+          <tr><th>Surface</th><th>What it is for</th><th>Written to the audit log (with database storage)</th></tr>
         </thead>
         <tbody>
           <tr><td>Web</td><td>A person working with the agent directly</td><td>Every model call and tool invocation</td></tr>
           <tr><td>REST</td><td>CI hooks and scheduled triage</td><td>Every model call and tool invocation</td></tr>
           <tr><td>Streaming</td><td>Chat commands and long-running work</td><td>Every model call and tool invocation</td></tr>
-          <tr><td>Editor (<code style="font-size:14.5px">--acp</code>)</td><td>The agent inside JetBrains Air or Zed</td><td>Every model call and tool invocation</td></tr>
-          <tr><td>Memory server (<code style="font-size:14.5px">--mcp</code>)</td><td>Your memory in Claude Code or Claude Desktop</td><td>Every recall and draft, with the sections and cards a recall returned</td></tr>
-          <tr><td>Models</td><td>Pluggable, including a local one</td><td>The call is logged whichever model served it</td></tr>
+          <tr><td>Editor (<code style="font-size:14.5px">--acp</code>)</td><td>The agent inside JetBrains Air or Zed</td><td>Nothing: <code style="font-size:14.5px">--acp</code> runs with in-memory storage only, so card loads go to the application log</td></tr>
+          <tr><td>Memory server (<code style="font-size:14.5px">--mcp</code>)</td><td>Your memory in Claude Code or Claude Desktop</td><td>Every recall and draft, with the sections and cards a recall returned (to stderr with the default in-memory storage)</td></tr>
+          <tr><td>Models</td><td>Pluggable, including a local one</td><td>The call, whichever model served it</td></tr>
         </tbody>
       </table>
     </div>
@@ -244,7 +244,7 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Today</dt>
-        <dd>Open source: five surfaces (web, REST, streaming, the editor over ACP and the memory server over MCP), pluggable models including a local one, and an audit log of every model and tool call, attributed to the authenticated user and readable from the app itself. <span class="tag tag-live">live</span></dd>
+        <dd>Open source: five surfaces (web, REST, streaming, the editor over ACP and the memory server over MCP), pluggable models including a local one, and, with database storage, an audit log of every model and tool call, attributed to the authenticated user and readable from the app itself. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Release</dt>
@@ -260,7 +260,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Memory</dt>
-        <dd>Recall before every model call from a memory root you own, with each loaded card on the audit log (<span data-penstock-history>v0.4.0</span>). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (<span data-penstock-history>v0.5.0</span>). The block asks the model to cite each card it relies on, or to mark an assumption, and to propose an episode rather than write a fact (<span data-penstock-history>v0.5.2</span>). <span class="tag tag-live"><span data-penstock-history>v0.5.0</span></span></dd>
+        <dd>Recall before every model call from a memory root you own, with each loaded card logged, and on the audit log with database storage (<span data-penstock-history>v0.4.0</span>). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (<span data-penstock-history>v0.5.0</span>). The block asks the model to cite each card it relies on, or to mark an assumption, and to propose an episode rather than write a fact (<span data-penstock-history>v0.5.2</span>). <span class="tag tag-live"><span data-penstock-history>v0.5.0</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Planned</dt>
@@ -334,7 +334,7 @@
         </div>
         <div class="faq-item">
           <h3>Do I have to send anything to a model provider?</h3>
-          <p>Models are pluggable and one of them is local. Whichever serves the call, the call is written to the audit log.</p>
+          <p>Models are pluggable and one of them is local. Whichever serves the call, with database storage the call is written to the audit log.</p>
         </div>
       </div>
       <div class="faq-col">
