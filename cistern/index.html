@@ -48,11 +48,11 @@
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker" style="margin-bottom:10px">Pull it</div>
-        <code style="font-size:14.5px;color:var(--color-text);word-break:break-all">docker pull ghcr.io/enrichmeai/cistern:0.2.0</code>
+        <code style="font-size:14.5px;color:var(--color-text);word-break:break-all">docker pull ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></code>
       </div>
       <div class="btn-row">
         <a href="#run" class="btn btn-primary btn-lg">Run it in five minutes →</a>
-        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" class="btn btn-secondary btn-lg">Release v0.2.0 →</a>
+        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" class="btn btn-secondary btn-lg">Release <span data-cistern="release-version">v0.2.0</span> →</a>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Docker · Java 25 for the CLI</span></div>
-      <pre><div class="cmt"># run enforcing: setting the owner turns Web Access Control on</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:3737:3000 \</div><div>  -e CISTERN_OWNER_WEBID=<span class="tok">'https://you.example/profile#me'</span> \</div><div>  -e CISTERN_OWNER_TOKEN=<span class="tok">"$(openssl rand -hex 32)"</span> \</div><div>  -e CISTERN_BASE_URL=<span class="tok">'http://127.0.0.1:3737'</span> \</div><div>  -v cistern-data:/data ghcr.io/enrichmeai/cistern:0.2.0</div><div class="sep"></div><div class="cmt"># grant, and take it back: the CLI is a release asset</div><div><span class="tok">java</span> -jar cistern-cli-0.2.0.jar grant &lt;webid&gt; --read /matters/2026-114/</div><div><span class="tok">java</span> -jar cistern-cli-0.2.0.jar revoke &lt;webid&gt; /matters/2026-114/</div></pre>
+      <pre><div class="cmt"># run enforcing: setting the owner turns Web Access Control on</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:3737:3000 \</div><div>  -e CISTERN_OWNER_WEBID=<span class="tok">'https://you.example/profile#me'</span> \</div><div>  -e CISTERN_OWNER_TOKEN=<span class="tok">"$(openssl rand -hex 32)"</span> \</div><div>  -e CISTERN_BASE_URL=<span class="tok">'http://127.0.0.1:3737'</span> \</div><div>  -v cistern-data:/data ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></div><div class="sep"></div><div class="cmt"># grant, and take it back: the CLI is a release asset</div><div><span class="tok">java</span> -jar cistern-cli-<span data-cistern="release-version">0.2.0</span>.jar grant &lt;webid&gt; --read /matters/2026-114/</div><div><span class="tok">java</span> -jar cistern-cli-<span data-cistern="release-version">0.2.0</span>.jar revoke &lt;webid&gt; /matters/2026-114/</div></pre>
     </div>
     <p class="note"><strong style="font-weight:600">127.0.0.1, not localhost.</strong> On a Mac localhost resolves to ::1 first while Docker binds IPv4 only, so any other process on the port answers instead, with a 401 that looks exactly like this server misbehaving.</p>
 
@@ -187,21 +187,21 @@
       <p class="intro">This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise. Rows say whether they describe the released image or the current source.</p>
     </div>
     <dl class="spec-list">
-      <div class="spec-row">
+      <div class="spec-row" data-cistern-release="0.2.0">
         <dt>Release</dt>
-        <dd><code style="font-size:14.5px">ghcr.io/enrichmeai/cistern:0.2.0</code> multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag tag-live">live</span></dd>
+        <dd><code style="font-size:14.5px">ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></code> multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Identity</dt>
-        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in v0.2.0</span> · Solid-OIDC token validation and DPoP proofs are on <code style="font-size:14.5px">main</code>, merged after the 0.2.0 tag, so the image above predates them <span class="tag tag-next">on main</span></dd>
+        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span> · Solid-OIDC token validation and DPoP proofs are on <code style="font-size:14.5px">main</code>, merged after the <span data-cistern="release-version">0.2.0</span> tag, so the image above predates them <span class="tag tag-next">on main</span></dd>
       </div>
       <div class="spec-row">
         <dt>Authority</dt>
-        <dd>Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable <span class="tag tag-live">in v0.2.0</span></dd>
+        <dd>Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span></dd>
       </div>
       <div class="spec-row">
         <dt>Agents</dt>
-        <dd>The MCP front door with seven tools, structured refusals and revocation on the very next call, and plain HTTP, behind one filter <span class="tag tag-live">in v0.2.0</span></dd>
+        <dd>The MCP front door with seven tools, structured refusals and revocation on the very next call, and plain HTTP, behind one filter <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span></dd>
       </div>
       <div class="spec-row">
         <dt>Conformance</dt>
@@ -209,7 +209,7 @@
       </div>
       <div class="spec-row">
         <dt>Proof</dt>
-        <dd>Every release is held to a <strong style="font-weight:600">stranger test</strong> before this page names it, v0.2.0 included: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, following only the shipped docs. 1,987 green tests behind it.</dd>
+        <dd>Every release is held to a <strong style="font-weight:600">stranger test</strong> before this page names it, <span data-cistern-history>v0.2.0</span> included: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, following only the shipped docs. 1,987 green tests behind it.</dd>
       </div>
       <div class="spec-row">
         <dt>Licence</dt>
@@ -288,7 +288,7 @@
           <p>No, and there is not going to be one. All of it is Apache 2.0 and free for commercial use. Support, integration and hosting are how the company earns.</p>
         </div>
         <div class="faq-item">
-          <h3>Can I put v0.2.0 on a network?</h3>
+          <h3>Can I put <span data-cistern="release-version">v0.2.0</span> on a network?</h3>
           <p>It has cleared the stranger test, so a stranger can pull, run, grant, refuse, revoke and read receipts from the published artifacts alone. Read the release notes for the limitations, which are stated plainly.</p>
         </div>
       </div>
@@ -300,12 +300,12 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">cistern 0.2.0 · Apache 2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">cistern <span data-cistern="release-version">0.2.0</span> · Apache 2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get it</h4>
-        <a href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release v0.2.0: image · jars · CLI · MCP bridge →</a>
+        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release <span data-cistern="release-version">v0.2.0</span>: image · jars · CLI · MCP bridge →</a>
         <a href="https://github.com/enrichmeai/cistern">GitHub: source →</a>
         <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">The integration playbook →</a>
       </nav>
