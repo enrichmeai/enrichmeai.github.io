@@ -50,7 +50,7 @@
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker" style="margin-bottom:10px">Install it</div>
-        <code style="font-size:14.5px;color:var(--color-text)">pip install culvert[gcp]</code>
+        <code style="font-size:14.5px;color:var(--color-text)">pip install 'culvert[gcp]'</code>
       </div>
       <div class="btn-row">
         <a href="#install" class="btn btn-primary btn-lg">Install the core →</a>
@@ -130,7 +130,7 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Python 3.10 or newer</span></div>
-      <pre><div class="cmt"># core contracts only, no cloud SDKs</div><div><span class="tok">pip</span> install culvert</div><div class="sep"></div><div class="cmt"># + BigQuery, GCS, Pub/Sub, Secret Manager, observability</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="gcp">culvert[gcp]</span></div><div class="sep"></div><div class="cmt"># + Airflow-side DAG factory / operators / sensors, or dbt</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="orchestration">culvert[orchestration]</span></div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="transform">culvert[transform]</span></div><div class="sep"></div><div class="cmt"># test fixtures, and the conformance suite for your own adapters</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="tester">culvert[tester]</span></div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="contract-tests">culvert[contract-tests]</span></div><div class="sep"></div><div class="cmt"># gcp + orchestration + transform</div><div><span class="tok">pip</span> install <span class="tok" data-culvert-extra="all">culvert[all]</span></div></pre>
+      <pre><div class="cmt"># core contracts only, no cloud SDKs</div><div><span class="tok">pip</span> install culvert</div><div class="sep"></div><div class="cmt"># + BigQuery, GCS, Pub/Sub, Secret Manager, observability</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="gcp">culvert[gcp]</span>'</div><div class="sep"></div><div class="cmt"># + Airflow-side DAG factory / operators / sensors, or dbt</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="orchestration">culvert[orchestration]</span>'</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="transform">culvert[transform]</span>'</div><div class="sep"></div><div class="cmt"># + StageClaim on PostgreSQL</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="postgres">culvert[postgres]</span>'</div><div class="sep"></div><div class="cmt"># test fixtures, and the conformance suite for your own adapters</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="tester">culvert[tester]</span>'</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="contract-tests">culvert[contract-tests]</span>'</div><div class="sep"></div><div class="cmt"># gcp + orchestration + transform</div><div><span class="tok">pip</span> install '<span class="tok" data-culvert-extra="all">culvert[all]</span>'</div></pre>
     </div>
     <div class="blueprint code-frame" style="margin-top:24px">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -217,6 +217,31 @@
       <h2 class="section-h2">What each release added</h2>
       <p class="intro">From the changelog, release by release. The full record, including every fix, is <a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md">CHANGELOG.md →</a></p>
     </div>
+    <section class="spec-list" data-culvert-release="0.5.0" aria-label="Culvert 0.5.0">
+      <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.5.0 <span class="tag tag-live">Python, on PyPI</span> <span class="tag tag-next">Java not yet on Maven Central</span></h3>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>Schema files</dt>
+          <dd>An entity's layout can live in a YAML or JSON file instead of code: its columns in order, and each field's type, whether it is required, its classification, masking and range. Java and Python load it with the same rules and refuse a bad file naming the entry. The ODP loader takes <code style="font-size:14.5px">--schemaUri</code>, so any entity loads.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Python</dt>
+          <dd><code style="font-size:14.5px">StageClaim</code> on PostgreSQL, through <code style="font-size:14.5px">culvert[postgres]</code>, on the same tables as Java; no test yet runs a Java and a Python claimant against each other. A BigQuery <code style="font-size:14.5px">AuditEventPublisher</code>, with the audit contract suite. The whole <code style="font-size:14.5px">BlobStore</code> contract on <code style="font-size:14.5px">GcsBlobStore</code>: streamed reads pinned to one object generation, resumable writes and server-side copy. Stage policy decorators <code style="font-size:14.5px">@masked</code>, <code style="font-size:14.5px">@quality_check</code> and <code style="font-size:14.5px">@governed</code>. And <code style="font-size:14.5px">run(source, transforms, sink)</code>, with a GCS-to-BigQuery quickstart in 14 lines.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Java</dt>
+          <dd>Readiness as a gate: a task can wait until every input it expects for the period is ready, as well as for other stages. The Airflow and Composer renderers emit the check, and the pod and Cloud Run renderer refuses such a task.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Changed</dt>
+          <dd>The ODP loader reads whole-number, decimal and true/false cells as values before validating them. A blank cell in a required field is now missing, so rows that loaded before can be quarantined. <code style="font-size:14.5px">data-pipeline-core</code> gains SnakeYAML (Java) and PyYAML (Python).</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Status</dt>
+          <dd>The Python release is on PyPI. Java is not on Maven Central yet. The proof harness can now drive Cloud Composer, and the changelog says the real GCP run is still to come.</dd>
+        </div>
+      </dl>
+    </section>
     <section class="spec-list" data-culvert-release="0.4.0" aria-label="Culvert 0.4.0">
       <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:12px">0.4.0 <span class="tag tag-live">Java and Python, on Maven Central and PyPI</span></h3>
       <dl class="spec-list">
@@ -310,7 +335,7 @@
     <dl class="spec-list">
       <div class="spec-row">
         <dt>Python</dt>
-        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.4.0</span></code> on PyPI <span class="tag tag-live">live</span></dd>
+        <dd>Released: <code style="font-size:14.5px">culvert <span data-culvert="pypi-version">0.5.0</span></code> on PyPI <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row">
         <dt>Java</dt>

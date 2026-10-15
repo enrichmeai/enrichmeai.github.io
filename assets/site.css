@@ -199,7 +199,7 @@ h1, .h1 {
 }
 .spec-row dd { margin: 0; font-size: 16.5px; line-height: 1.6; }
 .tag {
-  display: inline-flex; align-items: center; font-size: 12px; letter-spacing: 0.02em;
+  display: inline-flex; align-items: center; gap: 0.3em; font-size: 12px; letter-spacing: 0.02em;
   padding: 3px 10px; border-radius: 0; margin-left: 6px;
 }
 .tag-live { background: var(--color-accent-100); color: var(--color-accent-800); }
