@@ -48,11 +48,11 @@
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker" style="margin-bottom:10px">Pull it</div>
-        <code style="font-size:14.5px;color:var(--color-text);word-break:break-all">docker pull ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></code>
+        <code style="font-size:14.5px;color:var(--color-text);word-break:break-all">docker pull ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.3.1</span></code>
       </div>
       <div class="btn-row">
         <a href="#run" class="btn btn-primary btn-lg">Run it in five minutes →</a>
-        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0" class="btn btn-secondary btn-lg">Release <span data-cistern="release-version">v0.2.0</span> →</a>
+        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.3.1" class="btn btn-secondary btn-lg">Release <span data-cistern="release-version">v0.3.1</span> →</a>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Docker · Java 25 for the CLI</span></div>
-      <pre><div class="cmt"># keep the owner token: the CLI needs it to grant and revoke</div><div><span class="tok">export</span> CISTERN_TOKEN=<span class="tok">"$(openssl rand -hex 32)"</span></div><div class="sep"></div><div class="cmt"># run enforcing: setting the owner turns Web Access Control on</div><div><span class="tok">docker</span> run -d --rm -p 127.0.0.1:3737:3000 \</div><div>  -e CISTERN_OWNER_WEBID=<span class="tok">'https://you.example/profile#me'</span> \</div><div>  -e CISTERN_OWNER_TOKEN=<span class="tok">"$CISTERN_TOKEN"</span> \</div><div>  -e CISTERN_BASE_URL=<span class="tok">'http://127.0.0.1:3737'</span> \</div><div>  -v cistern-data:/data ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></div><div><span class="tok">until</span> curl -s -o /dev/null http://127.0.0.1:3737/; <span class="tok">do</span> sleep 1; <span class="tok">done</span>  <span class="cmt"># up once it answers, even with 401</span></div><div class="sep"></div><div class="cmt"># grant, and take it back: the CLI is a release asset, and reads CISTERN_TOKEN</div><div><span class="tok">curl</span> -fsSLO https://github.com/enrichmeai/cistern/releases/download/v<span data-cistern="release-version">0.2.0</span>/cistern-cli-<span data-cistern="release-version">0.2.0</span>.jar</div><div><span class="tok">java</span> -jar cistern-cli-<span data-cistern="release-version">0.2.0</span>.jar grant &lt;webid&gt; --read /matters/2026-114/</div><div><span class="tok">java</span> -jar cistern-cli-<span data-cistern="release-version">0.2.0</span>.jar revoke &lt;webid&gt; /matters/2026-114/</div></pre>
+      <pre><div class="cmt"># keep the owner token: the CLI needs it to grant and revoke</div><div><span class="tok">export</span> CISTERN_TOKEN=<span class="tok">"$(openssl rand -hex 32)"</span></div><div class="sep"></div><div class="cmt"># run enforcing: setting the owner turns Web Access Control on</div><div><span class="tok">docker</span> run -d --rm -p 127.0.0.1:3737:3000 \</div><div>  -e CISTERN_OWNER_WEBID=<span class="tok">'https://you.example/profile#me'</span> \</div><div>  -e CISTERN_OWNER_TOKEN=<span class="tok">"$CISTERN_TOKEN"</span> \</div><div>  -e CISTERN_BASE_URL=<span class="tok">'http://127.0.0.1:3737'</span> \</div><div>  -v cistern-data:/data ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.3.1</span></div><div><span class="tok">until</span> curl -s -o /dev/null http://127.0.0.1:3737/; <span class="tok">do</span> sleep 1; <span class="tok">done</span>  <span class="cmt"># up once it answers, even with 401</span></div><div class="sep"></div><div class="cmt"># grant, and take it back: the CLI is a release asset, and reads CISTERN_TOKEN</div><div><span class="tok">curl</span> -fsSLO https://github.com/enrichmeai/cistern/releases/download/v<span data-cistern="release-version">0.3.1</span>/cistern-cli-<span data-cistern="release-version">0.3.1</span>.jar</div><div><span class="tok">java</span> -jar cistern-cli-<span data-cistern="release-version">0.3.1</span>.jar grant &lt;webid&gt; --read /matters/2026-114/</div><div><span class="tok">java</span> -jar cistern-cli-<span data-cistern="release-version">0.3.1</span>.jar revoke &lt;webid&gt; /matters/2026-114/</div></pre>
     </div>
     <p class="note"><strong style="font-weight:600">127.0.0.1, not localhost.</strong> On a Mac localhost resolves to ::1 first while Docker binds IPv4 only, so any other process on the port answers instead, with a 401 that looks exactly like this server misbehaving.</p>
 
@@ -167,7 +167,7 @@
           <tr><th>Surface</th><th>How a caller authenticates</th><th>What it can do</th><th>On refusal</th></tr>
         </thead>
         <tbody>
-          <tr><td>MCP front door</td><td>A service principal of its own, issued per application</td><td>Seven tools over the granted paths, over stdio for a desktop client or Streamable HTTP for one on another machine</td><td>A structured refusal, not an empty result</td></tr>
+          <tr><td>MCP front door</td><td>A service principal of its own, issued per application</td><td>Seven tools over the granted paths, over stdio for a desktop client; Streamable HTTP for a remote one is not reachable in the released app yet (#220)</td><td>A structured refusal, not an empty result</td></tr>
           <tr><td>Plain HTTP</td><td>Any OpenID Connect issuer, or a service principal</td><td>Read and write within Web Access Control</td><td>An HTTP refusal naming no more than it must</td></tr>
           <tr><td>CLI</td><td>The owner token set at startup</td><td>Create pods, grant, revoke, read receipts</td><td>Not applicable: the owner holds the authority</td></tr>
           <tr><td>Receipts</td><td>The owner, over the same filter</td><td>Query every allow and deny by rule, caller or path</td><td>Not applicable</td></tr>
@@ -187,13 +187,13 @@
       <p class="intro">This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise. Rows say whether they describe the released image or the current source.</p>
     </div>
     <dl class="spec-list">
-      <div class="spec-row" data-cistern-release="0.2.0">
+      <div class="spec-row" data-cistern-release="0.3.1">
         <dt>Release</dt>
-        <dd><code style="font-size:14.5px">ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.2.0</span></code> multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag tag-live">live</span></dd>
+        <dd><code style="font-size:14.5px">ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.3.1</span></code> multi-arch image, jars, CLI, the MCP bridge and checksums <span class="tag tag-live">live</span> · <span data-cistern-history>v0.3.0</span> added Solid-OIDC, delegation and <code style="font-size:14.5px">cistern sync</code>, and closed an <code style="font-size:14.5px">OPTIONS</code> request that skipped access control. <span data-cistern-history>v0.3.1</span> makes <code style="font-size:14.5px">pod create</code> refuse a <code style="font-size:14.5px">--base</code> that names the server differently from its own base URL, before writing anything, as <code style="font-size:14.5px">grant</code> already did</dd>
       </div>
       <div class="spec-row">
         <dt>Identity</dt>
-        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span> · Solid-OIDC token validation and DPoP proofs are on <code style="font-size:14.5px">main</code>, merged after the <span data-cistern="release-version">0.2.0</span> tag, so the image above predates them <span class="tag tag-next">on main</span></dd>
+        <dd>Logins from any OpenID Connect issuer, plus per-application service principals <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span> · Solid-OIDC from any Solid identity provider, with DPoP proofs and a WebID issuer check, off unless <code style="font-size:14.5px">cistern.auth.solid.enabled=true</code> <span class="tag tag-live">in <span data-cistern-history>v0.3.0</span></span> · No server-issued <code style="font-size:14.5px">DPoP-Nonce</code> challenge yet</dd>
       </div>
       <div class="spec-row">
         <dt>Authority</dt>
@@ -201,7 +201,7 @@
       </div>
       <div class="spec-row">
         <dt>Agents</dt>
-        <dd>The MCP front door with seven tools, structured refusals and revocation on the very next call, and plain HTTP, behind one filter <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span></dd>
+        <dd>The MCP front door with seven tools, structured refusals and revocation on the very next call, and plain HTTP, behind one filter <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span> · One command stands up a pod and Penstock together, the agent on its own credential, so the refusal before a grant is the demonstration (<a href="/penstock/">Penstock</a>) <span class="tag tag-live">in <span data-cistern-history>v0.3.0</span></span></dd>
       </div>
       <div class="spec-row">
         <dt>Conformance</dt>
@@ -209,7 +209,7 @@
       </div>
       <div class="spec-row">
         <dt>Proof</dt>
-        <dd>Every release is held to a <strong style="font-weight:600">stranger test</strong> before this page names it, <span data-cistern-history>v0.2.0</span> included: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, following only the shipped docs. 1,987 green tests behind it.</dd>
+        <dd>Every release is held to a <strong style="font-weight:600">stranger test</strong> before this page names it, <span data-cistern-history>v0.3.1</span> included: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, following only the shipped docs. 2,465 tests passing behind it, 1 skipped.</dd>
       </div>
       <div class="spec-row">
         <dt>Licence</dt>
@@ -227,16 +227,11 @@
   </div>
 
   <div class="section-body">
-    <div class="rule-cols c3">
+    <div class="rule-cols c2">
       <div class="rule-column">
         <span class="kicker">Next</span>
-        <h3>A release carrying Solid-OIDC</h3>
-        <p>Token validation, DPoP proofs and WebID checks are merged and tested on main. The next tagged release is what puts them in an image you can pull.</p>
-      </div>
-      <div class="rule-column">
-        <span class="kicker">Next</span>
-        <h3>Penstock as the reference client</h3>
-        <p>An agent asking for a file as its own principal, refused outside its grant, receipted on the owner's side. <a href="/penstock/">See Penstock →</a></p>
+        <h3>The remote MCP door, reachable</h3>
+        <p>MCP over Streamable HTTP ships in the code, but in the assembled app the pod answers that path first, so a remote client cannot reach it yet (#220). Local clients use the stdio bridge, which works today.</p>
       </div>
       <div class="rule-column is-accent">
         <span class="kicker">Direction</span>
@@ -288,8 +283,8 @@
           <p>No, and there is not going to be one. All of it is Apache 2.0 and free for commercial use. Support, integration and hosting are how the company earns.</p>
         </div>
         <div class="faq-item">
-          <h3>Can I put <span data-cistern="release-version">v0.2.0</span> on a network?</h3>
-          <p>Not yet. Its README binds the port to 127.0.0.1, not 0.0.0.0, because the release has no Solid-OIDC: the pod is for you and your own machines. Solid-OIDC is on <code style="font-size:14.5px">main</code>, merged after the <span data-cistern-history>v0.2.0</span> tag. On your own machine, a stranger can pull, run, grant, refuse, revoke and read receipts from the published artifacts alone.</p>
+          <h3>Can I put <span data-cistern="release-version">v0.3.1</span> on a network?</h3>
+          <p>The quickstart keeps it on 127.0.0.1, because it runs with a local owner token and no TLS. Going beyond loopback is documented: TLS in front, an OpenID Connect issuer or hashed service credentials, and no owner token (the repository's <code style="font-size:14.5px">docs/deploy.md</code>). The stranger test covers the local quickstart, not a network deployment.</p>
         </div>
       </div>
     </div>
@@ -300,12 +295,12 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">cistern <span data-cistern="release-version">0.2.0</span> · Apache 2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">cistern <span data-cistern="release-version">0.3.1</span> · Apache 2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get it</h4>
-        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.2.0">Release <span data-cistern="release-version">v0.2.0</span>: image · jars · CLI · MCP bridge →</a>
+        <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.3.1">Release <span data-cistern="release-version">v0.3.1</span>: image · jars · CLI · MCP bridge →</a>
         <a href="https://github.com/enrichmeai/cistern">GitHub: source →</a>
         <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">The integration playbook →</a>
       </nav>
