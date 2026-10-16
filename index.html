@@ -19,8 +19,8 @@
   <div class="container">
     <a href="#top" class="wordmark">enrichme<span class="dot">·</span>ai</a>
     <nav class="site-nav">
+      <a href="#headworks">Headworks</a>
       <a href="#work">What we build</a>
-      <a href="/persona/">Persona</a>
       <a href="#where">Where this goes</a>
       <a href="#run">How you run it</a>
       <a href="#how">How we build</a>
@@ -61,6 +61,38 @@
       </dl>
     </div>
   </div>
+
+  <div id="headworks" class="section-rule">
+    <span class="name">Headworks</span><span class="num">Together</span>
+  </div>
+
+  <div class="heading-row grid-105" style="padding:42px 0 28px">
+    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:18ch">Headworks: the parts, working as one.</h2>
+    <p style="font-size:17px;color:var(--color-neutral-800);max-width:63ch"><strong style="font-weight:600;color:var(--color-text)">An AI assistant that works on your data, remembers what you have taught it, sees only what you have shared, and keeps a receipt for everything.</strong> Headworks is the name for the open-source parts below when they run together. Each ships on its own today, with its own release; there is no single Headworks download yet.</p>
+  </div>
+
+  <dl class="spec-list" style="margin-bottom:72px">
+    <div class="spec-row">
+      <dt>Works on your data</dt>
+      <dd><a href="/penstock/">Penstock</a> runs the agents: self-hosted, on models you choose <span class="tag tag-live"><span data-penstock="release-version">v0.5.2</span></span></dd>
+    </div>
+    <div class="spec-row">
+      <dt>Remembers</dt>
+      <dd>Penstock's record: facts, decisions and refusals as plain files you own. With memory turned on and a root split into projects, each project loads its own section and never another project's <span class="tag tag-live">in Penstock <span data-penstock="release-version">v0.5.2</span></span></dd>
+    </div>
+    <div class="spec-row">
+      <dt>Sees only what you share</dt>
+      <dd><a href="/cistern/">Cistern</a> holds your data and enforces your grants on every request; revoke one and the very next request is refused <span class="tag tag-live"><span data-cistern="release-version">v0.3.1</span></span></dd>
+    </div>
+    <div class="spec-row">
+      <dt>Keeps a receipt</dt>
+      <dd>Cistern receipts every allow and deny, queryable by the owner. Penstock writes every model call and tool call to its audit log when database storage is on</dd>
+    </div>
+    <div class="spec-row">
+      <dt>Learns how you work</dt>
+      <dd>The <a href="/persona/">persona</a>: a companion that speaks from your record (<a href="https://github.com/enrichmeai/penstock/issues/93">penstock#93</a>) <span class="tag tag-next">planned</span></dd>
+    </div>
+  </dl>
 
   <div id="work" class="section-rule">
     <span class="name">What we build</span><span class="num">01</span>
