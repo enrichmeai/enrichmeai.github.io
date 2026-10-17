@@ -93,14 +93,14 @@ PROJECTS = {
         "page": "penstock/index.html",
         "attr": "data-penstock",
         "kind": "github",
-        "also": ["index.html", "persona/index.html"],
+        "also": ["index.html", "persona/index.html", "headworks/index.html"],
     },
     "cistern": {
         "repo": "enrichmeai/cistern",
         "page": "cistern/index.html",
         "attr": "data-cistern",
         "kind": "github",
-        "also": ["index.html", "persona/index.html", "penstock/index.html"],
+        "also": ["index.html", "persona/index.html", "penstock/index.html", "headworks/index.html"],
     },
 }
 # Every project's markers, plus data-other-version for a version that is not any project's own
