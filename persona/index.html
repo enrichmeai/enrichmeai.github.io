@@ -35,10 +35,10 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Built into Penstock · <span data-penstock="release-version">v0.5.2</span></p>
+      <p class="eyebrow">Built into Penstock · <span data-penstock="release-version">v0.5.3</span></p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <span>The persona is a planned <a href="/#headworks">Headworks</a> feature. Everything else on this page has shipped, with the release beside it.</span>
+        <span>The persona is a planned <a href="/headworks/">Headworks</a> feature. Everything else on this page has shipped, with the release beside it.</span>
       </div>
       <h1>Your AI starts from <span class="accent">why</span>, not from zero.</h1>
     </div>
@@ -54,8 +54,8 @@
         <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)"><strong style="font-weight:600">Decided:</strong> agent.memory.enabled defaults to false.<br><strong style="font-weight:600">Why:</strong> these folders are this project's own build memory, not every deployment's.<br><br><strong style="font-weight:600">Refused:</strong> walking the workspace once per signature glob.<br><strong style="font-weight:600">Why:</strong> one walk per assemble() is enough and an UncheckedIOException must not abort the turn.</span>
       </div>
       <div class="btn-row">
-        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/episodes/2026-10-02-memory-2-retrieve-before-reason.yaml" class="btn btn-primary btn-lg">Read the episode →</a>
-        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2" class="btn btn-secondary btn-lg">Release <span data-penstock="release-version">v0.5.2</span> →</a>
+        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/episodes/2026-10-02-memory-2-retrieve-before-reason.yaml" class="btn btn-primary btn-lg">Read the episode →</a>
+        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.3" class="btn btn-secondary btn-lg">Release <span data-penstock="release-version">v0.5.3</span> →</a>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Episodes</dt>
-        <dd>One per piece of work: asked, built, decided and why, refused and why, learned, open. <code style="font-size:14.5px">write-episode.sh</code> drafts it from the issue, the pull request and the commit messages; from Claude Code or Claude Desktop, <code style="font-size:14.5px">draft_episode</code> writes one new draft and never overwrites (<span data-penstock-history>v0.5.0</span>). <span class="tag tag-live"><span data-penstock-history>v0.4.0</span></span></dd>
+        <dd>One per piece of work: asked, built, decided and why, refused and why, learned, open. <code style="font-size:14.5px">write-episode.sh</code> drafts it from the issue, the pull request and the commit messages; from Claude Code or Claude Desktop, <code style="font-size:14.5px">draft_episode</code> writes one new draft and never overwrites (<span data-penstock-history>v0.5.0</span>); since <span data-penstock-history>v0.5.3</span> it waits in <code style="font-size:14.5px">drafts/</code>, and recall does not read it until you move it into <code style="font-size:14.5px">episodes/</code>. <span class="tag tag-live"><span data-penstock-history>v0.4.0</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Facts</dt>
@@ -115,7 +115,7 @@
         <dd>Each card carries a visibility, and your <code style="font-size:14.5px">memory.yaml</code> gives each project an audience. A public project never loads a private one's cards, and a credential-shaped value stops a write before anything is saved. <span class="tag tag-live"><span data-penstock-history>v0.5.0</span></span></dd>
       </div>
     </dl>
-    <p class="note">Penstock keeps its own record in the open: 5 episodes, 14 facts (one superseded) and 1 pattern, last verified against <span data-penstock-history>v0.3.0</span> and so flagged stale, in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/tree/v0.5.2">the repository at <span data-penstock="release-version">v0.5.2</span></a>. The format is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/memory-format.md">the shipped docs</a>.</p>
+    <p class="note">Penstock keeps its own record in the open: 5 episodes, 14 facts (one superseded) and 1 pattern, last verified against <span data-penstock-history>v0.3.0</span> and so flagged stale, in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/tree/v0.5.3">the repository at <span data-penstock="release-version">v0.5.3</span></a>. The format is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/docs/memory-format.md">the shipped docs</a>.</p>
   </div>
 
   <div id="recall" class="section-rule">
@@ -144,7 +144,7 @@
         <p>Every section loaded or kept out, with the reason, and every card loaded, logged, and with database storage shown in the web UI's Audit view (<span data-penstock-history>v0.5.0</span>).</p>
       </div>
     </div>
-    <p class="note" style="margin-top:28px">The same record reaches Claude Code and Claude Desktop: <code style="font-size:14.5px">java -jar penstock-<span data-penstock="release-version">0.5.2</span>.jar --mcp</code> runs a local MCP server whose <code style="font-size:14.5px">recall</code> builds the same block under the same project rules (<span data-penstock-history>v0.5.0</span>). There the host decides when to call it. Setup is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
+    <p class="note" style="margin-top:28px">The same record reaches Claude Code and Claude Desktop: <code style="font-size:14.5px">java -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --mcp</code> runs a local MCP server whose <code style="font-size:14.5px">recall</code> builds the same block under the same project rules (<span data-penstock-history>v0.5.0</span>). There the host decides when to call it. Setup is in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/README.md#your-memory-in-claude-code-and-claude-desktop-mcp">the README</a>.</p>
   </div>
 
   <div id="persona" class="section-rule">
@@ -171,7 +171,7 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Shipped</dt>
-        <dd>Episodes, facts and patterns with schemas and a checker; drafting from the work's own evidence; recall before every model call; project audiences; the MCP server for Claude Code and Claude Desktop; the cite-or-assume and propose-don't-write rules. In <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2">Penstock <span data-penstock="release-version">v0.5.2</span></a>. <span class="tag tag-live">live</span></dd>
+        <dd>Episodes, facts and patterns with schemas and a checker; drafting from the work's own evidence; recall before every model call; project audiences; the MCP server for Claude Code and Claude Desktop; the cite-or-assume and propose-don't-write rules. In <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.3">Penstock <span data-penstock="release-version">v0.5.3</span></a>. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Its limits</dt>
@@ -193,13 +193,13 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">penstock <span data-penstock="release-version">0.5.2</span> · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">penstock <span data-penstock="release-version">0.5.3</span> · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get it</h4>
-        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.2">Penstock <span data-penstock="release-version">v0.5.2</span>: jar · SBOM · image →</a>
-        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.2/docs/memory-format.md">The memory format →</a>
+        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.3">Penstock <span data-penstock="release-version">v0.5.3</span>: jar · SBOM · image →</a>
+        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/docs/memory-format.md">The memory format →</a>
       </nav>
       <nav>
         <h4>Related</h4>
