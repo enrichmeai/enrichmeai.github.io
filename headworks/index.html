@@ -20,6 +20,7 @@
     <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
     <span class="product-label">Headworks</span>
     <nav class="site-nav">
+      <a href="#how">How it works</a>
       <a href="#parts">The parts</a>
       <a href="#together">Run them together</a>
       <a href="#status">Status</a>
@@ -58,8 +59,77 @@
     </div>
   </div>
 
+  <div id="how" class="section-rule">
+    <span class="name">How it works</span><span class="num">01</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">One task, start to finish</h2>
+      <p class="intro">Here's what happens when you hand it a piece of work.</p>
+    </div>
+    <div class="blueprint stage-diagram" style="margin-bottom:56px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="frame-kicker" style="margin-bottom:26px">The path of one task</div>
+      <div class="stages s4">
+        <div class="stage">
+          <span class="role">You</span>
+          <span class="title">Hand it<br>the work</span>
+          <p>Give it a task and a folder to work in. Grant it the parts of your pod it may read.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage">
+          <span class="role">Penstock</span>
+          <span class="title">Remember,<br>then work</span>
+          <p>With memory on, the parts of your record that match the task go into the model's prompt first. Then it plans and uses its tools, on the model you chose.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage is-accent">
+          <span class="role">Cistern</span>
+          <span class="title">Check<br>the grant</span>
+          <p>When it needs something from your pod, Cistern checks your grant on that request. Nothing is cached.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage">
+          <span class="role">Both sides</span>
+          <span class="title">Write it<br>down</span>
+          <p>Cistern receipts the allow or the deny. Penstock logs each model and tool call when it stores to a database.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading-row">
+      <h2 class="section-h2">What it remembers</h2>
+      <p class="intro">Its memory is plain files you own and can read, change or delete. It goes into the model's prompt; Penstock doesn't train a model on it.</p>
+    </div>
+    <div class="blueprint stage-diagram">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="frame-kicker" style="margin-bottom:26px">How the record grows, in Penstock <span data-penstock="release-version">v0.5.3</span></div>
+      <div class="stages s3">
+        <div class="stage">
+          <span class="role">Episodes</span>
+          <span class="title">What<br>happened</span>
+          <p>A script you run drafts one from a finished task's PR and commits: what was asked, decided, refused, learned, and what is still open. You edit the draft.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage">
+          <span class="role">Facts</span>
+          <span class="title">What you<br>now believe</span>
+          <p>A script you run proposes them from the episodes' learned lines, and you choose which to keep. One per file, with where it came from. A changed mind supersedes the old fact; it is never quietly overwritten.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage is-accent">
+          <span class="role">Patterns</span>
+          <span class="title">How it was<br>built before</span>
+          <p>For a task worth repeating, a script you run scaffolds one from its changes: the decisions, a skeleton and a check. You review it like any other change. With memory on, a matching pattern joins the prompt, space permitting.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:28px">Each fact, episode and pattern the agent loads is written to its audit log when Penstock stores to a database, so you can see what it remembered and when. Memory stays off until you turn it on. Next, on Penstock's main branch but not in a release yet: patterns the agent loads only when it needs them, and a free, public set of starter patterns for common stacks, <a href="https://github.com/enrichmeai/global-memory">global memory</a>. <span class="tag tag-next">unreleased</span></p>
+  </div>
+
   <div id="parts" class="section-rule">
-    <span class="name">The parts</span><span class="num">01</span>
+    <span class="name">The parts</span><span class="num">02</span>
   </div>
 
   <div class="section-body">
@@ -92,7 +162,7 @@
   </div>
 
   <div id="together" class="section-rule">
-    <span class="name">Run them together</span><span class="num">02</span>
+    <span class="name">Run them together</span><span class="num">03</span>
   </div>
 
   <div class="section-body">
@@ -128,7 +198,7 @@
   </div>
 
   <div id="status" class="section-rule">
-    <span class="name">Status</span><span class="num">03</span>
+    <span class="name">Status</span><span class="num">04</span>
   </div>
 
   <div class="section-body">
