@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Headworks: Penstock and Cistern, working as one · enrichmeai</title>
-<meta name="description" content="Headworks is the name for Penstock and Cistern running together: an AI assistant that works on your data, remembers what you have taught it, sees only what you have shared, and keeps a receipt for everything. Each part ships on its own release, and Headworks has a release of its own that pins both together, not public yet.">
+<meta name="description" content="Headworks is Penstock and Cistern running together: an AI assistant that works on your machine with a model you choose, remembers what you have taught it, reads from your Cistern pod only what you have shared, and gets a receipt for every request it makes there. Each part ships on its own release, and Headworks has a release of its own that pins both together, not public yet.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -36,20 +36,20 @@
       <p class="eyebrow">Penstock <span data-penstock="release-version">v0.5.3</span> · Cistern <span data-cistern="release-version">v0.3.1</span></p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <span>Headworks now has a release of its own that pins both parts together by digest. It is not public yet: <a href="/#services">talk to us</a> about access. Each part also ships on its own release, and Cistern's one-command demo starts both on one machine.</span>
+        <span>Headworks has its own release now, with both parts pinned together by digest. It isn't public yet, so <a href="/#services">talk to us</a> if you'd like access. Until then, each part ships on its own release, and Cistern's demo starts both on your machine with one command.</span>
       </div>
-      <h1>Headworks: the parts, working as <span class="accent">one</span>.</h1>
+      <h1>Headworks: your assistant does the work, your pod <span class="accent">decides</span>.</h1>
     </div>
-    <p class="hero-rail">An AI assistant that works on your data, remembers what you have taught it, sees only what you have shared, and keeps a receipt for everything.</p>
+    <p class="hero-rail">It does the work, remembers what you've taught it, reads from your Cistern pod only what you've shared, and gets a receipt for every request it makes there.</p>
   </div>
 
   <div class="hero-below">
-    <p class="lede">A headworks is where water enters a scheme: the cistern holds it, the penstock carries it to where the work is done, and nothing passes the gate unless it is let through. Headworks is the name for the two open-source parts below when they run together. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> is the agent that does the work and keeps the record of it. <strong style="font-weight:600;color:var(--color-text)">Cistern</strong> holds your data and decides, on every request, whether the agent may read it. Each promise below names the part that keeps it and the release it shipped in.</p>
+    <p class="lede">Picture an assistant you can hand real work to. It runs on your own machine, with a model you pick, in the folder you give it to work in. When it needs something from your Cistern pod, it has to ask. You decide, and you can change your mind: take the access back and its very next request is refused. Every yes and every no is written down where you can read it. That's Headworks: two open-source parts, running together. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> is the assistant, and it keeps a record of its work. <strong style="font-weight:600;color:var(--color-text)">Cistern</strong> is where your data lives, and the gate in front of it. The name comes from water: a headworks is where water enters a scheme. The cistern holds it, the penstock carries it to where the work happens, and nothing passes the gate unless someone lets it through.</p>
     <div class="stack">
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div class="frame-kicker" style="margin-bottom:10px">The exchange in one line</div>
-        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">Penstock's <code style="font-size:14px">pod</code> tool asks Cistern for a file, by default with a credential of its own. Cistern checks the owner's grant, answers or refuses, and writes a receipt either way. Revoke the grant and the next request is refused.</span>
+        <div class="frame-kicker" style="margin-bottom:10px">What happens when it asks</div>
+        <span style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800)">Penstock asks Cistern for a file through its <code style="font-size:14px">pod</code> tool, using a credential of its own by default, not yours. Cistern checks your grant, then either hands the file over or says no. Either way, it writes a receipt. Revoke the grant, and the next ask gets a no.</span>
       </div>
       <div class="btn-row">
         <a href="/penstock/" class="btn btn-primary btn-lg">Penstock →</a>
@@ -64,29 +64,29 @@
 
   <div class="section-body">
     <div class="heading-row">
-      <h2 class="section-h2">Four promises, and who keeps each</h2>
-      <p class="intro">Each line is something a released part does today, checked against that part's release tag.</p>
+      <h2 class="section-h2">What it promises, and who keeps each promise</h2>
+      <p class="intro">Each line is something a released part does today. We checked every one against that part's release tag.</p>
     </div>
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Works on your data</dt>
-        <dd><a href="/penstock/">Penstock</a> runs the agents: self-hosted, on models you choose, a local one included. Its <code style="font-size:14.5px">pod</code> tool is how it reaches a Cistern pod. <span class="tag tag-live"><span data-penstock="release-version">v0.5.3</span></span></dd>
+        <dd><a href="/penstock/">Penstock</a> runs on your own hardware, with the model you choose, a local one included. When it needs your data, it goes through its <code style="font-size:14.5px">pod</code> tool to a Cistern pod. <span class="tag tag-live"><span data-penstock="release-version">v0.5.3</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Remembers</dt>
-        <dd>Penstock's record: what was asked, decided, refused and learned, as plain files you own. With memory turned on (it is off by default in the web and IDE modes), the record is recalled before the model writes, and with a root split into projects, each project loads its own section and never another's. More on <a href="/persona/">the record it keeps</a>. <span class="tag tag-live">in Penstock <span data-penstock="release-version">v0.5.3</span></span></dd>
+        <dd>Penstock keeps a record of what you asked, what was decided, what was refused and what it learned, as plain files you own. Turn memory on (it's off by default in the web and IDE modes) and it reads that record before it answers. Split the record into projects, and each project sees its own section, never another's. More on <a href="/persona/">the record it keeps</a>. <span class="tag tag-live">in Penstock <span data-penstock="release-version">v0.5.3</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Sees only what you share</dt>
-        <dd><a href="/cistern/">Cistern</a> holds your data and enforces the owner's grants on every request. No decision is cached, so a revoke holds from the very next request. <span class="tag tag-live"><span data-cistern="release-version">v0.3.1</span></span></dd>
+        <dd><a href="/cistern/">Cistern</a> checks your grant on every single request. It never caches a decision, so when you take access back, the very next request is refused. <span class="tag tag-live"><span data-cistern="release-version">v0.3.1</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Keeps a receipt</dt>
-        <dd>Cistern receipts every allow and deny, and the owner queries them per resource. Penstock writes every model call and tool call to its audit log when database storage is on.</dd>
+        <dd>Cistern writes down every allow and every deny, and you can look them up file by file. Penstock logs every model call and tool call to its audit log when it stores to a database.</dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Learns how you work</dt>
-        <dd>The <a href="/persona/">persona</a>: a companion that speaks from your record, cites the card behind each decision, and asks when the record is silent (<a href="https://github.com/enrichmeai/penstock/issues/93">penstock#93</a>). <span class="tag tag-next">planned</span></dd>
+        <dd>A <a href="/persona/">persona</a> that answers from your record, points to the card behind each decision, and asks you when the record has nothing to say (<a href="https://github.com/enrichmeai/penstock/issues/93">penstock#93</a>). <span class="tag tag-next">planned</span></dd>
       </div>
     </dl>
   </div>
@@ -97,34 +97,34 @@
 
   <div class="section-body">
     <div class="heading-row">
-      <h2 class="section-h2">Two ways, from each part's own docs</h2>
-      <p class="intro">Every step links the shipped doc it comes from. Both run on your own machine, with ports bound to 127.0.0.1.</p>
+      <h2 class="section-h2">Try them together</h2>
+      <p class="intro">Two ways, each straight from the parts' own docs, with every step linked. Both run on your machine and listen only on 127.0.0.1.</p>
     </div>
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>One command</dt>
-        <dd>Cistern's demo starts a pod and Penstock together with one <code style="font-size:14.5px">docker compose</code> command, the agent on its own credential, then walks five beats: put a file in, watch the agent be refused, grant, read, revoke and be refused again. Its compose file pins Penstock <span data-penstock-history>0.2.0</span>, not the latest release. <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/blob/v0.3.1/docs/demo/README.md">The demo →</a> <span class="tag tag-live">in Cistern <span data-cistern="release-version">v0.3.1</span></span></dd>
+        <dd>Cistern's demo brings up a pod and Penstock with a single <code style="font-size:14.5px">docker compose</code> command, the agent on its own credential. Then it walks you through five beats: put a file in, watch the agent get refused, grant access, watch it read, revoke, and watch it get refused again. The demo pins Penstock <span data-penstock-history>0.2.0</span>, an older release. <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/blob/v0.3.1/docs/demo/README.md">The demo →</a> <span class="tag tag-live">in Cistern <span data-cistern="release-version">v0.3.1</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>The latest of each</dt>
-        <dd>Wire the current releases yourself in three steps.</dd>
+        <dd>Want the newest releases? Wire them yourself in three steps.</dd>
       </div>
     </dl>
     <div class="rule-cols c3" style="margin-top:28px">
       <div class="rule-column">
         <span class="kicker" style="color:var(--color-neutral-700)">1 · The pod</span>
-        <p>Start Cistern from its quickstart: one container, an owner token, data on your own disk. <a href="/cistern/#run">Run it →</a></p>
+        <p>Start Cistern from its quickstart: one container, an owner token, and your data on your own disk. <a href="/cistern/#run">Run it →</a></p>
       </div>
       <div class="rule-column">
         <span class="kicker" style="color:var(--color-neutral-700)">2 · The agent's identity</span>
-        <p>Give the agent a credential of its own, a service principal, so the pod can tell it apart from you. <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/blob/v0.3.1/docs/INTEGRATION.md#step-1--identity-who-is-the-application">INTEGRATION.md, step 1 →</a></p>
+        <p>Give the agent its own credential, a service principal, so the pod can tell it apart from you. <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/blob/v0.3.1/docs/INTEGRATION.md#step-1--identity-who-is-the-application">INTEGRATION.md, step 1 →</a></p>
       </div>
       <div class="rule-column is-accent">
         <span class="kicker">3 · Point Penstock at it</span>
         <p>Set <code style="font-size:14px">CISTERN_BASE_URL</code> and <code style="font-size:14px">CISTERN_AGENT_TOKEN</code> on Penstock, then grant the agent a folder. <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/README.md#configuration-reference">Configuration reference →</a></p>
       </div>
     </div>
-    <p class="note" style="margin-top:28px">Until the owner grants it a folder, every request the agent makes is refused, and the refusal is receipted too. That is the default, not a setting.</p>
+    <p class="note" style="margin-top:28px">Until you grant it a folder, the agent is refused every time, and each refusal gets a receipt too. That's the default, not a setting.</p>
   </div>
 
   <div id="status" class="section-rule">
@@ -133,8 +133,8 @@
 
   <div class="section-body">
     <div class="heading-row">
-      <h2 class="section-h2">Where it stands</h2>
-      <p class="intro">Nothing on this site is announced before it has run. This is the honest state.</p>
+      <h2 class="section-h2">Where it stands today</h2>
+      <p class="intro">We don't announce anything before it has run. Here's the honest picture.</p>
     </div>
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
@@ -143,7 +143,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Its limits</dt>
-        <dd>The Headworks release, which pins Penstock <span data-penstock="release-version">v0.5.3</span> and Cistern <span data-cistern="release-version">v0.3.1</span> together by digest, is not public yet: <a href="/#services">talk to us</a> about access. The one-command demo pins an older Penstock, and the latest of each can be wired by hand as above. Penstock should run on your own machine, not on a network: <span data-penstock-history>v0.5.3</span> passed a stranger test with nothing blocking, but two documentation fixes are under way (<a href="https://github.com/enrichmeai/penstock/issues/171">penstock#171</a>). Cistern's remote MCP door is not reachable yet (<a href="https://github.com/enrichmeai/cistern/issues/220">cistern#220</a>), so an assistant reaches the pod over its local bridge.</dd>
+        <dd>The Headworks release, which pins Penstock <span data-penstock="release-version">v0.5.3</span> and Cistern <span data-cistern="release-version">v0.3.1</span> together by digest, isn't public yet, so <a href="/#services">talk to us</a> if you'd like access. The one-command demo still uses an older Penstock; for the latest of each, wire them by hand as above. Run Penstock on your own machine, not on a network: <span data-penstock-history>v0.5.3</span> passed a stranger test with nothing blocking, and two documentation fixes are under way (<a href="https://github.com/enrichmeai/penstock/issues/171">penstock#171</a>). Cistern's remote MCP door isn't open yet (<a href="https://github.com/enrichmeai/cistern/issues/220">cistern#220</a>), so an assistant reaches the pod through its local bridge.</dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Planned</dt>
@@ -151,7 +151,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Licence</dt>
-        <dd>Apache 2.0, both parts, free for any use including commercial.</dd>
+        <dd>Apache 2.0, both parts. Free for any use, commercial included.</dd>
       </div>
     </dl>
   </div>
