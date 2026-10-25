@@ -41,13 +41,13 @@
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span>An alpha, on Maven Central. One provider, AWS. Emulator only. It tests your cloud calls, and it can hand your application under test the emulator&rsquo;s endpoints and credentials. One adapter cannot yet prove the seam holds for a second cloud.</span>
       </div>
-      <h1>Cloud tests that <span class="accent">never name</span> a cloud.</h1>
+      <h1>Java cloud integration tests on <span class="accent">local emulators</span>.</h1>
     </div>
     <p class="hero-rail">A Java test asks for a bucket or a queue and gets one, backed by a container the library started. Nothing on its compile classpath knows which cloud that was.</p>
   </div>
 
   <div class="hero-below">
-    <p class="lede">Testing cloud-backed Java usually means choosing between a mock that tests itself and a real account that is slow, costly and unavailable offline. This takes the third path: real service semantics against a local emulator, behind interfaces that carry no vendor SDK. A test compiled against those interfaces has no compile-time knowledge of a provider, so changing provider is a classpath change rather than a rewrite.</p>
+    <p class="lede">Run Java tests against a local emulator instead of a mock or a real cloud account. Tests use interfaces with no vendor SDK, so changing provider is meant to be a classpath change rather than a rewrite.</p>
     <div class="stack">
       <div class="blueprint pad-frame">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -66,10 +66,10 @@
   </div>
 
   <div class="heading-row align-start" style="padding:42px 0 44px">
-    <h2 class="section-h2" style="max-width:15ch">The seam is the product</h2>
+    <h2 class="section-h2" style="max-width:15ch">How it works</h2>
     <div class="prose-col">
-      <p>Testcontainers already runs LocalStack. That part is not the contribution. What this adds is a dependency direction it enforces: the module holding the capability interfaces has no cloud SDK on its classpath at all, and the AWS SDK lives in a separate module found at runtime through Java's own <code>ServiceLoader</code>.</p>
-      <p>The consequence is small to describe and hard to retrofit. A test that says <code>storage.putObject(...)</code> compiles against an interface, not against Amazon's client. The same test would run on a second provider by putting a different jar on the classpath. Whether that claim survives contact with a second implementation is the open question below, and the repository says so rather than assuming it.</p>
+      <p>The module with the capability interfaces has no cloud SDK on its classpath. The AWS SDK is in a separate module that Java's <code>ServiceLoader</code> finds at runtime.</p>
+      <p>A test that calls <code>storage.putObject(...)</code> compiles against an interface, not the AWS client. A second provider would need only a different jar; none exists yet (see <a href="#status">Where it stands</a>).</p>
     </div>
   </div>
 
@@ -106,7 +106,7 @@
   </div>
 
   <div class="section-body">
-    <p class="lede" style="margin-bottom:30px">Four, deliberately small. A method earns its place only if it is implementable on more than one provider's emulator.</p>
+    <p class="lede" style="margin-bottom:30px">Four capabilities. A method is included only if it can be implemented on more than one provider's emulator.</p>
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt data-eta-capability="BlobStorage">BlobStorage</dt>
@@ -175,7 +175,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Supply chain</dt>
-        <dd>An OWASP Dependency-Check audit is wired into CI behind a profile, and is skipped until an NVD API key is configured. It has not yet audited anything, and the page says so rather than implying a clean report. <span class="tag tag-next">not yet run</span></dd>
+        <dd>An OWASP Dependency-Check audit is wired into CI behind a profile, and is skipped until an NVD API key is configured. It has not yet audited anything. <span class="tag tag-next">not yet run</span></dd>
       </div>
     </dl>
     <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:74ch;margin-top:30px">The planning documents are in the repository rather than summarised here: a product brief, a PRD with numbered requirements, an architecture spine with its decisions, and a backlog of eight epics covering the gaps above. <a href="https://github.com/enrichmeai/enrich-test-api/tree/main/docs/specs">Read the specs →</a></p>
@@ -257,11 +257,11 @@
         </div>
         <div class="faq-item">
           <h3>Why is the coverage number on this page?</h3>
-          <p>Because the alternative was a badge that says nothing. The floors in the build are the measured values, so they cannot quietly slip, and the page shows what the build enforces rather than what it hopes for.</p>
+          <p>The build fails if coverage drops below the floors shown above, which are the measured values.</p>
         </div>
         <div class="faq-item">
-          <h3>How does it relate to the rest of the register?</h3>
-          <p>It does not. It is a testing tool, not part of the data-access line. It sits here because it is ours and it is open. <a href="/">The register →</a></p>
+          <h3>Is it related to Cistern or Penstock?</h3>
+          <p>No. It is a separate open-source testing tool. <a href="/">All products →</a></p>
         </div>
       </div>
     </div>
@@ -284,8 +284,8 @@
       <nav>
         <h4>Related</h4>
         <a href="/cistern/">Cistern, the data gateway</a>
-        <a href="/penstock/">Penstock, the agent that answers for its work</a>
-        <a href="/">The register</a>
+        <a href="/penstock/">Penstock, the self-hosted agent harness</a>
+        <a href="/">All products</a>
       </nav>
     </div>
   </div>
