@@ -39,7 +39,7 @@
   <div class="hero">
     <div>
       <p class="eyebrow" style="margin-bottom:26px">Cloud-agnostic · polyglot · open source</p>
-      <h1>There was no <span class="accent">Spring</span> for data pipelines. So I built one.</h1>
+      <h1>A data-pipeline framework for Java and Python that runs on <span class="accent">any cloud</span>.</h1>
     </div>
     <p class="hero-rail">Sixteen contracts, two languages, one conformance suite every adapter must pass. Swap the cloud, keep the logic.</p>
   </div>
@@ -64,16 +64,15 @@
   </div>
 
   <div class="heading-row align-start" style="padding:42px 0 44px">
-    <h2 class="section-h2" style="max-width:15ch">Contracts are the portability boundary</h2>
+    <h2 class="section-h2" style="max-width:15ch">How it works</h2>
     <div class="prose-col">
-      <p>Beam, Airflow and dbt are excellent engines. But an engine is not a framework. Nobody draws the line between the part of your pipeline that is data engineering and the part that is the cloud you happen to be renting this year, so teams weld business logic to one vendor's SDK out of habit, and the thin cloud layer quietly becomes a load-bearing wall.</p>
-      <p>Culvert draws that line where Spring drew it: a small core of <strong style="font-weight:600;color:var(--color-text)">contracts</strong> (<code style="font-size:15px">BlobStore</code>, <code style="font-size:15px">Warehouse</code>, <code style="font-size:15px">Source</code>, <code style="font-size:15px">Sink</code>, <code style="font-size:15px">JobControlRepository</code>, eleven more). Business logic depends only on the contracts. Adapters implement them for each cloud, and a shared conformance suite that every adapter must pass keeps the promise honest.</p>
+      <p>Your pipeline code depends only on Culvert's <strong style="font-weight:600;color:var(--color-text)">contracts</strong> (<code style="font-size:15px">BlobStore</code>, <code style="font-size:15px">Warehouse</code>, <code style="font-size:15px">Source</code>, <code style="font-size:15px">Sink</code>, <code style="font-size:15px">JobControlRepository</code> and eleven more), never on a cloud SDK. Adapters implement them for each cloud, and every adapter must pass the same conformance suite.</p>
     </div>
   </div>
 
   <div class="blueprint stage-diagram" style="margin-bottom:76px">
     <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-    <div class="frame-kicker" style="margin-bottom:26px">Where the line sits</div>
+    <div class="frame-kicker" style="margin-bottom:26px">How the layers fit</div>
     <div class="stages s3">
       <div class="stage">
         <span class="role">Yours</span>
@@ -114,7 +113,7 @@
     <div class="rule-column">
       <span class="kicker">Local-first</span>
       <h3>Runs on your laptop</h3>
-      <p>The whole stack runs against emulators with no cloud account. Cloud is where you prove and ship, not where you develop.</p>
+      <p>The whole stack runs against emulators. Develop and test without a cloud account.</p>
     </div>
   </div>
 
@@ -361,7 +360,7 @@
   <div class="section-body">
     <div class="heading-row">
       <h2 class="section-h2">What's real, stated plainly</h2>
-      <p class="intro">This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise.</p>
+      <p class="intro">What has shipped, stated plainly.</p>
     </div>
     <dl class="spec-list">
       <div class="spec-row">
@@ -385,10 +384,6 @@
         <dd>Apache 2.0 for the releases above, in both languages. The 0.1 releases, Java and Python, were published under MIT.</dd>
       </div>
     </dl>
-    <blockquote class="pull-quote">
-      <span class="label">The release gate, in one sentence</span>
-      <p>"1,145 tests passed. The first real deploy failed in eight ways none of them saw. That is why nothing ships here until it has run on real infrastructure."</p>
-    </blockquote>
   </div>
 
   <div id="writing" class="section-rule">
@@ -397,17 +392,17 @@
 
   <div class="section-body">
     <div class="heading-row" style="align-items:start;margin-bottom:40px">
-      <h2 class="section-h2">The book: building Culvert, honestly</h2>
+      <h2 class="section-h2">The book</h2>
       <div class="prose-col" style="max-width:60ch">
-        <p>A practitioner's account of designing this framework in the open: <strong style="font-weight:600;color:var(--color-text)">twenty-one chapters, in progress</strong>. Where the contract boundary sits and why. Why the two languages deliberately don't do the same job. An honest review of my own code. And what building with AI agents actually looks like when they're held to the same contracts and gates as everyone else.</p>
-        <p>Every technical claim cites the real source tree. It publishes once the 0.x line settles, the same rule the code ships under.</p>
+        <p>A book on designing Culvert: <strong style="font-weight:600;color:var(--color-text)">twenty-one chapters, in progress</strong>. It covers where the contract boundary sits, why Java and Python do different jobs, a review of the author's own code, and building with AI agents held to the same contracts and gates. It publishes once the 0.x line settles.</p>
+        <p>Every technical claim cites the real source tree.</p>
       </div>
     </div>
     <div class="rule-cols c2">
       <div class="rule-column">
         <span class="kicker">Essay · starting soon</span>
         <h3 style="font-size:clamp(26px, 3vw, 30px)">Why is there no Spring for data pipelines?</h3>
-        <p style="font-size:16px;line-height:1.58">Every other tier got its framework. The one that moves the data got engines and a habit of welding logic to whichever SDK was in fashion.</p>
+        <p style="font-size:16px;line-height:1.58">Why pipeline logic ends up tied to one cloud's SDK.</p>
       </div>
       <div class="rule-column">
         <span class="kicker">Essay · starting soon</span>
@@ -435,13 +430,13 @@
         </div>
         <div class="faq-item">
           <h3>Do I need a cloud account to start?</h3>
-          <p>No. The whole stack runs against emulators on your laptop. Cloud is where you prove and ship, not where you develop.</p>
+          <p>No. The whole stack runs against emulators on your laptop.</p>
         </div>
       </div>
       <div class="faq-col">
         <div class="faq-item">
-          <h3>How portable is portable, really?</h3>
-          <p>As portable as the conformance suite is strict. Every adapter has to pass the same suite, so a contract behaves the same on either cloud or it is not shipped as an adapter. GCP is fully implemented; AWS has the Java adapter family; Azure has a Blob Storage skeleton and is otherwise roadmap.</p>
+          <h3>Which clouds does it run on?</h3>
+          <p>Every adapter has to pass the same suite, so a contract behaves the same on either cloud or it is not shipped as an adapter. GCP is fully implemented; AWS has the Java adapter family; Azure has a Blob Storage skeleton and is otherwise roadmap.</p>
         </div>
         <div class="faq-item">
           <h3>Is the 0.x line safe to build on?</h3>
@@ -449,7 +444,7 @@
         </div>
         <div class="faq-item">
           <h3>Does Culvert have anything to do with the AI work?</h3>
-          <p>Not in the code. There is no AI in Culvert. It is here because it is where the practice the AI-era projects are held to was proven: contracts, a conformance suite, and a real deploy before a release. <a href="/#work">The register →</a></p>
+          <p>Not in the code. There is no AI in Culvert. It follows the same release practice: contracts, a conformance suite, and a real deploy before release. <a href="/#work">The register →</a></p>
         </div>
       </div>
     </div>
