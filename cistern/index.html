@@ -39,7 +39,7 @@
       <p class="eyebrow" style="margin-bottom:26px">Open · self-hostable · conformance-first</p>
       <h1>Every AI assistant acts <span class="accent">as you</span>. Cistern makes it ask.</h1>
     </div>
-    <p class="hero-rail">One gatekeeper between every caller and the data. Decided fresh on every request, never cached, with the deciding rule named in a receipt.</p>
+    <p class="hero-rail">A self-hostable data pod with an MCP server. AI agents connect over MCP, apps over HTTP, and every request is checked against your rules when it is made, never from a cache, with a receipt naming the rule that decided it.</p>
   </div>
 
   <div class="hero-below">
@@ -197,7 +197,7 @@
       </div>
       <div class="spec-row">
         <dt>Authority</dt>
-        <dd>Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span></dd>
+        <dd>Web Access Control enforced on every request; grants and pods by one command; every decision receipted and queryable. By default a decision the log cannot record still goes ahead; set <code>cistern.audit.required=true</code> to refuse it with a 503 <span class="tag tag-live">in <span data-cistern-history>v0.2.0</span></span></dd>
       </div>
       <div class="spec-row">
         <dt>Agents</dt>
