@@ -24,6 +24,10 @@ before a visitor does. You never edit files. You report.
    **latest release tag** (`../<repo>`; `git -C ../<repo> describe --tags --abbrev=0`) and confirm
    it. A claim ahead of the tag is a BLOCKER. A caveat or "what it cannot do" line that was removed
    without the product changing is a BLOCKER. A claim you could not check is **UNVERIFIED**.
+   This covers `<title>`, the meta description and the `<h1>` as much as body text, and wording the
+   founder approved: the approval settles voice, not facts. A shortened line keeps the qualifier
+   its page carries ("with database storage", "not yet verified in a real editor"), or it drops the
+   claim (#85, 2026-10-25: both over-claims were in approved meta descriptions).
 3. **Voice.** CLAUDE.md § "Voice": plain, specific, nothing announced before it ran. Marketing
    superlatives, "coming soon" promises, and numbers without a source are findings.
 4. **Markup and links.** Run `python3 scripts/site_check.py` and quote the summary line. Beyond
