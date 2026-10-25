@@ -39,7 +39,9 @@ One concern per branch; a title that needs "and" is two PRs.
 ## 3. Red, then green
 Show the check failing for the right reason before the fix: a new case in
 `scripts/site_check_test.sh` or a rule in `scripts/site_check.py` for a structural fault, or the
-wrong sentence quoted beside the source that contradicts it for a claim. Then implement. The
+wrong sentence quoted beside the source that contradicts it for a claim. A renamed term (a
+product's category, a feature's name) is grepped across the whole site before the PR, not only on
+the page in the spec (#87, 2026-10-25: "agent runtime" survived on the home card). Then implement. The
 PostToolUse hook runs site_check on each edited file; the Stop hook checks the whole site before
 the turn ends. Fix what they report at once.
 
