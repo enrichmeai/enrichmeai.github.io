@@ -36,8 +36,8 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow" style="margin-bottom:26px">Open · self-hostable · conformance-first</p>
-      <h1>Every AI assistant acts <span class="accent">as you</span>. Cistern makes it ask.</h1>
+      <p class="eyebrow" style="margin-bottom:26px">Open source · self-hostable · Solid pod server</p>
+      <h1>A self-hostable data server that makes AI assistants <span class="accent">ask</span> before they read.</h1>
     </div>
     <p class="hero-rail">A self-hostable data pod with an MCP server. AI agents connect over MCP, apps over HTTP, and every request is checked against your rules when it is made, never from a cache, with a receipt naming the rule that decided it.</p>
   </div>
@@ -62,9 +62,9 @@
   </div>
 
   <div class="heading-row align-start" style="padding:42px 0 44px">
-    <h2 class="section-h2" style="max-width:14ch">The refusal is the product</h2>
+    <h2 class="section-h2" style="max-width:14ch">How it works</h2>
     <div class="prose-col">
-      <p>Today an assistant logs in as its user: whatever the person can see, it can see. One prompt injection has the authority of the whole person; revoking one assistant means revoking yourself; and afterwards nobody can say which agent read what. The protocols will not fix this. MCP defines how an assistant connects, not what the <em>person</em> allows it to touch.</p>
+      <p>Without Cistern, an assistant signs in as its user and can see whatever the user can. With Cistern, each assistant or app has its own principal and reads only what the owner granted.</p>
       <p>Cistern puts one gatekeeper between every caller and the data. Who is asking, then the owner's permission file, then allow or refuse: decided fresh on every request, never cached, with the deciding rule named in a receipt. There is no privileged path around it. The MCP front door and plain HTTP cross the same filter, so an MCP tool call shows up in the receipts exactly like a curl.</p>
     </div>
   </div>
@@ -103,7 +103,7 @@
     <div class="rule-column">
       <span class="kicker">Owner-authored</span>
       <h3>The person writes the rule</h3>
-      <p>This assistant, this folder. Not a developer's scope list, not an IT admin's console. Grants can only narrow the owner's own authority.</p>
+      <p>This assistant, this folder. Grants can only narrow the owner's own authority.</p>
     </div>
     <div class="rule-column">
       <span class="kicker">Enforced at the store</span>
@@ -118,7 +118,7 @@
     <div class="rule-column is-accent">
       <span class="kicker">Receipted</span>
       <h3>Who read what, under which rule</h3>
-      <p>Every allow and every deny is recorded with the rule that decided it, queryable by the owner. Audit is a query, not a forensic exercise.</p>
+      <p>Every allow and every deny is recorded with the rule that decided it, queryable by the owner.</p>
     </div>
   </div>
 
@@ -141,7 +141,7 @@
     <div class="blueprint" style="position:relative;padding:24px;margin-top:24px;max-width:76ch">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="frame-kicker">What do I put for the WebID?</div>
-      <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800)">A WebID is a URL that names a person or an agent. For the command above, <strong style="font-weight:600;color:var(--color-text)">it is only a name, and nothing has to be published at it.</strong> Cistern writes it into the root permission file so the rules have somebody to belong to, and the owner token is what proves you are that somebody. Put your own domain in and carry on; the five minutes stay five minutes.</p>
+      <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800)">A WebID is a URL that names a person or an agent. For the command above, <strong style="font-weight:600;color:var(--color-text)">it is only a name, and nothing has to be published at it.</strong> Cistern writes it into the root permission file so the rules have somebody to belong to, and the owner token is what proves you are that somebody. Put your own domain in and carry on.</p>
       <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800);margin-top:12px">It starts to matter when a <em>second</em> party is involved. Once other people or agents sign in through an identity provider, their WebID has to resolve, because Cistern reads it to learn which provider is allowed to issue tokens for them. At that point you want a real one: an identity provider issues it, or you host the document yourself, and Cistern can seed one inside the pod for you when the WebID lives here rather than at a provider.</p>
       <p style="font-size:16px;line-height:1.58;color:var(--color-neutral-800);margin-top:12px">The <a href="https://solidproject.org/users/get-a-pod">Solid project lists providers who will issue you one</a>, and the <a href="https://github.com/enrichmeai/cistern/blob/main/docs/INTEGRATION.md">integration playbook</a> covers wiring a provider to a pod.</p>
     </div>
@@ -184,7 +184,7 @@
   <div class="section-body">
     <div class="heading-row">
       <h2 class="section-h2">What's real, stated plainly</h2>
-      <p class="intro">This project has a rule: nothing is announced before it has run on real infrastructure. So here is the honest state, not the roadmap in disguise. Rows say whether they describe the released image or the current source.</p>
+      <p class="intro">What has shipped, stated plainly. Rows say whether they describe the released image or the current source.</p>
     </div>
     <dl class="spec-list">
       <div class="spec-row" data-cistern-release="0.3.1">
@@ -217,8 +217,8 @@
       </div>
     </dl>
     <blockquote class="pull-quote">
-      <span class="label">The release gate, in one sentence</span>
-      <p>"An agent could read exactly what it was granted and nothing else, and the owner took it back in the time it took to delete one line, with a receipt naming the rule. Releases here carry receipts. In this product, literally."</p>
+      <span class="label">What every release is tested for</span>
+      <p>"An agent could read exactly what it was granted and nothing else, and the owner took it back in the time it took to delete one line, with a receipt naming the rule."</p>
     </blockquote>
   </div>
 
@@ -236,7 +236,7 @@
       <div class="rule-column is-accent">
         <span class="kicker">Direction</span>
         <h3>Community pods</h3>
-        <p>An owner who can be more than one person, rules that survive a change of membership, and a record every member can read. Nothing shipped yet. <a href="/#where">The thinking →</a></p>
+        <p>An owner who can be more than one person, rules that survive a change of membership, and a record every member can read. Nothing shipped yet. <a href="/#where">More →</a></p>
       </div>
     </div>
   </div>
@@ -276,7 +276,7 @@
         </div>
         <div class="faq-item">
           <h3>Why build on Solid at all?</h3>
-          <p>Because the work was already done, in the open. A community agreed on how data ownership and access rules should work, wrote it down precisely enough to implement, published a suite that says when an implementation is wrong, and shipped a reference server. Cistern is a different implementation of that design, and it exists because those three things existed first.</p>
+          <p>Solid already defines how data and its access rules are stored, with an official conformance suite to test against. Cistern implements those specifications rather than inventing its own.</p>
         </div>
         <div class="faq-item">
           <h3>Is any of it held back for a paid tier?</h3>
