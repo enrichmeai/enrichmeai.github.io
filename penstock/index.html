@@ -48,7 +48,7 @@
   </div>
 
   <div class="hero-below">
-    <p class="lede">Penstock runs your agents on your data, with receipts. A self-hosted agent harness for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage, webhooks) against your own internal systems, on models you choose: Copilot, Claude, OpenAI, or a local one. It runs headless (CI hooks, chat commands, scheduled triage, webhooks) on your own hardware; the transcript, audit log and credentials stay in your deployment. Through the pod tool it reads a person's data in a Cistern pod under rules that person wrote, receipted on their side. With database storage, every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk. Since <span data-penstock-history>v0.4.0</span> it also remembers: before every model call it recalls your own notes from a memory you keep as plain files, and the log shows what it recalled.</p>
+    <p class="lede">Penstock runs your agents on your data, with receipts. A self-hosted agent harness for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage, webhooks) against your own internal systems, on models you choose: Copilot, Claude, OpenAI, or a local one. It runs on your own hardware; the audit log and credentials are stored in your deployment, and prompts go to the model you choose. Through the pod tool it reads a person's data in a Cistern pod under rules that person wrote, receipted on their side. With database storage, every model call and every tool invocation is written to an audit log the owner reads back, in the app as well as on disk. Since <span data-penstock-history>v0.4.0</span> it also remembers: with memory on, it recalls at the start of each turn your own notes from a memory you keep as plain files, and the log shows what it recalled.</p>
     <div class="stack">
       <div class="blueprint pad-frame" data-penstock-release="0.5.3">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -119,7 +119,7 @@
     <div class="heading-row align-start" style="margin-bottom:40px">
       <h2 class="section-h2" style="max-width:15ch">It remembers, in files you own</h2>
       <div class="prose-col">
-        <p>With memory on (<code style="font-size:14.5px">AGENT_MEMORY_ENABLED=true</code>), Penstock recalls before every model call. It loads matching facts, the latest episodes of the project you are in, and matching patterns into the system prompt. Every card it loads is logged. With database storage it also goes to the audit log, and the web UI's Audit view lists the cards ahead of the model call they went into.</p>
+        <p>With memory on (<code style="font-size:14.5px">AGENT_MEMORY_ENABLED=true</code>), Penstock recalls at the start of each turn. It loads matching facts, the latest episodes of the project you are in, and matching patterns into the system prompt. Every card it loads is logged. With database storage it also goes to the audit log, and the web UI's Audit view lists the cards ahead of the model call they went into.</p>
         <p>The memory is plain files in a folder or a private git repository you own: <code style="font-size:14.5px">estate/</code> for what holds everywhere, and one <code style="font-size:14.5px">projects/&lt;name&gt;/</code> per project. Every card carries a format version and a visibility, the JSON Schemas ship in the repository, and nothing in the format depends on one model.</p>
       </div>
     </div>
@@ -180,7 +180,7 @@
     </div>
     <div class="blueprint caveat">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span>What it does not do yet. Run the jar for <code style="font-size:14.5px">--mcp</code>, not the Docker image: the image's entrypoint writes to stdout, which belongs to MCP messages. With MCP the client decides when to call <code style="font-size:14.5px">recall</code>; inside Penstock, recall still happens before every model call. Hosted sessions and Claude Cowork cannot read the memory yet, and there is no memory browser or review inbox in the web UI: review happens in the files.</span>
+      <span>What it does not do yet. Run the jar for <code style="font-size:14.5px">--mcp</code>, not the Docker image: the image's entrypoint writes to stdout, which belongs to MCP messages. With MCP the client decides when to call <code style="font-size:14.5px">recall</code>; inside Penstock, with memory on, recall happens at the start of each turn. Hosted sessions and Claude Cowork cannot read the memory yet, and there is no memory browser or review inbox in the web UI: review happens in the files.</span>
     </div>
   </div>
 
@@ -237,7 +237,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Memory</dt>
-        <dd>Recall before every model call from a memory root you own, with each loaded card logged, and on the audit log with database storage (<span data-penstock-history>v0.4.0</span>). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (<span data-penstock-history>v0.5.0</span>). The block asks the model to cite each card it relies on, or to mark an assumption, and to propose an episode rather than write a fact (<span data-penstock-history>v0.5.2</span>). <span class="tag tag-live"><span data-penstock-history>v0.5.0</span></span></dd>
+        <dd>Recall at the start of each turn from a memory root you own, with each loaded card logged, and on the audit log with database storage (<span data-penstock-history>v0.4.0</span>). Project audiences decide which cards each project may load, and <code style="font-size:14.5px">--mcp</code> serves the same memory to Claude Code and Claude Desktop (<span data-penstock-history>v0.5.0</span>). The block asks the model to cite each card it relies on, or to mark an assumption, and to propose an episode rather than write a fact (<span data-penstock-history>v0.5.2</span>). <span class="tag tag-live"><span data-penstock-history>v0.5.0</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Planned</dt>
@@ -303,7 +303,7 @@
         </div>
         <div class="faq-item">
           <h3>Can Claude Code use my memory?</h3>
-          <p>Yes, since <span data-penstock-history>v0.5.0</span>: register <code style="font-size:14.5px">java -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --mcp</code> as a local MCP server, and <code style="font-size:14.5px">recall</code> answers from your memory root under the same project rules. The client decides when to call it; inside Penstock, recall runs before every model call.</p>
+          <p>Yes, since <span data-penstock-history>v0.5.0</span>: register <code style="font-size:14.5px">java -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --mcp</code> as a local MCP server, and <code style="font-size:14.5px">recall</code> answers from your memory root under the same project rules. The client decides when to call it; inside Penstock, with memory on, recall runs at the start of each turn.</p>
         </div>
         <div class="faq-item">
           <h3>Do I have to send anything to a model provider?</h3>
