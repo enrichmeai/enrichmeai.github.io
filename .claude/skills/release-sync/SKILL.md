@@ -41,6 +41,9 @@ Say so, never report it as passing.
   "so far", "not yet" or "only". The checker cannot see them. In culvert 0.3.0 the Licence row still said
   PyPI was MIT after the first Apache-2.0 PyPI release. Keep version numbers out of that prose: the checker
   fails a hard-coded version outside a marker.
+- **A release that closes a caveat:** the older what's-new block keeps its caveat (it was true of that
+  release), but in the past tense, with "the next release fixed it". Culvert 0.6.1 closed 0.6.0's
+  "still escapes" caveat, and the two blocks read as a contradiction until the older one was reworded.
 - A new project page: add its entry to `PROJECTS`, its markers to the page, test cases to
   `tools/test_check_release_page.py`, and its name to the matrix in `release-sync.yml`.
 
