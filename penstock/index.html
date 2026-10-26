@@ -102,7 +102,7 @@
     <div class="blueprint code-frame">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="strip"><span>shell</span><span>Java · Spring Boot</span></div>
-      <pre><div class="cmt"># the jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside JetBrains Air or Zed, over stdio</div><div><span class="tok">java</span> -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --acp</div><div class="sep"></div><div class="cmt"># or as a memory server for Claude Code or Claude Desktop, over stdio</div><div><span class="tok">java</span> -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --mcp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:<span data-penstock="release-version">0.5.3</span></div></pre>
+      <pre><div class="cmt"># the jar and its bill of materials are release assets</div><div><span class="tok">java</span> -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar</div><div class="sep"></div><div class="cmt"># or as the agent inside an editor that speaks ACP, over stdio</div><div><span class="tok">java</span> -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --acp</div><div class="sep"></div><div class="cmt"># or as a memory server for Claude Code or Claude Desktop, over stdio</div><div><span class="tok">java</span> -jar penstock-<span data-penstock="release-version">0.5.3</span>.jar --mcp</div><div class="sep"></div><div class="cmt"># or the multi-architecture image, bound to loopback</div><div><span class="tok">docker</span> run --rm -p 127.0.0.1:8080:8080 \</div><div>  ghcr.io/enrichmeai/penstock:<span data-penstock="release-version">0.5.3</span></div></pre>
     </div>
     <p class="note">Since <span data-penstock-history>v0.2.0</span> the published image requires a login by default: set <code style="font-size:14.5px">AGENT_AUTH_PASSWORD</code>, read the generated one from the container logs, or opt out deliberately with <code style="font-size:14.5px">AGENT_AUTH_ENABLED=false</code>. Exact coordinates, configuration and the model options are in the release notes and the shipped docs: <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.3"><span data-penstock="release-version">v0.5.3</span> →</a>.</p>
     <div class="blueprint caveat" style="margin-top:24px">
@@ -201,7 +201,7 @@
           <tr><td>Web</td><td>A person working with the agent directly</td><td>Every model call and tool invocation</td></tr>
           <tr><td>REST</td><td>CI hooks and scheduled triage</td><td>Every model call and tool invocation</td></tr>
           <tr><td>Streaming</td><td>Chat commands and long-running work</td><td>Every model call and tool invocation</td></tr>
-          <tr><td>Editor (<code style="font-size:14.5px">--acp</code>)</td><td>The agent inside JetBrains Air or Zed</td><td>Nothing: <code style="font-size:14.5px">--acp</code> runs with in-memory storage only, so card loads go to the application log</td></tr>
+          <tr><td>Editor (<code style="font-size:14.5px">--acp</code>)</td><td>The agent inside an editor that speaks ACP</td><td>Nothing: <code style="font-size:14.5px">--acp</code> runs with in-memory storage only, so card loads go to the application log</td></tr>
           <tr><td>Memory server (<code style="font-size:14.5px">--mcp</code>)</td><td>Your memory in Claude Code or Claude Desktop</td><td>Every recall and draft, with the sections and cards a recall returned (to stderr with the default in-memory storage)</td></tr>
           <tr><td>Models</td><td>Pluggable, including a local one</td><td>The call, whichever model served it</td></tr>
         </tbody>
@@ -233,7 +233,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>In your IDE</dt>
-        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside JetBrains Air or Zed, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live"><span data-penstock-history>v0.3.0</span></span></dd>
+        <dd>Penstock speaks the Agent Client Protocol. Launched with <code style="font-size:14.5px">--acp</code> it runs as a selectable agent inside an editor that speaks ACP, over stdio. The read-only tools and pod reads run unprompted; <code style="font-size:14.5px">write_file</code>, <code style="font-size:14.5px">edit_file</code>, <code style="font-size:14.5px">shell</code>, <code style="font-size:14.5px">git</code> and pod writes each go through the editor's own permission prompt first. Registration steps for both editors are in <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/docs/ide-agents.md">the shipped docs</a>. <span class="tag tag-live"><span data-penstock-history>v0.3.0</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Memory</dt>
@@ -299,7 +299,7 @@
         </div>
         <div class="faq-item">
           <h3>Can I run it inside my editor?</h3>
-          <p>Yes, since <span data-penstock-history>v0.3.0</span>: <code style="font-size:14.5px">--acp</code> speaks the Agent Client Protocol over stdio to JetBrains Air or Zed. The read-only tools and pod reads run unprompted; writes, shell and git go through the editor's permission prompt first.</p>
+          <p>Yes, since <span data-penstock-history>v0.3.0</span>: <code style="font-size:14.5px">--acp</code> speaks the Agent Client Protocol over stdio to any editor that supports it. The read-only tools and pod reads run unprompted; writes, shell and git go through the editor's permission prompt first.</p>
         </div>
         <div class="faq-item">
           <h3>Can Claude Code use my memory?</h3>
