@@ -36,7 +36,7 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow" style="margin-bottom:26px">Open infrastructure for the AI era</p>
+      <p class="eyebrow" style="margin-bottom:26px">Open source · Apache 2.0 · self-hostable</p>
       <h1 style="max-width:15ch">Self-hosted AI agents <span class="accent">you can check</span>.</h1>
     </div>
     <p class="hero-rail">Penstock is a self-hosted AI agent harness: it runs agents on your own servers or in CI, on Ollama, Copilot, Anthropic or OpenAI. Cistern is a data pod with an MCP server: an AI agent must ask before it reads your data, and every request gets a receipt. Both open source, Apache 2.0.</p>
@@ -44,7 +44,7 @@
 
   <div class="hero-below">
     <div>
-      <p class="lede" style="max-width:none">AI agents now write code, read documents and call tools for you. That raises two questions: what did the agent do, and what was it allowed to see? We build open-source answers to both. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> is the agent side: a self-hosted agent harness with tools, memory you can switch on and, with database storage, an audit log of every model call and tool call. <strong style="font-weight:600;color:var(--color-text)">Cistern</strong> is the data side: a self-hostable pod that AI agents reach over MCP, where every read is checked against your rules and receipted. Use either on its own, run them together as Headworks, or have us run them. Nothing here is announced before it runs.</p>
+      <p class="lede" style="max-width:none">AI agents now write code, read documents and call tools for you. That raises two questions: what did the agent do, and what was it allowed to see? We build open-source answers to both. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> is the agent side: a self-hosted agent harness with tools, memory you can switch on and, with database storage, an audit log of every model call and tool call. <strong style="font-weight:600;color:var(--color-text)">Cistern</strong> is the data side: a self-hostable pod that AI agents reach over MCP, where every read is checked against your rules and receipted. Use either on its own, run them together as Headworks, or have us run them.</p>
       <div class="btn-row" style="margin-top:34px">
         <a href="/cistern/" class="btn btn-primary btn-lg">Explore Cistern →</a>
         <a href="https://github.com/enrichmeai" class="btn btn-secondary btn-lg">Read the source →</a>
@@ -67,7 +67,7 @@
   </div>
 
   <div class="heading-row grid-105" style="padding:42px 0 28px">
-    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:18ch">Headworks: the parts, working as one.</h2>
+    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:18ch">Headworks: Penstock and Cistern running together.</h2>
     <p style="font-size:17px;color:var(--color-neutral-800);max-width:63ch"><strong style="font-weight:600;color:var(--color-text)">An AI assistant that works on your data, remembers what you have taught it, sees only what you have shared, and keeps a receipt for everything.</strong> Headworks is the name for the open-source parts below when they run together. Each ships on its own release, and Headworks now has a release of its own that pins them together; it is not public yet, so <a href="#services">talk to us</a> about access.</p>
   </div>
 
@@ -102,8 +102,8 @@
   </div>
 
   <div class="heading-row grid-105" style="padding:42px 0 68px">
-    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:none">Accountability at both ends, and the frameworks underneath.</h2>
-    <p style="font-size:17px;color:var(--color-neutral-800);max-width:63ch">An agent reading your data and an agent writing your code are one problem seen from two sides: work is being done by something that does not remember, does not explain itself, and cannot be asked afterwards. <strong style="font-weight:600;color:var(--color-text)">Cistern</strong> answers for the data: every read permitted in advance, and receipted after. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> answers for the work: every model call and tool invocation written down. Those two are the AI-era work; <strong style="font-weight:600;color:var(--color-text)">Culvert</strong>, below, is a data-pipeline framework with no AI in it, and it is here because it is where the practice these two are held to was proven.</p>
+    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:none">What we build: two AI products and two developer frameworks.</h2>
+    <p style="font-size:17px;color:var(--color-neutral-800);max-width:63ch"><strong style="font-weight:600;color:var(--color-text)">Cistern</strong> controls which of your data an AI assistant or app may read, and keeps a receipt of every allow and deny. <strong style="font-weight:600;color:var(--color-text)">Penstock</strong> runs agents and, with database storage, logs every model call and tool call. <strong style="font-weight:600;color:var(--color-text)">Culvert</strong> (data pipelines) and <strong style="font-weight:600;color:var(--color-text)">enrich-test-api</strong> (cloud tests) are frameworks with no AI in them.</p>
   </div>
 
   <article class="register-entry">
@@ -115,14 +115,14 @@
     <div class="body">
       <h3>Cistern</h3>
       <p class="descriptor">the gateway between AI agents and your data · open &amp; self-hostable · Java · Apache 2.0</p>
-      <p class="prose">Cistern stands in front of what's yours, and makes every application and AI assistant ask permission instead of taking copies. The owner writes the rule (<em>this assistant, this folder</em>) and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications: Solid for the data and its access rules, and an MCP front door so any assistant that speaks it reaches the pod through the same enforcement as everything else. No vendor sits between you and your own decisions.</p>
+      <p class="prose">Cistern is a self-hostable data server built on the Solid specifications. Apps and AI assistants have to ask permission instead of taking copies. The owner writes the rule (<em>this assistant, this folder</em>) and Cistern enforces it on every request, revokes it on the very next one, and leaves a receipt of every allow and deny. Built in the open on open specifications: Solid for the data and its access rules, and an MCP front door so any assistant that speaks it reaches the pod through the same enforcement as everything else.</p>
       <div class="blueprint" style="padding:24px 24px 22px;margin-top:6px;max-width:70ch">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div class="frame-kicker">Receipts, not claims</div>
+        <div class="frame-kicker">What you can run today</div>
         <ul class="marker-list">
           <li><span class="mk">+</span><span><code style="font-size:13.5px;color:var(--color-text)">docker pull ghcr.io/enrichmeai/cistern:<span data-cistern="release-version">0.3.1</span></code> is live on GHCR. It runs enforcing with three environment variables</span></li>
-          <li><span class="mk">+</span><span>Held to a stranger test before it was named here: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, with 2,465 tests passing behind it and 1 skipped</span></li>
-          <li><span class="mk">+</span><span>Every decision is receipted, literally: who read what, under which rule, when, queryable by the owner</span></li>
+          <li><span class="mk">+</span><span>Held to a stranger test: pull, run, grant, refuse, revoke, receipt, from the published artifacts alone, with 2,465 tests passing behind it and 1 skipped</span></li>
+          <li><span class="mk">+</span><span>Every decision gets a receipt: who read what, under which rule, when, queryable by the owner</span></li>
           <li><span class="mk">+</span><span>Apache 2.0 · built against the official Solid conformance suite, score public and only moving forward · limitations stated plainly in the release notes</span></li>
         </ul>
       </div>
@@ -142,21 +142,21 @@
     </div>
     <div class="body">
       <h3>Penstock</h3>
-      <p class="descriptor">the agent that does the work, and the reference client for governed access · Java · Spring Boot</p>
+      <p class="descriptor">a self-hosted agent harness that logs what it did, and reads from a Cistern pod only what you granted · Java · Spring Boot</p>
       <div class="split-2">
-        <p>Penstock runs your agents on your data, with receipts: a self-hosted agent harness for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage) against your own internal systems, on models you choose. It keeps the record its work deserves: with database storage (SQLite in the shipped Compose file, or Postgres), every model call and every tool invocation is written to an audit log the owner reads back.</p>
-        <p>It earns its place here by being the first thing to ask Cistern for something. An agent that wants a file has to present an identity of its own, receive only what was granted, be refused the rest, and leave a receipt behind. The shape of that exchange is the same whether the agent is writing code, reading a case file, or doing something nobody has built yet. Proving it on an agent we run ourselves is how the pattern gets settled before anyone else has to depend on it.</p>
+        <p>Penstock runs your agents on your data, with receipts: a self-hosted agent harness for the work that happens where no editor is open (CI hooks, chat commands, scheduled triage) against your own internal systems, on models you choose. With database storage (SQLite in the shipped Compose file, or Postgres), every model call and every tool invocation is written to an audit log the owner reads back.</p>
+        <p>Its pod tool asks a Cistern pod for a file over plain HTTPS with its own credential. It gets only what was granted and is refused the rest, and what it read is receipted on the owner's side.</p>
       </div>
-      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch"><span data-penstock="release-version">v0.5.3</span> is live: a jar, a bill of materials, a multi-architecture image, the Agent Client Protocol mode for JetBrains Air and Zed, and a local MCP server that gives Claude Code and Claude Desktop the memory it keeps. <span data-penstock-history>v0.5.3</span> went through a stranger test on 17 October 2026: it installed and ran from the published jar and docs alone, with nothing blocking. Two documentation faults it found are being fixed (<a href="https://github.com/enrichmeai/penstock/issues/171">penstock#171</a>) and the image was not part of the test, so it has not cleared the test the way Cistern has. Run it on your own machine for now, not on a network.</p>
+      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch"><span data-penstock="release-version">v0.5.3</span> is live: a jar, a bill of materials, a multi-architecture image, the Agent Client Protocol mode for editors, and a local MCP server that gives Claude Code and Claude Desktop the memory it keeps. <span data-penstock-history>v0.5.3</span> went through a stranger test on 17 October 2026: it installed and ran from the published jar and docs alone, with nothing blocking. Two documentation faults it found are being fixed (<a href="https://github.com/enrichmeai/penstock/issues/171">penstock#171</a>) and the image was not part of the test, so it has not cleared the test the way Cistern has. Run it on your own machine for now, not on a network.</p>
       <div class="blueprint" style="padding:24px;margin-top:6px;max-width:76ch">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker">Where it stands</div>
         <ul class="stands-list">
           <li><span class="term">Today</span><span>three surfaces (web, REST, streaming), pluggable models including a local one, and, with database storage, an audit log of every model and tool call, attributed to the authenticated user and readable in the app</span></li>
-          <li><span class="term">Now</span><span>the pod tool has shipped: Penstock asks a Cistern pod for a file over plain HTTPS as its own principal, is refused outside its grant, and what it read is receipted on the owner's side. Any client needing scoped, accountable access to someone else's data follows the same shape</span></li>
-          <li><span class="term">Since <span data-penstock-history>v0.3.0</span></span><span>it speaks the Agent Client Protocol, so it runs as a selectable agent inside JetBrains Air or Zed: read-only tools unprompted, every mutating tool behind the editor's own permission prompt</span></li>
+          <li><span class="term">Now</span><span>the pod tool has shipped: Penstock asks a Cistern pod for a file over plain HTTPS as its own principal, is refused outside its grant, and what it read is receipted on the owner's side</span></li>
+          <li><span class="term">Since <span data-penstock-history>v0.3.0</span></span><span>it speaks the Agent Client Protocol, so it runs as a selectable agent inside an editor that speaks ACP: read-only tools unprompted, every mutating tool behind the editor's own permission prompt</span></li>
           <li><span class="term">Since <span data-penstock-history>v0.4.0</span></span><span>it remembers. With memory switched on it recalls the facts, recent episodes and patterns for the project from a memory root you own before each model call; since <span data-penstock-history>v0.5.0</span> it gives Claude Code and Claude Desktop the same memory over MCP; and since <span data-penstock-history>v0.5.2</span> the model is asked to cite the card behind each decision and to propose what it learned, never to write a fact</span></li>
-          <li><span class="term">Next</span><span>clearing the stranger test: the two documentation fixes; the image is still untested. Each release's image is scanned and the report attached: from <span data-penstock-history>v0.1.0</span> to <span data-penstock="release-version">v0.5.3</span> the high and critical total went from 138 to 17. Three distinct criticals remain, all in Spring Framework 6.2 with a fix listed only in Spring Framework 7: one is not reachable and guarded by a test, two are being checked. Every scan is attached to its release, so the whole series is yours to read rather than ours to claim</span></li>
+          <li><span class="term">Next</span><span>clearing the stranger test: the two documentation fixes; the image is still untested. Each release's image is scanned and the report attached: from <span data-penstock-history>v0.1.0</span> to <span data-penstock="release-version">v0.5.3</span> the high and critical total went from 138 to 17. Three distinct criticals remain, all in Spring Framework 6.2 with a fix listed only in Spring Framework 7: one is not reachable and guarded by a test, two are being checked. Every scan report is attached to its release</span></li>
         </ul>
       </div>
       <div class="btn-row" style="margin-top:6px">
@@ -176,7 +176,7 @@
     <div class="body">
       <h3 style="font-family:var(--font-heading);font-weight:600;font-size:var(--fs-h3-culvert);line-height:0.98;letter-spacing:-0.02em">Culvert</h3>
       <p class="descriptor">cloud-agnostic data-pipeline framework · Java + Python · Apache 2.0</p>
-      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Shipped on PyPI and Maven Central, after a real deploy caught eight bugs that 1,145 green tests never saw. The full account, contracts through honest status, is on its own page.</p>
+      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">Data pipelines defined once against a language-neutral contract set, then run on any cloud by swapping adapters instead of rewriting logic. Shipped on PyPI and Maven Central, after a real deploy caught eight bugs that 1,145 green tests never saw.</p>
       <div class="btn-row" style="margin-top:4px">
         <a href="/culvert/" class="btn btn-secondary btn-md">Explore Culvert →</a>
         <a href="https://github.com/enrichmeai/culvert" style="font-size:15px">Source →</a>
@@ -192,12 +192,12 @@
     </div>
     <div class="body">
       <h3>enrich-test-api</h3>
-      <p class="descriptor">cloud tests that never name a cloud · Java 17 · Apache 2.0</p>
+      <p class="descriptor">Java integration tests for cloud code, on local emulators · Java 17 · Apache 2.0</p>
       <div class="split-2">
         <p>A Java test asks for a bucket or a queue and gets one, backed by a container the library started. The capability interfaces carry no cloud SDK, so a test compiled against them has no compile-time knowledge of a provider, and the AWS SDK is found at runtime through Java&rsquo;s own <code>ServiceLoader</code>.</p>
-        <p>It exists because the usual options are a mock that passes whether or not the code is right, or a real account that is slow, costly and unavailable offline. Running against a local emulator lets a test fail for a reason that matters.</p>
+        <p>Tests run against a local emulator instead of a mock or a real cloud account, so no account is needed.</p>
       </div>
-      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">This one is earlier than the rest of the register and its page says so throughout. It is on Maven Central as an alpha: four capabilities against AWS on LocalStack, and a way to point your own Spring Boot or Quarkus application at the same emulator. Coverage meets its own target in both modules, and the floors the build enforces are the measured values.</p>
+      <p style="font-size:16.5px;line-height:1.6;color:var(--color-neutral-800);max-width:70ch">This one is earlier than the rest of these products and its page says so throughout. It is on Maven Central as an alpha: four capabilities against AWS on LocalStack, and a way to point your own Spring Boot or Quarkus application at the same emulator. Coverage meets its own target in both modules, and the floors the build enforces are the measured values.</p>
       <div class="blueprint" style="padding:24px;margin-top:6px;max-width:76ch">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div class="frame-kicker">Where it stands</div>
@@ -213,19 +213,6 @@
       </div>
     </div>
   </article>
-
-  <div class="register-entry">
-    <div class="hung"></div>
-    <div class="body">
-      <div class="reserved" style="max-width:46ch">
-        <span class="label">05 · reserved</span>
-        <h4>The next framework</h4>
-        <p>The register is open-ended on purpose. Each new framework takes the next number and the same treatment: what it is, where it stands, and what a stranger can run today.</p>
-      </div>
-    </div>
-  </div>
-
-  <p class="closing-note">These grow slowly on purpose: nothing is named here before it has run on real infrastructure, and what has not shipped says so.</p>
 
   <div id="where" class="section-rule">
     <span class="name">Where this goes</span><span class="num">02 · direction, not release</span>
@@ -248,19 +235,19 @@
   </div>
 
   <div class="section-body">
-    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;margin-bottom:40px;max-width:20ch">Open on your terms, too.</h2>
+    <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;margin-bottom:40px;max-width:20ch">Three ways to run it</h2>
     <div class="rule-cols c3">
       <div class="rule-column">
         <h3>Embed</h3>
-        <p style="font-size:16.5px;line-height:1.6">Add the dependency, own the stack. The frameworks are ordinary libraries in your build. No agents, no server, nothing phoning home.</p>
+        <p style="font-size:16.5px;line-height:1.6">Add the frameworks to your build as ordinary libraries. No agents, no server, nothing phoning home.</p>
       </div>
       <div class="rule-column">
         <h3>Self-host</h3>
-        <p style="font-size:16.5px;line-height:1.6"><code style="font-size:14px;color:var(--color-text)">docker compose up</code> and Cistern is yours: your hardware, your keys, your rules. Everything it does is inspectable, down to the audit trail.</p>
+        <p style="font-size:16.5px;line-height:1.6"><code style="font-size:14px;color:var(--color-text)">docker compose up</code> runs Cistern on your own hardware with your own keys. Everything it does is inspectable, down to the audit trail.</p>
       </div>
       <div class="rule-column is-accent">
         <h3 class="accent">Run by us</h3>
-        <p style="font-size:16.5px;line-height:1.6">Some teams want the authority without the operations. We deploy, operate, and upgrade it, in your cloud or ours, with the maintainers on the other end of the line. Today that's an engagement, not a sign-up form: <a href="#services">talk to us</a>.</p>
+        <p style="font-size:16.5px;line-height:1.6">We deploy, operate, and upgrade it, in your cloud or ours, with the maintainers on the other end of the line. Today that's an engagement, not a sign-up form: <a href="#services">talk to us</a>.</p>
       </div>
     </div>
   </div>
@@ -269,33 +256,10 @@
     <span class="name">How we build</span><span class="num">04</span>
   </div>
 
-  <div class="heading-row grid-125" style="padding:42px 0 88px">
-    <div class="prose-col" style="gap:20px;max-width:none">
-      <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02">Code got expensive cheap. Judgment didn't.</h2>
-      <p>AI can write a thousand lines in a minute. What it can't do is stand behind them: keep an interface stable for years, catch the failure the emulator never shows, ship an artifact a stranger can depend on.</p>
-      <p>Systems rarely break in the middle of a function. They break at the <strong style="font-weight:600;color:var(--color-text)">seams</strong>: between your logic and the cloud SDK, between the schema Terraform provisioned and the schema the code writes, between what passed on your laptop and what runs on a serialised worker with real IAM. Generated code adds more seams. It doesn't harden any of them.</p>
-      <p>Good infrastructure is where the hardening lives: a stable contract, a conformance suite every implementation has to pass, honest notes about what <em>doesn't</em> work, and a signed, versioned artifact. None of that is typing. We build our own with AI agents, and it only works because the agents are held to the same contracts and gates.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:34px;padding-top:8px">
-      <div>
-        <div class="frame-kicker" style="color:var(--color-neutral-700);padding-bottom:12px;border-bottom:1px solid var(--color-divider);margin-bottom:0">What got cheap</div>
-        <ul class="marker-list" style="gap:9px;padding-top:14px">
-          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-700)">Lines of code</span></li>
-          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-700)">Boilerplate and scaffolding</span></li>
-          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-700)">First drafts of anything</span></li>
-          <li><span class="mk-dim">−</span><span style="color:var(--color-neutral-700)">Plausible-looking implementations</span></li>
-        </ul>
-      </div>
-      <div>
-        <div class="frame-kicker" style="padding-bottom:12px;border-bottom:1px solid var(--color-accent);margin-bottom:0">What didn't</div>
-        <ul class="marker-list" style="gap:9px;padding-top:14px">
-          <li><span class="mk">+</span><span style="color:var(--color-text)">Contracts that hold across clouds and years</span></li>
-          <li><span class="mk">+</span><span style="color:var(--color-text)">Tests that catch what emulators can't</span></li>
-          <li><span class="mk">+</span><span style="color:var(--color-text)">Production scars, written down honestly</span></li>
-          <li><span class="mk">+</span><span style="color:var(--color-text)">Signed artifacts a stranger can trust</span></li>
-          <li><span class="mk">+</span><span style="color:var(--color-text)">Consented access to your data</span></li>
-        </ul>
-      </div>
+  <div style="padding:42px 0 88px">
+    <div class="prose-col" style="gap:20px">
+      <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02">How we build</h2>
+      <p>Each project has a stable contract, a conformance suite every implementation must pass, release notes that say what does not work, and versioned published artifacts. We build them with AI agents, held to the same contracts and checks.</p>
     </div>
   </div>
 </main>
@@ -307,17 +271,17 @@
     </div>
     <div class="band-grid">
       <div style="display:flex;flex-direction:column;gap:22px">
-        <h2>Answer for what your agents did.</h2>
-        <p class="lead">The objective is narrow, and it is not a licence pitch: <strong>an organisation should be able to let agents work on its data and still answer, afterwards, for everything they touched.</strong> Most cannot today, not for want of policies, but because nothing underneath produces the evidence. That is what we build, and it only counts if you can run it yourself. Everything here is Apache 2.0, free for commercial use, no strings and no open-core bait.</p>
-        <p class="muted">There is no paid tier holding anything back, and there is not going to be one. Software that decides who may read your data has to be software you can read, so all of it is yours. It keeps being built because the organisations that come to rely on it choose to work with us. That is the whole arrangement, and it is a fair one.</p>
+        <h2>Work with us</h2>
+        <p class="lead">Everything here is Apache 2.0, free for commercial use.</p>
+        <p class="muted">There is no paid tier. We earn from the services below.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:24px">
-        <p style="font-size:17px;line-height:1.6;color:var(--color-accent-300)">Where we work with organisations directly it is in service of that:</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--color-accent-300)">Services:</p>
         <ul class="band-list">
-          <li><span class="term">Integration engagements</span><span class="desc">when the loop has to close inside an estate that already exists</span></li>
-          <li><span class="term">Enterprise support</span><span class="desc">when something load-bearing depends on it</span></li>
-          <li><span class="term">Sponsored features</span><span class="desc">when a real deployment needs the roadmap bent toward it</span></li>
-          <li><span class="term">Managed deployments</span><span class="desc">for teams who want the authority without the operations</span></li>
+          <li><span class="term">Integration</span><span class="desc">fitting it into systems you already run</span></li>
+          <li><span class="term">Enterprise support</span><span class="desc">for production use</span></li>
+          <li><span class="term">Sponsored features</span><span class="desc">a feature your deployment needs</span></li>
+          <li><span class="term">Managed deployments</span><span class="desc">we run it for you</span></li>
         </ul>
         <div class="btn-row" style="margin-top:4px">
           <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md" class="btn btn-inverted btn-lg">Start with COMMERCIAL.md →</a>
@@ -335,20 +299,16 @@
     </div>
     <div class="heading-row grid-115" style="padding:42px 0 76px">
       <div class="prose-col" style="gap:20px;max-width:none">
-        <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:18ch">The code is one part. The thinking is the product.</h2>
-        <p style="max-width:60ch">Building infrastructure in the open means writing down more than the code: the decisions, the seams that turned out to be load-bearing, and the failures that only production showed. That record is a deliberate output here, not a marketing afterthought. Every technical claim cites the real source tree.</p>
+        <h2 class="section-h2" style="font-size:var(--fs-h2-home);line-height:1.02;max-width:18ch">Writing</h2>
+        <p style="max-width:60ch">Every technical claim cites the real source tree.</p>
         <p style="max-width:60ch">The first long-form piece is a practitioner's account of building one of these systems in the open: twenty-one chapters, in progress, with an essay series alongside it. <a href="/culvert/#writing">Read what it covers →</a></p>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding-top:6px">
         <div class="frame-kicker" style="color:var(--color-neutral-700);margin-bottom:0">Who is behind this?</div>
         <h3 style="font-family:var(--font-heading);font-weight:600;font-size:34px">Joseph Aruja</h3>
-        <p style="font-size:16.5px;line-height:1.62;color:var(--color-neutral-800)">I'm Joseph Aruja. Twenty-five years building software for banks and enterprises, too much of it the same scaffolding rebuilt on every new platform. EnrichMeAI is where that experience turns into things other people can use: open infrastructure, frameworks, writing, and the occasional strong opinion. All in the open.</p>
+        <p style="font-size:16.5px;line-height:1.62;color:var(--color-neutral-800)">I'm Joseph Aruja. Twenty-five years building software for banks and enterprises. EnrichMeAI publishes open infrastructure, frameworks and writing, all open source.</p>
       </div>
     </div>
-    <blockquote class="pull-quote" style="border-top:1px solid var(--color-divider);padding:44px 0 76px;margin:0">
-      <span class="label">House rule</span>
-      <p style="font-size:var(--fs-quote);line-height:1.14;max-width:26ch">"Nothing here is announced before it has run on real infrastructure. Claims are cheap now. Proof isn't."</p>
-    </blockquote>
   </div>
 </section>
 
@@ -361,10 +321,10 @@
     <nav class="footer-grid">
       <a href="/headworks/">Headworks, Penstock and Cistern working as one</a>
       <a href="/cistern/">Cistern, the personal data gateway</a>
-      <a href="/penstock/">Penstock, the agent that answers for its work</a>
-      <a href="/persona/">Persona, the record your AI starts from</a>
+      <a href="/penstock/">Penstock, the self-hosted agent harness</a>
+      <a href="/persona/">Persona, memory for coding agents</a>
       <a href="/culvert/">Culvert, the data-pipeline framework</a>
-      <a href="/enrich-test-api/">enrich-test-api, cloud tests without a cloud</a>
+      <a href="/enrich-test-api/">enrich-test-api, cloud tests on local emulators</a>
       <a href="https://github.com/enrichmeai/cistern/blob/main/COMMERCIAL.md">Work with us →</a>
       <a href="https://github.com/enrichmeai">github.com/enrichmeai →</a>
     </nav>
