@@ -168,32 +168,14 @@
   <div class="section-body">
     <div class="heading-row">
       <h2 class="section-h2">Try them together</h2>
-      <p class="intro">Two ways, each straight from the parts' own docs, with every step linked. Both run on your machine and listen only on 127.0.0.1.</p>
+      <p class="intro">One command, straight from Cistern's own docs. It runs on your machine and listens only on 127.0.0.1.</p>
     </div>
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>One command</dt>
         <dd>Cistern's demo brings up a pod and Penstock with a single <code style="font-size:14.5px">docker compose</code> command, the agent on its own credential. Then it walks you through five beats: put a file in, watch the agent get refused, grant access, watch it read, revoke, and watch it get refused again. The demo pins Penstock <span data-penstock-history>0.2.0</span>, an older release. <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/blob/v0.3.1/docs/demo/README.md">The demo →</a> <span class="tag tag-live">in Cistern <span data-cistern="release-version">v0.3.1</span></span></dd>
       </div>
-      <div class="spec-row" style="padding:22px 0">
-        <dt>The latest of each</dt>
-        <dd>Want the newest releases? Wire them yourself in three steps.</dd>
-      </div>
     </dl>
-    <div class="rule-cols c3" style="margin-top:28px">
-      <div class="rule-column">
-        <span class="kicker" style="color:var(--color-neutral-700)">1 · The pod</span>
-        <p>Start Cistern from its quickstart: one container, an owner token, and your data on your own disk. <a href="/cistern/#run">Run it →</a></p>
-      </div>
-      <div class="rule-column">
-        <span class="kicker" style="color:var(--color-neutral-700)">2 · The agent's identity</span>
-        <p>Give the agent its own credential, a service principal, so the pod can tell it apart from you. <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/blob/v0.3.1/docs/INTEGRATION.md#step-1--identity-who-is-the-application">INTEGRATION.md, step 1 →</a></p>
-      </div>
-      <div class="rule-column is-accent">
-        <span class="kicker">3 · Point Penstock at it</span>
-        <p>Set <code style="font-size:14px">CISTERN_BASE_URL</code> and <code style="font-size:14px">CISTERN_AGENT_TOKEN</code> on Penstock, then grant the agent a folder. <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/blob/v0.5.3/README.md#configuration-reference">Configuration reference →</a></p>
-      </div>
-    </div>
     <p class="note" style="margin-top:28px">Until you grant it a folder, the agent is refused every time, and each refusal gets a receipt too. That's the default, not a setting.</p>
   </div>
 
@@ -213,7 +195,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Its limits</dt>
-        <dd>The one-command demo still uses an older Penstock; for the latest of each, wire them by hand as above. Run Penstock on your own machine, not on a network: <span data-penstock-history>v0.5.3</span> passed a stranger test with nothing blocking, and two documentation fixes are under way (<a href="https://github.com/enrichmeai/penstock/issues/171">penstock#171</a>). Cistern's remote MCP door isn't open yet (<a href="https://github.com/enrichmeai/cistern/issues/220">cistern#220</a>), so an assistant reaches the pod through its local bridge.</dd>
+        <dd>The one-command demo still uses an older Penstock. Run Penstock on your own machine, not on a network: <span data-penstock-history>v0.5.3</span> passed a stranger test with nothing blocking, and two documentation fixes are under way (<a href="https://github.com/enrichmeai/penstock/issues/171">penstock#171</a>). Cistern's remote MCP door isn't open yet (<a href="https://github.com/enrichmeai/cistern/issues/220">cistern#220</a>), so an assistant reaches the pod through its local bridge.</dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Planned</dt>
