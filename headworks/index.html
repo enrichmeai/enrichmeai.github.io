@@ -34,7 +34,7 @@
 
   <div class="hero">
     <div>
-      <p class="eyebrow">Penstock <span data-penstock="release-version">v0.5.3</span> · Cistern <span data-cistern="release-version">v0.3.1</span></p>
+      <p class="eyebrow">Penstock <span data-penstock="release-version">v0.6.0</span> · Cistern <span data-cistern="release-version">v0.3.1</span></p>
       <div class="blueprint caveat">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span>Run it today: each part ships on its own release, and Cistern's demo starts both on your machine with one command.</span>
@@ -104,7 +104,7 @@
     </div>
     <div class="blueprint stage-diagram">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="frame-kicker" style="margin-bottom:26px">How the record grows, in Penstock <span data-penstock="release-version">v0.5.3</span></div>
+      <div class="frame-kicker" style="margin-bottom:26px">How the record grows, in Penstock <span data-penstock="release-version">v0.6.0</span></div>
       <div class="stages s3">
         <div class="stage">
           <span class="role">Episodes</span>
@@ -125,7 +125,7 @@
         </div>
       </div>
     </div>
-    <p class="note" style="margin-top:28px">Each fact, episode and pattern the agent loads is written to its audit log when Penstock stores to a database, so you can see what it remembered and when. Memory stays off until you turn it on. Next, on Penstock's main branch but not in a release yet: patterns the agent loads only when it needs them, and a free, public set of starter patterns for common stacks, <a href="https://github.com/enrichmeai/global-memory">global memory</a>. <span class="tag tag-next">unreleased</span></p>
+    <p class="note" style="margin-top:28px">Each fact, episode and pattern the agent loads is written to its audit log when Penstock stores to a database, so you can see what it remembered and when. Memory stays off until you turn it on. With memory on, the model can also load a pattern part-way through a turn, on top of what it reads at the start; and <a href="https://github.com/enrichmeai/global-memory">global memory</a>, a free, public set of starter patterns for common stacks, loads below your own once you point Penstock at a checkout of it. <span class="tag tag-live">in Penstock <span data-penstock-history>v0.6.0</span></span></p>
   </div>
 
   <div id="parts" class="section-rule">
@@ -140,11 +140,11 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Works on your data</dt>
-        <dd><a href="/penstock/">Penstock</a> runs on your own hardware, with the model you choose, a local one included. When it needs your data, it goes through its <code style="font-size:14.5px">pod</code> tool to a Cistern pod. <span class="tag tag-live"><span data-penstock="release-version">v0.5.3</span></span></dd>
+        <dd><a href="/penstock/">Penstock</a> runs on your own hardware, with the model you choose, a local one included. When it needs your data, it goes through its <code style="font-size:14.5px">pod</code> tool to a Cistern pod. <span class="tag tag-live"><span data-penstock="release-version">v0.6.0</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Remembers</dt>
-        <dd>Penstock keeps a record of what you asked, what was decided, what was refused and what it learned, as plain files you own. Turn memory on (it's off by default in the web and IDE modes) and it reads that record before it answers. Split the record into projects, and each project sees its own section, never another's. More on <a href="/persona/">the record it keeps</a>. <span class="tag tag-live">in Penstock <span data-penstock="release-version">v0.5.3</span></span></dd>
+        <dd>Penstock keeps a record of what you asked, what was decided, what was refused and what it learned, as plain files you own. Turn memory on (it's off by default in the web and IDE modes) and it reads that record before it answers. Split the record into projects, and each project sees its own section, never another's. More on <a href="/persona/">the record it keeps</a>. <span class="tag tag-live">in Penstock <span data-penstock="release-version">v0.6.0</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Sees only what you share</dt>
@@ -191,7 +191,7 @@
     <dl class="spec-list">
       <div class="spec-row" style="padding:22px 0">
         <dt>Shipped</dt>
-        <dd>Both parts, each on its own release: <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.3">Penstock <span data-penstock="release-version">v0.5.3</span></a> and <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.3.1">Cistern <span data-cistern="release-version">v0.3.1</span></a>, with the <code style="font-size:14.5px">pod</code> tool between them. <span class="tag tag-live">live</span></dd>
+        <dd>Both parts, each on its own release: <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.6.0">Penstock <span data-penstock="release-version">v0.6.0</span></a> and <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.3.1">Cistern <span data-cistern="release-version">v0.3.1</span></a>, with the <code style="font-size:14.5px">pod</code> tool between them. <span class="tag tag-live">live</span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Its limits</dt>
@@ -213,12 +213,12 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">penstock <span data-penstock="release-version">0.5.3</span> · cistern <span data-cistern="release-version">0.3.1</span> · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">penstock <span data-penstock="release-version">0.6.0</span> · cistern <span data-cistern="release-version">0.3.1</span> · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
     <div class="footer-navs">
       <nav>
         <h4>Get the parts</h4>
-        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.5.3">Penstock <span data-penstock="release-version">v0.5.3</span>: jar · SBOM · image →</a>
+        <a data-link-penstock="release" href="https://github.com/enrichmeai/penstock/releases/tag/v0.6.0">Penstock <span data-penstock="release-version">v0.6.0</span>: jar · SBOM · image →</a>
         <a data-link-cistern="release" href="https://github.com/enrichmeai/cistern/releases/tag/v0.3.1">Cistern <span data-cistern="release-version">v0.3.1</span>: app · CLI · MCP bridge →</a>
       </nav>
       <nav>
