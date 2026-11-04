@@ -151,6 +151,10 @@
         <dd><a href="/cistern/">Cistern</a> checks your grant on every single request. It never caches a decision, so when you take access back, the very next request is refused. <span class="tag tag-live"><span data-cistern="release-version">v0.3.1</span></span></dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
+        <dt>Asks before it acts</dt>
+        <dd>You choose, tool by tool, what <a href="/penstock/">Penstock</a> may do: run it, ask you first, or never. When it asks, the work pauses until you answer, in the web app or in your editor, and no answer within two minutes counts as a no. A hook you set up can refuse a tool call before it runs, but never allow one you refused. In the web app every tool runs unasked until you set one to ask, so pick the ones you want to approve. <span class="tag tag-live">in Penstock <span data-penstock="release-version">v0.6.0</span></span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
         <dt>Keeps a receipt</dt>
         <dd>Cistern writes down every allow and every deny, and you can look them up file by file. Penstock logs every model call and tool call to its audit log when it stores to a database.</dd>
       </div>
