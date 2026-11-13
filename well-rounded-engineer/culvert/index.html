@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Culvert · Well Rounded Engineer</title>
+<meta name="description" content="enrichme.ai&#x27;s open-source, cloud-agnostic data pipeline framework for Java and Python. Pipeline code depends on a set of contracts, and adapters implement…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="culvert">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/" aria-current="page">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="culvert" data-name="Culvert">
+  <div class="panel-head"><h1>Culvert</h1><p>enrichme.ai's open-source, cloud-agnostic data pipeline framework for Java and Python. Pipeline code depends on a set of contracts, and adapters implement them for each cloud. Every fact on this tab is taken from the <a href="/culvert/" target="_blank" rel="noopener">Culvert page on enrichmeai.com</a>, which is checked daily against Maven Central and PyPI; read it there for the current release.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The idea</h3>
+    <p>Pipelines are defined once against a <b>language-neutral contract set</b> (sixteen contracts plus a metrics record: <code>BlobStore</code>, <code>Warehouse</code>, <code>Source</code>, <code>Sink</code>, <code>JobControlRepository</code> and eleven more), realised as Java interfaces and Python Protocols. <b>Adapters</b> implement the contracts for each cloud, and every adapter must pass the same <b>conformance suite</b>, or it is not an adapter. Swap the cloud, keep the logic.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Layer</th><th>Is</th></tr></thead>
+      <tbody>
+      <tr><td>Your business logic</td><td>Written once; depends only on the contracts, never on a cloud SDK</td></tr>
+      <tr><td>The contracts</td><td>Java interfaces and Python Protocols from one spec</td></tr>
+      <tr><td>Cloud adapters</td><td>Swappable implementations that pass the shared conformance suite</td></tr>
+      </tbody></table></div>
+    <p class="note">This is the "framework, not generated boilerplate" argument from the <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a> tab made concrete: one contract and one test suite instead of a hand-written cloud integration in every pipeline.</p>
+  </article>
+
+  <article class="card"><h3>Design choices</h3>
+    <ul>
+      <li><b>Java owns Beam:</b> the Dataflow/Beam execution layer is Java; legacy Python Beam is not carried forward. The two languages deliberately do different jobs.</li>
+      <li><b>dbt, reused:</b> transformation is SQL and macros, packaged once; there is deliberately no Java transform module.</li>
+      <li><b>Local-first:</b> the whole stack runs against emulators, so you can develop and test without a cloud account.</li>
+      <li><b>No silent defaults:</b> <code>Warehouse.loadFromUri</code> requires a <code>LoadOptions</code>, because a defaulted write disposition let a re-run silently double its data.</li>
+      <li><b>Honest failure:</b> reconciliation runs before the target is written, so a failed load cannot be reported as succeeded.</li>
+      <li><b>Not a replacement</b> for Beam, Airflow or dbt: they are engines, and Culvert is a framework around them.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Install (Python)</h3>
+<div class="snip"><pre><code># core contracts only, no cloud SDKs
+pip install culvert
+# + BigQuery, GCS, Pub/Sub, Secret Manager, observability
+pip install 'culvert[gcp]'
+# + Airflow-side DAG factory / operators / sensors, or dbt
+pip install 'culvert[orchestration]'
+pip install 'culvert[transform]'
+# + StageClaim on PostgreSQL
+pip install 'culvert[postgres]'
+# test fixtures, and the conformance suite for your own adapters
+pip install 'culvert[tester]'
+pip install 'culvert[contract-tests]'
+# gcp + orchestration + transform
+pip install 'culvert[all]'</code></pre></div>
+<div class="snip"><pre><code># adapters are discovered through entry points
+from data_pipeline_core import autoconfig
+blob_store = autoconfig.discover().first("blob_store")
+# -&gt; GcsBlobStore, when culvert[gcp] is installed</code></pre></div>
+    <p class="note">Python 3.10 or newer.</p>
+  </article>
+
+  <article class="card"><h3>Java artifacts (Maven Central)</h3>
+    <p>Separate artifacts under <code>com.enrichmeai.culvert</code>, all at the same version:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Area</th><th>Artifacts</th></tr></thead>
+      <tbody>
+      <tr><td>Core</td><td><code>data-pipeline-core</code>, <code>-contract-tests</code>, <code>-tester</code>, <code>-it-support</code>, <code>-orchestration</code>, <code>-console</code></td></tr>
+      <tr><td>PostgreSQL</td><td><code>data-pipeline-postgres</code> (job control, StageClaim, InputReadiness)</td></tr>
+      <tr><td>GCP</td><td><code>-gcp-gcs</code>, <code>-gcp-bigquery</code>, <code>-gcp-pubsub</code>, <code>-gcp-secrets</code>, <code>-gcp-observability</code>, <code>-gcp-dataflow</code></td></tr>
+      <tr><td>AWS</td><td><code>-aws-s3</code>, <code>-aws-athena</code>, <code>-aws-dynamodb</code>, <code>-aws-sqs</code>, <code>-aws-secrets</code>, <code>-aws-cloudwatch</code></td></tr>
+      <tr><td>Azure</td><td><code>data-pipeline-azure-blob</code> (a skeleton: its methods throw until built out)</td></tr>
+      <tr><td>Documents</td><td><code>data-pipeline-pdf-text</code> (PDF to text with PDFBox; returns null rather than throwing for a scanned or unreadable PDF)</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>// Gradle
+implementation("com.enrichmeai.culvert:data-pipeline-core:&lt;version&gt;")
+implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt;")</code></pre></div>
+    <p class="note">The current version of every artifact is on the <a href="/culvert/">Culvert page</a>.</p>
+  </article>
+
+  <article class="card"><h3>What runs where</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Contract</th><th>GCP</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>BlobStore</td><td>GCS</td><td>S3</td><td>skeleton</td></tr>
+      <tr><td>Warehouse</td><td>BigQuery</td><td>Athena</td><td>roadmap</td></tr>
+      <tr><td>Source · Sink</td><td>Pub/Sub</td><td>SQS</td><td>roadmap</td></tr>
+      <tr><td>JobControlRepository</td><td>BigQuery</td><td>DynamoDB · Athena</td><td>roadmap</td></tr>
+      <tr><td>Observability</td><td>Cloud Monitoring</td><td>CloudWatch</td><td>roadmap</td></tr>
+      <tr><td>Secrets</td><td>Secret Manager</td><td>Secrets Manager</td><td>roadmap</td></tr>
+      </tbody></table></div>
+    <p class="note">GCP is the full implementation; AWS has the Java adapter family; Azure has a Blob Storage skeleton and is otherwise roadmap. <code>JobControlRepository</code> also has a PostgreSQL implementation.</p>
+  </article>
+
+  <article class="card"><h3>Features worth knowing</h3>
+    <ul>
+      <li><b>Job control:</b> run state through <code>JobControlRepository</code> on BigQuery, DynamoDB, Athena or PostgreSQL; a read-only <code>culvert</code> command line (<code>runs</code>, <code>run</code>, <code>entities</code>, <code>failures</code>, <code>adapters</code>).</li>
+      <li><b>StageClaim</b> (PostgreSQL): one stage of one unit for one period cannot start twice.</li>
+      <li><b>InputReadiness</b> (PostgreSQL): names each expected input that is missing, failed or still running, rather than counting rows.</li>
+      <li><b>Orchestration:</b> a cloud-neutral DAG model rendered to Airflow/Composer or Cloud Run jobs, with stage gates and a concurrency ceiling.</li>
+      <li><b>Schema files:</b> an entity's columns, types, required flags, classification, masking, ranges and allowed values in YAML or JSON, loaded with the same rules in Java and Python.</li>
+      <li><b><code>BlobStore.head(uri)</code>:</b> size, version token and metadata without reading the object, for loaders that must be idempotent by object version.</li>
+      <li><b><code>BigQueryWarehouse.merge()</code>:</b> upserts with one MERGE and refuses a key that is not a target column.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Status, stated plainly</h3>
+    <ul>
+      <li>Released in both languages on Maven Central and PyPI, under Apache 2.0 (the earliest releases were MIT).</li>
+      <li>Ran end to end on a real GCP project (Cloud Run to BigQuery, event-driven) before release; that run caught eight production-only bugs every local test had passed.</li>
+      <li>Culvert is pre-1.0: read the changelog's upgrade notes before moving between versions.</li>
+      <li>A book on its design is in progress.</li>
+    </ul>
+    <p class="note">Pin a version in your build, and verify any API against that version's sources, not against <code>main</code>.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain contracts, adapters and the conformance suite</li><li>Install culvert with the right extras or add the Maven artifacts</li><li>Use an adapter through auto-discovery instead of a cloud SDK</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write pipeline code against BlobStore, Warehouse and job control</li><li>Use LoadOptions, head() and merge() for idempotent loads</li><li>Run and test against emulators locally</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design pipelines whose logic is cloud-neutral</li><li>Add an adapter that passes the conformance suite</li><li>Use StageClaim, InputReadiness and orchestration gates</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Shape the contract spec and its evolution</li><li>Lead adoption across teams and clouds</li><li>Contribute adapters for new clouds (Azure)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The contract specification (CONTRACT.md)</li><li>Conformance suites as a design tool</li><li>Job control and run records</li><li>Orchestration renderers</li><li>Upgrading across 0.x releases</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="/culvert/" target="_blank" rel="noopener">Culvert on enrichmeai.com</a><span class="lnote"> Overview, libraries, releases, status</span></li><li><a href="https://github.com/enrichmeai/culvert" target="_blank" rel="noopener">Culvert on GitHub</a><span class="lnote"> Source, issues</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md" target="_blank" rel="noopener">Contract specification</a><span class="lnote"> The authoritative list of contracts</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a><span class="lnote"> Every release, including fixes</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md" target="_blank" rel="noopener">Migration guide</a><span class="lnote"> Upgrading between versions</span></li><li><a href="https://pypi.org/project/culvert/" target="_blank" rel="noopener">culvert on PyPI</a><span class="lnote"> Python package</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/datalibs/">← Data Libraries</a><a class="pn-next" href="/well-rounded-engineer/dbt/">dbt →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

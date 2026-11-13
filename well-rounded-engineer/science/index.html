@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Science & Method · Well Rounded Engineer</title>
+<meta name="description" content="Engineering runs on the same method as science: observe, form a hypothesis, predict, test, and let the result decide. Debugging, performance work, data…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="science">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/" aria-current="page">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="science" data-name="Science &amp; Method">
+  <div class="panel-head"><h1>Science and the scientific method</h1><p>Engineering runs on the same method as science: observe, form a hypothesis, predict, test, and let the result decide. Debugging, performance work, data quality and AI evaluation are all experiments. This tab is about thinking like a scientist at work, and knowing enough about how computers physically work to reason about them.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The method, applied to engineering</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Step</th><th>In science</th><th>In engineering</th></tr></thead>
+      <tbody>
+      <tr><td>Observe</td><td>Notice something unexplained</td><td>p95 latency doubled after Tuesday's deploy</td></tr>
+      <tr><td>Hypothesise</td><td>A testable explanation</td><td>The new query skips the index on <code>court_code</code></td></tr>
+      <tr><td>Predict</td><td>What must be true if the hypothesis holds</td><td><code>EXPLAIN</code> will show a sequential scan; reverting the query will restore latency</td></tr>
+      <tr><td>Test</td><td>An experiment that could prove it wrong</td><td>Run <code>EXPLAIN ANALYZE</code>; try the fix on a copy with production-sized data</td></tr>
+      <tr><td>Conclude</td><td>Accept, reject or refine</td><td>Sequential scan confirmed; index added; p95 back to normal, measured</td></tr>
+      <tr><td>Share</td><td>Publish so others can check</td><td>PR description with before/after numbers; a regression test</td></tr>
+      </tbody></table></div>
+    <p class="note">The key word is <b>falsifiable</b>: a good hypothesis says what result would prove it wrong. "Something in the network is flaky" cannot be tested; "the timeouts happen only on calls through the NAT gateway" can.</p>
+  </article>
+
+  <article class="card wide"><h3>What science can answer, and what it cannot settle alone</h3>
+    <p>Science is the best method we have for questions about what is true of the world and how it works: questions an observation or an experiment could answer. Keep it for those, and keep a balance. Trying to find every answer in science is the same mistake as trying to find every answer in a religion, or in any single tradition: one tool treated as the whole toolbox.</p>
+    <ul>
+      <li><b>What is, and how it works.</b> Does this index make the query faster? Does this drug lower blood pressure? Observation, measurement and experiment answer these: this is science's home ground.</li>
+      <li><b>What we ought to do.</b> Should we collect this data at all? Is this model fair to the people it scores? Ethics, law and judgment answer these, <b>informed</b> by evidence about what the consequences will be.</li>
+      <li><b>What matters, and why.</b> What makes work worth doing? What gives a life meaning? People find these answers in philosophy, faith, tradition, art, relationships and their own experience.</li>
+    </ul>
+    <ul>
+      <li><b>An "is" does not give an "ought" on its own.</b> David Hume noticed that arguments slide from what is the case to what should be done without saying how. Data tells you what users do, not what you should build for them. Metrics guide; values decide.</li>
+      <li><b>Science rests on assumptions it does not prove by its own method:</b> that nature behaves regularly, that instruments and senses are roughly reliable, that results are reported honestly. They are good assumptions, and they are still assumptions.</li>
+      <li><b>Treating science as the answer to every question</b> has a name, <i>scientism</i>. It is a philosophical position, not a scientific finding.</li>
+      <li><b>People disagree about how far the domains overlap.</b> Stephen Jay Gould argued that science and religion answer different questions ("non-overlapping magisteria"); others argue they do overlap. You do not need to settle it to work well with people of every view.</li>
+      <li><b>Respect people whose answers differ from yours.</b> Many careful scientists hold a religious faith and many hold none. A team works best when what is measurable is measured, and what is not is discussed with humility.</li>
+    </ul>
+    <p class="note">Use each kind of knowledge for the questions it can answer, and be honest about where every one of them runs out, including your own favourite.</p>
+  </article>
+
+  <article class="card"><h3>Debugging as an experiment</h3>
+    <ul>
+      <li><b>Reproduce first.</b> A bug you cannot reproduce is a bug you cannot prove you fixed.</li>
+      <li><b>Change one variable at a time,</b> or you will not know which change mattered.</li>
+      <li><b>Bisect:</b> halve the search space each step (<code>git bisect</code>, removing half the input, disabling half the config).</li>
+      <li><b>Write down each hypothesis and its result,</b> including the ones that failed. They narrow the search.</li>
+      <li><b>Prefer evidence that could surprise you:</b> look at the raw log, the packet, the row, not a summary that agrees with your guess.</li>
+      <li><b>Stop when the evidence explains everything,</b> not when you have a plausible story.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Measurement</h3>
+    <ul>
+      <li><b>Accuracy vs precision:</b> a clock that is consistently 5 minutes fast is precise but not accurate.</li>
+      <li><b>Know your instrument:</b> what it measures, its resolution, what it misses, and what it reports when it cannot measure.</li>
+      <li><b>Units on every number.</b> "Latency 200" means nothing.</li>
+      <li><b>Error bars:</b> run a benchmark several times and report the spread, not one lucky run.</li>
+      <li><b>Baseline first:</b> measure before the change, in the same conditions, or the comparison is meaningless.</li>
+      <li><b>The observer effect:</b> profilers, debug logging and tracing change what they measure. Account for it.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Experiments with data and users</h3>
+    <ul>
+      <li><b>Control group:</b> compare against something that did not get the change, at the same time.</li>
+      <li><b>Randomise</b> who gets which variant, so other differences average out.</li>
+      <li><b>Decide the metric and sample size before you look,</b> or you will find what you hoped for (p-hacking).</li>
+      <li><b>Confounders:</b> a feature launched in the same week as a holiday cannot be judged on that week alone.</li>
+      <li><b>Reproducibility:</b> pin data versions, code versions and random seeds so someone else gets the same answer.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Biases that fool engineers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Bias</th><th>Looks like</th></tr></thead>
+      <tbody>
+      <tr><td>Confirmation bias</td><td>Only looking for logs that support your theory</td></tr>
+      <tr><td>Anchoring</td><td>Sticking to the first estimate or cause you heard</td></tr>
+      <tr><td>Availability</td><td>Blaming the cause of the last incident because it is fresh</td></tr>
+      <tr><td>Survivorship</td><td>Studying only the services that did not fail</td></tr>
+      <tr><td>Sunk cost</td><td>Continuing a failing approach because of time already spent</td></tr>
+      <tr><td>Automation bias</td><td>Trusting a tool's output, including an AI's, over contrary evidence</td></tr>
+      <tr><td>Overconfidence</td><td>"It works on my machine" as proof</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>How computers physically work</h3>
+    <ul>
+      <li><b>CPU:</b> executes instructions in cycles; modern cores run billions per second and work on several instructions at once.</li>
+      <li><b>Memory hierarchy:</b> registers, then CPU caches (L1, L2, L3), then RAM, then SSD, then network. Each step is roughly 10–1,000 times slower than the one before. Code that reads memory in order is far faster than code that jumps around.</li>
+      <li><b>Storage:</b> SSDs read randomly far faster than spinning disks, but sequential reads are still fastest.</li>
+      <li><b>Networks:</b> limited by the speed of light; a round trip across a continent cannot be faster than tens of milliseconds.</li>
+      <li><b>Energy and heat:</b> compute has a physical cost, which is also a cost in money and carbon.</li>
+    </ul>
+    <p class="note">These physical limits explain most performance rules on the <a href="/well-rounded-engineer/performance/">Performance</a> and <a href="/well-rounded-engineer/sysdesign/">System Design</a> tabs.</p>
+  </article>
+
+  <article class="card"><h3>Reading research and technical papers</h3>
+    <ol>
+      <li><b>First pass (minutes):</b> title, abstract, introduction, headings, conclusions. Decide if it is worth more time.</li>
+      <li><b>Second pass (an hour):</b> figures, tables, the main argument; note what you do not understand.</li>
+      <li><b>Third pass (hours):</b> recreate the work in your head or in code; challenge every assumption.</li>
+    </ol>
+    <p class="note">Ask of any claim: what was measured, on what data, compared with what, and could the result be explained another way?</p>
+  </article>
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Reproduce a bug before fixing it</li><li>Change one thing at a time and measure before and after</li><li>Write down hypotheses and results while debugging</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Debug systematically with falsifiable hypotheses and bisection</li><li>Run fair benchmarks with baselines and error bars</li><li>Spot common biases in your own reasoning</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design controlled experiments and A/B tests correctly</li><li>Read papers critically and apply their results with care</li><li>Teach the method through how you run investigations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build a culture of evidence and experiment across the organisation</li><li>Lead research-style work with rigour and reproducibility</li><li>Judge competing claims across fields</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Falsifiability (Karl Popper)</li><li>Experimental design and controls</li><li>Cognitive biases</li><li>Memory hierarchy and computer architecture</li><li>How to read a paper</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank" rel="noopener">You and Your Research (Richard Hamming)</a><span class="lnote"> A classic talk on doing important work</span></li><li><a href="https://press.stripe.com/the-art-of-doing-science-and-engineering" target="_blank" rel="noopener">The Art of Doing Science and Engineering (Hamming)</a><span class="lnote"> Book on thinking as a scientist-engineer</span></li><li><a href="https://calteches.library.caltech.edu/51/2/CargoCult.htm" target="_blank" rel="noopener">Cargo Cult Science (Richard Feynman)</a><span class="lnote"> On scientific integrity</span></li><li><a href="http://ccr.sigcomm.org/online/files/p83-keshavA.pdf" target="_blank" rel="noopener">How to Read a Paper (S. Keshav)</a><span class="lnote"> The three-pass method</span></li><li><a href="https://csapp.cs.cmu.edu/" target="_blank" rel="noopener">Computer Systems: A Programmer's Perspective</a><span class="lnote"> How computers really work, for programmers</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/mathematics/">← Mathematics</a><a class="pn-next" href="/well-rounded-engineer/philosophy/">Philosophy →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

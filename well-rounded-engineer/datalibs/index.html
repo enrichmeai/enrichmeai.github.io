@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Libraries · Well Rounded Engineer</title>
+<meta name="description" content="The major libraries and engines for processing data in Python and Java, what scale each suits, the same task written in several of them, and the habits…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="datalibs">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/" aria-current="page">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="datalibs" data-name="Data Processing Libraries">
+  <div class="panel-head"><h1>Data processing libraries</h1><p>The major libraries and engines for processing data in Python and Java, what scale each suits, the same task written in several of them, and the habits that make any of them fast. Frameworks that sit around these engines, such as <a href="/well-rounded-engineer/culvert/">Culvert</a>, are on their own tab.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The landscape</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Library / engine</th><th>Language</th><th>Runs on</th><th>Model</th><th>Best for</th></tr></thead>
+      <tbody>
+      <tr><td>pandas</td><td>Python</td><td>One machine, mostly one core</td><td>Eager, in memory</td><td>Analysis and small-to-medium data that fits in RAM; huge ecosystem</td></tr>
+      <tr><td>Polars</td><td>Python (Rust core)</td><td>One machine, all cores</td><td>Lazy or eager, Arrow-based</td><td>Fast DataFrame work on tens of GB; query optimisation</td></tr>
+      <tr><td>DuckDB</td><td>SQL from Python, Java, CLI</td><td>In-process, all cores</td><td>Columnar SQL engine</td><td>SQL over Parquet/CSV/Arrow files, local or in object storage</td></tr>
+      <tr><td>Apache Arrow / PyArrow</td><td>Many</td><td>One machine</td><td>Columnar memory format and Parquet IO</td><td>Reading and writing Parquet, zero-copy exchange between tools</td></tr>
+      <tr><td>NumPy</td><td>Python</td><td>One machine</td><td>N-dimensional arrays</td><td>Numerical computation underneath most Python data tools</td></tr>
+      <tr><td>Dask</td><td>Python</td><td>Many cores or a cluster</td><td>Parallel pandas/NumPy-like collections</td><td>Scaling existing pandas code beyond one core</td></tr>
+      <tr><td>Ray (Ray Data)</td><td>Python</td><td>Cluster</td><td>Distributed tasks and actors</td><td>Python-heavy distributed work, ML preprocessing</td></tr>
+      <tr><td>Apache Spark / PySpark</td><td>Scala, Java, Python, SQL</td><td>Cluster (Dataproc, EMR, Databricks)</td><td>Distributed DataFrames, lazy</td><td>Large batch processing, existing Spark estates</td></tr>
+      <tr><td>Apache Beam</td><td>Java, Python, Go</td><td>Runners: Dataflow, Flink, Spark, direct</td><td>Unified batch and streaming pipelines</td><td>Portable pipelines; streaming on Dataflow</td></tr>
+      <tr><td>Apache Flink</td><td>Java, SQL, Python</td><td>Cluster</td><td>Stateful stream processing</td><td>Low-latency streaming with large state</td></tr>
+      <tr><td>Kafka Streams</td><td>Java</td><td>Inside your service</td><td>Stream processing library</td><td>Stateful processing of Kafka topics without a cluster</td></tr>
+      <tr><td>BigQuery DataFrames (bigframes)</td><td>Python</td><td>BigQuery</td><td>pandas-like API compiled to SQL</td><td>pandas-style code on data that stays in BigQuery</td></tr>
+      <tr><td>dbt</td><td>SQL + Jinja</td><td>Your warehouse</td><td>Models compiled to SQL</td><td>Transformations inside the warehouse (<a href="/well-rounded-engineer/dbt/">dbt tab</a>)</td></tr>
+      <tr><td>Spring Batch</td><td>Java</td><td>One JVM or partitioned</td><td>Chunked read-process-write jobs with restart</td><td>Business batch jobs in Spring applications</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Choosing by situation</h3>
+    <ul>
+      <li><b>Data already in BigQuery:</b> SQL or dbt first; bigframes if you need a DataFrame API. Do not pull it out to process it.</li>
+      <li><b>Files up to a few GB on one machine:</b> Polars or DuckDB; pandas if a library you need expects it.</li>
+      <li><b>Tens to low hundreds of GB on one large machine:</b> Polars (lazy, streaming) or DuckDB.</li>
+      <li><b>Beyond one machine, batch:</b> BigQuery, Dataflow (Beam) or Spark on Dataproc.</li>
+      <li><b>Streaming:</b> Dataflow (Beam), Flink, or Kafka Streams inside a service.</li>
+      <li><b>Inside a Java service:</b> plain Java streams for small sets; Beam for pipelines; Spring Batch for restartable business jobs.</li>
+      <li><b>Reading and writing Parquet in Python:</b> PyArrow underneath, whatever DataFrame you use on top.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Validation libraries</h3>
+    <ul>
+      <li><b>pandera:</b> schemas for pandas and Polars DataFrames (types, ranges, nullability) checked in code and tests.</li>
+      <li><b>Great Expectations:</b> expectation suites and data docs for pipelines.</li>
+      <li><b>Pydantic:</b> validating individual records and API payloads in Python.</li>
+      <li><b>dbt tests:</b> keys, relationships and accepted values in the warehouse.</li>
+      <li><b>Jakarta Bean Validation:</b> record validation in Java.</li>
+    </ul>
+    <p class="note">Whatever the tool: reject or quarantine what does not parse, and count it. Never coerce failures to NULL silently.</p>
+  </article>
+
+  <article class="card wide"><h3>The same task in five libraries</h3>
+    <p>Count judgments per court since 2020 from Parquet files partitioned by year.</p>
+<div class="snip"><pre><code># pandas: reads into memory, eager
+import pandas as pd
+df = pd.read_parquet("data/", columns=["court", "year"],
+                     filters=[("year", "&gt;=", 2020)])   # pushdown; partition columns arrive as category
+out = (df.groupby("court", observed=True).size()
+         .sort_values(ascending=False))</code></pre></div>
+<div class="snip"><pre><code># Polars: lazy; filters and column selection pushed into the scan
+import polars as pl
+out = (pl.scan_parquet("data/year=*/*.parquet", hive_partitioning=True)
+         .filter(pl.col("year") &gt;= 2020)
+         .group_by("court").agg(pl.len().alias("n"))
+         .sort("n", descending=True)
+         .collect())</code></pre></div>
+<div class="snip"><pre><code># DuckDB: SQL straight over the files
+import duckdb
+out = duckdb.sql("""
+  SELECT court, count(*) AS n
+  FROM read_parquet('data/year=*/*.parquet', hive_partitioning = true)
+  WHERE year &gt;= 2020
+  GROUP BY court ORDER BY n DESC
+""").df()</code></pre></div>
+<div class="snip"><pre><code># PySpark: distributed, writes results back to GCS
+from pyspark.sql import SparkSession, functions as F
+spark = SparkSession.builder.getOrCreate()
+(spark.read.parquet("gs://landing/data/")
+   .where(F.col("year") &gt;= 2020)
+   .groupBy("court").count()
+   .orderBy(F.desc("count"))
+   .write.mode("overwrite").parquet("gs://out/court_counts/"))</code></pre></div>
+<div class="snip"><pre><code># BigQuery DataFrames: pandas-like code, executed inside BigQuery
+import bigframes.pandas as bpd
+df = bpd.read_gbq("my-proj.dp_fdp.fdp_judgment")
+out = df[df["data_year"] &gt;= 2020].groupby("court_code").size()</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Arrow and Parquet in Python</h3>
+<div class="snip"><pre><code>import pyarrow.dataset as ds
+import pyarrow.parquet as pq
+
+dataset = ds.dataset("data/", format="parquet", partitioning="hive")
+table = dataset.to_table(columns=["cnr", "court", "decision_date"],
+                         filter=ds.field("year") &gt;= 2020)   # pushdown
+
+print(table.schema)          # check types before trusting them
+pq.write_table(table, "out.parquet",
+               compression="zstd",
+               coerce_timestamps="us",           # many readers expect microseconds
+               allow_truncated_timestamps=True)</code></pre></div>
+    <p class="note">Timestamp units are a classic trap: Parquet written with nanosecond timestamps can be read wrongly or refused by some engines, especially for dates before 1970. Check the schema and write the unit the reader expects.</p>
+  </article>
+
+  <article class="card"><h3>Java options</h3>
+    <ul>
+      <li><b>Java streams and collectors</b> for in-memory work (<a href="/well-rounded-engineer/java/">Java tab</a>).</li>
+      <li><b>Apache Beam (Java)</b> for pipelines on Dataflow, Flink or Spark.</li>
+      <li><b>Spark (Java/Scala)</b> on Dataproc or Databricks.</li>
+      <li><b>Spring Batch</b> for chunked, restartable jobs with skip and retry policies.</li>
+      <li><b>parquet-java and Arrow Java</b> for columnar file IO.</li>
+      <li><b>Jackson</b> (JSON), <b>Apache Commons CSV</b> or <b>FastCSV</b> for text formats; stream rather than loading whole files.</li>
+      <li><b>DuckDB JDBC</b> for SQL over local or remote Parquet from Java.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Habits that make any library fast</h3>
+    <ul>
+      <li><b>Columnar formats</b> (Parquet) over CSV and JSON for anything read more than once.</li>
+      <li><b>Read only the columns and rows you need</b> (projection and predicate pushdown).</li>
+      <li><b>Lazy evaluation</b> (Polars, Spark, Beam) lets the engine optimise the whole plan.</li>
+      <li><b>No row-by-row loops</b> (<code>apply</code>, <code>iterrows</code>); use vectorised expressions.</li>
+      <li><b>Right types:</b> categoricals for repeated strings, Arrow-backed strings, proper dates.</li>
+      <li><b>Partition by the common filter</b> (date, year); avoid thousands of tiny files.</li>
+      <li><b>Stream or chunk</b> data larger than memory.</li>
+      <li><b>Push work to the warehouse</b> when the data is already there.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Correctness traps</h3>
+    <ul>
+      <li><b>Silent type coercion:</b> integers with nulls become floats in classic pandas; IDs with leading zeros become numbers. Set dtypes explicitly.</li>
+      <li><b>Date parsing:</b> mixed formats (<code>dd-mm-yyyy</code> and <code>yyyy-mm-dd</code>) parse wrongly or to null; specify the format and count failures.</li>
+      <li><b>Time zones:</b> naive vs aware timestamps compared silently.</li>
+      <li><b>Joins:</b> duplicate keys multiply rows, just as in SQL.</li>
+      <li><b>Floating-point money:</b> use decimals or integer minor units.</li>
+      <li><b>Schema drift:</b> a new or renamed source column must fail loudly or be mapped on purpose.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Load, filter and aggregate a file with pandas or Polars</li><li>Read Parquet and inspect its schema</li><li>Know which library suits which data size</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use lazy Polars, DuckDB or PyArrow with pushdown on large files</li><li>Write a PySpark or Beam job for data beyond one machine</li><li>Validate data with pandera or dbt tests and count rejects</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose engines per workload: warehouse SQL, single-node, distributed, streaming</li><li>Tune memory, partitioning and file layout</li><li>Design portable pipelines with open formats</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's processing stack and standards</li><li>Lead migrations between engines (pandas to Polars, Spark to BigQuery)</li><li>Understand engine internals: query optimisers, vectorised execution</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Apache Arrow memory format</li><li>Polars lazy query optimisation</li><li>DuckDB extensions (httpfs, Iceberg)</li><li>Spark adaptive query execution</li><li>Beam windowing and triggers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://pandas.pydata.org/docs/" target="_blank" rel="noopener">pandas</a><span class="lnote"> User guide and API</span></li><li><a href="https://docs.pola.rs/" target="_blank" rel="noopener">Polars</a><span class="lnote"> User guide, lazy API</span></li><li><a href="https://duckdb.org/docs/" target="_blank" rel="noopener">DuckDB</a><span class="lnote"> SQL, Python API, Parquet and remote files</span></li><li><a href="https://arrow.apache.org/docs/python/" target="_blank" rel="noopener">Apache Arrow (PyArrow)</a><span class="lnote"> Datasets, Parquet, compute</span></li><li><a href="https://spark.apache.org/docs/latest/" target="_blank" rel="noopener">Apache Spark</a><span class="lnote"> PySpark and SQL</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam</a><span class="lnote"> Programming guide</span></li><li><a href="https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction" target="_blank" rel="noopener">BigQuery DataFrames</a><span class="lnote"> pandas-like API in BigQuery</span></li><li><a href="https://pandera.readthedocs.io/" target="_blank" rel="noopener">pandera</a><span class="lnote"> DataFrame validation</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/data/">← Data Engineering</a><a class="pn-next" href="/well-rounded-engineer/culvert/">Culvert →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observability · Well Rounded Engineer</title>
+<meta name="description" content="Being able to answer new questions about a running system from the outside: what happened, where, why, and to whom. Logs, metrics, traces and profiles;…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="observability">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/" aria-current="page">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="observability" data-name="Observability">
+  <div class="panel-head"><h1>Observability</h1><p>Being able to answer new questions about a running system from the outside: what happened, where, why, and to whom. Logs, metrics, traces and profiles; OpenTelemetry; Google Cloud's tools; dashboards and alerts; and observability for data pipelines and AI features.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Signals and what each answers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Signal</th><th>Is</th><th>Answers</th><th>Cost driver</th></tr></thead>
+      <tbody>
+      <tr><td>Logs</td><td>Timestamped records of events, ideally structured JSON</td><td>What exactly happened in this request or run?</td><td>Volume and retention</td></tr>
+      <tr><td>Metrics</td><td>Numbers aggregated over time (counts, gauges, histograms)</td><td>How much, how often, how fast, trending where?</td><td>Number of time series (label cardinality)</td></tr>
+      <tr><td>Traces</td><td>A request's path across services as a tree of timed spans</td><td>Where did the time go? Which dependency failed?</td><td>Sampling rate</td></tr>
+      <tr><td>Profiles</td><td>Where CPU and memory go inside the code</td><td>Which function is slow or allocating?</td><td>Usually low (continuous sampling)</td></tr>
+      <tr><td>Events / run records</td><td>Business or pipeline facts (deploys, run outcomes)</td><td>What changed, and did the job do its work?</td><td>Low</td></tr>
+      </tbody></table></div>
+    <p class="note">Monitoring tells you <i>that</i> something is wrong from questions you planned. Observability lets you find out <i>why</i>, including for failures nobody predicted. You need both.</p>
+  </article>
+
+  <article class="card"><h3>Structured logging</h3>
+<div class="snip"><pre><code>{"timestamp":"2026-11-12T06:15:04.120Z",
+ "severity":"ERROR",
+ "message":"load failed",
+ "service":"odp-load", "version":"3f2a9c1", "env":"prod",
+ "run_id":"r-2026-11-12", "stage":"ODP_LOAD",
+ "object":"gs://landing/data/year=2024/part-3.parquet",
+ "error":"400 Bad Request", "error_body":"InvalidArgument: …",
+ "logging.googleapis.com/trace":"projects/p/traces/4bf92f…"}</code></pre></div>
+    <ul>
+      <li>One JSON object per line; a <code>severity</code> field so levels work.</li>
+      <li>Always include service, version, environment, and a request or run ID.</li>
+      <li>Log the evidence: the upstream error body, the input that failed, counts. A log that says only "failed" helps no one.</li>
+      <li>Never log secrets, tokens or unnecessary personal data.</li>
+      <li>Levels: ERROR needs attention; WARN is unusual but handled; INFO is a business event; DEBUG is off in production.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Metrics that matter</h3>
+    <ul>
+      <li><b>Counter:</b> only goes up (requests, errors, rows loaded). Graph its rate.</li>
+      <li><b>Gauge:</b> current value (queue depth, connections, lag).</li>
+      <li><b>Histogram:</b> distribution of values (latency); gives percentiles.</li>
+      <li><b>RED for services:</b> rate, errors, duration.</li>
+      <li><b>USE for resources:</b> utilisation, saturation, errors.</li>
+      <li><b>Golden signals:</b> latency, traffic, errors, saturation.</li>
+      <li><b>Cardinality:</b> each unique label combination is a separate series. Never use user IDs, request IDs or URLs with IDs as labels.</li>
+      <li><b>Percentiles, not averages:</b> p50 for typical, p95/p99 for the users having a bad time.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Distributed tracing</h3>
+    <ul>
+      <li>A <b>trace</b> is one request end to end; a <b>span</b> is one operation in it (an HTTP call, a query), with start, duration, attributes and status.</li>
+      <li><b>Context propagation:</b> the trace ID travels in the W3C <code>traceparent</code> header and in message attributes across queues.</li>
+      <li><b>Sampling:</b> keep a percentage of traces (head sampling), or keep all errors and slow ones (tail sampling in a collector).</li>
+      <li>Link logs to traces by writing the trace ID into every log line.</li>
+      <li>Batch jobs: one trace per run, a span per stage or partition.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>OpenTelemetry</h3>
+    <p>The vendor-neutral standard for producing logs, metrics and traces: one <b>API</b> in your code, an <b>SDK</b> that processes and exports, the <b>OTLP</b> protocol, and an optional <b>Collector</b> that receives, filters, samples and forwards to any backend.</p>
+<div class="snip"><pre><code># Java: zero-code instrumentation with the agent (HTTP, JDBC, Kafka, gRPC …)
+java -javaagent:/otel/opentelemetry-javaagent.jar -jar app.jar
+#   OTEL_SERVICE_NAME=legal-api
+#   OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+#   OTEL_TRACES_SAMPLER=parentbased_traceidratio  OTEL_TRACES_SAMPLER_ARG=0.1
+
+# Python: auto-instrumentation
+pip install opentelemetry-distro opentelemetry-exporter-otlp
+opentelemetry-bootstrap -a install
+OTEL_SERVICE_NAME=odp-load opentelemetry-instrument python -m loader</code></pre></div>
+<div class="snip"><pre><code># manual span around meaningful work (Python)
+from opentelemetry import trace
+tracer = trace.get_tracer("odp-load")
+
+with tracer.start_as_current_span("load_object") as span:
+    span.set_attribute("object.uri", uri)
+    rows = load(uri)
+    span.set_attribute("rows.loaded", rows)</code></pre></div>
+<div class="snip"><pre><code># Collector: receive OTLP, batch, send to Google Cloud
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+processors:
+  batch:
+exporters:
+  googlecloud:
+  googlemanagedprometheus:
+service:
+  pipelines:
+    traces:  { receivers: [otlp], processors: [batch], exporters: [googlecloud] }
+    logs:    { receivers: [otlp], processors: [batch], exporters: [googlecloud] }
+    metrics: { receivers: [otlp], processors: [batch], exporters: [googlemanagedprometheus] }</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Spring Boot and Micrometer</h3>
+<div class="snip"><pre><code># application.yml
+management:
+  endpoints.web.exposure.include: health,prometheus
+  tracing.sampling.probability: 0.1
+  otlp.tracing.endpoint: http://otel-collector:4318/v1/traces
+logging.structured.format.console: ecs</code></pre></div>
+<div class="snip"><pre><code>@Component
+class LoadMetrics {
+  private final Counter loaded, failed;
+  private final Timer duration;
+  LoadMetrics(MeterRegistry r) {
+    loaded   = Counter.builder("odp.objects").tag("outcome", "loaded").register(r);
+    failed   = Counter.builder("odp.objects").tag("outcome", "failed").register(r);
+    duration = Timer.builder("odp.load.duration").publishPercentileHistogram().register(r);
+  }
+}
+
+@Observed(name = "judgment.search")   // timer + span in one annotation
+public List&lt;Judgment&gt; search(String q) { … }</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>Google Cloud Observability</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Tool</th><th>Use it for</th></tr></thead>
+      <tbody>
+      <tr><td>Cloud Logging</td><td>All logs from Cloud Run, GKE, BigQuery jobs and audit logs; Logs Explorer; log sinks to BigQuery or GCS; log-based metrics</td></tr>
+      <tr><td>Cloud Monitoring</td><td>Metrics, dashboards, uptime checks, alerting policies, SLOs; queries in PromQL</td></tr>
+      <tr><td>Managed Service for Prometheus</td><td>Prometheus metrics at scale without running Prometheus</td></tr>
+      <tr><td>Cloud Trace</td><td>Distributed traces and latency analysis</td></tr>
+      <tr><td>Cloud Profiler</td><td>Continuous CPU and heap profiling in production</td></tr>
+      <tr><td>Error Reporting</td><td>Groups exceptions from logs, shows new and recurring errors</td></tr>
+      <tr><td>Audit logs</td><td>Who did what: Admin Activity always on; enable Data Access logs for sensitive services</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code># Logs Explorer query
+resource.type="cloud_run_revision"
+resource.labels.service_name="legal-api"
+severity&gt;=ERROR
+jsonPayload.run_id="r-2026-11-12"
+timestamp&gt;="2026-11-12T00:00:00Z"
+
+# log-based metric from a marker in the text
+gcloud logging metrics create dp_incidents \
+  --description="Pipeline incidents" \
+  --log-filter='textPayload:"dp_incident"'
+
+# PromQL in Cloud Monitoring: 5xx ratio and p95 latency
+sum(rate(http_server_requests_seconds_count{status=~"5.."}[5m]))
+  / sum(rate(http_server_requests_seconds_count[5m]))
+histogram_quantile(0.95,
+  sum by (le) (rate(http_server_requests_seconds_bucket[5m])))</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Dashboards that get used</h3>
+    <ul>
+      <li><b>One overview per service:</b> traffic, errors, latency percentiles, saturation, last deploy marker.</li>
+      <li><b>Top-down:</b> user-facing SLOs first, then dependencies, then resources.</li>
+      <li><b>Same layout for every service</b> (a dashboard template is a blueprint).</li>
+      <li><b>Show the denominator:</b> "12 errors" means nothing without "of 1.2 million requests".</li>
+      <li><b>Annotate deploys and incidents</b> so changes line up with effects.</li>
+      <li>Delete dashboards nobody opens.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Alerting</h3>
+    <ul>
+      <li><b>Page on symptoms users feel</b> (SLO burn rate, failed runs, stale data), not on causes (CPU at 80%).</li>
+      <li><b>Every page is actionable</b> and links to a runbook. If nobody needs to act, it is a ticket or a dashboard, not a page.</li>
+      <li><b>Alert when the signal is missing:</b> a job that did not run, a metric that stopped reporting. Silence is not health.</li>
+      <li><b>Match on fields you control</b> (a marker in the message, a structured field), not on a severity that may not be set.</li>
+      <li><b>Prove each alert fires</b> once in a test environment before trusting it.</li>
+      <li><b>Review noisy alerts</b> monthly: tune, fix the cause, or delete.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Observing data pipelines</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Dimension</th><th>Check</th></tr></thead>
+      <tbody>
+      <tr><td>Run outcome</td><td>Every scheduled run recorded SUCCEEDED, FAILED or UNKNOWN; missing runs alert</td></tr>
+      <tr><td>Freshness</td><td>Newest data per source within its expected age</td></tr>
+      <tr><td>Volume</td><td>Row and object counts within expected ranges; reconciliation in = out + rejected</td></tr>
+      <tr><td>Schema</td><td>Unexpected new, missing or retyped columns detected</td></tr>
+      <tr><td>Quality</td><td>Test results (nulls, keys, parse failures) tracked over time</td></tr>
+      <tr><td>Cost and duration</td><td>Bytes, slot time and runtime per run, trended</td></tr>
+      </tbody></table></div>
+    <p class="note">The most important rule: a check whose source is unreachable reports UNKNOWN, never zero and never green.</p>
+  </article>
+
+  <article class="card"><h3>Observing AI features</h3>
+    <ul>
+      <li>Log model ID, input and output tokens, latency, stop reason and cost per call.</li>
+      <li>Trace each tool call and retrieval step as a span.</li>
+      <li>Track refusals, empty retrievals, citation failures and "not found" rates.</li>
+      <li>Sample real conversations for quality review and feed them into evals (with privacy controls).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Keeping observability affordable</h3>
+    <ul>
+      <li>Exclude noisy, low-value logs at the router (exclusion filters) or lower their level.</li>
+      <li>Sample traces; keep 100% of errors and slow requests with tail sampling.</li>
+      <li>Watch metric cardinality; drop unused labels.</li>
+      <li>Route long-term logs to BigQuery or GCS with retention rules instead of keeping everything hot.</li>
+      <li>Label resources so observability cost can be attributed to teams.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Find a request's or run's logs and errors in Cloud Logging</li><li>Read a service dashboard: traffic, errors, latency</li><li>Write structured logs with IDs and evidence</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Instrument a service with OpenTelemetry and custom metrics</li><li>Write log queries, log-based metrics and PromQL</li><li>Build dashboards and actionable alerts with runbooks</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design observability for a system: signals, sampling, cardinality, cost</li><li>Trace problems across services, queues and pipelines</li><li>Set dashboard and alert templates for teams</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the observability platform and its standards</li><li>Lead cost and data-governance strategy for telemetry</li><li>Drive observability-led reliability across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OpenTelemetry Collector pipelines and tail sampling</li><li>High-cardinality observability and wide events</li><li>Continuous profiling</li><li>Exemplars linking metrics to traces</li><li>eBPF-based instrumentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry documentation</a><span class="lnote"> APIs, SDKs, collector, semantic conventions</span></li><li><a href="https://cloud.google.com/logging/docs" target="_blank" rel="noopener">Cloud Logging documentation</a><span class="lnote"> Logs, sinks, log-based metrics</span></li><li><a href="https://cloud.google.com/logging/docs/view/logging-query-language" target="_blank" rel="noopener">Logging query language</a><span class="lnote"> Filter syntax for Logs Explorer and alerts</span></li><li><a href="https://cloud.google.com/monitoring/docs" target="_blank" rel="noopener">Cloud Monitoring documentation</a><span class="lnote"> Metrics, dashboards, alerting, PromQL</span></li><li><a href="https://cloud.google.com/trace/docs" target="_blank" rel="noopener">Cloud Trace documentation</a><span class="lnote"> Distributed tracing on GCP</span></li><li><a href="https://prometheus.io/docs/" target="_blank" rel="noopener">Prometheus documentation</a><span class="lnote"> Metric types and PromQL</span></li><li><a href="https://docs.micrometer.io/micrometer/reference/" target="_blank" rel="noopener">Micrometer documentation</a><span class="lnote"> Metrics and observations for Java</span></li><li><a href="https://www.oreilly.com/library/view/observability-engineering/9781492076438/" target="_blank" rel="noopener">Observability Engineering (book)</a><span class="lnote"> Majors, Fong-Jones and Miranda</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/devops/">← DevOps</a><a class="pn-next" href="/well-rounded-engineer/opstools/">Ops Tooling →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BigQuery · Well Rounded Engineer</title>
+<meta name="description" content="GoogleSQL patterns, cost controls and the bq CLI. On-demand pricing bills bytes scanned, so most tips are about scanning less.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="bigquery">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/" aria-current="page">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="bigquery" data-name="BigQuery">
+  <div class="panel-head"><h1>BigQuery SQL</h1><p>GoogleSQL patterns, cost controls and the <code>bq</code> CLI. On-demand pricing bills bytes scanned, so most tips are about scanning less.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Partitioned, clustered table</h3>
+<div class="snip"><pre><code>CREATE TABLE IF NOT EXISTS `proj.fdp.judgment` (
+  judgment_key STRING NOT NULL,
+  cnr          STRING,
+  court_code   STRING,
+  decision_date DATE,
+  parties      ARRAY&lt;STRUCT&lt;role STRING, name STRING&gt;&gt;,
+  _landed_at   TIMESTAMP
+)
+PARTITION BY DATE_TRUNC(decision_date, MONTH)
+CLUSTER BY court_code, cnr
+OPTIONS (
+  require_partition_filter = TRUE,
+  description = 'FDP judgments, one row per judgment_key',
+  labels = [('layer', 'fdp')]
+);
+
+-- integer range partition
+PARTITION BY RANGE_BUCKET(data_year, GENERATE_ARRAY(1950, 2031, 1))
+-- ingestion-time partition
+PARTITION BY _PARTITIONDATE</code></pre></div>
+    <p class="note">Limit: 10,000 partitions per table. Daily partitions over 76 years overflow it; use MONTH or YEAR.</p>
+  </article>
+
+  <article class="card"><h3>Deduplicate with QUALIFY</h3>
+<div class="snip"><pre><code>-- latest version of each key
+SELECT *
+FROM `proj.odp.hc_judgment`
+WHERE data_year = 2024
+QUALIFY ROW_NUMBER() OVER (
+  PARTITION BY cnr, order_number
+  ORDER BY _landed_at DESC
+) = 1;
+
+-- latest event per entity (append-only ledger → current state)
+SELECT * EXCEPT(rn) FROM (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY run_id, stage
+                               ORDER BY event_ts DESC) rn
+  FROM `proj.dp_control.pipeline_run_events`)
+WHERE rn = 1;
+
+-- whole row of the max, no window
+SELECT ARRAY_AGG(t ORDER BY decision_date DESC LIMIT 1)[OFFSET(0)].*
+FROM `proj.fdp.judgment` t GROUP BY court_code;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>MERGE (upsert)</h3>
+<div class="snip"><pre><code>MERGE `proj.cdp.serving` T
+USING (
+  SELECT * FROM `proj.fdp.judgment`
+  WHERE decision_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+) S
+ON T.judgment_key = S.judgment_key
+   AND T.decision_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)  -- prune T
+WHEN MATCHED AND T.row_hash != S.row_hash THEN
+  UPDATE SET cnr = S.cnr, decision_date = S.decision_date, row_hash = S.row_hash
+WHEN NOT MATCHED BY TARGET THEN
+  INSERT ROW
+WHEN NOT MATCHED BY SOURCE AND T.decision_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) THEN
+  DELETE;
+
+-- change detection hash
+TO_HEX(SHA256(TO_JSON_STRING(STRUCT(cnr, court_code, decision_date)))) AS row_hash
+FARM_FINGERPRINT(CONCAT(cnr, '|', order_number))   -- INT64 key</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Dates &amp; safe parsing</h3>
+<div class="snip"><pre><code>PARSE_DATE('%d-%m-%Y', '05-05-1959')          -- errors on bad input
+SAFE.PARSE_DATE('%d-%m-%Y', raw)               -- NULL on bad input
+SAFE_CAST(order_seq AS INT64)
+
+-- never let a parse failure hide as a NULL: count it
+SELECT COUNTIF(raw IS NOT NULL AND SAFE.PARSE_DATE('%d-%m-%Y', raw) IS NULL) AS unparsed
+FROM t;
+
+DATE_TRUNC(d, MONTH)   DATE_ADD(d, INTERVAL 1 DAY)   DATE_DIFF(a, b, DAY)
+LAST_DAY(d, MONTH)     EXTRACT(YEAR FROM d)          FORMAT_DATE('%Y%m%d', d)
+TIMESTAMP_TRUNC(ts, HOUR)  DATETIME(ts, 'Asia/Kolkata')
+CURRENT_DATE('Asia/Kolkata')
+UNIX_MILLIS(ts)  TIMESTAMP_MICROS(n)
+
+-- calendar spine for gap finding
+SELECT d FROM UNNEST(GENERATE_DATE_ARRAY('2025-01-01', CURRENT_DATE())) d
+LEFT JOIN facts f ON f.dt = d WHERE f.dt IS NULL;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>ARRAY, STRUCT, UNNEST, JSON</h3>
+<div class="snip"><pre><code>-- explode
+SELECT j.cnr, p.role, p.name
+FROM `proj.fdp.judgment` j, UNNEST(j.parties) p;      -- comma = CROSS JOIN
+-- keep rows with empty arrays
+LEFT JOIN UNNEST(j.parties) p
+
+-- build
+SELECT cnr, ARRAY_AGG(STRUCT(role, name) ORDER BY role) parties
+FROM parties GROUP BY cnr;
+
+ARRAY_LENGTH(a)  a[SAFE_OFFSET(0)]  ARRAY_TO_STRING(a, ',')
+'x' IN UNNEST(a)  EXISTS(SELECT 1 FROM UNNEST(a) v WHERE v &gt; 3)
+
+-- JSON
+JSON_VALUE(payload, '$.court.code')            -- scalar as STRING
+JSON_QUERY(payload, '$.parties')               -- JSON fragment
+JSON_QUERY_ARRAY(payload, '$.parties')         -- ARRAY&lt;JSON&gt; on a JSON column, ARRAY&lt;STRING&gt; on a STRING
+LAX_INT64(payload.count)                       -- on a JSON column
+TO_JSON_STRING(STRUCT(a, b))
+PARSE_JSON(s)</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Window functions</h3>
+<div class="snip"><pre><code>SELECT
+  court, decision_date, n,
+  SUM(n) OVER (PARTITION BY court ORDER BY decision_date)          AS running,
+  AVG(n) OVER (PARTITION BY court ORDER BY decision_date
+               ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)           AS avg_7d,
+  LAG(n) OVER (PARTITION BY court ORDER BY decision_date)          AS prev,
+  n / SUM(n) OVER (PARTITION BY court)                             AS share,
+  RANK() OVER (PARTITION BY court ORDER BY n DESC)                 AS rnk,
+  NTILE(4) OVER (ORDER BY n)                                       AS quartile
+FROM daily;
+
+-- named window
+SELECT SUM(n) OVER w, MAX(n) OVER w FROM daily
+WINDOW w AS (PARTITION BY court ORDER BY decision_date);
+
+APPROX_COUNT_DISTINCT(cnr)   APPROX_QUANTILES(n, 100)[OFFSET(50)]</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Load, export, external</h3>
+<div class="snip"><pre><code>LOAD DATA INTO `proj.odp.hc_judgment`
+FROM FILES (format = 'PARQUET',
+            uris = ['gs://landing/data/year=2024/*.parquet']);
+
+EXPORT DATA OPTIONS (
+  uri = 'gs://exports/serving/2025-01-31/*.parquet',   -- one * required
+  format = 'PARQUET', overwrite = TRUE, compression = 'SNAPPY'
+) AS SELECT * FROM `proj.cdp.serving` WHERE _run_date = '2025-01-31';
+
+CREATE OR REPLACE EXTERNAL TABLE `proj.raw.hc_ext`
+WITH PARTITION COLUMNS
+OPTIONS (format = 'PARQUET',
+         uris = ['gs://landing/data/*'],
+         hive_partition_uri_prefix = 'gs://landing/data');</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Scripting &amp; procedures</h3>
+<div class="snip"><pre><code>DECLARE run_date DATE DEFAULT CURRENT_DATE();
+DECLARE n INT64;
+
+SET n = (SELECT COUNT(*) FROM `proj.fdp.judgment` WHERE _run_date = run_date);
+IF n = 0 THEN
+  RAISE USING MESSAGE = FORMAT('no rows for %t', run_date);
+END IF;
+
+BEGIN TRANSACTION;
+  DELETE FROM `proj.cdp.serving` WHERE _run_date = run_date;
+  INSERT INTO `proj.cdp.serving` SELECT * FROM staging;
+COMMIT TRANSACTION;
+
+EXECUTE IMMEDIATE FORMAT('SELECT COUNT(*) FROM `proj.%s.t`', ds);
+
+CREATE OR REPLACE PROCEDURE `proj.ops.rebuild`(d DATE)
+BEGIN ... END;
+CALL `proj.ops.rebuild`(DATE '2025-01-31');</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Pipe syntax</h3>
+<div class="snip"><pre><code>FROM `proj.fdp.judgment`
+|&gt; WHERE decision_date &gt;= '2024-01-01'
+|&gt; AGGREGATE COUNT(*) AS n GROUP BY court_code
+|&gt; ORDER BY n DESC
+|&gt; LIMIT 10;
+
+-- other operators: SELECT, EXTEND (add columns), SET, DROP, RENAME,
+-- JOIN, AS (alias), PIVOT, UNPIVOT, TABLESAMPLE, CALL</code></pre></div>
+    <p class="note">Reads top to bottom in execution order. Mixes freely with standard SQL in the same project.</p>
+  </article>
+
+  <article class="card"><h3>Metadata &amp; cost queries</h3>
+<div class="snip"><pre><code>-- most expensive queries in the last day
+SELECT user_email, job_id,
+       ROUND(total_bytes_billed / POW(1024, 4), 3) AS tib_billed,
+       total_slot_ms, LEFT(query, 120) AS q
+FROM `region-asia-south1`.INFORMATION_SCHEMA.JOBS
+WHERE creation_time &gt; TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY)
+  AND job_type = 'QUERY'
+ORDER BY total_bytes_billed DESC LIMIT 20;
+
+-- partitions and their row counts
+SELECT partition_id, total_rows, total_logical_bytes
+FROM `proj.fdp.INFORMATION_SCHEMA.PARTITIONS`
+WHERE table_name = 'judgment' ORDER BY partition_id;
+
+-- columns of a table
+SELECT column_name, data_type, is_nullable
+FROM `proj.fdp.INFORMATION_SCHEMA.COLUMNS` WHERE table_name = 'judgment';
+
+-- table sizes
+SELECT table_id, row_count, size_bytes / 1e9 AS gb
+FROM `proj.fdp.__TABLES__` ORDER BY size_bytes DESC;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Time travel, snapshots, wildcards</h3>
+<div class="snip"><pre><code>-- read the table as it was (up to 7 days back by default)
+SELECT * FROM `proj.fdp.judgment`
+FOR SYSTEM_TIME AS OF TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR);
+
+-- undo a bad write
+CREATE OR REPLACE TABLE `proj.fdp.judgment_restore` AS
+SELECT * FROM `proj.fdp.judgment` FOR SYSTEM_TIME AS OF '2025-01-31 06:00:00+00';
+
+-- zero-copy snapshot / clone
+CREATE SNAPSHOT TABLE `proj.backup.judgment_20250131` CLONE `proj.fdp.judgment`;
+CREATE TABLE `proj.dev.judgment` CLONE `proj.fdp.judgment`;
+
+-- sharded tables
+SELECT * FROM `proj.logs.events_*` WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250131';</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Cost &amp; performance rules</h3>
+    <ul>
+      <li><b>Name columns.</b> Storage is columnar; <code>SELECT *</code> bills every column. <code>SELECT * EXCEPT(raw_html)</code> drops wide ones.</li>
+      <li><b>Filter on the partition column</b> with a constant or parameter. A filter through a function of another table's subquery may not prune.</li>
+      <li><b><code>LIMIT</code> does not reduce bytes</b> on a regular table. Use table preview or <code>TABLESAMPLE SYSTEM (1 PERCENT)</code>.</li>
+      <li><b>Dry-run first</b> and set <code>maximum_bytes_billed</code> on jobs that could run away.</li>
+      <li><b>Cluster</b> on high-cardinality filter/join columns; order matters, first column filters best.</li>
+      <li><b>Join big to small</b> after filtering; pre-aggregate before joining.</li>
+      <li><b>Avoid row-by-row DML.</b> Batch into one MERGE; DML quotas and costs are per statement.</li>
+      <li><b>Materialised views</b> for repeated aggregates; BI Engine for dashboards.</li>
+      <li><b>Execution graph</b> in the console shows skew, spills and which stage costs the slots.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>bq CLI</h3>
+<div class="snip"><pre><code>bq query --use_legacy_sql=false --dry_run 'SELECT ...'
+bq query --use_legacy_sql=false --format=prettyjson --max_rows=20 \
+  --parameter=from_d:DATE:2024-01-01 \
+  'SELECT COUNT(*) FROM `proj.fdp.judgment` WHERE decision_date &gt;= @from_d'
+bq query --nouse_legacy_sql --maximum_bytes_billed=10000000000 &lt; q.sql
+
+bq ls proj:fdp
+bq show --schema --format=prettyjson proj:fdp.judgment
+bq head -n 10 proj:fdp.judgment
+
+bq load --source_format=PARQUET --replace \
+  'proj:odp.events$20250131' 'gs://landing/events/dt=2025-01-31/*.parquet'   # one partition
+bq extract --destination_format=PARQUET proj:cdp.serving 'gs://exp/serving-*.parquet'
+
+bq cp proj:fdp.judgment proj:backup.judgment_20250131
+bq mk --table --time_partitioning_field=decision_date --clustering_fields=court_code \
+  proj:fdp.t schema.json
+bq ls -j -a -n 20          # recent jobs
+bq show -j &lt;job_id&gt;</code></pre></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Query with named columns and partition filters</li><li>Dry-run and read bytes processed</li><li>Load data from GCS</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design partitioned and clustered tables</li><li>Write MERGE, scripting and parameterised queries</li><li>Use INFORMATION_SCHEMA to find cost and usage</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Optimise slot time and cost across a project</li><li>Choose pricing models and reservations</li><li>Design security: datasets, authorised views, row and column policies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the warehouse platform and its cost governance</li><li>Integrate BigQuery with streaming, ML and the wider lakehouse</li><li>Advise on architecture across many teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Storage Write API and streaming</li><li>Editions, reservations and autoscaling</li><li>Row-level security and policy tags</li><li>BigLake and external tables</li><li>BigQuery ML and vector search</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/bigquery/docs" target="_blank" rel="noopener">BigQuery documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-overview" target="_blank" rel="noopener">Query performance best practices</a><span class="lnote"> Reduce bytes and slot time</span></li><li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators" target="_blank" rel="noopener">Functions and operators</a><span class="lnote"> Every GoogleSQL function</span></li><li><a href="https://cloud.google.com/bigquery/docs/partitioned-tables" target="_blank" rel="noopener">Partitioned tables</a><span class="lnote"> Types, limits and pruning</span></li><li><a href="https://cloud.google.com/bigquery/docs/information-schema-intro" target="_blank" rel="noopener">INFORMATION_SCHEMA</a><span class="lnote"> Metadata and job history views</span></li><li><a href="https://cloud.google.com/bigquery/pricing" target="_blank" rel="noopener">BigQuery pricing</a><span class="lnote"> On-demand and capacity pricing</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/gcpdata/">← Data on GCP</a><a class="pn-next" href="/well-rounded-engineer/cloudrun/">Cloud Run →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

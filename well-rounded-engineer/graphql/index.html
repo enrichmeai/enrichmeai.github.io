@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraphQL · Well Rounded Engineer</title>
+<meta name="description" content="A query language for APIs: one typed schema, and clients ask for exactly the fields they need. How it works, when it beats REST, the performance and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="graphql">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/" aria-current="page">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="graphql" data-name="GraphQL">
+  <div class="panel-head"><h1>GraphQL</h1><p>A query language for APIs: one typed schema, and clients ask for exactly the fields they need. How it works, when it beats REST, the performance and security traps, and servers in Spring, Quarkus and Python. API styles in general are on <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The idea in one paragraph</h3>
+    <p>A GraphQL server publishes a <b>schema</b>: the types, their fields and how they connect. Clients send a <b>query</b> to a single endpoint (usually <code>POST /graphql</code>) describing the shape of data they want, and get back JSON in exactly that shape. Reads are <b>queries</b>, writes are <b>mutations</b>, live updates are <b>subscriptions</b>. Each field is filled by a <b>resolver</b> function on the server, which can read from a database, another service or a cache.</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>REST</th><th>GraphQL</th></tr></thead>
+      <tbody>
+      <tr><td>Endpoints</td><td>Many, one per resource</td><td>One</td></tr>
+      <tr><td>Response shape</td><td>Fixed by the server</td><td>Chosen by the client</td></tr>
+      <tr><td>Nested data</td><td>Several round trips or custom endpoints</td><td>One request</td></tr>
+      <tr><td>Contract</td><td>OpenAPI (optional)</td><td>The schema (built in, introspectable)</td></tr>
+      <tr><td>HTTP caching</td><td>Natural for GET</td><td>Harder: needs persisted queries or client caches</td></tr>
+      <tr><td>Errors</td><td>HTTP status codes</td><td>Usually 200 with an <code>errors</code> array; partial data possible</td></tr>
+      <tr><td>Versioning</td><td>/v1, /v2</td><td>Evolve one schema; deprecate fields</td></tr>
+      <tr><td>Best for</td><td>Public APIs, simple resources, caching</td><td>UIs combining many related entities; many client types</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Schema (SDL)</h3>
+<div class="snip"><pre><code>type Query {
+  judgment(id: ID!): Judgment
+  searchJudgments(q: String!, court: String, first: Int = 20, after: String): JudgmentConnection!
+}
+
+type Mutation {
+  saveToCase(caseId: ID!, judgmentId: ID!): CaseFile!
+}
+
+type Subscription {
+  judgmentAdded(court: String!): Judgment!
+}
+
+type Judgment {
+  id: ID!
+  cnr: String!
+  decisionDate: Date          # custom scalar
+  court: Court!
+  judges: [String!]!
+  citedBy(first: Int = 10): [Judgment!]!
+}
+
+type Court { code: ID!  name: String!  state: String }
+
+scalar Date</code></pre></div>
+    <p class="note"><code>!</code> means non-null. <code>[String!]!</code> is a non-null list of non-null strings.</p>
+  </article>
+
+  <article class="card"><h3>Queries, variables, fragments</h3>
+<div class="snip"><pre><code>query Search($q: String!, $court: String, $after: String) {
+  searchJudgments(q: $q, court: $court, first: 10, after: $after) {
+    edges {
+      node { ...JudgmentCard }
+    }
+    pageInfo { hasNextPage endCursor }
+  }
+}
+
+fragment JudgmentCard on Judgment {
+  id
+  cnr
+  decisionDate
+  court { name }
+}
+
+# variables (sent separately as JSON):
+# { "q": "land acquisition", "court": "2_5" }</code></pre></div>
+<div class="snip"><pre><code>curl -s https://api.example.com/graphql \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"query":"query($id:ID!){judgment(id:$id){cnr court{name}}}","variables":{"id":"123"}}'</code></pre></div>
+    <p class="note">Always use variables, never string interpolation into the query: it enables caching of the parsed query and avoids injection.</p>
+  </article>
+
+  <article class="card"><h3>Resolvers and the N+1 problem</h3>
+    <p>Asking for 20 judgments, each with its <code>court</code>, naively runs 1 query for the list and 20 more for courts: N+1 queries.</p>
+    <ul>
+      <li><b>Batch loading (DataLoader pattern):</b> collect all the court IDs requested in one execution step, fetch them in one query, and hand each judgment its court.</li>
+      <li><b>Per-request cache:</b> the same court requested twice in one query is loaded once.</li>
+      <li><b>Spring:</b> <code>@BatchMapping</code>. <b>Quarkus:</b> a resolver taking <code>@Source List&lt;…&gt;</code>. <b>Python Strawberry:</b> <code>DataLoader</code>.</li>
+      <li><b>Measure:</b> log query counts per GraphQL request in tests.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Spring for GraphQL</h3>
+<div class="snip"><pre><code>// schema files: src/main/resources/graphql/*.graphqls
+@Controller
+class JudgmentGraphQl {
+  private final JudgmentService judgments;
+  private final CourtService courts;
+  JudgmentGraphQl(JudgmentService j, CourtService c) { judgments = j; courts = c; }
+
+  @QueryMapping
+  Judgment judgment(@Argument String id) {
+    return judgments.find(id).orElse(null);       // null → field is null, no error
+  }
+
+  @MutationMapping
+  CaseFile saveToCase(@Argument String caseId, @Argument String judgmentId) {
+    return judgments.saveToCase(caseId, judgmentId);   // check ownership inside
+  }
+
+  @BatchMapping                                    // one query for all courts
+  Map&lt;Judgment, Court&gt; court(List&lt;Judgment&gt; list) {
+    Map&lt;String, Court&gt; byCode = courts.byCodes(
+        list.stream().map(Judgment::courtCode).collect(Collectors.toSet()));
+    return list.stream().collect(Collectors.toMap(j -&gt; j, j -&gt; byCode.get(j.courtCode())));
+  }
+}
+
+// test
+@GraphQlTest(JudgmentGraphQl.class)
+class JudgmentGraphQlTest {
+  @Autowired GraphQlTester tester;
+  @MockitoBean JudgmentService judgments;  @MockitoBean CourtService courts;
+  @Test void returnsNullForUnknownId() {
+    tester.document("{ judgment(id: \"x\") { cnr } }")
+          .execute().path("judgment").valueIsNull();
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Quarkus (SmallRye GraphQL)</h3>
+<div class="snip"><pre><code>// quarkus ext add smallrye-graphql   → schema generated from code
+@GraphQLApi
+public class JudgmentApi {
+  @Inject JudgmentService judgments;
+  @Inject CourtService courts;
+
+  @Query
+  public Judgment judgment(@NonNull String id) { return judgments.find(id).orElse(null); }
+
+  @Mutation
+  public CaseFile saveToCase(@NonNull String caseId, @NonNull String judgmentId) {
+    return judgments.saveToCase(caseId, judgmentId);
+  }
+
+  // batched field resolver: adds Judgment.court, one call for all judgments
+  public List&lt;Court&gt; court(@Source List&lt;Judgment&gt; list) {
+    return courts.inOrderFor(list);
+  }
+}
+// GraphQL UI in dev mode: http://localhost:8080/q/graphql-ui</code></pre></div>
+    <p class="note">Spring for GraphQL is schema-first (you write SDL); SmallRye GraphQL is code-first (the schema comes from your classes).</p>
+  </article>
+
+  <article class="card"><h3>Python (Strawberry)</h3>
+<div class="snip"><pre><code>import strawberry
+from strawberry.dataloader import DataLoader
+
+async def load_courts(codes: list[str]) -&gt; list["Court"]:
+    rows = await db.courts_by_codes(codes)              # one query
+    by = {r.code: r for r in rows}
+    return [by.get(c) for c in codes]                   # same order as input
+
+@strawberry.type
+class Court:
+    code: strawberry.ID
+    name: str
+
+@strawberry.type
+class Judgment:
+    id: strawberry.ID
+    cnr: str
+    court_code: strawberry.Private[str]
+    @strawberry.field
+    async def court(self, info: strawberry.Info) -&gt; Court:
+        return await info.context["court_loader"].load(self.court_code)
+
+@strawberry.type
+class Query:
+    @strawberry.field
+    async def judgment(self, id: strawberry.ID) -&gt; Judgment | None:
+        return await db.judgment(id)
+
+schema = strawberry.Schema(query=Query)
+# context per request: {"court_loader": DataLoader(load_fn=load_courts)}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Pagination: connections</h3>
+<div class="snip"><pre><code>type JudgmentConnection {
+  edges: [JudgmentEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int            # optional; can be expensive
+}
+type JudgmentEdge { cursor: String!  node: Judgment! }
+type PageInfo { hasNextPage: Boolean!  endCursor: String }</code></pre></div>
+    <ul>
+      <li>Cursor-based (the Relay connection convention): stable under inserts, works with keyset queries in the database.</li>
+      <li>Cap <code>first</code> on the server (e.g. max 100).</li>
+      <li>Make cursors opaque (base64 of the sort key and ID).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Errors</h3>
+<div class="snip"><pre><code>{
+  "data": { "judgment": null },
+  "errors": [{
+    "message": "Not authorised to view this judgment",
+    "path": ["judgment"],
+    "extensions": { "code": "FORBIDDEN" }
+  }]
+}</code></pre></div>
+    <ul>
+      <li>A response can hold partial data plus errors; clients must check <code>errors</code> even on HTTP 200.</li>
+      <li>Put a stable machine-readable <code>extensions.code</code> on every error.</li>
+      <li>Expected business outcomes (validation failed, not found) can also be modelled in the schema as result types (<code>union SaveResult = CaseFile | ValidationError</code>).</li>
+      <li>Never leak stack traces or SQL in <code>message</code>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security</h3>
+    <ul>
+      <li><b>Authorise per field and per object</b> in resolvers or the service layer; one endpoint means URL-based rules cannot protect anything.</li>
+      <li><b>Limit query depth and complexity</b> so a client cannot request <code>citedBy { citedBy { citedBy … } }</code> a thousand levels deep.</li>
+      <li><b>Cap list sizes</b> and set timeouts per request.</li>
+      <li><b>Persisted queries</b> (allow-list of known query hashes) for first-party clients: blocks arbitrary queries and enables GET caching.</li>
+      <li><b>Introspection:</b> consider disabling it in production for private APIs; it is not a security boundary, just less help to attackers.</li>
+      <li><b>Rate limit by cost,</b> not by request count, since one request can be cheap or enormous.</li>
+      <li><b>Batching attacks:</b> limit the number of operations or aliases per request (aliases can repeat a login mutation hundreds of times).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Performance and caching</h3>
+    <ul>
+      <li>Batch loaders everywhere a field fetches by key.</li>
+      <li>Select only needed columns: look at the requested fields (selection set) before querying.</li>
+      <li>Client caches (Apollo Client, Relay, urql) normalise results by type and ID; give every object a stable <code>id</code>.</li>
+      <li>HTTP caching needs GET with persisted queries; otherwise cache in resolvers or the data layer.</li>
+      <li>Trace per resolver (OpenTelemetry) to find slow fields.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Schema evolution and scale</h3>
+    <ul>
+      <li><b>Add freely:</b> new types, new fields, new optional arguments.</li>
+      <li><b>Deprecate before removing:</b> <code>oldField: String @deprecated(reason: "Use newField")</code>, then watch usage and remove.</li>
+      <li><b>Never change a field's type or meaning in place.</b></li>
+      <li><b>Schema checks in CI</b> compare against the published schema and fail on breaking changes.</li>
+      <li><b>Federation:</b> several teams own subgraphs (judgments, users, billing) composed by a router into one supergraph (Apollo Federation, GraphQL Mesh).</li>
+      <li><b>Behind a gateway:</b> Apigee or another gateway can still handle authentication and rate limits in front of <code>/graphql</code>.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a schema and write queries with variables and fragments</li><li>Explain queries, mutations, subscriptions and resolvers</li><li>Tell when GraphQL fits better than REST</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a server with Spring for GraphQL, SmallRye or Strawberry</li><li>Avoid N+1 with batch loaders; paginate with connections</li><li>Return useful errors and test resolvers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Secure a GraphQL API: field authorisation, depth and cost limits, persisted queries</li><li>Evolve a schema without breaking clients; schema checks in CI</li><li>Tune performance with tracing and caching</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design a federated graph across teams</li><li>Set GraphQL governance and standards for the organisation</li><li>Decide GraphQL vs REST vs gRPC strategy across products</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>GraphQL specification: execution and validation</li><li>DataLoader and batching</li><li>Relay connection specification</li><li>Apollo Federation and supergraphs</li><li>Persisted queries and query cost analysis</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://graphql.org/learn/" target="_blank" rel="noopener">Learn GraphQL</a><span class="lnote"> Official introduction</span></li><li><a href="https://spec.graphql.org/" target="_blank" rel="noopener">GraphQL specification</a><span class="lnote"> How queries are parsed, validated and executed</span></li><li><a href="https://docs.spring.io/spring-graphql/reference/" target="_blank" rel="noopener">Spring for GraphQL</a><span class="lnote"> Annotated controllers, batching, testing</span></li><li><a href="https://quarkus.io/guides/smallrye-graphql" target="_blank" rel="noopener">Quarkus SmallRye GraphQL guide</a><span class="lnote"> Code-first GraphQL in Quarkus</span></li><li><a href="https://strawberry.rocks/docs" target="_blank" rel="noopener">Strawberry</a><span class="lnote"> Python GraphQL with type hints</span></li><li><a href="https://relay.dev/graphql/connections.htm" target="_blank" rel="noopener">Relay connection spec</a><span class="lnote"> Cursor pagination convention</span></li><li><a href="https://www.apollographql.com/docs/federation/" target="_blank" rel="noopener">Apollo Federation</a><span class="lnote"> Composing subgraphs into one graph</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP GraphQL cheat sheet</a><span class="lnote"> Security checklist</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/apis/">← APIs &amp; Integration</a><a class="pn-next" href="/well-rounded-engineer/kafka/">Kafka →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

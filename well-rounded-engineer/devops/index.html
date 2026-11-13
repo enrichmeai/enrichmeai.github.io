@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevOps · Well Rounded Engineer</title>
+<meta name="description" content="Getting a change from a laptop to production safely and keeping it running: Git, CI/CD, releases, observability, incidents and supply-chain security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="devops">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/" aria-current="page">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="devops" data-name="DevOps">
+  <div class="panel-head"><h1>DevOps</h1><p>Getting a change from a laptop to production safely and keeping it running: Git, CI/CD, releases, observability, incidents and supply-chain security.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Git you will use daily</h3>
+<div class="snip"><pre><code>git switch -c feat/123-short-name origin/main
+git add -p                         # stage hunk by hunk
+git commit -m "fix: reject unparseable SC dates"
+git fetch origin &amp;&amp; git rebase origin/main
+git push -u origin feat/123-short-name
+git push --force-with-lease        # after a rebase; never plain --force
+
+git log --oneline --graph -20
+git log -S "parse_date" --oneline  # commits that added/removed a string
+git blame -L 40,60 file.py
+git diff origin/main...HEAD        # what my branch changes
+git show &lt;sha&gt;:path/file           # a file at a revision
+git stash push -m wip; git stash pop
+git restore file                   # discard local edits
+git revert &lt;sha&gt;                   # undo a merged commit safely
+git bisect start BAD GOOD          # binary-search a regression
+git worktree add ../wt2 -b other origin/main   # second checkout
+git reflog                         # find "lost" commits</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Branching &amp; PR habits</h3>
+    <ul>
+      <li><b>Trunk-based:</b> short-lived branches off <code>main</code>, merged within a day, behind feature flags if unfinished.</li>
+      <li><b>One concern per PR.</b> If the title needs "and", split it.</li>
+      <li><b>Protect <code>main</code>:</b> PR required, checks required, no force pushes.</li>
+      <li><b>Commit messages</b> say why, not only what. Conventional prefixes (<code>feat:</code>, <code>fix:</code>, <code>chore:</code>) help changelogs.</li>
+      <li><b>Review for behaviour:</b> tests that would fail without the change, error paths, what happens when a dependency is down.</li>
+      <li><b>Promote artefacts, not branches:</b> build once, tag the image with the commit SHA, deploy that same image to each environment.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>GitHub Actions → GCP (no keys)</h3>
+<div class="snip"><pre><code>name: deploy
+on:
+  push: { branches: [main] }
+permissions:
+  contents: read
+  id-token: write              # needed for Workload Identity Federation
+concurrency: { group: deploy-${{ github.ref }}, cancel-in-progress: false }
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21, cache: gradle }
+      - run: ./gradlew test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment: prod          # environment secrets, protection rules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.WIF_PROVIDER }}
+          service_account: ${{ vars.DEPLOY_SA }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - run: |
+          IMG=asia-south1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/apps/api:${GITHUB_SHA::12}
+          gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
+          docker build -t "$IMG" . &amp;&amp; docker push "$IMG"
+          echo "IMG=$IMG" &gt;&gt; "$GITHUB_ENV"
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with: { service: api, region: asia-south1, image: "${{ env.IMG }}" }</code></pre></div>
+    <p class="note">For security, pin third-party actions to a full commit SHA rather than a tag. A workflow-level <code>paths:</code> filter on a required check can leave a PR waiting forever; skip inside the job instead.</p>
+  </article>
+
+  <article class="card"><h3>Release strategies</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Strategy</th><th>How</th><th>When</th></tr></thead>
+      <tbody>
+      <tr><td>Rolling</td><td>Replace instances a few at a time</td><td>Default for stateless services</td></tr>
+      <tr><td>Blue/green</td><td>Run old and new side by side, switch traffic at once</td><td>Fast rollback, needs double capacity</td></tr>
+      <tr><td>Canary</td><td>Send a small % to the new version, watch metrics, increase</td><td>Risky changes with good metrics</td></tr>
+      <tr><td>Feature flag</td><td>Ship code dark, turn it on per user or percentage</td><td>Separating deploy from release</td></tr>
+      <tr><td>Expand / contract</td><td>Add the new schema, migrate, remove the old in a later release</td><td>Database changes with zero downtime</td></tr>
+      </tbody></table></div>
+    <p class="note">Every release needs a rollback you have practised. A database migration that cannot be rolled back makes the whole release one-way.</p>
+  </article>
+
+  <article class="card"><h3>Blue-green, in plain words</h3>
+    <p>Think of a theatre with two stages. The audience watches the blue stage while the crew builds the next show on the green one. When green is ready and rehearsed, you swing the audience over in one move. If something goes wrong, you swing them straight back: blue is still standing.</p>
+    <ul>
+      <li><b>Before the switch:</b> green gets the same checks real users would give it, through a private URL or a test route.</li>
+      <li><b>The switch is all at once,</b> so a fault reaches every user, but only until you switch back, which takes seconds.</li>
+      <li><b>Keep blue running</b> until you trust green. Pulling it down early leaves you with no way back.</li>
+    </ul>
+<div class="snip"><pre><code># Kubernetes: a Deployment per colour,
+# labelled version: blue / version: green.
+# The Service's selector picks the live one.
+kubectl patch service legal-api \
+  -p '{"spec":{"selector":{"version":"green"}}}'
+# Roll back: patch it back to "blue".
+
+# Cloud Run: deploy green with no traffic
+gcloud run deploy api --image=…:4b1c2d0 \
+  --no-traffic --tag=green
+# test https://green---api-xxxxx.a.run.app
+gcloud run services update-traffic api \
+  --to-tags=green=100</code></pre></div>
+    <p class="note">The price: for a while you run two full copies, so you pay for twice the capacity. Read Martin Fowler's <a href="https://martinfowler.com/bliki/BlueGreenDeployment.html" target="_blank" rel="noopener">BlueGreenDeployment</a>.</p>
+  </article>
+
+  <article class="card"><h3>Canary, in plain words</h3>
+    <p>Miners once took a canary underground: if the air turned bad, the bird showed it first. A canary release works the same way. A small share of real users gets the new version, you watch closely, and only when it looks healthy do you send more.</p>
+    <ul>
+      <li><b>Go in steps:</b> for example 1%, then 5%, 25%, 50%, 100%, pausing at each step long enough to learn something.</li>
+      <li><b>Compare the canary with the old version running at the same time,</b> not with yesterday: error rate, p95 and p99 latency, saturation, and one number the business cares about.</li>
+      <li><b>Decide the stop rule before you start.</b> "Roll back if errors rise above 1% for five minutes" is a rule; "keep an eye on it" is not.</li>
+    </ul>
+<div class="snip"><pre><code># Kubernetes Gateway API:
+# weights on an HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: legal-api
+spec:
+  parentRefs:
+    - name: public-gw
+  rules:
+    - backendRefs:
+        - name: legal-api-stable
+          port: 8080
+          weight: 95
+        - name: legal-api-canary
+          port: 8080
+          weight: 5
+
+# Cloud Run: move traffic by revision
+gcloud run services update-traffic api \
+  --to-revisions=api-00042-xyz=5,api-00041-abc=95</code></pre></div>
+    <p class="note">With Istio, the same weights live on a VirtualService (see <a href="/well-rounded-engineer/servicemesh/">Service Mesh</a>). Read the Gateway API guide to <a href="https://gateway-api.sigs.k8s.io/guides/user-guides/traffic-splitting/" target="_blank" rel="noopener">HTTP traffic splitting</a> and Fowler's <a href="https://martinfowler.com/bliki/CanaryRelease.html" target="_blank" rel="noopener">CanaryRelease</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>Choosing between them, and the hard parts</h3>
+    <ul>
+      <li><b>Pick blue-green</b> when you need an instant, whole switch and an instant way back, and you can afford two copies for a while. It suits releases you can test fully before users arrive.</li>
+      <li><b>Pick canary</b> when you have enough traffic and good metrics to learn from a small slice. At 1% of 100 requests an hour you learn almost nothing, so a quiet service is better served by blue-green and a thorough test.</li>
+      <li><b>The database is the hard part of both.</b> Old and new versions run at the same time against the same data, so every schema change has to work for both: add first, move the data, remove the old shape in a later release (expand and contract).</li>
+      <li><b>Sessions and caches:</b> a user who bounces between versions may see two behaviours, so keep a user on one version where that matters, and make sure caches and queues can be read by both.</li>
+      <li><b>Feature flags are a separate tool.</b> A deploy puts code on servers; a flag decides who sees the feature. Used together, a canary checks the code is healthy and a flag controls the release to users.</li>
+      <li><b>Automate it once you understand it.</b> <a href="https://argoproj.github.io/argo-rollouts/" target="_blank" rel="noopener">Argo Rollouts</a> and Flagger run blue-green and canary steps on Kubernetes with automatic analysis, and <a href="/well-rounded-engineer/harness/">Harness</a> has both built in. Do it by hand a few times first, so you know what the tool is deciding for you.</li>
+    </ul>
+    <p class="note">Whichever you pick, rehearse the rollback before you need it. The way back is the part of a release that matters most when things go wrong, and it is usually the part nobody practised.</p>
+  </article>
+
+  <article class="card"><h3>Observability</h3>
+    <ul>
+      <li><b>Logs</b> say what happened (structured JSON, with a request or run ID). <b>Metrics</b> say how much and how often. <b>Traces</b> say where the time went across services.</li>
+      <li><b>Golden signals:</b> latency, traffic, errors, saturation. RED for services (rate, errors, duration); USE for resources (utilisation, saturation, errors).</li>
+      <li><b>SLI:</b> a measured ratio, e.g. requests under 500 ms ÷ all requests. <b>SLO:</b> the target, e.g. 99.5% over 30 days. <b>Error budget:</b> the 0.5% you may spend on releases and incidents.</li>
+      <li><b>Alert on symptoms users feel</b> (SLO burn rate), not on every CPU spike. Every alert needs an owner and a runbook.</li>
+      <li><b>Know "nothing there" from "cannot see":</b> a check whose data source is down must report unknown, not zero or green.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Incident response</h3>
+    <ol>
+      <li><b>Declare</b> it early and name an incident lead. One channel, one timeline.</li>
+      <li><b>Mitigate before you diagnose:</b> roll back, fail over, scale up, turn the flag off.</li>
+      <li><b>Communicate</b> status on a schedule, even "no change".</li>
+      <li><b>Write down</b> what you saw and did, with timestamps, as you go.</li>
+      <li><b>Review blamelessly</b> afterwards: what happened, why the system allowed it, which guard would have caught it. Track the follow-ups to done.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Supply-chain &amp; secrets</h3>
+    <ul>
+      <li><b>No long-lived keys:</b> Workload Identity Federation for CI, service accounts for workloads.</li>
+      <li><b>Secrets in a secret manager,</b> injected at runtime. Never in Git, images, logs or CI output.</li>
+      <li><b>Least privilege:</b> one service account per workload, with only the roles it uses.</li>
+      <li><b>Dependency updates</b> automated (Dependabot or Renovate), with tests gating them.</li>
+      <li><b>Scan</b> code (SAST), dependencies (SCA), images (Trivy) and committed secrets (gitleaks, GitHub secret scanning).</li>
+      <li><b>Know what you ship:</b> SBOMs and signed images (cosign) make "are we affected by CVE-X?" a query, not a hunt.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Measuring delivery</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>DORA metric</th><th>Question</th></tr></thead>
+      <tbody>
+      <tr><td>Deployment frequency</td><td>How often do we ship to production?</td></tr>
+      <tr><td>Lead time for changes</td><td>Commit to production: how long?</td></tr>
+      <tr><td>Change failure rate</td><td>What share of deploys cause a failure?</td></tr>
+      <tr><td>Time to restore</td><td>How fast do we recover?</td></tr>
+      </tbody></table></div>
+    <p class="note">Speed and stability rise together when changes are small, tested and easy to roll back.</p>
+  </article>
+
+  <article class="card"><h3>Twelve-factor, short version</h3>
+    <ul>
+      <li>One codebase, many deploys; config in the environment, not the code.</li>
+      <li>Dependencies declared and pinned; backing services (DB, queue) attached by URL.</li>
+      <li>Build, release and run are separate steps; the same build goes to every environment.</li>
+      <li>Processes are stateless and disposable: fast start, graceful shutdown on <code>SIGTERM</code>.</li>
+      <li>Logs are an event stream to stdout; the platform collects them.</li>
+      <li>Admin tasks (migrations, backfills) run as one-off processes from the same release.</li>
+      <li>Dev and prod as similar as possible: same images, same database engine.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Use Git daily: branch, commit, rebase, PR</li><li>Read a CI run and find why it failed</li><li>Roll back a deploy</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write CI/CD workflows with caching and keyless cloud auth</li><li>Add structured logs, metrics and alerts</li><li>Take part in incident response</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design release strategies (canary, blue/green, flags)</li><li>Define SLOs and alerting on symptoms</li><li>Improve DORA metrics; lead post-incident reviews</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build an internal developer platform and golden paths</li><li>Set delivery and reliability standards for the organisation</li><li>Lead culture change toward small, safe, frequent releases</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Trunk-based development</li><li>OpenTelemetry for traces, metrics and logs</li><li>GitOps (Argo CD, Flux)</li><li>Platform engineering and golden paths</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git (free book)</a><span class="lnote"> Git from basics to internals</span></li><li><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions documentation</a><span class="lnote"> Workflows, environments, OIDC</span></li><li><a href="https://dora.dev/" target="_blank" rel="noopener">DORA</a><span class="lnote"> Research on delivery performance and its capabilities</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> SLOs, alerting, incident response</span></li><li><a href="https://12factor.net/" target="_blank" rel="noopener">The Twelve-Factor App</a><span class="lnote"> Principles for cloud-native services</span></li><li><a href="https://trunkbaseddevelopment.com/" target="_blank" rel="noopener">Trunk-based development</a><span class="lnote"> Branching that supports continuous delivery</span></li><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry</a><span class="lnote"> Vendor-neutral observability</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/apigee/">← Apigee</a><a class="pn-next" href="/well-rounded-engineer/observability/">Observability →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

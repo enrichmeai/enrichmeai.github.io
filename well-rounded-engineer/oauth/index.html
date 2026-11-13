@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OAuth & OIDC · Well Rounded Engineer</title>
+<meta name="description" content="How delegated authorisation and login work, which flow to use for which client, how to validate tokens, and the mistakes that cause breaches. Broader…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="oauth">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/" aria-current="page">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="oauth" data-name="OAuth &amp; OIDC">
+  <div class="panel-head"><h1>OAuth 2.0 and OpenID Connect</h1><p>How delegated authorisation and login work, which flow to use for which client, how to validate tokens, and the mistakes that cause breaches. Broader security is on <a href="/well-rounded-engineer/security/">Security</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The roles and the two standards</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Role</th><th>Is</th><th>Example</th></tr></thead>
+      <tbody>
+      <tr><td>Resource owner</td><td>The user who owns the data</td><td>A lawyer</td></tr>
+      <tr><td>Client</td><td>The app that wants access</td><td>The web app, a mobile app, a partner's server</td></tr>
+      <tr><td>Authorisation server</td><td>Authenticates the user and issues tokens</td><td>Google Identity, Okta, Auth0, Keycloak, Entra ID</td></tr>
+      <tr><td>Resource server</td><td>The API that accepts tokens</td><td>The search API, or Apigee in front of it</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>OAuth 2.0</b> is about <b>authorisation</b>: giving a client an <b>access token</b> to call an API on someone's behalf, limited by <b>scopes</b>.</li>
+      <li><b>OpenID Connect (OIDC)</b> adds <b>authentication</b> on top: an <b>ID token</b> (a JWT) that says who the user is. "Sign in with Google" is OIDC.</li>
+      <li><b>Access token</b> goes to APIs. <b>ID token</b> is for the client to learn who logged in; never send it to APIs as an access token. <b>Refresh token</b> gets new access tokens without a new login.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Which flow for which client</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Client</th><th>Flow</th><th>Notes</th></tr></thead>
+      <tbody>
+      <tr><td>Web app with a server</td><td>Authorisation code + PKCE</td><td>Confidential client: the server holds the secret and tokens</td></tr>
+      <tr><td>Single-page app (browser)</td><td>Authorisation code + PKCE, ideally through a backend-for-frontend</td><td>The BFF keeps tokens server-side and gives the browser a secure cookie</td></tr>
+      <tr><td>Mobile / desktop app</td><td>Authorisation code + PKCE via the system browser</td><td>Public client: no secret can be kept safe in the app</td></tr>
+      <tr><td>Service to service</td><td>Client credentials</td><td>No user; the service authenticates as itself</td></tr>
+      <tr><td>TV, CLI, device without a browser</td><td>Device authorisation grant</td><td>User approves on another device with a code</td></tr>
+      <tr><td>Workloads on GCP</td><td>Service account identity (Google-signed tokens)</td><td>No secrets at all; Workload Identity Federation from outside GCP</td></tr>
+      <tr><td><s>Implicit</s>, <s>password</s></td><td>Do not use</td><td>Deprecated by current best practice (RFC 9700, OAuth 2.1 draft)</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Authorisation code + PKCE, step by step</h3>
+<div class="snip"><pre><code>1. Client makes a random code_verifier and its hash:
+   code_challenge = BASE64URL(SHA256(code_verifier))
+
+2. Browser is sent to the authorisation server:
+   GET /authorize?response_type=code
+       &amp;client_id=legal-web
+       &amp;redirect_uri=https://legal.example.com/callback
+       &amp;scope=openid%20profile%20email%20search.read
+       &amp;state=RANDOM            (CSRF protection)
+       &amp;nonce=RANDOM            (ID-token replay protection)
+       &amp;code_challenge=…&amp;code_challenge_method=S256
+
+3. User logs in and consents; server redirects back:
+   https://legal.example.com/callback?code=AUTH_CODE&amp;state=RANDOM
+   (client checks state matches)
+
+4. Client exchanges the code (server to server):
+   POST /token
+   grant_type=authorization_code&amp;code=AUTH_CODE
+   &amp;redirect_uri=…&amp;client_id=legal-web&amp;code_verifier=ORIGINAL
+
+5. Response: access_token, id_token, refresh_token, expires_in
+
+6. Client calls the API:
+   Authorization: Bearer ACCESS_TOKEN</code></pre></div>
+    <p class="note">PKCE proves the party redeeming the code is the one that started the flow, so a stolen code is useless.</p>
+  </article>
+
+  <article class="card"><h3>Client credentials (machine to machine)</h3>
+<div class="snip"><pre><code>curl -s https://auth.example.com/oauth2/token \
+  -u "$CLIENT_ID:$CLIENT_SECRET" \
+  -d grant_type=client_credentials \
+  -d scope=judgments.read
+
+# → {"access_token":"…","token_type":"Bearer","expires_in":3600}
+curl -H "Authorization: Bearer $TOKEN" https://api.example.com/v1/judgments/123</code></pre></div>
+    <ul>
+      <li>Cache the token until shortly before it expires; do not fetch one per call.</li>
+      <li>Prefer private-key JWT or mTLS client authentication over shared secrets where supported.</li>
+      <li>On GCP, prefer service account identity over client secrets.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Validating an access token (JWT)</h3>
+    <ol>
+      <li>Fetch the issuer's keys from its JWKS URL (from <code>/.well-known/openid-configuration</code>); cache them.</li>
+      <li>Verify the <b>signature</b> with the key matching the token's <code>kid</code>; accept only the expected algorithm (e.g. RS256 or ES256). Never <code>none</code>.</li>
+      <li>Check <code>iss</code> equals your issuer exactly.</li>
+      <li>Check <code>aud</code> contains your API's identifier.</li>
+      <li>Check <code>exp</code> (and <code>nbf</code>) with small clock skew.</li>
+      <li>Check required <b>scopes</b> for the operation.</li>
+      <li>Then check <b>object-level permission</b> in your own code.</li>
+    </ol>
+<div class="snip"><pre><code># Python (PyJWT)
+jwks = jwt.PyJWKClient("https://auth.example.com/.well-known/jwks.json")
+key = jwks.get_signing_key_from_jwt(token)
+claims = jwt.decode(token, key.key, algorithms=["RS256"],
+                    audience="https://api.example.com", issuer="https://auth.example.com/")</code></pre></div>
+<div class="snip"><pre><code># Spring Boot resource server
+spring.security.oauth2.resourceserver.jwt.issuer-uri: https://auth.example.com/
+spring.security.oauth2.resourceserver.jwt.audiences: https://api.example.com
+
+# Quarkus
+quarkus.oidc.auth-server-url=https://auth.example.com/
+quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
+    <p class="note">Opaque (non-JWT) tokens are validated by calling the server's introspection endpoint (RFC 7662).</p>
+  </article>
+
+  <article class="card"><h3>Scopes, claims and roles</h3>
+    <ul>
+      <li><b>Scopes</b> limit what a client may do on the user's behalf (<code>judgments.read</code>). They are about the app, not the user's own rights.</li>
+      <li><b>Claims</b> are facts in the token: <code>sub</code> (stable user ID), <code>email</code>, <code>groups</code>, custom claims.</li>
+      <li><b>Roles and permissions</b> are your application's rules. Load them from your source of truth; do not trust a role the client could have influenced.</li>
+      <li>Key users by <code>sub</code> plus issuer, not by email, which can change or be reused.</li>
+      <li>Keep tokens small; large claim sets slow every request.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Tokens in browsers and apps</h3>
+    <ul>
+      <li><b>Best for SPAs:</b> a backend-for-frontend does the OAuth flow and keeps tokens; the browser gets an <code>HttpOnly; Secure; SameSite</code> session cookie.</li>
+      <li><b>Avoid localStorage</b> for tokens: any XSS can read it.</li>
+      <li><b>Short access tokens</b> (minutes) and <b>rotating refresh tokens</b> that are revoked if reused.</li>
+      <li><b>Mobile:</b> store refresh tokens in the platform keychain / keystore; use the system browser, not an embedded web view, for login.</li>
+      <li><b>Logout</b> revokes refresh tokens and ends the provider session if needed.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Common mistakes</h3>
+    <ul>
+      <li>Accepting a token without checking audience: a token for another API works on yours.</li>
+      <li>Using the ID token to call APIs.</li>
+      <li>Loose redirect URIs (wildcards, prefix matching): codes get sent to an attacker.</li>
+      <li>Missing or unchecked <code>state</code>: login CSRF.</li>
+      <li>Implicit flow or tokens in URLs, where they leak through logs and referrers.</li>
+      <li>Long-lived access tokens with no revocation.</li>
+      <li>Trusting scopes alone and skipping object-level checks.</li>
+      <li>Rolling your own authorisation server instead of using a maintained one.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Beyond the basics</h3>
+    <ul>
+      <li><b>Sender-constrained tokens</b> (DPoP or mutual TLS) make a stolen token useless to anyone else.</li>
+      <li><b>Pushed authorisation requests (PAR)</b> send the request parameters server to server first.</li>
+      <li><b>Token exchange</b> (RFC 8693) for a service calling another on the user's behalf.</li>
+      <li><b>OAuth 2.1</b> (draft) consolidates current best practice: PKCE everywhere, no implicit or password grants.</li>
+      <li><b>OAuth for AI agents and MCP servers:</b> agents act with delegated, scoped, revocable tokens, never the user's password.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain access, ID and refresh tokens and scopes</li><li>Protect an API with a JWT resource server configuration</li><li>Use the authorisation code flow with PKCE through a library</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Validate tokens fully: signature, issuer, audience, expiry, scopes</li><li>Choose the right flow per client type</li><li>Store tokens safely in web and mobile apps</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design identity for a product: providers, BFF, service-to-service, token lifetimes</li><li>Review OAuth implementations for the common mistakes</li><li>Integrate gateways (Apigee) and workload identity</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own identity architecture across the organisation</li><li>Apply advanced specs (DPoP, PAR, token exchange)</li><li>Lead identity incidents and provider migrations</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>RFC 9700 security best current practice</li><li>OpenID Connect discovery and dynamic registration</li><li>Token exchange (RFC 8693)</li><li>Sender-constrained tokens (DPoP, mTLS)</li><li>Workload Identity Federation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://oauth.net/2/" target="_blank" rel="noopener">OAuth 2.0 (oauth.net)</a><span class="lnote"> Overview and links to every OAuth spec</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc6749" target="_blank" rel="noopener">RFC 6749: OAuth 2.0</a><span class="lnote"> The core framework</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc7636" target="_blank" rel="noopener">RFC 7636: PKCE</a><span class="lnote"> Proof Key for Code Exchange</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700" target="_blank" rel="noopener">RFC 9700: OAuth 2.0 Security Best Current Practice</a><span class="lnote"> Current security guidance</span></li><li><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener">OpenID Connect Core</a><span class="lnote"> The OIDC specification</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP OAuth 2.0 cheat sheet</a><span class="lnote"> Practical security checklist</span></li><li><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a><span class="lnote"> Decode and inspect JWTs (never paste production tokens)</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/security/">← Security</a><a class="pn-next" href="/well-rounded-engineer/data/">Data Engineering →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

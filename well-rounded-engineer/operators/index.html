@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operators · Well Rounded Engineer</title>
+<meta name="description" content="An operator extends Kubernetes with your own resource types and a controller that manages them, encoding the knowledge a human operator would apply: how…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="operators">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/" aria-current="page">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="operators" data-name="Kubernetes Operators">
+  <div class="panel-head"><h1>Kubernetes operators</h1><p>An operator extends Kubernetes with your own resource types and a controller that manages them, encoding the knowledge a human operator would apply: how to install, upgrade, back up, fail over and heal a system. The reconcile pattern, CRDs, building operators in Go, Java and Python, and the well-known operators worth using rather than writing.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The pattern</h3>
+    <ol>
+      <li>A <b>Custom Resource Definition (CRD)</b> adds a new resource type to the Kubernetes API, such as <code>PostgresCluster</code> or <code>PipelineRun</code>.</li>
+      <li>Users create <b>custom resources</b> stating the <b>desired state</b> (<code>spec</code>): "three Postgres replicas, version 16, nightly backups".</li>
+      <li>A <b>controller</b> watches those resources and the objects it owns, and <b>reconciles</b>: observe the actual state, compare it with the spec, act to close the gap, and record what it saw in <code>status</code>.</li>
+      <li>Reconcile runs again on every change and periodically, so the system heals itself when reality drifts.</li>
+    </ol>
+    <p class="note">Controllers are <b>level-triggered</b>: they act on the current state, not on the event that woke them. That makes them robust to missed events and restarts, as long as every reconcile is idempotent.</p>
+  </article>
+
+  <article class="card"><h3>Operator or Helm chart?</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Helm chart</th><th>Operator</th></tr></thead>
+      <tbody>
+      <tr><td>Does</td><td>Installs and upgrades a set of manifests</td><td>Continuously manages a system through its whole life</td></tr>
+      <tr><td>Day-2 operations</td><td>None after apply</td><td>Backups, failover, scaling, upgrades, repair</td></tr>
+      <tr><td>Fits</td><td>Stateless services, most applications</td><td>Stateful systems (databases, Kafka), complex platforms</td></tr>
+      <tr><td>Cost</td><td>Templates</td><td>A program to build, test, secure and maintain</td></tr>
+      </tbody></table></div>
+    <p class="note">Most teams should use well-tested operators (often installed with Helm), not write their own. Write one only when you have real operational knowledge to automate and no existing operator does it.</p>
+  </article>
+
+  <article class="card"><h3>Operators worth knowing</h3>
+    <ul>
+      <li><b>cert-manager:</b> issues and renews TLS certificates.</li>
+      <li><b>Prometheus Operator:</b> Prometheus, Alertmanager and scrape targets as resources (<code>ServiceMonitor</code>, <code>PrometheusRule</code>).</li>
+      <li><b>CloudNativePG:</b> PostgreSQL clusters with replication, failover and backups.</li>
+      <li><b>Strimzi:</b> Kafka clusters, topics and users.</li>
+      <li><b>Spark operator:</b> Spark applications as resources.</li>
+      <li><b>Argo CD / Flux:</b> GitOps controllers.</li>
+      <li><b>External Secrets Operator:</b> syncs secrets from Secret Manager into Kubernetes.</li>
+      <li><b>Config Connector / Crossplane:</b> manage cloud resources (GCS buckets, Cloud SQL) as Kubernetes objects.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A Custom Resource Definition</h3>
+<div class="snip"><pre><code>apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: pipelineruns.data.example.com
+spec:
+  group: data.example.com
+  scope: Namespaced
+  names:
+    plural: pipelineruns
+    singular: pipelinerun
+    kind: PipelineRun
+    shortNames: [plr]
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - { name: Date,  type: string, jsonPath: .spec.runDate }
+        - { name: Phase, type: string, jsonPath: .status.phase }
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required: [runDate, stages]
+              properties:
+                runDate: { type: string, format: date }
+                stages:
+                  type: array
+                  items: { type: string, enum: [LAND, ODP_LOAD, BUILD] }
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true</code></pre></div>
+<div class="snip"><pre><code>apiVersion: data.example.com/v1alpha1
+kind: PipelineRun
+metadata: { name: run-2026-11-12, namespace: data }
+spec:
+  runDate: "2026-11-12"
+  stages: [LAND, ODP_LOAD, BUILD]
+
+# kubectl get plr -n data</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Go: kubebuilder and controller-runtime</h3>
+<div class="snip"><pre><code>kubebuilder init --domain example.com --repo github.com/example/pipeline-operator
+kubebuilder create api --group data --version v1alpha1 --kind PipelineRun
+make manifests      # generate CRDs and RBAC from code markers
+make install run    # install CRDs, run the controller locally</code></pre></div>
+<div class="snip"><pre><code>func (r *PipelineRunReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+    var run datav1alpha1.PipelineRun
+    if err := r.Get(ctx, req.NamespacedName, &amp;run); err != nil {
+        return ctrl.Result{}, client.IgnoreNotFound(err)   // deleted: nothing to do
+    }
+
+    // 1. observe: the Jobs this run owns
+    // 2. compare: which stage should run next, given spec and finished Jobs?
+    // 3. act: create that stage's Job with a deterministic name
+    //    (creating it twice returns AlreadyExists: idempotent)
+    //    and set an owner reference so it is garbage-collected with the run
+    // 4. record: update status.phase and conditions via the status subresource
+
+    return ctrl.Result{RequeueAfter: time.Minute}, nil
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Java and Python</h3>
+<div class="snip"><pre><code>// Java Operator SDK
+@ControllerConfiguration
+public class PipelineRunReconciler implements Reconciler&lt;PipelineRun&gt; {
+  @Override
+  public UpdateControl&lt;PipelineRun&gt; reconcile(PipelineRun run, Context&lt;PipelineRun&gt; ctx) {
+    // observe owned Jobs, create the next stage's Job if missing
+    run.setStatus(computeStatus(run, ctx));
+    return UpdateControl.patchStatus(run);
+  }
+}
+// Quarkus has an extension for the Java Operator SDK</code></pre></div>
+<div class="snip"><pre><code># Python: Kopf
+import kopf
+
+@kopf.on.create("data.example.com", "v1alpha1", "pipelineruns")
+@kopf.on.update("data.example.com", "v1alpha1", "pipelineruns")
+def reconcile(spec, name, namespace, status, logger, **_):
+    next_stage = choose_next_stage(spec["stages"], status)
+    if next_stage:
+        ensure_job(name, namespace, next_stage)    # idempotent create
+    return {"phase": "Running" if next_stage else "Succeeded"}   # Kopf stores it under status.reconcile</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Rules for a good controller</h3>
+    <ul>
+      <li><b>Idempotent reconcile:</b> running it ten times gives the same result as once.</li>
+      <li><b>No in-memory state:</b> everything needed is in the cluster (spec, status, owned objects), so restarts are safe.</li>
+      <li><b>Status and conditions:</b> report <code>Ready</code>, <code>Progressing</code>, <code>Degraded</code> with reasons and the observed generation.</li>
+      <li><b>Owner references</b> so owned objects are cleaned up automatically; <b>finalizers</b> to clean up things outside the cluster (cloud resources) before deletion.</li>
+      <li><b>Requeue with backoff</b> on errors; never tight-loop.</li>
+      <li><b>Leader election</b> so only one replica acts at a time.</li>
+      <li><b>Least-privilege RBAC</b>, generated from the code.</li>
+      <li><b>Validate early:</b> OpenAPI schema and CEL rules (<code>x-kubernetes-validations</code>) reject bad specs at the API.</li>
+      <li><b>Distinguish unknown from failed:</b> if the controller cannot read a dependency, report that, rather than marking the resource failed or healthy.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Testing and operating operators</h3>
+    <ul>
+      <li><b>Unit-test</b> the decision logic (spec + observed state → actions) without a cluster.</li>
+      <li><b>envtest</b> (Go) runs a real API server for integration tests; kind or k3d clusters for end-to-end tests.</li>
+      <li><b>CRD versioning:</b> start at <code>v1alpha1</code>; add conversion webhooks when you introduce new versions; never break stored objects.</li>
+      <li><b>Metrics:</b> reconcile counts, errors, duration and queue depth (controller-runtime exposes them).</li>
+      <li><b>Capability levels</b> (Operator Framework): basic install → seamless upgrades → full lifecycle → deep insights → autopilot. Aim for the level your users need.</li>
+      <li><b>Distribution:</b> package the operator with a Helm chart or OLM bundle.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain CRDs, custom resources, controllers and reconcile</li><li>Use existing operators (cert-manager, CloudNativePG, Strimzi)</li><li>Read a resource's status and conditions</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write a CRD with schema validation</li><li>Build a simple controller with kubebuilder, Java Operator SDK or Kopf</li><li>Use owner references, finalizers and status correctly</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design operators for stateful systems and day-2 operations</li><li>Test with envtest and real clusters; version CRDs with conversion</li><li>Decide operator vs Helm vs managed service</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build platform APIs on Kubernetes for the organisation</li><li>Maintain operators at high capability levels</li><li>Contribute to the operator ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>controller-runtime internals</li><li>CEL validation rules</li><li>Conversion webhooks</li><li>Operator Lifecycle Manager</li><li>Crossplane and Config Connector</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/" target="_blank" rel="noopener">Operator pattern</a><span class="lnote"> Kubernetes documentation</span></li><li><a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/" target="_blank" rel="noopener">Custom Resource Definitions</a><span class="lnote"> Defining and versioning CRDs</span></li><li><a href="https://book.kubebuilder.io/" target="_blank" rel="noopener">The Kubebuilder Book</a><span class="lnote"> Building controllers in Go</span></li><li><a href="https://sdk.operatorframework.io/" target="_blank" rel="noopener">Operator SDK</a><span class="lnote"> Operator Framework tooling</span></li><li><a href="https://javaoperatorsdk.io/" target="_blank" rel="noopener">Java Operator SDK</a><span class="lnote"> Operators in Java</span></li><li><a href="https://kopf.readthedocs.io/" target="_blank" rel="noopener">Kopf</a><span class="lnote"> Operators in Python</span></li><li><a href="https://operatorhub.io/" target="_blank" rel="noopener">OperatorHub</a><span class="lnote"> Catalogue of operators</span></li><li><a href="https://cloud.google.com/config-connector/docs/overview" target="_blank" rel="noopener">Config Connector</a><span class="lnote"> GCP resources as Kubernetes objects</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/helm/">← Helm Charts</a><a class="pn-next" href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

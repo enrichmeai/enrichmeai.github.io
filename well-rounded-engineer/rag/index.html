@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG · Well Rounded Engineer</title>
+<meta name="description" content="Retrieval-augmented generation: find the right passages from your own data and give them to the model, so answers are current, specific and cited. The…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="rag">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/" aria-current="page">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="rag" data-name="RAG">
+  <div class="panel-head"><h1>Building RAG systems</h1><p>Retrieval-augmented generation: find the right passages from your own data and give them to the model, so answers are current, specific and cited. The whole pipeline, each design choice, code for Postgres and BigQuery, and how to evaluate it. RAG is a data pipeline first: see <a href="/well-rounded-engineer/data/">Data Engineering</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Architecture</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Phase</th><th>Steps</th><th>Runs</th></tr></thead>
+      <tbody>
+      <tr><td>Ingestion (offline)</td><td>Load documents → parse (PDF, HTML, OCR) → clean → chunk → add metadata → embed → index (vector + keyword)</td><td>As a pipeline: batch or on change</td></tr>
+      <tr><td>Retrieval (online)</td><td>Query → rewrite (optional) → hybrid search with permission and metadata filters → rerank → top passages</td><td>Per question, in milliseconds</td></tr>
+      <tr><td>Generation (online)</td><td>Prompt with passages and IDs → model answers with citations → validate citations → respond, or say "not found"</td><td>Per question, in seconds</td></tr>
+      <tr><td>Evaluation (continuous)</td><td>Golden questions → retrieval metrics + answer metrics → dashboard and CI gate</td><td>On every change, and sampled in production</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Ingestion and parsing</h3>
+    <ul>
+      <li><b>Keep a stable document ID, source, version and date</b> on everything, so each answer can name exactly what it used.</li>
+      <li><b>Parse structure, not just text:</b> headings, paragraphs and numbered sections are the best chunk boundaries. Tables need special handling.</li>
+      <li><b>Scanned PDFs need OCR</b> (Document AI, Tesseract); measure its error rate on your documents.</li>
+      <li><b>Clean:</b> strip headers, footers, page numbers and boilerplate that pollute retrieval.</li>
+      <li><b>Run ingestion as an idempotent, incremental pipeline</b> with run records: documents in = chunks indexed + rejected.</li>
+      <li><b>Handle updates and deletions:</b> re-embed changed documents, remove withdrawn ones, and never serve a stale version silently.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Chunking</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Strategy</th><th>How</th><th>Notes</th></tr></thead>
+      <tbody>
+      <tr><td>Fixed size</td><td>N tokens with overlap</td><td>Simple baseline; cuts through sentences</td></tr>
+      <tr><td>Recursive</td><td>Split by section, then paragraph, then sentence until small enough</td><td>Good default for prose</td></tr>
+      <tr><td>Structural</td><td>One chunk per section or numbered paragraph</td><td>Best for legal and technical documents with structure</td></tr>
+      <tr><td>Parent-child</td><td>Retrieve small chunks, give the model their larger parent section</td><td>Precise search, enough context to answer</td></tr>
+      <tr><td>Contextual</td><td>Prepend a short summary of where the chunk sits in its document before embedding</td><td>Reduces retrieval failures for chunks that make no sense alone</td></tr>
+      </tbody></table></div>
+    <p class="note">Typical sizes are 200–1,000 tokens. Measure: the right size is the one that maximises retrieval recall on your golden questions.</p>
+  </article>
+
+  <article class="card"><h3>Embeddings and indexes</h3>
+    <ul>
+      <li><b>Embedding model:</b> choose by quality on your domain and language, dimension (storage and speed), and cost. Options include Vertex AI text embeddings and other providers' embedding APIs, or open models.</li>
+      <li><b>Same model for documents and queries,</b> and re-embed everything when you change it. Store the model name and version with each vector.</li>
+      <li><b>Distance:</b> cosine is the usual choice; normalise vectors if the model expects it.</li>
+      <li><b>Approximate indexes</b> (HNSW, IVF) trade a little recall for speed. Tune and measure recall against exact search on a sample.</li>
+      <li><b>Where to store:</b> pgvector (Postgres, AlloyDB), BigQuery <code>VECTOR_SEARCH</code>, Vertex AI Vector Search, Elasticsearch/OpenSearch. Keep vectors next to the metadata you filter on.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Hybrid search with rank fusion (Postgres)</h3>
+<div class="snip"><pre><code>-- chunks(id, doc_id, body, tsv tsvector, embedding vector(768), court text)
+WITH vec AS (
+  SELECT id, ROW_NUMBER() OVER (ORDER BY embedding &lt;=&gt; $1) AS r
+  FROM chunks WHERE court = ANY($3)            -- filter first: permissions, metadata
+  ORDER BY embedding &lt;=&gt; $1 LIMIT 50
+),
+kw AS (
+  SELECT id, ROW_NUMBER() OVER (ORDER BY ts_rank_cd(tsv, q) DESC) AS r
+  FROM chunks, websearch_to_tsquery('english', $2) AS q
+  WHERE tsv @@ q AND court = ANY($3)
+  ORDER BY ts_rank_cd(tsv, q) DESC LIMIT 50
+)
+SELECT id, SUM(1.0 / (60 + r)) AS score       -- reciprocal rank fusion, k = 60
+FROM (SELECT * FROM vec UNION ALL SELECT * FROM kw) AS both_lists
+GROUP BY id
+ORDER BY score DESC
+LIMIT 20;                                      -- then rerank these 20</code></pre></div>
+    <p class="note">Vectors find meaning ("compensation for acquired land"); keywords find exact names, citations and section numbers that vectors miss. Fusion combines both without tuning score scales.</p>
+  </article>
+
+  <article class="card"><h3>Reranking and query handling</h3>
+    <ul>
+      <li><b>Rerank</b> the top 20–50 with a cross-encoder or reranking API (for example Vertex AI ranking, or a provider's rerank model); keep the best 5–10.</li>
+      <li><b>Query rewriting:</b> turn a conversational follow-up into a standalone query ("and in Himachal?" → full question).</li>
+      <li><b>Multi-query:</b> generate a few phrasings and fuse their results.</li>
+      <li><b>Metadata extraction:</b> pull filters out of the question (court, year) and apply them in SQL.</li>
+      <li><b>Agentic retrieval:</b> let the model call a search tool several times when one search is not enough, with a step budget.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Generation with citations</h3>
+<div class="snip"><pre><code>import anthropic
+client = anthropic.Anthropic()
+
+passages = retrieve(question, courts=user.allowed_courts)    # hybrid + rerank, top 8
+
+content = [
+    {"type": "document",
+     "source": {"type": "text", "media_type": "text/plain", "data": p.body},
+     "title": f"{p.case_name} ¶{p.paragraph} ({p.doc_id})",
+     "citations": {"enabled": True}}
+    for p in passages
+]
+content.append({"type": "text", "text":
+    "Answer only from the documents above. If they do not contain the answer, "
+    "say you could not find it. Question: " + question})
+
+resp = client.messages.create(model="claude-opus-5-5", max_tokens=16000,
+                              messages=[{"role": "user", "content": content}])
+# text blocks carry a citations list pointing at the exact cited text in each document</code></pre></div>
+    <ul>
+      <li>Put instructions in the system prompt; treat retrieved text as data, never as instructions.</li>
+      <li>Check that every cited document was actually retrieved; drop or flag answers with no citations.</li>
+      <li>When retrieval returns nothing relevant, answer "not found". When the index is unavailable, say so: that is "cannot see", not "nothing exists".</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>RAG on BigQuery</h3>
+<div class="snip"><pre><code>-- 1. embed chunks with a remote embedding model
+CREATE OR REPLACE TABLE `p.rag.chunk_emb` AS
+SELECT * FROM ML.GENERATE_EMBEDDING(
+  MODEL `p.rag.embedding_model`,
+  (SELECT chunk_id, doc_id, court, body AS content FROM `p.rag.chunks`));
+
+-- 2. optional vector index for large tables
+CREATE VECTOR INDEX chunk_idx ON `p.rag.chunk_emb`(ml_generate_embedding_result)
+OPTIONS (index_type = 'IVF', distance_type = 'COSINE');
+
+-- 3. search
+SELECT base.chunk_id, base.doc_id, base.content, distance
+FROM VECTOR_SEARCH(
+  (SELECT * FROM `p.rag.chunk_emb` WHERE court IN ('2_5', '14_25')),
+  'ml_generate_embedding_result',
+  (SELECT ml_generate_embedding_result FROM ML.GENERATE_EMBEDDING(
+     MODEL `p.rag.embedding_model`,
+     (SELECT 'compensation for land acquisition' AS content))),
+  top_k =&gt; 20, distance_type =&gt; 'COSINE');</code></pre></div>
+    <p class="note">Good for batch RAG and analytics over large corpora. For interactive latency, serve from Postgres/AlloyDB or Vertex AI Vector Search.</p>
+  </article>
+
+  <article class="card"><h3>Evaluating RAG</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Measure</th><th>Question it answers</th></tr></thead>
+      <tbody>
+      <tr><td>Recall@k</td><td>Is the right passage in the top k results?</td></tr>
+      <tr><td>MRR</td><td>How high is the first right passage?</td></tr>
+      <tr><td>Faithfulness</td><td>Is every claim supported by the retrieved passages?</td></tr>
+      <tr><td>Answer correctness</td><td>Does it match the expected answer?</td></tr>
+      <tr><td>Citation accuracy</td><td>Do citations point to passages that support the sentence?</td></tr>
+      <tr><td>Abstention</td><td>Does it say "not found" when the corpus has no answer?</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Build 100–300 real questions with the passages that answer them, including unanswerable ones.</li>
+      <li>Evaluate retrieval and generation separately, so you know which step to fix.</li>
+      <li>Run in CI on every change to chunking, embeddings, prompts or models.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security and access control</h3>
+    <ul>
+      <li><b>Filter by permission at retrieval time.</b> Never retrieve documents the user may not see and hope the model ignores them.</li>
+      <li><b>Prompt injection:</b> documents can contain instructions. Keep tools read-only, constrain outputs, and do not let retrieved text trigger actions.</li>
+      <li><b>Legal holds and suppressions</b> apply to the index too: remove or filter suppressed documents immediately.</li>
+      <li><b>Personal data:</b> decide what may be embedded and sent to a model; embeddings can leak content.</li>
+      <li><b>Audit:</b> log the question, retrieved IDs and answer (with sensitive fields protected).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Failure modes and fixes</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Symptom</th><th>Likely cause</th></tr></thead>
+      <tbody>
+      <tr><td>Right document exists, never retrieved</td><td>Chunking splits the answer; missing keyword search; embedding model weak for the domain</td></tr>
+      <tr><td>Retrieved, but answer wrong</td><td>Too many passages, noisy context, prompt does not demand grounding</td></tr>
+      <tr><td>Exact citation or section number missed</td><td>Vector-only search; add keyword or exact-match lookup</td></tr>
+      <tr><td>Old version quoted</td><td>Re-ingestion not incremental; no version filter</td></tr>
+      <tr><td>Slow</td><td>No ANN index, reranking too many, large context</td></tr>
+      <tr><td>Confident answer with no source</td><td>No abstention instruction or citation validation</td></tr>
+      </tbody></table></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the ingestion, retrieval and generation phases</li><li>Run a vector search over embedded chunks</li><li>Prompt a model to answer from passages with citations</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an incremental ingestion pipeline with chunking, metadata and embeddings</li><li>Add hybrid search, reranking and permission filters</li><li>Build a golden question set and measure recall and faithfulness</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design RAG for a domain: chunking strategy, index choice, latency and cost</li><li>Diagnose retrieval vs generation failures from evals</li><li>Secure RAG: access control, prompt injection, suppressions</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own retrieval and knowledge platforms across products</li><li>Lead advanced retrieval (agentic, graph-based) where it measurably helps</li><li>Set evaluation standards for AI answers in the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contextual retrieval</li><li>Hybrid search and reciprocal rank fusion</li><li>Rerankers and cross-encoders</li><li>Evaluation frameworks for RAG</li><li>GraphRAG and agentic retrieval</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank" rel="noopener">Contextual Retrieval (Anthropic)</a><span class="lnote"> Reducing retrieval failures with chunk context</span></li><li><a href="https://platform.claude.com/docs/en/build-with-claude/citations" target="_blank" rel="noopener">Claude citations</a><span class="lnote"> Cited answers from documents</span></li><li><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector</a><span class="lnote"> Vector search in Postgres</span></li><li><a href="https://cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener">BigQuery vector search</a><span class="lnote"> Embeddings and VECTOR_SEARCH</span></li><li><a href="https://cloud.google.com/vertex-ai/docs/vector-search/overview" target="_blank" rel="noopener">Vertex AI Vector Search</a><span class="lnote"> Managed approximate nearest neighbour search</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/rag-engine/rag-overview" target="_blank" rel="noopener">Vertex AI RAG Engine</a><span class="lnote"> Managed RAG on GCP</span></li><li><a href="https://genai.owasp.org/" target="_blank" rel="noopener">OWASP GenAI security</a><span class="lnote"> Prompt injection and LLM risks</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/agentharness/">← Agent Harness</a><a class="pn-next" href="/well-rounded-engineer/mcp/">MCP →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

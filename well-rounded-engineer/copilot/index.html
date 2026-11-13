@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Copilot · Well Rounded Engineer</title>
+<meta name="description" content="GitHub&#x27;s AI assistant across the editor, the command line and github.com: completions, chat, agent mode, a coding agent that works on issues and opens…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="copilot">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/" aria-current="page">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="copilot" data-name="GitHub Copilot">
+  <div class="panel-head"><h1>GitHub Copilot</h1><p>GitHub's AI assistant across the editor, the command line and github.com: completions, chat, agent mode, a coding agent that works on issues and opens pull requests, and code review. How to configure it for a team and how it compares with Claude Code.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Features</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Feature</th><th>Where</th><th>Does</th></tr></thead>
+      <tbody>
+      <tr><td>Code completions</td><td>IDE</td><td>Suggests the next lines as you type</td></tr>
+      <tr><td>Copilot Chat</td><td>IDE, github.com, mobile</td><td>Answers questions about code, explains, drafts changes</td></tr>
+      <tr><td>Agent mode</td><td>IDE (e.g. VS Code)</td><td>Plans and makes multi-file edits, runs commands and tests, iterates</td></tr>
+      <tr><td>Copilot coding agent</td><td>github.com</td><td>Assign it an issue; it works in a cloud environment and opens a draft PR for review</td></tr>
+      <tr><td>Copilot code review</td><td>Pull requests</td><td>Requested as a reviewer; leaves comments and suggestions</td></tr>
+      <tr><td>Copilot CLI</td><td>Terminal</td><td>Agentic help in the shell</td></tr>
+      <tr><td>Model choice</td><td>Chat and agents</td><td>Several model families, including Claude models, depending on plan and admin settings</td></tr>
+      </tbody></table></div>
+    <p class="note">GitHub Copilot (for developers) is a different product from Microsoft 365 Copilot (for Office documents and email). Plans and feature names change often; check GitHub's docs.</p>
+  </article>
+
+  <article class="card"><h3>Team configuration</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+      <tbody>
+      <tr><td><code>.github/copilot-instructions.md</code></td><td>Repository-wide instructions: stack, conventions, commands</td></tr>
+      <tr><td><code>.github/instructions/*.instructions.md</code></td><td>Instructions that apply to matching paths</td></tr>
+      <tr><td><code>.github/prompts/*.prompt.md</code></td><td>Reusable prompt files</td></tr>
+      <tr><td><code>AGENTS.md</code></td><td>Agent instructions read by several tools</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>&lt;!-- .github/copilot-instructions.md --&gt;
+This repo is a Spring Boot 3 WebFlux service on Java 21.
+- Tests: ./gradlew :api:test (unit), CI runs integration tests.
+- Never call .block() on the request path.
+- Errors go through GlobalExceptionHandler; no onErrorResume in controllers.
+- Use JdbcClient; no new JPA entities.</code></pre></div>
+    <p class="note">Keep one source of truth: if Claude Code reads <code>CLAUDE.md</code> and Copilot reads its own file, generate one from the other or point both at a shared document, so the rules cannot drift apart.</p>
+  </article>
+
+  <article class="card"><h3>Admin and governance</h3>
+    <ul>
+      <li><b>Policies</b> at enterprise and organisation level: which features and models are allowed.</li>
+      <li><b>Content exclusion:</b> paths or repositories Copilot must not use as context.</li>
+      <li><b>Public code filter:</b> block suggestions matching public code, where licence risk matters.</li>
+      <li><b>MCP servers</b> for agent mode and the coding agent, configured per repository or organisation.</li>
+      <li><b>Coding agent environment:</b> a setup workflow, a firewall allow-list, and branch protections; its PRs go through normal review and CI.</li>
+      <li><b>Usage metrics</b> for adoption and acceptance rates.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Copilot and Claude Code compared</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>GitHub Copilot</th><th>Claude Code</th></tr></thead>
+      <tbody>
+      <tr><td>Home</td><td>The IDE and github.com</td><td>The terminal and repository (plus IDE, desktop, web)</td></tr>
+      <tr><td>Strengths</td><td>Inline completions, tight GitHub integration (issues, PRs, review)</td><td>Long, multi-step agentic tasks; deep customisation with hooks, skills and subagents</td></tr>
+      <tr><td>Configuration</td><td>Instruction and prompt files, policies</td><td>CLAUDE.md, settings, hooks, skills, agents, plugins</td></tr>
+      <tr><td>Asynchronous work</td><td>Coding agent on issues</td><td>Cloud sessions, GitHub Action, headless mode</td></tr>
+      </tbody></table></div>
+    <p class="note">Many teams use both: completions while typing, an agent for whole tasks. The disciplines are the same: clear briefs, tests as the definition of done, human review, and rules written into the repo.</p>
+  </article>
+
+  <article class="card"><h3>Using it responsibly</h3>
+    <ul>
+      <li>Review every suggestion; accepted code is your code.</li>
+      <li>Watch for invented APIs and outdated patterns; check official docs.</li>
+      <li>Keep secrets out of files Copilot can read; use content exclusion for sensitive paths.</li>
+      <li>Coding-agent PRs get the same CI, review and security checks as human PRs.</li>
+      <li>Prefer extending your frameworks to generating new boilerplate (<a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>).</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Use completions and chat; review every suggestion</li><li>Know the difference between GitHub Copilot and Microsoft 365 Copilot</li><li>Find and follow the repo's Copilot instructions</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write repository and path instructions and prompt files</li><li>Use agent mode and the coding agent on scoped issues</li><li>Request and act on Copilot code review</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Configure policies, content exclusion and MCP for a team</li><li>Set up the coding agent environment and protections</li><li>Keep Copilot and Claude Code instructions consistent</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own AI-assisted development policy across the organisation</li><li>Evaluate tools and models with real task metrics</li><li>Lead adoption and training</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Copilot coding agent</li><li>Custom instructions and prompt files</li><li>MCP in Copilot</li><li>Copilot policies for enterprises</li><li>Measuring AI-assisted development</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.github.com/en/copilot" target="_blank" rel="noopener">GitHub Copilot documentation</a><span class="lnote"> Features, setup, administration</span></li><li><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot features</a><span class="lnote"> Overview and plans</span></li><li><a href="https://agents.md/" target="_blank" rel="noopener">AGENTS.md</a><span class="lnote"> Shared format for agent instructions</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/claudetools/">← Claude Code &amp; Cowork</a><a class="pn-next" href="/well-rounded-engineer/agentharness/">Agent Harness →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

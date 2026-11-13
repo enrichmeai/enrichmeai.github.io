@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dbt · Well Rounded Engineer</title>
+<meta name="description" content="dbt-core 1.8+ with dbt-bigquery. Unit tests arrived in 1.8; microbatch and YAML snapshots in 1.9.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="dbt">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/" aria-current="page">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="dbt" data-name="dbt">
+  <div class="panel-head"><h1>dbt on BigQuery</h1><p>dbt-core 1.8+ with dbt-bigquery. Unit tests arrived in 1.8; microbatch and YAML snapshots in 1.9.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>CLI</h3>
+<div class="snip"><pre><code>dbt deps                         # install packages.yml
+dbt debug                        # check profile + connection
+dbt build                        # seed + run + snapshot + test, in DAG order
+dbt run   -s my_model
+dbt test  -s my_model
+dbt build -s my_model --full-refresh
+dbt compile -s my_model          # see SQL in target/compiled/
+dbt show  -s my_model --limit 20 # preview rows
+dbt ls    -s tag:daily --resource-type model
+dbt seed  &amp;&amp; dbt snapshot
+dbt source freshness
+dbt docs generate &amp;&amp; dbt docs serve
+
+dbt run --target prod --vars '{run_date: "2025-01-01"}'
+dbt retry                        # re-run only what failed last time</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Node selection</h3>
+<div class="snip"><pre><code>-s my_model          # just it
+-s +my_model         # it and all parents
+-s my_model+         # it and all children
+-s 2+my_model+1      # 2 levels up, 1 down
+-s @my_model         # children + their parents (safe rebuild)
+-s tag:daily
+-s path:models/fdp
+-s config.materialized:incremental
+-s source:raw+       # everything downstream of a source
+-s "fdp_judgment,tag:daily"     # intersection (comma)
+-s a b               # union (space)
+--exclude tag:slow
+
+# Slim CI: only what changed vs prod's manifest
+dbt build -s state:modified+ --defer --state prod-artifacts/
+dbt build -s result:error+ --state target/</code></pre></div>
+  </article>
+
+  <article class="card"><h3>profiles.yml (BigQuery)</h3>
+<div class="snip"><pre><code>my_project:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth                 # gcloud auth application-default login
+      project: my-proj-dev
+      dataset: dbt_jo               # personal dev dataset
+      location: asia-south1
+      threads: 8
+      job_execution_timeout_seconds: 600
+      maximum_bytes_billed: 50000000000   # hard cost cap per query
+    prod:
+      type: bigquery
+      method: service-account
+      keyfile: /secrets/sa.json     # or oauth on Workload Identity
+      project: my-proj-prod
+      dataset: fdp
+      location: asia-south1
+      threads: 16</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Project layout &amp; dbt_project.yml</h3>
+<div class="snip"><pre><code>models/
+  staging/   stg_*.sql   1:1 with sources, rename + cast only (view)
+  intermediate/ int_*.sql joins, dedupe (ephemeral or view)
+  marts/     fct_* dim_*  what consumers read (table/incremental)
+seeds/  snapshots/  macros/  tests/  analyses/
+
+# dbt_project.yml
+name: fdp_judgments
+profile: my_project
+models:
+  fdp_judgments:
+    +persist_docs: {relation: true, columns: true}
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      +labels: {owner: data, layer: fdp}
+vars:
+  start_year: 2023</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Model config for BigQuery</h3>
+<div class="snip"><pre><code>{{ config(
+    materialized = 'table',
+    partition_by = {
+      'field': 'decision_date',
+      'data_type': 'date',          # date | timestamp | datetime | int64
+      'granularity': 'month'        # day | hour | month | year
+    },
+    cluster_by = ['court_code', 'cnr'],   # up to 4 columns
+    require_partition_filter = true,
+    partition_expiration_days = none,
+    labels = {'layer': 'fdp'},
+    tags = ['daily']
+) }}
+
+-- integer-range partition
+partition_by = {'field': 'data_year', 'data_type': 'int64',
+                'range': {'start': 1950, 'end': 2030, 'interval': 1}}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Incremental: merge</h3>
+<div class="snip"><pre><code>{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'merge',
+    unique_key = 'judgment_key',            # or a list
+    on_schema_change = 'append_new_columns',# ignore | fail | sync_all_columns
+    partition_by = {'field': 'decision_date', 'data_type': 'date'},
+    incremental_predicates = [
+      "DBT_INTERNAL_DEST.decision_date &gt;= date_sub(current_date(), interval 30 day)"
+    ]
+) }}
+
+select * from {{ ref('int_judgment') }}
+{% if is_incremental() %}
+  where _landed_at &gt; (select max(_landed_at) from {{ this }})
+{% endif %}</code></pre></div>
+    <p class="note"><code>incremental_predicates</code> prunes the target side of the MERGE. Without it BigQuery scans the whole destination on every run.</p>
+  </article>
+
+  <article class="card"><h3>Incremental: insert_overwrite</h3>
+<div class="snip"><pre><code>{% set partitions_to_replace = [
+  'current_date()',
+  'date_sub(current_date(), interval 1 day)'
+] %}
+
+{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'insert_overwrite',
+    partition_by = {'field': 'event_date', 'data_type': 'date'},
+    partitions = partitions_to_replace       # static: cheapest
+) }}
+
+select * from {{ ref('stg_events') }}
+{% if is_incremental() %}
+  where event_date in ({{ partitions_to_replace | join(',') }})
+{% endif %}</code></pre></div>
+    <p class="note">Replaces whole partitions, no row matching. Leave out <code>partitions</code> for "dynamic" mode: dbt finds the partitions in the new data, at the cost of an extra query.</p>
+  </article>
+
+  <article class="card"><h3>Incremental: microbatch <span class="tag">1.9</span></h3>
+<div class="snip"><pre><code>{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'microbatch',
+    event_time = 'decision_date',
+    batch_size = 'day',            # hour | day | month | year
+    begin = '2023-01-01',
+    lookback = 2,
+    partition_by = {'field': 'decision_date', 'data_type': 'date',
+                    'granularity': 'day'}
+) }}
+-- no is_incremental() block: dbt filters each batch for you,
+-- and filters upstream refs that declare their own event_time
+select * from {{ ref('stg_judgment') }}</code></pre></div>
+<div class="snip"><pre><code>dbt run -s fct_judgment --event-time-start 2024-01-01 --event-time-end 2024-02-01
+dbt retry      # re-runs only failed batches</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Sources &amp; freshness</h3>
+<div class="snip"><pre><code># models/staging/_sources.yml
+sources:
+  - name: odp
+    database: my-proj            # = GCP project
+    schema: dp_odp               # = dataset
+    loaded_at_field: _landed_at
+    freshness:
+      warn_after:  {count: 1, period: day}
+      error_after: {count: 3, period: day}
+    tables:
+      - name: hc_judgment
+      - name: sc_judgment
+        freshness: null          # opt out
+
+-- usage
+select * from {{ source('odp', 'hc_judgment') }}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Data tests</h3>
+<div class="snip"><pre><code>models:
+  - name: fdp_judgment
+    columns:
+      - name: judgment_key
+        data_tests: [unique, not_null]
+      - name: court_code
+        data_tests:
+          - relationships: {to: ref('fdp_court'), field: court_code}
+      - name: status
+        data_tests:
+          - accepted_values: {values: ['DISPOSED', 'PENDING']}
+      - name: decision_date
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+                where: "data_year &gt;= 2000"
+                error_if: "&gt;100"
+                warn_if: "&gt;0"</code></pre></div>
+<div class="snip"><pre><code>-- tests/assert_no_future_dates.sql  (singular: fails if it returns rows)
+select * from {{ ref('fdp_judgment') }}
+where decision_date &gt; current_date()</code></pre></div>
+    <p class="note"><code>data_tests:</code> replaced <code>tests:</code> in 1.8; the old key still works. Packages: <code>dbt-labs/dbt_utils</code>, <code>metaplane/dbt_expectations</code>.</p>
+  </article>
+
+  <article class="card"><h3>Unit tests <span class="tag">1.8</span></h3>
+<div class="snip"><pre><code>unit_tests:
+  - name: parses_sc_dd_mm_yyyy
+    model: int_judgment_normalised
+    given:
+      - input: ref('stg_sc_judgment')
+        rows:
+          - {cnr: "SC1", raw_date: "05-05-1959"}
+          - {cnr: "SC2", raw_date: "bad"}
+    expect:
+      rows:
+        - {cnr: "SC1", decision_date: 1959-05-05}
+        - {cnr: "SC2", decision_date: null}
+
+  # format: csv | dict | sql ; overrides: {macros: {is_incremental: true}}</code></pre></div>
+    <p class="note">Unit tests run SQL logic on fixed inputs before the model is built. Run with <code>dbt test -s test_type:unit</code>; exclude them in prod.</p>
+  </article>
+
+  <article class="card"><h3>Jinja &amp; macros</h3>
+<div class="snip"><pre><code>{{ ref('model') }}   {{ ref('other_pkg', 'model') }}
+{{ source('odp', 'hc_judgment') }}
+{{ this }}                      -- current relation
+{{ var('start_year', 2020) }}
+{{ env_var('DBT_ENV', 'dev') }}
+{{ target.name }} {{ target.project }} {{ target.dataset }}
+
+{% set courts = ['2_5', '14_25', '16_20'] %}
+where court in ({% for c in courts %}'{{ c }}'{% if not loop.last %},{% endif %}{% endfor %})
+
+-- macros/safe_date.sql
+{% macro safe_date(col, fmt='%Y-%m-%d') -%}
+  safe.parse_date('{{ fmt }}', {{ col }})
+{%- endmacro %}
+
+-- run a query at compile time
+{% set rs = run_query("select distinct court from " ~ ref('fdp_court')) %}
+{% if execute %}{% set courts = rs.columns[0].values() %}{% endif %}
+
+-- dev sampling
+{% if target.name == 'dev' %} limit 1000 {% endif %}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Custom generic test</h3>
+<div class="snip"><pre><code>-- tests/generic/null_ratio_below.sql
+{% test null_ratio_below(model, column_name, max_ratio=0.01) %}
+select *
+from (
+  select countif({{ column_name }} is null) / count(*) as ratio
+  from {{ model }}
+)
+where ratio &gt; {{ max_ratio }}
+{% endtest %}
+
+# use it
+columns:
+  - name: decision_date
+    data_tests:
+      - null_ratio_below: {max_ratio: 0.0}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Contracts &amp; snapshots</h3>
+<div class="snip"><pre><code># Model contract: build fails if shape drifts
+models:
+  - name: serving_judgments
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: judgment_key
+        data_type: string
+        constraints: [{type: not_null}]
+      - name: decision_date
+        data_type: date
+
+# Snapshot, YAML form (1.9): SCD type 2
+snapshots:
+  - name: court_snapshot
+    relation: source('odp', 'court')
+    config:
+      schema: snapshots
+      unique_key: court_code
+      strategy: check          # or timestamp + updated_at
+      check_cols: all
+      hard_deletes: invalidate # ignore | invalidate | new_record</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Hooks, grants, operations</h3>
+<div class="snip"><pre><code>{{ config(
+    post_hook = [
+      "alter table {{ this }} set options(description='built {{ run_started_at }}')"
+    ],
+    grants = {'roles/bigquery.dataViewer': ['serviceAccount:api@p.iam.gserviceaccount.com']}
+) }}
+
+# dbt_project.yml
+on-run-end:
+  - "{{ log_results(results) }}"
+
+# ad-hoc macro
+dbt run-operation drop_dev_datasets --args '{prefix: dbt_jo}'</code></pre></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run, test and select models; read compiled SQL</li><li>Use ref and source; add not_null and unique tests</li><li>Understand views vs tables</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write incremental models with the right strategy</li><li>Write macros, generic tests and unit tests</li><li>Configure partitioning and clustering on BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Structure a multi-project dbt platform</li><li>Set up slim CI with state and defer</li><li>Use contracts, versions and access controls for shared models</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own modelling standards across the organisation</li><li>Design cross-project dependencies and data mesh boundaries</li><li>Contribute packages and tooling</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Model contracts and versions</li><li>Microbatch incremental models</li><li>dbt packages: dbt_utils, dbt_expectations</li><li>Semantic layer and metrics</li><li>Exposures and documentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.getdbt.com/docs/introduction" target="_blank" rel="noopener">dbt documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://docs.getdbt.com/reference/references-overview" target="_blank" rel="noopener">dbt reference</a><span class="lnote"> Every config, command and property</span></li><li><a href="https://docs.getdbt.com/docs/build/incremental-models" target="_blank" rel="noopener">Incremental models</a><span class="lnote"> Strategies and is_incremental()</span></li><li><a href="https://docs.getdbt.com/reference/resource-configs/bigquery-configs" target="_blank" rel="noopener">BigQuery configs</a><span class="lnote"> Partitioning, clustering, labels</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> Project structure and style</span></li><li><a href="https://hub.getdbt.com/" target="_blank" rel="noopener">dbt package hub</a><span class="lnote"> Reusable packages</span></li><li><a href="https://learn.getdbt.com/" target="_blank" rel="noopener">dbt Learn courses</a><span class="lnote"> Free official courses</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/culvert/">← Culvert</a><a class="pn-next" href="/well-rounded-engineer/dags/">Airflow DAGs →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System Design · Well Rounded Engineer</title>
+<meta name="description" content="How to design a system from a blank page: a repeatable method, the numbers to estimate with, the building blocks, how each scales, and worked examples.…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="sysdesign">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/" aria-current="page">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="sysdesign" data-name="System Design">
+  <div class="panel-head"><h1>System design</h1><p>How to design a system from a blank page: a repeatable method, the numbers to estimate with, the building blocks, how each scales, and worked examples. The <a href="/well-rounded-engineer/architecture/">Architecture</a> and <a href="/well-rounded-engineer/database/">Database Design</a> tabs go deeper on patterns and storage.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The method, in order</h3>
+    <ol>
+      <li><b>Clarify requirements.</b> Functional: what users can do. Non-functional: scale, latency, availability, consistency, durability, cost, security, compliance. Write down what is out of scope.</li>
+      <li><b>Estimate.</b> Users, requests per second (average and peak), read/write ratio, data size per item, storage per year, bandwidth. Numbers decide the design.</li>
+      <li><b>Define the API.</b> The few endpoints or events that deliver the functional requirements, with their inputs and outputs.</li>
+      <li><b>Model the data.</b> Entities, keys, access patterns ("fetch by X, list by Y sorted by Z"), and which store fits each pattern.</li>
+      <li><b>Draw the high-level design.</b> Clients, load balancer, services, stores, caches, queues. One request path end to end.</li>
+      <li><b>Deep-dive the hard parts.</b> The component that is hottest, biggest or most consistency-sensitive. Show how it scales and fails.</li>
+      <li><b>Find bottlenecks and failure modes.</b> What breaks first at 10×? What happens when each dependency is down?</li>
+      <li><b>State trade-offs.</b> What you chose, what you gave up, and what would make you change it.</li>
+    </ol>
+    <p class="note">The same steps make a good design document. Start simple, and add a component only when a requirement or a number demands it.</p>
+  </article>
+
+  <article class="card"><h3>Back-of-the-envelope numbers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Quantity</th><th>Rule of thumb</th></tr></thead>
+      <tbody>
+      <tr><td>Seconds per day</td><td>86,400 ≈ 10<sup>5</sup></td></tr>
+      <tr><td>1 M requests/day</td><td>≈ 12 per second on average</td></tr>
+      <tr><td>Peak</td><td>2–10× average, depending on the traffic shape</td></tr>
+      <tr><td>1 KB × 1 M items</td><td>1 GB</td></tr>
+      <tr><td>1 KB × 1 B items</td><td>1 TB</td></tr>
+      <tr><td>One Postgres instance</td><td>thousands of simple queries/s; much less for heavy ones</td></tr>
+      <tr><td>One app instance</td><td>hundreds to a few thousand requests/s, workload-dependent</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>Example: search API for 50k lawyers
+  50k users × 20 searches/day = 1 M/day ≈ 12/s avg, ~60/s peak
+  20M judgments × 2 KB metadata ≈ 40 GB  (fits one Postgres with indexes)
+  full text: 20M × ~7 KB avg ≈ 140 GB    (store separately; index for search)
+→ one primary + read replica + cache is plenty; no sharding needed</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Latency, order of magnitude</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Operation</th><th>Roughly</th></tr></thead>
+      <tbody>
+      <tr><td>Main memory read</td><td>100 ns</td></tr>
+      <tr><td>SSD random read</td><td>~100 µs</td></tr>
+      <tr><td>Round trip within a datacenter / zone</td><td>~0.5 ms</td></tr>
+      <tr><td>Indexed database lookup</td><td>~1 ms</td></tr>
+      <tr><td>Cache (Redis) get over the network</td><td>~1 ms</td></tr>
+      <tr><td>Round trip between regions on one continent</td><td>10–50 ms</td></tr>
+      <tr><td>Round trip across continents</td><td>~150 ms</td></tr>
+      <tr><td>LLM response</td><td>hundreds of ms to tens of seconds</td></tr>
+      </tbody></table></div>
+    <p class="note">Network calls dominate. Ten sequential service calls cost far more than ten database rows. Parallelise independent calls and keep hot paths short.</p>
+  </article>
+
+  <article class="card"><h3>Availability in downtime</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Availability</th><th>Downtime / year</th><th>/ month</th></tr></thead>
+      <tbody>
+      <tr><td>99%</td><td>3.65 days</td><td>7.3 h</td></tr>
+      <tr><td>99.9%</td><td>8.8 h</td><td>43.8 min</td></tr>
+      <tr><td>99.95%</td><td>4.4 h</td><td>21.9 min</td></tr>
+      <tr><td>99.99%</td><td>52.6 min</td><td>4.4 min</td></tr>
+      <tr><td>99.999%</td><td>5.3 min</td><td>26 s</td></tr>
+      </tbody></table></div>
+    <p class="note">Dependencies in series multiply: three services at 99.9% each give about 99.7%. Redundancy in parallel raises it. Each extra nine costs a lot more; pick the target the users actually need.</p>
+  </article>
+
+  <article class="card wide"><h3>Building blocks</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Block</th><th>Does</th><th>On GCP</th><th>Watch out for</th></tr></thead>
+      <tbody>
+      <tr><td>DNS</td><td>Name to address; can route by region or weight</td><td>Cloud DNS</td><td>TTLs slow down changes</td></tr>
+      <tr><td>CDN</td><td>Caches static and cacheable responses near users</td><td>Cloud CDN</td><td>Invalidation; never cache personalised responses by mistake</td></tr>
+      <tr><td>Load balancer</td><td>Spreads traffic, health checks, TLS termination</td><td>Cloud Load Balancing</td><td>Sticky sessions hide stateful services</td></tr>
+      <tr><td>API gateway</td><td>Auth, rate limits, routing for many backends</td><td>API Gateway, Apigee</td><td>Becoming a place for business logic</td></tr>
+      <tr><td>Stateless service</td><td>Business logic, scales horizontally</td><td>Cloud Run, GKE</td><td>Hidden state in memory or local disk</td></tr>
+      <tr><td>Relational DB</td><td>Transactions, constraints, flexible queries</td><td>Cloud SQL, AlloyDB, Spanner</td><td>Write scaling, connection limits</td></tr>
+      <tr><td>Key-value / document store</td><td>Massive scale lookups by key</td><td>Firestore, Bigtable, Memorystore</td><td>Queries outside the key design are expensive</td></tr>
+      <tr><td>Cache</td><td>Serves hot reads from memory</td><td>Memorystore (Redis)</td><td>Staleness, invalidation, stampedes</td></tr>
+      <tr><td>Object storage</td><td>Files and blobs, cheap and durable</td><td>Cloud Storage</td><td>Listing huge prefixes is slow</td></tr>
+      <tr><td>Queue / log</td><td>Decouples producers and consumers, absorbs spikes</td><td>Pub/Sub, Kafka, Cloud Tasks</td><td>Duplicates, ordering, poison messages</td></tr>
+      <tr><td>Search index</td><td>Full-text and faceted search, ranking</td><td>Postgres FTS, Elasticsearch/OpenSearch, Vertex AI Search</td><td>Keeping it in sync with the source of truth</td></tr>
+      <tr><td>Warehouse</td><td>Analytics over everything</td><td>BigQuery</td><td>Not for low-latency per-user reads</td></tr>
+      <tr><td>Batch / stream processing</td><td>Heavy transforms off the request path</td><td>Dataflow, Cloud Run jobs, Dataproc</td><td>Late data, reprocessing, cost</td></tr>
+      <tr><td>Scheduler / workflow</td><td>Recurring and multi-step work</td><td>Cloud Scheduler, Workflows, Composer</td><td>A laptop or a person standing in for it</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Scaling playbook, cheapest first</h3>
+    <ol>
+      <li><b>Measure.</b> Find the actual bottleneck: CPU, memory, DB queries, a slow dependency.</li>
+      <li><b>Fix the query.</b> Indexes, fewer round trips, no N+1. Often 10–100× for free.</li>
+      <li><b>Scale up</b> the instance. Boring and effective.</li>
+      <li><b>Make services stateless</b> and scale out behind a load balancer.</li>
+      <li><b>Cache</b> hot reads; add a CDN for public content.</li>
+      <li><b>Read replicas</b> for read-heavy databases.</li>
+      <li><b>Move work off the request path</b> to queues and workers.</li>
+      <li><b>Partition</b> big tables; archive cold data.</li>
+      <li><b>Shard</b> or move to a distributed database only when one primary cannot take the writes.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Caching strategies</h3>
+    <ul>
+      <li><b>Cache-aside:</b> app reads cache, on a miss reads the DB and fills the cache. Most common.</li>
+      <li><b>Read-through:</b> the cache library loads from the DB itself on a miss.</li>
+      <li><b>Write-through:</b> write to cache and DB together; reads always warm, writes slower.</li>
+      <li><b>Write-behind:</b> write to cache, flush to DB later; fast, but data can be lost.</li>
+      <li><b>TTL</b> bounds staleness; <b>explicit invalidation</b> on write keeps it fresher but is easy to miss.</li>
+      <li><b>Stampede:</b> a popular key expires and thousands of requests hit the DB. Use request coalescing, a lock, or early random refresh.</li>
+      <li><b>What to key on:</b> include everything that changes the answer (user, locale, version). A missing part of the key serves one user's data to another.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Rate limiting</h3>
+    <ul>
+      <li><b>Token bucket:</b> tokens refill at a steady rate up to a burst size; each request takes one. Allows short bursts. The usual choice.</li>
+      <li><b>Leaky bucket:</b> requests drain at a fixed rate; smooths traffic, no bursts.</li>
+      <li><b>Fixed window:</b> N per minute; simple, but allows 2N across a window boundary.</li>
+      <li><b>Sliding window:</b> counts over the last 60 s; fairer, slightly more state.</li>
+      <li><b>Where:</b> at the gateway per API key or user; inside services to protect a fragile dependency.</li>
+      <li><b>Response:</b> HTTP 429 with <code>Retry-After</code>, so well-behaved clients back off.</li>
+      <li><b>Distributed:</b> keep counters in Redis with atomic increments, or accept per-instance limits.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Distributing data</h3>
+    <ul>
+      <li><b>Replication</b> copies data for availability and read scale. Leader-follower is the common model; multi-leader and leaderless trade consistency for write availability.</li>
+      <li><b>Partitioning / sharding</b> splits data for write scale and size. Choose a key that spreads load and matches the main access pattern.</li>
+      <li><b>Consistent hashing</b> places keys and nodes on a ring, so adding or removing a node moves only about 1/N of the keys. Used by caches and distributed stores.</li>
+      <li><b>Hot keys</b> (one celebrity, one big tenant, today's date) defeat even spreading. Split them, cache them, or add a random suffix.</li>
+      <li><b>Quorums:</b> with N replicas, reading R and writing W where R + W &gt; N guarantees a read sees the latest write.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Designing for failure</h3>
+    <ul>
+      <li><b>Timeouts on every network call</b>, shorter than the caller's own timeout.</li>
+      <li><b>Retries</b> only for idempotent operations, with backoff and jitter, and a cap.</li>
+      <li><b>Circuit breakers and bulkheads</b> so one sick dependency cannot take down the rest.</li>
+      <li><b>Graceful degradation:</b> serve cached or partial results, and say so. Never present "could not check" as "nothing found".</li>
+      <li><b>Redundancy:</b> multiple instances across zones; regional failover only if the requirement justifies the cost.</li>
+      <li><b>Backpressure:</b> queues with limits; shed load early (429/503) instead of collapsing.</li>
+      <li><b>Backups you have restored,</b> with a known recovery point (RPO: how much data you can lose) and recovery time (RTO: how long you can be down).</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Worked example: a URL shortener</h3>
+    <ul>
+      <li><b>Requirements:</b> create a short link; redirect fast; links never change; 100 M new links/year; reads 100× writes; 99.9% available.</li>
+      <li><b>Estimates:</b> writes ≈ 3/s average; reads ≈ 300/s, peak ~1,500/s. 100 M × 500 B ≈ 50 GB/year.</li>
+      <li><b>API:</b> <code>POST /links {url}</code> → <code>{code}</code>; <code>GET /{code}</code> → 301/302 redirect.</li>
+      <li><b>Data:</b> <code>link(code PK, url, created_at, owner)</code>. Access pattern is lookup by code only: any key-value store or Postgres works.</li>
+      <li><b>Code generation:</b> base62 of a unique ID (7 chars ≈ 3.5 trillion codes). Use a sequence or ID service to avoid collisions; random codes need a uniqueness check.</li>
+      <li><b>High level:</b> load balancer → stateless service → cache (hot codes) → database. CDN can cache redirects for popular links.</li>
+      <li><b>Deep dive:</b> reads are the load: cache-aside with long TTL works because links are immutable. Writes are tiny.</li>
+      <li><b>Trade-offs:</b> 301 is cached by browsers (fewer hits, no click counting); 302 keeps analytics. Click analytics go to a queue and a warehouse, not the redirect path.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Worked example: legal search over 20 M judgments</h3>
+    <ul>
+      <li><b>Requirements:</b> keyword and filter search (court, date, judge), open a judgment, cite-check a reference. Results within 500 ms at p95. Data refreshed daily. Court-ordered suppressions must apply everywhere immediately.</li>
+      <li><b>Estimates:</b> ~60 searches/s at peak; 20 M records, ~40 GB metadata, ~140 GB text.</li>
+      <li><b>Data flow:</b> open-data mirrors → landing bucket → warehouse layers (raw → foundation → consumable) → serving Postgres. The warehouse is the record; Postgres is a read-optimised copy. See <a href="/well-rounded-engineer/data/">Data Engineering</a>.</li>
+      <li><b>Serving:</b> stateless API on Cloud Run; Postgres with full-text (GIN) and B-tree indexes on filter columns; read replica for search; cache for hot queries and judgment pages.</li>
+      <li><b>Stable identity:</b> IDs never renumber, because URLs, citations and suppression orders refer to them. Loads upsert on a stable key.</li>
+      <li><b>Suppressions:</b> checked on every read path (search, page, API, exports) from the application database, not baked into the copy, so a new order takes effect without a reload.</li>
+      <li><b>Freshness and honesty:</b> each result carries its source and date; when a source is stale or unreachable, the API says so rather than returning a confident empty result.</li>
+      <li><b>Scaling later:</b> move search to a dedicated index (or add semantic search with embeddings) when relevance or load outgrows Postgres; keep Postgres for lookups.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>More practice problems</h3>
+    <ul>
+      <li>Rate limiter for a public API</li>
+      <li>Notification service (email, push, SMS) with retries and user preferences</li>
+      <li>News feed or timeline</li>
+      <li>Chat with presence and message history</li>
+      <li>File upload and processing pipeline</li>
+      <li>Job scheduler that runs millions of tasks reliably</li>
+      <li>Metrics and logging pipeline</li>
+      <li>RAG question-answering over company documents</li>
+      <li>Payment flow with a saga and idempotency keys</li>
+    </ul>
+    <p class="note">For each: run the method above, and write the trade-offs down. The written reasoning is the skill.</p>
+  </article>
+
+  <article class="card"><h3>Design doc template</h3>
+<div class="snip"><pre><code># Title
+## Context        why now, who asked, links
+## Goals          measurable; and non-goals
+## Requirements   functional / non-functional (with numbers)
+## Estimates      traffic, data, cost
+## Design         diagram, API, data model, request flow
+## Alternatives   what else was considered and why not
+## Failure modes  each dependency down / slow / wrong
+## Rollout        migration, flags, rollback plan
+## Observability  metrics, alerts, SLOs, run records
+## Security       data, access, threats
+## Open questions owner and due date for each</code></pre></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Follow the method: requirements, estimates, API, data, diagram</li><li>Name the building blocks and what each is for</li><li>Do back-of-the-envelope estimates</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a small service end to end with caching and a queue</li><li>Identify bottlenecks and failure modes</li><li>Write a design document others can build from</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for scale, availability targets and cost together</li><li>Choose storage and consistency models with clear trade-offs</li><li>Lead design reviews and challenge assumptions with numbers</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-region, highly available systems</li><li>Set reliability and capacity strategy for the organisation</li><li>Mentor others in design and trade-off thinking</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Consistent hashing and partitioning</li><li>Consensus (Raft) and leader election</li><li>Multi-region active-active design</li><li>Capacity planning and load testing</li><li>SLOs and error budgets</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a><span class="lnote"> Free, broad introduction with examples</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The deep reference behind most designs</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Reliability, SLOs, operations at scale</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Reliability, cost, security, performance pillars</span></li><li><a href="https://highscalability.com/" target="_blank" rel="noopener">High Scalability</a><span class="lnote"> Real-world architecture write-ups</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/eventsourcing/">← Event Sourcing</a><a class="pn-next" href="/well-rounded-engineer/performance/">Performance →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

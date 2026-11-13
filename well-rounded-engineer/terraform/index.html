@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terraform · Well Rounded Engineer</title>
+<meta name="description" content="HCL with the google provider: the CLI, state, the resources a data platform needs, and how to change things safely. Version tags show when a feature…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="terraform">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/" aria-current="page">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="terraform" data-name="Terraform">
+  <div class="panel-head"><h1>Terraform on GCP</h1><p>HCL with the <code>google</code> provider: the CLI, state, the resources a data platform needs, and how to change things safely. Version tags show when a feature arrived in Terraform.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>CLI workflow</h3>
+<div class="snip"><pre><code>terraform init                       # providers + backend
+terraform init -upgrade              # newer providers within constraints
+terraform fmt -recursive
+terraform validate
+terraform plan -var-file=env/dev.tfvars -out=plan.tfplan
+terraform show plan.tfplan           # read it before applying
+terraform apply plan.tfplan          # applies exactly what you read
+terraform plan -destroy
+
+terraform plan -target=module.landing          # emergency only
+terraform apply -replace=google_cloud_run_v2_job.loader
+terraform output -json
+terraform console                    # try expressions
+terraform providers lock -platform=linux_amd64 -platform=darwin_arm64</code></pre></div>
+    <p class="note"><code>validate</code> checks syntax and types only. A missing optional module argument or a wrong IAM wiring shows up in a plan, not before.</p>
+  </article>
+
+  <article class="card"><h3>Providers &amp; backend</h3>
+<div class="snip"><pre><code>terraform {
+  required_version = "&gt;= 1.7"
+  required_providers {
+    google = { source = "hashicorp/google", version = "~&gt; 7.0" }   # pin the major version you have tested
+  }
+  backend "gcs" {
+    bucket = "my-proj-tfstate"      # versioning on!
+    prefix = "dataplatform"
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  default_labels = { managed_by = "terraform", env = var.env }
+}
+
+# backend values cannot use variables; pass them at init:
+# terraform init -backend-config="bucket=my-proj-dev-tfstate"</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Variables, locals, outputs</h3>
+<div class="snip"><pre><code>variable "env" {
+  type = string
+  validation {
+    condition     = contains(["dev", "prod"], var.env)
+    error_message = "env must be dev or prod."
+  }
+}
+variable "stages" {
+  type = map(object({
+    enabled = bool
+    args    = optional(list(string), [])
+  }))
+}
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
+
+locals {
+  name_prefix = "dp-${var.env}"
+  enabled     = { for k, v in var.stages : k =&gt; v if v.enabled }
+}
+
+output "bucket_url" { value = google_storage_bucket.landing.url }
+
+# env/dev.tfvars
+env    = "dev"
+stages = { land = { enabled = true, args = ["--max-objects=50"] } }</code></pre></div>
+  </article>
+
+  <article class="card"><h3>count, for_each, dynamic</h3>
+<div class="snip"><pre><code># for_each over a set or map: stable addresses by key (prefer over count)
+resource "google_bigquery_dataset" "layer" {
+  for_each   = toset(["odp", "fdp", "cdp"])
+  dataset_id = "dp_${each.key}"
+  location   = var.region
+}
+# reference: google_bigquery_dataset.layer["fdp"].dataset_id
+
+# count for on/off
+resource "google_cloud_scheduler_job" "tick" {
+  count = var.clock_enabled ? 1 : 0
+  ...
+}
+# reference: one(google_cloud_scheduler_job.tick[*].id)
+
+# dynamic nested blocks
+dynamic "env" {
+  for_each = var.env_vars
+  content {
+    name  = env.key
+    value = env.value
+  }
+}
+
+# list of objects → map for for_each
+for_each = { for t in var.tables : t.name =&gt; t }</code></pre></div>
+    <p class="note">With <code>count</code>, removing an item in the middle renumbers everything after it and Terraform destroys and recreates those resources.</p>
+  </article>
+
+  <article class="card"><h3>BigQuery dataset &amp; table</h3>
+<div class="snip"><pre><code>resource "google_bigquery_dataset" "fdp" {
+  dataset_id                 = "dp_fdp"
+  location                   = "asia-south1"
+  delete_contents_on_destroy = false
+  labels = { layer = "fdp" }
+}
+
+resource "google_bigquery_table" "judgment" {
+  dataset_id          = google_bigquery_dataset.fdp.dataset_id
+  table_id            = "fdp_judgment"
+  deletion_protection = true
+  require_partition_filter = true
+
+  time_partitioning {
+    type  = "MONTH"
+    field = "decision_date"
+  }
+  clustering = ["court_code", "cnr"]
+
+  schema = jsonencode([
+    { name = "judgment_key",  type = "STRING", mode = "REQUIRED" },
+    { name = "court_code",    type = "STRING" },
+    { name = "cnr",           type = "STRING" },
+    { name = "decision_date", type = "DATE" },
+  ])
+}
+
+resource "google_bigquery_dataset_iam_member" "api_reader" {
+  dataset_id = google_bigquery_dataset.fdp.dataset_id
+  role       = "roles/bigquery.dataViewer"
+  member     = "serviceAccount:${google_service_account.api.email}"
+}</code></pre></div>
+    <p class="note">Tables that dbt builds should not also be declared here; two owners fight over the schema. Declare datasets and IAM, let dbt own its tables.</p>
+  </article>
+
+  <article class="card"><h3>GCS bucket</h3>
+<div class="snip"><pre><code>resource "google_storage_bucket" "landing" {
+  name                        = "${var.project_id}-landing"
+  location                    = "ASIA-SOUTH1"
+  storage_class               = "STANDARD"
+  uniform_bucket_level_access = true
+  public_access_prevention    = "enforced"
+  force_destroy               = false
+
+  versioning { enabled = true }
+
+  lifecycle_rule {
+    condition {
+      age            = 90
+      matches_prefix = ["tmp/"]
+    }
+    action { type = "Delete" }
+  }
+  lifecycle_rule {
+    condition { age = 365 }
+    action {
+      type          = "SetStorageClass"
+      storage_class = "COLDLINE"
+    }
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Cloud Run job + Cloud Scheduler</h3>
+<div class="snip"><pre><code>resource "google_cloud_run_v2_job" "loader" {
+  name     = "${local.name_prefix}-loader"
+  location = var.region
+  deletion_protection = false
+
+  template {
+    task_count = 1
+    template {
+      service_account = google_service_account.loader.email
+      timeout         = "3600s"
+      max_retries     = 0
+      containers {
+        image = var.loader_image          # pass a tag or digest, never :latest
+        args  = ["--year=2024"]
+        resources { limits = { cpu = "1", memory = "2Gi" } }
+        env {
+          name = "DB_PASSWORD"
+          value_source {
+            secret_key_ref {
+              secret  = google_secret_manager_secret.db.secret_id
+              version = "latest"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+resource "google_cloud_scheduler_job" "daily" {
+  name      = "${local.name_prefix}-daily"
+  region    = var.region
+  schedule  = "15 6 * * *"
+  time_zone = "Etc/UTC"
+  paused    = var.clock_paused
+  http_target {
+    http_method = "POST"
+    uri = "https://run.googleapis.com/v2/projects/${var.project_id}/locations/${var.region}/jobs/${google_cloud_run_v2_job.loader.name}:run"
+    oauth_token {
+      service_account_email = google_service_account.scheduler.email
+      scope                 = "https://www.googleapis.com/auth/cloud-platform"
+    }
+  }
+}</code></pre></div>
+    <p class="note">The scheduler's service account needs <code>roles/run.invoker</code> (or <code>run.developer</code> for overrides) on the job.</p>
+  </article>
+
+  <article class="card"><h3>IAM: member, binding, policy</h3>
+<div class="snip"><pre><code># _member: adds ONE principal to ONE role. Safe, composable. Use this.
+resource "google_project_iam_member" "loader_bq" {
+  project = var.project_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.loader.email}"
+}
+
+# _binding: OWNS the member list for one role (removes anyone else)
+# _policy:  OWNS the whole policy (removes everything else, can lock you out)
+
+resource "google_service_account" "loader" {
+  account_id   = "dp-loader"
+  display_name = "Corpus loader job"
+}
+
+# Workload Identity Federation for GitHub Actions: no JSON keys
+resource "google_service_account_iam_member" "gh_deploy" {
+  service_account_id = google_service_account.deploy.name
+  role               = "roles/iam.workloadIdentityUser"
+  member = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.gh.name}/attribute.repository/org/repo"
+}</code></pre></div>
+    <p class="note">Never mix <code>_policy</code> or <code>_binding</code> with <code>_member</code> for the same role: they overwrite each other on every apply.</p>
+  </article>
+
+  <article class="card"><h3>Modules</h3>
+<div class="snip"><pre><code>modules/pipeline-job/
+  main.tf  variables.tf  outputs.tf  versions.tf
+
+module "orchestrator" {
+  source        = "./modules/pipeline-job"
+  name          = "orchestrator"
+  image         = var.orchestrator_image
+  service_account_email = google_service_account.orch.email
+  args          = ["--tick"]
+}
+
+module "jobs" {                         # for_each on modules (0.13+)
+  source   = "./modules/pipeline-job"
+  for_each = local.enabled
+  name     = each.key
+  args     = each.value.args
+}
+
+output "job_names" { value = { for k, m in module.jobs : k =&gt; m.name } }
+
+# Registry / git sources: pin a version
+source  = "terraform-google-modules/cloud-storage/google"
+version = "~&gt; 9.0"
+source  = "git::https://github.com/org/tf-modules.git//bq?ref=<span data-other-version>v1.4.0</span>"</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Refactor without destroying</h3>
+<div class="snip"><pre><code># Bring an existing resource under management (1.5)
+import {
+  to = google_storage_bucket.landing
+  id = "my-proj-landing"
+}
+# terraform plan -generate-config-out=generated.tf
+
+# Rename / move into a module (1.1)
+moved {
+  from = google_cloud_run_v2_job.loader
+  to   = module.jobs["land"].google_cloud_run_v2_job.this
+}
+
+# Stop managing, keep the real resource (1.7)
+removed {
+  from = google_bigquery_table.legacy
+  lifecycle { destroy = false }
+}
+
+# CLI equivalents (no review step: prefer the blocks above)
+terraform state list
+terraform state show google_storage_bucket.landing
+terraform state mv  'a.b' 'module.x.a.b'
+terraform state rm  google_bigquery_table.legacy</code></pre></div>
+  </article>
+
+  <article class="card"><h3>lifecycle, checks, preconditions</h3>
+<div class="snip"><pre><code>resource "google_sql_database_instance" "corpus" {
+  ...
+  lifecycle {
+    prevent_destroy       = true           # plan fails instead of destroying
+    ignore_changes        = [settings[0].disk_size]   # autoresize owns it
+    create_before_destroy = false
+    precondition {
+      condition     = var.env != "prod" || var.tier != "db-f1-micro"
+      error_message = "prod needs a real tier."
+    }
+  }
+}
+
+# replace when something else changes (1.2)
+lifecycle { replace_triggered_by = [terraform_data.image_rev] }
+
+# check block: warns on every plan, never blocks (1.5)
+check "landing_bucket_reachable" {
+  data "google_storage_bucket" "l" { name = google_storage_bucket.landing.name }
+  assert {
+    condition     = data.google_storage_bucket.l.versioning[0].enabled
+    error_message = "Landing bucket versioning is off."
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Functions &amp; expressions</h3>
+<div class="snip"><pre><code>"${var.env}-landing"                  format("dp-%s-%03d", var.env, 7)
+join(",", var.courts)                 split(",", "a,b,c")
+merge(local.base_labels, var.labels)  concat(list_a, list_b)
+lookup(var.tiers, var.env, "small")   try(var.cfg.timeout, "600s")
+coalesce(var.override, "default")     one(resource.x[*].id)
+flatten([for d in var.datasets : [for t in d.tables : "${d.name}.${t}"]])
+toset(list)  keys(map)  values(map)   zipmap(keys, vals)
+setproduct(var.envs, var.regions)     contains(list, "x")
+can(regex("^[a-z]+$", var.name))
+jsonencode(obj)  yamldecode(file("${path.module}/rows.yaml"))
+templatefile("${path.module}/startup.sh.tftpl", { bucket = local.bucket })
+var.enabled ? "a" : "b"
+[for s in var.stages : upper(s) if s != "skip"]
+{ for k, v in var.stages : k =&gt; v.args }
+timestamp()   # changes every plan: avoid in resource arguments</code></pre></div>
+  </article>
+
+  <article class="card"><h3>terraform test (1.6)</h3>
+<div class="snip"><pre><code># tests/stages.tftest.hcl
+variables {
+  env    = "dev"
+  stages = { land = { enabled = true } }
+}
+
+run "bld_window_is_small" {
+  command = plan
+  assert {
+    condition     = length(local.enabled) &lt;= 4
+    error_message = "dev enables too many stages."
+  }
+}
+
+run "rejects_unknown_env" {
+  command   = plan
+  variables { env = "staging" }
+  expect_failures = [var.env]
+}
+
+# terraform test        (mock_provider "google" {} keeps it offline, 1.7+)</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Safety checklist</h3>
+    <ul>
+      <li><b>Read every plan line</b> that says <code>destroy</code> or <code>-/+</code> (replace). A replaced database or bucket loses its data.</li>
+      <li><b>State bucket:</b> versioning on, uniform access, only the deploy identity can write. State holds secrets in plain text.</li>
+      <li><b>One state per environment</b> (separate prefix or project). Workspaces suit identical copies, not dev vs prod with different shapes.</li>
+      <li><b>Pin providers</b> with <code>~&gt;</code> and commit <code>.terraform.lock.hcl</code>.</li>
+      <li><b>Images by tag or digest</b> from a variable, never <code>:latest</code>, so a plan shows when the image moves.</li>
+      <li><b>No secrets in tfvars.</b> Reference Secret Manager; mark variables <code>sensitive</code>.</li>
+      <li><b>Apply from CI</b> with Workload Identity Federation, from a saved plan file.</li>
+      <li><b>Config is not state:</b> after an apply, read the live resource to confirm it.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run init, plan and apply; read a plan</li><li>Change a resource's arguments safely</li><li>Use variables and outputs</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write reusable modules with validation</li><li>Manage state in a remote backend; use moved and import blocks</li><li>Run Terraform from CI with keyless auth</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design module and state layout for many environments</li><li>Refactor live infrastructure without destroying it</li><li>Write terraform tests and policy checks</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own infrastructure-as-code standards for the organisation</li><li>Design org-wide landing zones and guardrails</li><li>Lead provider upgrades and large migrations</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>State locking and drift detection</li><li>Policy as code (OPA, Sentinel)</li><li>Terraform test and mock providers</li><li>Ephemeral values and write-only arguments</li><li>Landing zones on GCP</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener">Terraform documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://developer.hashicorp.com/terraform/language" target="_blank" rel="noopener">Terraform language</a><span class="lnote"> HCL, modules, expressions, state</span></li><li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank" rel="noopener">Terraform tutorials</a><span class="lnote"> Step-by-step learning</span></li><li><a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs" target="_blank" rel="noopener">Google provider docs</a><span class="lnote"> Every GCP resource and argument</span></li><li><a href="https://cloud.google.com/docs/terraform" target="_blank" rel="noopener">Terraform on Google Cloud</a><span class="lnote"> Google's guides and best practices</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/harness/">← Harness</a><a class="pn-next" href="/well-rounded-engineer/kubernetes/">Kubernetes →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

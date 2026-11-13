@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Microservices · Well Rounded Engineer</title>
+<meta name="description" content="Building a system as small, independently deployable services that each own their data. When it pays off, how to split, how services talk and fail, and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="microservices">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/" aria-current="page">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="microservices" data-name="Microservices">
+  <div class="panel-head"><h1>Microservices</h1><p>Building a system as small, independently deployable services that each own their data. When it pays off, how to split, how services talk and fail, and the traps that turn microservices into a distributed monolith. Patterns referenced here are on <a href="/well-rounded-engineer/architecture/">Architecture</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Monolith, modular monolith, microservices</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Monolith</th><th>Modular monolith</th><th>Microservices</th></tr></thead>
+      <tbody>
+      <tr><td>Deployables</td><td>One</td><td>One, with enforced internal modules</td><td>Many, deployed independently</td></tr>
+      <tr><td>Data</td><td>One shared database</td><td>One database, schema per module</td><td>Each service owns its data</td></tr>
+      <tr><td>Calls between parts</td><td>In-process</td><td>In-process through module APIs</td><td>Over the network</td></tr>
+      <tr><td>Scaling</td><td>Whole app</td><td>Whole app</td><td>Per service</td></tr>
+      <tr><td>Team fit</td><td>One small team</td><td>One to a few teams</td><td>Many teams owning services end to end</td></tr>
+      <tr><td>Main cost</td><td>Tangling as it grows</td><td>Discipline to keep boundaries</td><td>Distributed-systems complexity and operations</td></tr>
+      </tbody></table></div>
+    <p class="note">Most systems should start as a modular monolith and extract a service only when a boundary has proved stable and there is a concrete reason: independent scaling, a different release cadence, a separate team, or different technology or security needs.</p>
+  </article>
+
+  <article class="card"><h3>What microservices buy, and cost</h3>
+    <p><b>Gains</b></p>
+    <ul>
+      <li>Teams deploy their service without coordinating a big release.</li>
+      <li>Scale and tune each service for its own load.</li>
+      <li>A failure can be contained to one service.</li>
+      <li>Different services can use different technologies where it helps.</li>
+    </ul>
+    <p><b>Costs</b></p>
+    <ul>
+      <li>Network calls fail, time out and add latency.</li>
+      <li>No cross-service transactions: sagas and eventual consistency instead.</li>
+      <li>Debugging needs distributed tracing; testing needs contracts.</li>
+      <li>Many pipelines, deployments, dashboards and on-call rotations.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>How to split services</h3>
+    <ul>
+      <li><b>By business capability or bounded context</b> (domain-driven design): search, case files, billing, identity. Not by technical layer (a "database service" is an anti-pattern).</li>
+      <li><b>Each service owns its data</b> and is the only one that writes it. Others ask through its API or react to its events.</li>
+      <li><b>High cohesion inside, loose coupling between:</b> a typical change should touch one service.</li>
+      <li><b>Align with teams</b> (Conway's law): one team owns a service end to end.</li>
+      <li><b>Size by responsibility, not lines of code.</b> Too many tiny services ("nano-services") multiply network calls and operations for no gain.</li>
+      <li><b>Test the split:</b> if two services must always deploy together, they are one service.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Communication</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Style</th><th>Use for</th><th>Watch out for</th></tr></thead>
+      <tbody>
+      <tr><td>Synchronous REST / gRPC</td><td>Queries that need an answer now</td><td>Chains of calls: latency adds up and availability multiplies down</td></tr>
+      <tr><td>Asynchronous events (Kafka, Pub/Sub)</td><td>Telling others something happened</td><td>Eventual consistency, duplicates, ordering</td></tr>
+      <tr><td>Asynchronous commands (queues)</td><td>Work another service should do</td><td>Retries, dead letters, idempotency</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Prefer events between domains; keep synchronous calls shallow (ideally one hop).</li>
+      <li>Cache or replicate the data you need from other services (from their events) rather than calling them on every request.</li>
+      <li>See <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>, <a href="/well-rounded-engineer/kafka/">Kafka</a> and <a href="/well-rounded-engineer/graphql/">GraphQL</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Infrastructure around services</h3>
+    <ul>
+      <li><b>Service discovery:</b> Kubernetes DNS names, Cloud Run URLs, or a registry. Never hard-code instance IPs.</li>
+      <li><b>API gateway</b> at the edge for authentication, rate limits and routing (<a href="/well-rounded-engineer/apigee/">Apigee</a>); a <b>backend for frontend</b> per client type when needs differ.</li>
+      <li><b>Service mesh</b> (Istio / Cloud Service Mesh) for mTLS, retries and traffic splitting between services, without code in each one.</li>
+      <li><b>Configuration and secrets</b> injected at runtime per environment.</li>
+      <li><b>Platform blueprint:</b> a service template with logging, tracing, health checks, security and CI already wired, so each new service starts correct.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Resilience in code (Spring + Resilience4j)</h3>
+<div class="snip"><pre><code>@Service
+class MirrorClient {
+  private final RestClient http;
+  MirrorClient(RestClient http) { this.http = http; }
+
+  @CircuitBreaker(name = "mirror", fallbackMethod = "unavailable")
+  @Retry(name = "mirror")
+  Listing list(String prefix) {
+    return http.get().uri("/objects?prefix={p}", prefix).retrieve().body(Listing.class);
+  }
+
+  // honest degradation: "cannot see", never "nothing there"
+  Listing unavailable(String prefix, Throwable t) {
+    return Listing.unknown("mirror unavailable: " + t.getMessage());
+  }
+}</code></pre></div>
+<div class="snip"><pre><code>resilience4j:
+  circuitbreaker:
+    instances:
+      mirror:
+        slidingWindowSize: 20
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+  retry:
+    instances:
+      mirror:
+        maxAttempts: 3
+        waitDuration: 200ms
+        enableExponentialBackoff: true</code></pre></div>
+    <p class="note">Quarkus offers the same through MicroProfile Fault Tolerance (<code>@Retry</code>, <code>@CircuitBreaker</code>, <code>@Timeout</code>, <code>@Fallback</code>). Always set a client timeout too.</p>
+  </article>
+
+  <article class="card"><h3>Data across services</h3>
+    <ul>
+      <li><b>Database per service:</b> separate schemas or instances; no other service reads its tables.</li>
+      <li><b>Cross-service transactions</b> become <b>sagas</b> with compensating steps.</li>
+      <li><b>Reliable events</b> with the <b>transactional outbox</b>, so a state change and its event never disagree.</li>
+      <li><b>Queries across services:</b> API composition (call and combine) for small cases; a <b>read model</b> built from events (CQRS) for heavy ones.</li>
+      <li><b>Reporting</b> goes to the warehouse via events or CDC, not by joining services' databases.</li>
+      <li>Details on <a href="/well-rounded-engineer/architecture/">Architecture</a> and <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Observability is not optional</h3>
+    <ul>
+      <li><b>Distributed tracing</b> (OpenTelemetry): one trace ID follows a request through every service, queue and database call.</li>
+      <li><b>Structured logs</b> with trace ID, service, version and request ID on every line.</li>
+      <li><b>Metrics per service:</b> rate, errors, duration (RED) and saturation; SLOs on user-facing ones.</li>
+      <li><b>Health endpoints:</b> liveness (restart me) separate from readiness (send me traffic).</li>
+      <li><b>Dependency maps</b> from traces show who calls whom, and where latency comes from.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Testing microservices</h3>
+    <ul>
+      <li><b>Unit and component tests</b> inside each service, with its own database in a container.</li>
+      <li><b>Contract tests</b> (Pact, Spring Cloud Contract) between consumers and providers, run in both pipelines, so a provider cannot break a consumer unnoticed.</li>
+      <li><b>A few end-to-end tests</b> of critical journeys in a shared environment.</li>
+      <li><b>Event schema checks</b> with a schema registry and compatibility rules.</li>
+      <li><b>Resilience tests:</b> kill or slow a dependency and check the caller degrades as designed.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security between services</h3>
+    <ul>
+      <li><b>Zero trust:</b> authenticate every call, even inside the network.</li>
+      <li><b>Service identity:</b> mTLS from a mesh, or Google-signed ID tokens between Cloud Run services.</li>
+      <li><b>User context:</b> propagate the user's token or a signed internal token; each service still checks its own permissions.</li>
+      <li><b>Least privilege per service:</b> its own service account, database user and secrets.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Anti-patterns</h3>
+    <ul>
+      <li><b>Distributed monolith:</b> services that must be deployed together or share a database.</li>
+      <li><b>Shared database</b> written by several services.</li>
+      <li><b>Chatty synchronous chains:</b> A calls B calls C calls D for one request.</li>
+      <li><b>Nano-services</b> too small to justify their operational cost.</li>
+      <li><b>Shared libraries with business logic</b> that force lock-step upgrades (shared infrastructure blueprints are fine).</li>
+      <li><b>No ownership:</b> services nobody is on call for.</li>
+      <li><b>Splitting before understanding the domain:</b> boundaries drawn too early are expensive to move.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Migrating from a monolith</h3>
+    <ol>
+      <li>Make the monolith modular first: enforce module boundaries and separate each module's data.</li>
+      <li>Pick one capability with a clear boundary and a real reason to move.</li>
+      <li>Put a routing layer (gateway or proxy) in front, and route that capability's traffic to the new service (<b>strangler fig</b>).</li>
+      <li>Move its data, with a period of syncing or dual reads, and make the new service the only writer.</li>
+      <li>Remove the old code. Repeat only if the first extraction paid off.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Readiness checklist</h3>
+    <ul>
+      <li>Can you deploy a service with one automated pipeline, in minutes?</li>
+      <li>Do you have centralised logs, metrics and tracing?</li>
+      <li>Can you create a new service from a template in under an hour?</li>
+      <li>Do teams own services end to end, including on-call?</li>
+      <li>Are the domain boundaries understood and stable?</li>
+    </ul>
+    <p class="note">If several answers are no, a modular monolith will serve you better for now.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain monolith vs modular monolith vs microservices</li><li>Work in one service: build, test, deploy, read its logs and traces</li><li>Know why services own their data</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a service with timeouts, retries, circuit breakers and health checks</li><li>Use events and the outbox to integrate with other services</li><li>Write contract tests with consumers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Draw service boundaries from the domain; decide when not to split</li><li>Design sagas, read models and observability across services</li><li>Lead a strangler-fig extraction from a monolith</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's service architecture and platform blueprint</li><li>Align team structure with service ownership</li><li>Decide when to consolidate services as well as split them</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts and context maps</li><li>Contract testing with Pact</li><li>Service mesh traffic management</li><li>Team Topologies</li><li>Platform engineering and service templates</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">Microservices (Martin Fowler &amp; James Lewis)</a><span class="lnote"> The original description and its trade-offs</span></li><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io</a><span class="lnote"> Pattern language: decomposition, data, communication, observability</span></li><li><a href="https://samnewman.io/books/building_microservices_2nd_edition/" target="_blank" rel="noopener">Building Microservices, 2nd ed. (Sam Newman)</a><span class="lnote"> The standard book on the subject</span></li><li><a href="https://samnewman.io/books/monolith-to-microservices/" target="_blank" rel="noopener">Monolith to Microservices (Sam Newman)</a><span class="lnote"> Migration patterns</span></li><li><a href="https://resilience4j.readme.io/docs" target="_blank" rel="noopener">Resilience4j</a><span class="lnote"> Circuit breakers, retries, bulkheads for Java</span></li><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry</a><span class="lnote"> Distributed tracing and metrics</span></li><li><a href="https://teamtopologies.com/" target="_blank" rel="noopener">Team Topologies</a><span class="lnote"> Organising teams around services and platforms</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/architecture/">← Architecture</a><a class="pn-next" href="/well-rounded-engineer/eventsourcing/">Event Sourcing →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

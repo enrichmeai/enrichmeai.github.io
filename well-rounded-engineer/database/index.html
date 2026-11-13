@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Database Design · Well Rounded Engineer</title>
+<meta name="description" content="Relational modelling, indexes, partitioning, sharding, transactions and migrations. Examples in PostgreSQL; the ideas carry to other engines. Warehouse…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="database">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/" aria-current="page">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="database" data-name="Database Design">
+  <div class="panel-head"><h1>Database design</h1><p>Relational modelling, indexes, partitioning, sharding, transactions and migrations. Examples in PostgreSQL; the ideas carry to other engines. Warehouse design is on the <a href="/well-rounded-engineer/bigquery/">BigQuery</a> tab.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Modelling rules</h3>
+    <ul>
+      <li><b>Start normalised</b> (third normal form): each fact stored once, in the table it describes. Denormalise later, on purpose, for a measured read need.</li>
+      <li><b>Every table has a primary key.</b> Surrogate (<code>bigint</code> identity or UUID) for internal identity; natural keys (CNR, email) get a <code>UNIQUE</code> constraint.</li>
+      <li><b>Never reuse or renumber a key</b> that others store: URLs, foreign systems, legal records.</li>
+      <li><b>Constraints are free correctness:</b> <code>NOT NULL</code>, <code>UNIQUE</code>, <code>CHECK</code>, <code>FOREIGN KEY</code>. The database enforces them for every writer, including the one you forgot.</li>
+      <li><b>Right types:</b> <code>date</code> / <code>timestamptz</code> not strings; <code>numeric</code> for money, never float; <code>text</code> over arbitrary <code>varchar(n)</code>; <code>jsonb</code> for truly variable attributes, not as a substitute for columns.</li>
+      <li><b>Name things plainly</b> and consistently: <code>snake_case</code>, singular or plural but one choice, <code>_at</code> for timestamps, <code>_id</code> for keys.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A schema example</h3>
+<div class="snip"><pre><code>CREATE TABLE court (
+  court_code text PRIMARY KEY,
+  name       text NOT NULL
+);
+
+CREATE TABLE judgment (
+  id            bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  judgment_key  text NOT NULL UNIQUE,             -- stable natural key
+  cnr           text NOT NULL,
+  court_code    text NOT NULL REFERENCES court,
+  decision_date date,
+  status        text NOT NULL CHECK (status IN ('DISPOSED','PENDING')),
+  full_text     text,
+  created_at    timestamptz NOT NULL DEFAULT now(),
+  updated_at    timestamptz NOT NULL DEFAULT now()
+);
+
+-- many-to-many through a join table
+CREATE TABLE judgment_citation (
+  citing_id bigint NOT NULL REFERENCES judgment ON DELETE CASCADE,
+  cited_id  bigint NOT NULL REFERENCES judgment,
+  PRIMARY KEY (citing_id, cited_id)
+);</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>Index types (PostgreSQL)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Type</th><th>Good for</th><th>Example</th></tr></thead>
+      <tbody>
+      <tr><td>B-tree (default)</td><td>Equality, ranges, sorting, prefix <code>LIKE 'abc%'</code> (with C collation, or an index using <code>text_pattern_ops</code>)</td><td><code>CREATE INDEX ON judgment (decision_date);</code></td></tr>
+      <tr><td>Composite</td><td>Filters on several columns; column order matters</td><td><code>(court_code, decision_date DESC)</code></td></tr>
+      <tr><td>Covering (<code>INCLUDE</code>)</td><td>Answering a query from the index alone (index-only scan)</td><td><code>(court_code) INCLUDE (cnr, decision_date)</code></td></tr>
+      <tr><td>Partial</td><td>Indexing only the rows you query; small and fast</td><td><code>(id) WHERE full_text IS NULL</code></td></tr>
+      <tr><td>Expression</td><td>Queries on a computed value</td><td><code>(lower(email))</code></td></tr>
+      <tr><td>Unique</td><td>Enforcing uniqueness, and lookups</td><td><code>UNIQUE (cnr, order_number)</code></td></tr>
+      <tr><td>GIN</td><td>Full-text search (<code>tsvector</code>), <code>jsonb</code> containment, arrays</td><td><code>USING gin (to_tsvector('english', full_text))</code></td></tr>
+      <tr><td>BRIN</td><td>Huge tables physically ordered by a column (append-only by time); tiny index</td><td><code>USING brin (created_at)</code></td></tr>
+      <tr><td>HNSW / IVFFlat (pgvector)</td><td>Approximate nearest-neighbour search on embeddings</td><td><code>USING hnsw (embedding vector_cosine_ops)</code></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Index rules of thumb</h3>
+    <ul>
+      <li><b>Index for your queries,</b> not your columns. Start from the slow query's <code>WHERE</code>, <code>JOIN</code> and <code>ORDER BY</code>.</li>
+      <li><b>Composite order:</b> equality columns first, then the range or sort column. <code>(court_code, decision_date)</code> serves <code>court_code = ? AND decision_date &gt; ?</code>; the reverse order serves it poorly.</li>
+      <li><b>Leftmost prefix:</b> an index on <code>(a, b, c)</code> helps queries on <code>a</code>, <code>a,b</code>, <code>a,b,c</code>, not on <code>b</code> alone.</li>
+      <li><b>Foreign keys</b> usually need an index on the referencing column, or deletes and joins scan.</li>
+      <li><b>Every index slows writes</b> and uses disk. Drop unused ones (<code>pg_stat_user_indexes.idx_scan = 0</code>).</li>
+      <li><b>Low-selectivity columns</b> (a boolean, a status with 3 values) rarely help alone; use a partial index instead.</li>
+      <li><b>Functions on columns</b> (<code>WHERE date(created_at) = …</code>) skip a plain index; write a range or index the expression.</li>
+      <li><b>Build on live tables with <code>CREATE INDEX CONCURRENTLY</code></b>, then confirm it is valid: an interrupted build leaves an INVALID index.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Reading a query plan</h3>
+<div class="snip"><pre><code>EXPLAIN (ANALYZE, BUFFERS)
+SELECT cnr, decision_date FROM judgment
+WHERE court_code = '2_5' AND decision_date &gt;= '2024-01-01'
+ORDER BY decision_date DESC LIMIT 20;
+
+-- look for:
+--   Seq Scan on a big table          → missing or unusable index
+--   rows=10 (estimated) vs actual rows=500000 → stale stats: ANALYZE
+--   Sort … external merge Disk       → work_mem too low, or index the sort
+--   Nested Loop with huge inner loops → join order or missing index
+--   Index Only Scan, Heap Fetches: 0 → ideal
+
+-- check index validity after a concurrent build
+SELECT indexrelid::regclass, indisvalid FROM pg_index WHERE NOT indisvalid;
+-- slowest queries (pg_stat_statements extension)
+SELECT query, calls, mean_exec_time FROM pg_stat_statements
+ORDER BY total_exec_time DESC LIMIT 10;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Partitioning (one database)</h3>
+<div class="snip"><pre><code>CREATE TABLE event (
+  id         bigserial,                -- identity columns on partitioned tables need PostgreSQL 17+
+  event_date date NOT NULL,
+  payload    jsonb,
+  PRIMARY KEY (id, event_date)          -- must include the partition key
+) PARTITION BY RANGE (event_date);
+
+CREATE TABLE event_2025 PARTITION OF event
+  FOR VALUES FROM ('2025-01-01') TO ('2026-01-01');
+CREATE TABLE event_2026 PARTITION OF event
+  FOR VALUES FROM ('2026-01-01') TO ('2027-01-01');
+CREATE TABLE event_default PARTITION OF event DEFAULT;
+
+-- retire old data instantly instead of a slow DELETE
+ALTER TABLE event DETACH PARTITION event_2025;
+DROP TABLE event_2025;
+
+-- other kinds:  PARTITION BY LIST (region)   PARTITION BY HASH (customer_id)</code></pre></div>
+    <ul>
+      <li><b>Why:</b> queries that filter on the key skip other partitions (pruning); old data drops in one statement; maintenance runs per partition.</li>
+      <li><b>When:</b> very large tables (tens of millions of rows and up) with a natural time or category filter. Small tables only get slower.</li>
+      <li><b>Cost:</b> unique constraints must include the partition key; queries without it scan every partition.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Sharding (many databases)</h3>
+    <ul>
+      <li><b>What:</b> split rows across separate database servers by a shard key, so each holds part of the data and load.</li>
+      <li><b>Shard key choice is the whole design:</b> high cardinality, evenly spread, present in almost every query (tenant ID, user ID).</li>
+      <li><b>Hash sharding</b> spreads load evenly but makes range queries hit every shard. <b>Range sharding</b> keeps ranges together but creates hot shards (all of today's writes on one).</li>
+      <li><b>Directory / lookup</b> sharding maps keys to shards in a table: flexible, but the directory becomes critical.</li>
+      <li><b>Costs:</b> cross-shard joins and transactions become application problems; resharding is a migration project; operations multiply.</li>
+      <li><b>Try first:</b> better indexes, read replicas, caching, partitioning, a bigger instance, archiving cold data. Shard when one primary truly cannot take the writes.</li>
+      <li><b>Managed options</b> do it for you: Spanner, AlloyDB with read pools, Citus, Vitess, CockroachDB.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Replication &amp; scaling reads</h3>
+    <ul>
+      <li><b>Read replicas</b> copy the primary asynchronously. Scale reads; accept replica lag (a user may not see their own write).</li>
+      <li><b>Synchronous replicas</b> confirm writes before commit: no data loss on failover, at the cost of write latency.</li>
+      <li><b>High availability</b> (Cloud SQL HA, Patroni) promotes a standby when the primary fails.</li>
+      <li><b>Connection pooling</b> (PgBouncer, HikariCP, R2DBC pool): Postgres connections are expensive. Size pools so instances × pool size stays under <code>max_connections</code>.</li>
+      <li><b>Caching</b> (Redis) for hot, read-heavy data, with a deliberate invalidation rule.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Transactions, isolation, locking</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Isolation</th><th>Prevents</th></tr></thead>
+      <tbody>
+      <tr><td>Read committed (Postgres default)</td><td>Dirty reads. Each statement sees data committed before it began.</td></tr>
+      <tr><td>Repeatable read</td><td>Non-repeatable reads: the transaction sees one snapshot throughout.</td></tr>
+      <tr><td>Serializable</td><td>All anomalies; transactions behave as if run one by one. Retry on serialization failure.</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>-- pessimistic: lock the row you will change
+SELECT * FROM account WHERE id = 7 FOR UPDATE;
+
+-- job queue: each worker claims different rows
+SELECT id FROM job WHERE state = 'READY'
+ORDER BY created_at LIMIT 10 FOR UPDATE SKIP LOCKED;
+
+-- optimistic: version column, fail if someone else changed it
+UPDATE doc SET body = $1, version = version + 1
+WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</code></pre></div>
+    <p class="note">Keep transactions short. A long one holds locks and stops vacuum cleaning up dead rows.</p>
+  </article>
+
+  <article class="card"><h3>Safe schema changes on live data</h3>
+    <ul>
+      <li><b>Additive first:</b> add a nullable column, a new table, a new index (concurrently). Safe and reversible.</li>
+      <li><b>Expand / contract for renames and type changes:</b> add the new column, write to both, backfill in batches, switch reads, stop writing the old, drop it in a later release.</li>
+      <li><b>Avoid long locks:</b> some <code>ALTER TABLE</code> forms rewrite the whole table. Set <code>lock_timeout</code> so a migration fails fast instead of blocking traffic.</li>
+      <li><b>Backfill in batches</b> (by ID range), committing as you go, not one giant UPDATE.</li>
+      <li><b>Version every change</b> with a migration tool (Liquibase, Flyway, Alembic), and never edit a migration that has already run in production.</li>
+      <li><b>Test on a production-sized copy;</b> a change that takes 30 s on 10k rows can take hours on 20M.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Anti-patterns</h3>
+    <ul>
+      <li><b>Entity-attribute-value</b> tables (<code>key</code>, <code>value</code> rows for everything): no types, no constraints, painful queries.</li>
+      <li><b>Comma-separated lists in a column:</b> use a join table or an array with a GIN index.</li>
+      <li><b>Floats for money</b> and strings for dates.</li>
+      <li><b>No foreign keys "for speed":</b> orphans and silent corruption cost more.</li>
+      <li><b>N+1 queries</b> from an ORM loop: one query per row instead of one join.</li>
+      <li><b><code>SELECT *</code></b> in application code: breaks when columns change, fetches what you do not need.</li>
+      <li><b>OFFSET pagination on deep pages:</b> use keyset pagination (<code>WHERE (date, id) &lt; ($1, $2) ORDER BY date DESC, id DESC LIMIT 20</code>).</li>
+      <li><b>Unbounded growth</b> with no retention or archiving plan.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>OLTP vs OLAP design</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>OLTP (Postgres)</th><th>OLAP (BigQuery)</th></tr></thead>
+      <tbody>
+      <tr><td>Workload</td><td>Many small reads/writes by key</td><td>Few large scans and aggregates</td></tr>
+      <tr><td>Storage</td><td>Row-oriented</td><td>Column-oriented</td></tr>
+      <tr><td>Schema</td><td>Normalised, constraints</td><td>Denormalised, nested, wide</td></tr>
+      <tr><td>Speed comes from</td><td>Indexes</td><td>Partitioning, clustering, reading fewer columns</td></tr>
+      <tr><td>Updates</td><td>Row by row, transactional</td><td>Batch loads and MERGE; avoid row-by-row DML</td></tr>
+      </tbody></table></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Design a normalised table with a primary key and constraints</li><li>Add an index for a slow lookup</li><li>Understand what a transaction guarantees</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Read EXPLAIN ANALYZE and fix the plan</li><li>Choose composite, partial and covering indexes</li><li>Write safe, additive migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Partition large tables; plan retention and archiving</li><li>Choose isolation levels and locking strategies</li><li>Plan replicas, pooling and capacity</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Decide between scaling up, partitioning, sharding or a distributed database</li><li>Run zero-downtime migrations on very large tables</li><li>Set database standards and review all schema changes</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MVCC and vacuum in Postgres</li><li>B-tree internals and index-only scans</li><li>Logical replication and change data capture</li><li>Isolation anomalies: write skew, phantom reads</li><li>Distributed SQL: Spanner, CockroachDB, Citus</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.postgresql.org/docs/current/" target="_blank" rel="noopener">PostgreSQL documentation</a><span class="lnote"> The reference for everything Postgres</span></li><li><a href="https://www.postgresql.org/docs/current/ddl-partitioning.html" target="_blank" rel="noopener">Postgres: table partitioning</a><span class="lnote"> Range, list, hash partitions and pruning</span></li><li><a href="https://www.postgresql.org/docs/current/transaction-iso.html" target="_blank" rel="noopener">Postgres: transaction isolation</a><span class="lnote"> What each level allows</span></li><li><a href="https://use-the-index-luke.com/" target="_blank" rel="noopener">Use The Index, Luke</a><span class="lnote"> Indexing explained for developers</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The standard book on storage, replication and partitioning</span></li><li><a href="https://explain.dalibo.com/" target="_blank" rel="noopener">explain.dalibo.com</a><span class="lnote"> Visualise Postgres query plans</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/sql/">← SQL Skills</a><a class="pn-next" href="/well-rounded-engineer/java/">Java →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

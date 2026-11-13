@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture · Well Rounded Engineer</title>
+<meta name="description" content="Event-driven systems, choreography vs orchestration, sagas, the outbox, and a full catalogue of architectural, data, cloud and integration patterns, each…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="architecture">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/" aria-current="page">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="architecture" data-name="Architecture">
+  <div class="panel-head"><h1>Architecture patterns</h1><p>Event-driven systems, choreography vs orchestration, sagas, the outbox, and a full catalogue of architectural, data, cloud and integration patterns, each with when to use it and what it costs. Ends with how to choose a style and record the decision.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Event-driven systems</h3>
+    <p>Services communicate by publishing <b>events</b> (facts about something that happened: <code>JudgmentLanded</code>, <code>OrderPaid</code>) to a broker. Other services subscribe and react. The producer does not know or wait for its consumers.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+      <tr><td>Event</td><td>Something that happened, past tense, immutable. Many consumers.</td></tr>
+      <tr><td>Command</td><td>A request to do something (<code>LoadPartition</code>). One handler, may be refused.</td></tr>
+      <tr><td>Broker</td><td>Pub/Sub, Kafka, Eventarc: stores and delivers messages.</td></tr>
+      <tr><td>Topic / subscription</td><td>Where events are published / one consumer group's view of them.</td></tr>
+      <tr><td>At-least-once</td><td>The usual guarantee: a message may arrive twice. Consumers must be idempotent.</td></tr>
+      <tr><td>Ordering</td><td>Usually not global. Use an ordering key (per order, per entity) when sequence matters.</td></tr>
+      <tr><td>Dead-letter queue</td><td>Where messages go after repeated failures, so one bad message does not block the rest.</td></tr>
+      </tbody></table></div>
+    <p><b>Gains:</b> loose coupling, independent scaling, new consumers added without touching producers. <b>Costs:</b> eventual consistency, harder debugging (no single call stack), duplicates and reordering to handle, schema changes that ripple to unknown consumers.</p>
+  </article>
+
+  <article class="card wide"><h3>Choreography vs orchestration</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Choreography</th><th>Orchestration</th></tr></thead>
+      <tbody>
+      <tr><td>How</td><td>Each service reacts to events and emits its own. No one is in charge.</td><td>A central orchestrator tells each service what to do next and tracks state.</td></tr>
+      <tr><td>Analogy</td><td>Dancers who each know their cue</td><td>A conductor with the score</td></tr>
+      <tr><td>Good for</td><td>Few steps, independent teams, fan-out reactions ("on landing, also index and notify")</td><td>Many steps, strict order, retries, compensation, a need to answer "where is this run?"</td></tr>
+      <tr><td>Risk</td><td>The overall flow exists only in people's heads; cycles and lost steps are hard to see</td><td>The orchestrator is a central dependency and can grow into a god service</td></tr>
+      <tr><td>Tools</td><td>Pub/Sub, Kafka, Eventarc</td><td>Airflow, Cloud Workflows, Temporal, Step Functions, a custom orchestrator with a ledger</td></tr>
+      </tbody></table></div>
+    <p class="note">Many systems mix them: orchestration inside a bounded process (a data pipeline's stages), choreography between domains (the pipeline publishes "ready"; the search team reacts).</p>
+  </article>
+
+  <article class="card wide"><h3>Saga: transactions across services</h3>
+    <p>A distributed transaction across several databases cannot use one ACID commit. A <b>saga</b> splits it into local transactions, each with a <b>compensating action</b> that undoes it if a later step fails.</p>
+<div class="snip"><pre><code>Book a paid subscription:
+  1. Billing:  create pending invoice        ↺ compensate: void invoice
+  2. Payments: charge card                   ↺ compensate: refund charge
+  3. Accounts: activate plan                 ↺ compensate: deactivate plan
+  4. Email:    send welcome                  (no compensation needed; last, pivot-free)
+
+Step 3 fails → run compensations in reverse: refund (2), void invoice (1).</code></pre></div>
+    <ul>
+      <li><b>Orchestrated saga:</b> a coordinator runs the steps and the compensations, and stores the saga's state. Easier to follow and test.</li>
+      <li><b>Choreographed saga:</b> each service listens for the previous step's event and emits its own, including failure events that trigger compensation.</li>
+      <li><b>Compensation is a new action, not a rollback:</b> a refund is not "un-charging". Some steps (an email sent) cannot be undone, so put them last.</li>
+      <li><b>Every step and compensation must be idempotent,</b> because messages repeat.</li>
+      <li><b>Expose intermediate states</b> (<code>PENDING</code>, <code>ACTIVE</code>, <code>CANCELLED</code>): other readers will see them.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Transactional outbox</h3>
+    <p>Problem: you update your database <i>and</i> publish an event. If one succeeds and the other fails, they disagree.</p>
+<div class="snip"><pre><code>BEGIN;
+  UPDATE orders SET status = 'PAID' WHERE id = 42;
+  INSERT INTO outbox (id, topic, payload, created_at)
+  VALUES (gen_random_uuid(), 'order.paid', '{"order_id":42}', now());
+COMMIT;
+
+-- relay process (or CDC on the outbox table)
+SELECT * FROM outbox WHERE published_at IS NULL
+ORDER BY created_at LIMIT 100 FOR UPDATE SKIP LOCKED;
+-- publish each, then
+UPDATE outbox SET published_at = now() WHERE id = ANY($1);</code></pre></div>
+    <p class="note">One local transaction makes the state change and the intent to publish atomic. The relay may publish twice; consumers dedupe by event ID.</p>
+  </article>
+
+  <article class="card"><h3>Idempotent consumers</h3>
+<div class="snip"><pre><code>-- remember what you processed, in the same transaction as the effect
+CREATE TABLE processed_events (event_id uuid PRIMARY KEY, processed_at timestamptz);
+
+BEGIN;
+  INSERT INTO processed_events VALUES ($event_id, now())
+  ON CONFLICT DO NOTHING;
+  -- if 0 rows inserted: duplicate, skip the effect
+  UPDATE accounts SET plan = 'pro' WHERE id = $account;
+COMMIT;</code></pre></div>
+    <ul>
+      <li>Prefer naturally idempotent operations: <code>SET status = 'PAID'</code> rather than <code>balance = balance + 10</code>.</li>
+      <li>APIs take an <b>idempotency key</b> header so a retried POST does not charge twice.</li>
+      <li>Batch jobs overwrite a partition or MERGE on a key.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>CQRS &amp; event sourcing</h3>
+    <ul>
+      <li><b>CQRS</b> (command query responsibility segregation): writes go to a model shaped for updates; reads come from separate models shaped for queries (a search index, a denormalised table). Reads are eventually consistent.</li>
+      <li><b>Event sourcing:</b> store the sequence of events as the source of truth; current state is derived by replaying them. Full audit history and time travel, at the cost of complexity, schema versioning of old events, and snapshots for speed.</li>
+      <li><b>Append-only ledger</b> is the lightweight version many data platforms use: one row per state change, current state from a "latest event" view. Never UPDATE, never DELETE.</li>
+      <li>Use them where history and audit are the product. Most CRUD services do not need either.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Common architectural patterns</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Pattern</th><th>What it is</th><th>Use when / watch out</th></tr></thead>
+      <tbody>
+      <tr><td>Layered (n-tier)</td><td>Controller → service → repository → database</td><td>Default for a service. Keep controllers thin and rules in services.</td></tr>
+      <tr><td>Hexagonal (ports &amp; adapters)</td><td>Domain logic in the centre; databases, APIs and queues are adapters behind interfaces</td><td>Logic you want to test without infrastructure, or swap providers.</td></tr>
+      <tr><td>Modular monolith</td><td>One deployable with enforced module boundaries</td><td>Most teams' best starting point. Split later along boundaries that proved real.</td></tr>
+      <tr><td>Microservices</td><td>Independently deployed services owning their data</td><td>Many teams, different scaling needs. Costs: network failures, distributed data, ops overhead.</td></tr>
+      <tr><td>API gateway</td><td>Single entry point: routing, auth, rate limits</td><td>Many backends behind one public surface.</td></tr>
+      <tr><td>Backend for frontend (BFF)</td><td>A thin API per client type (web, mobile)</td><td>Clients with very different data needs.</td></tr>
+      <tr><td>Strangler fig</td><td>Route features one by one from the old system to the new</td><td>Replacing a legacy system without a big-bang rewrite.</td></tr>
+      <tr><td>Cache-aside</td><td>Read the cache; on a miss read the DB and fill the cache</td><td>Read-heavy data that tolerates brief staleness. Decide invalidation up front.</td></tr>
+      <tr><td>Circuit breaker</td><td>Stop calling a failing dependency for a while; fail fast</td><td>Prevents one slow service taking down its callers.</td></tr>
+      <tr><td>Retry with backoff + jitter</td><td>Retry transient failures with growing, randomised waits</td><td>Only for idempotent calls. Cap attempts; never retry 4xx validation errors.</td></tr>
+      <tr><td>Bulkhead</td><td>Separate pools for separate dependencies</td><td>One slow dependency cannot exhaust all threads or connections.</td></tr>
+      <tr><td>Queue-based load levelling</td><td>Put work on a queue; workers drain it at their pace</td><td>Spiky load in front of a resource with fixed capacity.</td></tr>
+      <tr><td>Sidecar</td><td>A helper container next to the app (proxy, log shipper)</td><td>Cross-cutting concerns in Kubernetes and service meshes.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Consistency &amp; trade-offs</h3>
+    <ul>
+      <li><b>CAP:</b> during a network partition a distributed store chooses consistency (refuse some requests) or availability (answer, possibly stale).</li>
+      <li><b>PACELC:</b> and when there is no partition, it trades latency against consistency.</li>
+      <li><b>Strong consistency:</b> every read sees the latest write. <b>Eventual:</b> replicas converge, reads may lag. <b>Read-your-writes:</b> a user always sees their own changes.</li>
+      <li><b>Exactly-once</b> delivery is rarely real end to end; build at-least-once delivery plus idempotent processing.</li>
+      <li><b>Fallacies of distributed computing:</b> the network is not reliable, latency is not zero, bandwidth is not infinite, and the topology changes.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Design review checklist</h3>
+    <ul>
+      <li>Who owns each piece of data, and who may write it?</li>
+      <li>What happens when each dependency is slow, down, or returns garbage?</li>
+      <li>Which operations must be atomic, and how is that achieved across boundaries?</li>
+      <li>What is retried, and is it idempotent?</li>
+      <li>How do we see a request or run end to end (IDs, traces, ledger)?</li>
+      <li>What is the expected load, and what breaks first at 10×?</li>
+      <li>How do we deploy, migrate and roll back without downtime?</li>
+      <li>What is the simplest design that meets today's need?</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+  <article class="card wide"><h3>Pattern catalogue: architectural styles</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Style</th><th>Shape</th><th>Use when</th><th>Costs</th></tr></thead>
+      <tbody>
+      <tr><td>Layered (n-tier)</td><td>Presentation → business → persistence</td><td>Most CRUD services; easy to understand</td><td>Logic leaks across layers; changes cut through every layer</td></tr>
+      <tr><td>Hexagonal / ports and adapters</td><td>Domain core; databases, queues, APIs plug in through interfaces</td><td>Logic worth testing without infrastructure; swappable providers</td><td>More interfaces and mapping code</td></tr>
+      <tr><td>Clean / onion</td><td>Concentric rings; dependencies point inward to the domain</td><td>Long-lived, complex domains</td><td>Ceremony for simple services</td></tr>
+      <tr><td>Modular monolith</td><td>One deployable, enforced module boundaries</td><td>Default starting point for most products</td><td>Needs discipline and tooling to keep boundaries</td></tr>
+      <tr><td>Microservices</td><td>Independently deployed services owning data</td><td>Many teams, different scaling or release needs (<a href="/well-rounded-engineer/microservices/">tab</a>)</td><td>Distributed-systems complexity</td></tr>
+      <tr><td>Service-oriented (SOA)</td><td>Shared enterprise services, often via an ESB</td><td>Integrating large legacy estates</td><td>Central bus becomes a bottleneck</td></tr>
+      <tr><td>Event-driven</td><td>Producers emit events; consumers react</td><td>Decoupled reactions, fan-out, integration across domains</td><td>Eventual consistency; harder to trace</td></tr>
+      <tr><td>Microkernel / plug-in</td><td>Small core plus plug-ins</td><td>Products extended by customers or partners (IDEs, rule engines)</td><td>Plug-in contract must stay stable</td></tr>
+      <tr><td>Pipes and filters</td><td>Data flows through independent processing steps</td><td>Data pipelines, ETL, media processing</td><td>Error handling across steps; overhead between them</td></tr>
+      <tr><td>Space-based</td><td>Processing units with replicated in-memory data grids</td><td>Extreme, spiky load with low latency</td><td>Complex; data consistency is hard</td></tr>
+      <tr><td>Serverless</td><td>Functions and managed services, scale to zero</td><td>Spiky or low traffic, event handlers, small teams</td><td>Cold starts, limits, vendor coupling</td></tr>
+      <tr><td>CQRS</td><td>Separate write and read models</td><td>Reads and writes with very different shapes or scale</td><td>Two models; eventual consistency</td></tr>
+      <tr><td>Event sourcing</td><td>Events as the source of truth</td><td>Audit and history are the product (<a href="/well-rounded-engineer/eventsourcing/">tab</a>)</td><td>Event versioning, replay, learning curve</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Pattern catalogue: data architecture</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Pattern</th><th>Idea</th><th>Use when</th></tr></thead>
+      <tbody>
+      <tr><td>Layered / medallion (raw → foundation → consumable)</td><td>Each layer has one job; derivation runs one way</td><td>Any analytics platform (<a href="/well-rounded-engineer/data/">Data Engineering</a>)</td></tr>
+      <tr><td>Lambda architecture</td><td>A batch layer for accuracy plus a speed layer for freshness, merged at query time</td><td>Legacy; most teams now prefer kappa or streaming warehouses</td></tr>
+      <tr><td>Kappa architecture</td><td>One streaming path; reprocess by replaying the log</td><td>Event streams with replayable history (Kafka)</td></tr>
+      <tr><td>Lakehouse</td><td>Warehouse tables over open files in object storage</td><td>Several engines sharing the same data</td></tr>
+      <tr><td>Data mesh</td><td>Domains own and publish data products; a platform supports them</td><td>Large organisations where a central team is the bottleneck</td></tr>
+      <tr><td>Database per service</td><td>Each service owns its schema</td><td>Microservices</td></tr>
+      <tr><td>Change data capture</td><td>Stream a database's changes to other systems</td><td>Replication to warehouses, caches, search</td></tr>
+      <tr><td>Materialised view / read model</td><td>Precomputed query results kept up to date</td><td>Expensive queries read often</td></tr>
+      <tr><td>Claim check</td><td>Store a large payload in object storage; send only a reference in the message</td><td>Messages larger than the broker's limit</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Pattern catalogue: cloud and integration</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Pattern</th><th>Idea</th></tr></thead>
+      <tbody>
+      <tr><td>Anti-corruption layer</td><td>A translation layer that keeps a legacy or external model from leaking into your domain</td></tr>
+      <tr><td>Gateway routing / aggregation / offloading</td><td>One entry point routes requests, combines backend calls, or handles TLS, auth and rate limits</td></tr>
+      <tr><td>Backend for frontend</td><td>An API tailored to one client type</td></tr>
+      <tr><td>Strangler fig</td><td>Replace a system piece by piece behind a router</td></tr>
+      <tr><td>Competing consumers</td><td>Several workers read one queue to share load</td></tr>
+      <tr><td>Priority queue</td><td>Separate queues so urgent work is not stuck behind bulk work</td></tr>
+      <tr><td>Queue-based load levelling</td><td>A queue absorbs spikes in front of a fixed-capacity service</td></tr>
+      <tr><td>Throttling / rate limiting</td><td>Cap use per client to protect the system</td></tr>
+      <tr><td>Valet key</td><td>Give clients a short-lived signed URL to upload or download directly from storage</td></tr>
+      <tr><td>Static content hosting</td><td>Serve static files from object storage and a CDN</td></tr>
+      <tr><td>Leader election</td><td>One instance coordinates; others take over if it fails</td></tr>
+      <tr><td>Scheduler agent supervisor</td><td>Coordinate steps, watch them, retry or compensate failures</td></tr>
+      <tr><td>Health endpoint monitoring</td><td>Endpoints that report liveness and readiness</td></tr>
+      <tr><td>Sidecar / ambassador / adapter</td><td>Helper containers beside the app for proxying, telemetry or protocol translation</td></tr>
+      <tr><td>Compensating transaction</td><td>Undo completed steps when a later one fails (sagas)</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Choosing a style</h3>
+    <ol>
+      <li>List the quality attributes that matter most, in order: e.g. correctness and auditability, then cost, then latency.</li>
+      <li>Note the constraints: team size and skills, budget, regulations, existing systems.</li>
+      <li>Pick the simplest style that satisfies the top attributes; resist adding patterns "for later".</li>
+      <li>Identify the riskiest assumption and test it with a spike or prototype.</li>
+      <li>Record the decision and its trade-offs in an ADR.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Architecture decision record</h3>
+<div class="snip"><pre><code># ADR 0042: Serve corpus search from Postgres, not a search engine
+Status:   Accepted (2026-11-12)
+Context:  20 M judgments, ~60 searches/s peak, p95 &lt; 500 ms;
+          team already runs Postgres; no search-engine skills.
+Decision: Postgres full-text (GIN) + B-tree filters on a read replica;
+          revisit if p95 &gt; 500 ms or relevance complaints exceed X/month.
+Alternatives: Elasticsearch (more ops, better relevance);
+              BigQuery (latency too high for interactive search).
+Consequences: + one database to run  − relevance tuning limited
+Links:    load test results, issue #…</code></pre></div>
+    <p class="note">One decision per record, numbered, never edited after acceptance; supersede it with a new one. Keep them in the repo.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain layered and hexagonal architecture</li><li>Tell events from commands; choreography from orchestration</li><li>Recognise retries that need idempotency</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement outbox, idempotent consumers and retries with backoff</li><li>Design a saga with compensations</li><li>Apply circuit breakers, bulkheads and timeouts</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose monolith, modular monolith or services for a context</li><li>Design event-driven systems with contracts and evolution</li><li>Run design reviews and write decision records</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set architecture direction across many teams</li><li>Balance consistency, availability, cost and team structure</li><li>Lead large migrations (strangler fig) safely</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts</li><li>Architecture decision records (ADRs)</li><li>Event schema evolution and registries</li><li>CQRS and event sourcing in practice</li><li>Team topologies and Conway's law</li><li>Architecture characteristics and fitness functions</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io patterns</a><span class="lnote"> Saga, outbox, CQRS and more, with trade-offs</span></li><li><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Martin Fowler: architecture</a><span class="lnote"> Essays on patterns and evolution</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/" target="_blank" rel="noopener">Azure cloud design patterns</a><span class="lnote"> Vendor-neutral pattern catalogue</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging patterns</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures on GCP</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems (Unmesh Joshi)</a><span class="lnote"> Leader election, write-ahead log, quorum and more</span></li><li><a href="https://adr.github.io/" target="_blank" rel="noopener">Architecture decision records</a><span class="lnote"> Templates and tools for ADRs</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/quarkus/">← Quarkus</a><a class="pn-next" href="/well-rounded-engineer/microservices/">Microservices →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

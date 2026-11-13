@@ -257,13 +257,21 @@ class RealPages(unittest.TestCase):
             self.assertIn(project, crp.PROJECTS)
             self.assertIn("index.html", crp.PROJECTS[project].get("also", []))
 
-    def test_the_guide_is_checked_and_states_no_stray_version(self):
-        # /well-rounded-engineer/ names Culvert, so the Culvert run scans it for stray versions.
-        self.assertIn("well-rounded-engineer/index.html", crp.PROJECTS["culvert"].get("also", []))
-        root = crp.parse((ROOT / "well-rounded-engineer/index.html").read_text(encoding="utf-8"))
-        stray: list[str] = []
-        crp.stray_versions(root, crp.PREFIXES, stray)
-        self.assertEqual(sorted(set(stray)), [])
+    def test_every_guide_page_is_checked_and_states_no_stray_version(self):
+        # The guide names Culvert, so the Culvert run scans every one of its pages for stray versions.
+        pages = crp.also_pages(crp.PROJECTS["culvert"])
+        guide = [p for p in pages if p.is_relative_to(ROOT / "well-rounded-engineer")]
+        self.assertIn(ROOT / "well-rounded-engineer/index.html", guide)
+        self.assertIn(ROOT / "well-rounded-engineer/culvert/index.html", guide)
+        self.assertEqual(len(guide), len(list((ROOT / "well-rounded-engineer").glob("**/index.html"))))
+        for page in guide:
+            stray: list[str] = []
+            crp.stray_versions(crp.parse(page.read_text(encoding="utf-8")), crp.PREFIXES, stray)
+            self.assertEqual(sorted(set(stray)), [], page)
+
+    def test_a_pattern_that_matches_nothing_is_an_error(self):
+        with self.assertRaises(FileNotFoundError):
+            crp.also_pages({"also": ["no-such-folder/**/index.html"]})
 
 
 if __name__ == "__main__":

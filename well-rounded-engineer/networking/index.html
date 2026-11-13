@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Networking · Well Rounded Engineer</title>
+<meta name="description" content="Enough to read a VPC diagram, size a subnet, and work out why one thing cannot reach another. GCP terms where the cloud differs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="networking">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/" aria-current="page">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="networking" data-name="Networking">
+  <div class="panel-head"><h1>Networking basics</h1><p>Enough to read a VPC diagram, size a subnet, and work out why one thing cannot reach another. GCP terms where the cloud differs.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Layers that matter</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Layer</th><th>Unit</th><th>Examples</th></tr></thead>
+      <tbody>
+      <tr><td>7 Application</td><td>message</td><td>HTTP, gRPC, DNS, TLS-wrapped protocols</td></tr>
+      <tr><td>4 Transport</td><td>segment</td><td>TCP (ordered, reliable), UDP (fire and forget), ports</td></tr>
+      <tr><td>3 Network</td><td>packet</td><td>IP addresses, routing, ICMP (ping)</td></tr>
+      <tr><td>2 Link</td><td>frame</td><td>Ethernet, MAC addresses, ARP</td></tr>
+      </tbody></table></div>
+    <p class="note">"L4 load balancer" routes by IP and port. "L7 load balancer" reads HTTP: host, path, headers, and terminates TLS.</p>
+  </article>
+
+  <article class="card"><h3>IP addresses &amp; CIDR</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Prefix</th><th>Addresses</th><th>Typical use</th></tr></thead>
+      <tbody>
+      <tr><td>/32</td><td>1</td><td>one host (firewall rule, allowlist)</td></tr>
+      <tr><td>/28</td><td>16</td><td>small connector or proxy subnet</td></tr>
+      <tr><td>/24</td><td>256</td><td>a typical subnet</td></tr>
+      <tr><td>/20</td><td>4,096</td><td>GKE nodes or a large subnet</td></tr>
+      <tr><td>/16</td><td>65,536</td><td>a whole VPC range, or GKE pods</td></tr>
+      <tr><td>/8</td><td>16.7 M</td><td>10.0.0.0/8, the private block</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Addresses in a block = 2<sup>(32 − prefix)</sup>. Each step down the prefix doubles it.</li>
+      <li>Private ranges (RFC 1918): <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>. Shared/CGNAT: <code>100.64.0.0/10</code>.</li>
+      <li>GCP reserves 4 addresses in every subnet (network, gateway, second-to-last, broadcast).</li>
+      <li>Ranges that will ever be peered or connected by VPN must not overlap. Plan them up front.</li>
+      <li><code>0.0.0.0/0</code> means "anywhere". <code>127.0.0.1</code> is this machine only.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Ports to know</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Port</th><th>Service</th></tr></thead>
+      <tbody>
+      <tr><td>22</td><td>SSH</td></tr>
+      <tr><td>53</td><td>DNS (UDP, TCP for big answers)</td></tr>
+      <tr><td>80 / 443</td><td>HTTP / HTTPS (443 also UDP for HTTP/3)</td></tr>
+      <tr><td>3306 / 5432</td><td>MySQL / PostgreSQL</td></tr>
+      <tr><td>6379</td><td>Redis</td></tr>
+      <tr><td>8080</td><td>common app port; Cloud Run's default <code>PORT</code></td></tr>
+      <tr><td>9092</td><td>Kafka</td></tr>
+      <tr><td>6443</td><td>Kubernetes API server</td></tr>
+      <tr><td>10250</td><td>kubelet</td></tr>
+      <tr><td>30000–32767</td><td>Kubernetes NodePort range</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>DNS</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Record</th><th>Means</th></tr></thead>
+      <tbody>
+      <tr><td>A / AAAA</td><td>name → IPv4 / IPv6</td></tr>
+      <tr><td>CNAME</td><td>name → another name (not allowed at the zone apex)</td></tr>
+      <tr><td>MX</td><td>mail servers for the domain</td></tr>
+      <tr><td>TXT</td><td>free text: domain verification, SPF, DKIM</td></tr>
+      <tr><td>NS / SOA</td><td>which servers are authoritative for the zone</td></tr>
+      <tr><td>SRV</td><td>host + port for a service</td></tr>
+      <tr><td>PTR</td><td>IP → name (reverse lookup)</td></tr>
+      <tr><td>CAA</td><td>which CAs may issue certificates</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>dig legal.example.com A +short
+dig example.com NS
+dig +trace example.com          # follow delegation from the root
+dig @8.8.8.8 example.com        # ask a specific resolver
+nslookup example.com</code></pre></div>
+    <p class="note">TTL is how long resolvers cache an answer. Lower it a day before a planned change, not at the moment of it.</p>
+  </article>
+
+  <article class="card"><h3>HTTP &amp; TLS</h3>
+    <ul>
+      <li><b>Status classes:</b> 2xx ok, 3xx redirect, 4xx your request is wrong (401 no/invalid credentials, 403 authenticated but not allowed, 404 missing, 429 rate limited), 5xx the server failed (502 bad gateway, 503 unavailable, 504 upstream timeout).</li>
+      <li><b>HTTP/1.1</b> one request at a time per connection; <b>HTTP/2</b> multiplexes streams on one TCP connection (gRPC uses it); <b>HTTP/3</b> runs over QUIC on UDP.</li>
+      <li><b>TLS</b> proves the server's identity with a certificate chain to a trusted root, then encrypts. <b>SNI</b> sends the hostname so one IP can serve many certificates.</li>
+      <li><b>mTLS</b>: the client also presents a certificate. Common inside service meshes.</li>
+      <li>A proxy that terminates TLS can read and route on the request; one that passes it through (L4) cannot.</li>
+    </ul>
+<div class="snip"><pre><code>openssl s_client -connect example.com:443 -servername example.com &lt;/dev/null \
+  | openssl x509 -noout -subject -issuer -dates
+curl -vI https://example.com            # handshake, headers
+curl -o /dev/null -s -w 'dns %{time_namelookup} connect %{time_connect} tls %{time_appconnect} ttfb %{time_starttransfer} total %{time_total}\n' https://example.com</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Troubleshooting commands</h3>
+<div class="snip"><pre><code>ping -c 3 10.0.0.5               # ICMP reachability (often blocked; not proof)
+nc -vz db.internal 5432          # is the TCP port open?
+traceroute -n host / mtr host    # where packets stop
+curl -v http://svc:8080/health   # app-level answer
+ss -tulpn                        # what is listening locally
+ip addr; ip route                # my addresses and routes
+cat /etc/resolv.conf             # which resolver am I using
+getent hosts db.internal         # resolve the way apps do
+sudo tcpdump -i any -nn port 5432 -c 20   # see packets</code></pre></div>
+  </article>
+
+  <article class="card"><h3>"Cannot connect": read the error</h3>
+    <ul>
+      <li><b>Could not resolve host / NXDOMAIN:</b> DNS. Wrong name, wrong resolver, or a private zone not visible from here.</li>
+      <li><b>Connection refused:</b> the host answered but nothing listens on that port, or the app binds to <code>127.0.0.1</code> instead of <code>0.0.0.0</code>.</li>
+      <li><b>Connection timed out:</b> packets are dropped. Firewall, security group, missing route, or no NAT for egress.</li>
+      <li><b>TLS / certificate error:</b> name mismatch, expired certificate, missing intermediate, or a corporate proxy re-signing traffic.</li>
+      <li><b>403 from a proxy or website:</b> first suspect your own egress (datacentre IP, proxy policy) before blaming the far side.</li>
+      <li><b>Works locally, fails in the cloud:</b> compare egress path, DNS resolver and credentials, not code.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>NAT, proxies, load balancers</h3>
+    <ul>
+      <li><b>NAT</b> lets private hosts reach the internet through a shared public IP. Inbound connections are not possible through it.</li>
+      <li><b>Forward proxy</b> acts for clients going out (egress control, allowlists). <b>Reverse proxy</b> acts for servers taking traffic in (nginx, Envoy, cloud LBs).</li>
+      <li><b>Load balancer health checks</b> decide which backends get traffic. A failing check looks like a 502/503 to clients.</li>
+      <li><b>Stateful firewalls</b> allow the reply to an allowed connection automatically; you write rules for the initiating direction only.</li>
+      <li><b>Bastion / IAP tunnel</b> reaches private hosts without giving them public IPs.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>GCP networking map</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Piece</th><th>What it does</th></tr></thead>
+      <tbody>
+      <tr><td>VPC</td><td>Global private network. Subnets are regional and carry the IP ranges.</td></tr>
+      <tr><td>Firewall rules / policies</td><td>Stateful allow/deny, ingress or egress, targeted by network tag or service account. Default: deny ingress, allow egress.</td></tr>
+      <tr><td>Cloud NAT</td><td>Outbound internet for VMs, GKE nodes and Cloud Run (with VPC egress) that have no public IP. Gives a fixed egress IP to allowlist.</td></tr>
+      <tr><td>Private Google Access</td><td>Lets private-only hosts reach Google APIs (BigQuery, GCS) without a public IP.</td></tr>
+      <tr><td>Private Service Connect / private services access</td><td>Private IPs for managed services such as Cloud SQL, reachable only from the VPC.</td></tr>
+      <tr><td>Direct VPC egress / Serverless VPC Access connector</td><td>Connects Cloud Run and Cloud Functions to private IPs in the VPC.</td></tr>
+      <tr><td>Cloud Load Balancing</td><td>Global external HTTP(S) (L7), regional internal, and network (L4) load balancers. Managed certificates.</td></tr>
+      <tr><td>Cloud Armor</td><td>WAF and IP allow/deny in front of an external HTTP(S) load balancer.</td></tr>
+      <tr><td>Cloud DNS</td><td>Public and private zones; private zones resolve only inside chosen VPCs.</td></tr>
+      <tr><td>VPC Service Controls</td><td>A perimeter around Google APIs so data cannot be copied out to another project.</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>gcloud compute networks list
+gcloud compute networks subnets list --network=default
+gcloud compute firewall-rules list --format="table(name,direction,sourceRanges.list(),allowed[].map().firewall_rule().list(),targetTags.list())"
+gcloud compute routers nats list --router=my-router --region=asia-south1
+gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></pre></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain IP, port, DNS, TCP vs UDP and HTTP status classes</li><li>Use curl, dig and nc to test reachability</li><li>Tell a DNS failure from a refusal from a timeout</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Size subnets with CIDR; read firewall rules and routes</li><li>Debug TLS and certificate errors</li><li>Configure private access, NAT and egress for cloud workloads</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a VPC: ranges, subnets, private service access, load balancers</li><li>Choose L4 vs L7 load balancing and set health checks</li><li>Trace a latency problem across the network path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design hybrid and multi-region connectivity</li><li>Set network security policy for an organisation</li><li>Lead incident response for network-level outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>TCP handshake, congestion control and keep-alive</li><li>TLS 1.3 handshake and certificate chains</li><li>HTTP/2 and HTTP/3 (QUIC)</li><li>Anycast, global load balancing and CDNs</li><li>VPC Service Controls and Private Service Connect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://hpbn.co/" target="_blank" rel="noopener">High Performance Browser Networking (free book)</a><span class="lnote"> TCP, TLS, HTTP/2 explained for engineers</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN: HTTP</a><span class="lnote"> Methods, headers, caching, CORS</span></li><li><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">Cloudflare Learning Center</a><span class="lnote"> Clear explainers on DNS, TLS, CDN, DDoS</span></li><li><a href="https://cloud.google.com/vpc/docs/overview" target="_blank" rel="noopener">Google Cloud VPC overview</a><span class="lnote"> Networks, subnets, firewall, routes on GCP</span></li><li><a href="https://cloud.google.com/load-balancing/docs/load-balancing-overview" target="_blank" rel="noopener">Cloud Load Balancing overview</a><span class="lnote"> Which load balancer for which job</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/linux/">← Linux</a><a class="pn-next" href="/well-rounded-engineer/web/">Web Fundamentals →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

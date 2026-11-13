@@ -29,10 +29,11 @@
 
 .eg { padding-top: 24px; padding-bottom: 56px; font-size: 15.5px; line-height: 1.55; }
 .eg .eg-intro { margin: 0 0 22px; max-width: 75ch; color: var(--color-neutral-700); }
-.eg .eg-tagline { font-family: var(--font-heading); font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 10px; }
+.eg .eg-tagline { font-family: var(--font-heading); font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+.eg .eg-smile { width: 1.4em; height: 1.4em; flex: none; }
 .eg .eg-intro h1 { max-width: none; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; margin-bottom: 8px; color: var(--color-text); }
 .eg .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 14px; }
-.eg .panel-head h2 { font-size: clamp(24px, 3vw, 30px); line-height: 1.15; }
+.eg .panel-head h1, .eg .panel-head h2 { font-size: clamp(26px, 3.4vw, 34px); line-height: 1.15; max-width: none; margin: 0; }
 .eg .panel-head p { margin: 0; color: var(--color-neutral-700); max-width: 75ch; }
 .eg .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr)); gap: 14px; align-items: start; }
 .eg .card {
@@ -101,3 +102,14 @@
 @media (max-width: 620px) {
   .eg-bar .search { max-width: none; margin-left: 0; }
 }
+
+/* One page per section: the product label links back to the guide's first page, a previous/next
+   pair ends each page, and a search lists matches on the other pages. */
+a.product-label:hover { text-decoration: none; color: var(--color-accent-800); }
+.eg .eg-pn { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin: 28px 0 0; padding-top: 16px; border-top: 1px solid var(--color-divider); font-family: var(--font-heading); font-weight: 600; font-size: 17px; }
+.eg .eg-pn .pn-next { margin-left: auto; }
+.eg .elsewhere { margin: 22px 0 0; }
+.eg .elsewhere h2 { font-size: 20px; margin: 0 0 8px; }
+.eg .elsewhere ul { padding-left: 20px; margin: 0; }
+.eg .elsewhere li { margin: 6px 0; }
+.eg .elsewhere a { font-weight: 600; }

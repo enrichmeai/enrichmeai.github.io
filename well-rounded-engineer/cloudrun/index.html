@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloud Run · Well Rounded Engineer</title>
+<meta name="description" content="Serverless containers on GCP: services that answer requests, and jobs that run to completion. Deploy, scale, secure, connect and debug.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="cloudrun">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/" aria-current="page">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="cloudrun" data-name="Cloud Run">
+  <div class="panel-head"><h1>Cloud Run</h1><p>Serverless containers on GCP: services that answer requests, and jobs that run to completion. Deploy, scale, secure, connect and debug.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Services, jobs, worker pools</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Kind</th><th>Runs when</th><th>Use it for</th></tr></thead>
+      <tbody>
+      <tr><td>Service</td><td>A request arrives (HTTP, gRPC, WebSocket, Pub/Sub push, Eventarc)</td><td>APIs, web apps, webhooks. Scales on traffic, down to zero.</td></tr>
+      <tr><td>Job</td><td>Someone executes it (CLI, API, Cloud Scheduler, Workflows)</td><td>Batch loads, migrations, nightly exports. Runs N tasks in parallel, then exits.</td></tr>
+      <tr><td>Worker pool</td><td>Always, with no HTTP endpoint</td><td>Pull-based consumers (Kafka, Pub/Sub pull). Newer resource: check it is available in your region.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Container contract</h3>
+    <ul>
+      <li><b>Listen on <code>$PORT</code></b> (default 8080) on <code>0.0.0.0</code>, not <code>127.0.0.1</code>. Jobs do not listen at all.</li>
+      <li><b>Stateless.</b> Any instance can serve any request; instances come and go.</li>
+      <li><b>The filesystem is in memory</b> and counts against the memory limit. Write big files to GCS or a mounted volume.</li>
+      <li><b>Shutdown:</b> the container gets <code>SIGTERM</code>, then about 10 seconds before <code>SIGKILL</code>. Flush and close there.</li>
+      <li><b>Logs:</b> anything written to stdout/stderr goes to Cloud Logging.</li>
+      <li><b>Jobs:</b> exit code 0 means the task succeeded; anything else fails it (and retries it if <code>max-retries</code> &gt; 0).</li>
+      <li><b>Platform:</b> build images for <code>linux/amd64</code>. An arm64 image from a Mac will not start.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Deploy a service</h3>
+<div class="snip"><pre><code>gcloud run deploy api \
+  --image=asia-south1-docker.pkg.dev/my-proj/apps/api:3f2a9c1 \
+  --region=asia-south1 \
+  --service-account=api@my-proj.iam.gserviceaccount.com \
+  --no-allow-unauthenticated \
+  --cpu=1 --memory=1Gi \
+  --concurrency=80 --min-instances=0 --max-instances=10 \
+  --timeout=300 \
+  --cpu-boost \
+  --set-env-vars=APP_PROFILE=prod,DATASET=fdp \
+  --set-secrets=DB_PASSWORD=db-password:3 \
+  --labels=env=prod,team=data
+
+# build from source with Cloud Build + buildpacks / Dockerfile
+gcloud run deploy api --source . --region=asia-south1
+
+gcloud run services describe api --region=asia-south1 --format='value(status.url)'
+gcloud run services list</code></pre></div>
+    <p class="note"><code>--set-env-vars</code> replaces all env vars; <code>--update-env-vars</code> adds or changes only the ones named.</p>
+  </article>
+
+  <article class="card"><h3>Revisions &amp; traffic</h3>
+<div class="snip"><pre><code># deploy without sending traffic; reach it at a tagged URL
+gcloud run deploy api --image=…:4b1c2d0 --no-traffic --tag=canary
+# → https://canary---api-xxxxx.a.run.app
+
+# shift 10% to the new revision
+gcloud run services update-traffic api \
+  --to-revisions=api-00042-xyz=10,api-00041-abc=90
+
+gcloud run services update-traffic api --to-latest     # 100% to newest
+gcloud run services update-traffic api --to-tags=canary=100
+
+# roll back = send traffic to the previous revision
+gcloud run revisions list --service=api --region=asia-south1
+gcloud run services update-traffic api --to-revisions=api-00041-abc=100</code></pre></div>
+    <p class="note">Every deploy or config change creates a new immutable revision. Settings live on the revision, so rolling back traffic also rolls back env vars and secrets.</p>
+  </article>
+
+  <article class="card"><h3>Jobs</h3>
+<div class="snip"><pre><code>gcloud run jobs deploy loader \
+  --image=asia-south1-docker.pkg.dev/my-proj/apps/loader:3f2a9c1 \
+  --region=asia-south1 \
+  --service-account=loader@my-proj.iam.gserviceaccount.com \
+  --tasks=10 --parallelism=5 \
+  --task-timeout=3600s --max-retries=0 \
+  --cpu=2 --memory=4Gi \
+  --args=--year=2024
+
+gcloud run jobs execute loader --region=asia-south1 --wait
+gcloud run jobs execute loader --wait \
+  --args=--year=2023 --update-env-vars=DRY_RUN=true   # overrides for this run only
+
+gcloud run jobs executions list --job=loader --region=asia-south1
+gcloud run jobs executions describe loader-abc12 --region=asia-south1
+gcloud run jobs executions cancel loader-abc12 --region=asia-south1</code></pre></div>
+    <p class="note">An execution's status is Cloud Run's word on whether the container exited 0. Whether it did the right work is your job to record, e.g. a summary row or log line per run.</p>
+  </article>
+
+  <article class="card"><h3>Shard work across job tasks</h3>
+    <p>Every task gets these environment variables:</p>
+    <ul>
+      <li><code>CLOUD_RUN_TASK_INDEX</code>: 0 … tasks − 1</li>
+      <li><code>CLOUD_RUN_TASK_COUNT</code>: the <code>--tasks</code> value</li>
+      <li><code>CLOUD_RUN_TASK_ATTEMPT</code>: 0 on the first try</li>
+      <li><code>CLOUD_RUN_EXECUTION</code>, <code>CLOUD_RUN_JOB</code>: names for logs and run records</li>
+    </ul>
+<div class="snip"><pre><code># Python
+import os
+i = int(os.environ.get("CLOUD_RUN_TASK_INDEX", 0))
+n = int(os.environ.get("CLOUD_RUN_TASK_COUNT", 1))
+mine = [u for k, u in enumerate(sorted(all_uris)) if k % n == i]
+
+// Java
+int i = Integer.parseInt(System.getenv().getOrDefault("CLOUD_RUN_TASK_INDEX", "0"));
+int n = Integer.parseInt(System.getenv().getOrDefault("CLOUD_RUN_TASK_COUNT", "1"));
+List&lt;String&gt; mine = IntStream.range(0, uris.size())
+    .filter(k -&gt; k % n == i).mapToObj(uris::get).toList();</code></pre></div>
+    <p class="note">Sort the input first so every task sees the same order. Make each task idempotent: a retry repeats the whole shard.</p>
+  </article>
+
+  <article class="card"><h3>Scaling &amp; cost</h3>
+    <ul>
+      <li><b>Concurrency</b> (default 80, max 1000): requests one instance handles at once. Set 1 only for code that is not thread-safe.</li>
+      <li><b>Min instances</b> keep warm instances to avoid cold starts; they bill while idle.</li>
+      <li><b>Max instances</b> cap spend and protect downstream databases (connections = instances × pool size).</li>
+      <li><b>CPU allocation:</b> by default CPU is only allocated during requests, so background threads stall after the response. <code>--no-cpu-throttling</code> keeps CPU on (instance-based billing).</li>
+      <li><b>Startup CPU boost</b> (<code>--cpu-boost</code>) gives extra CPU while the container starts: helps JVM cold starts.</li>
+      <li><b>Cold start cuts:</b> smaller images, lazy initialisation, CDS/AOT for Java, Quarkus or Spring native images.</li>
+      <li><b>Jobs</b> bill for the time each task runs, at the CPU and memory you asked for.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Calling private services</h3>
+<div class="snip"><pre><code># grant the caller the invoker role
+gcloud run services add-iam-policy-binding api --region=asia-south1 \
+  --member=serviceAccount:caller@my-proj.iam.gserviceaccount.com \
+  --role=roles/run.invoker
+
+# from your terminal
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" https://api-xxxxx.a.run.app/health
+gcloud run services proxy api --region=asia-south1 --port=8080   # local tunnel</code></pre></div>
+<div class="snip"><pre><code># Python: ID token whose audience is the service URL
+import google.auth.transport.requests, google.oauth2.id_token, requests
+aud = "https://api-xxxxx.a.run.app"
+tok = google.oauth2.id_token.fetch_id_token(google.auth.transport.requests.Request(), aud)
+requests.get(f"{aud}/health", headers={"Authorization": f"Bearer {tok}"})
+
+// Java (google-auth-library)
+IdTokenCredentials creds = IdTokenCredentials.newBuilder()
+    .setIdTokenProvider((IdTokenProvider) GoogleCredentials.getApplicationDefault())
+    .setTargetAudience(aud).build();
+creds.refresh();
+String token = creds.getIdToken().getTokenValue();</code></pre></div>
+    <p class="note">Services need an ID token (audience = URL). Google APIs, including the Cloud Run Admin API that executes a job, need an access token.</p>
+  </article>
+
+  <article class="card"><h3>Networking</h3>
+<div class="snip"><pre><code># who may reach the service
+--ingress=all                                  # internet (still IAM-checked)
+--ingress=internal                             # VPC and some Google sources only
+--ingress=internal-and-cloud-load-balancing    # put a load balancer / Cloud Armor in front
+
+# reach private IPs (Memorystore, internal services) with Direct VPC egress
+--network=main --subnet=run-egress --vpc-egress=private-ranges-only
+--vpc-egress=all-traffic        # everything via VPC → Cloud NAT gives a static egress IP
+
+# Cloud SQL via the built-in connector: unix socket in the container
+--add-cloudsql-instances=my-proj:asia-south1:corpus
+# JDBC: jdbc:postgresql:///corpus?cloudSqlInstance=my-proj:asia-south1:corpus&amp;socketFactory=com.google.cloud.sql.postgres.SocketFactory
+# psycopg: host=/cloudsql/my-proj:asia-south1:corpus</code></pre></div>
+    <p class="note">A third party that allowlists IPs needs <code>all-traffic</code> egress through Cloud NAT with a reserved address. Without it, egress comes from shared Google ranges.</p>
+  </article>
+
+  <article class="card"><h3>Secrets, config, volumes</h3>
+<div class="snip"><pre><code># secret as env var: read once, when the instance starts
+--set-secrets=DB_PASSWORD=db-password:3
+
+# secret as a file: read when your code opens it
+--set-secrets=/secrets/sa.json=sa-key:latest
+
+# the runtime service account needs to read it
+gcloud secrets add-iam-policy-binding db-password \
+  --member=serviceAccount:api@my-proj.iam.gserviceaccount.com \
+  --role=roles/secretmanager.secretAccessor
+
+# GCS bucket or in-memory volume
+--add-volume=name=data,type=cloud-storage,bucket=my-landing \
+--add-volume-mount=volume=data,mount-path=/data
+--add-volume=name=scratch,type=in-memory,size-limit=1Gi</code></pre></div>
+    <p class="note">Pin secret versions (<code>:3</code>) in prod so a rotation is a deliberate deploy. With <code>:latest</code> in an env var, running instances keep the old value until they restart.</p>
+  </article>
+
+  <article class="card"><h3>Triggers</h3>
+    <ul>
+      <li><b>Cloud Scheduler → job:</b> POST to <code>https://run.googleapis.com/v2/projects/P/locations/R/jobs/J:run</code> with an OAuth token (see the Terraform tab).</li>
+      <li><b>Cloud Scheduler → service:</b> HTTP target with an OIDC token whose audience is the service URL.</li>
+      <li><b>Pub/Sub push:</b> subscription pushes to the service URL with an OIDC token; return 2xx to ack, anything else retries.</li>
+      <li><b>Eventarc:</b> route events (GCS object finalised, BigQuery job done, audit log entries) to a service.</li>
+      <li><b>Cloud Tasks:</b> queued HTTP calls with rate limits and retries.</li>
+      <li><b>Workflows:</b> run jobs in sequence, wait for each, branch on results.</li>
+    </ul>
+<div class="snip"><pre><code>gcloud eventarc triggers create on-landing --location=asia-south1 \
+  --destination-run-service=ingest --destination-run-region=asia-south1 \
+  --event-filters=type=google.cloud.storage.object.v1.finalized \
+  --event-filters=bucket=my-landing \
+  --service-account=eventarc@my-proj.iam.gserviceaccount.com</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Dockerfiles that start fast</h3>
+<div class="snip"><pre><code># Java (Spring Boot / Quarkus jar)
+FROM eclipse-temurin:21-jdk AS build
+WORKDIR /src
+COPY . .
+RUN ./gradlew bootJar -x test
+
+FROM eclipse-temurin:21-jre
+RUN useradd -u 1001 app
+USER 1001
+COPY --from=build /src/build/libs/app.jar /app.jar
+ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75 -XX:+UseSerialGC"
+ENTRYPOINT ["java", "-jar", "/app.jar"]</code></pre></div>
+<div class="snip"><pre><code># Python
+FROM python:3.12-slim
+ENV PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+USER 1001
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app</code></pre></div>
+<div class="snip"><pre><code>docker buildx build --platform linux/amd64 -t asia-south1-docker.pkg.dev/my-proj/apps/api:$(git rev-parse --short=12 HEAD) --push .</code></pre></div>
+    <p class="note">Use the exec form (<code>["java", …]</code> or <code>exec</code>) so your process is PID 1 and receives <code>SIGTERM</code>.</p>
+  </article>
+
+  <article class="card"><h3>Logging &amp; health</h3>
+<div class="snip"><pre><code># one JSON object per line on stdout → structured log entry
+{"severity":"ERROR","message":"load failed","uri":"gs://…","run_id":"r-42",
+ "logging.googleapis.com/trace":"projects/my-proj/traces/abc123"}
+
+gcloud logging read 'resource.type="cloud_run_revision"
+  AND resource.labels.service_name="api" AND severity&gt;=ERROR' --freshness=1h --limit=50
+gcloud logging read 'resource.type="cloud_run_job"
+  AND resource.labels.job_name="loader" AND severity&gt;=ERROR' --freshness=1d --limit=20</code></pre></div>
+<div class="snip"><pre><code># service.yaml fragment: probes
+spec:
+  template:
+    spec:
+      containers:
+        - image: …
+          startupProbe:
+            httpGet: { path: /health/started, port: 8080 }
+            failureThreshold: 30
+            periodSeconds: 2
+          livenessProbe:
+            httpGet: { path: /health/live, port: 8080 }</code></pre></div>
+    <p class="note">Without <code>severity</code>, every line is logged at DEFAULT, and severity-based alerts never fire.</p>
+  </article>
+
+  <article class="card"><h3>Declarative YAML</h3>
+<div class="snip"><pre><code>gcloud run services describe api --region=asia-south1 --format=export &gt; service.yaml
+# edit, then:
+gcloud run services replace service.yaml --region=asia-south1
+
+gcloud run jobs describe loader --region=asia-south1 --format=export &gt; job.yaml
+gcloud run jobs replace job.yaml --region=asia-south1</code></pre></div>
+    <p class="note">The YAML follows the Knative Serving schema. In a team, keep the definition in Terraform (<code>google_cloud_run_v2_service</code> / <code>_job</code>) and use the CLI for reading and one-off executions.</p>
+  </article>
+
+  <article class="card wide"><h3>Errors and what they usually mean</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Symptom</th><th>Usually means</th></tr></thead>
+      <tbody>
+      <tr><td>"Container failed to start and listen on the port defined by PORT"</td><td>App listens on the wrong port or on 127.0.0.1, crashes on boot (missing env var or secret), or the image is arm64. Read the revision's logs.</td></tr>
+      <tr><td>403 calling a service</td><td>Caller lacks <code>roles/run.invoker</code>, sent an access token instead of an ID token, or the token's audience is not the service URL.</td></tr>
+      <tr><td>404 calling a service</td><td>Wrong URL or region, or ingress is <code>internal</code> and you called from outside the VPC.</td></tr>
+      <tr><td>429 / "no available instance"</td><td><code>max-instances</code> reached with all instances at full concurrency.</td></tr>
+      <tr><td>503 with "Memory limit exceeded" in logs</td><td>OOM: raise <code>--memory</code>, or stop writing large files to the in-memory filesystem.</td></tr>
+      <tr><td>504 / request cancelled</td><td>Request ran past <code>--timeout</code>.</td></tr>
+      <tr><td>Permission denied on secret</td><td>Runtime service account lacks <code>secretmanager.secretAccessor</code> on that secret.</td></tr>
+      <tr><td>Image pull denied</td><td>The Cloud Run service agent cannot read the Artifact Registry repo (common across projects).</td></tr>
+      <tr><td>Job execution FAILED, logs empty</td><td>Task timed out, was OOM-killed, or crashed before logging. <code>executions describe</code> shows the reason per task.</td></tr>
+      <tr><td>Background work never finishes</td><td>CPU is throttled after the response. Finish before responding, use <code>--no-cpu-throttling</code>, or hand the work to a job or Cloud Tasks.</td></tr>
+      </tbody></table></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Deploy a service and read its logs</li><li>Execute a job and check its result</li><li>Roll traffic back to a previous revision</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Set scaling, CPU, memory, concurrency and timeouts deliberately</li><li>Secure services with IAM, secrets and service accounts</li><li>Connect to private resources with VPC egress</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design job sharding, retries and run records</li><li>Tune cold starts and cost</li><li>Design service-to-service auth and traffic management</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the serverless platform blueprint for the organisation</li><li>Decide Cloud Run vs GKE vs other compute</li><li>Design multi-region serverless architectures</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Container runtime contract</li><li>Direct VPC egress and Cloud NAT</li><li>Startup CPU boost and minimum instances</li><li>Cloud Run jobs with Workflows</li><li>Eventarc triggers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/run/docs" target="_blank" rel="noopener">Cloud Run documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://cloud.google.com/run/docs/container-contract" target="_blank" rel="noopener">Container runtime contract</a><span class="lnote"> What your container must do</span></li><li><a href="https://cloud.google.com/run/docs/create-jobs" target="_blank" rel="noopener">Cloud Run jobs</a><span class="lnote"> Create and execute jobs</span></li><li><a href="https://cloud.google.com/run/docs/tips/general" target="_blank" rel="noopener">General development tips</a><span class="lnote"> Performance and cost tips</span></li><li><a href="https://cloud.google.com/run/quotas" target="_blank" rel="noopener">Quotas and limits</a><span class="lnote"> Memory, CPU, timeouts, request size</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/bigquery/">← BigQuery</a><a class="pn-next" href="/well-rounded-engineer/apigee/">Apigee →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

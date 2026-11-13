@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frameworks vs AI · Well Rounded Engineer</title>
+<meta name="description" content="AI can generate a new service, pipeline or Terraform stack in minutes. That makes it tempting to generate every time. This tab explains why a well-built…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="blueprints">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/" aria-current="page">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="blueprints" data-name="Frameworks vs AI Boilerplate">
+  <div class="panel-head"><h1>Frameworks and blueprints vs AI-generated boilerplate</h1><p>AI can generate a new service, pipeline or Terraform stack in minutes. That makes it tempting to generate every time. This tab explains why a well-built framework usually wins, when generation is the right call, and how to use AI to build and maintain the framework instead.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The core argument</h3>
+    <p>Writing code was never the main cost; <b>owning</b> it is. Every copy of generated boilerplate must be reviewed, secured, tested, upgraded, debugged and understood by the next person. Generation makes the cheap part cheaper and multiplies the expensive part. A framework makes each decision once, tests it once, fixes it once, and upgrades everyone together.</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Generate per project</th><th>Framework / blueprint</th></tr></thead>
+      <tbody>
+      <tr><td>Time to first version</td><td>Minutes</td><td>Minutes, once the framework exists</td></tr>
+      <tr><td>Consistency</td><td>Each copy differs subtly (retries, logging, auth, errors)</td><td>Same behaviour everywhere</td></tr>
+      <tr><td>Fixing a bug or CVE</td><td>Find and patch N copies; some get missed</td><td>Patch once, release, bump versions</td></tr>
+      <tr><td>Review burden</td><td>Hundreds of generated lines per PR</td><td>Only the business-specific part</td></tr>
+      <tr><td>Security</td><td>Each copy may reintroduce a known hole</td><td>Secure defaults, tested once</td></tr>
+      <tr><td>Upgrades (Java, Spring, providers)</td><td>N separate migrations</td><td>One migration in the framework, then a version bump</td></tr>
+      <tr><td>Onboarding</td><td>Every repo is a new dialect</td><td>Learn the framework once</td></tr>
+      <tr><td>Knowledge</td><td>Decisions live in prompts nobody kept</td><td>Decisions in versioned, reviewed code and docs</td></tr>
+      <tr><td>AI output quality</td><td>Model guesses your conventions from public code</td><td>Model extends your framework; smaller, consistent output</td></tr>
+      <tr><td>Total cost over 2 years</td><td>Grows with every copy</td><td>Mostly fixed, shared</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>A cost model in one line</h3>
+<div class="snip"><pre><code>generated:  N copies × (review + security fix + upgrade + drift) per year
+framework:  build once + maintain once + N × (small version bump)
+
+With N = 15 services, 3 framework-level fixes a year, ~1 day each:
+  generated:  15 × 3 = 45 fix-days, plus drift
+  framework:   1 × 3 =  3 fix-days + 15 version bumps (automatable)</code></pre></div>
+    <p class="note">The numbers are illustrative; the shape is the point. The gap grows with every new copy and every year.</p>
+  </article>
+
+  <article class="card"><h3>When generation is the right call</h3>
+    <ul>
+      <li><b>One-off scripts</b> and investigations you will delete.</li>
+      <li><b>Prototypes and spikes</b> to learn whether an idea works.</li>
+      <li><b>Filling a framework's slots:</b> the business logic, the new query, its tests.</li>
+      <li><b>Codemods:</b> AI-written scripts that apply the same change across many repos (an upgrade, a rename), reviewed once.</li>
+      <li><b>Tests and documentation</b> for code that follows the framework.</li>
+      <li><b>Before the third repetition:</b> the first two times, write or generate it directly; you do not yet know what to abstract.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>When not to build a framework</h3>
+    <ul>
+      <li><b>Rule of three:</b> abstract after three real uses, not one imagined future.</li>
+      <li><b>Inner-platform effect:</b> a framework so configurable it becomes a worse version of the language or tool it wraps.</li>
+      <li><b>Business logic in shared libraries:</b> forces lock-step releases between teams. Share infrastructure concerns, not domain rules.</li>
+      <li><b>No owner:</b> a framework without a maintaining team decays faster than copies.</li>
+      <li><b>Escape hatches missing:</b> teams need a supported way to do the unusual thing without forking.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>What a blueprint looks like in this stack</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Area</th><th>Blueprint</th><th>What it decides once</th></tr></thead>
+      <tbody>
+      <tr><td>Services</td><td>Service template + internal Spring Boot starter or Quarkus extension</td><td>Logging format, tracing, health checks, error responses, security config, Dockerfile</td></tr>
+      <tr><td>Jobs</td><td>A job library + Terraform module for a Cloud Run job</td><td>Run records, exit codes, counters, retries, IAM, scheduling</td></tr>
+      <tr><td>Data</td><td>dbt macros, generic tests, packages, project template</td><td>Layer conventions, key computation, date parsing that rejects, test baseline</td></tr>
+      <tr><td>Infrastructure</td><td>Terraform modules (bucket, dataset, job, service)</td><td>Encryption, labels, IAM, deletion protection, naming</td></tr>
+      <tr><td>Delivery</td><td>Harness or GitHub Actions templates; reusable workflows</td><td>Build once, scan, deploy by artefact, approvals, rollback</td></tr>
+      <tr><td>APIs</td><td>Apigee shared flows; OpenAPI style guide and linting</td><td>Auth, rate limits, error format, versioning</td></tr>
+      <tr><td>Observability</td><td>Dashboard and alert templates; OpenTelemetry config</td><td>Golden signals, SLO alerts, runbook links</td></tr>
+      <tr><td>AI</td><td>Repo context files (CLAUDE.md), skills, hooks, an MCP server template, eval harness</td><td>How agents work in the repo, which checks run, what "done" means</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Using AI to build the framework</h3>
+    <ol>
+      <li>Collect the 3+ existing implementations; ask AI to list what they share and where they differ.</li>
+      <li>Decide the framework's API and its escape hatches yourself; that is the design work.</li>
+      <li>Let AI draft the framework code, tests and documentation against that design.</li>
+      <li>Review it like any critical library; add contract tests.</li>
+      <li>Let AI write codemods that migrate each existing project onto it, one PR per repo.</li>
+      <li>Point every repo's AI context file at the framework, so future work extends it instead of reinventing it.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Keeping a framework healthy</h3>
+    <ul>
+      <li><b>An owning team</b> with a roadmap, changelog and support channel.</li>
+      <li><b>Semantic versioning</b>; breaking changes rare, announced, with migration guides and codemods.</li>
+      <li><b>Automated upgrades</b> (Renovate or Dependabot) open version bumps in every consumer.</li>
+      <li><b>Golden path, not a cage:</b> the easy way is the right way, and the unusual way is possible.</li>
+      <li><b>Scorecards</b> (e.g. in a Backstage catalogue) show which services are on current versions.</li>
+      <li><b>Measure adoption and time to first deploy</b> for new services.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Decision guide</h3>
+    <ul>
+      <li>Will this exist in more than one place for more than a few months? → <b>blueprint</b>.</li>
+      <li>Does it carry security, compliance or reliability rules? → <b>blueprint</b>, even for two uses.</li>
+      <li>Is it unique business logic? → <b>write it</b> (with AI help) inside the blueprint's slots.</li>
+      <li>Is it throwaway or exploratory? → <b>generate</b>, and delete it afterwards.</li>
+      <li>Is it the same change across many repos? → <b>AI-written codemod</b>, reviewed once.</li>
+    </ul>
+    <p class="note">AI is the bulldozer; the framework is the road. Build the road once and drive on it, rather than bulldozing a new track for every trip.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain why owning generated code costs more than writing it</li><li>Use the team's templates and libraries instead of generating new boilerplate</li><li>Fill a blueprint's slots with AI help</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Spot repeated code and propose a blueprint after the third use</li><li>Write codemods with AI to apply a change across repos</li><li>Point AI context files at the blueprints</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design framework APIs with escape hatches</li><li>Own a blueprint: versioning, docs, migration guides</li><li>Decide build vs generate with a cost model</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Run a platform team with golden paths and scorecards</li><li>Set the organisation's policy on AI generation vs shared frameworks</li><li>Measure developer productivity and adoption</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Platform engineering and golden paths</li><li>Backstage software templates and scorecards</li><li>Codemods (OpenRewrite for Java, LibCST for Python)</li><li>Semantic versioning and deprecation</li><li>Inner-platform effect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://tag-app-delivery.cncf.io/whitepapers/platforms/" target="_blank" rel="noopener">Platform engineering (CNCF white paper)</a><span class="lnote"> What internal platforms are for</span></li><li><a href="https://backstage.io/docs/features/software-templates/" target="_blank" rel="noopener">Backstage software templates</a><span class="lnote"> Scaffolding from organisation templates</span></li><li><a href="https://docs.openrewrite.org/" target="_blank" rel="noopener">OpenRewrite</a><span class="lnote"> Automated refactoring and upgrades for Java</span></li><li><a href="https://docs.renovatebot.com/" target="_blank" rel="noopener">Renovate</a><span class="lnote"> Automated dependency and version updates</span></li><li><a href="https://semver.org/" target="_blank" rel="noopener">Semantic Versioning</a><span class="lnote"> Version numbers that communicate compatibility</span></li><li><a href="https://teamtopologies.com/" target="_blank" rel="noopener">Team Topologies</a><span class="lnote"> Platform teams and their consumers</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/ai/">← AI for Engineers</a><a class="pn-next" href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

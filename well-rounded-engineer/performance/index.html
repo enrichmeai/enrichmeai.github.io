@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance · Well Rounded Engineer</title>
+<meta name="description" content="Making systems fast enough at a cost you can afford, by measurement rather than guesswork. The method, the laws that explain slowness, load testing,…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="performance">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/" aria-current="page">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="performance" data-name="Performance Engineering">
+  <div class="panel-head"><h1>Performance engineering</h1><p>Making systems fast enough at a cost you can afford, by measurement rather than guesswork. The method, the laws that explain slowness, load testing, profiling for the JVM and Python, and where time usually goes in services, databases and pipelines.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The method</h3>
+    <ol>
+      <li><b>Set a goal in numbers:</b> "p95 search latency under 500 ms at 60 requests/s", "nightly load finishes in 40 minutes", "cost under ₹X per 1,000 requests". No goal, no finish line.</li>
+      <li><b>Measure the current state</b> in a production-like environment with realistic data and traffic.</li>
+      <li><b>Find the bottleneck:</b> the one resource or step limiting everything (CPU, memory, I/O, a lock, a query, a dependency). Use traces and profiles, not intuition.</li>
+      <li><b>Change one thing</b> that addresses it.</li>
+      <li><b>Measure again</b> the same way. Keep the change only if the numbers improved and nothing else got worse.</li>
+      <li><b>Repeat</b> until the goal is met, then stop. Then guard it with a performance test in CI.</li>
+    </ol>
+    <p class="note">Most of the gain usually comes from one or two fixes: a missing index, an N+1 query, a synchronous chain, an oversized payload. Find those before tuning anything clever.</p>
+  </article>
+
+  <article class="card"><h3>Laws worth knowing</h3>
+    <ul>
+      <li><b>Little's law:</b> items in the system = arrival rate × time in system (L = λW). 100 requests/s × 0.2 s = 20 requests in flight, so you need about 20 concurrent workers or connections.</li>
+      <li><b>Amdahl's law:</b> speeding up a part only helps by that part's share. Making a step that takes 10% of the time infinitely fast saves 10%.</li>
+      <li><b>Queueing:</b> as utilisation approaches 100%, waiting time grows sharply, not linearly. Plan for 60–70% utilisation at peak.</li>
+      <li><b>Tail amplification:</b> if one call is slow 1% of the time, a request that fans out to 100 such calls is slow 1 − 0.99<sup>100</sup> ≈ 63% of the time.</li>
+      <li><b>Latency vs throughput:</b> batching raises throughput and usually raises latency; tune for whichever the goal names.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Percentiles, not averages</h3>
+    <ul>
+      <li>An average hides the users having a bad time. Report p50 (typical), p95 and p99 (the tail), and max.</li>
+      <li>You cannot average percentiles across instances; compute them from histograms.</li>
+      <li>Measure at the edge the user sees (load balancer, client), and also per dependency.</li>
+      <li>Watch for coordinated omission in load tests: a tool that waits for slow responses before sending the next request under-reports latency. Use open-model (arrival-rate) tests.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Kinds of performance test</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Test</th><th>Question</th></tr></thead>
+      <tbody>
+      <tr><td>Load</td><td>Do we meet the goal at expected peak?</td></tr>
+      <tr><td>Stress</td><td>Where does it break, and how does it fail?</td></tr>
+      <tr><td>Spike</td><td>What happens on a sudden 10× burst? Does autoscaling keep up?</td></tr>
+      <tr><td>Soak</td><td>Does it degrade over hours (leaks, growing queues)?</td></tr>
+      <tr><td>Capacity</td><td>How much traffic per instance, and what will growth cost?</td></tr>
+      <tr><td>Micro-benchmark</td><td>Is this function faster than that one? (JMH, pytest-benchmark)</td></tr>
+      </tbody></table></div>
+    <p class="note">Load-test example with k6 is on the <a href="/well-rounded-engineer/testing/">Testing</a> tab. Test against production-sized data; a query fast on 10,000 rows can be slow on 20 million.</p>
+  </article>
+
+  <article class="card"><h3>Profiling the JVM</h3>
+<div class="snip"><pre><code># Java Flight Recorder: low overhead, safe in production
+jcmd &lt;pid&gt; JFR.start duration=60s filename=/tmp/rec.jfr
+# or at startup
+java -XX:StartFlightRecording=duration=60s,filename=rec.jfr -jar app.jar
+# open rec.jfr in JDK Mission Control: hot methods, allocations, locks, GC
+
+# async-profiler: flame graphs of CPU, allocation or wall-clock time
+asprof -d 30 -e cpu   -f cpu.html   &lt;pid&gt;
+asprof -d 30 -e alloc -f alloc.html &lt;pid&gt;
+
+jcmd &lt;pid&gt; GC.heap_info
+jcmd &lt;pid&gt; Thread.print            # thread dump: what is everyone waiting on?</code></pre></div>
+    <ul>
+      <li><b>Flame graph:</b> width = time spent; look for wide plateaus near the top.</li>
+      <li><b>Containers:</b> set <code>-XX:MaxRAMPercentage</code>; watch GC pause time and allocation rate.</li>
+      <li><b>Startup:</b> CDS/AOT caches, lazy initialisation, or native images for scale-to-zero.</li>
+      <li><b>Blocking I/O:</b> virtual threads (21+) raise concurrency cheaply; CPU-bound work still needs cores.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Micro-benchmarks done right (JMH)</h3>
+<div class="snip"><pre><code>@State(Scope.Benchmark)
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@Warmup(iterations = 3) @Measurement(iterations = 5) @Fork(1)
+public class ParseBench {
+  String raw = "05-05-1959";
+
+  @Benchmark
+  public LocalDate parse() {
+    return DecisionDateParser.parse(raw);    // return the result so it is not optimised away
+  }
+}</code></pre></div>
+    <p class="note">Hand-written timing loops on the JVM lie: no warm-up, dead-code elimination, JIT effects. Use JMH, and only after a profile shows the code matters.</p>
+  </article>
+
+  <article class="card"><h3>Profiling Python</h3>
+<div class="snip"><pre><code># sampling profiler, attach to a running process, no code changes
+py-spy top --pid 1234
+py-spy record -o profile.svg --pid 1234          # flame graph
+
+# deterministic profiler for a script
+python -m cProfile -o out.prof -m loader
+python -c "import pstats; pstats.Stats('out.prof').sort_stats('cumtime').print_stats(20)"
+
+# memory
+python -X importtime -m loader 2&gt; imports.txt  # slow imports
+pip install memray &amp;&amp; memray run -m loader     # allocations</code></pre></div>
+    <ul>
+      <li>Replace Python loops over rows with vectorised work: SQL in the warehouse, Polars, PyArrow, NumPy.</li>
+      <li>Threads or asyncio for I/O-bound work; processes for CPU-bound work.</li>
+      <li>Stream large files instead of reading them whole into memory.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Where time usually goes</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Area</th><th>Common cause</th><th>Fix</th></tr></thead>
+      <tbody>
+      <tr><td>Database</td><td>Missing index, N+1 queries, fetching unused columns, lock waits</td><td>EXPLAIN ANALYZE, indexes, joins or batch loads, select only needed columns (<a href="/well-rounded-engineer/database/">Database Design</a>)</td></tr>
+      <tr><td>Connection pools</td><td>Pool too small (queueing) or too large (database overload)</td><td>Size from Little's law; watch pool wait time</td></tr>
+      <tr><td>Service calls</td><td>Sequential calls, no timeouts, new connection per call</td><td>Parallelise independent calls, keep-alive, HTTP/2, timeouts</td></tr>
+      <tr><td>Payloads</td><td>Huge JSON responses, no compression, no pagination</td><td>Paginate, compress, return only needed fields</td></tr>
+      <tr><td>Serialisation</td><td>Reflection-heavy mapping in hot paths</td><td>Profile; precompiled serialisers; smaller objects</td></tr>
+      <tr><td>Memory and GC</td><td>High allocation rate, heap too small, large object churn</td><td>Profile allocations; reuse buffers; tune heap and collector</td></tr>
+      <tr><td>Cold starts</td><td>Large images, eager initialisation, JVM warm-up</td><td>Smaller images, CPU boost, min instances, AOT/native (<a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>)</td></tr>
+      <tr><td>Warehouse queries</td><td>Full scans, skewed joins, repeated subqueries</td><td>Partition filters, clustering, pre-aggregation (<a href="/well-rounded-engineer/sql/">SQL Skills</a>)</td></tr>
+      <tr><td>Pipelines</td><td>One object at a time through one container; small files</td><td>Parallel tasks, bulk loads, purpose-built engines (Dataflow), compact files</td></tr>
+      <tr><td>LLM calls</td><td>Long prompts, sequential calls, large models for simple tasks</td><td>Prompt caching, parallel calls, streaming, smaller models where evals allow</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Concurrency and backpressure</h3>
+    <ul>
+      <li>Bound every queue and pool; an unbounded queue turns overload into an out-of-memory crash.</li>
+      <li>Shed load early (429/503) when saturated rather than accepting work you cannot finish in time.</li>
+      <li>Set timeouts shorter than the caller's, so work is not done for a caller that has given up.</li>
+      <li>Cloud Run concurrency and max instances, and database pool size, must agree: instances × pool size ≤ database connection limit.</li>
+      <li>Locks and synchronised blocks serialise work; look for them in thread dumps under load.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Performance as a habit</h3>
+    <ul>
+      <li><b>Performance budgets</b> in CI: fail the build if a key benchmark or bundle size regresses beyond a threshold.</li>
+      <li><b>Track p95/p99 per endpoint</b> after every deploy, with deploy markers on dashboards.</li>
+      <li><b>Cost per unit of work</b> (per request, per row loaded) next to latency: faster that costs 5× may be the wrong trade.</li>
+      <li><b>Capacity reviews</b> before expected growth or launches.</li>
+      <li><b>Write down the numbers</b> of each investigation, so the next one starts from evidence.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read p50/p95/p99 latency and throughput on a dashboard</li><li>Spot an obvious N+1 query or missing index</li><li>Run an existing load test and report the result</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Profile a JVM or Python service and fix the hot spot</li><li>Write load tests with goals and thresholds</li><li>Size pools and concurrency with Little's law</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Lead performance investigations end to end with evidence</li><li>Set performance goals, budgets and capacity plans</li><li>Balance latency, throughput and cost in design</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own performance engineering practice across the organisation</li><li>Understand runtime, OS and hardware effects deeply</li><li>Design systems for extreme scale and tail latency</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Flame graphs and off-CPU analysis</li><li>JVM garbage collector tuning</li><li>Queueing theory basics</li><li>The Tail at Scale</li><li>Coordinated omission in load testing</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.brendangregg.com/" target="_blank" rel="noopener">Brendan Gregg's site</a><span class="lnote"> The USE method, flame graphs, Linux performance tools</span></li><li><a href="https://research.google/pubs/the-tail-at-scale/" target="_blank" rel="noopener">The Tail at Scale (Dean &amp; Barroso)</a><span class="lnote"> Why tail latency dominates in fan-out systems</span></li><li><a href="https://github.com/async-profiler/async-profiler" target="_blank" rel="noopener">async-profiler</a><span class="lnote"> Low-overhead JVM profiling and flame graphs</span></li><li><a href="https://github.com/openjdk/jmh" target="_blank" rel="noopener">JMH</a><span class="lnote"> Correct Java micro-benchmarks</span></li><li><a href="https://github.com/benfred/py-spy" target="_blank" rel="noopener">py-spy</a><span class="lnote"> Sampling profiler for Python</span></li><li><a href="https://cloud.google.com/profiler/docs" target="_blank" rel="noopener">Cloud Profiler</a><span class="lnote"> Continuous profiling on GCP</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/sysdesign/">← System Design</a><a class="pn-next" href="/well-rounded-engineer/caching/">Caching →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
