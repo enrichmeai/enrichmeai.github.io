@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Well Rounded Engineer · a field guide for the AI era</title>
-<meta name="description" content="A field guide for engineers who use AI as a bulldozer, not a shovel: foundations, data, systems, design, cloud, delivery and AI, with what each level of experience looks like and where to learn more.">
+<title>Well Rounded Engineer · more human, for the AI era</title>
+<meta name="description" content="A field guide for engineers in the AI era: character and clear thinking, fundamentals first, then data, systems, design, cloud, delivery and AI, with what each level of experience looks like and where to learn more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
-<link rel="stylesheet" href="/engineer/engineer.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
 <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 </head>
@@ -29,6 +29,11 @@
       <a href="#start" data-tab="start">Start here</a>
       <a href="#behaviours" data-tab="behaviours">Behaviours</a>
       <a href="#homelab" data-tab="homelab">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="#mathematics" data-tab="mathematics">Mathematics</a>
+      <a href="#science" data-tab="science">Science &amp; Method</a>
+      <a href="#philosophy" data-tab="philosophy">Philosophy</a>
+      <a href="#goodhuman" data-tab="goodhuman">Being a Good Human</a>
       <span class="navgrp">Foundations</span>
       <a href="#linux" data-tab="linux">Linux</a>
       <a href="#networking" data-tab="networking">Networking</a>
@@ -100,23 +105,25 @@
 <main id="main" class="container eg">
   <div class="eg-intro">
     <h1>Well Rounded Engineer</h1>
-    <p>A field guide for engineers who use AI as a bulldozer, not a shovel: what to know across foundations, data, systems, design, cloud, delivery and AI, what each level of experience looks like, and where to learn more by doing.</p>
+    <p class="eg-tagline">More human.</p>
+    <p>A field guide for engineers in the AI era. AI hands everyone a bulldozer; this is about being the site manager: clear thinking and good character first, fundamentals before shortcuts, then what to know across data, systems, design, cloud, delivery and AI, what each level of experience looks like, and where to learn more by doing.</p>
   </div>
 
 
 <!-- ================= START HERE ================= -->
 <section class="panel" id="start" data-name="Start here">
-  <div class="panel-head"><h2>The Y-shaped engineer</h2><p><b>Well Rounded Engineer</b> is a field guide for a well-rounded engineer: someone who knows enough of everything to work across the whole system, goes deep in two directions, and uses AI as one more engineering tool. Use this page to see how much of each tab you need.</p></div>
+  <div class="panel-head"><h2>The well-rounded engineer</h2><p><b>Well Rounded Engineer — More Human</b> is a field guide for engineers in the AI era: people who think clearly, behave well, master the fundamentals, know enough of everything to work across the whole system, go deep where it matters, and use AI as one more engineering tool. Use this page to see how much of each tab you need.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>What the Y means here</h3>
+  <article class="card wide"><h3>What well-rounded means here</h3>
     <ul>
-      <li><b>The stem: shared fundamentals.</b> Every engineer on the team needs these: SQL, one language well (Java or Python), Linux, Docker, networking basics, Git and CI/CD, testing, security basics, and reading logs.</li>
-      <li><b>The left arm: data.</b> Getting data from source to a trusted, queryable product: BigQuery, dbt, Airflow DAGs, Python pipelines. New to it? Read <a href="#data">Data Engineering</a> first.</li>
-      <li><b>The right arm: platform.</b> Running software reliably in the cloud: Terraform, Cloud Run, Kubernetes, DevOps practice, Spring Boot or Quarkus services.</li>
-      <li><b>Across the top: breadth, and AI.</b> Across both arms you know enough to read the code, follow a design discussion, and find the right person or doc. AI runs through all of it: you build features on models and use assistants to work faster, with the same engineering discipline as everything else.</li>
+      <li><b>The base: character and thinking.</b> Honesty, curiosity, care for people, and clear reasoning grounded in mathematics, the scientific method and philosophy. AI can generate code; it cannot supply judgement or integrity. See <a href="#behaviours">Behaviours</a> and the <a href="#mathematics">Thinking &amp; character</a> tabs.</li>
+      <li><b>The foundation: shared fundamentals.</b> Every engineer needs these: SQL, one language well (Java or Python), Linux, Docker, networking and the web, Git and CI/CD, testing, security basics, and reading logs.</li>
+      <li><b>Breadth across the system.</b> Enough of data, services, design, cloud and operations to read the code, follow a design discussion, and find the right person or doc.</li>
+      <li><b>Depth where you choose.</b> Real expertise in one or two areas. Many engineers on this kind of system go deep in <b>data</b> (BigQuery, dbt, pipelines) or <b>platform</b> (cloud, Kubernetes, delivery), or both; the shape is sometimes drawn as a T or a Y.</li>
+      <li><b>AI across all of it.</b> You build features on models and use assistants to work faster, with the same discipline as everything else.</li>
     </ul>
-    <p class="note">"Know enough" below is the bar for breadth: what anyone on the team should manage without help. "Go deep" is what the specialist on that arm owns.</p>
+    <p class="note">"Know enough" below is the bar for breadth: what any engineer should manage without help. "Go deep" is what a specialist in that area owns.</p>
   </article>
 
   <article class="card wide"><h3>Fundamentals first: be the site manager, not a vibe coder</h3>
@@ -145,7 +152,7 @@
       <li><b>Do it by hand once.</b> Write the loop, the SQL query, the Dockerfile, the deploy, the test yourself before asking AI to do it for you. Then you can judge its version.</li>
       <li><b>Use AI as a tutor while learning:</b> ask it to explain, to quiz you, to review your attempt. Do not let it write the answer you are trying to learn.</li>
       <li><b>Earn the bulldozer:</b> the more fundamentals you own, the more work you can safely hand to AI, because you can inspect it.</li>
-      <li><b>Follow the order:</b> Foundations, then a language, then quality and security, then your arm of the Y. The <a href="#homelab">Home Lab</a> turns each into practice.</li>
+      <li><b>Follow the order:</b> Foundations, then a language, then quality and security, then the area you want to go deep in. The <a href="#homelab">Home Lab</a> turns each into practice.</li>
       <li><b>Keep going back to basics:</b> when something surprises you, the gap is almost always in a fundamental, not in the tool.</li>
     </ul>
     <p class="note">AI raises the floor of what anyone can produce. Fundamentals raise the ceiling of what you can be trusted with.</p>
@@ -154,7 +161,7 @@
   <article class="card wide"><h3>An engineer who uses AI, not a prompt engineer</h3>
     <p>Writing a good prompt is one skill among many, and the smallest one. What makes AI work in production is engineering:</p>
     <ul>
-      <li><b>Data:</b> the model is only as good as what you retrieve and feed it. That is SQL, pipelines, chunking and freshness, the data arm of this guide.</li>
+      <li><b>Data:</b> the model is only as good as what you retrieve and feed it. That is SQL, pipelines, chunking and freshness, the data tabs of this guide.</li>
       <li><b>Evaluation:</b> a test set and a score, so a change to the prompt or model is measured, not judged by eye.</li>
       <li><b>Systems:</b> timeouts, retries, caching, cost limits, logging, and a fallback when the model is down or refuses.</li>
       <li><b>Security:</b> untrusted text can carry instructions (prompt injection). Least-privilege tools, no secrets in prompts, output treated as untrusted input.</li>
@@ -170,7 +177,7 @@
       <div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><p>Designs with it. Makes trade-offs, reviews others' work, handles the hard incidents, and mentors.</p></div>
       <div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><p>Sets direction across teams. Knows the internals, writes the standards and blueprints, and leads migrations and decisions.</p></div>
     </div>
-    <p><b>Where a Y-shaped engineer aims:</b> Senior in their own arm (data or platform); Practitioner in the foundations, testing, security and the other arm; at least Foundation everywhere else. Expert in one or two areas comes with time and is not expected of everyone.</p>
+    <p><b>Where a well-rounded engineer aims:</b> Senior in the one or two areas they go deep in; Practitioner in the foundations, testing, security, and the thinking and character tabs; at least Foundation everywhere else. Expert in one or two areas comes with time and is not expected of everyone.</p>
     <p class="note">Each tab ends with its own level expectations and an "Explore further" card of official docs, books and topics to study next.</p>
   </article>
 
@@ -178,6 +185,10 @@
     <div class="tbl"><table>
       <thead><tr><th>Area</th><th>Know enough to…</th><th>Go deep means…</th></tr></thead>
       <tbody>
+      <tr><td><a href="#mathematics">Mathematics</a></td><td>Read Big-O; use percentiles over averages; know why floats are wrong for money.</td><td>Complexity, probability, statistics and linear algebra applied with rigour.</td></tr>
+      <tr><td><a href="#science">Science &amp; Method</a></td><td>Reproduce, change one thing, measure before and after.</td><td>Falsifiable hypotheses, controlled experiments, reading research critically.</td></tr>
+      <tr><td><a href="#philosophy">Philosophy</a></td><td>Ask how we know; spot fallacies; know the codes of ethics.</td><td>Systems thinking, ethical trade-offs, wise judgement under uncertainty.</td></tr>
+      <tr><td><a href="#goodhuman">Being a Good Human</a></td><td>Honesty, kindness, gratitude; look after your health.</td><td>Psychological safety, mentoring, integrity under pressure.</td></tr>
       <tr><td><a href="#linux">Linux</a></td><td>Find a file, read a log, check disk and memory, kill a stuck process, write a safe bash script.</td><td>systemd, permissions and users, performance tools, kernel limits, shell scripting at scale.</td></tr>
       <tr><td><a href="#networking">Networking</a></td><td>Tell a DNS failure from a refused connection from a timeout.</td><td>VPC design, CIDR planning, NAT and private access, load balancers, TLS.</td></tr>
       <tr><td><a href="#web">Web Fundamentals</a></td><td>Explain a page load end to end; read headers in DevTools; know cookies and CORS.</td><td>Caching, rendering models, web security headers, performance and accessibility.</td></tr>
@@ -234,7 +245,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Self-check: the stem</h3>
+  <article class="card"><h3>Self-check: the foundations</h3>
     <p>You should be able to do all of these without asking:</p>
     <ul>
       <li>Explain what a query will cost before you run it.</li>
@@ -248,7 +259,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Self-check: AI across the top</h3>
+  <article class="card"><h3>Self-check: AI</h3>
     <ul>
       <li>Return validated JSON from a model instead of parsing free text.</li>
       <li>Build a small eval set and show a change improved the score.</li>
@@ -258,7 +269,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Self-check: data arm</h3>
+  <article class="card"><h3>Self-check: depth in data</h3>
     <ul>
       <li>Design a partitioned, clustered table for a given query pattern.</li>
       <li>Choose between merge, insert_overwrite and microbatch for a dbt model, and explain why.</li>
@@ -268,7 +279,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Self-check: platform arm</h3>
+  <article class="card"><h3>Self-check: depth in platform</h3>
     <ul>
       <li>Write the Terraform for a Cloud Run job, its service account, its IAM and its schedule.</li>
       <li>Give a service a fixed egress IP and private access to Cloud SQL.</li>
@@ -280,6 +291,7 @@
 
   <article class="card"><h3>Suggested order for a newcomer</h3>
     <ol>
+      <li><b>Thinking &amp; character:</b> <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a></li>
       <li><b>Foundations:</b> <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a></li>
       <li><b>Languages:</b> <a href="#java">Java</a>, <a href="#python">Python</a></li>
       <li><b>Quality &amp; security:</b> <a href="#testing">Testing</a>, <a href="#security">Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></li>
@@ -291,7 +303,7 @@
       <li><b>AI:</b> <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></li>
       <li><b>Decentralised web:</b> <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></li>
     </ol>
-    <p class="note">Then pick your arm and work through its self-check until every item is a yes.</p>
+    <p class="note">Then pick the area you want to go deep in and work through its self-check until every item is a yes.</p>
   </article>
 
   </div>
@@ -382,7 +394,7 @@
     <ul>
       <li>Learn the layer below and the layer above your own work: the database under your service, the user above your API.</li>
       <li>Follow a request or a row end to end at least once: client, network, service, database, pipeline, warehouse.</li>
-      <li>Spend time in the other arm of the Y: data people learn deploys and on-call; platform people learn SQL and modelling.</li>
+      <li>Spend time outside your area of depth: data people learn deploys and on-call; platform people learn SQL and modelling.</li>
       <li>Read incidents and postmortems from your own systems and others'.</li>
       <li>Keep a list of things you do not understand yet, and work through it.</li>
     </ul>
@@ -468,7 +480,7 @@
 
 <!-- ================= HOME LAB ================= -->
 <section class="panel" id="homelab" data-name="Home Lab">
-  <div class="panel-head"><h2>Home lab: learn by doing</h2><p>Reading builds vocabulary; running things builds judgement. These labs each start from a real, public repository you clone and run on a laptop or a small cloud budget. Do them in order or pick the ones for your arm of the Y. Each has a "done when" so you know you finished, and each ends with you writing up what broke.</p></div>
+  <div class="panel-head"><h2>Home lab: learn by doing</h2><p>Reading builds vocabulary; running things builds judgement. These labs each start from a real, public repository you clone and run on a laptop or a small cloud budget. Do them in order or pick the ones for the area you are going deep in. Each has a "done when" so you know you finished, and each ends with you writing up what broke.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>Set up once</h3>
@@ -601,6 +613,434 @@ stripe trigger payment_intent.succeeded</code></pre></div>
       <li><b>Write it up:</b> a short post or README per lab. Teaching what you learned is the final test that you learned it.</li>
     </ul>
   </article>
+
+  </div>
+</section>
+
+<!-- ================= MATHEMATICS ================= -->
+<section class="panel" id="mathematics" data-name="Mathematics">
+  <div class="panel-head"><h2>Mathematics for engineers</h2><p>The mathematics that keeps showing up in real engineering work: logic and discrete maths, how algorithms scale, probability and statistics, the linear algebra behind embeddings, how computers store numbers, and quick estimation. Not to pass an exam, but to reason precisely and catch what looks right and is not.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>What to know, and where it shows up</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Area</th><th>Core ideas</th><th>Where you meet it</th></tr></thead>
+      <tbody>
+      <tr><td>Logic</td><td>AND, OR, NOT, implication, De Morgan's laws, truth tables</td><td>Every <code>if</code>, SQL <code>WHERE</code> clauses, NULL's three-valued logic, access rules</td></tr>
+      <tr><td>Sets and relations</td><td>Union, intersection, difference, functions, equivalence, ordering</td><td>SQL joins and set operators, deduplication, keys, permissions</td></tr>
+      <tr><td>Proof and induction</td><td>Invariants, induction, proof by contradiction</td><td>Reasoning about loops, recursion, idempotency, correctness of migrations</td></tr>
+      <tr><td>Graphs</td><td>Nodes, edges, paths, cycles, trees, DAGs, topological order</td><td>Dependency graphs, Airflow and dbt DAGs, networks, citations</td></tr>
+      <tr><td>Combinatorics</td><td>Counting, permutations, combinations, the pigeonhole principle</td><td>Key spaces, test cases, collisions, capacity</td></tr>
+      <tr><td>Complexity</td><td>Big-O, best/average/worst case, amortised cost</td><td>Choosing data structures, why a query or loop is slow</td></tr>
+      <tr><td>Probability</td><td>Independence, conditional probability, Bayes' rule, expected value</td><td>Retries, failure rates, availability, A/B tests, ML</td></tr>
+      <tr><td>Statistics</td><td>Distributions, mean vs median, percentiles, variance, sampling, confidence intervals</td><td>Latency, SLOs, data quality, experiments</td></tr>
+      <tr><td>Linear algebra</td><td>Vectors, matrices, dot product, norms, cosine similarity</td><td>Embeddings, vector search, ML models</td></tr>
+      <tr><td>Calculus and optimisation</td><td>Rates of change, gradients, minimising a function</td><td>How models are trained (gradient descent), growth rates</td></tr>
+      <tr><td>Number representation</td><td>Binary, two's complement, floating point, overflow</td><td>Money, timestamps, IDs, numeric bugs</td></tr>
+      <tr><td>Modular arithmetic</td><td>Remainders, hashing into buckets</td><td>Sharding, partitioning, hash tables, checksums</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Complexity you should feel, not just know</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Growth</th><th>Example</th><th>n = 1 million</th></tr></thead>
+      <tbody>
+      <tr><td>O(1)</td><td>Hash table lookup</td><td>1 step</td></tr>
+      <tr><td>O(log n)</td><td>Binary search, B-tree index lookup</td><td>about 20 steps</td></tr>
+      <tr><td>O(n)</td><td>Scanning a list or a table</td><td>1 million steps</td></tr>
+      <tr><td>O(n log n)</td><td>Good sorting</td><td>about 20 million steps</td></tr>
+      <tr><td>O(n²)</td><td>Nested loops, a self-join without an index</td><td>1 trillion steps</td></tr>
+      <tr><td>O(2ⁿ)</td><td>Trying every subset</td><td>never finishes</td></tr>
+      </tbody></table></div>
+    <p class="note">The jump from O(n log n) to O(n²) is the difference between a second and days. An N+1 query pattern and a nested loop over two big lists are the usual ways it sneaks in.</p>
+  </article>
+
+  <article class="card"><h3>Numbers computers get "wrong"</h3>
+<div class="snip"><pre><code>&gt;&gt;&gt; 0.1 + 0.2
+0.30000000000000004              # binary floating point cannot store 0.1 exactly
+&gt;&gt;&gt; 0.1 + 0.2 == 0.3
+False
+&gt;&gt;&gt; from decimal import Decimal
+&gt;&gt;&gt; Decimal("0.1") + Decimal("0.2") == Decimal("0.3")
+True                             # decimal arithmetic for money
+
+// Java: int overflow wraps around silently
+int max = Integer.MAX_VALUE;     // 2,147,483,647
+max + 1                          // -2,147,483,648
+Math.addExact(max, 1)            // throws ArithmeticException instead</code></pre></div>
+    <ul>
+      <li>Use decimal types or integer minor units (paise, cents) for money.</li>
+      <li>Never compare floats with <code>==</code>; compare within a tolerance.</li>
+      <li>Know your integer sizes: a 32-bit counter of milliseconds overflows in under 25 days.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Statistics that keep you honest</h3>
+    <ul>
+      <li><b>Median and percentiles beat the mean</b> for skewed data such as latency: one slow request moves the mean, not the median.</li>
+      <li><b>Variance matters:</b> two systems with the same average can have very different worst cases.</li>
+      <li><b>Sample size:</b> a difference seen in 20 requests may be noise; in 20,000 it is more likely real.</li>
+      <li><b>Base rates (Bayes):</b> a 99% accurate alert for a problem that happens 1 time in 10,000 fires falsely about 100 times for each real case.</li>
+      <li><b>Correlation is not causation:</b> two metrics rising together may share a cause.</li>
+      <li><b>Survivorship:</b> you only see the systems, users or rows that made it through.</li>
+      <li><b>Multiple comparisons:</b> test twenty things at 95% confidence and you should expect about one "significant" result by chance.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Probability in operations</h3>
+<div class="snip"><pre><code># availability of dependencies in series multiplies
+0.999 * 0.999 * 0.999           # ≈ 0.997  (three 99.9% services)
+
+# chance at least one of n calls is slow, if each is slow with p = 0.01
+1 - (1 - 0.01) ** 100           # ≈ 0.63
+
+# birthday paradox: random 32-bit IDs collide sooner than you think
+import math
+math.sqrt(2 ** 32) * 1.1774     # ≈ 77,000 IDs for a 50% chance of a collision</code></pre></div>
+    <p class="note">The birthday bound is why IDs are 128-bit UUIDs or longer, and why hash collisions are planned for, not assumed away.</p>
+  </article>
+
+  <article class="card"><h3>Linear algebra behind embeddings</h3>
+    <ul>
+      <li>An <b>embedding</b> is a vector: a list of numbers that places a text in a space where similar meanings are close.</li>
+      <li><b>Dot product:</b> multiply matching entries and add them up.</li>
+      <li><b>Cosine similarity</b> = dot product ÷ (length of a × length of b): 1 means same direction, 0 unrelated.</li>
+      <li>For vectors already normalised to length 1, cosine similarity and dot product are the same, which is why many vector databases normalise first.</li>
+    </ul>
+<div class="snip"><pre><code>import numpy as np
+a, b = np.array([0.2, 0.8, 0.1]), np.array([0.25, 0.7, 0.0])
+cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.98: very similar</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Estimation: powers of two and orders of magnitude</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Power</th><th>Approx.</th><th>Name</th></tr></thead>
+      <tbody>
+      <tr><td>2¹⁰</td><td>1 thousand</td><td>KiB</td></tr>
+      <tr><td>2²⁰</td><td>1 million</td><td>MiB</td></tr>
+      <tr><td>2³⁰</td><td>1 billion</td><td>GiB</td></tr>
+      <tr><td>2⁴⁰</td><td>1 trillion</td><td>TiB</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Round to one significant figure and multiply orders of magnitude: being within 2× is good enough to choose a design.</li>
+      <li>Check units at every step; most estimation errors are unit errors.</li>
+      <li>Sanity-check against something known: a day is about 10⁵ seconds; a year about 3 × 10⁷.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>How to learn it as an adult engineer</h3>
+    <ul>
+      <li>Learn each topic <b>through a problem you have:</b> statistics through your latency data, graphs through your DAG, linear algebra through your embeddings.</li>
+      <li>Work examples <b>by hand on paper</b>, then check them in Python.</li>
+      <li>Use AI as a patient tutor: ask for an explanation, then for exercises, then check your answers yourself.</li>
+      <li>Fifteen minutes a day beats a weekend once a year.</li>
+    </ul>
+  </article>
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
+<!-- ================= SCIENCE ================= -->
+<section class="panel" id="science" data-name="Science &amp; Method">
+  <div class="panel-head"><h2>Science and the scientific method</h2><p>Engineering runs on the same method as science: observe, form a hypothesis, predict, test, and let the result decide. Debugging, performance work, data quality and AI evaluation are all experiments. This tab is about thinking like a scientist at work, and knowing enough about how computers physically work to reason about them.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The method, applied to engineering</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Step</th><th>In science</th><th>In engineering</th></tr></thead>
+      <tbody>
+      <tr><td>Observe</td><td>Notice something unexplained</td><td>p95 latency doubled after Tuesday's deploy</td></tr>
+      <tr><td>Hypothesise</td><td>A testable explanation</td><td>The new query skips the index on <code>court_code</code></td></tr>
+      <tr><td>Predict</td><td>What must be true if the hypothesis holds</td><td><code>EXPLAIN</code> will show a sequential scan; reverting the query will restore latency</td></tr>
+      <tr><td>Test</td><td>An experiment that could prove it wrong</td><td>Run <code>EXPLAIN ANALYZE</code>; try the fix on a copy with production-sized data</td></tr>
+      <tr><td>Conclude</td><td>Accept, reject or refine</td><td>Sequential scan confirmed; index added; p95 back to normal, measured</td></tr>
+      <tr><td>Share</td><td>Publish so others can check</td><td>PR description with before/after numbers; a regression test</td></tr>
+      </tbody></table></div>
+    <p class="note">The key word is <b>falsifiable</b>: a good hypothesis says what result would prove it wrong. "Something in the network is flaky" cannot be tested; "the timeouts happen only on calls through the NAT gateway" can.</p>
+  </article>
+
+  <article class="card"><h3>Debugging as an experiment</h3>
+    <ul>
+      <li><b>Reproduce first.</b> A bug you cannot reproduce is a bug you cannot prove you fixed.</li>
+      <li><b>Change one variable at a time,</b> or you will not know which change mattered.</li>
+      <li><b>Bisect:</b> halve the search space each step (<code>git bisect</code>, removing half the input, disabling half the config).</li>
+      <li><b>Write down each hypothesis and its result,</b> including the ones that failed. They narrow the search.</li>
+      <li><b>Prefer evidence that could surprise you:</b> look at the raw log, the packet, the row, not a summary that agrees with your guess.</li>
+      <li><b>Stop when the evidence explains everything,</b> not when you have a plausible story.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Measurement</h3>
+    <ul>
+      <li><b>Accuracy vs precision:</b> a clock that is consistently 5 minutes fast is precise but not accurate.</li>
+      <li><b>Know your instrument:</b> what it measures, its resolution, what it misses, and what it reports when it cannot measure.</li>
+      <li><b>Units on every number.</b> "Latency 200" means nothing.</li>
+      <li><b>Error bars:</b> run a benchmark several times and report the spread, not one lucky run.</li>
+      <li><b>Baseline first:</b> measure before the change, in the same conditions, or the comparison is meaningless.</li>
+      <li><b>The observer effect:</b> profilers, debug logging and tracing change what they measure. Account for it.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Experiments with data and users</h3>
+    <ul>
+      <li><b>Control group:</b> compare against something that did not get the change, at the same time.</li>
+      <li><b>Randomise</b> who gets which variant, so other differences average out.</li>
+      <li><b>Decide the metric and sample size before you look,</b> or you will find what you hoped for (p-hacking).</li>
+      <li><b>Confounders:</b> a feature launched in the same week as a holiday cannot be judged on that week alone.</li>
+      <li><b>Reproducibility:</b> pin data versions, code versions and random seeds so someone else gets the same answer.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Biases that fool engineers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Bias</th><th>Looks like</th></tr></thead>
+      <tbody>
+      <tr><td>Confirmation bias</td><td>Only looking for logs that support your theory</td></tr>
+      <tr><td>Anchoring</td><td>Sticking to the first estimate or cause you heard</td></tr>
+      <tr><td>Availability</td><td>Blaming the cause of the last incident because it is fresh</td></tr>
+      <tr><td>Survivorship</td><td>Studying only the services that did not fail</td></tr>
+      <tr><td>Sunk cost</td><td>Continuing a failing approach because of time already spent</td></tr>
+      <tr><td>Automation bias</td><td>Trusting a tool's output, including an AI's, over contrary evidence</td></tr>
+      <tr><td>Overconfidence</td><td>"It works on my machine" as proof</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>How computers physically work</h3>
+    <ul>
+      <li><b>CPU:</b> executes instructions in cycles; modern cores run billions per second and work on several instructions at once.</li>
+      <li><b>Memory hierarchy:</b> registers, then CPU caches (L1, L2, L3), then RAM, then SSD, then network. Each step is roughly 10–1,000 times slower than the one before. Code that reads memory in order is far faster than code that jumps around.</li>
+      <li><b>Storage:</b> SSDs read randomly far faster than spinning disks, but sequential reads are still fastest.</li>
+      <li><b>Networks:</b> limited by the speed of light; a round trip across a continent cannot be faster than tens of milliseconds.</li>
+      <li><b>Energy and heat:</b> compute has a physical cost, which is also a cost in money and carbon.</li>
+    </ul>
+    <p class="note">These physical limits explain most performance rules on the <a href="#performance">Performance</a> and <a href="#sysdesign">System Design</a> tabs.</p>
+  </article>
+
+  <article class="card"><h3>Reading research and technical papers</h3>
+    <ol>
+      <li><b>First pass (minutes):</b> title, abstract, introduction, headings, conclusions. Decide if it is worth more time.</li>
+      <li><b>Second pass (an hour):</b> figures, tables, the main argument; note what you do not understand.</li>
+      <li><b>Third pass (hours):</b> recreate the work in your head or in code; challenge every assumption.</li>
+    </ol>
+    <p class="note">Ask of any claim: what was measured, on what data, compared with what, and could the result be explained another way?</p>
+  </article>
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Reproduce a bug before fixing it</li><li>Change one thing at a time and measure before and after</li><li>Write down hypotheses and results while debugging</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Debug systematically with falsifiable hypotheses and bisection</li><li>Run fair benchmarks with baselines and error bars</li><li>Spot common biases in your own reasoning</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design controlled experiments and A/B tests correctly</li><li>Read papers critically and apply their results with care</li><li>Teach the method through how you run investigations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build a culture of evidence and experiment across the organisation</li><li>Lead research-style work with rigour and reproducibility</li><li>Judge competing claims across fields</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Falsifiability (Karl Popper)</li><li>Experimental design and controls</li><li>Cognitive biases</li><li>Memory hierarchy and computer architecture</li><li>How to read a paper</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank" rel="noopener">You and Your Research (Richard Hamming)</a><span class="lnote"> A classic talk on doing important work</span></li><li><a href="https://press.stripe.com/the-art-of-doing-science-and-engineering" target="_blank" rel="noopener">The Art of Doing Science and Engineering (Hamming)</a><span class="lnote"> Book on thinking as a scientist-engineer</span></li><li><a href="https://calteches.library.caltech.edu/51/2/CargoCult.htm" target="_blank" rel="noopener">Cargo Cult Science (Richard Feynman)</a><span class="lnote"> On scientific integrity</span></li><li><a href="http://ccr.sigcomm.org/online/files/p83-keshavA.pdf" target="_blank" rel="noopener">How to Read a Paper (S. Keshav)</a><span class="lnote"> The three-pass method</span></li><li><a href="https://csapp.cs.cmu.edu/" target="_blank" rel="noopener">Computer Systems: A Programmer's Perspective</a><span class="lnote"> How computers really work, for programmers</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="panel" id="philosophy" data-name="Philosophy">
+  <div class="panel-head"><h2>Philosophy for engineers</h2><p>Philosophy is the practice of thinking clearly about hard questions: how we know things, how to reason, what matters and what we owe each other. Engineers use it every day without the names. Knowing the names makes it easier to do well.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Epistemology: how do you know?</h3>
+    <ul>
+      <li><b>Knowledge needs justification:</b> a belief that turns out true by luck is not knowledge. "The tests passed" is justified only if you saw them run.</li>
+      <li><b>Sources differ in reliability:</b> the running system beats the config, the config beats the docs, the docs beat memory, memory beats rumour.</li>
+      <li><b>Absence of evidence</b> is evidence of absence only if you looked properly. Say how thoroughly you looked.</li>
+      <li><b>Calibration:</b> match your confidence to your evidence, and say how sure you are.</li>
+      <li><b>Testimony,</b> including an AI's answer or a colleague's summary, is a reason to check, not a replacement for checking.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Reasoning well</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Kind</th><th>Shape</th><th>Engineering example</th></tr></thead>
+      <tbody>
+      <tr><td>Deduction</td><td>If the premises are true, the conclusion must be</td><td>"Every write goes through this function; it validates input; so every write is validated."</td></tr>
+      <tr><td>Induction</td><td>Generalising from observations</td><td>"It failed on every run with a null date; nulls probably cause it."</td></tr>
+      <tr><td>Abduction</td><td>The best explanation for what you see</td><td>"Latency rose right after the deploy; the deploy is the most likely cause."</td></tr>
+      </tbody></table></div>
+    <p class="note">Only deduction is certain, and only if the premises are. Induction and abduction give hypotheses to test, which is where the <a href="#science">scientific method</a> takes over.</p>
+  </article>
+
+  <article class="card"><h3>Fallacies in technical debates</h3>
+    <ul>
+      <li><b>Appeal to authority:</b> "Big Company uses it, so it is right for us."</li>
+      <li><b>Bandwagon:</b> "Everyone is moving to X."</li>
+      <li><b>False dilemma:</b> "Either we rewrite everything or we live with it."</li>
+      <li><b>Straw man:</b> arguing against a weaker version of a colleague's proposal.</li>
+      <li><b>Ad hominem:</b> judging the idea by who proposed it.</li>
+      <li><b>Post hoc:</b> "It broke after my change, so my change broke it." Maybe, but test it.</li>
+      <li><b>Appeal to novelty or tradition:</b> new is not better, old is not proven.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Useful razors and principles</h3>
+    <ul>
+      <li><b>Occam's razor:</b> prefer the explanation or design with the fewest assumptions.</li>
+      <li><b>Hanlon's razor:</b> do not assume malice where a mistake explains it. Most broken things are accidents.</li>
+      <li><b>Chesterton's fence:</b> do not remove something until you know why it was put there.</li>
+      <li><b>First principles:</b> reason from what is known to be true rather than from analogy and habit.</li>
+      <li><b>Inversion:</b> ask how this could fail, then prevent that.</li>
+      <li><b>Goodhart's law:</b> when a measure becomes a target, it stops being a good measure. Tests written to raise coverage, not to catch bugs, are an example.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Systems thinking</h3>
+    <ul>
+      <li><b>Feedback loops:</b> reinforcing loops amplify (retries cause load, load causes timeouts, timeouts cause retries); balancing loops stabilise (autoscaling).</li>
+      <li><b>Second-order effects:</b> ask "and then what?" A cache speeds reads, and then serves stale data, and then someone acts on it.</li>
+      <li><b>Delays</b> in a system cause overshoot: scaling decisions based on old metrics oscillate.</li>
+      <li><b>The structure produces the behaviour:</b> repeated incidents point to a system to change, not a person to blame.</li>
+      <li><b>Leverage points:</b> small changes in rules, incentives and information flows often matter more than large changes in parameters.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Ethics: what we owe users and society</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Lens</th><th>Asks</th><th>In an engineering decision</th></tr></thead>
+      <tbody>
+      <tr><td>Consequences</td><td>What outcomes does this cause, for whom?</td><td>Who is harmed if this model is wrong, and how badly?</td></tr>
+      <tr><td>Duties and rights</td><td>What rules and rights apply, regardless of outcome?</td><td>Do we have consent to use this data? Can users delete it?</td></tr>
+      <tr><td>Virtue</td><td>What would a person of good character do?</td><td>Would I be comfortable explaining this design to the people it affects?</td></tr>
+      <tr><td>Fairness</td><td>Are burdens and benefits shared justly?</td><td>Does this work as well for users with disabilities, in other languages, on cheaper phones?</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Professional codes (ACM, IEEE) put the public good, honesty, and avoiding harm first.</li>
+      <li>AI raises the stakes: automated decisions at scale, opaque reasoning, and content that can mislead. Build in human review where harm is possible.</li>
+      <li>You may be asked to build something wrong. Raise it, explain the harm, propose an alternative, and know where your line is.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Stoic habits for hard days</h3>
+    <ul>
+      <li><b>Separate what you control from what you do not:</b> you control your response to an incident, not that it happened.</li>
+      <li><b>Expect setbacks:</b> plan for failure, so it is a known path, not a shock.</li>
+      <li><b>Judge actions, not outcomes alone:</b> a good decision can turn out badly; learn from it without self-blame.</li>
+      <li><b>Daily review:</b> what went well, what to do differently, what you learned.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Socratic questions for reviews and design</h3>
+    <ul>
+      <li>What exactly do you mean by…?</li>
+      <li>How do we know that is true?</li>
+      <li>What are we assuming?</li>
+      <li>What would change your mind?</li>
+      <li>What is the strongest argument against this?</li>
+      <li>What follows if we are wrong?</li>
+    </ul>
+    <p class="note">Asked with curiosity, these improve the work. Asked to win, they damage trust.</p>
+  </article>
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Ask "how do we know?" before accepting a claim</li><li>Recognise common fallacies in debates</li><li>Know the professional codes of ethics exist and what they ask</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason clearly with deduction, induction and abduction</li><li>Use razors and principles (Occam, Chesterton, Goodhart) in decisions</li><li>Raise ethical concerns about a feature constructively</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Apply systems thinking to recurring problems and incentives</li><li>Weigh ethical trade-offs in designs with several lenses</li><li>Lead discussions with Socratic questions that improve the work</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Shape organisational values, incentives and ethical standards</li><li>Advise on AI ethics and societal impact</li><li>Model wise judgement under uncertainty</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Epistemology and calibration</li><li>Logic and argument</li><li>Systems thinking</li><li>Ethics of technology and AI</li><li>Stoicism</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://plato.stanford.edu/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy</a><span class="lnote"> Free, authoritative articles on every topic</span></li><li><a href="https://www.acm.org/code-of-ethics" target="_blank" rel="noopener">ACM Code of Ethics and Professional Conduct</a><span class="lnote"> Computing professionals' code</span></li><li><a href="https://www.ieee.org/about/corporate/governance/p7-8.html" target="_blank" rel="noopener">IEEE Code of Ethics</a><span class="lnote"> Engineers' code</span></li><li><a href="https://donellameadows.org/systems-thinking-book-sale/" target="_blank" rel="noopener">Thinking in Systems (Donella Meadows)</a><span class="lnote"> Introduction to systems thinking</span></li><li><a href="https://iep.utm.edu/fallacy/" target="_blank" rel="noopener">Internet Encyclopedia of Philosophy: fallacies</a><span class="lnote"> A catalogue of reasoning errors</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
+<!-- ================= GOOD HUMAN ================= -->
+<section class="panel" id="goodhuman" data-name="Being a Good Human">
+  <div class="panel-head"><h2>Being a good human</h2><p>Technical skill decides what you can build; character decides whether people want to build with you, and whether what you build is good for the people who use it. This tab is about the person behind the engineer: honesty, kindness, humility, care for others and for yourself.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Core qualities, in practice</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Quality</th><th>Looks like at work</th></tr></thead>
+      <tbody>
+      <tr><td>Honesty</td><td>Saying "I broke it", "I don't know yet", "this estimate was wrong" early and plainly</td></tr>
+      <tr><td>Integrity</td><td>Doing the right thing when nobody would notice: the test you could skip, the shortcut with user data</td></tr>
+      <tr><td>Kindness</td><td>Reviewing code without contempt; helping a struggling colleague; patience with beginners</td></tr>
+      <tr><td>Humility</td><td>Assuming you might be wrong; learning from juniors and from mistakes; sharing credit</td></tr>
+      <tr><td>Respect</td><td>Listening fully, valuing different backgrounds and roles, respecting people's time</td></tr>
+      <tr><td>Gratitude</td><td>Thanking people specifically for what they did</td></tr>
+      <tr><td>Responsibility</td><td>Owning outcomes, keeping promises, finishing what you start</td></tr>
+      <tr><td>Generosity</td><td>Teaching, mentoring, documenting, contributing back to open source and the community</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Psychological safety</h3>
+    <p>Teams do their best work when people can ask questions, admit mistakes and disagree without fear. Google's study of its own teams (Project Aristotle) found it was the most important factor in team effectiveness.</p>
+    <ul>
+      <li>Admit your own mistakes first; it makes it safe for others.</li>
+      <li>Thank people for raising problems, even when the timing is bad.</li>
+      <li>Ask quieter people for their view.</li>
+      <li>Criticise the work and the system, never the person.</li>
+      <li>Keep blameless postmortems genuinely blameless.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Feedback, given and received</h3>
+    <ul>
+      <li><b>Situation, behaviour, impact:</b> "In yesterday's review (situation) you rewrote Asha's query without explaining (behaviour); she didn't learn why and felt sidelined (impact)."</li>
+      <li><b>Be specific and timely;</b> praise in public, correct in private.</li>
+      <li><b>Receive feedback with "thank you"</b> first, questions second, defence never.</li>
+      <li><b>Ask for feedback regularly,</b> not just at review time.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Conflict and disagreement</h3>
+    <ul>
+      <li>Assume good intent; most conflict is about unclear goals or information.</li>
+      <li>Restate the other view until they agree you understood it.</li>
+      <li>Find the shared goal, then disagree about the route.</li>
+      <li>Use data and small experiments to settle technical disagreements.</li>
+      <li>Disagree and commit: once decided, support the decision fully, or reopen it openly with new evidence.</li>
+      <li>Apologise well: name what you did, its effect, and what you will do differently, with no "but".</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Care for users and society</h3>
+    <ul>
+      <li>Build for everyone: accessibility, other languages, slow networks, older devices.</li>
+      <li>Treat user data as if it were your family's.</li>
+      <li>Be honest in what the product claims; never ship dark patterns that trick people.</li>
+      <li>Think about who could be harmed, not only who benefits.</li>
+      <li>Consider the environmental cost of compute you do not need.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Care for yourself</h3>
+    <ul>
+      <li><b>Sustainable pace:</b> long hours produce bugs, poor decisions and burnout. The WHO recognises burnout as an occupational phenomenon resulting from chronic workplace stress.</li>
+      <li><b>Sleep, movement, breaks:</b> they are part of doing good work, not a reward for finishing it.</li>
+      <li><b>Boundaries:</b> be reachable when on call; be off when you are off.</li>
+      <li><b>Ask for help early,</b> technical or personal.</li>
+      <li><b>Life outside work:</b> family, friends, interests and rest make you a better engineer and a happier person.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Mentoring and lifting others</h3>
+    <ul>
+      <li>Explain the why, not just the what.</li>
+      <li>Let people struggle a little before rescuing; then help them reflect.</li>
+      <li>Give stretch work with support.</li>
+      <li>Credit people by name for their work, especially when they are not in the room.</li>
+      <li>Remember who helped you, and pass it on.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A short daily check</h3>
+    <ul>
+      <li>Was I honest today, including about my mistakes?</li>
+      <li>Did I help someone, and thank someone?</li>
+      <li>Did I listen more than I spoke in at least one conversation?</li>
+      <li>Did I do work I would be proud to have the users see?</li>
+      <li>Did I look after my own health?</li>
+    </ul>
+  </article>
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Be honest about mistakes and what you do not know</li><li>Thank people specifically; review kindly</li><li>Look after your health and ask for help early</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Give and receive feedback well</li><li>Handle disagreement with respect and evidence</li><li>Build for all users, including accessibility</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Create psychological safety in your team</li><li>Mentor others and share credit generously</li><li>Raise ethical concerns and stand by them</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Shape a humane, inclusive culture across the organisation</li><li>Lead with integrity under pressure</li><li>Give back to the wider community</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Psychological safety</li><li>Feedback models</li><li>Conflict resolution</li><li>Inclusive and accessible design</li><li>Sustainable pace and burnout</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://rework.withgoogle.com/" target="_blank" rel="noopener">Google re:Work</a><span class="lnote"> Research on team effectiveness, including psychological safety</span></li><li><a href="https://www.who.int/news/item/28-05-2019-burn-out-an-occupational-phenomenon-international-classification-of-diseases" target="_blank" rel="noopener">WHO: burn-out an occupational phenomenon</a><span class="lnote"> How burnout is defined</span></li><li><a href="https://www.acm.org/code-of-ethics" target="_blank" rel="noopener">ACM Code of Ethics</a><span class="lnote"> Honesty, avoiding harm, the public good</span></li><li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">Web Content Accessibility Guidelines</a><span class="lnote"> Building for everyone</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -813,6 +1253,8 @@ history | grep deploy; !!; Ctrl-r (search)</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Navigate, read and search files and logs</li><li>Run, stop and inspect processes</li><li>Understand permissions well enough to fix 'permission denied'</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write safe bash scripts with set -euo pipefail, traps and quoting</li><li>Diagnose disk, memory and CPU problems with df, free, top, dmesg</li><li>Manage services with systemd and read journalctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Tune a host or container for a workload (file limits, memory, I/O)</li><li>Debug with strace, lsof and tcpdump</li><li>Decide when a script should become a real program</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Understand kernel mechanisms behind containers (namespaces, cgroups)</li><li>Set the team's base images and hardening standards</li><li>Lead performance investigations end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>cgroups and namespaces: what a container really is</li><li>strace, perf and eBPF tools for tracing</li><li>File descriptors, signals and process lifecycle</li><li>Shell portability: bash vs POSIX sh</li><li>Log rotation and journald retention</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://linuxcommand.org/tlcl.php" target="_blank" rel="noopener">The Linux Command Line (free book)</a><span class="lnote"> A full beginner-to-practitioner course</span></li><li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener">Linux man pages</a><span class="lnote"> Authoritative reference for every command and syscall</span></li><li><a href="https://www.gnu.org/software/bash/manual/" target="_blank" rel="noopener">GNU Bash manual</a><span class="lnote"> Expansion, quoting and builtins in detail</span></li><li><a href="https://www.shellcheck.net/" target="_blank" rel="noopener">ShellCheck</a><span class="lnote"> Lints shell scripts and explains each warning</span></li><li><a href="https://systemd.io/" target="_blank" rel="noopener">systemd documentation</a><span class="lnote"> Units, timers, journald</span></li><li><a href="https://wizardzines.com/" target="_blank" rel="noopener">Wizard Zines (Julia Evans)</a><span class="lnote"> Short illustrated guides to Linux, networking and debugging</span></li></ul></div></div></article>
@@ -963,6 +1405,8 @@ gcloud compute firewall-rules list --format="table(name,direction,sourceRanges.l
 gcloud compute routers nats list --router=my-router --region=asia-south1
 gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></pre></div>
   </article>
+
+
 
 
 
@@ -1195,6 +1639,8 @@ Referrer-Policy: strict-origin-when-cross-origin</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain what happens from typing a URL to seeing a page</li><li>Read requests, responses, headers and status codes in DevTools</li><li>Know what cookies, sessions and CORS are</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Set caching, cookie and security headers correctly</li><li>Debug CORS, redirects, mixed content and caching problems</li><li>Choose a rendering model for a feature</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design front-end delivery: CDN, caching, rendering, performance budgets</li><li>Lead web security (CSP, session design) and accessibility for a product</li><li>Diagnose Core Web Vitals problems with field data</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set web platform standards across products</li><li>Know the HTTP, TLS and browser specs in depth</li><li>Lead large front-end architecture and performance programmes</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>HTTP semantics (RFC 9110) and caching (RFC 9111)</li><li>Browser rendering pipeline and the event loop</li><li>Service workers and offline apps</li><li>Content Security Policy in depth</li><li>WCAG 2.2 success criteria</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noopener">MDN Web Docs</a><span class="lnote"> The reference for HTML, CSS, JavaScript and HTTP</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works" target="_blank" rel="noopener">MDN: How the web works</a><span class="lnote"> A gentle overview</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS" target="_blank" rel="noopener">MDN: CORS</a><span class="lnote"> Preflights, credentials and headers</span></li><li><a href="https://web.dev/" target="_blank" rel="noopener">web.dev</a><span class="lnote"> Google's guides on performance, Core Web Vitals and modern web practice</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110: HTTP Semantics</a><span class="lnote"> Methods, status codes and headers, authoritatively</span></li><li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2</a><span class="lnote"> Accessibility guidelines</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> XSS, CSRF, session management and more</span></li></ul></div></div></article>
@@ -1370,6 +1816,8 @@ docker run --rm -it --network container:db nicolaka/netshoot   # debug its netwo
       <li>Generate an SBOM (<code>docker buildx build --sbom=true</code> or <code>syft</code>) so you can answer "are we affected?" quickly.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -1924,6 +2372,8 @@ WHEN NOT MATCHED THEN INSERT ROW;</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>SELECT, WHERE, GROUP BY, ORDER BY and simple joins</li><li>Know how NULL behaves in comparisons and aggregates</li><li>Dry-run before running in BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Window functions, QUALIFY, CTEs, semi- and anti-joins</li><li>Check grain and fan-out before trusting a number</li><li>Write readable, tested SQL in dbt</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Patterns: gaps and islands, spines, SCD joins, recursion</li><li>Read execution plans and cut cost and slot time</li><li>Review others' SQL for correctness and cost</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design query patterns and models for a whole platform</li><li>Teach SQL; set standards and linting</li><li>Know engine internals well enough to predict plans</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Logical vs physical query plans</li><li>Approximate aggregation (HyperLogLog, quantiles)</li><li>Pipe syntax and modern SQL features</li><li>SQL style guides and SQLFluff linting</li><li>Testing SQL with dbt unit tests</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">BigQuery query syntax</a><span class="lnote"> The full GoogleSQL SELECT reference</span></li><li><a href="https://modern-sql.com/" target="_blank" rel="noopener">Modern SQL</a><span class="lnote"> Window functions, recursion and newer standard features across engines</span></li><li><a href="https://use-the-index-luke.com/" target="_blank" rel="noopener">Use The Index, Luke</a><span class="lnote"> How queries and indexes really interact</span></li><li><a href="https://www.postgresql.org/docs/current/tutorial-window.html" target="_blank" rel="noopener">PostgreSQL tutorial: window functions</a><span class="lnote"> A clear introduction to windows</span></li><li><a href="https://docs.sqlfluff.com/" target="_blank" rel="noopener">SQLFluff</a><span class="lnote"> Linter and formatter for SQL, including dbt and BigQuery</span></li></ul></div></div></article>
@@ -2126,6 +2576,8 @@ WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</co
       <tr><td>Updates</td><td>Row by row, transactional</td><td>Batch loads and MERGE; avoid row-by-row DML</td></tr>
       </tbody></table></div>
   </article>
+
+
 
 
 
@@ -2432,6 +2884,8 @@ java -XX:AOTCache=app.aot -jar app.jar</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write classes, records, collections and streams</li><li>Use Optional and java.time correctly</li><li>Run and write JUnit tests</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use modern features (records, sealed types, pattern switch, virtual threads)</li><li>Handle concurrency safely with executors and CompletableFuture</li><li>Build with Gradle or Maven and manage dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Tune the JVM for containers (memory, GC, startup)</li><li>Design APIs and module boundaries</li><li>Profile and fix performance problems</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead platform upgrades across LTS releases</li><li>Understand JVM internals (JIT, GC, class loading)</li><li>Set the organisation's Java standards and libraries</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>JEPs for each release since 17</li><li>Garbage collectors: G1, ZGC, Shenandoah</li><li>Java Flight Recorder and JDK Mission Control</li><li>Structured concurrency and scoped values</li><li>GraalVM native image and AOT caches</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://dev.java/learn/" target="_blank" rel="noopener">dev.java: Learn</a><span class="lnote"> Oracle's official tutorials for modern Java</span></li><li><a href="https://openjdk.org/jeps/0" target="_blank" rel="noopener">OpenJDK JEP index</a><span class="lnote"> Every enhancement proposal, with status and release</span></li><li><a href="https://openjdk.org/projects/jdk/" target="_blank" rel="noopener">JDK project releases</a><span class="lnote"> What shipped in each JDK version</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Tests, parameterised tests, extensions</span></li><li><a href="https://cloud.google.com/java/docs/reference/google-cloud-bigquery/latest/overview" target="_blank" rel="noopener">BigQuery Java client</a><span class="lnote"> API reference</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam documentation</a><span class="lnote"> Programming guide for Dataflow pipelines</span></li></ul></div></div></article>
@@ -2702,6 +3156,8 @@ with beam.Pipeline(options=PipelineOptions()) as p:
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write functions, comprehensions and dataclasses</li><li>Use virtual environments and install packages</li><li>Write simple pytest tests</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Type hints, logging, error handling and context managers</li><li>Use the BigQuery and GCS clients in pipelines</li><li>Package a project with pyproject.toml</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between threads, processes and asyncio</li><li>Design reusable libraries with clear APIs and tests</li><li>Profile memory and CPU; optimise data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Understand CPython internals, the GIL and free-threading</li><li>Own the organisation's Python tooling and packaging</li><li>Mentor and set code standards</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Typing: generics, Protocols, mypy or pyright</li><li>asyncio internals and TaskGroups</li><li>Packaging: wheels, lockfiles, uv</li><li>Free-threaded CPython (3.13+)</li><li>Data libraries: pandas, Polars, PyArrow</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.python.org/3/" target="_blank" rel="noopener">Python documentation</a><span class="lnote"> Language and standard library reference</span></li><li><a href="https://docs.python.org/3/whatsnew/index.html" target="_blank" rel="noopener">What's new in Python</a><span class="lnote"> Changes in each release</span></li><li><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 style guide</a><span class="lnote"> Conventions for readable Python</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Fixtures, parametrize, plugins</span></li><li><a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">uv</a><span class="lnote"> Fast package and project manager</span></li><li><a href="https://cloud.google.com/python/docs/reference/bigquery/latest" target="_blank" rel="noopener">BigQuery Python client</a><span class="lnote"> API reference</span></li></ul></div></div></article>
@@ -2950,6 +3406,8 @@ export default function () {
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div></article>
@@ -3180,6 +3638,8 @@ gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Parameterise every query; never commit secrets</li><li>Check that users can only reach their own data</li><li>Apply the PR security checklist</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement OAuth 2.0 / OIDC with a provider and validate tokens properly</li><li>Use least-privilege IAM and a secret manager</li><li>Fix findings from SAST, SCA and image scans</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Threat-model a system and turn threats into tests</li><li>Design authentication, authorisation and audit for a product</li><li>Respond to and contain a security incident</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the security architecture and policies across teams</li><li>Lead compliance (DPDP, GDPR, SOC 2) and external testing</li><li>Build a security culture and secure-by-default platforms</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OWASP ASVS verification levels</li><li>OAuth 2.0 security best current practice</li><li>Supply-chain security with SLSA</li><li>Cloud security posture management</li><li>LLM and AI application security</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a><span class="lnote"> Most critical web application risks</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise how-tos for each security topic</span></li><li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a><span class="lnote"> Risks specific to APIs</span></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a><span class="lnote"> A checklist of security requirements by level</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener">Spring Security reference</a><span class="lnote"> Authentication and authorisation in Spring</span></li><li><a href="https://cloud.google.com/security/best-practices" target="_blank" rel="noopener">Google Cloud security best practices</a><span class="lnote"> IAM, network and data protection on GCP</span></li><li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA</a><span class="lnote"> Supply-chain levels for software artefacts</span></li></ul></div></div></article>
@@ -3333,6 +3793,8 @@ quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
       <li><b>OAuth for AI agents and MCP servers:</b> agents act with delegated, scoped, revocable tokens, never the user's password.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -3556,6 +4018,8 @@ quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the lifecycle and the layers</li><li>Load a file into a warehouse and query it</li><li>Write a simple, idempotent transformation</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build incremental, tested pipelines end to end</li><li>Choose batch vs streaming and ingestion patterns</li><li>Model data at a stated grain with keys and tests</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a data platform: layers, contracts, orchestration, observability</li><li>Own data quality and reconciliation across sources</li><li>Plan cost, retention and governance</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set data architecture and standards across the organisation</li><li>Lead migrations between platforms without losing trust</li><li>Shape data products and their contracts with consumers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dimensional modelling (Kimball)</li><li>Data contracts and schema evolution</li><li>Open table formats: Iceberg, Delta</li><li>Change data capture</li><li>Data observability and lineage</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/" target="_blank" rel="noopener">Fundamentals of Data Engineering (book)</a><span class="lnote"> Reis &amp; Housley: the lifecycle and its undercurrents</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> Storage, replication, batch and stream processing</span></li><li><a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/" target="_blank" rel="noopener">Kimball dimensional modelling techniques</a><span class="lnote"> Facts, dimensions, SCDs</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> How to structure a transformation project</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures for data on GCP</span></li><li><a href="https://iceberg.apache.org/" target="_blank" rel="noopener">Apache Iceberg</a><span class="lnote"> Open table format for lakehouses</span></li></ul></div></div></article>
@@ -3707,6 +4171,8 @@ pq.write_table(table, "out.parquet",
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Load, filter and aggregate a file with pandas or Polars</li><li>Read Parquet and inspect its schema</li><li>Know which library suits which data size</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use lazy Polars, DuckDB or PyArrow with pushdown on large files</li><li>Write a PySpark or Beam job for data beyond one machine</li><li>Validate data with pandera or dbt tests and count rejects</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose engines per workload: warehouse SQL, single-node, distributed, streaming</li><li>Tune memory, partitioning and file layout</li><li>Design portable pipelines with open formats</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's processing stack and standards</li><li>Lead migrations between engines (pandas to Polars, Spark to BigQuery)</li><li>Understand engine internals: query optimisers, vectorised execution</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Apache Arrow memory format</li><li>Polars lazy query optimisation</li><li>DuckDB extensions (httpfs, Iceberg)</li><li>Spark adaptive query execution</li><li>Beam windowing and triggers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://pandas.pydata.org/docs/" target="_blank" rel="noopener">pandas</a><span class="lnote"> User guide and API</span></li><li><a href="https://docs.pola.rs/" target="_blank" rel="noopener">Polars</a><span class="lnote"> User guide, lazy API</span></li><li><a href="https://duckdb.org/docs/" target="_blank" rel="noopener">DuckDB</a><span class="lnote"> SQL, Python API, Parquet and remote files</span></li><li><a href="https://arrow.apache.org/docs/python/" target="_blank" rel="noopener">Apache Arrow (PyArrow)</a><span class="lnote"> Datasets, Parquet, compute</span></li><li><a href="https://spark.apache.org/docs/latest/" target="_blank" rel="noopener">Apache Spark</a><span class="lnote"> PySpark and SQL</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam</a><span class="lnote"> Programming guide</span></li><li><a href="https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction" target="_blank" rel="noopener">BigQuery DataFrames</a><span class="lnote"> pandas-like API in BigQuery</span></li><li><a href="https://pandera.readthedocs.io/" target="_blank" rel="noopener">pandera</a><span class="lnote"> DataFrame validation</span></li></ul></div></div></article>
@@ -3824,9 +4290,11 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain contracts, adapters and the conformance suite</li><li>Install culvert with the right extras or add the Maven artifacts</li><li>Use an adapter through auto-discovery instead of a cloud SDK</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write pipeline code against BlobStore, Warehouse and job control</li><li>Use LoadOptions, head() and merge() for idempotent loads</li><li>Run and test against emulators locally</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design pipelines whose logic is cloud-neutral</li><li>Add an adapter that passes the conformance suite</li><li>Use StageClaim, InputReadiness and orchestration gates</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Shape the contract spec and its evolution</li><li>Lead adoption across teams and clouds</li><li>Contribute adapters for new clouds (Azure)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The contract specification (CONTRACT.md)</li><li>Conformance suites as a design tool</li><li>Job control and run records</li><li>Orchestration renderers</li><li>Upgrading between releases</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="/culvert/" target="_blank" rel="noopener">Culvert on enrichmeai.com</a><span class="lnote"> Overview, libraries, releases, status</span></li><li><a href="https://github.com/enrichmeai/culvert" target="_blank" rel="noopener">Culvert on GitHub</a><span class="lnote"> Source, issues</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md" target="_blank" rel="noopener">Contract specification</a><span class="lnote"> The authoritative list of contracts</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a><span class="lnote"> Every release, including fixes</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md" target="_blank" rel="noopener">Migration guide</a><span class="lnote"> Upgrading between versions</span></li><li><a href="https://pypi.org/project/culvert/" target="_blank" rel="noopener">culvert on PyPI</a><span class="lnote"> Python package</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The contract specification (CONTRACT.md)</li><li>Conformance suites as a design tool</li><li>Job control and run records</li><li>Orchestration renderers</li><li>Upgrading across 0.x releases</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="/culvert/" target="_blank" rel="noopener">Culvert on enrichmeai.com</a><span class="lnote"> Overview, libraries, releases, status</span></li><li><a href="https://github.com/enrichmeai/culvert" target="_blank" rel="noopener">Culvert on GitHub</a><span class="lnote"> Source, issues</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md" target="_blank" rel="noopener">Contract specification</a><span class="lnote"> The authoritative list of contracts</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a><span class="lnote"> Every release, including fixes</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md" target="_blank" rel="noopener">Migration guide</a><span class="lnote"> Upgrading between versions</span></li><li><a href="https://pypi.org/project/culvert/" target="_blank" rel="noopener">culvert on PyPI</a><span class="lnote"> Python package</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -4157,6 +4625,8 @@ dbt run-operation drop_dev_datasets --args '{prefix: dbt_jo}'</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run, test and select models; read compiled SQL</li><li>Use ref and source; add not_null and unique tests</li><li>Understand views vs tables</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write incremental models with the right strategy</li><li>Write macros, generic tests and unit tests</li><li>Configure partitioning and clustering on BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Structure a multi-project dbt platform</li><li>Set up slim CI with state and defer</li><li>Use contracts, versions and access controls for shared models</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own modelling standards across the organisation</li><li>Design cross-project dependencies and data mesh boundaries</li><li>Contribute packages and tooling</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Model contracts and versions</li><li>Microbatch incremental models</li><li>dbt packages: dbt_utils, dbt_expectations</li><li>Semantic layer and metrics</li><li>Exposures and documentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.getdbt.com/docs/introduction" target="_blank" rel="noopener">dbt documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://docs.getdbt.com/reference/references-overview" target="_blank" rel="noopener">dbt reference</a><span class="lnote"> Every config, command and property</span></li><li><a href="https://docs.getdbt.com/docs/build/incremental-models" target="_blank" rel="noopener">Incremental models</a><span class="lnote"> Strategies and is_incremental()</span></li><li><a href="https://docs.getdbt.com/reference/resource-configs/bigquery-configs" target="_blank" rel="noopener">BigQuery configs</a><span class="lnote"> Partitioning, clustering, labels</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> Project structure and style</span></li><li><a href="https://hub.getdbt.com/" target="_blank" rel="noopener">dbt package hub</a><span class="lnote"> Reusable packages</span></li><li><a href="https://learn.getdbt.com/" target="_blank" rel="noopener">dbt Learn courses</a><span class="lnote"> Free official courses</span></li></ul></div></div></article>
@@ -4369,6 +4839,8 @@ def test_dags_load():
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a DAG; find and read a failed task's log</li><li>Rerun a task or a date</li><li>Understand logical dates and data intervals</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write idempotent TaskFlow DAGs with retries and templates</li><li>Use provider operators and deferrable sensors</li><li>Test DAGs locally and in CI</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design orchestration across many pipelines (assets, pools, SLAs)</li><li>Run Composer or Airflow reliably; plan upgrades</li><li>Decide what belongs in Airflow vs inside the job</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Choose the orchestration platform for the organisation</li><li>Run large Airflow estates: scaling, multi-tenancy, security</li><li>Set standards for scheduling and data-aware workflows</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Assets and data-aware scheduling</li><li>Dynamic task mapping</li><li>Deferrable operators and triggers</li><li>Airflow 3 Task SDK and execution API</li><li>Alternatives: Cloud Workflows, Dagster, Temporal</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html" target="_blank" rel="noopener">Apache Airflow documentation</a><span class="lnote"> Concepts and reference</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html" target="_blank" rel="noopener">Airflow best practices</a><span class="lnote"> Idempotency, top-level code, testing</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow-providers-google/stable/index.html" target="_blank" rel="noopener">Google provider for Airflow</a><span class="lnote"> BigQuery, GCS, Dataflow operators</span></li><li><a href="https://cloud.google.com/composer/docs" target="_blank" rel="noopener">Cloud Composer</a><span class="lnote"> Managed Airflow on GCP</span></li><li><a href="https://astronomer.github.io/astronomer-cosmos/" target="_blank" rel="noopener">Astronomer Cosmos</a><span class="lnote"> Run dbt projects as Airflow tasks</span></li></ul></div></div></article>
@@ -4545,6 +5017,8 @@ message Judgment {
     </ol>
     <p class="note">From <i>Enterprise Integration Patterns</i> (Hohpe and Woolf), still the best catalogue of messaging patterns.</p>
   </article>
+
+
 
 
 
@@ -4829,6 +5303,8 @@ type PageInfo { hasNextPage: Boolean!  endCursor: String }</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a schema and write queries with variables and fragments</li><li>Explain queries, mutations, subscriptions and resolvers</li><li>Tell when GraphQL fits better than REST</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a server with Spring for GraphQL, SmallRye or Strawberry</li><li>Avoid N+1 with batch loaders; paginate with connections</li><li>Return useful errors and test resolvers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Secure a GraphQL API: field authorisation, depth and cost limits, persisted queries</li><li>Evolve a schema without breaking clients; schema checks in CI</li><li>Tune performance with tracing and caching</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design a federated graph across teams</li><li>Set GraphQL governance and standards for the organisation</li><li>Decide GraphQL vs REST vs gRPC strategy across products</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>GraphQL specification: execution and validation</li><li>DataLoader and batching</li><li>Relay connection specification</li><li>Apollo Federation and supergraphs</li><li>Persisted queries and query cost analysis</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://graphql.org/learn/" target="_blank" rel="noopener">Learn GraphQL</a><span class="lnote"> Official introduction</span></li><li><a href="https://spec.graphql.org/" target="_blank" rel="noopener">GraphQL specification</a><span class="lnote"> How queries are parsed, validated and executed</span></li><li><a href="https://docs.spring.io/spring-graphql/reference/" target="_blank" rel="noopener">Spring for GraphQL</a><span class="lnote"> Annotated controllers, batching, testing</span></li><li><a href="https://quarkus.io/guides/smallrye-graphql" target="_blank" rel="noopener">Quarkus SmallRye GraphQL guide</a><span class="lnote"> Code-first GraphQL in Quarkus</span></li><li><a href="https://strawberry.rocks/docs" target="_blank" rel="noopener">Strawberry</a><span class="lnote"> Python GraphQL with type hints</span></li><li><a href="https://relay.dev/graphql/connections.htm" target="_blank" rel="noopener">Relay connection spec</a><span class="lnote"> Cursor pagination convention</span></li><li><a href="https://www.apollographql.com/docs/federation/" target="_blank" rel="noopener">Apollo Federation</a><span class="lnote"> Composing subgraphs into one graph</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP GraphQL cheat sheet</a><span class="lnote"> Security checklist</span></li></ul></div></div></article>
@@ -5005,6 +5481,8 @@ while True:
       <li><b>Dead-letter topic</b> for records that keep failing, with alerting on it.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -5215,6 +5693,8 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
       <li><b>Multiple gateways:</b> routing or failover between gateways improves success rates, at the cost of more reconciliation.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -5539,6 +6019,8 @@ plugins {
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build a REST endpoint with validation and a test</li><li>Configure an app with application.yml and profiles</li><li>Use Spring Data or JdbcClient for simple queries</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Handle errors with ProblemDetail; write slice and integration tests</li><li>Use transactions correctly; understand proxies</li><li>Add Actuator, metrics and structured logging</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose servlet vs reactive and design for throughput</li><li>Secure APIs with Spring Security and OAuth 2.0</li><li>Tune startup, memory and connection pools for the cloud</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead major upgrades (3.x to 4.x) across services</li><li>Build internal starters and platform libraries</li><li>Set architecture and module boundaries (Spring Modulith)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Auto-configuration and writing your own starter</li><li>Spring Modulith</li><li>Observability with Micrometer and OpenTelemetry</li><li>GraalVM native images and CDS</li><li>Spring Boot 4 migration</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.spring.io/spring-boot/index.html" target="_blank" rel="noopener">Spring Boot reference</a><span class="lnote"> Official reference</span></li><li><a href="https://spring.io/guides" target="_blank" rel="noopener">Spring guides</a><span class="lnote"> Short task-focused tutorials</span></li><li><a href="https://docs.spring.io/spring-framework/reference/" target="_blank" rel="noopener">Spring Framework reference</a><span class="lnote"> Core, web, data access, testing</span></li><li><a href="https://github.com/spring-projects/spring-boot/wiki" target="_blank" rel="noopener">Spring Boot release notes</a><span class="lnote"> What changed in each version</span></li><li><a href="https://googlecloudplatform.github.io/spring-cloud-gcp/" target="_blank" rel="noopener">Spring Cloud GCP</a><span class="lnote"> GCP integrations for Spring</span></li><li><a href="https://testcontainers.com/guides/" target="_blank" rel="noopener">Testcontainers guides</a><span class="lnote"> Integration testing with Spring Boot</span></li></ul></div></div></article>
@@ -5807,6 +6289,8 @@ quarkus.kubernetes.env.secrets=db-credentials
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Create a project and run dev mode</li><li>Write a REST endpoint and a @QuarkusTest</li><li>Configure with application.properties and profiles</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Panache, REST clients and fault tolerance</li><li>Choose blocking, reactive or virtual-thread endpoints</li><li>Package as a container; use Dev Services</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Build and run native images; fix reflection issues</li><li>Design for Kubernetes and serverless startup</li><li>Migrate services from Spring with clear trade-offs</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Write Quarkus extensions</li><li>Set framework strategy across Spring and Quarkus estates</li><li>Understand build-time processing and ArC internals</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Mutiny reactive programming</li><li>Native image configuration</li><li>Writing extensions</li><li>Quarkus with Kafka and messaging</li><li>Command-mode applications</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://quarkus.io/guides/" target="_blank" rel="noopener">Quarkus guides</a><span class="lnote"> Task-focused official guides</span></li><li><a href="https://quarkus.io/get-started/" target="_blank" rel="noopener">Get started with Quarkus</a><span class="lnote"> Install and first app</span></li><li><a href="https://code.quarkus.io/" target="_blank" rel="noopener">code.quarkus.io</a><span class="lnote"> Generate a project with chosen extensions</span></li><li><a href="https://smallrye.io/smallrye-mutiny/" target="_blank" rel="noopener">SmallRye Mutiny</a><span class="lnote"> Reactive programming library used by Quarkus</span></li><li><a href="https://docs.quarkiverse.io/" target="_blank" rel="noopener">Quarkiverse</a><span class="lnote"> Community extensions, including Google Cloud</span></li></ul></div></div></article>
@@ -6049,6 +6533,8 @@ Links:    load test results, issue #…</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain layered and hexagonal architecture</li><li>Tell events from commands; choreography from orchestration</li><li>Recognise retries that need idempotency</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement outbox, idempotent consumers and retries with backoff</li><li>Design a saga with compensations</li><li>Apply circuit breakers, bulkheads and timeouts</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose monolith, modular monolith or services for a context</li><li>Design event-driven systems with contracts and evolution</li><li>Run design reviews and write decision records</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set architecture direction across many teams</li><li>Balance consistency, availability, cost and team structure</li><li>Lead large migrations (strangler fig) safely</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts</li><li>Architecture decision records (ADRs)</li><li>Event schema evolution and registries</li><li>CQRS and event sourcing in practice</li><li>Team topologies and Conway's law</li><li>Architecture characteristics and fitness functions</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io patterns</a><span class="lnote"> Saga, outbox, CQRS and more, with trade-offs</span></li><li><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Martin Fowler: architecture</a><span class="lnote"> Essays on patterns and evolution</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/" target="_blank" rel="noopener">Azure cloud design patterns</a><span class="lnote"> Vendor-neutral pattern catalogue</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging patterns</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures on GCP</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems (Unmesh Joshi)</a><span class="lnote"> Leader election, write-ahead log, quorum and more</span></li><li><a href="https://adr.github.io/" target="_blank" rel="noopener">Architecture decision records</a><span class="lnote"> Templates and tools for ADRs</span></li></ul></div></div></article>
@@ -6233,6 +6719,8 @@ class MirrorClient {
     </ul>
     <p class="note">If several answers are no, a modular monolith will serve you better for now.</p>
   </article>
+
+
 
 
 
@@ -6444,6 +6932,8 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
       <li>Treating eventual consistency of read models as a bug rather than designing for it.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -6685,6 +7175,8 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Follow the method: requirements, estimates, API, data, diagram</li><li>Name the building blocks and what each is for</li><li>Do back-of-the-envelope estimates</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a small service end to end with caching and a queue</li><li>Identify bottlenecks and failure modes</li><li>Write a design document others can build from</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for scale, availability targets and cost together</li><li>Choose storage and consistency models with clear trade-offs</li><li>Lead design reviews and challenge assumptions with numbers</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-region, highly available systems</li><li>Set reliability and capacity strategy for the organisation</li><li>Mentor others in design and trade-off thinking</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Consistent hashing and partitioning</li><li>Consensus (Raft) and leader election</li><li>Multi-region active-active design</li><li>Capacity planning and load testing</li><li>SLOs and error budgets</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a><span class="lnote"> Free, broad introduction with examples</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The deep reference behind most designs</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Reliability, SLOs, operations at scale</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Reliability, cost, security, performance pillars</span></li><li><a href="https://highscalability.com/" target="_blank" rel="noopener">High Scalability</a><span class="lnote"> Real-world architecture write-ups</span></li></ul></div></div></article>
@@ -6834,6 +7326,8 @@ pip install memray &amp;&amp; memray run -m loader     # allocations</code></pre
       <li><b>Write down the numbers</b> of each investigation, so the next one starts from evidence.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -7052,6 +7546,8 @@ Cache-Control: no-store</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain cache-aside, TTL and hit ratio</li><li>Use an in-process cache for reference data</li><li>Read HTTP caching headers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Add Spring or Python caching with keys, TTLs and eviction on write</li><li>Use Redis safely with TTLs, eviction policy and a fallback</li><li>Measure hit ratio and staleness</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design multi-layer caching for a system with explicit staleness rules</li><li>Prevent stampedes and invalidation races</li><li>Decide what must never be cached (outages, permissions, legal effect)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set caching standards and shared cache platforms</li><li>Design caching for global, multi-region systems</li><li>Lead consistency and cost trade-offs across products</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Caffeine's W-TinyLFU eviction</li><li>Redis data structures and persistence</li><li>CDN cache keys and purging</li><li>Materialised views and incremental maintenance</li><li>Semantic caching for LLM calls (and its risks)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis documentation</a><span class="lnote"> Commands, data types, eviction</span></li><li><a href="https://github.com/ben-manes/caffeine" target="_blank" rel="noopener">Caffeine</a><span class="lnote"> High-performance Java cache</span></li><li><a href="https://docs.spring.io/spring-boot/reference/io/caching.html" target="_blank" rel="noopener">Spring Boot caching</a><span class="lnote"> Cache abstraction and providers</span></li><li><a href="https://cachetools.readthedocs.io/" target="_blank" rel="noopener">cachetools</a><span class="lnote"> Python caches with TTL and LRU</span></li><li><a href="https://cloud.google.com/memorystore/docs" target="_blank" rel="noopener">Memorystore documentation</a><span class="lnote"> Managed Redis and Valkey on GCP</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching" target="_blank" rel="noopener">MDN: HTTP caching</a><span class="lnote"> Browser and shared caches</span></li><li><a href="https://cloud.google.com/bigquery/docs/cached-results" target="_blank" rel="noopener">BigQuery cached results</a><span class="lnote"> When BigQuery reuses query results</span></li></ul></div></div></article>
@@ -7247,6 +7743,8 @@ az keyvault secret show --vault-name v -n s</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Map common services across GCP, AWS and Azure</li><li>Explain projects vs accounts vs subscriptions</li><li>Use each provider's CLI for basic tasks</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Translate a design from one cloud to another, including IAM and networking</li><li>Compare prices for a workload, including egress</li><li>Use Terraform across providers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose a provider for a workload with written trade-offs</li><li>Design portable architectures where it matters, and accept lock-in deliberately</li><li>Plan data residency and region choices</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's cloud strategy, contracts and multi-cloud policy</li><li>Lead migrations between clouds or from on-premises</li><li>Govern cost, security and compliance across providers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Well-Architected frameworks of each provider</li><li>Cloud IAM models compared</li><li>Cross-cloud networking and egress costs</li><li>Open table formats for portability</li><li>FinOps practices</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud: compare AWS and Azure services</a><span class="lnote"> Google's official service mapping</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/" target="_blank" rel="noopener">Azure for AWS professionals</a><span class="lnote"> Microsoft's AWS-to-Azure mapping</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Google's design pillars</span></li><li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected</a><span class="lnote"> AWS design pillars</span></li><li><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a><span class="lnote"> Azure design pillars</span></li><li><a href="https://www.finops.org/" target="_blank" rel="noopener">FinOps Foundation</a><span class="lnote"> Managing cloud cost across providers</span></li></ul></div></div></article>
@@ -7379,6 +7877,8 @@ gcloud datastream streams list --location=asia-south1</code></pre></div>
     </ul>
     <p class="note">Certifications test breadth and judgement. Pair each with a real project built end to end.</p>
   </article>
+
+
 
 
 
@@ -7662,6 +8162,8 @@ bq mk --table --time_partitioning_field=decision_date --clustering_fields=court_
 bq ls -j -a -n 20          # recent jobs
 bq show -j &lt;job_id&gt;</code></pre></div>
   </article>
+
+
 
 
 
@@ -7976,6 +8478,8 @@ gcloud run jobs replace job.yaml --region=asia-south1</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Deploy a service and read its logs</li><li>Execute a job and check its result</li><li>Roll traffic back to a previous revision</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Set scaling, CPU, memory, concurrency and timeouts deliberately</li><li>Secure services with IAM, secrets and service accounts</li><li>Connect to private resources with VPC egress</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design job sharding, retries and run records</li><li>Tune cold starts and cost</li><li>Design service-to-service auth and traffic management</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the serverless platform blueprint for the organisation</li><li>Decide Cloud Run vs GKE vs other compute</li><li>Design multi-region serverless architectures</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Container runtime contract</li><li>Direct VPC egress and Cloud NAT</li><li>Startup CPU boost and minimum instances</li><li>Cloud Run jobs with Workflows</li><li>Eventarc triggers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/run/docs" target="_blank" rel="noopener">Cloud Run documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://cloud.google.com/run/docs/container-contract" target="_blank" rel="noopener">Container runtime contract</a><span class="lnote"> What your container must do</span></li><li><a href="https://cloud.google.com/run/docs/create-jobs" target="_blank" rel="noopener">Cloud Run jobs</a><span class="lnote"> Create and execute jobs</span></li><li><a href="https://cloud.google.com/run/docs/tips/general" target="_blank" rel="noopener">General development tips</a><span class="lnote"> Performance and cost tips</span></li><li><a href="https://cloud.google.com/run/quotas" target="_blank" rel="noopener">Quotas and limits</a><span class="lnote"> Memory, CPU, timeouts, request size</span></li></ul></div></div></article>
@@ -8142,6 +8646,8 @@ gcloud run jobs replace job.yaml --region=asia-south1</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain proxies, policies, products and apps</li><li>Call an API through Apigee with a key</li><li>Read Apigee analytics for an API</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a proxy with key/token verification, spike arrest and quota</li><li>Use shared flows; deploy through environments from CI</li><li>Connect securely to Cloud Run backends</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design API products, tiers and the developer portal</li><li>Run Apigee across environments with Terraform and CI</li><li>Secure APIs at the edge with OAuth and Advanced API Security</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's API management platform and governance</li><li>Design hybrid or multi-region Apigee deployments</li><li>Lead API monetisation and partner programmes</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Shared flows and flow hooks</li><li>Apigee hybrid on GKE</li><li>Advanced API Security</li><li>Developer portals (integrated and Drupal)</li><li>apigeelint and proxy testing</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/apigee/docs" target="_blank" rel="noopener">Apigee documentation</a><span class="lnote"> Official docs for Apigee X and hybrid</span></li><li><a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/reference-overview-policy" target="_blank" rel="noopener">Apigee policy reference</a><span class="lnote"> Every policy and its options</span></li><li><a href="https://github.com/GoogleCloudPlatform/apigee-samples" target="_blank" rel="noopener">Apigee samples</a><span class="lnote"> Working proxy examples</span></li><li><a href="https://github.com/apigee/apigeelint" target="_blank" rel="noopener">apigeelint</a><span class="lnote"> Static checks for proxy bundles</span></li><li><a href="https://cloud.google.com/api-gateway/docs" target="_blank" rel="noopener">API Gateway documentation</a><span class="lnote"> The lighter-weight alternative</span></li></ul></div></div></article>
@@ -8290,6 +8796,8 @@ jobs:
       <li>Dev and prod as similar as possible: same images, same database engine.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -8518,6 +9026,8 @@ histogram_quantile(0.95,
       <li>Label resources so observability cost can be attributed to teams.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -8763,6 +9273,8 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a Grafana or Dynatrace dashboard and find a service's errors</li><li>Look up and update a ServiceNow incident</li><li>Know what Prometheus, Fluent Bit and Alertmanager each do</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write PromQL queries, recording and alerting rules</li><li>Configure log shipping and Grafana dashboards as code</li><li>Connect alerts to ServiceNow incidents and CI/CD to change requests</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design the monitoring stack and alert routing for a platform</li><li>Integrate Dynatrace or open-source tooling with OpenTelemetry</li><li>Automate change management while keeping control</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own observability and ITSM tooling strategy and cost</li><li>Lead tool consolidation or migration across the organisation</li><li>Set standards for telemetry, alerting and incident process</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Prometheus long-term storage (Thanos, Mimir)</li><li>Grafana LGTM stack (Loki, Grafana, Tempo, Mimir)</li><li>Fluent Bit processors and multiline parsing</li><li>Dynatrace DQL and Grail</li><li>ServiceNow DevOps change automation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://prometheus.io/docs/" target="_blank" rel="noopener">Prometheus documentation</a><span class="lnote"> Concepts, PromQL, alerting</span></li><li><a href="https://prometheus.io/docs/alerting/latest/alertmanager/" target="_blank" rel="noopener">Alertmanager</a><span class="lnote"> Routing, grouping, silences</span></li><li><a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">Grafana documentation</a><span class="lnote"> Dashboards, data sources, alerting, provisioning</span></li><li><a href="https://docs.fluentbit.io/" target="_blank" rel="noopener">Fluent Bit documentation</a><span class="lnote"> Inputs, filters, outputs</span></li><li><a href="https://docs.fluentd.org/" target="_blank" rel="noopener">Fluentd documentation</a><span class="lnote"> Configuration and plugins</span></li><li><a href="https://docs.dynatrace.com/docs" target="_blank" rel="noopener">Dynatrace documentation</a><span class="lnote"> OneAgent, Davis, DQL</span></li><li><a href="https://developer.servicenow.com/" target="_blank" rel="noopener">ServiceNow developer site</a><span class="lnote"> APIs, including the Table API</span></li><li><a href="https://cloud.google.com/stackdriver/docs/managed-prometheus" target="_blank" rel="noopener">Google Cloud Managed Service for Prometheus</a><span class="lnote"> Prometheus without running it</span></li></ul></div></div></article>
@@ -8933,6 +9445,8 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
       <li>For pipelines, compute freshness and completeness SLIs from run records in BigQuery and export them as custom or log-based metrics.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -9222,6 +9736,8 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
       <li>This is the same idea as the AI tab's blueprints card: decide once, reuse everywhere.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -9641,6 +10157,8 @@ run "rejects_unknown_env" {
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run init, plan and apply; read a plan</li><li>Change a resource's arguments safely</li><li>Use variables and outputs</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write reusable modules with validation</li><li>Manage state in a remote backend; use moved and import blocks</li><li>Run Terraform from CI with keyless auth</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design module and state layout for many environments</li><li>Refactor live infrastructure without destroying it</li><li>Write terraform tests and policy checks</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own infrastructure-as-code standards for the organisation</li><li>Design org-wide landing zones and guardrails</li><li>Lead provider upgrades and large migrations</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>State locking and drift detection</li><li>Policy as code (OPA, Sentinel)</li><li>Terraform test and mock providers</li><li>Ephemeral values and write-only arguments</li><li>Landing zones on GCP</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener">Terraform documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://developer.hashicorp.com/terraform/language" target="_blank" rel="noopener">Terraform language</a><span class="lnote"> HCL, modules, expressions, state</span></li><li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank" rel="noopener">Terraform tutorials</a><span class="lnote"> Step-by-step learning</span></li><li><a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs" target="_blank" rel="noopener">Google provider docs</a><span class="lnote"> Every GCP resource and argument</span></li><li><a href="https://cloud.google.com/docs/terraform" target="_blank" rel="noopener">Terraform on Google Cloud</a><span class="lnote"> Google's guides and best practices</span></li></ul></div></div></article>
@@ -9909,6 +10427,8 @@ kubectl apply -k k8s/overlays/prod</code></pre></div>
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Use kubectl to get, describe, log and exec</li><li>Read a Deployment and Service manifest</li><li>Explain why a pod is Pending or crashing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write manifests with probes, resources and config</li><li>Use Helm or Kustomize per environment</li><li>Set up Workload Identity and RBAC</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design namespaces, network policies and autoscaling</li><li>Run production clusters: upgrades, PDBs, capacity</li><li>Debug networking, DNS and scheduling problems</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-cluster platforms and tenancy models</li><li>Build operators and platform abstractions</li><li>Set Kubernetes strategy and security policy</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Gateway API</li><li>Operators and custom resources</li><li>Pod security standards</li><li>Service meshes</li><li>GKE Autopilot vs Standard</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener">Kubernetes documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://kubernetes.io/docs/reference/kubectl/quick-reference/" target="_blank" rel="noopener">kubectl quick reference</a><span class="lnote"> Common commands</span></li><li><a href="https://kubernetes.io/docs/tasks/debug/" target="_blank" rel="noopener">Troubleshooting</a><span class="lnote"> Debug pods, services and clusters</span></li><li><a href="https://cloud.google.com/kubernetes-engine/docs" target="_blank" rel="noopener">GKE documentation</a><span class="lnote"> Google Kubernetes Engine</span></li><li><a href="https://helm.sh/docs/" target="_blank" rel="noopener">Helm</a><span class="lnote"> Package manager for Kubernetes</span></li><li><a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener">Gateway API</a><span class="lnote"> The successor to Ingress</span></li></ul></div></div></article>
@@ -10113,6 +10633,8 @@ spec:
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Install, upgrade, roll back and inspect a release</li><li>Read a chart's values and override them per environment</li><li>Render a chart locally with helm template</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write charts with helpers, schema-validated values and sane defaults</li><li>Use hooks for migrations and helm test for smoke tests</li><li>Publish charts to an OCI registry</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design library charts as a shared blueprint for many services</li><li>Deliver charts with GitOps (Argo CD or Flux) and diffs</li><li>Choose between Helm and Kustomize per case</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's deployment packaging standards</li><li>Run chart supply chain: signing, provenance, registries</li><li>Lead migrations between delivery models</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Library charts</li><li>values.schema.json</li><li>Helm hooks and their limits</li><li>Argo CD ApplicationSets</li><li>Chart signing and provenance</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://helm.sh/docs/" target="_blank" rel="noopener">Helm documentation</a><span class="lnote"> Concepts, commands, charts</span></li><li><a href="https://helm.sh/docs/chart_template_guide/" target="_blank" rel="noopener">Chart template guide</a><span class="lnote"> Templates, functions, helpers</span></li><li><a href="https://helm.sh/docs/chart_best_practices/" target="_blank" rel="noopener">Chart best practices</a><span class="lnote"> Conventions for maintainable charts</span></li><li><a href="https://artifacthub.io/" target="_blank" rel="noopener">Artifact Hub</a><span class="lnote"> Find public charts and operators</span></li><li><a href="https://github.com/helm-unittest/helm-unittest" target="_blank" rel="noopener">helm-unittest</a><span class="lnote"> Unit tests for templates</span></li><li><a href="https://github.com/helm/chart-testing" target="_blank" rel="noopener">chart-testing (ct)</a><span class="lnote"> Lint and install-test charts in CI</span></li><li><a href="https://argo-cd.readthedocs.io/" target="_blank" rel="noopener">Argo CD</a><span class="lnote"> GitOps for Kubernetes</span></li></ul></div></div></article>
@@ -10277,6 +10799,8 @@ def reconcile(spec, name, namespace, status, logger, **_):
       <li><b>Distribution:</b> package the operator with a Helm chart or OLM bundle.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -10511,6 +11035,8 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n legal         # sidecar access log</c
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain mTLS, workload identity and east-west vs north-south traffic</li><li>Read VirtualService, DestinationRule and AuthorizationPolicy resources</li><li>Find a pod's sidecar logs and proxy status</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Enrol namespaces and roll out STRICT mTLS safely</li><li>Write authorisation policies and canary routes</li><li>Debug 503s and RBAC denials with istioctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide whether a mesh is worth it, and sidecar vs ambient</li><li>Design zero-trust service-to-service security</li><li>Run mesh upgrades with revisions; keep config in GitOps</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the mesh platform across clusters and environments</li><li>Design multi-cluster and multi-network meshes</li><li>Set network security strategy combining mesh, gateway and cloud controls</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Istio ambient mode (ztunnel and waypoints)</li><li>Kubernetes Gateway API</li><li>Envoy proxy internals</li><li>Multi-cluster Istio</li><li>SPIFFE workload identity</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://istio.io/latest/docs/" target="_blank" rel="noopener">Istio documentation</a><span class="lnote"> Concepts, tasks, reference</span></li><li><a href="https://istio.io/latest/docs/concepts/traffic-management/" target="_blank" rel="noopener">Istio traffic management</a><span class="lnote"> Routing, resilience, gateways</span></li><li><a href="https://istio.io/latest/docs/concepts/security/" target="_blank" rel="noopener">Istio security</a><span class="lnote"> mTLS, identity, authorisation</span></li><li><a href="https://istio.io/latest/docs/ambient/" target="_blank" rel="noopener">Istio ambient mode</a><span class="lnote"> Sidecar-less data plane</span></li><li><a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener">Kubernetes Gateway API</a><span class="lnote"> Standard routing API</span></li><li><a href="https://kiali.io/docs/" target="_blank" rel="noopener">Kiali</a><span class="lnote"> Service graph and mesh console</span></li><li><a href="https://cloud.google.com/service-mesh/docs" target="_blank" rel="noopener">Cloud Service Mesh</a><span class="lnote"> Google's managed mesh</span></li><li><a href="https://linkerd.io/" target="_blank" rel="noopener">Linkerd</a><span class="lnote"> A lighter-weight alternative</span></li></ul></div></div></article>
@@ -10655,6 +11181,8 @@ print("".join(b.text for b in resp.content if b.type == "text"))</code></pre></d
       <li><b>Grounding:</b> tying answers to retrieved sources.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -10945,6 +11473,8 @@ FROM VECTOR_SEARCH(
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Call a model API and get structured output</li><li>Explain tokens, context, hallucination and prompt injection</li><li>Use an AI assistant with tests and review</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a RAG feature with retrieval, citations and an eval set</li><li>Use tools and handle refusals, errors and cost</li><li>Brief an AI agent with context, rules and a definition of done</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design AI features with evals, guardrails, observability and fallbacks</li><li>Tune cost and latency (caching, batch, model choice)</li><li>Set up repos so AI agents work safely (context files, hooks, gates)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set AI strategy, governance and security across the organisation</li><li>Design agentic systems and their safety boundaries</li><li>Build shared AI platforms, blueprints and evaluation infrastructure</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Evaluation design and model-graded evals</li><li>Retrieval: hybrid search, reranking, chunking</li><li>Agents, tool design and MCP</li><li>Prompt injection defences</li><li>Cost and latency engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://platform.claude.com/docs" target="_blank" rel="noopener">Claude developer docs</a><span class="lnote"> Anthropic API, tools, structured outputs, prompt caching</span></li><li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents (Anthropic)</a><span class="lnote"> When to use workflows vs agents</span></li><li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code docs</a><span class="lnote"> Agentic coding, hooks, subagents</span></li><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Open protocol for tools and data</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs" target="_blank" rel="noopener">Vertex AI generative AI</a><span class="lnote"> Models and tooling on GCP</span></li><li><a href="https://cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener">BigQuery vector search</a><span class="lnote"> Embeddings and VECTOR_SEARCH</span></li><li><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector</a><span class="lnote"> Vector search in Postgres</span></li><li><a href="https://genai.owasp.org/" target="_blank" rel="noopener">OWASP GenAI security</a><span class="lnote"> LLM application risks</span></li></ul></div></div></article>
@@ -11053,6 +11583,8 @@ With N = 15 services, 3 framework-level fixes a year, ~1 day each:
     </ul>
     <p class="note">AI is the bulldozer; the framework is the road. Build the road once and drive on it, rather than bulldozing a new track for every trip.</p>
   </article>
+
+
 
 
 
@@ -11221,6 +11753,8 @@ description: Bring a project page up to date with that project's latest
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run Claude Code in a repo; review and accept its changes</li><li>Write a useful CLAUDE.md with commands and rules</li><li>Use plan mode and permission prompts sensibly</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Add hooks, skills, subagents and MCP servers for the team</li><li>Run headless and GitHub Action workflows</li><li>Use Cowork with plugins and connectors for knowledge work</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design an agent workflow with gates, reviewers and attempt limits</li><li>Govern permissions, secrets and sandboxing</li><li>Turn recurring corrections into skills and hooks</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's agentic engineering practice</li><li>Build shared plugins and blueprints across teams</li><li>Measure productivity and quality impact</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Hooks reference and exit codes</li><li>Subagent design</li><li>Skills and plugins</li><li>Claude Code in CI</li><li>Agent SDK</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code overview</a><span class="lnote"> Install, surfaces, getting started</span></li><li><a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener">Settings and permissions</a><span class="lnote"> settings.json, rules, modes</span></li><li><a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Hooks</a><span class="lnote"> Events, matchers, exit codes</span></li><li><a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Subagents</a><span class="lnote"> Defining and using subagents</span></li><li><a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Skills</a><span class="lnote"> Packaging procedures</span></li><li><a href="https://github.com/anthropics/claude-code-action" target="_blank" rel="noopener">claude-code-action</a><span class="lnote"> Claude Code in GitHub Actions</span></li><li><a href="https://support.claude.com/" target="_blank" rel="noopener">Claude Help Center</a><span class="lnote"> Product guides, including Cowork</span></li></ul></div></div></article>
@@ -11298,6 +11832,8 @@ This repo is a Spring Boot 3 WebFlux service on Java 21.
       <li>Prefer extending your frameworks to generating new boilerplate (<a href="#blueprints">Frameworks vs AI</a>).</li>
     </ul>
   </article>
+
+
 
 
 
@@ -11402,6 +11938,8 @@ This repo is a Spring Boot 3 WebFlux service on Java 21.
       <li><b>Gate failures caught</b> before merge vs after.</li>
     </ul>
   </article>
+
+
 
 
 
@@ -11599,6 +12137,8 @@ FROM VECTOR_SEARCH(
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the ingestion, retrieval and generation phases</li><li>Run a vector search over embedded chunks</li><li>Prompt a model to answer from passages with citations</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an incremental ingestion pipeline with chunking, metadata and embeddings</li><li>Add hybrid search, reranking and permission filters</li><li>Build a golden question set and measure recall and faithfulness</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design RAG for a domain: chunking strategy, index choice, latency and cost</li><li>Diagnose retrieval vs generation failures from evals</li><li>Secure RAG: access control, prompt injection, suppressions</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own retrieval and knowledge platforms across products</li><li>Lead advanced retrieval (agentic, graph-based) where it measurably helps</li><li>Set evaluation standards for AI answers in the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contextual retrieval</li><li>Hybrid search and reciprocal rank fusion</li><li>Rerankers and cross-encoders</li><li>Evaluation frameworks for RAG</li><li>GraphRAG and agentic retrieval</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank" rel="noopener">Contextual Retrieval (Anthropic)</a><span class="lnote"> Reducing retrieval failures with chunk context</span></li><li><a href="https://platform.claude.com/docs/en/build-with-claude/citations" target="_blank" rel="noopener">Claude citations</a><span class="lnote"> Cited answers from documents</span></li><li><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector</a><span class="lnote"> Vector search in Postgres</span></li><li><a href="https://cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener">BigQuery vector search</a><span class="lnote"> Embeddings and VECTOR_SEARCH</span></li><li><a href="https://cloud.google.com/vertex-ai/docs/vector-search/overview" target="_blank" rel="noopener">Vertex AI Vector Search</a><span class="lnote"> Managed approximate nearest neighbour search</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/rag-engine/rag-overview" target="_blank" rel="noopener">Vertex AI RAG Engine</a><span class="lnote"> Managed RAG on GCP</span></li><li><a href="https://genai.owasp.org/" target="_blank" rel="noopener">OWASP GenAI security</a><span class="lnote"> Prompt injection and LLM risks</span></li></ul></div></div></article>
@@ -11765,6 +12305,8 @@ def run_query(sql: str) -&gt; dict:
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with FastMCP and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> FastMCP and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div></article>
@@ -11855,6 +12397,8 @@ SELECT ?j ?date WHERE {
      ex:decisionDate ?date .
 } ORDER BY DESC(?date)</code></pre></div>
   </article>
+
+
 
 
 
@@ -11952,6 +12496,8 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
 
 
 
+
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain Pods, WebIDs and why apps and data are separated</li><li>Read a public resource from a Pod</li><li>Compare Solid with Web3 and platforms</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an app that logs in with Solid-OIDC and reads and writes Pod data</li><li>Set access control with WAC or ACP</li><li>Model data with shared RDF vocabularies</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design consent-based data sharing on Solid</li><li>Choose and operate Solid servers</li><li>Plan performance and querying across many Pods</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead Solid adoption in an organisation or sector</li><li>Contribute to the specifications</li><li>Set data-sovereignty strategy</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Solid Protocol specification</li><li>Solid-OIDC</li><li>WAC vs ACP access control</li><li>Linked data vocabularies</li><li>Community Solid Server</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://solidproject.org/" target="_blank" rel="noopener">Solid Project</a><span class="lnote"> Overview, apps, community</span></li><li><a href="https://solidproject.org/TR/protocol" target="_blank" rel="noopener">Solid Protocol</a><span class="lnote"> The specification</span></li><li><a href="https://solidproject.org/TR/wac" target="_blank" rel="noopener">Web Access Control</a><span class="lnote"> Access control specification</span></li><li><a href="https://docs.inrupt.com/" target="_blank" rel="noopener">Inrupt documentation</a><span class="lnote"> Client libraries and server</span></li><li><a href="https://communitysolidserver.github.io/CommunitySolidServer/latest/" target="_blank" rel="noopener">Community Solid Server</a><span class="lnote"> Open-source server</span></li></ul></div></div></article>
@@ -11967,14 +12513,14 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
-      <span class="reg">Well Rounded Engineer · a field guide for the AI era<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
     </div>
   </div>
 </footer>
 
 <script>
 (function(){
-  const tabs = ["start","behaviours","homelab","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","rag","mcp","web3","solid"];
+  const tabs = ["start","behaviours","homelab","mathematics","science","philosophy","goodhuman","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","rag","mcp","web3","solid"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById(t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
