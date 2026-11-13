@@ -46,8 +46,18 @@ edit → `reviewer` → fix (max 3 attempts) → `/compound` → PR → `merge-g
 | `culvert/`, `enrich-test-api/`, `tools/check-release-page.py` | `python3 tools/check-release-page.py <project> --repo ../<project>` and `python3 -m unittest tools/test_check_release_page.py` (§ "Project releases") |
 | `scripts/site_check*` | `scripts/site_check_test.sh` (add a fixture for every new rule, and prove it RED first) |
 | `.claude/hooks/**`, `.claude/settings.json` | `.claude/hooks/test-hooks.sh` (add a case for every new guard, and prove it RED first) |
+| `.github/adversarial-review/**` | `.github/adversarial-review/diff-facts-test.sh` and `render-verdict-test.sh` beside it (add a case for every new fact or verdict rule, and prove it RED first) |
 | a page's look | `python3 -m http.server 8000`, then screenshots at 375 px and 1280 px |
-| everything | the `Site check` workflow on the PR runs all three scripted gates |
+| everything | the `Site check` workflow on the PR runs the scripted gates, the review scripts' self-tests included |
+
+**CI's adversarial review (enrichmeai/valuedocs#1297, #80).** Every ready PR also gets the check
+`Adversarial review`. A Claude that did not write the change applies `reviewer.md` and
+`.github/adversarial-review/instructions.md`, both read from the PR's base branch, so a PR cannot
+rewrite them for its own review. The limit: GitHub runs a PR's own copy of the workflow, so a PR
+that edits the reviewer gets a banner calling its verdict advisory, and the founder merges it. A push
+by `claude.yml` starts no workflow: close and reopen the PR to re-run the check on the new head. It checks each claim against the product's latest release tag. BLOCK fails the check, and
+no verdict fails it as NOT RUN. Wording in the founder's voice is reported, never blocked: the founder
+merges it. It does not replace running `reviewer` in the session, because that runs before the PR exists.
 
 **Hooks (`.claude/settings.json`, scripts in `.claude/hooks/`)** feed errors straight back:
 - **After each edit:** `site_check.py` on the edited page, stylesheet, SVG, JSON or YAML file,
