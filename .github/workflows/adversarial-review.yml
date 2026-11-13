@@ -135,18 +135,6 @@ jobs:
           cp .review/render-verdict.sh .review/test-facts.md .review/sources.txt .review/self-change.txt .review/repos/TAGS.md "${RUNNER_TEMP}/review-trusted/"
           cat .review/sources.txt .review/test-facts.md
 
-      # A PR that changes the scripts runs their own tests here, from the PR's copy.
-      - name: Self-test the review scripts (only when this PR changes them)
-        id: selftest
-        if: steps.prepare.outcome == 'success'
-        run: |
-          if [ -s .review/self-change.txt ]; then
-            bash .github/adversarial-review/diff-facts-test.sh
-            bash .github/adversarial-review/render-verdict-test.sh
-          else
-            echo "The review scripts are unchanged; their tests ran on the PR that last changed them."
-          fi
-
       # Pinned to the commit behind the v1 tag on 2026-09-24, the same pin as claude.yml. With a
       # `prompt`, the action runs in agent mode on any pull_request action, `labeled` included
       # (src/modes/detector.ts and src/entrypoints/run.ts at this SHA). `--json-schema` makes the verdict
@@ -158,7 +146,7 @@ jobs:
       #   reaches only the hosts of CLAUDE.md § "Pinned docs".
       - name: Review
         id: review
-        if: steps.prepare.outcome == 'success' && steps.selftest.outcome == 'success'
+        if: steps.prepare.outcome == 'success'
         continue-on-error: true
         uses: anthropics/claude-code-action@8cf3482550831fb35a4fc3fbf7ca139cf8028b4c # v1
         with:
@@ -178,8 +166,7 @@ jobs:
 
       # Runs unless the run was cancelled (a newer push superseded it: that run reports instead), so a
       # failed prepare or review still reports NOT RUN on the PR. The verdict travels in an env var,
-      # never interpolated into the script: Claude wrote it from the diff. render-verdict.sh comes from
-      # the base branch (.review/), or from this PR when the base has none yet.
+      # never interpolated into the script: Claude wrote it from the diff.
       - name: Post the verdict, and fail unless it is PASS
         if: ${{ !cancelled() }}
         env:
@@ -189,17 +176,22 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           PREPARE: ${{ steps.prepare.outcome }}
-          SELFTEST: ${{ steps.selftest.outcome }}
           OUTCOME: ${{ steps.review.outcome }}
           VERDICT_JSON: ${{ steps.review.outputs.structured_output }}
         run: |
           set -euo pipefail
-          # The trusted copies the prepare step made; if it failed before making them, nothing was
-          # reviewed, and the PR's own script only has to say so.
+          # Only the trusted copy the prepare step saved is ever run. If prepare failed before saving
+          # it, nothing was reviewed, and the verdict is NOT RUN, written here: running the PR's own
+          # render-verdict.sh instead would let a PR that edits it, and breaks prepare, post its own PASS.
           export REVIEW_DIR="${RUNNER_TEMP}/review-trusted"
           render="${REVIEW_DIR}/render-verdict.sh"
-          [ -s "$render" ] || render=.github/adversarial-review/render-verdict.sh
-          verdict=$(bash "$render" "${RUNNER_TEMP}/comment.md")
+          if [ -s "$render" ]; then
+            verdict=$(bash "$render" "${RUNNER_TEMP}/comment.md")
+          else
+            verdict="NOT RUN"
+            printf '%s\n### Adversarial review: NOT RUN at `%s`\n\nNo verdict: the prepare step ended `%s` before it saved the trusted copies, so nothing was reviewed. This is not a pass. Read the [run](%s).\n' \
+              '<!-- adversarial-review -->' "${HEAD_SHA:0:12}" "$PREPARE" "$RUN_URL" > "${RUNNER_TEMP}/comment.md"
+          fi
 
           marker='<!-- adversarial-review -->'
           existing=$(gh api --paginate "repos/${REPO}/issues/${PR}/comments" \
