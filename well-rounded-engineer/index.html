@@ -671,7 +671,7 @@ Math.addExact(max, 1)            // throws ArithmeticException instead</code></p
     <ul>
       <li>Use decimal types or integer minor units (paise, cents) for money.</li>
       <li>Never compare floats with <code>==</code>; compare within a tolerance.</li>
-      <li>Know your integer sizes: a 32-bit counter of milliseconds overflows in under 25 days.</li>
+      <li>Know your integer sizes: a signed 32-bit counter of milliseconds overflows in under 25 days (unsigned, about 50).</li>
     </ul>
   </article>
 
@@ -709,7 +709,7 @@ math.sqrt(2 ** 32) * 1.1774     # ≈ 77,000 IDs for a 50% chance of a collision
     </ul>
 <div class="snip"><pre><code>import numpy as np
 a, b = np.array([0.2, 0.8, 0.1]), np.array([0.25, 0.7, 0.0])
-cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.98: very similar</code></pre></div>
+cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very similar</code></pre></div>
   </article>
 
   <article class="card"><h3>Estimation: powers of two and orders of magnitude</h3>
