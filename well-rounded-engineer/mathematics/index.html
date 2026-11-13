@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mathematics · Well Rounded Engineer</title>
-<meta name="description" content="The mathematics that keeps showing up in real engineering work: logic and discrete maths, how algorithms scale, probability and statistics, the linear…">
+<meta name="description" content="It starts with the everyday maths every person should know, for money, risk and reading the news, then the mathematics that keeps showing up in real…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -106,8 +106,52 @@
 
 <main id="main" class="container eg">
 <section class="panel" id="mathematics" data-name="Mathematics">
-  <div class="panel-head"><h1>Mathematics for engineers</h1><p>The mathematics that keeps showing up in real engineering work: logic and discrete maths, how algorithms scale, probability and statistics, the linear algebra behind embeddings, how computers store numbers, and quick estimation. Not to pass an exam, but to reason precisely and catch what looks right and is not.</p></div>
+  <div class="panel-head"><h1>Mathematics, for life and for engineering</h1><p>It starts with the everyday maths every person should know, for money, risk and reading the news, then the mathematics that keeps showing up in real engineering work: logic and discrete maths, how algorithms scale, probability and statistics, the linear algebra behind embeddings, how computers store numbers, and quick estimation. Not to pass an exam, but to reason precisely and catch what looks right and is not.</p></div>
   <div class="grid">
+
+  <article class="card wide"><h3>Everyday mathematics, for everyone</h3>
+    <p>You do not need advanced maths to live well, but a handful of ideas protect your money, your health and your judgment every day. None of this is about being "good at maths"; it is about not being fooled, including by yourself.</p>
+  </article>
+
+  <article class="card"><h3>Percentages and money</h3>
+    <ul>
+      <li><b>Up and down are not equal.</b> A price that rises 50% and then falls 50% ends at 75% of where it started (1.5 × 0.5 = 0.75). Down 20% then up 20% leaves you at 96%.</li>
+      <li><b>Percent is not percentage points.</b> An interest rate going from 2% to 3% is up one percentage point, but up 50% in percent terms. Watch which one you are being told.</li>
+      <li><b>Quick mental maths:</b> 10% is the number with the decimal point moved one place; 5% is half of that; 15% is the two added; 1% is the point moved two places.</li>
+      <li><b>Compare unit prices,</b> per kilo or per litre, not pack prices. The bigger pack is not always cheaper.</li>
+      <li><b>Small amounts add up:</b> £4 a day is £1,460 a year, and £14,600 over ten years, before any interest.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Compound growth, for you and against you</h3>
+    <ul>
+      <li><b>Compounding means growth on growth.</b> £1,000 at 5% a year becomes about £1,629 after ten years if the interest is reinvested, against £1,500 if it is not.</li>
+      <li><b>The rule of 72:</b> divide 72 by the yearly rate to estimate how many years it takes to double. At 6% about 12 years (exactly 11.9); at 3% about 24 (exactly 23.4).</li>
+      <li><b>Debt compounds too.</b> A balance at 24% a year, left unpaid, doubles in about 3 years (72 ÷ 24). Pay off the most expensive debt first.</li>
+      <li><b>Inflation is compounding in reverse:</b> at 3% a year, money left in a drawer loses half its buying power in about 24 years.</li>
+      <li><b>Start early.</b> Time does more of the work than the amount: small, regular savings started young often end up ahead of larger ones started late.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Risk and chance</h3>
+    <ul>
+      <li><b>Relative risk can mislead.</b> "Doubles your risk" may mean going from 1 in 10,000 to 2 in 10,000. Always ask: out of how many?</li>
+      <li><b>Base rates matter.</b> Suppose a test is 99% accurate both ways and the condition affects 1 person in 1,000. Of everyone who tests positive, only about 9% actually have it, because the false positives from the 999 healthy people outnumber the true ones.</li>
+      <li><b>Expected value:</b> multiply each outcome by its chance and add them up. Lotteries and most casino games pay back less than you put in, on average, by design.</li>
+      <li><b>Streaks happen by chance.</b> A coin that lands heads five times is not "due" tails; each toss is independent.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Reading numbers in the news</h3>
+    <ul>
+      <li><b>Average or median?</b> A few very high incomes pull the average up; the median (the middle value) is often a fairer picture of a typical person.</li>
+      <li><b>Correlation is not causation.</b> Two things rising together may share a third cause, or be coincidence.</li>
+      <li><b>Check the chart's axis.</b> A bar chart whose axis does not start at zero can make a small difference look huge.</li>
+      <li><b>Ask for the size of the sample</b> and who was asked. A survey of 20 people, or only of fans, says little.</li>
+      <li><b>Feel the size of big numbers:</b> a million seconds is about 11.6 days; a billion seconds is about 31.7 years.</li>
+    </ul>
+    <p class="note">The engineering cards below build on the same ideas: medians and percentiles, probability and estimation.</p>
+  </article>
 
   <article class="card wide"><h3>What to know, and where it shows up</h3>
     <div class="tbl"><table>
@@ -227,9 +271,10 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
 
 
 
+
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div></article>
 
   </div>
 </section>
