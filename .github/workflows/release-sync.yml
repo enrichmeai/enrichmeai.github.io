@@ -23,6 +23,7 @@ on:
       - 'penstock/**'
       - 'cistern/**'
       - 'persona/**'
+      - 'well-rounded-engineer/**'
       - 'index.html'
       - 'tools/check-release-page.py'
       - 'tools/test_check_release_page.py'

@@ -33,7 +33,7 @@ checked against their latest GitHub release instead, with two markers:
                                            a link into the project's repository that names a version:
                                            "release" links must name the latest release, "history" an older one
 
-Pages that repeat a project's facts (the home page, /persona/) are listed under "also": their markers
+Pages that repeat a project's facts (the home page, /persona/, /well-rounded-engineer/) are listed under "also": their markers
 are checked against the same truth, and a version on them outside every project's markers is an error,
 so the home page cannot keep an old version after the project page moves on. Markers are required
 only on the project's own page.
@@ -74,7 +74,7 @@ PROJECTS = {
         "reactor": "data-pipeline-libraries-java/pom.xml",
         "pypi": "culvert",
         "extras": "python-culvert/pyproject.toml",
-        "also": ["index.html"],
+        "also": ["index.html", "well-rounded-engineer/index.html"],
     },
     "enrich-test-api": {
         "repo": "enrichmeai/enrich-test-api",
