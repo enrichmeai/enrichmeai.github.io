@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Mesh & Istio · Well Rounded Engineer</title>
+<meta name="description" content="A service mesh moves service-to-service concerns (encryption, identity, retries, traffic splitting, telemetry, access policy) out of application code and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="servicemesh">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/" aria-current="page">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="servicemesh" data-name="Service Mesh &amp; Istio">
+  <div class="panel-head"><h1>Service mesh and Istio</h1><p>A service mesh moves service-to-service concerns (encryption, identity, retries, traffic splitting, telemetry, access policy) out of application code and into the platform. What a mesh does, when it is worth it, how Istio works in sidecar and ambient modes, the resources you will write, and how to debug it. Background on <a href="/well-rounded-engineer/microservices/">Microservices</a> and <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>What a mesh gives you</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Capability</th><th>What it means</th><th>Without a mesh</th></tr></thead>
+      <tbody>
+      <tr><td>Mutual TLS</td><td>Every call between services encrypted and authenticated with workload certificates, rotated automatically</td><td>TLS and certificates managed in each service</td></tr>
+      <tr><td>Workload identity and authorisation</td><td>Policies such as "only the frontend's service account may call GET /api/*"</td><td>Network policies (IP-based) and code checks</td></tr>
+      <tr><td>Traffic management</td><td>Canary weights, header-based routing, mirroring, timeouts, retries</td><td>Load balancer rules or code</td></tr>
+      <tr><td>Resilience</td><td>Circuit breaking, outlier detection, connection limits</td><td>Libraries such as Resilience4j in each service</td></tr>
+      <tr><td>Observability</td><td>Uniform request metrics, access logs and trace spans for every hop</td><td>Instrumentation in every service</td></tr>
+      <tr><td>Egress control</td><td>Only allow-listed external hosts reachable</td><td>Firewall and proxy rules</td></tr>
+      </tbody></table></div>
+    <p class="note">North-south traffic (clients into the platform) is the gateway's job; east-west traffic (services to each other) is the mesh's. Business logic belongs in neither.</p>
+  </article>
+
+  <article class="card"><h3>When it is worth it</h3>
+    <p><b>Good reasons</b></p>
+    <ul>
+      <li>Many services on Kubernetes, often in several languages.</li>
+      <li>A requirement for encrypted, authenticated traffic between all services (zero trust, compliance).</li>
+      <li>Frequent canary or progressive releases.</li>
+      <li>Uniform telemetry without changing every service.</li>
+    </ul>
+    <p><b>Reasons to wait</b></p>
+    <ul>
+      <li>A handful of services, or a modular monolith.</li>
+      <li>Serverless platforms such as Cloud Run, which already give service identity (IAM) and TLS.</li>
+      <li>No one to own and upgrade the mesh: it is a critical system in every request path.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Istio architecture</h3>
+    <ul>
+      <li><b>Control plane, <code>istiod</code>:</b> turns your configuration into proxy configuration, issues workload certificates, and pushes both to the data plane.</li>
+      <li><b>Data plane, sidecar mode:</b> an Envoy proxy injected into every pod intercepts its inbound and outbound traffic. Full L7 features per pod, at the cost of a proxy per pod.</li>
+      <li><b>Data plane, ambient mode:</b> a per-node <b>ztunnel</b> provides L4 mTLS and identity for all pods without sidecars; optional <b>waypoint</b> proxies add L7 features (routing, L7 authorisation) only where needed. Lower overhead and no pod restarts to join.</li>
+      <li><b>Gateways:</b> Envoy deployments at the edge for ingress and egress, configured with the Kubernetes Gateway API or Istio's own Gateway resource.</li>
+    </ul>
+    <p class="note">On Google Cloud, Cloud Service Mesh offers a managed, Istio-based mesh for GKE and other environments.</p>
+  </article>
+
+  <article class="card"><h3>Install and enrol workloads</h3>
+<div class="snip"><pre><code># sidecar mode
+istioctl install --set profile=default -y
+kubectl label namespace legal istio-injection=enabled
+kubectl rollout restart deploy -n legal        # pods get sidecars on restart
+
+# ambient mode
+istioctl install --set profile=ambient -y
+kubectl label namespace legal istio.io/dataplane-mode=ambient   # no restart needed
+istioctl waypoint apply -n legal --enroll-namespace             # add L7 where needed
+
+istioctl analyze -n legal                      # check configuration for problems</code></pre></div>
+    <p class="note">In production, install and upgrade Istio through Helm charts or your platform's managed offering, from Git, with canary upgrades of the control plane (revisions).</p>
+  </article>
+
+  <article class="card wide"><h3>The resources you will write</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Resource</th><th>Purpose</th></tr></thead>
+      <tbody>
+      <tr><td>Gateway + HTTPRoute (Kubernetes Gateway API)</td><td>Ingress and routing; the recommended API for new setups</td></tr>
+      <tr><td>VirtualService</td><td>Istio routing rules: matches, weights, retries, timeouts, fault injection</td></tr>
+      <tr><td>DestinationRule</td><td>Policies for a destination: subsets (versions), load balancing, connection pools, outlier detection, TLS</td></tr>
+      <tr><td>PeerAuthentication</td><td>mTLS mode for workloads: STRICT or PERMISSIVE</td></tr>
+      <tr><td>AuthorizationPolicy</td><td>Who may call what: by service account, namespace, path, method, JWT claims</td></tr>
+      <tr><td>RequestAuthentication</td><td>Validate end-user JWTs at the proxy</td></tr>
+      <tr><td>ServiceEntry</td><td>Register external services so they can be reached and controlled</td></tr>
+      <tr><td>Sidecar</td><td>Limit which services a sidecar knows about, to reduce memory and config size</td></tr>
+      <tr><td>Telemetry</td><td>Tune metrics, access logs and tracing</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Security: mTLS and authorisation</h3>
+<div class="snip"><pre><code># mesh-wide strict mTLS (after a PERMISSIVE migration period)
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata: { name: default, namespace: istio-system }
+spec:
+  mtls: { mode: STRICT }
+---
+# only the frontend may call the API, and only GET on /api/*
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata: { name: legal-api-allow, namespace: legal }
+spec:
+  selector: { matchLabels: { app: legal-api } }
+  action: ALLOW
+  rules:
+    - from:
+        - source: { principals: ["cluster.local/ns/web/sa/frontend"] }
+      to:
+        - operation: { methods: ["GET"], paths: ["/api/*"] }
+---
+# validate end-user JWTs at the proxy
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata: { name: jwt, namespace: legal }
+spec:
+  selector: { matchLabels: { app: legal-api } }
+  jwtRules:
+    - issuer: "https://auth.example.com/"
+      jwksUri: "https://auth.example.com/.well-known/jwks.json"</code></pre></div>
+    <p class="note">Once any ALLOW policy selects a workload, everything not allowed is denied. Roll out in a test namespace first. The service still checks object-level permissions: the mesh knows which service is calling, not whether this user owns this case.</p>
+  </article>
+
+  <article class="card"><h3>Traffic: canary, retries, timeouts</h3>
+<div class="snip"><pre><code>apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata: { name: legal-api, namespace: legal }
+spec:
+  host: legal-api
+  subsets:
+    - { name: v1, labels: { version: v1 } }
+    - { name: v2, labels: { version: v2 } }
+  trafficPolicy:
+    connectionPool: { http: { http1MaxPendingRequests: 100 } }
+    outlierDetection:                     # eject failing pods for a while
+      consecutive5xxErrors: 5
+      interval: 10s
+      baseEjectionTime: 30s
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata: { name: legal-api, namespace: legal }
+spec:
+  hosts: [legal-api]
+  http:
+    - timeout: 3s
+      retries: { attempts: 2, perTryTimeout: 1s, retryOn: "5xx,connect-failure" }
+      route:
+        - { destination: { host: legal-api, subset: v1 }, weight: 90 }
+        - { destination: { host: legal-api, subset: v2 }, weight: 10 }</code></pre></div>
+<div class="snip"><pre><code># the same split with the Gateway API
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata: { name: legal-api, namespace: legal }
+spec:
+  parentRefs: [{ name: legal-gateway }]
+  hostnames: ["api.example.com"]
+  rules:
+    - backendRefs:
+        - { name: legal-api-v1, port: 8080, weight: 90 }
+        - { name: legal-api-v2, port: 8080, weight: 10 }</code></pre></div>
+    <p class="note">Put retries in one place, mesh or application, not both: retries multiplied at every layer turn a slowdown into a retry storm. Retry only idempotent requests.</p>
+  </article>
+
+  <article class="card"><h3>Egress control</h3>
+<div class="snip"><pre><code># with outbound traffic policy REGISTRY_ONLY, only registered hosts are reachable
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata: { name: indian-kanoon-mirror, namespace: legal }
+spec:
+  hosts: ["api.example-mirror.org"]
+  ports: [{ number: 443, name: https, protocol: TLS }]
+  resolution: DNS
+  location: MESH_EXTERNAL</code></pre></div>
+    <p class="note">Route egress through an egress gateway when you need a fixed exit point, central logging, or to combine with Cloud NAT and firewall rules.</p>
+  </article>
+
+  <article class="card"><h3>Observability with a mesh</h3>
+    <ul>
+      <li><b>Metrics</b> for every request, such as <code>istio_requests_total</code> and request duration histograms, labelled by source, destination and response code.</li>
+      <li><b>Kiali</b> draws the live service graph with health and traffic.</li>
+      <li><b>Tracing:</b> proxies create spans, but your application must <b>forward the trace headers</b> (<code>traceparent</code>) from incoming to outgoing requests, or traces break at every service.</li>
+      <li><b>Access logs</b> per proxy, tunable with the Telemetry resource.</li>
+    </ul>
+<div class="snip"><pre><code># 5xx rate per destination service
+sum by (destination_service) (rate(istio_requests_total{response_code=~"5.."}[5m]))
+  / sum by (destination_service) (rate(istio_requests_total[5m]))</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Debugging</h3>
+<div class="snip"><pre><code>istioctl analyze -A                                # config problems across namespaces
+istioctl proxy-status                              # is every proxy in sync with istiod?
+istioctl proxy-config routes   deploy/legal-api -n legal
+istioctl proxy-config clusters deploy/legal-api -n legal
+istioctl x describe pod &lt;pod&gt; -n legal             # which policies apply to this pod
+kubectl logs &lt;pod&gt; -c istio-proxy -n legal         # sidecar access log</code></pre></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Symptom</th><th>Usually</th></tr></thead>
+      <tbody>
+      <tr><td>503 with <code>UF</code> / <code>URX</code> flags</td><td>Upstream failing or refusing; check the app and outlier ejection</td></tr>
+      <tr><td>503 <code>NR</code></td><td>No route: VirtualService or HTTPRoute mismatch</td></tr>
+      <tr><td>Connection reset after enabling STRICT</td><td>A client outside the mesh still sends plain text</td></tr>
+      <tr><td>403 <code>RBAC: access denied</code></td><td>An AuthorizationPolicy denies it (or no ALLOW rule matches)</td></tr>
+      <tr><td>App fails at startup calling a dependency</td><td>Sidecar not ready yet; hold the app until the proxy starts</td></tr>
+      <tr><td>Jobs never complete</td><td>Sidecar keeps the pod alive; use native sidecars or ambient mode</td></tr>
+      <tr><td>Pod has no sidecar</td><td>Namespace not labelled, or pod created before the label</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Meshes compared</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Mesh</th><th>Notes</th></tr></thead>
+      <tbody>
+      <tr><td>Istio</td><td>Most features; sidecar or ambient; large community; more to learn and operate</td></tr>
+      <tr><td>Cloud Service Mesh</td><td>Google-managed, Istio-based, integrated with GKE and Cloud Monitoring</td></tr>
+      <tr><td>Linkerd</td><td>Simpler and lightweight, with its own Rust proxy; fewer features</td></tr>
+      <tr><td>Cilium service mesh</td><td>eBPF-based networking with mesh features, often without sidecars</td></tr>
+      <tr><td>Consul</td><td>Spans Kubernetes and VMs, with service discovery</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Adopting a mesh safely</h3>
+    <ol>
+      <li>Install in a non-production cluster; enrol one namespace.</li>
+      <li>Start with PERMISSIVE mTLS and observe traffic in Kiali and metrics.</li>
+      <li>Move namespaces to STRICT once every client is in the mesh.</li>
+      <li>Add AuthorizationPolicies service by service, tested in CI against a cluster.</li>
+      <li>Move retries, timeouts and canaries into the mesh deliberately, removing duplicates from code.</li>
+      <li>Keep all mesh config in Git, delivered by GitOps, with <code>istioctl analyze</code> in CI.</li>
+      <li>Plan control-plane upgrades with revisions and canary them like any critical release.</li>
+    </ol>
+  </article>
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain mTLS, workload identity and east-west vs north-south traffic</li><li>Read VirtualService, DestinationRule and AuthorizationPolicy resources</li><li>Find a pod's sidecar logs and proxy status</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Enrol namespaces and roll out STRICT mTLS safely</li><li>Write authorisation policies and canary routes</li><li>Debug 503s and RBAC denials with istioctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide whether a mesh is worth it, and sidecar vs ambient</li><li>Design zero-trust service-to-service security</li><li>Run mesh upgrades with revisions; keep config in GitOps</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the mesh platform across clusters and environments</li><li>Design multi-cluster and multi-network meshes</li><li>Set network security strategy combining mesh, gateway and cloud controls</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Istio ambient mode (ztunnel and waypoints)</li><li>Kubernetes Gateway API</li><li>Envoy proxy internals</li><li>Multi-cluster Istio</li><li>SPIFFE workload identity</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://istio.io/latest/docs/" target="_blank" rel="noopener">Istio documentation</a><span class="lnote"> Concepts, tasks, reference</span></li><li><a href="https://istio.io/latest/docs/concepts/traffic-management/" target="_blank" rel="noopener">Istio traffic management</a><span class="lnote"> Routing, resilience, gateways</span></li><li><a href="https://istio.io/latest/docs/concepts/security/" target="_blank" rel="noopener">Istio security</a><span class="lnote"> mTLS, identity, authorisation</span></li><li><a href="https://istio.io/latest/docs/ambient/" target="_blank" rel="noopener">Istio ambient mode</a><span class="lnote"> Sidecar-less data plane</span></li><li><a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener">Kubernetes Gateway API</a><span class="lnote"> Standard routing API</span></li><li><a href="https://kiali.io/docs/" target="_blank" rel="noopener">Kiali</a><span class="lnote"> Service graph and mesh console</span></li><li><a href="https://cloud.google.com/service-mesh/docs" target="_blank" rel="noopener">Cloud Service Mesh</a><span class="lnote"> Google's managed mesh</span></li><li><a href="https://linkerd.io/" target="_blank" rel="noopener">Linkerd</a><span class="lnote"> A lighter-weight alternative</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/operators/">← Operators</a><a class="pn-next" href="/well-rounded-engineer/llm/">LLMs →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

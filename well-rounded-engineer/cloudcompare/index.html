@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GCP vs AWS vs Azure · Well Rounded Engineer</title>
+<meta name="description" content="The same building blocks under three names: a service-by-service map, how the providers differ in structure, identity, networking and pricing, each one&#x27;s…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="cloudcompare">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/" aria-current="page">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="cloudcompare" data-name="GCP vs AWS vs Azure">
+  <div class="panel-head"><h1>GCP vs AWS vs Azure</h1><p>The same building blocks under three names: a service-by-service map, how the providers differ in structure, identity, networking and pricing, each one's strengths, and how to stay portable. Service names change often; check each provider's own comparison page before deciding.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Account structure and identity</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Concept</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>Hierarchy</td><td>Organization → folders → projects</td><td>Organization → OUs → accounts</td><td>Entra tenant → management groups → subscriptions → resource groups</td></tr>
+      <tr><td>Unit of isolation and billing</td><td>Project</td><td>Account</td><td>Subscription (resource groups inside)</td></tr>
+      <tr><td>Human identity</td><td>Cloud Identity / Google Workspace</td><td>IAM Identity Center</td><td>Microsoft Entra ID</td></tr>
+      <tr><td>Access model</td><td>IAM roles bound to principals on resources</td><td>IAM policies (JSON) on users, roles and resources</td><td>Azure RBAC role assignments at a scope</td></tr>
+      <tr><td>Workload identity</td><td>Service accounts</td><td>IAM roles (instance profiles, task roles)</td><td>Managed identities</td></tr>
+      <tr><td>Keyless access from CI / other clouds</td><td>Workload Identity Federation</td><td>OIDC identity providers + <code>AssumeRoleWithWebIdentity</code></td><td>Workload identity federation in Entra</td></tr>
+      <tr><td>Guardrails</td><td>Organization policies</td><td>Service control policies</td><td>Azure Policy</td></tr>
+      <tr><td>CLI</td><td><code>gcloud</code>, <code>bq</code>, <code>gsutil</code>/<code>gcloud storage</code></td><td><code>aws</code></td><td><code>az</code></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Compute and containers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>Virtual machines</td><td>Compute Engine</td><td>EC2</td><td>Virtual Machines</td></tr>
+      <tr><td>Serverless containers</td><td>Cloud Run (services)</td><td>ECS on Fargate; App Runner (check it is open to new customers)</td><td>Azure Container Apps</td></tr>
+      <tr><td>Run-to-completion containers</td><td>Cloud Run jobs; Batch</td><td>AWS Batch; ECS tasks</td><td>Container Apps jobs; Azure Batch</td></tr>
+      <tr><td>Functions</td><td>Cloud Run functions</td><td>Lambda</td><td>Azure Functions</td></tr>
+      <tr><td>Managed Kubernetes</td><td>GKE (Standard, Autopilot)</td><td>EKS (with Auto Mode)</td><td>AKS</td></tr>
+      <tr><td>Platform as a service</td><td>App Engine</td><td>Elastic Beanstalk</td><td>App Service</td></tr>
+      <tr><td>Container registry</td><td>Artifact Registry</td><td>ECR</td><td>Azure Container Registry</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Storage and databases</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>Object storage</td><td>Cloud Storage</td><td>S3</td><td>Blob Storage</td></tr>
+      <tr><td>Block storage</td><td>Persistent Disk / Hyperdisk</td><td>EBS</td><td>Managed Disks</td></tr>
+      <tr><td>File storage</td><td>Filestore</td><td>EFS, FSx</td><td>Azure Files, NetApp Files</td></tr>
+      <tr><td>Managed Postgres / MySQL</td><td>Cloud SQL</td><td>RDS</td><td>Azure Database for PostgreSQL / MySQL</td></tr>
+      <tr><td>High-performance Postgres-compatible</td><td>AlloyDB</td><td>Aurora</td><td>Azure Database for PostgreSQL (Flexible Server, elastic clusters)</td></tr>
+      <tr><td>Globally consistent relational</td><td>Spanner</td><td>Aurora DSQL</td><td>Cosmos DB (for some workloads)</td></tr>
+      <tr><td>SQL Server</td><td>Cloud SQL for SQL Server</td><td>RDS for SQL Server</td><td>Azure SQL Database / Managed Instance</td></tr>
+      <tr><td>Document / key-value</td><td>Firestore</td><td>DynamoDB, DocumentDB</td><td>Cosmos DB</td></tr>
+      <tr><td>Wide-column</td><td>Bigtable</td><td>Keyspaces; DynamoDB</td><td>Cosmos DB (Cassandra API), Managed Instance for Apache Cassandra</td></tr>
+      <tr><td>In-memory cache</td><td>Memorystore (Redis, Valkey)</td><td>ElastiCache, MemoryDB</td><td>Azure Managed Redis / Azure Cache for Redis</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Data and analytics</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>Data warehouse</td><td>BigQuery</td><td>Redshift (plus Athena for SQL on S3)</td><td>Microsoft Fabric warehouse; Azure Synapse Analytics</td></tr>
+      <tr><td>Lakehouse / open tables</td><td>BigLake (Iceberg)</td><td>S3 Tables (Iceberg), Lake Formation</td><td>OneLake (Delta) in Fabric; Azure Databricks</td></tr>
+      <tr><td>Stream and batch processing</td><td>Dataflow (Apache Beam)</td><td>Managed Service for Apache Flink; Glue</td><td>Stream Analytics; Fabric; Databricks</td></tr>
+      <tr><td>Spark / Hadoop</td><td>Dataproc; Serverless for Apache Spark (formerly Dataproc Serverless)</td><td>EMR, EMR Serverless</td><td>HDInsight; Azure Databricks; Fabric Spark</td></tr>
+      <tr><td>ETL / pipeline service</td><td>Dataflow, Data Fusion, Dataform</td><td>Glue</td><td>Data Factory (and in Fabric)</td></tr>
+      <tr><td>Managed Airflow</td><td>Cloud Composer</td><td>MWAA</td><td>Airflow in Data Factory / Fabric</td></tr>
+      <tr><td>Messaging</td><td>Pub/Sub</td><td>SNS + SQS; Kinesis Data Streams</td><td>Service Bus; Event Hubs</td></tr>
+      <tr><td>Managed Kafka</td><td>Managed Service for Apache Kafka</td><td>Amazon MSK</td><td>Event Hubs (Kafka protocol)</td></tr>
+      <tr><td>Event routing</td><td>Eventarc</td><td>EventBridge</td><td>Event Grid</td></tr>
+      <tr><td>Change data capture</td><td>Datastream</td><td>Database Migration Service (CDC)</td><td>Fabric mirroring; Data Factory CDC</td></tr>
+      <tr><td>Catalog and governance</td><td>Dataplex</td><td>Glue Data Catalog, Lake Formation, SageMaker Catalog</td><td>Microsoft Purview</td></tr>
+      <tr><td>BI</td><td>Looker, Looker Studio</td><td>QuickSight</td><td>Power BI</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>AI, APIs, networking, security, operations</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>Generative AI platform</td><td>Vertex AI (Gemini, Claude and open models in Model Garden)</td><td>Bedrock (Claude and others); SageMaker for custom ML</td><td>Microsoft Foundry, formerly Azure AI Foundry (OpenAI models, Claude and others)</td></tr>
+      <tr><td>Vector search</td><td>Vertex AI Vector Search; BigQuery; AlloyDB</td><td>OpenSearch; Aurora pgvector; S3 Vectors</td><td>Azure AI Search; Cosmos DB; PostgreSQL pgvector</td></tr>
+      <tr><td>API management</td><td>Apigee; API Gateway</td><td>API Gateway</td><td>API Management</td></tr>
+      <tr><td>Virtual network</td><td>VPC (global, subnets regional)</td><td>VPC (regional)</td><td>Virtual Network (regional)</td></tr>
+      <tr><td>Load balancing</td><td>Cloud Load Balancing (global L7 with one anycast IP)</td><td>ALB, NLB; Global Accelerator</td><td>Load Balancer, Application Gateway, Front Door</td></tr>
+      <tr><td>CDN</td><td>Cloud CDN</td><td>CloudFront</td><td>Azure Front Door</td></tr>
+      <tr><td>DNS</td><td>Cloud DNS</td><td>Route 53</td><td>Azure DNS</td></tr>
+      <tr><td>Private link to services</td><td>Private Service Connect</td><td>PrivateLink</td><td>Private Link</td></tr>
+      <tr><td>Dedicated connectivity</td><td>Cloud Interconnect</td><td>Direct Connect</td><td>ExpressRoute</td></tr>
+      <tr><td>Secrets</td><td>Secret Manager</td><td>Secrets Manager</td><td>Key Vault</td></tr>
+      <tr><td>Keys</td><td>Cloud KMS</td><td>KMS</td><td>Key Vault</td></tr>
+      <tr><td>Security posture</td><td>Security Command Center</td><td>Security Hub, GuardDuty</td><td>Microsoft Defender for Cloud</td></tr>
+      <tr><td>WAF / DDoS</td><td>Cloud Armor</td><td>AWS WAF, Shield</td><td>Azure WAF, DDoS Protection</td></tr>
+      <tr><td>Logs and metrics</td><td>Cloud Logging, Cloud Monitoring</td><td>CloudWatch</td><td>Azure Monitor (Log Analytics)</td></tr>
+      <tr><td>Tracing / APM</td><td>Cloud Trace</td><td>X-Ray / CloudWatch Application Signals</td><td>Application Insights</td></tr>
+      <tr><td>Infrastructure as code</td><td>Terraform; Infrastructure Manager</td><td>CloudFormation, CDK; Terraform</td><td>Bicep, ARM; Terraform</td></tr>
+      <tr><td>CI/CD</td><td>Cloud Build, Cloud Deploy</td><td>CodeBuild, CodePipeline</td><td>Azure DevOps Pipelines; GitHub Actions</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Where each tends to stand out</h3>
+    <ul>
+      <li><b>Google Cloud:</b> data and analytics (BigQuery is serverless with nothing to size), global networking with a global VPC and single-IP global load balancing, Kubernetes (GKE), developer-friendly serverless (Cloud Run), and AI with Vertex AI. Projects make isolation simple.</li>
+      <li><b>AWS:</b> the broadest and deepest service catalogue, the largest ecosystem and talent pool, many regions, and mature options for almost every niche. More configuration choices, and more to learn.</li>
+      <li><b>Azure:</b> enterprises standardised on Microsoft (Entra ID, Microsoft 365, Windows, SQL Server, .NET), hybrid setups (Azure Arc), and the Microsoft data and AI stack (Fabric, Power BI, Azure OpenAI).</li>
+    </ul>
+    <p class="note">All three are capable for almost any workload. The deciding factors are usually existing skills and contracts, specific services you depend on, data location, and price after discounts.</p>
+  </article>
+
+  <article class="card"><h3>Differences that bite</h3>
+    <ul>
+      <li><b>IAM thinking:</b> GCP binds roles to principals on resources; AWS writes JSON policies with explicit allow/deny and resource ARNs; Azure assigns roles at a scope in a strict hierarchy.</li>
+      <li><b>Networking:</b> a GCP VPC spans regions; AWS and Azure networks are regional and are joined with peering or transit gateways/hubs.</li>
+      <li><b>Isolation unit:</b> GCP teams often use many projects; AWS uses many accounts; Azure uses subscriptions plus resource groups.</li>
+      <li><b>Warehouses:</b> BigQuery bills by bytes scanned or by slots with no cluster to run; Redshift has provisioned clusters or serverless capacity units; Fabric uses capacity units shared across workloads.</li>
+      <li><b>Discounts:</b> GCP committed and sustained use discounts; AWS Savings Plans and Reserved Instances; Azure reservations and savings plans. Spot or preemptible capacity everywhere for interruptible work.</li>
+      <li><b>Egress:</b> data leaving a cloud costs money on all three; cross-region and cross-cloud traffic adds up. Design data placement before choosing multi-cloud.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Regions in India (data residency)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Provider</th><th>Regions</th></tr></thead>
+      <tbody>
+      <tr><td>Google Cloud</td><td>Mumbai (<code>asia-south1</code>), Delhi (<code>asia-south2</code>)</td></tr>
+      <tr><td>AWS</td><td>Mumbai (<code>ap-south-1</code>), Hyderabad (<code>ap-south-2</code>)</td></tr>
+      <tr><td>Azure</td><td>Central India (Pune), South India (Chennai), West India (Mumbai), plus newer regions</td></tr>
+      </tbody></table></div>
+    <p class="note">Not every service or model is available in every region. Check availability per service, and for AI models check which regions actually process the data.</p>
+  </article>
+
+  <article class="card"><h3>CLI equivalents</h3>
+<div class="snip"><pre><code># who am I / which project-account-subscription
+gcloud config list            aws sts get-caller-identity     az account show
+
+# list VMs
+gcloud compute instances list aws ec2 describe-instances      az vm list -o table
+
+# copy a file to object storage
+gcloud storage cp f gs://b/   aws s3 cp f s3://b/             az storage blob upload -f f -c b -n f --account-name acct
+
+# Kubernetes credentials
+gcloud container clusters get-credentials c --region r
+aws eks update-kubeconfig --name c --region r
+az aks get-credentials -g rg -n c
+
+# read a secret
+gcloud secrets versions access latest --secret=s
+aws secretsmanager get-secret-value --secret-id s
+az keyvault secret show --vault-name v -n s</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Staying portable (where it matters)</h3>
+    <ul>
+      <li><b>Containers and Kubernetes</b> run the same on GKE, EKS and AKS; Cloud Run-style serverless is less portable but simpler.</li>
+      <li><b>Terraform</b> for all infrastructure, with provider-specific modules behind your own interfaces.</li>
+      <li><b>Open data formats</b> (Parquet, Iceberg, Delta) in object storage keep data readable by any engine.</li>
+      <li><b>Open protocols:</b> Postgres, Kafka, OpenTelemetry, OIDC, S3-compatible APIs.</li>
+      <li><b>dbt and SQL</b> transfer between warehouses with dialect adjustments.</li>
+      <li><b>Accept lock-in deliberately</b> where a managed service saves real effort (BigQuery, Spanner, DynamoDB); write down the exit cost.</li>
+    </ul>
+    <p class="note">Multi-cloud for its own sake doubles skills, tooling and egress. Use it for a concrete reason: a customer requirement, a unique service, resilience against a provider-wide failure, or negotiation.</p>
+  </article>
+
+  <article class="card"><h3>Choosing for a new workload</h3>
+    <ol>
+      <li>Where is the data now, and where must it legally live?</li>
+      <li>Which managed services would save the most work (warehouse, Kubernetes, AI models)?</li>
+      <li>What does the team already know, and what do hiring markets offer?</li>
+      <li>What identity and productivity stack does the organisation use?</li>
+      <li>Price a realistic workload on each calculator, including egress and support.</li>
+      <li>Prototype the riskiest piece on the leading candidate before committing.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Certifications, side by side</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Level</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
+      <tbody>
+      <tr><td>Foundational</td><td>Cloud Digital Leader</td><td>Cloud Practitioner</td><td>AZ-900 Fundamentals</td></tr>
+      <tr><td>Associate</td><td>Associate Cloud Engineer</td><td>Solutions Architect – Associate</td><td>AZ-104 Administrator</td></tr>
+      <tr><td>Data</td><td>Professional Data Engineer</td><td>Data Engineer – Associate</td><td>Fabric Data Engineer (DP-700)</td></tr>
+      <tr><td>Architect</td><td>Professional Cloud Architect</td><td>Solutions Architect – Professional</td><td>AZ-305 Solutions Architect Expert</td></tr>
+      </tbody></table></div>
+    <p class="note">Certification names and codes change; check each provider's site.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Map common services across GCP, AWS and Azure</li><li>Explain projects vs accounts vs subscriptions</li><li>Use each provider's CLI for basic tasks</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Translate a design from one cloud to another, including IAM and networking</li><li>Compare prices for a workload, including egress</li><li>Use Terraform across providers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose a provider for a workload with written trade-offs</li><li>Design portable architectures where it matters, and accept lock-in deliberately</li><li>Plan data residency and region choices</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's cloud strategy, contracts and multi-cloud policy</li><li>Lead migrations between clouds or from on-premises</li><li>Govern cost, security and compliance across providers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Well-Architected frameworks of each provider</li><li>Cloud IAM models compared</li><li>Cross-cloud networking and egress costs</li><li>Open table formats for portability</li><li>FinOps practices</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud: compare AWS and Azure services</a><span class="lnote"> Google's official service mapping</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/" target="_blank" rel="noopener">Azure for AWS professionals</a><span class="lnote"> Microsoft's AWS-to-Azure mapping</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Google's design pillars</span></li><li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected</a><span class="lnote"> AWS design pillars</span></li><li><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a><span class="lnote"> Azure design pillars</span></li><li><a href="https://www.finops.org/" target="_blank" rel="noopener">FinOps Foundation</a><span class="lnote"> Managing cloud cost across providers</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/caching/">← Caching</a><a class="pn-next" href="/well-rounded-engineer/gcpdata/">Data on GCP →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL Skills · Well Rounded Engineer</title>
+<meta name="description" content="How SQL actually evaluates a query, the patterns that solve most real problems, the mistakes that give wrong answers quietly, and exercises with…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="sql">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/" aria-current="page">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="sql" data-name="SQL Skills">
+  <div class="panel-head"><h1>Getting better at SQL and BigQuery</h1><p>How SQL actually evaluates a query, the patterns that solve most real problems, the mistakes that give wrong answers quietly, and exercises with solutions. Written in BigQuery GoogleSQL. The <a href="/well-rounded-engineer/bigquery/">BigQuery</a> tab is the syntax reference.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Practice schema used on this tab</h3>
+<div class="snip"><pre><code>judgment(judgment_key STRING, cnr STRING, court_code STRING, decision_date DATE,
+         data_year INT64, judges ARRAY&lt;STRING&gt;, raw_date STRING, _landed_at TIMESTAMP)
+court(court_code STRING, name STRING, state STRING)</code></pre></div>
+    <p class="note">Practise for free in the BigQuery sandbox (no billing account needed) against <code>bigquery-public-data</code>, for example <code>bigquery-public-data.stackoverflow.posts_questions</code> or <code>bigquery-public-data.new_york_taxi_trips</code>. Always dry-run first and select only the columns you need.</p>
+  </article>
+
+  <article class="card"><h3>The order SQL really runs in</h3>
+    <ol>
+      <li><code>FROM</code> and <code>JOIN</code>: build the row set</li>
+      <li><code>WHERE</code>: filter rows</li>
+      <li><code>GROUP BY</code>: form groups</li>
+      <li>aggregates computed</li>
+      <li><code>HAVING</code>: filter groups</li>
+      <li>window functions computed</li>
+      <li><code>QUALIFY</code>: filter on window results</li>
+      <li><code>SELECT</code> expressions, then <code>DISTINCT</code></li>
+      <li><code>ORDER BY</code></li>
+      <li><code>LIMIT</code></li>
+    </ol>
+    <p class="note">This explains most errors: you cannot use a window function in <code>WHERE</code> (it does not exist yet; use <code>QUALIFY</code>), and <code>WHERE</code> cannot filter on an aggregate (use <code>HAVING</code>).</p>
+  </article>
+
+  <article class="card"><h3>Write it so it reads top to bottom</h3>
+<div class="snip"><pre><code>WITH
+landed AS (                         -- 1. narrow the input early
+  SELECT judgment_key, court_code, decision_date
+  FROM `p.fdp.judgment`
+  WHERE decision_date BETWEEN '2024-01-01' AND '2024-12-31'
+),
+per_court AS (                      -- 2. aggregate at one grain
+  SELECT court_code, COUNT(*) AS n
+  FROM landed
+  GROUP BY court_code
+)
+SELECT c.name, COALESCE(p.n, 0) AS n  -- 3. join for labels last
+FROM `p.ref.court` AS c
+LEFT JOIN per_court AS p USING (court_code)
+ORDER BY n DESC;</code></pre></div>
+    <ul>
+      <li>One CTE per step, named for what it holds.</li>
+      <li>State each CTE's grain in a comment when it is not obvious.</li>
+      <li>Filter and aggregate before joining wide tables.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>NULL: the source of quiet bugs</h3>
+    <ul>
+      <li><code>NULL = NULL</code> is NULL, not TRUE. Use <code>IS NULL</code>, or <code>a IS NOT DISTINCT FROM b</code> to compare nullable values.</li>
+      <li><code>COUNT(*)</code> counts rows; <code>COUNT(col)</code> skips NULLs. <code>AVG</code>, <code>SUM</code>, <code>MIN</code> ignore NULLs too.</li>
+      <li><code>x NOT IN (subquery)</code> returns <b>no rows</b> if the subquery yields a single NULL. Use <code>NOT EXISTS</code>.</li>
+      <li><code>WHERE status != 'X'</code> drops rows where status is NULL.</li>
+      <li><code>SUM</code> of no rows is NULL, not 0: wrap in <code>COALESCE(…, 0)</code>.</li>
+      <li><code>SAFE_CAST</code> and <code>SAFE.PARSE_DATE</code> turn bad input into NULL. Count those NULLs, or the failure is invisible.</li>
+    </ul>
+<div class="snip"><pre><code>SELECT
+  COUNT(*)                                        AS total_rows,
+  COUNT(decision_date)                            AS with_date,
+  COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL) AS failed_parse
+FROM `p.fdp.judgment`;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Joins without surprises</h3>
+    <ul>
+      <li><b>Know the grain of both sides</b> before joining. Joining one-to-many multiplies rows; a <code>SUM</code> afterwards is inflated (fan-out).</li>
+      <li><b>Aggregate first, then join</b> when you need totals from two child tables.</li>
+      <li><b>A filter on the right table in <code>WHERE</code></b> turns a <code>LEFT JOIN</code> into an inner join. Put it in <code>ON</code>.</li>
+      <li><b>Check row counts</b> before and after each join while developing.</li>
+    </ul>
+<div class="snip"><pre><code>-- WRONG: courts with no 2024 judgments disappear
+SELECT c.court_code, COUNT(j.judgment_key) n
+FROM court c LEFT JOIN judgment j USING (court_code)
+WHERE j.data_year = 2024
+GROUP BY 1;
+
+-- RIGHT: the filter belongs to the join
+SELECT c.court_code, COUNT(j.judgment_key) n
+FROM court c
+LEFT JOIN judgment j
+  ON j.court_code = c.court_code AND j.data_year = 2024
+GROUP BY 1;
+
+-- did my join fan out? keys should be unique on the "one" side
+SELECT court_code, COUNT(*) FROM court GROUP BY 1 HAVING COUNT(*) &gt; 1;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Semi-joins and anti-joins</h3>
+<div class="snip"><pre><code>-- semi-join: courts that HAVE at least one judgment (no duplicates)
+SELECT * FROM court c
+WHERE EXISTS (SELECT 1 FROM judgment j WHERE j.court_code = c.court_code);
+
+-- anti-join: courts with NO judgment
+SELECT * FROM court c
+WHERE NOT EXISTS (SELECT 1 FROM judgment j WHERE j.court_code = c.court_code);
+
+-- same anti-join with LEFT JOIN
+SELECT c.* FROM court c
+LEFT JOIN judgment j USING (court_code)
+WHERE j.court_code IS NULL;
+
+-- set operations (columns by position)
+SELECT cnr FROM a EXCEPT DISTINCT SELECT cnr FROM b;   -- in a, not in b
+SELECT cnr FROM a INTERSECT DISTINCT SELECT cnr FROM b;
+SELECT cnr FROM a UNION ALL SELECT cnr FROM b;          -- keeps duplicates, cheaper</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Aggregation toolkit</h3>
+<div class="snip"><pre><code>SELECT
+  court_code,
+  COUNT(*)                                  AS n,
+  COUNT(DISTINCT cnr)                       AS cases,
+  COUNTIF(decision_date IS NULL)            AS undated,
+  SAFE_DIVIDE(COUNTIF(decision_date IS NULL), COUNT(*)) AS undated_share,
+  MIN(decision_date) AS first_d, MAX(decision_date) AS last_d,
+  ANY_VALUE(cnr HAVING MAX decision_date)   AS latest_cnr,   -- value at the max
+  STRING_AGG(DISTINCT CAST(data_year AS STRING), ',' ORDER BY CAST(data_year AS STRING)) AS years,
+  APPROX_QUANTILES(DATE_DIFF(DATE(_landed_at), decision_date, DAY), 100)[OFFSET(50)] AS median_lag_days,
+  LOGICAL_AND(decision_date IS NOT NULL)    AS all_dated
+FROM `p.fdp.judgment`
+GROUP BY ALL;            -- groups by every non-aggregated column
+
+-- subtotals in one pass
+SELECT state, court_code, COUNT(*) n
+FROM judgment JOIN court USING (court_code)
+GROUP BY ROLLUP (state, court_code);       -- per court, per state, grand total</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>Window functions, properly</h3>
+    <p>A window function computes a value for each row from a set of related rows, <b>without collapsing them</b>. Three parts: <code>PARTITION BY</code> (which rows are related), <code>ORDER BY</code> (their sequence), and the frame (which of them count for this row).</p>
+<div class="snip"><pre><code>SELECT
+  court_code, d, n,
+  ROW_NUMBER() OVER w_date                            AS rn,          -- 1,2,3 no ties
+  RANK()       OVER (PARTITION BY court_code ORDER BY n DESC) AS rnk, -- 1,1,3
+  DENSE_RANK() OVER (PARTITION BY court_code ORDER BY n DESC) AS drnk,-- 1,1,2
+  LAG(n)  OVER w_date                                 AS prev_day,
+  LEAD(n) OVER w_date                                 AS next_day,
+  SUM(n)  OVER (PARTITION BY court_code ORDER BY d
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total,
+  AVG(n)  OVER (PARTITION BY court_code ORDER BY d
+                ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)         AS avg_7_rows,
+  AVG(n)  OVER (PARTITION BY court_code ORDER BY UNIX_DATE(d)
+                RANGE BETWEEN 6 PRECEDING AND CURRENT ROW)        AS avg_7_days,
+  n / SUM(n) OVER (PARTITION BY court_code)           AS share_of_court,
+  FIRST_VALUE(d) OVER w_date                          AS first_day,
+  LAST_VALUE(d)  OVER (w_date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_day
+FROM daily
+WINDOW w_date AS (PARTITION BY court_code ORDER BY d);</code></pre></div>
+    <ul>
+      <li><b>ROWS vs RANGE:</b> <code>ROWS 6 PRECEDING</code> means six rows back, even if days are missing. <code>RANGE</code> on a numeric day number means six calendar days back. Fill gaps with a date spine or use RANGE.</li>
+      <li><b>Default frame trap:</b> with <code>ORDER BY</code> and no frame, the frame ends at the current row, so <code>LAST_VALUE</code> returns the current row. Give an explicit frame.</li>
+      <li><b>Ties:</b> <code>ROW_NUMBER</code> picks arbitrarily among ties. Add a tie-breaker column to <code>ORDER BY</code> so results are repeatable.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Pattern: top N per group</h3>
+<div class="snip"><pre><code>-- 3 most recent judgments per court
+SELECT court_code, cnr, decision_date
+FROM `p.fdp.judgment`
+WHERE decision_date IS NOT NULL
+QUALIFY ROW_NUMBER() OVER (
+  PARTITION BY court_code
+  ORDER BY decision_date DESC, judgment_key      -- tie-breaker
+) &lt;= 3;</code></pre></div>
+    <p class="note">Use <code>RANK</code> instead of <code>ROW_NUMBER</code> if ties should all be included. If BigQuery complains that <code>QUALIFY</code> needs a <code>WHERE</code>, <code>GROUP BY</code> or <code>HAVING</code> clause, add <code>WHERE TRUE</code>.</p>
+  </article>
+
+  <article class="card"><h3>Pattern: deduplicate</h3>
+<div class="snip"><pre><code>-- find duplicates first: never dedupe blind
+SELECT cnr, COUNT(*) AS copies, COUNT(DISTINCT _landed_at) AS loads
+FROM `p.odp.hc_judgment`
+GROUP BY cnr HAVING COUNT(*) &gt; 1
+ORDER BY copies DESC LIMIT 20;
+
+-- keep the latest copy of each key
+SELECT * FROM `p.odp.hc_judgment`
+QUALIFY ROW_NUMBER() OVER (PARTITION BY cnr ORDER BY _landed_at DESC) = 1;
+
+-- exact duplicate rows only
+SELECT DISTINCT * EXCEPT (_run_id) FROM t;   -- DISTINCT * fails on ARRAY columns</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Pattern: date spine and missing days</h3>
+<div class="snip"><pre><code>WITH days AS (
+  SELECT d FROM UNNEST(GENERATE_DATE_ARRAY('2025-01-01', '2025-03-31')) AS d
+),
+grid AS (                                  -- every court × every day
+  SELECT c.court_code, days.d FROM `p.ref.court` c CROSS JOIN days
+),
+actual AS (
+  SELECT court_code, decision_date AS d, COUNT(*) AS n
+  FROM `p.fdp.judgment`
+  WHERE decision_date BETWEEN '2025-01-01' AND '2025-03-31'
+  GROUP BY 1, 2
+)
+SELECT g.court_code, g.d, COALESCE(a.n, 0) AS n
+FROM grid g LEFT JOIN actual a USING (court_code, d)
+ORDER BY 1, 2;</code></pre></div>
+    <p class="note">Without the spine, days with zero rows simply do not appear, and averages and LAGs are computed over the wrong set.</p>
+  </article>
+
+  <article class="card"><h3>Pattern: gaps and islands</h3>
+<div class="snip"><pre><code>-- streaks of consecutive days on which a court published decisions
+WITH d AS (
+  SELECT DISTINCT court_code, decision_date
+  FROM `p.fdp.judgment` WHERE decision_date IS NOT NULL
+),
+tagged AS (
+  SELECT *,
+    DATE_SUB(decision_date,
+      INTERVAL ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY decision_date) DAY
+    ) AS island                            -- constant within a run of consecutive days
+  FROM d
+)
+SELECT court_code, MIN(decision_date) AS start_d, MAX(decision_date) AS end_d,
+       COUNT(*) AS days
+FROM tagged
+GROUP BY court_code, island
+ORDER BY days DESC;</code></pre></div>
+    <p class="note">The trick: a date minus its row number stays the same while dates are consecutive and jumps at each gap.</p>
+  </article>
+
+  <article class="card"><h3>Pattern: change vs previous period</h3>
+<div class="snip"><pre><code>WITH yearly AS (
+  SELECT court_code, data_year, COUNT(*) AS n
+  FROM `p.fdp.judgment` GROUP BY ALL
+)
+SELECT * FROM (
+  SELECT *,
+    LAG(n) OVER (PARTITION BY court_code ORDER BY data_year) AS prev_n
+  FROM yearly
+)
+WHERE SAFE_DIVIDE(n - prev_n, prev_n) &lt; -0.2;   -- fell by more than 20%</code></pre></div>
+    <p class="note">LAG takes the previous <i>row</i>. If a year is missing for a court, "previous" is two years back. Use a spine when that matters.</p>
+  </article>
+
+  <article class="card"><h3>Pattern: arrays (one-to-many in one row)</h3>
+<div class="snip"><pre><code>-- top 3 judges per court by number of judgments
+WITH per_judge AS (
+  SELECT court_code, TRIM(judge) AS judge, COUNT(*) AS n
+  FROM `p.fdp.judgment`, UNNEST(judges) AS judge
+  GROUP BY ALL
+)
+SELECT * FROM per_judge
+QUALIFY ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY n DESC, judge) &lt;= 3;
+
+-- filter rows by array content without exploding
+SELECT cnr FROM `p.fdp.judgment`
+WHERE EXISTS (SELECT 1 FROM UNNEST(judges) j WHERE j LIKE '%SHARMA%');
+
+-- array size, and rows whose array is empty or NULL
+SELECT ARRAY_LENGTH(judges) AS n_judges FROM t;
+SELECT COUNTIF(ARRAY_LENGTH(judges) = 0 OR judges IS NULL) FROM t;</code></pre></div>
+    <p class="note">The comma before <code>UNNEST</code> is a CROSS JOIN: rows with an empty array vanish. Use <code>LEFT JOIN UNNEST(judges) AS judge</code> to keep them.</p>
+  </article>
+
+  <article class="card"><h3>Pattern: pivot and unpivot</h3>
+<div class="snip"><pre><code>-- one row per court, a column per year
+SELECT * FROM (
+  SELECT court_code, data_year, judgment_key FROM `p.fdp.judgment`
+  WHERE data_year BETWEEN 2023 AND 2025
+)
+PIVOT (COUNT(judgment_key) FOR data_year IN (2023 AS y2023, 2024 AS y2024, 2025 AS y2025));
+
+-- the portable way, works in any SQL
+SELECT court_code,
+  COUNTIF(data_year = 2023) AS y2023,
+  COUNTIF(data_year = 2024) AS y2024,
+  COUNTIF(data_year = 2025) AS y2025
+FROM `p.fdp.judgment` GROUP BY court_code;
+
+-- columns back to rows
+SELECT * FROM wide UNPIVOT (n FOR year IN (y2023, y2024, y2025));</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Pattern: recursive hierarchy</h3>
+<div class="snip"><pre><code>-- every judgment that cites X, directly or through a chain (max depth 5)
+WITH RECURSIVE chain AS (
+  SELECT citing_key, cited_key, 1 AS depth
+  FROM `p.fdp.citation`
+  WHERE cited_key = 'X'
+  UNION ALL
+  SELECT c.citing_key, c.cited_key, chain.depth + 1
+  FROM `p.fdp.citation` c
+  JOIN chain ON c.cited_key = chain.citing_key
+  WHERE chain.depth &lt; 5                    -- always bound the recursion
+)
+SELECT DISTINCT citing_key, MIN(depth) AS depth FROM chain GROUP BY citing_key;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Pattern: point-in-time join (SCD type 2)</h3>
+<div class="snip"><pre><code>-- which court name was valid on the decision date?
+SELECT j.cnr, j.decision_date, s.name
+FROM `p.fdp.judgment` j
+JOIN `p.snapshots.court_snapshot` s
+  ON s.court_code = j.court_code
+ AND j.decision_date &gt;= DATE(s.dbt_valid_from)
+ AND (s.dbt_valid_to IS NULL OR j.decision_date &lt; DATE(s.dbt_valid_to));</code></pre></div>
+    <p class="note">Half-open intervals (<code>&gt;= from AND &lt; to</code>) never match two versions for one date.</p>
+  </article>
+
+  <article class="card"><h3>Reusable logic</h3>
+<div class="snip"><pre><code>-- temporary SQL function for this script
+CREATE TEMP FUNCTION parse_any_date(s STRING) AS (
+  COALESCE(SAFE.PARSE_DATE('%Y-%m-%d', s), SAFE.PARSE_DATE('%d-%m-%Y', s))
+);
+SELECT raw_date, parse_any_date(raw_date) FROM t;
+
+-- persistent function in a dataset
+CREATE OR REPLACE FUNCTION `p.util.safe_ratio`(a FLOAT64, b FLOAT64) AS (
+  IF(b = 0 OR b IS NULL, NULL, a / b)
+);
+
+-- table function: a parameterised view
+CREATE OR REPLACE TABLE FUNCTION `p.util.court_year`(c STRING, y INT64) AS
+SELECT * FROM `p.fdp.judgment` WHERE court_code = c AND data_year = y;
+SELECT COUNT(*) FROM `p.util.court_year`('2_5', 2024);</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>Making BigQuery fast and cheap</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Habit</th><th>Why</th></tr></thead>
+      <tbody>
+      <tr><td>Select named columns</td><td>Bytes billed = bytes of the columns you read. One wide text column can be most of a table.</td></tr>
+      <tr><td>Filter on the partition column with literals or parameters</td><td>Lets BigQuery skip partitions before reading. Wrapping the column in a function can prevent it.</td></tr>
+      <tr><td>Filter on clustered columns</td><td>Skips blocks inside partitions; benefit shows in "bytes processed" after the run.</td></tr>
+      <tr><td>Dry-run before running</td><td>Shows bytes to be scanned for free. Set a maximum bytes billed on risky jobs.</td></tr>
+      <tr><td>Aggregate early, join late</td><td>Shuffling fewer rows between stages is the main cost in slot time.</td></tr>
+      <tr><td>Avoid <code>ORDER BY</code> without <code>LIMIT</code> on huge results</td><td>A global sort runs on one worker at the end.</td></tr>
+      <tr><td>Use <code>APPROX_COUNT_DISTINCT</code> for exploration</td><td>Exact distinct counts on billions of rows are expensive; the approximate version has a small, documented error and is far cheaper.</td></tr>
+      <tr><td>Materialise reused intermediate results</td><td>A CTE referenced several times may be computed several times. Write it to a table (or temp table in a script) when it is big.</td></tr>
+      <tr><td>Read the execution graph</td><td>In the console's Execution details: look for a stage with skewed time (one huge key), large shuffle, or spill to disk.</td></tr>
+      <tr><td>Avoid self-joins for running totals</td><td>A window function does in one pass what a self-join does quadratically.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Mistakes that give wrong answers quietly</h3>
+    <ul>
+      <li>Fan-out from a one-to-many join before a <code>SUM</code>.</li>
+      <li>A right-table filter in <code>WHERE</code> after a <code>LEFT JOIN</code>.</li>
+      <li><code>NOT IN</code> against a column that contains NULL.</li>
+      <li>Integer division in other engines (<code>1/2 = 0</code>); BigQuery's <code>/</code> returns FLOAT64, but <code>DIV()</code> is integer.</li>
+      <li><code>BETWEEN</code> on timestamps: <code>BETWEEN '2025-01-01' AND '2025-01-31'</code> misses most of the 31st. Use <code>&gt;= start AND &lt; next_day</code>.</li>
+      <li>Time zones: <code>DATE(ts)</code> is UTC unless you pass a zone (<code>DATE(ts, 'Asia/Kolkata')</code>).</li>
+      <li><code>ROW_NUMBER</code> without a tie-breaker: a different row "wins" on each run.</li>
+      <li><code>LIMIT</code> without <code>ORDER BY</code>: an arbitrary sample, not the top rows.</li>
+      <li>Averaging averages, or averaging percentages, instead of recomputing from totals.</li>
+      <li>Safe-parsing into NULL and never counting the NULLs.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Check your own query</h3>
+    <ul>
+      <li><b>Grain:</b> what does one output row mean? Is the key unique? (<code>COUNT(*)</code> vs <code>COUNT(DISTINCT key)</code>)</li>
+      <li><b>Totals:</b> does the sum across groups equal the ungrouped total?</li>
+      <li><b>Rows in vs out:</b> did a join drop or multiply rows you did not expect?</li>
+      <li><b>Edges:</b> empty groups, NULLs, the first and last day, ties.</li>
+      <li><b>One example by hand:</b> pick one key and check its row against the source.</li>
+      <li><b>Cost:</b> dry-run bytes reasonable for the question?</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Exercises (open each for a solution)</h3>
+    <p class="note">Try each on the practice schema, or adapt it to a public dataset. Solutions are one good answer, not the only one.</p>
+
+    <details><summary><span class="ex">1.</span> Judgments per court in 2024, including courts with none.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT c.court_code, c.name, COUNT(j.judgment_key) AS n
+FROM `p.ref.court` c
+LEFT JOIN `p.fdp.judgment` j
+  ON j.court_code = c.court_code AND j.data_year = 2024
+GROUP BY ALL
+ORDER BY n DESC;</code></pre></div>
+      <p class="note">Filter in <code>ON</code>, and count a column from the right table so empty courts give 0.</p></div></details>
+
+    <details><summary><span class="ex">2.</span> The most recent judgment per court, with ties broken consistently.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT court_code, cnr, decision_date
+FROM `p.fdp.judgment`
+WHERE decision_date IS NOT NULL
+QUALIFY ROW_NUMBER() OVER (PARTITION BY court_code
+                           ORDER BY decision_date DESC, judgment_key) = 1;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">3.</span> What share of each court's rows failed to parse their date? Only courts above 1%.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT court_code,
+       COUNT(*) AS n,
+       COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL) AS failed,
+       SAFE_DIVIDE(COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL), COUNT(*)) AS failed_share
+FROM `p.fdp.judgment`
+GROUP BY court_code
+HAVING SAFE_DIVIDE(COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL), COUNT(*)) &gt; 0.01
+ORDER BY failed_share DESC;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">4.</span> Daily counts for one court with a 7-day moving average, including days with zero.</summary><div class="inner">
+<div class="snip"><pre><code>WITH days AS (
+  SELECT d FROM UNNEST(GENERATE_DATE_ARRAY('2025-01-01', '2025-06-30')) d
+),
+daily AS (
+  SELECT decision_date AS d, COUNT(*) n FROM `p.fdp.judgment`
+  WHERE court_code = '2_5' AND decision_date BETWEEN '2025-01-01' AND '2025-06-30'
+  GROUP BY 1
+)
+SELECT days.d, COALESCE(n, 0) AS n,
+       AVG(COALESCE(n, 0)) OVER (ORDER BY days.d ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS ma7
+FROM days LEFT JOIN daily USING (d)
+ORDER BY d;</code></pre></div>
+      <p class="note">The spine makes ROWS equal to days, so the moving average is over seven calendar days.</p></div></details>
+
+    <details><summary><span class="ex">5.</span> Courts whose yearly count fell by more than 20% compared with the previous year.</summary><div class="inner">
+<div class="snip"><pre><code>WITH y AS (
+  SELECT court_code, data_year, COUNT(*) n FROM `p.fdp.judgment` GROUP BY ALL
+),
+c AS (
+  SELECT *, LAG(n) OVER (PARTITION BY court_code ORDER BY data_year) AS prev_n,
+            LAG(data_year) OVER (PARTITION BY court_code ORDER BY data_year) AS prev_year
+  FROM y
+)
+SELECT *, SAFE_DIVIDE(n - prev_n, prev_n) AS change
+FROM c
+WHERE prev_year = data_year - 1               -- only compare adjacent years
+  AND SAFE_DIVIDE(n - prev_n, prev_n) &lt; -0.2;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">6.</span> Find duplicate keys, then build the deduplicated table keeping the latest load.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT cnr, COUNT(*) copies FROM `p.odp.hc_judgment`
+GROUP BY cnr HAVING COUNT(*) &gt; 1;
+
+CREATE OR REPLACE TABLE `p.scratch.hc_dedup` AS
+SELECT * FROM `p.odp.hc_judgment`
+QUALIFY ROW_NUMBER() OVER (PARTITION BY cnr ORDER BY _landed_at DESC) = 1;
+
+-- verify: should return 0
+SELECT COUNT(*) - COUNT(DISTINCT cnr) FROM `p.scratch.hc_dedup`;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">7.</span> The longest run of consecutive publishing days for each court.</summary><div class="inner">
+<div class="snip"><pre><code>WITH d AS (
+  SELECT DISTINCT court_code, decision_date FROM `p.fdp.judgment`
+  WHERE decision_date IS NOT NULL
+),
+t AS (
+  SELECT *, DATE_SUB(decision_date, INTERVAL
+           ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY decision_date) DAY) AS grp
+  FROM d
+),
+runs AS (
+  SELECT court_code, MIN(decision_date) s, MAX(decision_date) e, COUNT(*) len
+  FROM t GROUP BY court_code, grp
+)
+SELECT * FROM runs
+QUALIFY ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY len DESC, s) = 1;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">8.</span> Each court's share of all 2024 judgments, and its rank within its state.</summary><div class="inner">
+<div class="snip"><pre><code>WITH n AS (
+  SELECT c.state, j.court_code, COUNT(*) n
+  FROM `p.fdp.judgment` j JOIN `p.ref.court` c USING (court_code)
+  WHERE j.data_year = 2024
+  GROUP BY ALL
+)
+SELECT *,
+  n / SUM(n) OVER ()                                  AS share_all,
+  RANK() OVER (PARTITION BY state ORDER BY n DESC)     AS rank_in_state
+FROM n
+ORDER BY state, rank_in_state;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">9.</span> Courts present in the reference table but absent from the landed data, and the reverse.</summary><div class="inner">
+<div class="snip"><pre><code>(SELECT 'missing_data' AS issue, court_code FROM `p.ref.court`
+ EXCEPT DISTINCT
+ SELECT 'missing_data', court_code FROM `p.fdp.judgment`)
+UNION ALL
+(SELECT 'unknown_court', court_code FROM `p.fdp.judgment`
+ EXCEPT DISTINCT
+ SELECT 'unknown_court', court_code FROM `p.ref.court`);</code></pre></div>
+      <p class="note">Parenthesise when mixing different set operators; BigQuery requires it.</p></div></details>
+
+    <details><summary><span class="ex">10.</span> Median, 90th percentile and maximum lag (days) between decision and landing, per court.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT court_code,
+  APPROX_QUANTILES(lag_d, 100)[OFFSET(50)] AS p50,
+  APPROX_QUANTILES(lag_d, 100)[OFFSET(90)] AS p90,
+  MAX(lag_d) AS max_lag
+FROM (
+  SELECT court_code, DATE_DIFF(DATE(_landed_at), decision_date, DAY) AS lag_d
+  FROM `p.fdp.judgment` WHERE decision_date IS NOT NULL
+)
+GROUP BY court_code
+ORDER BY p90 DESC;</code></pre></div></div></details>
+
+    <details><summary><span class="ex">11.</span> Upsert a day's new rows into a target table without creating duplicates.</summary><div class="inner">
+<div class="snip"><pre><code>MERGE `p.cdp.serving` T
+USING (
+  SELECT * FROM `p.fdp.judgment`
+  WHERE DATE(_landed_at) = @run_date
+  QUALIFY ROW_NUMBER() OVER (PARTITION BY judgment_key ORDER BY _landed_at DESC) = 1
+) S
+ON T.judgment_key = S.judgment_key
+WHEN MATCHED THEN UPDATE SET decision_date = S.decision_date, cnr = S.cnr
+WHEN NOT MATCHED THEN INSERT ROW;</code></pre></div>
+      <p class="note">Deduplicate the source first: MERGE fails if two source rows match one target row.</p></div></details>
+
+    <details><summary><span class="ex">12.</span> Explain why this returns no rows: <code>SELECT * FROM court WHERE court_code NOT IN (SELECT court_code FROM judgment)</code>.</summary><div class="inner">
+      <p>If any <code>judgment.court_code</code> is NULL, <code>x NOT IN (…, NULL)</code> evaluates to NULL for every x, never TRUE, so no row passes. Use <code>NOT EXISTS</code>, or add <code>WHERE court_code IS NOT NULL</code> inside the subquery.</p></div></details>
+  </article>
+
+  <article class="card"><h3>A plan to get better</h3>
+    <ol>
+      <li><b>Week 1:</b> the evaluation order, NULLs and joins. Redo exercises 1, 9 and 12 until they feel obvious.</li>
+      <li><b>Week 2:</b> window functions. Exercises 2, 4, 5 and 8; then rewrite one self-join you have seen as a window.</li>
+      <li><b>Week 3:</b> patterns. Gaps and islands, date spines, dedup, pivots (6, 7).</li>
+      <li><b>Week 4:</b> BigQuery cost and plans. Dry-run everything, read the execution graph of your slowest query, and cut its bytes in half.</li>
+      <li><b>Ongoing:</b> before sharing any number, run the self-check list on this tab.</li>
+    </ol>
+    <p class="note">Read other people's SQL: dbt models in your repo, and the queries behind dashboards you use. Ask "what is the grain?" of each.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>SELECT, WHERE, GROUP BY, ORDER BY and simple joins</li><li>Know how NULL behaves in comparisons and aggregates</li><li>Dry-run before running in BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Window functions, QUALIFY, CTEs, semi- and anti-joins</li><li>Check grain and fan-out before trusting a number</li><li>Write readable, tested SQL in dbt</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Patterns: gaps and islands, spines, SCD joins, recursion</li><li>Read execution plans and cut cost and slot time</li><li>Review others' SQL for correctness and cost</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design query patterns and models for a whole platform</li><li>Teach SQL; set standards and linting</li><li>Know engine internals well enough to predict plans</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Logical vs physical query plans</li><li>Approximate aggregation (HyperLogLog, quantiles)</li><li>Pipe syntax and modern SQL features</li><li>SQL style guides and SQLFluff linting</li><li>Testing SQL with dbt unit tests</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">BigQuery query syntax</a><span class="lnote"> The full GoogleSQL SELECT reference</span></li><li><a href="https://modern-sql.com/" target="_blank" rel="noopener">Modern SQL</a><span class="lnote"> Window functions, recursion and newer standard features across engines</span></li><li><a href="https://use-the-index-luke.com/" target="_blank" rel="noopener">Use The Index, Luke</a><span class="lnote"> How queries and indexes really interact</span></li><li><a href="https://www.postgresql.org/docs/current/tutorial-window.html" target="_blank" rel="noopener">PostgreSQL tutorial: window functions</a><span class="lnote"> A clear introduction to windows</span></li><li><a href="https://docs.sqlfluff.com/" target="_blank" rel="noopener">SQLFluff</a><span class="lnote"> Linter and formatter for SQL, including dbt and BigQuery</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/docker/">← Docker</a><a class="pn-next" href="/well-rounded-engineer/database/">Database Design →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

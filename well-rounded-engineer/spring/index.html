@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spring Boot · Well Rounded Engineer</title>
+<meta name="description" content="Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changes in 4.0. Servlet (MVC) and reactive (WebFlux) shown side by side.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="spring">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/" aria-current="page">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="spring" data-name="Spring Boot">
+  <div class="panel-head"><h1>Spring Boot</h1><p>Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changes in 4.0. Servlet (MVC) and reactive (WebFlux) shown side by side.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Version map</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Ver</th><th>Year</th><th>What changed</th></tr></thead>
+      <tbody>
+      <tr><td>2.7</td><td>2022</td><td>Last 2.x line. Java 8+, <code>javax.*</code> packages</td></tr>
+      <tr><td>3.0</td><td>2022</td><td>Java 17 baseline, Jakarta EE 9+ (<code>javax.*</code> → <code>jakarta.*</code>), Micrometer Observation, GraalVM native images, <code>ProblemDetail</code></td></tr>
+      <tr><td>3.1</td><td>2023</td><td>Testcontainers <code>@ServiceConnection</code>, Docker Compose support</td></tr>
+      <tr><td>3.2</td><td>2023</td><td>Virtual threads (<code>spring.threads.virtual.enabled</code>), <code>RestClient</code>, <code>JdbcClient</code></td></tr>
+      <tr><td>3.3</td><td>2024</td><td>Class Data Sharing support, SBOM actuator endpoint</td></tr>
+      <tr><td>3.4</td><td>2024</td><td>Structured logging (ECS, Logstash, GELF), <code>@MockitoBean</code> replaces <code>@MockBean</code>, graceful shutdown by default</td></tr>
+      <tr><td>3.5</td><td>2025</td><td>The last 3.x feature release; upgrade here before moving to 4.0</td></tr>
+      <tr><td>4.0</td><td>2025</td><td>Spring Framework 7, Jakarta EE 11, Jackson 3, smaller modular starters, API versioning, JSpecify null-safety; deprecated 3.x APIs removed</td></tr>
+      </tbody></table></div>
+    <p class="note">Moving to 4.0: upgrade to the latest 3.5 first, clear every deprecation warning, then follow the official migration guide.</p>
+  </article>
+
+  <article class="card"><h3>REST controller (MVC)</h3>
+<div class="snip"><pre><code>@SpringBootApplication
+public class App { public static void main(String[] a) { SpringApplication.run(App.class, a); } }
+
+record JudgmentDto(String cnr, LocalDate decisionDate) {}
+record SearchRequest(@NotBlank String q, @Min(1) @Max(100) int size) {}
+
+@RestController
+@RequestMapping("/api/judgments")
+class JudgmentController {
+  private final JudgmentService svc;
+  JudgmentController(JudgmentService svc) { this.svc = svc; }   // constructor injection
+
+  @GetMapping("/{id}")
+  JudgmentDto get(@PathVariable UUID id) { return svc.get(id); }
+
+  @PostMapping("/search")
+  List&lt;JudgmentDto&gt; search(@Valid @RequestBody SearchRequest req) {
+    return svc.search(req);
+  }
+
+  @GetMapping
+  Page&lt;JudgmentDto&gt; list(@RequestParam(defaultValue = "0") int page) { ... }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Configuration</h3>
+<div class="snip"><pre><code># application.yml
+spring:
+  application.name: corpus-api
+  profiles.active: ${APP_PROFILE:local}
+  threads.virtual.enabled: true          # 3.2+, Java 21
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/corpus
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+corpus:
+  dataset: fdp
+  max-results: 50
+  courts: [2_5, 14_25]
+---
+spring.config.activate.on-profile: prod
+logging.structured.format.console: ecs  # 3.4+</code></pre></div>
+<div class="snip"><pre><code>@ConfigurationProperties("corpus")
+@Validated
+record CorpusProps(@NotBlank String dataset,
+                   @DefaultValue("20") int maxResults,
+                   List&lt;String&gt; courts) {}
+
+@SpringBootApplication
+@ConfigurationPropertiesScan
+class App {}</code></pre></div>
+    <p class="note">Precedence, highest first: command-line args, env vars (<code>CORPUS_MAX_RESULTS</code>), profile files, <code>application.yml</code>.</p>
+  </article>
+
+  <article class="card"><h3>Data access</h3>
+<div class="snip"><pre><code>// JdbcClient (3.2): plain SQL, records out
+@Repository
+class JudgmentDao {
+  private final JdbcClient jdbc;
+  JudgmentDao(JdbcClient jdbc) { this.jdbc = jdbc; }
+
+  Optional&lt;JudgmentDto&gt; find(String cnr) {
+    return jdbc.sql("SELECT cnr, decision_date FROM court_judgments WHERE cnr = :cnr")
+               .param("cnr", cnr)
+               .query(JudgmentDto.class)
+               .optional();
+  }
+  int upsert(JudgmentDto j) {
+    return jdbc.sql("""
+        INSERT INTO court_judgments (cnr, decision_date) VALUES (:cnr, :d)
+        ON CONFLICT (cnr) DO UPDATE SET decision_date = EXCLUDED.decision_date""")
+      .param("cnr", j.cnr()).param("d", j.decisionDate()).update();
+  }
+}
+
+// Spring Data JPA
+interface JudgmentRepo extends JpaRepository&lt;Judgment, Long&gt; {
+  List&lt;Judgment&gt; findByCourtCodeAndDecisionDateAfter(String court, LocalDate d);
+  @Query("select j from Judgment j where j.cnr in :cnrs")
+  List&lt;Judgment&gt; byCnrs(Collection&lt;String&gt; cnrs);
+}
+
+@Transactional            // on a public method of a Spring bean, called from outside it
+public void reload() { ... }
+@Transactional(readOnly = true)</code></pre></div>
+    <p class="note"><code>@Transactional</code> works through a proxy: a call from another method in the same class skips it.</p>
+  </article>
+
+  <article class="card"><h3>HTTP clients</h3>
+<div class="snip"><pre><code>// RestClient (3.2): synchronous, fluent
+@Bean RestClient mirror(RestClient.Builder b) {
+  return b.baseUrl("https://api.example.org").build();
+}
+
+Listing l = mirror.get()
+    .uri("/objects?prefix={p}", prefix)
+    .retrieve()
+    .onStatus(HttpStatusCode::is4xxClientError, (req, res) -&gt; {
+      throw new IllegalStateException("listing failed: " +
+          new String(res.getBody().readAllBytes()));   // keep the error body
+    })
+    .body(Listing.class);
+
+// Declarative interface client
+interface MirrorApi {
+  @GetExchange("/objects") Listing list(@RequestParam String prefix);
+}
+@Bean MirrorApi api(RestClient mirror) {
+  return HttpServiceProxyFactory.builderFor(RestClientAdapter.create(mirror))
+      .build().createClient(MirrorApi.class);
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>WebFlux (reactive)</h3>
+<div class="snip"><pre><code>@RestController
+class SearchController {
+  @GetMapping("/api/search")
+  Flux&lt;JudgmentDto&gt; search(@RequestParam String q) { return svc.search(q); }
+
+  @GetMapping("/api/judgments/{id}")
+  Mono&lt;ResponseEntity&lt;JudgmentDto&gt;&gt; get(@PathVariable UUID id) {
+    return svc.get(id).map(ResponseEntity::ok)
+              .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
+}
+
+WebClient wc = WebClient.builder().baseUrl(base).build();
+Mono&lt;Listing&gt; m = wc.get().uri("/objects").retrieve()
+    .bodyToMono(Listing.class)
+    .timeout(Duration.ofSeconds(10))
+    .retryWhen(Retry.backoff(3, Duration.ofMillis(200)));
+
+// combine
+Mono.zip(countHc(), countSc()).map(t -&gt; t.getT1() + t.getT2());
+Flux.fromIterable(uris).flatMap(this::fetch, 8);     // concurrency 8</code></pre></div>
+    <p class="note">Never call <code>.block()</code> on a request thread. Wrap blocking calls with <code>Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())</code>.</p>
+  </article>
+
+  <article class="card"><h3>Errors as ProblemDetail</h3>
+<div class="snip"><pre><code>@RestControllerAdvice
+class ApiErrors {
+  @ExceptionHandler(NotFoundException.class)
+  ProblemDetail notFound(NotFoundException e) {
+    ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
+    pd.setTitle("Judgment not found");
+    pd.setProperty("cnr", e.cnr());
+    return pd;
+  }
+}
+// application.yml: spring.mvc.problemdetails.enabled: true
+//                  (spring.webflux.problemdetails.enabled for WebFlux)
+// Response: application/problem+json {type,title,status,detail,instance,cnr}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Batch job / Cloud Run job</h3>
+<div class="snip"><pre><code>// No web server; run once and exit with a code
+@SpringBootApplication
+class LoaderApp {
+  public static void main(String[] args) {
+    System.exit(SpringApplication.exit(SpringApplication.run(LoaderApp.class, args)));
+  }
+  @Bean ApplicationRunner run(Loader loader) {
+    return args -&gt; loader.load(args.getOptionValues("year"));   // --year=2024
+  }
+  @Bean ExitCodeGenerator exitCode(Loader loader) {
+    return () -&gt; loader.failed() ? 1 : 0;
+  }
+}
+# spring.main.web-application-type: none
+
+// In-app schedule (only for an always-on service)
+@EnableScheduling
+@Scheduled(cron = "0 15 6 * * *", zone = "UTC")
+void tick() { ... }</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Google Cloud (Spring Cloud GCP)</h3>
+<div class="snip"><pre><code>// com.google.cloud:spring-cloud-gcp-starter-bigquery / -storage
+// (import spring-cloud-gcp-dependencies BOM for versions)
+spring.cloud.gcp.project-id: my-proj
+spring.cloud.gcp.bigquery.dataset-name: fdp
+
+@Service
+class Counts {
+  private final BigQuery bq;                  // auto-configured client
+  Counts(BigQuery bq) { this.bq = bq; }
+  long total() throws InterruptedException {
+    return bq.query(QueryJobConfiguration.of(
+        "SELECT COUNT(*) n FROM `my-proj.fdp.judgment`"))
+      .iterateAll().iterator().next().get("n").getLongValue();
+  }
+}
+
+// GCS object as a Spring Resource
+@Value("gs://landing/manifests/latest.json") Resource manifest;
+String json = manifest.getContentAsString(StandardCharsets.UTF_8);</code></pre></div>
+    <p class="note">Credentials come from Application Default Credentials: <code>gcloud auth application-default login</code> locally, the service account on Cloud Run.</p>
+  </article>
+
+  <article class="card"><h3>Testing</h3>
+<div class="snip"><pre><code>@WebMvcTest(JudgmentController.class)          // web slice only
+class JudgmentControllerTest {
+  @Autowired MockMvc mvc;
+  @MockitoBean JudgmentService svc;            // 3.4+ (was @MockBean)
+
+  @Test void returns404() throws Exception {
+    when(svc.get(any())).thenThrow(new NotFoundException("x"));
+    mvc.perform(get("/api/judgments/{id}", UUID.randomUUID()))
+       .andExpect(status().isNotFound())
+       .andExpect(jsonPath("$.title").value("Judgment not found"));
+  }
+}
+
+@SpringBootTest
+@Testcontainers
+class DaoIT {
+  @Container @ServiceConnection               // 3.1+: wires the datasource
+  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");
+  @Autowired JudgmentDao dao;
+  @Test void upserts() { assertThat(dao.upsert(sample())).isEqualTo(1); }
+}
+
+// Other slices: @DataJpaTest, @JdbcTest, @WebFluxTest (+ WebTestClient), @JsonTest
+// Reactive: StepVerifier.create(flux).expectNextCount(3).verifyComplete();</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Actuator &amp; observability</h3>
+<div class="snip"><pre><code>management:
+  endpoints.web.exposure.include: health,info,metrics,prometheus
+  endpoint.health.probes.enabled: true    # /actuator/health/liveness, /readiness
+  tracing.sampling.probability: 0.1
+
+// custom metric
+@Component
+class LoadMetrics {
+  private final Counter loaded;
+  LoadMetrics(MeterRegistry r) { loaded = r.counter("corpus.rows.loaded"); }
+  void add(long n) { loaded.increment(n); }
+}
+
+// custom health
+@Component
+class MirrorHealth implements HealthIndicator {
+  public Health health() {
+    return reachable() ? Health.up().build()
+                       : Health.down().withDetail("mirror", "unreachable").build();
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Build, run, package</h3>
+<div class="snip"><pre><code>./gradlew bootRun --args='--spring.profiles.active=local'
+./gradlew bootJar                      # build/libs/app.jar
+./gradlew bootBuildImage --imageName=app:dev   # OCI image via buildpacks
+java -jar app.jar --server.port=8081
+SPRING_PROFILES_ACTIVE=prod java -jar app.jar
+
+# Layered jar for smaller Docker layers
+java -Djarmode=tools -jar app.jar extract --layers --launcher
+
+# Gradle plugins
+plugins {
+  id("org.springframework.boot") version "3.5.x"
+  id("io.spring.dependency-management") version "1.1.x"
+  java
+}</code></pre></div>
+    <p class="note">Replace the <code>x</code> with the current patch version. Let the Boot BOM pick library versions; override only with a reason.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build a REST endpoint with validation and a test</li><li>Configure an app with application.yml and profiles</li><li>Use Spring Data or JdbcClient for simple queries</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Handle errors with ProblemDetail; write slice and integration tests</li><li>Use transactions correctly; understand proxies</li><li>Add Actuator, metrics and structured logging</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose servlet vs reactive and design for throughput</li><li>Secure APIs with Spring Security and OAuth 2.0</li><li>Tune startup, memory and connection pools for the cloud</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead major upgrades (3.x to 4.x) across services</li><li>Build internal starters and platform libraries</li><li>Set architecture and module boundaries (Spring Modulith)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Auto-configuration and writing your own starter</li><li>Spring Modulith</li><li>Observability with Micrometer and OpenTelemetry</li><li>GraalVM native images and CDS</li><li>Spring Boot 4 migration</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.spring.io/spring-boot/index.html" target="_blank" rel="noopener">Spring Boot reference</a><span class="lnote"> Official reference</span></li><li><a href="https://spring.io/guides" target="_blank" rel="noopener">Spring guides</a><span class="lnote"> Short task-focused tutorials</span></li><li><a href="https://docs.spring.io/spring-framework/reference/" target="_blank" rel="noopener">Spring Framework reference</a><span class="lnote"> Core, web, data access, testing</span></li><li><a href="https://github.com/spring-projects/spring-boot/wiki" target="_blank" rel="noopener">Spring Boot release notes</a><span class="lnote"> What changed in each version</span></li><li><a href="https://googlecloudplatform.github.io/spring-cloud-gcp/" target="_blank" rel="noopener">Spring Cloud GCP</a><span class="lnote"> GCP integrations for Spring</span></li><li><a href="https://testcontainers.com/guides/" target="_blank" rel="noopener">Testcontainers guides</a><span class="lnote"> Integration testing with Spring Boot</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/payments/">← Payment Gateways</a><a class="pn-next" href="/well-rounded-engineer/quarkus/">Quarkus →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

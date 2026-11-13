@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Event Sourcing · Well Rounded Engineer</title>
+<meta name="description" content="Storing every change as an immutable event and deriving current state from them. How the event store, aggregates and projections work, how to evolve…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="eventsourcing">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/" aria-current="page">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="eventsourcing" data-name="Event Sourcing">
+  <div class="panel-head"><h1>Event sourcing and CQRS</h1><p>Storing every change as an immutable event and deriving current state from them. How the event store, aggregates and projections work, how to evolve events, and when the extra complexity is worth it.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The idea</h3>
+    <p>Most systems store <b>current state</b> and overwrite it: a subscription row says <code>plan = 'pro'</code>. Event sourcing stores the <b>sequence of facts</b> instead: <code>SubscriptionStarted(basic)</code>, <code>PlanUpgraded(pro)</code>, <code>PaymentFailed</code>, <code>PaymentSucceeded</code>. Current state is computed by replaying (folding) those events. The events are the source of truth; every other view is derived from them and can be rebuilt.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+      <tr><td>Event</td><td>An immutable fact in the past tense, with data and metadata (who, when, causation)</td></tr>
+      <tr><td>Stream</td><td>The ordered events of one entity, e.g. <code>subscription-42</code></td></tr>
+      <tr><td>Aggregate</td><td>The entity that enforces business rules; rebuilt from its stream; decides which new events a command produces</td></tr>
+      <tr><td>Command</td><td>A request to change something (<code>UpgradePlan</code>); may be rejected</td></tr>
+      <tr><td>Event store</td><td>Append-only storage of streams with per-stream versions</td></tr>
+      <tr><td>Projection / read model</td><td>A view built from events for querying (a table, a search index, a cache)</td></tr>
+      <tr><td>Snapshot</td><td>Saved aggregate state at a version, to avoid replaying long streams</td></tr>
+      <tr><td>CQRS</td><td>Separate models for writes (commands) and reads (queries); event sourcing usually comes with it</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>When it is worth it</h3>
+    <p><b>Good fits</b></p>
+    <ul>
+      <li>History is the product: audit trails, finance, legal records, compliance.</li>
+      <li>You need to answer "what was the state on date X, and why?"</li>
+      <li>Several different read models from the same changes.</li>
+      <li>Complex domains where business events are first-class (orders, claims, subscriptions).</li>
+    </ul>
+    <p><b>Poor fits</b></p>
+    <ul>
+      <li>Simple CRUD with no interest in history.</li>
+      <li>Teams new to the pattern on a deadline.</li>
+      <li>Data that must be truly deleted on request with no workaround.</li>
+    </ul>
+    <p class="note">Apply it to the one part of the system that needs it, not the whole system.</p>
+  </article>
+
+  <article class="card"><h3>The flow</h3>
+    <ol>
+      <li>A <b>command</b> arrives: <code>UpgradePlan(subscription-42, pro)</code>.</li>
+      <li>Load the aggregate's events (from the latest snapshot) and <b>fold</b> them into current state.</li>
+      <li>The aggregate checks business rules and <b>decides</b> zero or more new events.</li>
+      <li><b>Append</b> them with the expected version (optimistic concurrency). If someone else appended first, reload and retry.</li>
+      <li><b>Projections</b> consume new events and update read models.</li>
+      <li><b>Queries</b> read from the read models, which may lag slightly behind.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>An aggregate in Java</h3>
+<div class="snip"><pre><code>sealed interface SubEvent permits Started, Upgraded, Cancelled {}
+record Started(String id, String plan, Instant at)   implements SubEvent {}
+record Upgraded(String id, String plan, Instant at)  implements SubEvent {}
+record Cancelled(String id, String reason, Instant at) implements SubEvent {}
+
+enum Status { ACTIVE, CANCELLED }
+
+record Subscription(String id, String plan, Status status, int version) {
+
+  static Subscription replay(List&lt;SubEvent&gt; events) {
+    Subscription s = null;
+    for (SubEvent e : events) s = apply(s, e);
+    return s;
+  }
+
+  static Subscription apply(Subscription s, SubEvent e) {     // pure: no side effects
+    return switch (e) {
+      case Started st   -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
+      case Upgraded u   -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
+      case Cancelled c  -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
+    };
+  }
+
+  List&lt;SubEvent&gt; upgrade(String newPlan, Instant now) {        // decide
+    if (status != Status.ACTIVE) throw new IllegalStateException("subscription not active");
+    if (plan.equals(newPlan)) return List.of();                 // idempotent: nothing to do
+    return List.of(new Upgraded(id, newPlan, now));
+  }
+}</code></pre></div>
+    <p class="note">Separate <i>decide</i> (rules, may reject) from <i>apply</i> (pure state change). Apply must never fail for a stored event: it already happened.</p>
+  </article>
+
+  <article class="card"><h3>An event store in Postgres</h3>
+<div class="snip"><pre><code>CREATE TABLE events (
+  global_position bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  stream_id   text        NOT NULL,
+  version     int         NOT NULL,
+  type        text        NOT NULL,
+  data        jsonb       NOT NULL,
+  metadata    jsonb       NOT NULL DEFAULT '{}',   -- user, causation_id, correlation_id
+  recorded_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (stream_id, version)                      -- optimistic concurrency
+);
+
+-- load a stream
+SELECT type, data, version FROM events
+WHERE stream_id = 'subscription-42' ORDER BY version;
+
+-- append, expecting the stream to be at version 3
+INSERT INTO events (stream_id, version, type, data)
+VALUES ('subscription-42', 4, 'PlanUpgraded', '{"plan":"pro"}');
+-- unique violation → another writer got version 4 first → reload, re-decide, retry</code></pre></div>
+    <p class="note">Caution: identity values are assigned at insert, not commit, so with concurrent writers a projection reading by <code>global_position</code> can miss a row committed late. Dedicated event stores (KurrentDB, formerly EventStoreDB) or a transactional outbox with careful checkpointing handle this.</p>
+  </article>
+
+  <article class="card"><h3>Projections and read models</h3>
+<div class="snip"><pre><code>// a projection keeps a checkpoint and is idempotent
+void handle(StoredEvent e) {
+  tx.run(() -&gt; {
+    switch (e.payload()) {
+      case Started s   -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
+      case Upgraded u  -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
+      case Cancelled c -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
+    }
+    db.saveCheckpoint("subscription_view", e.globalPosition());  // same transaction
+  });
+}</code></pre></div>
+    <ul>
+      <li>Store the checkpoint in the same transaction as the update, so a crash never applies an event twice or skips one.</li>
+      <li>To change a read model, build a new one by replaying all events, then switch reads to it.</li>
+      <li>Read models are eventually consistent. Show users "updating…" or read their own writes from the aggregate when it matters.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Evolving events</h3>
+    <ul>
+      <li><b>Events are immutable and permanent.</b> You cannot fix old ones in place; plan their shape carefully.</li>
+      <li><b>Additive changes</b> (new optional fields with defaults) are safe.</li>
+      <li><b>Version the event type</b> (<code>PlanUpgraded.v2</code>) when the meaning changes.</li>
+      <li><b>Upcasting:</b> convert old event versions to the current shape when reading, so the code handles one version.</li>
+      <li><b>Never rename or reuse</b> an event type for a different meaning.</li>
+      <li><b>Name events in business language</b> (<code>PaymentFailed</code>), not technical (<code>RowUpdated</code>).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Snapshots, size and deletion</h3>
+    <ul>
+      <li><b>Snapshots</b> every N events (or when replay gets slow) store state plus version; load the snapshot, then only later events.</li>
+      <li><b>Keep streams short-lived</b> where the domain allows (one stream per billing period, not per customer forever).</li>
+      <li><b>Personal data and deletion:</b> keep personal data out of events where possible (reference an ID), or encrypt it per person and destroy the key to "forget" them (crypto-shredding).</li>
+      <li><b>Archiving:</b> move closed streams to cold storage after their retention period.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Testing: given, when, then</h3>
+<div class="snip"><pre><code>@Test
+void upgradeEmitsEventWhenActive() {
+  var given = List.&lt;SubEvent&gt;of(new Started("s1", "basic", T0));
+  var events = Subscription.replay(given).upgrade("pro", T1);          // when
+  assertThat(events).containsExactly(new Upgraded("s1", "pro", T1));   // then
+}
+
+@Test
+void cannotUpgradeCancelled() {
+  var given = List.&lt;SubEvent&gt;of(new Started("s1", "basic", T0), new Cancelled("s1", "user", T1));
+  assertThatThrownBy(() -&gt; Subscription.replay(given).upgrade("pro", T2))
+      .hasMessageContaining("not active");
+}</code></pre></div>
+    <p class="note">Aggregates tested this way need no database or mocks: given past events, when a command, then expected events or a rejection.</p>
+  </article>
+
+  <article class="card"><h3>The lightweight version: an append-only ledger</h3>
+    <p>Many systems get most of the benefit without full event sourcing: an append-only table with one row per state change, and current state from a "latest event" view. Never UPDATE, never DELETE.</p>
+<div class="snip"><pre><code>-- BigQuery: current state of each pipeline stage from its event log
+CREATE OR REPLACE VIEW `p.dp_control.v_pipeline_run_latest` AS
+SELECT * FROM `p.dp_control.pipeline_run_events`
+WHERE TRUE
+QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) = 1;</code></pre></div>
+    <p class="note">You get history, auditability and "what happened on date X" with ordinary SQL. Add aggregates, projections and replay only if the domain needs them.</p>
+  </article>
+
+  <article class="card"><h3>Tools</h3>
+    <ul>
+      <li><b>KurrentDB (formerly EventStoreDB):</b> a database built for event streams, subscriptions and projections.</li>
+      <li><b>Axon Framework / Axon Server</b> (Java): aggregates, sagas, projections and an event store.</li>
+      <li><b>Postgres</b> with an events table: simple and often enough, with the caveats above.</li>
+      <li><b>Kafka</b> is a good event <i>log</i> for distribution, but a weak event <i>store</i>: no efficient per-entity stream reads and no per-stream optimistic concurrency. Many systems store events in a database and publish them to Kafka through an outbox.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Common mistakes</h3>
+    <ul>
+      <li>Event sourcing the whole system instead of the part that needs history.</li>
+      <li>Events that mirror table changes (<code>CustomerUpdated</code> with every field) instead of business facts.</li>
+      <li>Side effects (emails, payments) inside <code>apply</code>, so a replay sends them again.</li>
+      <li>Querying the event store for lists and searches instead of building read models.</li>
+      <li>No plan for event versioning, personal data or replay time.</li>
+      <li>Treating eventual consistency of read models as a bug rather than designing for it.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain events, streams, aggregates, projections and CQRS</li><li>Read an event stream and follow how state was built</li><li>Tell an append-only ledger from full event sourcing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement an aggregate with decide/apply and given-when-then tests</li><li>Build idempotent projections with checkpoints</li><li>Append with optimistic concurrency</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide where event sourcing fits in a system and where it does not</li><li>Design event schemas, versioning and upcasting</li><li>Plan snapshots, replay, rebuilds and personal-data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead event-sourced architectures across domains and teams</li><li>Choose and operate event stores at scale</li><li>Set standards for event modelling and governance</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Event storming workshops</li><li>Upcasting and event versioning</li><li>Process managers and sagas over events</li><li>Crypto-shredding for personal data</li><li>Projection rebuild strategies</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Event Sourcing (Martin Fowler)</a><span class="lnote"> The classic explanation</span></li><li><a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">CQRS (Martin Fowler)</a><span class="lnote"> When separate read and write models help</span></li><li><a href="https://microservices.io/patterns/data/event-sourcing.html" target="_blank" rel="noopener">Event sourcing pattern (microservices.io)</a><span class="lnote"> In a microservices context</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing" target="_blank" rel="noopener">Event Sourcing pattern (Azure Architecture Center)</a><span class="lnote"> Issues and considerations</span></li><li><a href="https://leanpub.com/esversioning" target="_blank" rel="noopener">Versioning in an Event Sourced System (Greg Young)</a><span class="lnote"> Free book on evolving events</span></li><li><a href="https://docs.kurrent.io/" target="_blank" rel="noopener">KurrentDB documentation</a><span class="lnote"> Event store (formerly EventStoreDB)</span></li><li><a href="https://docs.axoniq.io/" target="_blank" rel="noopener">Axon documentation</a><span class="lnote"> Java framework for event sourcing and CQRS</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/microservices/">← Microservices</a><a class="pn-next" href="/well-rounded-engineer/sysdesign/">System Design →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

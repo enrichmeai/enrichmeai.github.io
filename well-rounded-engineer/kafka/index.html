@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kafka · Well Rounded Engineer</title>
+<meta name="description" content="A distributed, durable, replayable log for events. The core model, the settings that decide durability and ordering, clients in Java, Spring, Quarkus and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="kafka">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/" aria-current="page">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="kafka" data-name="Kafka">
+  <div class="panel-head"><h1>Apache Kafka</h1><p>A distributed, durable, replayable log for events. The core model, the settings that decide durability and ordering, clients in Java, Spring, Quarkus and Python, and the ecosystem around it.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The model</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Concept</th><th>Meaning</th></tr></thead>
+      <tbody>
+      <tr><td>Topic</td><td>A named stream of records, e.g. <code>judgment.landed</code></td></tr>
+      <tr><td>Partition</td><td>An ordered, append-only log; a topic has many. Ordering is guaranteed only within a partition.</td></tr>
+      <tr><td>Record</td><td>Key, value, headers, timestamp. The <b>key</b> decides the partition (same key → same partition → ordered).</td></tr>
+      <tr><td>Offset</td><td>A record's position in its partition. Consumers track how far they have read.</td></tr>
+      <tr><td>Broker</td><td>A server storing partitions. A cluster has several.</td></tr>
+      <tr><td>Replication factor</td><td>Copies of each partition on different brokers (3 is typical).</td></tr>
+      <tr><td>Leader / ISR</td><td>One replica takes reads and writes; in-sync replicas are caught-up followers.</td></tr>
+      <tr><td>Consumer group</td><td>Consumers sharing the work: each partition is read by one consumer in the group. Max parallelism = partition count.</td></tr>
+      <tr><td>Retention</td><td>Records kept for a time or size, then deleted, regardless of whether they were read.</td></tr>
+      <tr><td>Compaction</td><td>Keep only the latest record per key; a table-like topic.</td></tr>
+      <tr><td>KRaft</td><td>Kafka's built-in metadata quorum, replacing ZooKeeper (removed in Kafka 4.0).</td></tr>
+      </tbody></table></div>
+    <p class="note">Unlike a queue, reading does not remove a record. Many groups can read the same topic independently, and a group can rewind to replay.</p>
+  </article>
+
+  <article class="card"><h3>Durability and delivery settings</h3>
+    <ul>
+      <li><b>Producer <code>acks=all</code></b> with topic <code>min.insync.replicas=2</code> and replication factor 3: a write survives one broker failure.</li>
+      <li><b><code>enable.idempotence=true</code></b> (the default in modern clients): retries do not create duplicates within a partition.</li>
+      <li><b>At-least-once consuming:</b> process, then commit the offset. A crash between the two replays the record, so consumers must be idempotent.</li>
+      <li><b>At-most-once:</b> commit before processing. Rarely what you want.</li>
+      <li><b>Exactly-once</b> inside Kafka (read-process-write between topics) with transactions and <code>isolation.level=read_committed</code>. Side effects outside Kafka still need idempotency.</li>
+      <li><b>Ordering:</b> choose the key for the entity whose events must stay in order (case ID, account ID).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>CLI essentials</h3>
+<div class="snip"><pre><code>B=localhost:9092
+kafka-topics.sh --bootstrap-server $B --create --topic judgment.landed \
+  --partitions 6 --replication-factor 3 --config retention.ms=604800000
+kafka-topics.sh --bootstrap-server $B --describe --topic judgment.landed
+
+kafka-console-producer.sh --bootstrap-server $B --topic judgment.landed \
+  --property parse.key=true --property key.separator=:
+# type:  CNR123:{"court":"2_5"}
+
+kafka-console-consumer.sh --bootstrap-server $B --topic judgment.landed \
+  --group debug --from-beginning --property print.key=true
+
+kafka-consumer-groups.sh --bootstrap-server $B --describe --group indexer   # lag per partition
+kafka-consumer-groups.sh --bootstrap-server $B --group indexer \
+  --reset-offsets --to-datetime 2026-11-01T00:00:00.000 --topic judgment.landed --execute</code></pre></div>
+    <p class="note">Consumer <b>lag</b> (latest offset minus committed offset) is the key health metric: growing lag means consumers cannot keep up.</p>
+  </article>
+
+  <article class="card"><h3>Spring for Apache Kafka</h3>
+<div class="snip"><pre><code># application.yml
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP}
+    producer:
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: indexer
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "com.example.events"</code></pre></div>
+<div class="snip"><pre><code>@Service
+class Publisher {
+  private final KafkaTemplate&lt;String, JudgmentLanded&gt; kafka;
+  Publisher(KafkaTemplate&lt;String, JudgmentLanded&gt; kafka) { this.kafka = kafka; }
+  void publish(JudgmentLanded e) { kafka.send("judgment.landed", e.cnr(), e); }  // key = cnr
+}
+
+@Component
+class Indexer {
+  @KafkaListener(topics = "judgment.landed", groupId = "indexer")
+  void on(JudgmentLanded e) {
+    index.upsert(e);           // idempotent: same event twice is harmless
+  }
+}
+
+// retries and a dead-letter topic for poison messages
+@Bean DefaultErrorHandler errorHandler(KafkaTemplate&lt;Object, Object&gt; t) {
+  return new DefaultErrorHandler(new DeadLetterPublishingRecoverer(t),
+                                 new FixedBackOff(1000L, 3));
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Quarkus with Kafka</h3>
+<div class="snip"><pre><code># application.properties (quarkus-messaging-kafka)
+kafka.bootstrap.servers=${KAFKA_BOOTSTRAP}
+mp.messaging.incoming.landed.connector=smallrye-kafka
+mp.messaging.incoming.landed.topic=judgment.landed
+mp.messaging.incoming.landed.group.id=indexer
+mp.messaging.outgoing.indexed.connector=smallrye-kafka
+mp.messaging.outgoing.indexed.topic=judgment.indexed</code></pre></div>
+<div class="snip"><pre><code>@ApplicationScoped
+public class Indexer {
+  @Incoming("landed")
+  @Outgoing("indexed")
+  public JudgmentIndexed process(JudgmentLanded e) {
+    return index.upsert(e);
+  }
+}
+
+@ApplicationScoped
+public class Publisher {
+  @Inject @Channel("indexed") Emitter&lt;JudgmentIndexed&gt; out;
+  void send(JudgmentIndexed e) { out.send(e); }
+}</code></pre></div>
+    <p class="note">In dev and test, Dev Services starts a Kafka-compatible broker for you.</p>
+  </article>
+
+  <article class="card"><h3>Python (confluent-kafka)</h3>
+<div class="snip"><pre><code>from confluent_kafka import Producer, Consumer
+
+p = Producer({"bootstrap.servers": BOOTSTRAP, "acks": "all",
+              "enable.idempotence": True})
+p.produce("judgment.landed", key=cnr, value=json.dumps(evt),
+          callback=lambda err, msg: err and log.error("send failed: %s", err))
+p.flush()
+
+c = Consumer({"bootstrap.servers": BOOTSTRAP, "group.id": "indexer",
+              "auto.offset.reset": "earliest", "enable.auto.commit": False})
+c.subscribe(["judgment.landed"])
+while True:
+    msg = c.poll(1.0)
+    if msg is None: continue
+    if msg.error(): log.error(msg.error()); continue
+    handle(json.loads(msg.value()))           # idempotent
+    c.commit(message=msg, asynchronous=False) # commit after processing</code></pre></div>
+  </article>
+
+  <article class="card"><h3>The ecosystem</h3>
+    <ul>
+      <li><b>Schema Registry</b> with Avro, Protobuf or JSON Schema: producers and consumers agree on schemas; compatibility rules block breaking changes.</li>
+      <li><b>Kafka Connect:</b> ready-made source and sink connectors (databases, GCS, BigQuery) without custom code.</li>
+      <li><b>Debezium:</b> change data capture from databases into Kafka topics.</li>
+      <li><b>Kafka Streams:</b> a Java library for stateful stream processing (joins, windows, aggregates) inside your service.</li>
+      <li><b>Flink:</b> a separate engine for large-scale stream processing.</li>
+      <li><b>On GCP:</b> Managed Service for Apache Kafka runs clusters for you; Dataflow and BigQuery have Kafka connectors.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Kafka vs Pub/Sub</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Kafka</th><th>Pub/Sub</th></tr></thead>
+      <tbody>
+      <tr><td>Model</td><td>Partitioned log; consumers track offsets</td><td>Topics and subscriptions; per-message ack</td></tr>
+      <tr><td>Ordering</td><td>Per partition (by key)</td><td>Per ordering key, when enabled</td></tr>
+      <tr><td>Replay</td><td>Rewind offsets within retention</td><td>Seek to a time or snapshot within retention</td></tr>
+      <tr><td>Capacity</td><td>You size brokers and partitions (managed or self-run)</td><td>Serverless, scales automatically</td></tr>
+      <tr><td>Ecosystem</td><td>Connect, Streams, Schema Registry, Debezium</td><td>Native GCP integrations (BigQuery, GCS, Dataflow, Eventarc)</td></tr>
+      <tr><td>Choose when</td><td>Kafka skills or tools exist; log semantics, compaction, very high throughput</td><td>GCP-native, simple operations, global delivery</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Designing topics</h3>
+    <ul>
+      <li><b>Name by event, past tense:</b> <code>judgment.landed</code>, <code>order.paid</code>.</li>
+      <li><b>Partitions:</b> enough for peak consumer parallelism with headroom; adding later changes key-to-partition mapping.</li>
+      <li><b>Keys:</b> the entity that needs ordering; avoid hot keys.</li>
+      <li><b>Payload:</b> include an event ID, type, version and timestamp; keep events self-describing.</li>
+      <li><b>Retention:</b> long enough to recover from a consumer outage and replay.</li>
+      <li><b>Dead-letter topic</b> for records that keep failing, with alerting on it.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain topics, partitions, offsets and consumer groups</li><li>Produce and consume with the CLI</li><li>Read consumer lag</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build producers and consumers in Spring, Quarkus or Python with correct acks and commits</li><li>Make consumers idempotent; use dead-letter topics</li><li>Use a schema registry</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design topics, keys and partition counts for scale and ordering</li><li>Run Kafka Connect and CDC pipelines</li><li>Tune throughput, latency and durability</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Operate Kafka platforms (or choose managed) for the organisation</li><li>Design event-driven architectures across domains</li><li>Lead stream processing with Kafka Streams or Flink</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Exactly-once semantics and transactions</li><li>Consumer rebalancing protocols</li><li>Tiered storage</li><li>KRaft operations</li><li>Kafka Streams state stores</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">Apache Kafka documentation</a><span class="lnote"> Design, configuration, operations</span></li><li><a href="https://docs.spring.io/spring-kafka/reference/" target="_blank" rel="noopener">Spring for Apache Kafka</a><span class="lnote"> Templates, listeners, error handling</span></li><li><a href="https://quarkus.io/guides/kafka" target="_blank" rel="noopener">Quarkus Kafka guide</a><span class="lnote"> Reactive messaging with Kafka</span></li><li><a href="https://docs.confluent.io/kafka-clients/python/current/overview.html" target="_blank" rel="noopener">confluent-kafka-python</a><span class="lnote"> Python client</span></li><li><a href="https://developer.confluent.io/" target="_blank" rel="noopener">Confluent Developer courses</a><span class="lnote"> Free courses on Kafka fundamentals and patterns</span></li><li><a href="https://cloud.google.com/managed-service-for-apache-kafka/docs" target="_blank" rel="noopener">Managed Service for Apache Kafka</a><span class="lnote"> Kafka on Google Cloud</span></li><li><a href="https://debezium.io/documentation/" target="_blank" rel="noopener">Debezium</a><span class="lnote"> Change data capture into Kafka</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/graphql/">← GraphQL</a><a class="pn-next" href="/well-rounded-engineer/payments/">Payment Gateways →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

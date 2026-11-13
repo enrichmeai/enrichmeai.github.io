@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Engineering · Well Rounded Engineer</title>
+<meta name="description" content="The concepts behind the tools: what data engineers build, the shape of every pipeline, and the properties that make data trustworthy. Read this before the…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="data">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/" aria-current="page">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="data" data-name="Data Engineering">
+  <div class="panel-head"><h1>What data engineering is</h1><p>The concepts behind the tools: what data engineers build, the shape of every pipeline, and the properties that make data trustworthy. Read this before the dbt, DAG and BigQuery tabs.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>In one paragraph</h3>
+    <p>Data engineering is building and running the systems that move data from where it is produced to where it is used, and making it <b>correct, current, documented and affordable</b> on the way. Source systems (apps, files, APIs, sensors, public datasets) produce data in their own shapes and at their own pace. Analysts, dashboards, machine-learning models, AI features and products need it in a shape they can query and trust. The data engineer owns the path between them: getting it in, keeping a faithful copy, reshaping it, checking it, delivering it, and knowing at any moment whether it is right.</p>
+    <p class="note">A pipeline that runs is not the goal. The goal is data that people can rely on without asking the data engineer first.</p>
+  </article>
+
+  <article class="card wide"><h3>Who does what</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Role</th><th>Focus</th><th>Typical output</th></tr></thead>
+      <tbody>
+      <tr><td>Data engineer</td><td>Ingestion, storage, pipelines, platform, reliability</td><td>Landed raw data, loaded tables, orchestrated jobs, a working platform</td></tr>
+      <tr><td>Analytics engineer</td><td>Modelling data for use, mostly in SQL and dbt</td><td>Clean, tested, documented models and metrics</td></tr>
+      <tr><td>Data analyst</td><td>Answering business questions</td><td>Queries, dashboards, reports</td></tr>
+      <tr><td>Data scientist</td><td>Statistics, experiments, predictive models</td><td>Analyses, models, experiment results</td></tr>
+      <tr><td>ML / AI engineer</td><td>Putting models into products and running them</td><td>Features, training and inference pipelines, evals, AI features</td></tr>
+      <tr><td>Backend engineer</td><td>Applications that create and serve data</td><td>APIs and services, the source systems data engineers read from</td></tr>
+      </tbody></table></div>
+    <p class="note">In small teams one person covers several rows. The boundaries matter less than knowing who owns each table.</p>
+  </article>
+
+  <article class="card wide"><h3>The lifecycle every pipeline follows</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Stage</th><th>Question it answers</th><th>On GCP, for example</th><th>Tab</th></tr></thead>
+      <tbody>
+      <tr><td>Generation</td><td>Where does the data come from, how often, in what shape, under what licence?</td><td>App databases, partner files, public mirrors, event streams</td><td>—</td></tr>
+      <tr><td>Ingestion</td><td>How do we get a faithful copy without losing or duplicating anything?</td><td>Storage Transfer Service, Cloud Run jobs, Pub/Sub, Datastream (CDC)</td><td><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a></td></tr>
+      <tr><td>Storage</td><td>Where does each version live, for how long, at what cost?</td><td>GCS (files), BigQuery (tables), Cloud SQL (serving)</td><td><a href="/well-rounded-engineer/bigquery/">BigQuery</a></td></tr>
+      <tr><td>Transformation</td><td>How do raw records become clean, conformed, useful tables?</td><td>dbt on BigQuery, Dataflow (Beam), Dataproc (Spark)</td><td><a href="/well-rounded-engineer/dbt/">dbt</a></td></tr>
+      <tr><td>Serving</td><td>How do consumers read it, fast enough and safely?</td><td>BigQuery views, Postgres for an API, Looker, exports, vector indexes for AI</td><td><a href="/well-rounded-engineer/spring/">Spring</a></td></tr>
+      </tbody></table></div>
+    <p><b>Running underneath every stage:</b> orchestration (<a href="/well-rounded-engineer/dags/">DAGs</a>), data quality and observability, security and access, data management (catalog, lineage, retention), infrastructure as code (<a href="/well-rounded-engineer/terraform/">Terraform</a>), and ordinary software engineering (<a href="/well-rounded-engineer/devops/">tests, CI, reviews</a>).</p>
+    <p class="note">This stage model follows <i>Fundamentals of Data Engineering</i> by Joe Reis and Matt Housley, a good first book on the subject.</p>
+  </article>
+
+  <article class="card"><h3>Batch vs streaming</h3>
+    <ul>
+      <li><b>Batch:</b> process a bounded chunk (yesterday, one file, one partition) on a schedule. Simple, cheap, easy to rerun. Latency of minutes to a day.</li>
+      <li><b>Streaming:</b> process events continuously as they arrive. Latency of seconds, but harder: ordering, late events, state, exactly-once.</li>
+      <li><b>Micro-batch:</b> small batches every few minutes. Often the practical middle.</li>
+      <li><b>Choose by the consumer's need,</b> not by fashion. Most reporting and legal research is fine with daily or hourly batch.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>ETL vs ELT</h3>
+    <ul>
+      <li><b>ETL:</b> extract, transform in a separate engine, then load the result. Common when the warehouse was expensive or small.</li>
+      <li><b>ELT:</b> extract, load the raw data into the warehouse, transform there with SQL (dbt). The modern default on BigQuery and similar.</li>
+      <li><b>Why ELT wins today:</b> you keep the raw data, so a bug in a transform is fixed by rerunning it, not by re-ingesting from a source that may have changed or gone.</li>
+      <li><b>Heavy non-SQL work</b> (parsing PDFs, images, large joins outside the warehouse) still goes to an engine built for it, such as Dataflow or Spark.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Where data lives</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Store</th><th>Good at</th></tr></thead>
+      <tbody>
+      <tr><td>OLTP database (Postgres)</td><td>Many small reads and writes by key; serving an app</td></tr>
+      <tr><td>Warehouse / OLAP (BigQuery)</td><td>Scanning and aggregating billions of rows; analytics</td></tr>
+      <tr><td>Data lake (GCS)</td><td>Cheap storage of any file, raw and forever</td></tr>
+      <tr><td>Lakehouse (Iceberg / Delta on object storage)</td><td>Warehouse-style tables over lake files, readable by several engines</td></tr>
+      <tr><td>Vector index</td><td>Similarity search for AI retrieval</td></tr>
+      </tbody></table></div>
+    <p class="note">File formats: CSV and JSON are easy but untyped and slow to scan. Parquet and ORC are columnar, compressed and typed, best for analytics. Avro suits row-by-row streams with schema evolution.</p>
+  </article>
+
+  <article class="card wide"><h3>Layers: each one has one job</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Layer</th><th>Also called</th><th>Rule</th></tr></thead>
+      <tbody>
+      <tr><td>Raw / landing</td><td>bronze, RAW</td><td>Byte-for-byte copy of what the source published. Never edited. Lets you replay everything.</td></tr>
+      <tr><td>Operational / staging</td><td>ODP, staging</td><td>The raw data as typed tables, as published. Renamed and cast, not reinterpreted.</td></tr>
+      <tr><td>Foundation / conformed</td><td>silver, FDP, intermediate</td><td>Cleaned, deduplicated, keyed, versioned, joined to reference data. Structure added once, reused by many.</td></tr>
+      <tr><td>Consumable / marts</td><td>gold, CDP, marts</td><td>Shaped for one named use: a dashboard, an API, a model's features.</td></tr>
+      </tbody></table></div>
+    <p class="note">Derivation runs one way: each layer reads only the layer below. A product that reads from a downstream serving database creates a cycle and should be refused.</p>
+  </article>
+
+  <article class="card"><h3>Modelling basics</h3>
+    <ul>
+      <li><b>Grain:</b> what one row means ("one judgment", "one order line per day"). State it for every table; most bugs are grain confusion.</li>
+      <li><b>Keys:</b> a natural key from the source and, where needed, a surrogate key you generate. Never reuse or renumber a key that others store.</li>
+      <li><b>Normalised</b> (many narrow tables, no repetition) suits OLTP. <b>Dimensional</b> (facts plus dimensions, a star schema) suits analytics. <b>One big table</b> is fine on BigQuery for a single use.</li>
+      <li><b>Facts</b> are events with measures (a decision, a payment). <b>Dimensions</b> describe them (court, judge, date).</li>
+      <li><b>Slowly changing dimensions:</b> type 1 overwrites; type 2 keeps history with valid-from/valid-to rows (dbt snapshots).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Properties of a good pipeline</h3>
+    <ul>
+      <li><b>Idempotent:</b> running it twice for the same input gives the same result. Overwrite a partition or MERGE on a key; never blindly append.</li>
+      <li><b>Incremental:</b> processes only what is new or changed, decided from evidence (a watermark, ETag or ledger), not "we visited it".</li>
+      <li><b>Backfillable:</b> any past period can be rerun on purpose.</li>
+      <li><b>Late data aware:</b> records can arrive after their period; reprocess a lookback window.</li>
+      <li><b>Schema-change safe:</b> a new or renamed source column fails loudly or is handled deliberately, never silently dropped.</li>
+      <li><b>Observable:</b> every run records what it read, wrote, skipped and failed, with counts.</li>
+      <li><b>Resumable:</b> a failure midway restarts from where it stopped, not from zero.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Data quality</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Dimension</th><th>Example check</th></tr></thead>
+      <tbody>
+      <tr><td>Completeness</td><td>Row count matches the source; no unexpected NULLs</td></tr>
+      <tr><td>Validity</td><td>Dates parse; codes are in the allowed set</td></tr>
+      <tr><td>Uniqueness</td><td>One row per key at the stated grain</td></tr>
+      <tr><td>Consistency</td><td>Every court code exists in the court table</td></tr>
+      <tr><td>Freshness</td><td>Newest record is within the expected age</td></tr>
+      <tr><td>Accuracy</td><td>Values match the source on a sample</td></tr>
+      </tbody></table></div>
+    <p class="note">The worst quality failure is a silent one: a parse that turns bad dates into NULL, or a monitor that reports 0 when its source was unreachable. Reject or count what you cannot read, and report "unknown" rather than a confident zero.</p>
+  </article>
+
+  <article class="card"><h3>Ingestion patterns</h3>
+    <ul>
+      <li><b>Full snapshot:</b> copy everything each time. Simple; fine for small tables.</li>
+      <li><b>Incremental by watermark:</b> fetch rows changed since the last <code>updated_at</code> or ID.</li>
+      <li><b>Change data capture (CDC):</b> read the source database's change log for inserts, updates and deletes (Datastream, Debezium).</li>
+      <li><b>File drops:</b> compare source and destination listings (names, sizes, ETags) and copy only the difference.</li>
+      <li><b>Events:</b> producers publish to a queue (Pub/Sub, Kafka); consumers process at-least-once, so handle duplicates.</li>
+      <li><b>APIs:</b> paginate, respect rate limits, keep the raw response, and record the error body when a call fails.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Governance &amp; responsibility</h3>
+    <ul>
+      <li><b>Ownership:</b> every table has a named owner and a description.</li>
+      <li><b>Lineage:</b> you can say which sources feed a column and which products a change will affect.</li>
+      <li><b>Access:</b> least privilege per dataset; serving systems get read-only access.</li>
+      <li><b>Personal and sensitive data:</b> know where it is, mask or restrict it, honour deletion and suppression orders.</li>
+      <li><b>Licences:</b> respect source terms; carry attribution (for example CC-BY) into every published output.</li>
+      <li><b>Retention and cost:</b> decide how long each layer is kept and who pays for scans.</li>
+      <li><b>Contracts:</b> agree the schema and meaning of anything another team reads, and change it on purpose.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A worked example, end to end</h3>
+    <p>Indian court judgments published as open data, served to lawyers through a search API.</p>
+    <ol>
+      <li><b>Source:</b> two public mirrors publish judgment metadata as Parquet and JSON archives, partitioned by year, under CC-BY-4.0. Partitions are sometimes republished in place.</li>
+      <li><b>Ingest (LAND):</b> a Cloud Run job compares the mirror's listing with the GCS landing bucket and copies only new or changed objects. It records examined, copied, already-current and failed counts.</li>
+      <li><b>Raw:</b> the bucket keeps the originals byte for byte, so anything later can be replayed.</li>
+      <li><b>Load (ODP):</b> each landed file becomes rows in BigQuery tables, with run ID and load time, exactly as published.</li>
+      <li><b>Transform (FDP):</b> dbt cleans and conforms: parses two date formats (and rejects what does not parse), computes a stable judgment key, deduplicates republished rows, joins court reference data, and runs tests.</li>
+      <li><b>Consumable (CDP):</b> a dbt model shapes exactly what the search API needs, with a contract on its columns.</li>
+      <li><b>Serve:</b> a loader upserts that table into Postgres on the stable key, without renumbering existing IDs that links and legal records depend on. The API reads Postgres read-only.</li>
+      <li><b>Orchestrate and observe:</b> a scheduler ticks daily; an orchestrator runs each stage when its input is ready and appends every state change to a ledger, so "what happened on 2026-09-19?" has an answer.</li>
+    </ol>
+    <p class="note">Every tab in this guide appears somewhere in that path. That is why a data engineer needs breadth.</p>
+  </article>
+
+  <article class="card"><h3>Questions a data engineer always asks</h3>
+    <ul>
+      <li>What does one row mean, and what is its key?</li>
+      <li>What happens if this runs twice? If it fails halfway?</li>
+      <li>What does this return when the source is down, and can anyone tell that apart from "no data"?</li>
+      <li>How will I know it is late or wrong before a user does?</li>
+      <li>Who reads this table, and what breaks for them if I change it?</li>
+      <li>How much does a run cost, and what makes it grow?</li>
+      <li>Can I rebuild it from raw if I have to?</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Glossary</h3>
+    <ul>
+      <li><b>Partition:</b> a slice of a table (by date or year) that queries can skip.</li>
+      <li><b>Watermark:</b> the point up to which data is known to be processed.</li>
+      <li><b>Backfill:</b> deliberately reprocessing a past period.</li>
+      <li><b>Upsert / MERGE:</b> insert new rows, update existing ones, by key.</li>
+      <li><b>Lineage:</b> the graph of which data feeds which.</li>
+      <li><b>Data contract:</b> an agreed schema and meaning between producer and consumer.</li>
+      <li><b>Freshness:</b> how old the newest data is.</li>
+      <li><b>SCD:</b> slowly changing dimension, how history of descriptive attributes is kept.</li>
+      <li><b>CDC:</b> change data capture, streaming a database's changes.</li>
+      <li><b>DAG:</b> directed acyclic graph, the dependency order of tasks.</li>
+      <li><b>Ledger:</b> an append-only record of every run and state change.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the lifecycle and the layers</li><li>Load a file into a warehouse and query it</li><li>Write a simple, idempotent transformation</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build incremental, tested pipelines end to end</li><li>Choose batch vs streaming and ingestion patterns</li><li>Model data at a stated grain with keys and tests</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a data platform: layers, contracts, orchestration, observability</li><li>Own data quality and reconciliation across sources</li><li>Plan cost, retention and governance</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set data architecture and standards across the organisation</li><li>Lead migrations between platforms without losing trust</li><li>Shape data products and their contracts with consumers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dimensional modelling (Kimball)</li><li>Data contracts and schema evolution</li><li>Open table formats: Iceberg, Delta</li><li>Change data capture</li><li>Data observability and lineage</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/" target="_blank" rel="noopener">Fundamentals of Data Engineering (book)</a><span class="lnote"> Reis &amp; Housley: the lifecycle and its undercurrents</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> Storage, replication, batch and stream processing</span></li><li><a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/" target="_blank" rel="noopener">Kimball dimensional modelling techniques</a><span class="lnote"> Facts, dimensions, SCDs</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> How to structure a transformation project</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures for data on GCP</span></li><li><a href="https://iceberg.apache.org/" target="_blank" rel="noopener">Apache Iceberg</a><span class="lnote"> Open table format for lakehouses</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/oauth/">← OAuth &amp; OIDC</a><a class="pn-next" href="/well-rounded-engineer/datalibs/">Data Libraries →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

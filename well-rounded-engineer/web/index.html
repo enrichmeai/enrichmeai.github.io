@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Fundamentals · Well Rounded Engineer</title>
+<meta name="description" content="How the web works from a typed URL to a rendered page: URLs, HTTP, cookies and sessions, origins and CORS, caching, rendering models, web security,…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="web">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/" aria-current="page">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="web" data-name="Web Fundamentals">
+  <div class="panel-head"><h1>Web fundamentals</h1><p>How the web works from a typed URL to a rendered page: URLs, HTTP, cookies and sessions, origins and CORS, caching, rendering models, web security, performance and accessibility. Lower layers are on <a href="/well-rounded-engineer/networking/">Networking</a>; API design is on <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>What happens when you open a URL</h3>
+    <ol>
+      <li><b>Parse the URL</b> and check the browser cache, including a cached HSTS rule that forces HTTPS.</li>
+      <li><b>DNS</b> resolves the host name to an IP address (browser cache → OS → resolver → authoritative servers).</li>
+      <li><b>Connect:</b> TCP handshake (or QUIC over UDP for HTTP/3), then the <b>TLS</b> handshake proves the server's identity and agrees keys.</li>
+      <li><b>HTTP request</b> with method, path, headers and cookies, usually reaching a CDN or load balancer first.</li>
+      <li><b>Server side:</b> load balancer → reverse proxy → application → database or cache → response.</li>
+      <li><b>HTTP response</b>: status, headers (caching, cookies, security), and the body (HTML, JSON, images).</li>
+      <li><b>Render:</b> parse HTML into the DOM, CSS into the CSSOM, run JavaScript, lay out, paint, and fetch the sub-resources the page references.</li>
+      <li><b>After load:</b> JavaScript calls APIs (<code>fetch</code>), updates the page, and may open WebSockets or server-sent events.</li>
+    </ol>
+    <p class="note">Every step can fail or be slow. Browser DevTools (Network tab: timing, headers, initiator) shows which.</p>
+  </article>
+
+  <article class="card"><h3>Anatomy of a URL</h3>
+<div class="snip"><pre><code>https://legal.example.com:443/v1/judgments/123?court=2_5&amp;page=2#para-14
+└─┬─┘   └──────┬────────┘└┬┘└──────┬───────┘└───────┬───────┘└──┬──┘
+scheme        host      port     path            query       fragment</code></pre></div>
+    <ul>
+      <li><b>Origin</b> = scheme + host + port. It is the browser's security boundary.</li>
+      <li><b>Path</b> names the resource; <b>query</b> parameters filter or modify it.</li>
+      <li><b>Fragment</b> (<code>#…</code>) never reaches the server; the browser uses it to scroll or route.</li>
+      <li><b>Encoding:</b> special characters are percent-encoded (<code>space → %20</code>, <code>+</code> in a query can mean a space). Encode parameters with a library, not by hand.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>HTTP request and response</h3>
+<div class="snip"><pre><code>GET /v1/judgments/123 HTTP/1.1
+Host: legal.example.com
+Accept: application/json
+Accept-Encoding: br, gzip
+Authorization: Bearer eyJ…
+If-None-Match: "a1b2c3"
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Encoding: br
+Cache-Control: private, max-age=60
+ETag: "a1b2c3"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+{"id":"123","cnr":"HPHC010001232024", …}</code></pre></div>
+    <ul>
+      <li><b>Content negotiation:</b> <code>Accept</code> / <code>Content-Type</code> for format, <code>Accept-Language</code> for language, <code>Accept-Encoding</code> for compression.</li>
+      <li><b>Compression:</b> Brotli or gzip for text; never for already-compressed images or video.</li>
+      <li><b>MIME types</b> tell the browser what it received; a wrong one breaks scripts or opens security holes.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Status codes you will see</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Code</th><th>Means</th></tr></thead>
+      <tbody>
+      <tr><td>200 / 201 / 204</td><td>OK / created / OK with no body</td></tr>
+      <tr><td>301 / 308</td><td>Moved permanently (308 keeps the method)</td></tr>
+      <tr><td>302 / 307</td><td>Temporary redirect (307 keeps the method)</td></tr>
+      <tr><td>304</td><td>Not modified: use your cached copy</td></tr>
+      <tr><td>400</td><td>Malformed or invalid request</td></tr>
+      <tr><td>401</td><td>Not authenticated (missing or bad credentials)</td></tr>
+      <tr><td>403</td><td>Authenticated but not allowed</td></tr>
+      <tr><td>404 / 410</td><td>Not found / gone for good</td></tr>
+      <tr><td>409 / 422</td><td>Conflict / valid syntax but semantically invalid</td></tr>
+      <tr><td>429</td><td>Too many requests; see <code>Retry-After</code></td></tr>
+      <tr><td>500</td><td>Server error</td></tr>
+      <tr><td>502 / 503 / 504</td><td>Bad gateway / unavailable / gateway timeout (usually a proxy talking to a sick backend)</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Cookies, sessions and tokens</h3>
+    <ul>
+      <li><b>HTTP is stateless.</b> State across requests comes from cookies or tokens the client sends each time.</li>
+      <li><b>Cookie</b>: set by <code>Set-Cookie</code>, sent back automatically to the same site. Flags that matter:
+        <code>Secure</code> (HTTPS only), <code>HttpOnly</code> (JavaScript cannot read it), <code>SameSite=Lax|Strict|None</code> (whether it goes on cross-site requests), <code>Domain</code>, <code>Path</code>, <code>Max-Age</code>.</li>
+      <li><b>Server session:</b> the cookie holds a random ID; data lives on the server (or Redis). Easy to revoke.</li>
+      <li><b>Token (JWT):</b> the client sends <code>Authorization: Bearer …</code>; the server validates it without a lookup. Harder to revoke; keep it short-lived. See <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>.</li>
+      <li><b>Browser storage:</b> <code>localStorage</code> and <code>sessionStorage</code> are readable by any script on the page, so never keep secrets there; IndexedDB for larger client data.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Same-origin policy and CORS</h3>
+    <ul>
+      <li>By default, a script on <code>https://app.example.com</code> cannot read responses from another origin such as <code>https://api.example.com</code>.</li>
+      <li><b>CORS</b> lets the API opt in with response headers: <code>Access-Control-Allow-Origin: https://app.example.com</code>.</li>
+      <li><b>Preflight:</b> for non-simple requests (custom headers, JSON bodies, PUT/DELETE) the browser first sends <code>OPTIONS</code> and checks <code>Access-Control-Allow-Methods</code> and <code>-Headers</code>.</li>
+      <li><b>Credentials</b> (cookies) cross-origin need <code>Access-Control-Allow-Credentials: true</code> and an exact origin, never <code>*</code>.</li>
+      <li>CORS protects users in browsers; it is not server-side access control. curl ignores it.</li>
+      <li>Serving the app and API from the same origin (e.g. <code>/api</code> on the same host) avoids CORS entirely.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Caching on the web</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Header</th><th>Effect</th></tr></thead>
+      <tbody>
+      <tr><td><code>Cache-Control: public, max-age=31536000, immutable</code></td><td>Cache everywhere for a year; for fingerprinted assets like <code>app.3f2a9c.js</code></td></tr>
+      <tr><td><code>Cache-Control: private, max-age=60</code></td><td>Only the user's browser may cache, for 60 s</td></tr>
+      <tr><td><code>Cache-Control: no-cache</code></td><td>May store, but must revalidate before each use</td></tr>
+      <tr><td><code>Cache-Control: no-store</code></td><td>Never store (sensitive data)</td></tr>
+      <tr><td><code>ETag</code> + <code>If-None-Match</code></td><td>Revalidate cheaply; server answers 304 if unchanged</td></tr>
+      <tr><td><code>Vary: Accept-Encoding</code></td><td>Cache separate copies per header value</td></tr>
+      </tbody></table></div>
+    <p class="note">Layers: browser cache → CDN → reverse proxy → application cache → database. Fingerprint static files so you can cache them forever and still deploy changes instantly.</p>
+  </article>
+
+  <article class="card wide"><h3>Rendering models</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Model</th><th>How</th><th>Good for</th><th>Trade-offs</th></tr></thead>
+      <tbody>
+      <tr><td>Server-side rendering (classic)</td><td>Server returns full HTML per request</td><td>Content sites, SEO, simple apps</td><td>Full page reloads; server does the work</td></tr>
+      <tr><td>Single-page app (SPA)</td><td>Browser loads JS once, renders and routes on the client, calls JSON APIs</td><td>Rich interactive tools (React, Vue, Angular)</td><td>Slower first load, SEO effort, more client code</td></tr>
+      <tr><td>SSR + hydration</td><td>Server renders HTML, then JS takes over on the client</td><td>Fast first paint with interactivity (Next.js, Nuxt)</td><td>Complexity; double rendering work</td></tr>
+      <tr><td>Static site generation (SSG)</td><td>HTML built at deploy time, served from a CDN</td><td>Docs, marketing, blogs</td><td>Content changes need a rebuild</td></tr>
+      <tr><td>Progressive web app (PWA)</td><td>Web app with a manifest and service worker for offline and install</td><td>App-like experiences without an app store</td><td>Platform differences, caching complexity</td></tr>
+      <tr><td>Native wrapper</td><td>Web app inside a native shell (Capacitor, Cordova)</td><td>Store presence and device APIs from one codebase</td><td>Native build and signing still required</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>How the browser renders</h3>
+    <ol>
+      <li>HTML parsed into the <b>DOM</b>; CSS into the <b>CSSOM</b>.</li>
+      <li>Combined into a render tree; <b>layout</b> computes sizes and positions; <b>paint</b> draws pixels; <b>composite</b> layers them.</li>
+      <li><b>Render-blocking</b> resources (CSS, synchronous scripts in <code>&lt;head&gt;</code>) delay the first paint. Use <code>defer</code> or <code>type="module"</code> for scripts.</li>
+      <li>JavaScript runs on one main thread; long tasks block input. Move heavy work to Web Workers.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Performance: Core Web Vitals</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Metric</th><th>Measures</th><th>Good</th></tr></thead>
+      <tbody>
+      <tr><td>LCP (Largest Contentful Paint)</td><td>When the main content appears</td><td>≤ 2.5 s</td></tr>
+      <tr><td>INP (Interaction to Next Paint)</td><td>How quickly the page responds to input</td><td>≤ 200 ms</td></tr>
+      <tr><td>CLS (Cumulative Layout Shift)</td><td>How much the layout jumps</td><td>≤ 0.1</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Serve from a CDN; compress; cache fingerprinted assets.</li>
+      <li>Send less JavaScript; split bundles by route; lazy-load below-the-fold images.</li>
+      <li>Size images correctly; use modern formats (WebP, AVIF) and give width and height to avoid shifts.</li>
+      <li>Measure with Lighthouse in the lab and real-user data in the field.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Web security essentials</h3>
+    <ul>
+      <li><b>HTTPS everywhere</b> plus <b>HSTS</b>, so browsers never fall back to HTTP.</li>
+      <li><b>XSS</b> (cross-site scripting): untrusted data rendered as HTML runs as script. Escape output (frameworks do it by default), avoid <code>innerHTML</code> with user data, and add a <b>Content-Security-Policy</b>.</li>
+      <li><b>CSRF</b>: another site makes the user's browser send a cookie-authenticated request. Use <code>SameSite</code> cookies and CSRF tokens for cookie-based sessions.</li>
+      <li><b>Clickjacking</b>: your page framed invisibly. Use <code>frame-ancestors</code> in CSP.</li>
+      <li><b>Mixed content</b>: HTTP resources on an HTTPS page are blocked or warned.</li>
+      <li><b>Subresource Integrity</b> (<code>integrity=</code>) for scripts from CDNs.</li>
+      <li>More on the <a href="/well-rounded-engineer/security/">Security</a> tab.</li>
+    </ul>
+<div class="snip"><pre><code>Content-Security-Policy: default-src 'self'; script-src 'self';
+  img-src 'self' data:; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Accessibility basics</h3>
+    <ul>
+      <li><b>Semantic HTML first:</b> <code>&lt;button&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, headings in order, <code>&lt;label&gt;</code> for every input.</li>
+      <li><b>Keyboard:</b> everything usable with Tab, Enter and Space; visible focus outlines.</li>
+      <li><b>Text alternatives:</b> <code>alt</code> on meaningful images; empty <code>alt=""</code> on decorative ones.</li>
+      <li><b>Contrast:</b> at least 4.5:1 for normal text (WCAG AA).</li>
+      <li><b>ARIA</b> only when HTML has no native element for the job.</li>
+      <li><b>Test</b> with a screen reader and automated checks (axe, Lighthouse); they catch different things.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Servers on the web</h3>
+    <ul>
+      <li><b>Web server / reverse proxy</b> (nginx, Envoy): TLS, static files, compression, routing to apps.</li>
+      <li><b>Application server</b>: runs your code (Spring Boot with Tomcat or Netty, Quarkus with Vert.x, gunicorn or uvicorn for Python).</li>
+      <li><b>CDN</b>: caches content near users and absorbs traffic spikes and attacks.</li>
+      <li><b>Real-time</b>: WebSockets (two-way) and server-sent events (server to browser, simpler, works over HTTP).</li>
+      <li><b>HTTP versions</b>: HTTP/1.1 (one request at a time per connection), HTTP/2 (multiplexed streams), HTTP/3 (over QUIC, better on lossy networks).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>DevTools habits</h3>
+    <ul>
+      <li><b>Network:</b> status, timing waterfall, request and response headers, "Disable cache", throttling, "Copy as cURL".</li>
+      <li><b>Console:</b> JavaScript errors and CORS failures, which say exactly which header is missing.</li>
+      <li><b>Application:</b> cookies with their flags, storage, service workers.</li>
+      <li><b>Performance and Lighthouse:</b> long tasks, layout shifts, Core Web Vitals.</li>
+      <li><b>Elements:</b> live DOM and CSS, accessibility tree.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain what happens from typing a URL to seeing a page</li><li>Read requests, responses, headers and status codes in DevTools</li><li>Know what cookies, sessions and CORS are</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Set caching, cookie and security headers correctly</li><li>Debug CORS, redirects, mixed content and caching problems</li><li>Choose a rendering model for a feature</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design front-end delivery: CDN, caching, rendering, performance budgets</li><li>Lead web security (CSP, session design) and accessibility for a product</li><li>Diagnose Core Web Vitals problems with field data</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set web platform standards across products</li><li>Know the HTTP, TLS and browser specs in depth</li><li>Lead large front-end architecture and performance programmes</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>HTTP semantics (RFC 9110) and caching (RFC 9111)</li><li>Browser rendering pipeline and the event loop</li><li>Service workers and offline apps</li><li>Content Security Policy in depth</li><li>WCAG 2.2 success criteria</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noopener">MDN Web Docs</a><span class="lnote"> The reference for HTML, CSS, JavaScript and HTTP</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works" target="_blank" rel="noopener">MDN: How the web works</a><span class="lnote"> A gentle overview</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS" target="_blank" rel="noopener">MDN: CORS</a><span class="lnote"> Preflights, credentials and headers</span></li><li><a href="https://web.dev/" target="_blank" rel="noopener">web.dev</a><span class="lnote"> Google's guides on performance, Core Web Vitals and modern web practice</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110: HTTP Semantics</a><span class="lnote"> Methods, status codes and headers, authoritatively</span></li><li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2</a><span class="lnote"> Accessibility guidelines</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> XSS, CSRF, session management and more</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/networking/">← Networking</a><a class="pn-next" href="/well-rounded-engineer/docker/">Docker →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

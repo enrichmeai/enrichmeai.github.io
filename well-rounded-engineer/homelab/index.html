@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Lab · Well Rounded Engineer</title>
+<meta name="description" content="Reading builds vocabulary; running things builds judgement. These labs each start from a real, public repository you clone and run on a laptop or a small…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="homelab">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/" aria-current="page">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="homelab" data-name="Home Lab">
+  <div class="panel-head"><h1>Home lab: learn by doing</h1><p>Reading builds vocabulary; running things builds judgement. These labs each start from a real, public repository you clone and run on a laptop or a small cloud budget. Do them in order or pick the ones for the area you are going deep in. Each has a "done when" so you know you finished, and each ends with you writing up what broke.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Set up once</h3>
+    <ul>
+      <li><b>Machine:</b> a laptop with 16 GB RAM is enough for most labs; an old PC or mini PC running Linux makes a good always-on lab server.</li>
+      <li><b>Tools:</b> Git, Docker (or Podman), <code>kubectl</code>, <code>kind</code> or <code>k3d</code>, Helm, Python 3.12+, a JDK 21, and the <code>gcloud</code> CLI.</li>
+      <li><b>Cloud, carefully:</b> new Google Cloud accounts get free-trial credit, and BigQuery has a free sandbox. Set a <b>budget alert</b> on day one and delete what you are not using.</li>
+      <li><b>Your lab journal:</b> one Git repository with a folder per lab and a README in each: goal, steps, numbers you measured, what broke and why. This becomes your portfolio.</li>
+    </ul>
+<div class="snip"><pre><code>mkdir -p ~/lab &amp;&amp; cd ~/lab &amp;&amp; git init
+kind create cluster --name lab        # a Kubernetes cluster in Docker
+kubectl get nodes</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Lab 1: microservices on Kubernetes</h3>
+    <p><b>Repo:</b> <code>GoogleCloudPlatform/microservices-demo</code> (Online Boutique: about ten services in several languages).</p>
+<div class="snip"><pre><code>kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml
+kubectl get pods -w
+kubectl port-forward deploy/frontend 8080:8080     # open http://localhost:8080</code></pre></div>
+    <p><b>Then:</b> delete a pod and watch it come back; scale a deployment; set a memory limit too low and read the OOMKilled event; break a readiness probe.</p>
+    <p class="note"><b>Done when:</b> you can explain, from <code>kubectl describe</code> and events alone, why each thing you broke failed. Tabs: <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>, <a href="/well-rounded-engineer/microservices/">Microservices</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 2: observability stack</h3>
+    <p><b>Repo:</b> <code>prometheus-community/helm-charts</code> (kube-prometheus-stack) on the Lab 1 cluster; or <code>open-telemetry/opentelemetry-demo</code> with Docker Compose.</p>
+<div class="snip"><pre><code>helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring --create-namespace
+kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
+
+# or the OpenTelemetry demo (traces, metrics, logs across many services)
+git clone https://github.com/open-telemetry/opentelemetry-demo
+cd opentelemetry-demo &amp;&amp; docker compose up -d</code></pre></div>
+    <p><b>Then:</b> write one PromQL alert for an error ratio, make it fire on purpose, and find the failing span in a trace.</p>
+    <p class="note"><b>Done when:</b> an alert you wrote fires for a failure you caused, and you traced it to the line of code. Tabs: <a href="/well-rounded-engineer/observability/">Observability</a>, <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 3: service mesh</h3>
+    <p><b>Repo:</b> <code>istio/istio</code> (its <code>samples/bookinfo</code> application) on a kind cluster.</p>
+<div class="snip"><pre><code># after downloading an Istio release and adding istioctl to PATH
+istioctl install --set profile=default -y
+kubectl label namespace default istio-injection=enabled
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+istioctl analyze</code></pre></div>
+    <p><b>Then:</b> turn on STRICT mTLS, split traffic 90/10 between review versions, inject a delay, and write an AuthorizationPolicy that denies one service.</p>
+    <p class="note"><b>Done when:</b> you can produce, then explain, a 403 and a 503 from proxy logs. Tab: <a href="/well-rounded-engineer/servicemesh/">Service Mesh</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 4: GitOps and Helm</h3>
+    <p><b>Repo:</b> <code>argoproj/argocd-example-apps</code>, with Argo CD installed on your cluster.</p>
+<div class="snip"><pre><code>kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl port-forward -n argocd svc/argocd-server 8443:443</code></pre></div>
+    <p><b>Then:</b> fork the example repo, point an Argo CD application at its Helm example, change a value in Git and watch it roll out; change something by hand in the cluster and watch Argo CD report the drift.</p>
+    <p class="note"><b>Done when:</b> every change reaches the cluster only through a Git commit. Tabs: <a href="/well-rounded-engineer/helm/">Helm Charts</a>, <a href="/well-rounded-engineer/devops/">DevOps</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 5: a data pipeline on your laptop</h3>
+    <p><b>Repo:</b> <code>dbt-labs/jaffle_shop_duckdb</code> (dbt's demo project, running on DuckDB, no cloud account).</p>
+<div class="snip"><pre><code>git clone https://github.com/dbt-labs/jaffle_shop_duckdb
+cd jaffle_shop_duckdb
+python3 -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -r requirements.txt
+dbt build                       # seeds, models and tests
+dbt docs generate &amp;&amp; dbt docs serve</code></pre></div>
+    <p><b>Then:</b> add an incremental model, a unit test and a test that fails on purpose; load a public dataset of your own (BigQuery public datasets or the Registry of Open Data on AWS) into DuckDB and model it in layers.</p>
+    <p class="note"><b>Done when:</b> running the pipeline twice gives identical results, and a bad row is rejected and counted, not silently nulled. Tabs: <a href="/well-rounded-engineer/data/">Data Engineering</a>, <a href="/well-rounded-engineer/dbt/">dbt</a>, <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 6: orchestrate it</h3>
+    <p><b>Repo:</b> <code>apache/airflow</code>, using the official Docker Compose quick start from the Airflow documentation.</p>
+    <p><b>Then:</b> write a DAG that runs Lab 5's <code>dbt build</code> daily, uses data intervals, retries, and records a run summary; backfill a week; make one day fail and rerun just that day.</p>
+    <p class="note"><b>Done when:</b> a rerun of any single day changes nothing else, and a missing run raises an alert. Tab: <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 7: Culvert against emulators</h3>
+    <p><b>Repo:</b> <code>enrichmeai/culvert</code>. Its stack runs against local emulators, so no cloud account is needed.</p>
+<div class="snip"><pre><code>git clone https://github.com/enrichmeai/culvert
+pip install 'culvert[gcp]'
+# then follow the repository's docs to start the emulators and run a pipeline</code></pre></div>
+    <p><b>Then:</b> write a small pipeline against the <code>BlobStore</code> and <code>Warehouse</code> contracts, run it on the emulators, then read the conformance suite to see what every adapter must guarantee.</p>
+    <p class="note"><b>Done when:</b> your pipeline code imports no cloud SDK. Tabs: <a href="/well-rounded-engineer/culvert/">Culvert</a>, <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 8: events with Kafka</h3>
+    <p><b>Repo:</b> the official <code>apache/kafka</code> Docker image, plus a producer and consumer you write.</p>
+<div class="snip"><pre><code>docker run -d --name kafka -p 9092:9092 apache/kafka:latest   # pin a version once it works
+docker exec -it kafka /opt/kafka/bin/kafka-topics.sh \
+  --bootstrap-server localhost:9092 --create --topic judgment.landed --partitions 3</code></pre></div>
+    <p><b>Then:</b> write a consumer that is idempotent, kill it mid-batch, restart it and prove no event was applied twice; add a dead-letter topic for a poison message.</p>
+    <p class="note"><b>Done when:</b> you can show consumer lag rising and recovering, and duplicates handled. Tab: <a href="/well-rounded-engineer/kafka/">Kafka</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 9: RAG and an MCP server</h3>
+    <p><b>Repos:</b> <code>anthropics/anthropic-quickstarts</code> for starting points, <code>modelcontextprotocol/python-sdk</code> for the server, and the <code>pgvector/pgvector</code> Docker image for search.</p>
+<div class="snip"><pre><code>docker run -d --name pg -e POSTGRES_PASSWORD=pw -p 5432:5432 pgvector/pgvector:pg17
+pip install "mcp[cli]" anthropic psycopg</code></pre></div>
+    <p><b>Then:</b> chunk and embed a small document set, build hybrid search, answer questions with citations, write 30 golden questions and measure recall; wrap Lab 5's run records in a read-only MCP server and use it from Claude Code.</p>
+    <p class="note"><b>Done when:</b> your eval score is written down, and the MCP tool says "could not read" when the database is stopped. Tabs: <a href="/well-rounded-engineer/rag/">RAG</a>, <a href="/well-rounded-engineer/mcp/">MCP</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 10: infrastructure as code</h3>
+    <p><b>Start:</b> HashiCorp's "Get started with Docker" Terraform tutorial (local, free), then a small Google Cloud project behind a budget alert.</p>
+    <p><b>Then:</b> declare a bucket, a dataset and a Cloud Run job in Terraform; rename a resource with a <code>moved</code> block; import something created by hand; destroy everything at the end.</p>
+    <p class="note"><b>Done when:</b> <code>terraform plan</code> shows no changes after apply, and nothing you made is left running. Tabs: <a href="/well-rounded-engineer/terraform/">Terraform</a>, <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 11: payments in test mode</h3>
+    <p><b>Start:</b> a Stripe or Razorpay test account. Stripe's CLI forwards test webhooks to your laptop.</p>
+<div class="snip"><pre><code>stripe login
+stripe listen --forward-to localhost:8080/webhooks/stripe
+stripe trigger payment_intent.succeeded</code></pre></div>
+    <p><b>Then:</b> build order → checkout → signature check → webhook; replay the same webhook twice; simulate a timeout and reconcile.</p>
+    <p class="note"><b>Done when:</b> no replay or retry can mark an order paid twice. Tab: <a href="/well-rounded-engineer/payments/">Payment Gateways</a>.</p>
+  </article>
+
+  <article class="card"><h3>Lab 12: game day</h3>
+    <p><b>Repo:</b> <code>chaos-mesh/chaos-mesh</code> on your kind cluster, or just <code>kubectl delete</code> and <code>tc</code> by hand.</p>
+    <p><b>Then:</b> with a friend, one person breaks something on the Lab 1–3 stack without saying what; the other detects, mitigates and writes a blameless postmortem using the template on the SRE tab.</p>
+    <p class="note"><b>Done when:</b> the postmortem has at least one action that adds a guard (an alert, a test, a limit). Tab: <a href="/well-rounded-engineer/sre/">SRE</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>Rules for lab work</h3>
+    <ul>
+      <li><b>Predict, then run:</b> write down what you expect before each experiment; the gap is the lesson.</li>
+      <li><b>Break it on purpose:</b> every lab includes a failure you cause and explain.</li>
+      <li><b>Measure:</b> record latency, cost, row counts or recovery time, not impressions.</li>
+      <li><b>Use AI as the bulldozer,</b> not the driver: let it scaffold and explain, then verify everything it claims by running it.</li>
+      <li><b>Pin versions</b> once something works, and note them in the README so the lab is repeatable.</li>
+      <li><b>Clean up:</b> <code>kind delete cluster</code>, <code>docker compose down -v</code>, <code>terraform destroy</code>, and check the cloud billing page.</li>
+      <li><b>Write it up:</b> a short post or README per lab. Teaching what you learned is the final test that you learned it.</li>
+    </ul>
+  </article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/behaviours/">← Behaviours</a><a class="pn-next" href="/well-rounded-engineer/mathematics/">Mathematics →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

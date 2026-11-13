@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI for Engineers · Well Rounded Engineer</title>
+<meta name="description" content="How language models behave, how to build features on them that you can test and operate, and how to work with AI assistants without lowering the bar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="ai">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/" aria-current="page">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="ai" data-name="AI">
+  <div class="panel-head"><h1>AI for engineers</h1><p>How language models behave, how to build features on them that you can test and operate, and how to work with AI assistants without lowering the bar.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Use AI like a bulldozer, not a shovel</h3>
+    <p>A shovel moves one scoop at a time while you hold the handle: ask for a line, paste it, ask again. A bulldozer moves the whole job while you choose where it goes, set the boundaries and check the result. The second gets far more done, but only if you prepare the site. And only if you know enough to manage the site: see <a href="/well-rounded-engineer/">Fundamentals first</a> on Start here.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Shovel habit</th><th>Bulldozer habit</th></tr></thead>
+      <tbody>
+      <tr><td>"Write a function that…" with no context</td><td>Hand over a whole task: the issue, the files, the conventions and what done means</td></tr>
+      <tr><td>Copy and paste answers from a chat window</td><td>Let an agent work in the repo: edit files, run the build and tests, read the errors, fix them</td></tr>
+      <tr><td>Re-explain the project in every session</td><td>Write the context down once (a <code>CLAUDE.md</code> or <code>AGENTS.md</code>, skills, runbooks) so every session starts informed</td></tr>
+      <tr><td>Check its work by reading every line as it types</td><td>Define checks up front (tests, lint, type checks, CI) and review the finished change against them</td></tr>
+      <tr><td>One task at a time, waiting on each</td><td>Run independent tasks in parallel: separate branches or worktrees, subagents for research and review</td></tr>
+      <tr><td>Fix the same mistake by hand again next week</td><td>Turn each correction into a rule, test or hook in the repo so it cannot recur</td></tr>
+      <tr><td>Trust it because it sounds sure</td><td>Trust it because the tests passed and the docs agree</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Preparing the site</h3>
+    <ul>
+      <li><b>Context file in the repo:</b> what the system is, how to build and test it, the rules that are not negotiable, the traps that cost time before.</li>
+      <li><b>Fast, exact gates:</b> the commands that prove a change is done, written down so the agent runs them itself.</li>
+      <li><b>Guardrails:</b> permission settings and hooks that stop destructive commands (force pushes, prod deploys, deletes) unless a human approves.</li>
+      <li><b>Small, clear tasks:</b> one concern per task, with acceptance criteria. A vague brief gets a confident guess.</li>
+      <li><b>Pinned docs:</b> links to the official docs for the versions you use, so it checks instead of recalling.</li>
+      <li><b>A reviewer that is not the author:</b> a second agent or a person reviews the diff against the spec and the docs.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A brief that moves earth</h3>
+<div class="snip"><pre><code>Goal:     Reject Supreme Court dates that do not parse, instead of storing NULL.
+Why:      12% of SC rows lost their decision_date silently (issue #123).
+Where:    dbt/fdp/models/int_judgment_normalised.sql and its unit tests.
+Rules:    Follow CLAUDE.md. Do not change the HC path. No new dependencies.
+Done when:
+  - a unit test with "05-05-1959" and "bad" fails before the fix, passes after
+  - dbt build -s int_judgment_normalised+ is green
+  - the reject table counts unparseable rows
+Out of scope: backfilling old rows (separate issue).
+Report:   what changed, the test output, anything you could not verify.</code></pre></div>
+    <p class="note">Goal, reason, location, rules, a checkable definition of done, scope, and what to report. The same brief works for a colleague.</p>
+  </article>
+
+  <article class="card"><h3>Where you still drive by hand</h3>
+    <ul>
+      <li><b>Irreversible actions:</b> production deploys, data deletion, schema changes on live data, anything sent outside the company.</li>
+      <li><b>Unclear requirements:</b> decide what to build first; an agent will fill gaps with plausible guesses.</li>
+      <li><b>Security and money:</b> auth, permissions, payments, secrets. Review line by line.</li>
+      <li><b>Claims about state:</b> "prod has X" needs someone to look at prod, not a model's inference from config.</li>
+      <li><b>Judgement calls</b> that belong to a person: priorities, trade-offs, wording that speaks for the company.</li>
+    </ul>
+    <p class="note">The bulldozer is only as safe as its operator. Speed comes from preparation and checks, not from skipping them.</p>
+  </article>
+
+  <article class="card wide"><h3>Blueprints and frameworks, not generated boilerplate</h3>
+    <p>AI makes boilerplate cost almost nothing to <i>write</i>. It does not make it cheap to <i>own</i>. Every generated copy has to be reviewed, secured, tested, upgraded and debugged, and fifty copies that are each slightly different are fifty places to fix the same bug. A blueprint (a framework, shared library, template, Terraform module or dbt package) makes each decision once, tests it once, and fixes it once for everyone.</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Generated boilerplate</th><th>Blueprint or framework</th></tr></thead>
+      <tbody>
+      <tr><td>Consistency</td><td>Each copy drifts: retries, logging, auth and error handling differ per service</td><td>One behaviour everywhere, so people and tools know what to expect</td></tr>
+      <tr><td>Fixing a bug or CVE</td><td>Find and patch every copy, and miss some</td><td>Patch once, bump the version, done</td></tr>
+      <tr><td>Review</td><td>Hundreds of generated lines to read in every PR</td><td>Review only the part that is new; the rest is already proven</td></tr>
+      <tr><td>Security</td><td>Each copy can reintroduce a hole the model learned from public code</td><td>Secure defaults built in and tested</td></tr>
+      <tr><td>Upgrades</td><td>Every service upgrades on its own, or never</td><td>Upgrade the blueprint; services follow</td></tr>
+      <tr><td>Knowledge</td><td>Decisions live in whichever prompt produced the code</td><td>Decisions are written down, versioned and reviewable</td></tr>
+      <tr><td>AI quality</td><td>The model guesses your conventions from its training data</td><td>The model follows your blueprint, so its output is smaller and fits</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>Rule of thumb:</b> if you would ask AI to generate the same thing twice, it belongs in a blueprint.</li>
+      <li><b>Use AI to build and improve the blueprint,</b> then to fill in only the part that is specific: the business logic, the one new query, the tests for it.</li>
+      <li><b>Point the AI at the blueprint</b> in your context file ("new jobs use <code>modules/pipeline-job</code>; new services start from the service template"), so it extends instead of reinventing.</li>
+      <li><b>Generation is fine</b> for one-off scripts, prototypes you will throw away, and filling in a blueprint's slots.</li>
+    </ul>
+    <p class="note">Examples in this guide: Spring Boot starters and Quarkus extensions; a Terraform module for every Cloud Run job; dbt macros, generic tests and packages; a shared library such as Culvert for storage and warehouse access; a service template in Backstage or Cookiecutter; and a written build-loop blueprint that is ported between repos instead of re-prompted in each. More on the <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI Boilerplate</a> tab.</p>
+  </article>
+
+  <article class="card"><h3>How models behave</h3>
+    <ul>
+      <li><b>Tokens:</b> models read and write tokens (pieces of words). Cost, limits and latency are all counted in tokens.</li>
+      <li><b>Context window:</b> everything the model can see in one call: instructions, history, retrieved documents, tool results. It remembers nothing between calls unless you send it again.</li>
+      <li><b>Non-deterministic:</b> the same input can give different outputs. Test with sets of examples and scores, not one run.</li>
+      <li><b>Confidently wrong:</b> a model can produce fluent, specific, false text (hallucination). Ground answers in retrieved sources and ask for citations you can check.</li>
+      <li><b>Knowledge cutoff:</b> the model knows nothing after its training data. Current facts must come from your data or tools.</li>
+      <li><b>Instructions in data:</b> the model cannot reliably tell your instructions from instructions hidden in a document it reads.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Calling a model (Anthropic Python SDK)</h3>
+<div class="snip"><pre><code># pip install anthropic   — credentials from ANTHROPIC_API_KEY
+import anthropic
+client = anthropic.Anthropic()
+
+resp = client.messages.create(
+    model="claude-opus-5-5",
+    max_tokens=16000,
+    system="You summarise Indian court judgments for lawyers. Cite paragraph numbers.",
+    messages=[{"role": "user", "content": judgment_text}],
+)
+if resp.stop_reason == "refusal":
+    handle_refusal(resp)                   # check before reading content
+for block in resp.content:
+    if block.type == "text":
+        print(block.text)
+print(resp.usage.input_tokens, resp.usage.output_tokens)   # log every call's cost</code></pre></div>
+    <p class="note">Other current IDs: <code>claude-sonnet-5-5</code> (faster, cheaper) and <code>claude-haiku-5-5</code> (cheapest, for bulk work). Long outputs should stream. On Vertex AI use <code>AnthropicVertex(project_id=…, region=…)</code> with the same calls.</p>
+  </article>
+
+  <article class="card"><h3>Structured output, not string parsing</h3>
+<div class="snip"><pre><code>from pydantic import BaseModel
+
+class Citation(BaseModel):
+    case_name: str
+    year: int | None
+    court: str | None
+    paragraph: str | None
+
+class Extraction(BaseModel):
+    citations: list[Citation]
+
+resp = client.messages.parse(
+    model="claude-opus-5-5",
+    max_tokens=16000,
+    messages=[{"role": "user", "content": f"Extract every case cited:\n\n{text}"}],
+    output_format=Extraction,
+)
+result: Extraction = resp.parsed_output     # validated against the schema</code></pre></div>
+    <p class="note">The schema guarantees shape, not truth. Still check values against your data: does that case exist in the corpus?</p>
+  </article>
+
+  <article class="card"><h3>Tools: let the model call your code</h3>
+<div class="snip"><pre><code>from anthropic import beta_tool
+
+@beta_tool
+def search_corpus(query: str, court: str | None = None) -&gt; str:
+    """Search the judgment corpus. Returns up to 10 results as JSON.
+
+    Args:
+        query: Full-text search terms.
+        court: Optional court code, e.g. "2_5".
+    """
+    return json.dumps(corpus.search(query, court=court, limit=10))
+
+runner = client.beta.messages.tool_runner(
+    model="claude-opus-5-5",
+    max_tokens=16000,
+    tools=[search_corpus],
+    messages=[{"role": "user", "content": "Find recent Himachal judgments on land acquisition."}],
+)
+for message in runner:          # the SDK runs the call → tool → call loop
+    print(message)</code></pre></div>
+    <p class="note">Give tools the least privilege that works: read-only by default, writes behind human approval. MCP is the open protocol for exposing tools and data to any compatible client.</p>
+  </article>
+
+  <article class="card wide"><h3>RAG: retrieval-augmented generation</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Step</th><th>What you build</th><th>Where it goes wrong</th></tr></thead>
+      <tbody>
+      <tr><td>1 Ingest</td><td>Pipeline that loads documents with IDs, dates and source</td><td>Stale or duplicate documents; no way to tell which version was used</td></tr>
+      <tr><td>2 Chunk</td><td>Split into passages (by section or ~500–1,000 tokens with overlap)</td><td>Chunks cut through the sentence that answers the question</td></tr>
+      <tr><td>3 Embed</td><td>Vector per chunk; store with metadata</td><td>Query and documents embedded with different models</td></tr>
+      <tr><td>4 Retrieve</td><td>Vector search plus keyword search (hybrid), filtered by metadata</td><td>Exact names and citations missed by vectors alone</td></tr>
+      <tr><td>5 Rerank</td><td>Score the top 50 and keep the best 5–10</td><td>Irrelevant passages crowd out the right one</td></tr>
+      <tr><td>6 Generate</td><td>Prompt with the passages, ask for citations to their IDs</td><td>Model answers from memory when retrieval found nothing; say "not found" instead</td></tr>
+      <tr><td>7 Evaluate</td><td>Measure retrieval (did the right chunk come back?) and answers separately</td><td>Only judging the final answer hides which step failed</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Vector search: Postgres &amp; BigQuery</h3>
+<div class="snip"><pre><code>-- pgvector
+CREATE EXTENSION IF NOT EXISTS vector;
+CREATE TABLE chunks (id bigserial PRIMARY KEY, doc_id text, body text,
+                     embedding vector(768));
+CREATE INDEX ON chunks USING hnsw (embedding vector_cosine_ops);
+SELECT id, doc_id, 1 - (embedding &lt;=&gt; $1) AS similarity
+FROM chunks WHERE doc_id LIKE 'HP%'          -- HNSW filters after the index scan: can return fewer rows (pgvector 0.8+ iterative scans help)
+ORDER BY embedding &lt;=&gt; $1 LIMIT 10;        -- &lt;=&gt; cosine distance</code></pre></div>
+<div class="snip"><pre><code>-- BigQuery: embed with a remote model, then search
+CREATE OR REPLACE TABLE `p.ai.chunk_emb` AS
+SELECT * FROM ML.GENERATE_EMBEDDING(
+  MODEL `p.ai.embedding_model`,
+  (SELECT id, body AS content FROM `p.ai.chunks`));
+
+SELECT base.id, distance
+FROM VECTOR_SEARCH(
+  TABLE `p.ai.chunk_emb`, 'ml_generate_embedding_result',
+  (SELECT ml_generate_embedding_result FROM ML.GENERATE_EMBEDDING(
+     MODEL `p.ai.embedding_model`, (SELECT 'land acquisition compensation' AS content))),
+  top_k =&gt; 10, distance_type =&gt; 'COSINE');</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Evals: how you know it works</h3>
+    <ul>
+      <li><b>Build a test set</b> of 50–200 real inputs with expected outputs or grading notes. Include the hard and adversarial cases.</li>
+      <li><b>Grade with code first:</b> exact match, schema valid, cited ID exists, number within tolerance.</li>
+      <li><b>Model-as-judge</b> for open-ended answers, with a written rubric, checked against human grades on a sample.</li>
+      <li><b>Run it in CI</b> on every prompt, model or retrieval change, and track the score over time.</li>
+      <li><b>Hold out a test split</b> you never tune against, so improvements are real.</li>
+      <li><b>Measure cost and latency</b> beside quality; a 2% gain at 3× the cost may not be worth it.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security</h3>
+    <ul>
+      <li><b>Prompt injection:</b> a web page, PDF or email the model reads can say "ignore your instructions". Treat everything retrieved as untrusted data.</li>
+      <li><b>Limit the blast radius:</b> tools get least privilege; destructive actions need human confirmation; the model never holds credentials directly.</li>
+      <li><b>Output is untrusted input:</b> escape it before rendering, validate it before running it as SQL or shell.</li>
+      <li><b>Data leakage:</b> do not send secrets or personal data you are not allowed to process. Check the provider's retention terms.</li>
+      <li><b>Log and audit</b> prompts, tool calls and outputs (minus sensitive fields) so you can investigate.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Cost &amp; latency</h3>
+    <ul>
+      <li><b>Estimate first:</b> (input + output tokens) × price × calls per day. Log <code>usage</code> on every call.</li>
+      <li><b>Prompt caching:</b> put the stable part (instructions, tool definitions, long reference text) first so repeated calls reuse it at a fraction of the price.</li>
+      <li><b>Batch API</b> for work that can wait (bulk extraction overnight), at a lower price.</li>
+      <li><b>Right-size the model:</b> measure whether a smaller model or lower effort holds quality on your eval before paying for the largest.</li>
+      <li><b>Trim context:</b> retrieve 5 good passages, not 50 mediocre ones.</li>
+      <li><b>Stream</b> long responses so users see progress, and set timeouts and retries with backoff.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Working with AI coding assistants</h3>
+    <ul>
+      <li><b>Give context:</b> the repo's conventions, the failing test, the exact error. Vague asks get vague code.</li>
+      <li><b>Tests first:</b> a test that fails before the change is the best spec and the best check.</li>
+      <li><b>Verify against docs:</b> an assistant can invent a flag, method or version. Check the official docs for anything external.</li>
+      <li><b>Review every line</b> as you would a colleague's PR: error paths, edge cases, security.</li>
+      <li><b>Keep secrets out</b> of prompts and pasted logs.</li>
+      <li><b>Small steps:</b> one concern per change, so a wrong turn is cheap to undo.</li>
+      <li><b>You own the result.</b> "The AI wrote it" is not a review comment.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Agents: when and when not</h3>
+    <ul>
+      <li><b>Start with one call.</b> Classification, extraction and summaries rarely need more.</li>
+      <li><b>Then a workflow:</b> fixed steps in your code, a model call at each. Predictable and testable.</li>
+      <li><b>An agent</b> (the model chooses tools in a loop) only when the steps cannot be known in advance, the value justifies the cost, and mistakes can be caught and undone.</li>
+      <li><b>Bound it:</b> step and token budgets, timeouts, an approval gate on writes, and a full log of each tool call.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>AI on Google Cloud</h3>
+    <ul>
+      <li><b>Vertex AI:</b> hosted models (Gemini, Claude and others through Model Garden), endpoints, evaluation and pipelines in your GCP project and region.</li>
+      <li><b>BigQuery ML:</b> call remote models from SQL (<code>ML.GENERATE_TEXT</code>, <code>ML.GENERATE_EMBEDDING</code>) and search with <code>VECTOR_SEARCH</code>, without moving data out.</li>
+      <li><b>Data residency:</b> pick the region deliberately; some models run only in global or specific regions.</li>
+      <li><b>IAM as usual:</b> service accounts with Vertex AI User, no API keys in code.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Call a model API and get structured output</li><li>Explain tokens, context, hallucination and prompt injection</li><li>Use an AI assistant with tests and review</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a RAG feature with retrieval, citations and an eval set</li><li>Use tools and handle refusals, errors and cost</li><li>Brief an AI agent with context, rules and a definition of done</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design AI features with evals, guardrails, observability and fallbacks</li><li>Tune cost and latency (caching, batch, model choice)</li><li>Set up repos so AI agents work safely (context files, hooks, gates)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set AI strategy, governance and security across the organisation</li><li>Design agentic systems and their safety boundaries</li><li>Build shared AI platforms, blueprints and evaluation infrastructure</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Evaluation design and model-graded evals</li><li>Retrieval: hybrid search, reranking, chunking</li><li>Agents, tool design and MCP</li><li>Prompt injection defences</li><li>Cost and latency engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://platform.claude.com/docs" target="_blank" rel="noopener">Claude developer docs</a><span class="lnote"> Anthropic API, tools, structured outputs, prompt caching</span></li><li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents (Anthropic)</a><span class="lnote"> When to use workflows vs agents</span></li><li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code docs</a><span class="lnote"> Agentic coding, hooks, subagents</span></li><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Open protocol for tools and data</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs" target="_blank" rel="noopener">Vertex AI generative AI</a><span class="lnote"> Models and tooling on GCP</span></li><li><a href="https://cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener">BigQuery vector search</a><span class="lnote"> Embeddings and VECTOR_SEARCH</span></li><li><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector</a><span class="lnote"> Vector search in Postgres</span></li><li><a href="https://genai.owasp.org/" target="_blank" rel="noopener">OWASP GenAI security</a><span class="lnote"> LLM application risks</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/llm/">← LLMs</a><a class="pn-next" href="/well-rounded-engineer/blueprints/">Frameworks vs AI →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

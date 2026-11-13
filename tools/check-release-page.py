@@ -33,7 +33,8 @@ checked against their latest GitHub release instead, with two markers:
                                            a link into the project's repository that names a version:
                                            "release" links must name the latest release, "history" an older one
 
-Pages that repeat a project's facts (the home page, /persona/, /well-rounded-engineer/) are listed under "also": their markers
+Pages that repeat a project's facts (the home page, /persona/, every /well-rounded-engineer/ page) are listed under
+"also" (a "*" pattern is expanded from the repository root): their markers
 are checked against the same truth, and a version on them outside every project's markers is an error,
 so the home page cannot keep an old version after the project page moves on. Markers are required
 only on the project's own page.
@@ -74,7 +75,7 @@ PROJECTS = {
         "reactor": "data-pipeline-libraries-java/pom.xml",
         "pypi": "culvert",
         "extras": "python-culvert/pyproject.toml",
-        "also": ["index.html", "well-rounded-engineer/index.html"],
+        "also": ["index.html", "well-rounded-engineer/**/index.html"],
     },
     "enrich-test-api": {
         "repo": "enrichmeai/enrich-test-api",
@@ -420,6 +421,21 @@ def check(html: str, facts: dict, project: str, primary: bool = True) -> list[st
     return errors
 
 
+def also_pages(cfg: dict) -> list[Path]:
+    """The pages under "also", with a "*" pattern expanded from the repository root (sorted, so runs
+    compare). A pattern that matches nothing is an error: a renamed folder must not silently stop the check."""
+    out: list[Path] = []
+    for p in cfg.get("also", []):
+        if "*" in p:
+            found = sorted(ROOT.glob(p))
+            if not found:
+                raise FileNotFoundError(f"no page matches {p}")
+            out += found
+        else:
+            out.append(ROOT / p)
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("project", choices=sorted(PROJECTS))
@@ -443,7 +459,7 @@ def main() -> int:
         return 0
 
     pages = [(Path(args.page), True)] if args.page else \
-        [(ROOT / cfg["page"], True)] + [(ROOT / p, False) for p in cfg.get("also", [])]
+        [(ROOT / cfg["page"], True)] + [(p, False) for p in also_pages(cfg)]
     errors = []
     for page, primary in pages:
         for e in check(page.read_text(encoding="utf-8"), facts, args.project, primary=primary):

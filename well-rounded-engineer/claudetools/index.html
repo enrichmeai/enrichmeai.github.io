@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code & Cowork · Well Rounded Engineer</title>
+<meta name="description" content="Claude Code is Anthropic&#x27;s agentic coding tool: it reads your repository, edits files, runs commands and tests, and works through tasks with you or on its…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="claudetools">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/" aria-current="page">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="claudetools" data-name="Claude Code &amp; Cowork">
+  <div class="panel-head"><h1>Claude Code and Claude Cowork</h1><p>Claude Code is Anthropic's agentic coding tool: it reads your repository, edits files, runs commands and tests, and works through tasks with you or on its own. Claude Cowork brings the same agentic way of working to non-coding knowledge work in the Claude desktop app. How each is set up, extended and kept safe.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Where Claude Code runs</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Surface</th><th>Use it for</th></tr></thead>
+      <tbody>
+      <tr><td>Terminal CLI (<code>claude</code>)</td><td>Interactive work in a local repository</td></tr>
+      <tr><td>IDE extensions (VS Code, JetBrains)</td><td>The same agent beside your editor, with diffs inline</td></tr>
+      <tr><td>Desktop app</td><td>Local and cloud sessions with a graphical interface</td></tr>
+      <tr><td>Claude Code on the web</td><td>Cloud sessions in a managed container: work continues without your laptop</td></tr>
+      <tr><td>Headless (<code>claude -p</code>)</td><td>Scripts and CI: one prompt in, result out (text or JSON)</td></tr>
+      <tr><td>GitHub Actions (<code>claude-code-action</code>)</td><td>Respond to issues and PRs, e.g. a label that asks Claude to build a task</td></tr>
+      <tr><td>Agent SDK</td><td>Claude Code's harness as a library inside your own application</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Everyday commands</h3>
+<div class="snip"><pre><code>claude                              # start in the current repo
+claude "fix the failing date parser test"
+claude -c                           # continue the last conversation
+claude -r                           # pick an earlier session to resume
+claude -p "summarise this diff" --output-format json &lt; diff.txt   # headless
+
+# inside a session
+/init        create a CLAUDE.md for this repo
+/memory      edit memory files
+/agents      manage subagents
+/mcp         MCP servers and their status
+/permissions view rules
+/compact     summarise the conversation to free context
+/clear       start fresh
+Shift+Tab    cycle permission modes (incl. plan mode)
+Esc          interrupt</code></pre></div>
+  </article>
+
+  <article class="card"><h3>The files that shape it</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>File</th><th>Holds</th></tr></thead>
+      <tbody>
+      <tr><td><code>CLAUDE.md</code> (repo root, subfolders)</td><td>Project memory: what the system is, rules, commands, traps. Loaded every session.</td></tr>
+      <tr><td><code>~/.claude/CLAUDE.md</code></td><td>Your personal preferences across projects</td></tr>
+      <tr><td><code>.claude/settings.json</code></td><td>Shared permissions, hooks, environment, model settings (committed)</td></tr>
+      <tr><td><code>.claude/settings.local.json</code></td><td>Your local overrides (not committed)</td></tr>
+      <tr><td><code>.claude/agents/*.md</code></td><td>Subagents: specialised helpers with their own prompt, tools and model</td></tr>
+      <tr><td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td><td>Skills: packaged procedures invoked by name or when relevant</td></tr>
+      <tr><td><code>.claude/commands/*.md</code></td><td>Custom slash commands</td></tr>
+      <tr><td><code>.mcp.json</code></td><td>MCP servers shared with the team</td></tr>
+      </tbody></table></div>
+    <p class="note">These files are the blueprint for how agents work in your repo. Keep them short, specific and current; a stale rule misleads every session.</p>
+  </article>
+
+  <article class="card"><h3>Permissions and hooks</h3>
+<div class="snip"><pre><code>// .claude/settings.json
+{
+  "permissions": {
+    "allow": ["Bash(./gradlew test:*)", "Bash(git status)", "Bash(git diff:*)"],
+    "deny":  ["Read(./.env)", "Bash(rm -rf:*)"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash",
+        "hooks": [{ "type": "command", "command": ".claude/hooks/guard-destructive.sh" }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": ".claude/hooks/check-edited-file.sh" }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": ".claude/hooks/stop-gate.sh" }] }
+    ]
+  }
+}</code></pre></div>
+    <ul>
+      <li><b>Permission modes:</b> default (ask), accept edits, plan (read and propose only), and fully autonomous modes for sandboxed environments.</li>
+      <li><b>Hooks</b> run your scripts at events (before/after a tool, on prompt submit, at stop, at session start). A hook that exits with code 2 blocks the action where the event allows it (PreToolUse blocks the tool call, Stop prevents stopping) and its stderr is fed back to Claude. A PostToolUse hook runs after the tool, so exit code 2 only feeds stderr back.</li>
+      <li><b>Use hooks for rules that must always hold</b> (lint after every edit, block pushes to <code>main</code>); use CLAUDE.md for guidance.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Subagents and skills</h3>
+<div class="snip"><pre><code>&lt;!-- simplified example of .claude/agents/reviewer.md --&gt;
+---
+name: reviewer
+description: Independent reviewer of a finished diff before a PR is opened.
+  Use at the end of every task.
+tools: Read, Grep, Glob, Bash
+model: sonnet
+---
+Review the diff against the task, CLAUDE.md and the official docs of every
+library it touches. Report bugs, missing tests and unverified API use.
+Do not edit files.</code></pre></div>
+<div class="snip"><pre><code>&lt;!-- simplified example of .claude/skills/&lt;name&gt;/SKILL.md --&gt;
+---
+name: release-sync
+description: Bring a project page up to date with that project's latest
+  release. Use after a release or when a sync issue is open.
+---
+1. Read the release tag and changelog.
+2. Update the version markers and the "what's new" block.
+3. Run the release checker until it reports 0 findings.</code></pre></div>
+    <p class="note">Subagents keep their own context, so a reviewer is not anchored on the builder's reasoning. Skills turn a procedure that cost a debugging cycle into something every session follows.</p>
+  </article>
+
+  <article class="card"><h3>A worked example: an autonomous build loop</h3>
+    <ol>
+      <li><code>/new-issue</code> turns an idea into a ready issue.</li>
+      <li><code>/build-task</code> builds it: verify docs, write a failing test, implement.</li>
+      <li><b>Hooks</b> check every edit; a stop hook runs the full check before the turn can end.</li>
+      <li>A <b>reviewer</b> subagent checks the finished diff independently.</li>
+      <li>Fix what it finds, <b>at most three attempts</b>, then write a blocker summary instead of looping.</li>
+      <li><code>/compound</code> turns what went wrong into a permanent guard (a test, hook or rule).</li>
+      <li>Open a PR; a human (or a gated merge skill) merges.</li>
+    </ol>
+    <p class="note">Each step is a skill, agent or hook committed to the repository, so every session follows the same loop.</p>
+  </article>
+
+  <article class="card wide"><h3>Claude Cowork</h3>
+    <p>Cowork applies Claude's agentic loop to everyday knowledge work rather than code: it works through multi-step tasks on your files, documents and connected apps from the Claude desktop app, and checks in with you as it goes.</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Claude Code</th><th>Claude Cowork</th></tr></thead>
+      <tbody>
+      <tr><td>Main users</td><td>Engineers</td><td>Anyone doing knowledge work: analysts, operations, legal, sales, founders</td></tr>
+      <tr><td>Works on</td><td>Repositories: code, tests, builds, Git</td><td>Folders, documents, spreadsheets, presentations, connected apps</td></tr>
+      <tr><td>Extended by</td><td>CLAUDE.md, skills, subagents, hooks, MCP, plugins</td><td>Skills, plugins and connectors (MCP), often packaged per role</td></tr>
+      <tr><td>Typical tasks</td><td>Implement a feature, fix a bug, review a PR, run a migration</td><td>Prepare a report from files, reconcile spreadsheets, draft documents, run a recurring brief</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>Plugins</b> bundle skills, commands, agents and connectors for a role or team, so the organisation's way of working is installed rather than re-explained.</li>
+      <li><b>Same rules as any agent:</b> give it a clear brief and a definition of done, limit what it can access, and review what it produces before it is sent anywhere.</li>
+      <li>Features and availability change frequently; check Anthropic's current product documentation.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Working well with Claude Code</h3>
+    <ul>
+      <li><b>Plan first</b> for anything non-trivial: plan mode, read the plan, then let it build.</li>
+      <li><b>Give it a way to check itself:</b> exact test and lint commands in CLAUDE.md.</li>
+      <li><b>One task per session;</b> <code>/clear</code> between unrelated tasks to keep context clean.</li>
+      <li><b>Worktrees</b> for parallel sessions, so they never edit the same checkout.</li>
+      <li><b>Verify claims:</b> ask what it ran and what the output was; "done" means a green check you can see.</li>
+      <li><b>Turn every correction into a rule</b> in CLAUDE.md, a skill or a hook.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run Claude Code in a repo; review and accept its changes</li><li>Write a useful CLAUDE.md with commands and rules</li><li>Use plan mode and permission prompts sensibly</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Add hooks, skills, subagents and MCP servers for the team</li><li>Run headless and GitHub Action workflows</li><li>Use Cowork with plugins and connectors for knowledge work</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design an agent workflow with gates, reviewers and attempt limits</li><li>Govern permissions, secrets and sandboxing</li><li>Turn recurring corrections into skills and hooks</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's agentic engineering practice</li><li>Build shared plugins and blueprints across teams</li><li>Measure productivity and quality impact</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Hooks reference and exit codes</li><li>Subagent design</li><li>Skills and plugins</li><li>Claude Code in CI</li><li>Agent SDK</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code overview</a><span class="lnote"> Install, surfaces, getting started</span></li><li><a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener">Settings and permissions</a><span class="lnote"> settings.json, rules, modes</span></li><li><a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Hooks</a><span class="lnote"> Events, matchers, exit codes</span></li><li><a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Subagents</a><span class="lnote"> Defining and using subagents</span></li><li><a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Skills</a><span class="lnote"> Packaging procedures</span></li><li><a href="https://github.com/anthropics/claude-code-action" target="_blank" rel="noopener">claude-code-action</a><span class="lnote"> Claude Code in GitHub Actions</span></li><li><a href="https://support.claude.com/" target="_blank" rel="noopener">Claude Help Center</a><span class="lnote"> Product guides, including Cowork</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/blueprints/">← Frameworks vs AI</a><a class="pn-next" href="/well-rounded-engineer/copilot/">GitHub Copilot →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

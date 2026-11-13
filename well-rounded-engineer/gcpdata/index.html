@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data on GCP · Well Rounded Engineer</title>
+<meta name="description" content="Which Google Cloud service does each job in the data lifecycle, how they fit together in common architectures, and how to choose between similar ones.…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="gcpdata">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/" aria-current="page">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="gcpdata" data-name="Data Engineering on GCP">
+  <div class="panel-head"><h1>Data engineering on Google Cloud</h1><p>Which Google Cloud service does each job in the data lifecycle, how they fit together in common architectures, and how to choose between similar ones. Concepts are on <a href="/well-rounded-engineer/data/">Data Engineering</a>; the warehouse itself is on <a href="/well-rounded-engineer/bigquery/">BigQuery</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Service map by lifecycle stage</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Stage</th><th>Service</th><th>Use it for</th></tr></thead>
+      <tbody>
+      <tr><td>Ingest: files</td><td>Storage Transfer Service</td><td>Bulk or scheduled copies from S3, HTTP lists, other buckets or on-premises into GCS</td></tr>
+      <tr><td>Ingest: SaaS and Google sources</td><td>BigQuery Data Transfer Service</td><td>Scheduled loads from Google Ads, YouTube, other clouds' warehouses, S3 and more</td></tr>
+      <tr><td>Ingest: events</td><td>Pub/Sub</td><td>Serverless messaging; push, pull, or straight into BigQuery or GCS with subscriptions</td></tr>
+      <tr><td>Ingest: events (Kafka)</td><td>Managed Service for Apache Kafka</td><td>Kafka-compatible clusters run by Google, when your ecosystem is Kafka (<a href="/well-rounded-engineer/kafka/">Kafka</a> tab)</td></tr>
+      <tr><td>Ingest: database changes</td><td>Datastream</td><td>Serverless CDC from MySQL, PostgreSQL, Oracle and SQL Server into BigQuery or GCS</td></tr>
+      <tr><td>Ingest: custom</td><td>Cloud Run jobs / functions</td><td>APIs, scraping public mirrors, anything with its own logic (<a href="/well-rounded-engineer/cloudrun/">Cloud Run</a> tab)</td></tr>
+      <tr><td>Store: files</td><td>Cloud Storage</td><td>Raw landing zone, archives, Parquet/Avro, lifecycle to cheaper classes</td></tr>
+      <tr><td>Store: warehouse</td><td>BigQuery</td><td>Analytics tables, the layered model, BI and ML</td></tr>
+      <tr><td>Store: lakehouse</td><td>BigLake</td><td>Governed tables over files in GCS (including Iceberg), readable by BigQuery and Spark</td></tr>
+      <tr><td>Store: serving</td><td>Cloud SQL, AlloyDB, Spanner, Bigtable</td><td>Low-latency reads for applications</td></tr>
+      <tr><td>Transform: SQL</td><td>BigQuery + dbt or Dataform</td><td>ELT inside the warehouse, with tests and lineage</td></tr>
+      <tr><td>Transform: code at scale</td><td>Dataflow (Apache Beam)</td><td>Batch and streaming pipelines, autoscaling, exactly-once into BigQuery</td></tr>
+      <tr><td>Transform: Spark/Hadoop</td><td>Dataproc / Serverless for Apache Spark (formerly Dataproc Serverless)</td><td>Existing Spark jobs, Spark ML, lift-and-shift Hadoop</td></tr>
+      <tr><td>Orchestrate</td><td>Cloud Composer (Airflow)</td><td>Many dependent pipelines, sensors, backfills (<a href="/well-rounded-engineer/dags/">DAGs</a> tab)</td></tr>
+      <tr><td>Orchestrate (light)</td><td>Workflows + Cloud Scheduler</td><td>A few steps calling APIs and jobs, no Airflow to run</td></tr>
+      <tr><td>Govern</td><td>Dataplex</td><td>Catalog, data quality scans, lineage, profiling, policy across lakes and warehouses</td></tr>
+      <tr><td>Protect</td><td>IAM, policy tags, Sensitive Data Protection</td><td>Column-level access, masking, finding personal data</td></tr>
+      <tr><td>Share</td><td>BigQuery sharing (formerly Analytics Hub)</td><td>Publish datasets to other projects or organisations without copying</td></tr>
+      <tr><td>Serve: BI</td><td>Looker, Looker Studio</td><td>Governed metrics and dashboards</td></tr>
+      <tr><td>Serve: ML/AI</td><td>BigQuery ML, Vertex AI</td><td>Models and embeddings close to the data (<a href="/well-rounded-engineer/ai/">AI</a> tab)</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Reference architectures</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Pattern</th><th>Flow</th><th>Fits</th></tr></thead>
+      <tbody>
+      <tr><td>Batch ELT</td><td>Source → Storage Transfer / Cloud Run job → GCS (raw) → BigQuery load → dbt layers → marts → Looker / API</td><td>Daily or hourly data, files and exports, most analytics</td></tr>
+      <tr><td>Streaming</td><td>Apps → Pub/Sub → Dataflow (parse, enrich, window) → BigQuery (+ GCS archive)</td><td>Seconds-level freshness, clickstreams, IoT, fraud signals</td></tr>
+      <tr><td>Simple streaming</td><td>Apps → Pub/Sub → BigQuery subscription</td><td>Events that need no transformation before landing</td></tr>
+      <tr><td>CDC replication</td><td>Postgres/MySQL → Datastream → BigQuery (merged or append) → dbt</td><td>Analytics on an operational database without load on it</td></tr>
+      <tr><td>Lakehouse</td><td>GCS (Parquet/Iceberg) ← Dataproc Spark / Dataflow; BigLake tables → BigQuery SQL</td><td>Open formats shared by several engines</td></tr>
+      <tr><td>Reverse ETL / serving</td><td>BigQuery mart → export or loader → Cloud SQL / AlloyDB → API</td><td>Serving curated data to an application with low latency</td></tr>
+      <tr><td>RAG over documents</td><td>GCS docs → parse (Dataflow / Cloud Run) → chunks + embeddings (BigQuery ML / Vertex AI) → vector search → model</td><td>AI question answering over your corpus</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Choosing between similar services</h3>
+    <ul>
+      <li><b>SQL in BigQuery vs Dataflow:</b> if it can be expressed in SQL over data already in BigQuery, use SQL (dbt). Use Dataflow for streaming, non-SQL parsing, or work before data reaches BigQuery.</li>
+      <li><b>Dataflow vs Dataproc:</b> Dataflow for new pipelines (serverless, Beam, streaming). Dataproc for existing Spark code or Spark libraries.</li>
+      <li><b>Cloud Run job vs Dataflow:</b> a job for simple, bounded work (copy files, call an API). Dataflow when data volume needs many workers and autoscaling.</li>
+      <li><b>Composer vs Workflows:</b> Composer for many pipelines with dependencies, backfills and sensors. Workflows plus Scheduler for a handful of steps; much cheaper to run.</li>
+      <li><b>dbt vs Dataform:</b> both do SQL ELT with tests. Dataform is built into BigQuery; dbt has the larger ecosystem and runs on any warehouse.</li>
+      <li><b>Pub/Sub vs Kafka:</b> Pub/Sub is serverless and global with nothing to size. Kafka gives log semantics, replay by offset, compaction and the Kafka ecosystem.</li>
+      <li><b>Cloud SQL vs AlloyDB vs Spanner:</b> Cloud SQL for most Postgres needs; AlloyDB for heavier Postgres workloads and analytics; Spanner for global scale with strong consistency.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Handy commands</h3>
+<div class="snip"><pre><code># Pub/Sub straight into BigQuery
+gcloud pubsub topics create judgment-events
+gcloud pubsub subscriptions create judgment-to-bq \
+  --topic=judgment-events \
+  --bigquery-table=my-proj:dp_odp.judgment_events \
+  --use-table-schema
+
+# Storage Transfer: one-off copy between buckets
+gcloud transfer jobs create gs://source-bucket gs://my-landing
+
+# Serverless for Apache Spark (Dataproc batches): run a PySpark job
+gcloud dataproc batches submit pyspark job.py \
+  --region=asia-south1 --deps-bucket=gs://my-deps
+
+# Dataflow: list and inspect jobs
+gcloud dataflow jobs list --region=asia-south1 --status=active
+gcloud dataflow jobs describe JOB_ID --region=asia-south1
+
+# Datastream streams
+gcloud datastream streams list --location=asia-south1</code></pre></div>
+  </article>
+
+  <article class="card"><h3>IAM for data, in practice</h3>
+    <ul>
+      <li><b>One service account per pipeline component</b> (landing, load, transform, serve), each with only its roles.</li>
+      <li><b>Dataset-level grants</b> rather than project-wide: <code>bigquery.dataEditor</code> on the datasets it writes, <code>dataViewer</code> on those it reads.</li>
+      <li><b><code>bigquery.jobUser</code></b> on the project that pays for queries; this is separate from data access.</li>
+      <li><b>Bucket-level roles</b> with uniform bucket-level access; <code>objectViewer</code> for readers, <code>objectAdmin</code> only for the writer.</li>
+      <li><b>Policy tags</b> for sensitive columns; authorised views to share a subset.</li>
+      <li><b>Serving databases</b> get a read-only user for the API.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Cost controls</h3>
+    <ul>
+      <li>Partition and cluster; require partition filters on large tables.</li>
+      <li>Set per-user and per-project custom query quotas, and <code>maximum_bytes_billed</code> on jobs.</li>
+      <li>Export billing to BigQuery and build a cost dashboard by label.</li>
+      <li>Label every resource with team, component and environment.</li>
+      <li>GCS lifecycle rules to move old raw data to Nearline/Coldline/Archive.</li>
+      <li>Stop or scale down non-production Cloud SQL, Dataproc and Composer when unused.</li>
+      <li>Dataflow: right-size workers, use streaming engine, and set max workers.</li>
+      <li>Keep development windows small: a few partitions, not the full history.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Data quality and governance on GCP</h3>
+    <ul>
+      <li><b>dbt tests</b> in the transformation layer for keys, relationships and accepted values.</li>
+      <li><b>Dataplex data quality scans</b> for rules on tables, scheduled, with results in BigQuery.</li>
+      <li><b>Dataplex data profiling</b> to see distributions, nulls and distinct counts.</li>
+      <li><b>Lineage</b> from BigQuery jobs and Dataflow appears automatically in Dataplex.</li>
+      <li><b>Run records</b> of your own: every pipeline run writes what it read, wrote and rejected.</li>
+      <li><b>Sensitive Data Protection</b> scans to find personal data you did not know you had.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Certification path</h3>
+    <ul>
+      <li><b>Cloud Digital Leader:</b> broad, non-technical overview.</li>
+      <li><b>Associate Cloud Engineer:</b> hands-on GCP basics: IAM, compute, networking, gcloud.</li>
+      <li><b>Professional Data Engineer:</b> design, build and operate data systems on GCP. The exam tests choosing services for a scenario, which is exactly this tab.</li>
+      <li><b>Professional Cloud Architect</b> next, if you design whole platforms.</li>
+    </ul>
+    <p class="note">Certifications test breadth and judgement. Pair each with a real project built end to end.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Name the GCP service for each lifecycle stage</li><li>Load files from GCS into BigQuery and query them</li><li>Navigate IAM roles for data access</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a batch ELT pipeline: landing, BigQuery layers, dbt, scheduling</li><li>Set up Pub/Sub to BigQuery, or Datastream CDC</li><li>Apply dataset-level IAM and cost controls</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between Dataflow, Dataproc, SQL and Cloud Run for a workload</li><li>Design a platform with governance (Dataplex), lineage and quality</li><li>Plan cost, regions and data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's GCP data architecture</li><li>Lead migrations from other clouds or on-premises</li><li>Hold the Professional Data Engineer or Architect level of judgement, and teach it</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dataflow streaming: windows, triggers, late data</li><li>BigLake and Iceberg on GCS</li><li>Dataplex data quality and lineage</li><li>Analytics Hub data sharing</li><li>Professional Data Engineer exam guide</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/products/data-analytics" target="_blank" rel="noopener">Google Cloud data analytics products</a><span class="lnote"> Overview of every data service</span></li><li><a href="https://cloud.google.com/dataflow/docs" target="_blank" rel="noopener">Dataflow documentation</a><span class="lnote"> Beam pipelines on GCP</span></li><li><a href="https://cloud.google.com/pubsub/docs" target="_blank" rel="noopener">Pub/Sub documentation</a><span class="lnote"> Messaging, including BigQuery subscriptions</span></li><li><a href="https://cloud.google.com/datastream/docs" target="_blank" rel="noopener">Datastream documentation</a><span class="lnote"> Change data capture</span></li><li><a href="https://cloud.google.com/dataproc/docs" target="_blank" rel="noopener">Dataproc documentation</a><span class="lnote"> Spark and Hadoop</span></li><li><a href="https://cloud.google.com/dataplex/docs" target="_blank" rel="noopener">Dataplex documentation</a><span class="lnote"> Governance, quality and lineage</span></li><li><a href="https://cloud.google.com/learn/certification/data-engineer" target="_blank" rel="noopener">Professional Data Engineer certification</a><span class="lnote"> Exam guide and learning path</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/cloudcompare/">← GCP vs AWS vs Azure</a><a class="pn-next" href="/well-rounded-engineer/bigquery/">BigQuery →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

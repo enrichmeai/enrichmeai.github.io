@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kubernetes · Well Rounded Engineer</title>
+<meta name="description" content="Core objects, the kubectl you will use daily, manifests that hold up in production, and GKE specifics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="kubernetes">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/" aria-current="page">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="kubernetes" data-name="Kubernetes">
+  <div class="panel-head"><h1>Kubernetes</h1><p>Core objects, the kubectl you will use daily, manifests that hold up in production, and GKE specifics.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Core objects</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Kind</th><th>Use it for</th></tr></thead>
+      <tbody>
+      <tr><td>Pod</td><td>One or more containers sharing network and volumes. Rarely created directly.</td></tr>
+      <tr><td>Deployment</td><td>Stateless apps: keeps N replicas, rolling updates, rollback.</td></tr>
+      <tr><td>StatefulSet</td><td>Stable names and per-pod disks: databases, Kafka, ZooKeeper.</td></tr>
+      <tr><td>DaemonSet</td><td>One pod per node: log shippers, node agents.</td></tr>
+      <tr><td>Job / CronJob</td><td>Run to completion, once or on a schedule: batch loads, migrations.</td></tr>
+      <tr><td>Service</td><td>Stable virtual IP and DNS name in front of matching pods.</td></tr>
+      <tr><td>Ingress / Gateway</td><td>HTTP routing from outside into Services (Gateway API is the newer model).</td></tr>
+      <tr><td>ConfigMap / Secret</td><td>Configuration and credentials, as env vars or files.</td></tr>
+      <tr><td>PersistentVolumeClaim</td><td>A request for durable storage.</td></tr>
+      <tr><td>ServiceAccount</td><td>Identity for pods (and, on GKE, the link to a Google service account).</td></tr>
+      <tr><td>HorizontalPodAutoscaler</td><td>Scale replicas on CPU, memory or custom metrics.</td></tr>
+      <tr><td>NetworkPolicy</td><td>Pod-level firewall rules.</td></tr>
+      <tr><td>Namespace</td><td>A scope for names, quotas and RBAC.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>kubectl daily</h3>
+<div class="snip"><pre><code>kubectl config get-contexts
+kubectl config use-context gke_my-proj_asia-south1_main
+kubectl config set-context --current --namespace=corpus
+
+kubectl get pods -o wide
+kubectl get deploy,svc,ing
+kubectl get all -A                         # every namespace
+kubectl describe pod api-7d9f-abcde        # events at the bottom
+kubectl logs deploy/api -f --since=10m
+kubectl logs api-7d9f-abcde -c sidecar --previous   # crashed container
+kubectl exec -it deploy/api -- sh
+kubectl port-forward svc/api 8080:80
+kubectl top pods                           # needs metrics-server
+
+kubectl apply -f k8s/ --dry-run=server     # validate against the cluster
+kubectl diff -f k8s/
+kubectl apply -f k8s/
+kubectl rollout status deploy/api
+kubectl rollout undo deploy/api
+kubectl rollout restart deploy/api         # new pods re-read env from Secrets/ConfigMaps (re-pull only with imagePullPolicy: Always)
+kubectl scale deploy/api --replicas=3
+kubectl get events --sort-by=.lastTimestamp
+kubectl explain deployment.spec.strategy   # built-in field docs</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Deployment + Service</h3>
+<div class="snip"><pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata: { name: api, labels: { app: api } }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: api } }
+  strategy: { rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  template:
+    metadata: { labels: { app: api } }
+    spec:
+      serviceAccountName: api
+      containers:
+        - name: api
+          image: asia-south1-docker.pkg.dev/my-proj/apps/api:3f2a9c1
+          ports: [{ containerPort: 8080 }]
+          envFrom: [{ configMapRef: { name: api-config } }]
+          env:
+            - name: DB_PASSWORD
+              valueFrom: { secretKeyRef: { name: db, key: password } }
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits:   { memory: 512Mi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8080 }
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8080 }
+            initialDelaySeconds: 20
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8080 }
+            failureThreshold: 30
+            periodSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata: { name: api }
+spec:
+  selector: { app: api }
+  ports: [{ port: 80, targetPort: 8080 }]</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Job &amp; CronJob</h3>
+<div class="snip"><pre><code>apiVersion: batch/v1
+kind: CronJob
+metadata: { name: corpus-load }
+spec:
+  schedule: "15 6 * * *"
+  timeZone: "Etc/UTC"
+  concurrencyPolicy: Forbid          # never two runs at once
+  startingDeadlineSeconds: 600
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      backoffLimit: 0                # no automatic retries
+      activeDeadlineSeconds: 3600
+      ttlSecondsAfterFinished: 86400
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: loader
+          containers:
+            - name: loader
+              image: asia-south1-docker.pkg.dev/my-proj/apps/loader:3f2a9c1
+              args: ["--year=2024"]
+              resources: { requests: { cpu: "1", memory: 2Gi }, limits: { memory: 2Gi } }</code></pre></div>
+<div class="snip"><pre><code>kubectl create job --from=cronjob/corpus-load manual-20250131   # run now
+kubectl get jobs; kubectl logs job/manual-20250131</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Services &amp; traffic</h3>
+    <ul>
+      <li><b>ClusterIP</b> (default): reachable inside the cluster only.</li>
+      <li><b>NodePort</b>: a port on every node (30000–32767). Mostly a building block.</li>
+      <li><b>LoadBalancer</b>: provisions a cloud load balancer with an external (or internal, by annotation) IP.</li>
+      <li><b>Headless</b> (<code>clusterIP: None</code>): DNS returns pod IPs directly; used with StatefulSets.</li>
+      <li><b>DNS name:</b> <code>&lt;svc&gt;.&lt;namespace&gt;.svc.cluster.local</code>; within the same namespace just <code>&lt;svc&gt;</code>.</li>
+      <li>A Service with no endpoints means its <code>selector</code> matches no ready pod: check labels and readiness.</li>
+    </ul>
+<div class="snip"><pre><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: { name: api }
+spec:
+  ingressClassName: nginx          # GKE's own controller uses the annotation kubernetes.io/ingress.class: gce instead
+  rules:
+    - host: api.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: { service: { name: api, port: { number: 80 } } }
+
+kubectl get endpointslices -l kubernetes.io/service-name=api</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Requests, limits, probes</h3>
+    <ul>
+      <li><b>Requests</b> decide scheduling: the node must have that much free. <b>Limits</b> cap use.</li>
+      <li>Over the <b>memory</b> limit → the container is killed (<code>OOMKilled</code>, exit 137). Over the <b>CPU</b> limit → throttled, not killed.</li>
+      <li>Set memory request = limit for steady apps. Many teams leave the CPU limit off to avoid throttling.</li>
+      <li>JVM: size heap from the container with <code>-XX:MaxRAMPercentage=75</code>.</li>
+      <li><b>Readiness</b> failing removes the pod from Service traffic. <b>Liveness</b> failing restarts it. <b>Startup</b> holds the other two off until the app has booted.</li>
+      <li>Never make liveness depend on a database or another service: an outage then restarts every pod.</li>
+      <li>QoS: Guaranteed (requests = limits for all), Burstable, BestEffort (none set; evicted first).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Debug by status</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Status</th><th>Usually means</th></tr></thead>
+      <tbody>
+      <tr><td>Pending</td><td>No node fits the requests, a PVC is unbound, or a node selector/taint excludes all nodes. <code>describe pod</code> → Events.</td></tr>
+      <tr><td>ImagePullBackOff</td><td>Wrong image name or tag, or the node's identity cannot read the registry.</td></tr>
+      <tr><td>CrashLoopBackOff</td><td>The app starts and exits. <code>logs --previous</code> shows why: bad config, missing secret, failed probe.</td></tr>
+      <tr><td>OOMKilled</td><td>Memory limit too low, or a leak. Check <code>describe</code> → Last State.</td></tr>
+      <tr><td>CreateContainerConfigError</td><td>A referenced ConfigMap or Secret key does not exist.</td></tr>
+      <tr><td>Running, not Ready</td><td>Readiness probe failing: wrong path or port, or a dependency is down.</td></tr>
+      <tr><td>Evicted</td><td>Node ran short of memory or disk.</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>kubectl debug -it api-7d9f-abcde --image=busybox:1.36 --target=api   # ephemeral debug container
+kubectl run tmp --rm -it --image=nicolaka/netshoot -- bash          # network toolbox pod</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Config, secrets, scaling, safety</h3>
+<div class="snip"><pre><code>kubectl create configmap api-config --from-literal=DATASET=fdp --from-file=app.yml
+kubectl create secret generic db --from-literal=password='...'   # base64, NOT encrypted
+kubectl get secret db -o jsonpath='{.data.password}' | base64 -d
+
+# HPA
+kubectl autoscale deploy api --cpu-percent=70 --min=2 --max=10
+
+# PodDisruptionBudget: keep capacity during node upgrades
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: api }
+spec:
+  minAvailable: 1
+  selector: { matchLabels: { app: api } }
+
+# NetworkPolicy: default deny ingress in the namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: { name: default-deny-ingress }
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]</code></pre></div>
+    <p class="note">For real secrets use Secret Manager via the CSI driver or External Secrets, not values committed in YAML.</p>
+  </article>
+
+  <article class="card"><h3>RBAC &amp; GKE Workload Identity</h3>
+<div class="snip"><pre><code># Pod's Kubernetes SA → Google service account (no JSON keys)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: loader
+  namespace: corpus
+  annotations:
+    iam.gke.io/gcp-service-account: dp-loader@my-proj.iam.gserviceaccount.com
+
+gcloud iam service-accounts add-iam-policy-binding \
+  dp-loader@my-proj.iam.gserviceaccount.com \
+  --role=roles/iam.workloadIdentityUser \
+  --member="serviceAccount:my-proj.svc.id.goog[corpus/loader]"
+
+# RBAC: read-only on pods in one namespace
+kubectl create role pod-reader --verb=get,list,watch --resource=pods -n corpus
+kubectl create rolebinding jo-reads --role=pod-reader --user=jo@example.com -n corpus
+kubectl auth can-i delete pods -n corpus --as=jo@example.com</code></pre></div>
+    <p class="note">GKE can also grant IAM roles straight to the Kubernetes principal (<code>principal://iam.googleapis.com/projects/&lt;number&gt;/locations/global/workloadIdentityPools/&lt;proj&gt;.svc.id.goog/subject/ns/&lt;ns&gt;/sa/&lt;ksa&gt;</code>) without a Google service account.</p>
+  </article>
+
+  <article class="card"><h3>GKE, Helm, Kustomize</h3>
+<div class="snip"><pre><code>gcloud container clusters create-auto main --region=asia-south1   # Autopilot
+gcloud container clusters get-credentials main --region=asia-south1
+gcloud container clusters list
+
+# Helm: packaged apps with values
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install redis bitnami/redis -n cache --create-namespace -f values.yaml
+helm upgrade --install api ./chart --set image.tag=3f2a9c1
+helm template ./chart | kubectl diff -f -
+helm rollback api 1
+
+# Kustomize: one base, overlays per env (built into kubectl)
+k8s/base/kustomization.yaml       resources: [deploy.yaml, svc.yaml]
+k8s/overlays/prod/kustomization.yaml
+  resources: [../../base]
+  images: [{ name: api, newTag: 3f2a9c1 }]
+  patches: [{ path: replicas.yaml }]
+kubectl apply -k k8s/overlays/prod</code></pre></div>
+    <p class="note">Autopilot: Google manages nodes and you pay per pod request. Standard: you manage node pools. For one-shot batch work, Cloud Run jobs are often simpler than a cluster.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Use kubectl to get, describe, log and exec</li><li>Read a Deployment and Service manifest</li><li>Explain why a pod is Pending or crashing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write manifests with probes, resources and config</li><li>Use Helm or Kustomize per environment</li><li>Set up Workload Identity and RBAC</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design namespaces, network policies and autoscaling</li><li>Run production clusters: upgrades, PDBs, capacity</li><li>Debug networking, DNS and scheduling problems</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-cluster platforms and tenancy models</li><li>Build operators and platform abstractions</li><li>Set Kubernetes strategy and security policy</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Gateway API</li><li>Operators and custom resources</li><li>Pod security standards</li><li>Service meshes</li><li>GKE Autopilot vs Standard</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener">Kubernetes documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://kubernetes.io/docs/reference/kubectl/quick-reference/" target="_blank" rel="noopener">kubectl quick reference</a><span class="lnote"> Common commands</span></li><li><a href="https://kubernetes.io/docs/tasks/debug/" target="_blank" rel="noopener">Troubleshooting</a><span class="lnote"> Debug pods, services and clusters</span></li><li><a href="https://cloud.google.com/kubernetes-engine/docs" target="_blank" rel="noopener">GKE documentation</a><span class="lnote"> Google Kubernetes Engine</span></li><li><a href="https://helm.sh/docs/" target="_blank" rel="noopener">Helm</a><span class="lnote"> Package manager for Kubernetes</span></li><li><a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener">Gateway API</a><span class="lnote"> The successor to Ingress</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/terraform/">← Terraform</a><a class="pn-next" href="/well-rounded-engineer/helm/">Helm Charts →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

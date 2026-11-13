@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ops Tooling · Well Rounded Engineer</title>
+<meta name="description" content="The tools you will meet in operations teams, what each does, how they fit together, and working configuration. Concepts are on Observability and SRE .">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="opstools">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/" aria-current="page">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="opstools" data-name="Ops Tooling">
+  <div class="panel-head"><h1>Ops tooling: Prometheus, Grafana, Fluentd, Dynatrace, ServiceNow</h1><p>The tools you will meet in operations teams, what each does, how they fit together, and working configuration. Concepts are on <a href="/well-rounded-engineer/observability/">Observability</a> and <a href="/well-rounded-engineer/sre/">SRE</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>How they fit together</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Tool</th><th>Category</th><th>Does</th><th>GCP-native alternative</th></tr></thead>
+      <tbody>
+      <tr><td>Prometheus</td><td>Metrics</td><td>Scrapes and stores time-series metrics; PromQL; alert rules</td><td>Managed Service for Prometheus, Cloud Monitoring</td></tr>
+      <tr><td>Alertmanager</td><td>Alert routing</td><td>Groups, silences and routes Prometheus alerts to people and tools</td><td>Cloud Monitoring notification channels</td></tr>
+      <tr><td>Grafana</td><td>Visualisation</td><td>Dashboards and alerting over many data sources; Loki (logs), Tempo (traces), Mimir (metrics) in the same family</td><td>Cloud Monitoring dashboards</td></tr>
+      <tr><td>Fluentd / Fluent Bit</td><td>Log shipping</td><td>Collect, parse, enrich and forward logs to any backend</td><td>The built-in logging agents on GKE and Cloud Run</td></tr>
+      <tr><td>Dynatrace</td><td>Full-stack APM / observability platform</td><td>Auto-instrumentation, topology, traces, logs, metrics, AI root-cause analysis</td><td>Cloud Trace, Profiler, Logging, Monitoring together</td></tr>
+      <tr><td>ServiceNow</td><td>IT service management</td><td>Incidents, problems, changes, requests, CMDB, approvals and workflow</td><td>None: ITSM sits above monitoring</td></tr>
+      </tbody></table></div>
+    <p class="note">Typical flow: apps emit telemetry → Fluent Bit ships logs, Prometheus scrapes metrics (or Dynatrace's agent collects all) → Grafana or Dynatrace shows it → alerts route through Alertmanager → ServiceNow opens an incident, pages on-call, and tracks the change that fixes it.</p>
+  </article>
+
+  <article class="card"><h3>Prometheus: model</h3>
+    <ul>
+      <li><b>Pull model:</b> Prometheus scrapes <code>/metrics</code> endpoints on an interval (Spring: <code>/actuator/prometheus</code>).</li>
+      <li><b>Exporters</b> expose metrics for systems that do not: node_exporter (hosts), postgres_exporter, blackbox_exporter (probes).</li>
+      <li><b>Time series</b> = metric name + labels. Keep label values bounded.</li>
+      <li><b>Service discovery</b> finds targets in Kubernetes, GCE and others.</li>
+      <li><b>Short-term storage</b> locally; long-term in Thanos, Mimir or Google's managed service.</li>
+      <li><b>Recording rules</b> precompute expensive queries; <b>alerting rules</b> fire when an expression holds for a duration.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Prometheus: configuration</h3>
+<div class="snip"><pre><code># prometheus.yml
+global:
+  scrape_interval: 30s
+scrape_configs:
+  - job_name: legal-api
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ["legal-api:8080"]
+rule_files: ["rules/*.yml"]
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]</code></pre></div>
+<div class="snip"><pre><code># rules/legal-api.yml
+groups:
+  - name: legal-api
+    rules:
+      - record: job:http_5xx_ratio:rate5m
+        expr: |
+          sum by (job) (rate(http_server_requests_seconds_count{status=~"5.."}[5m]))
+          / sum by (job) (rate(http_server_requests_seconds_count[5m]))
+      - alert: LegalApiHighErrorRate
+        expr: job:http_5xx_ratio:rate5m{job="legal-api"} &gt; 0.02
+        for: 10m
+        labels: { severity: page }
+        annotations:
+          summary: "legal-api 5xx above 2% for 10 minutes"
+          runbook_url: "https://runbooks.example.com/legal-api/high-errors"
+      - alert: CorpusLoadMissing
+        expr: time() - corpus_last_success_timestamp_seconds &gt; 26 * 3600
+        labels: { severity: page }
+        annotations: { summary: "No successful corpus load for 26 hours" }</code></pre></div>
+  </article>
+
+  <article class="card"><h3>PromQL you will use</h3>
+<div class="snip"><pre><code>rate(http_server_requests_seconds_count[5m])                 # per-second rate of a counter
+sum by (status) (rate(http_server_requests_seconds_count[5m])) # grouped
+histogram_quantile(0.95,
+  sum by (le) (rate(http_server_requests_seconds_bucket[5m])))  # p95 latency
+increase(odp_objects_total{outcome="failed"}[1h])             # count over a window
+up == 0                                                       # targets not scraped
+absent(corpus_last_success_timestamp_seconds)                 # metric missing entirely
+topk(5, sum by (pod) (container_memory_working_set_bytes))    # top memory users</code></pre></div>
+    <p class="note">Always <code>rate()</code> a counter before summing; never sum raw counters. Alert on <code>absent()</code> or <code>up == 0</code> so a dead exporter is not mistaken for health.</p>
+  </article>
+
+  <article class="card"><h3>Alertmanager routing</h3>
+<div class="snip"><pre><code>route:
+  receiver: team-ticket
+  group_by: [alertname, job]
+  group_wait: 30s
+  repeat_interval: 4h
+  routes:
+    - matchers: [ 'severity="page"' ]
+      receiver: oncall-page
+receivers:
+  - name: oncall-page
+    pagerduty_configs:
+      - routing_key_file: /etc/alertmanager/secrets/pagerduty_key
+  - name: team-ticket
+    webhook_configs:
+      - url: https://integration.example.com/servicenow/alerts   # creates a ServiceNow incident</code></pre></div>
+    <p class="note">Group related alerts, silence during planned work, and inhibit child alerts when the parent (a whole cluster down) is firing.</p>
+  </article>
+
+  <article class="card"><h3>Grafana</h3>
+    <ul>
+      <li><b>Data sources:</b> Prometheus, Loki, Tempo, Cloud Monitoring, BigQuery, Postgres and many more, in one dashboard.</li>
+      <li><b>Dashboards as code:</b> provision from files or the Grafana Terraform provider; keep JSON in Git and review changes.</li>
+      <li><b>Variables</b> (<code>$service</code>, <code>$env</code>) make one dashboard serve every service: a dashboard template is a blueprint.</li>
+      <li><b>Grafana Alerting</b> can evaluate rules across data sources; pick one alerting system per signal to avoid duplicates.</li>
+      <li><b>Explore</b> view for ad-hoc queries, and jumping from a metric spike to logs and traces of the same time window.</li>
+    </ul>
+<div class="snip"><pre><code># provisioning/datasources/prometheus.yaml
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Fluentd and Fluent Bit</h3>
+    <ul>
+      <li><b>Fluent Bit:</b> lightweight (C), the usual choice as a node agent or sidecar in Kubernetes.</li>
+      <li><b>Fluentd:</b> heavier (Ruby), huge plugin ecosystem, often used as a central aggregator.</li>
+      <li><b>Pipeline:</b> input → parser → filter (enrich, drop, mask) → buffer → output.</li>
+      <li><b>On GKE and Cloud Run</b> logs are collected for you; add Fluent Bit when you need other destinations or self-managed clusters.</li>
+      <li><b>Mask secrets and personal data</b> in filters before logs leave the node.</li>
+    </ul>
+<div class="snip"><pre><code># Fluent Bit (Kubernetes node agent)
+[INPUT]
+    Name    tail
+    Path    /var/log/containers/*.log
+    multiline.parser  cri
+    Tag     kube.*
+[FILTER]
+    Name    kubernetes
+    Match   kube.*
+[FILTER]
+    Name    grep
+    Match   kube.*
+    Exclude log healthcheck
+[OUTPUT]
+    Name    stackdriver
+    Match   *</code></pre></div>
+<div class="snip"><pre><code># Fluentd
+&lt;source&gt;
+  @type tail
+  path /var/log/app/*.log
+  pos_file /var/log/fluentd/app.pos
+  tag app
+  &lt;parse&gt;
+    @type json
+  &lt;/parse&gt;
+&lt;/source&gt;
+&lt;filter app&gt;
+  @type record_transformer
+  &lt;record&gt;
+    env prod
+  &lt;/record&gt;
+&lt;/filter&gt;
+&lt;match app&gt;
+  @type stdout
+&lt;/match&gt;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Dynatrace</h3>
+    <ul>
+      <li><b>OneAgent:</b> installed on hosts or via the Kubernetes Operator; instruments JVM, Python, Node, databases and more without code changes.</li>
+      <li><b>Smartscape:</b> a live topology of hosts, processes, services and their dependencies.</li>
+      <li><b>PurePath:</b> end-to-end distributed traces, down to code-level timing.</li>
+      <li><b>Davis AI:</b> detects anomalies and groups related events into one "problem" with a probable root cause.</li>
+      <li><b>Grail and DQL:</b> stores logs, metrics, traces and events together and queries them with Dynatrace Query Language.</li>
+      <li><b>SLOs, synthetic monitoring, real-user monitoring</b> and OpenTelemetry ingestion.</li>
+    </ul>
+<div class="snip"><pre><code>// DQL example: error logs per namespace in the last hour
+fetch logs, from:now()-1h
+| filter loglevel == "ERROR"
+| summarize errors = count(), by:{k8s.namespace.name}
+| sort errors desc</code></pre></div>
+    <p class="note">Commercial platforms trade cost for breadth and automation. Instrument with OpenTelemetry where you can, so changing vendor later does not mean re-instrumenting.</p>
+  </article>
+
+  <article class="card"><h3>ServiceNow: the ITSM side</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Record</th><th>Is</th></tr></thead>
+      <tbody>
+      <tr><td>Incident</td><td>Something is broken now; restore service</td></tr>
+      <tr><td>Problem</td><td>The underlying cause of one or more incidents; fix it for good</td></tr>
+      <tr><td>Change request</td><td>A planned change to production: standard (pre-approved), normal (assessed and approved), emergency</td></tr>
+      <tr><td>Request</td><td>A user asking for something (access, a new environment)</td></tr>
+      <tr><td>CMDB CI</td><td>A configuration item: a service, app, database or host and its relationships</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>Event management</b> turns monitoring alerts into correlated alerts and incidents, linked to the affected CI.</li>
+      <li><b>Change automation:</b> CI/CD pipelines (Harness, GitHub Actions, Jenkins) open and update change requests automatically, so low-risk deploys are approved by policy rather than a weekly board.</li>
+      <li><b>Keep the CMDB generated</b> from real sources (cloud APIs, Terraform state, service catalogues); hand-maintained CMDBs drift.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>ServiceNow Table API</h3>
+<div class="snip"><pre><code># open P1 incidents
+curl -s -u "$SN_USER:$SN_PASS" -H "Accept: application/json" \
+  "https://$INSTANCE.service-now.com/api/now/table/incident?sysparm_query=active=true^priority=1&amp;sysparm_limit=10&amp;sysparm_fields=number,short_description,state"
+
+# create an incident from an automated check
+curl -s -u "$SN_USER:$SN_PASS" -X POST \
+  -H "Content-Type: application/json" -H "Accept: application/json" \
+  "https://$INSTANCE.service-now.com/api/now/table/incident" \
+  -d '{"short_description":"Corpus load missing for 26h",
+       "urgency":"2","impact":"2",
+       "assignment_group":"&lt;sys_id of the Data Platform group&gt;",
+       "description":"Ledger shows no SUCCEEDED LAND since 2026-11-11 06:15 UTC. Runbook: …"}'</code></pre></div>
+    <p class="note">Use an integration user with only the roles it needs, OAuth rather than basic auth where available, and dedupe on a correlation ID so a flapping alert does not open fifty incidents.</p>
+  </article>
+
+  <article class="card"><h3>Choosing and combining</h3>
+    <ul>
+      <li><b>All on GCP, small team:</b> Cloud Logging, Monitoring and Trace with OpenTelemetry; little to run.</li>
+      <li><b>Kubernetes-heavy, open source:</b> Prometheus + Grafana + Loki + Tempo + Fluent Bit; you operate them (or use managed versions).</li>
+      <li><b>Large enterprise, many stacks:</b> Dynatrace (or similar) for automatic coverage and root cause, ServiceNow for process.</li>
+      <li><b>Whatever you choose:</b> one alerting path per signal, runbooks on every alert, telemetry defined as code, and OpenTelemetry at the source.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a Grafana or Dynatrace dashboard and find a service's errors</li><li>Look up and update a ServiceNow incident</li><li>Know what Prometheus, Fluent Bit and Alertmanager each do</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write PromQL queries, recording and alerting rules</li><li>Configure log shipping and Grafana dashboards as code</li><li>Connect alerts to ServiceNow incidents and CI/CD to change requests</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design the monitoring stack and alert routing for a platform</li><li>Integrate Dynatrace or open-source tooling with OpenTelemetry</li><li>Automate change management while keeping control</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own observability and ITSM tooling strategy and cost</li><li>Lead tool consolidation or migration across the organisation</li><li>Set standards for telemetry, alerting and incident process</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Prometheus long-term storage (Thanos, Mimir)</li><li>Grafana LGTM stack (Loki, Grafana, Tempo, Mimir)</li><li>Fluent Bit processors and multiline parsing</li><li>Dynatrace DQL and Grail</li><li>ServiceNow DevOps change automation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://prometheus.io/docs/" target="_blank" rel="noopener">Prometheus documentation</a><span class="lnote"> Concepts, PromQL, alerting</span></li><li><a href="https://prometheus.io/docs/alerting/latest/alertmanager/" target="_blank" rel="noopener">Alertmanager</a><span class="lnote"> Routing, grouping, silences</span></li><li><a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">Grafana documentation</a><span class="lnote"> Dashboards, data sources, alerting, provisioning</span></li><li><a href="https://docs.fluentbit.io/" target="_blank" rel="noopener">Fluent Bit documentation</a><span class="lnote"> Inputs, filters, outputs</span></li><li><a href="https://docs.fluentd.org/" target="_blank" rel="noopener">Fluentd documentation</a><span class="lnote"> Configuration and plugins</span></li><li><a href="https://docs.dynatrace.com/docs" target="_blank" rel="noopener">Dynatrace documentation</a><span class="lnote"> OneAgent, Davis, DQL</span></li><li><a href="https://developer.servicenow.com/" target="_blank" rel="noopener">ServiceNow developer site</a><span class="lnote"> APIs, including the Table API</span></li><li><a href="https://cloud.google.com/stackdriver/docs/managed-prometheus" target="_blank" rel="noopener">Google Cloud Managed Service for Prometheus</a><span class="lnote"> Prometheus without running it</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/observability/">← Observability</a><a class="pn-next" href="/well-rounded-engineer/sre/">SRE →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

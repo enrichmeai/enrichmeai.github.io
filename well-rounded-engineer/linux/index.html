@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux · Well Rounded Engineer</title>
+<meta name="description" content="The commands you need on a server, in a container, or in a CI runner. Networking commands live on the Networking tab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="linux">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/" aria-current="page">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="linux" data-name="Linux">
+  <div class="panel-head"><h1>Linux</h1><p>The commands you need on a server, in a container, or in a CI runner. Networking commands live on the <a href="/well-rounded-engineer/networking/">Networking</a> tab.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Where things live</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Path</th><th>Holds</th></tr></thead>
+      <tbody>
+      <tr><td>/etc</td><td>system configuration</td></tr>
+      <tr><td>/var/log</td><td>logs (when not in the journal)</td></tr>
+      <tr><td>/var/lib</td><td>service data (docker, postgres)</td></tr>
+      <tr><td>/tmp</td><td>temporary files, often cleared on reboot (depends on the distribution)</td></tr>
+      <tr><td>/home, /root</td><td>user homes</td></tr>
+      <tr><td>/usr/bin, /usr/local/bin</td><td>programs; local installs go in /usr/local</td></tr>
+      <tr><td>/opt</td><td>self-contained third-party software</td></tr>
+      <tr><td>/proc, /sys</td><td>live kernel and process information</td></tr>
+      <tr><td>/dev</td><td>devices</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Files &amp; navigation</h3>
+<div class="snip"><pre><code>pwd; ls -lah; cd -                       # back to previous dir
+find . -name '*.sql' -mtime -1           # changed in the last day
+find /var/log -size +100M
+find . -name '*.tmp' -delete
+tree -L 2                                # if installed
+cp -a src/ dst/                          # keep permissions and times
+mv old new; mkdir -p a/b/c
+ln -s /opt/app/current app               # symlink
+du -sh * | sort -h                       # what is big here
+less +F app.log                          # follow; Ctrl-C then q
+head -n 20 f; tail -n 50 -f f
+wc -l f; file f; stat f
+tar czf out.tgz dir/; tar xzf out.tgz; tar tzf out.tgz | head
+diff -u a b</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Text processing</h3>
+<div class="snip"><pre><code>grep -rn "ERROR" logs/                   # recursive, line numbers
+grep -E "timeout|refused" app.log | wc -l
+grep -v DEBUG app.log                    # invert
+grep -o 'run_id=[a-z0-9-]*' app.log | sort | uniq -c | sort -rn | head
+
+cut -d, -f1,3 data.csv
+awk -F, '$3 &gt; 100 {print $1, $3}' data.csv
+awk '{s += $2} END {print s}' sizes.txt
+sed -n '100,120p' big.log                # print a range
+sed -i 's/old/new/g' file                # in place (GNU)
+sort -t, -k2,2n data.csv | uniq
+tr '[:lower:]' '[:upper:]' &lt; f
+xargs -I{} -P4 gsutil cp {} dst/ &lt; uris.txt  # 4 in parallel
+
+# JSON
+jq '.items[] | {name, size}' listing.json
+jq -r '.[] | select(.state=="FAILED") | .id' runs.json
+curl -s url | jq -r '.data.rows[0]'</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Processes &amp; signals</h3>
+<div class="snip"><pre><code>ps aux | grep java
+ps -eo pid,ppid,%cpu,%mem,etime,cmd --sort=-%mem | head
+pgrep -af gunicorn
+top / htop                               # P cpu, M memory, k kill
+kill PID                                 # SIGTERM: ask nicely
+kill -9 PID                              # SIGKILL: cannot be caught, no cleanup
+pkill -f 'python -m loader'
+lsof -i :8080                            # who holds the port
+lsof -p PID | wc -l                      # open files
+nohup ./job.sh &gt; job.log 2&gt;&amp;1 &amp;          # survive logout
+jobs; fg %1; bg; disown
+timeout 300 ./slow.sh                    # kill after 5 min
+nice -n 10 ./batch.sh                    # lower priority</code></pre></div>
+    <p class="note">Exit codes: 0 success; 1 general error; 126 not executable; 127 command not found; 128+N killed by signal N (137 = 128+9 SIGKILL, 143 = 128+15 SIGTERM).</p>
+  </article>
+
+  <article class="card"><h3>Disk, memory, system</h3>
+<div class="snip"><pre><code>df -h                     # free space per filesystem
+df -i                     # inodes: "no space" with free GB means inodes
+du -xh / --max-depth=1 2&gt;/dev/null | sort -h
+free -h                   # "available" is what matters, not "free"
+uptime                    # load average: compare with CPU count
+nproc; lscpu; lsblk
+vmstat 1 5                # run queue, swap, IO wait
+iostat -x 1               # disk busy (sysstat)
+dmesg -T | tail           # kernel: OOM killer, disk errors
+uname -a; cat /etc/os-release
+ulimit -n                 # max open files for this shell</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Permissions &amp; users</h3>
+<div class="snip"><pre><code>ls -l f        # -rwxr-x--- 1 app app ...  owner / group / others
+chmod 640 f    # rw- r-- ---   (r=4 w=2 x=1)
+chmod u+x run.sh
+chmod -R g+rX dir/            # X: execute only on dirs
+chown app:app f; chown -R 1001:1001 /data
+id; whoami; groups
+sudo -u app ./run.sh
+sudo useradd -r -s /usr/sbin/nologin app     # service account, no login
+umask                          # default permission mask</code></pre></div>
+    <p class="note">Private keys must not be readable by group or others (<code>600</code> or <code>400</code>), or SSH refuses them. A directory needs <code>x</code> to be entered and <code>r</code> to be listed.</p>
+  </article>
+
+  <article class="card"><h3>systemd &amp; logs</h3>
+<div class="snip"><pre><code>systemctl status nginx
+sudo systemctl restart nginx
+sudo systemctl enable --now myapp     # start now and on boot
+systemctl list-units --failed
+journalctl -u myapp -f                # follow one service
+journalctl -u myapp --since "1 hour ago" -p err
+journalctl -b -1                      # previous boot
+journalctl --disk-usage
+
+# /etc/systemd/system/myapp.service
+[Unit]
+Description=Corpus API
+After=network-online.target
+[Service]
+User=app
+WorkingDirectory=/opt/app
+EnvironmentFile=/etc/myapp.env
+ExecStart=/usr/bin/java -jar /opt/app/app.jar
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+# then: sudo systemctl daemon-reload</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Safe bash scripts</h3>
+<div class="snip"><pre><code>#!/usr/bin/env bash
+set -euo pipefail          # stop on error, unset var, or failed pipe stage
+IFS=$'\n\t'
+
+usage() { echo "usage: $0 &lt;env&gt; &lt;date&gt;" &gt;&amp;2; exit 2; }
+[[ $# -eq 2 ]] || usage
+env="$1"; date="$2"
+[[ "$env" =~ ^(dev|prod)$ ]] || { echo "bad env: $env" &gt;&amp;2; exit 2; }
+
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT  # always clean up
+
+log() { printf '%s %s\n' "$(date -u +%FT%TZ)" "$*" &gt;&amp;2; }
+
+for f in data/*.csv; do
+  [[ -e "$f" ]] || continue          # glob matched nothing
+  log "loading $f"
+done
+
+# capture an exit code without dying under set -e
+if ! out="$(some_command 2&gt;&amp;1)"; then
+  log "failed: $out"; exit 1
+fi
+# shellcheck script.sh   ← run it</code></pre></div>
+    <p class="note">Quote every variable (<code>"$f"</code>). Unquoted values split on spaces and expand globs.</p>
+  </article>
+
+  <article class="card"><h3>SSH &amp; remote work</h3>
+<div class="snip"><pre><code>ssh-keygen -t ed25519 -C "jo@laptop"
+ssh -i ~/.ssh/id_ed25519 user@host
+ssh -L 5432:db.internal:5432 bastion      # local port forward
+ssh -J bastion user@private-host          # jump host
+scp f user@host:/tmp/; rsync -avz --progress dir/ host:/srv/dir/
+
+# ~/.ssh/config
+Host bastion
+  HostName 34.1.2.3
+  User jo
+  IdentityFile ~/.ssh/id_ed25519
+Host *.internal
+  ProxyJump bastion
+
+tmux new -s work    # detach: Ctrl-b d   reattach: tmux attach -t work</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Pipes, redirects, environment</h3>
+<div class="snip"><pre><code>cmd &gt; out.txt          # stdout to file (overwrite)
+cmd &gt;&gt; out.txt         # append
+cmd 2&gt; err.txt         # stderr
+cmd &gt; all.txt 2&gt;&amp;1     # both (order matters)
+cmd | tee out.txt      # see it and save it
+cmd &lt;&lt;'EOF'            # heredoc; quotes stop $ expansion
+text
+EOF
+a &amp;&amp; b                 # b only if a succeeded
+a || b                 # b only if a failed
+
+export DATASET=fdp; env | grep DATA; unset DATASET
+echo "$PATH" | tr ':' '\n'
+which java; type ll; command -v gcloud
+history | grep deploy; !!; Ctrl-r (search)</code></pre></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Navigate, read and search files and logs</li><li>Run, stop and inspect processes</li><li>Understand permissions well enough to fix 'permission denied'</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write safe bash scripts with set -euo pipefail, traps and quoting</li><li>Diagnose disk, memory and CPU problems with df, free, top, dmesg</li><li>Manage services with systemd and read journalctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Tune a host or container for a workload (file limits, memory, I/O)</li><li>Debug with strace, lsof and tcpdump</li><li>Decide when a script should become a real program</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Understand kernel mechanisms behind containers (namespaces, cgroups)</li><li>Set the team's base images and hardening standards</li><li>Lead performance investigations end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>cgroups and namespaces: what a container really is</li><li>strace, perf and eBPF tools for tracing</li><li>File descriptors, signals and process lifecycle</li><li>Shell portability: bash vs POSIX sh</li><li>Log rotation and journald retention</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://linuxcommand.org/tlcl.php" target="_blank" rel="noopener">The Linux Command Line (free book)</a><span class="lnote"> A full beginner-to-practitioner course</span></li><li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener">Linux man pages</a><span class="lnote"> Authoritative reference for every command and syscall</span></li><li><a href="https://www.gnu.org/software/bash/manual/" target="_blank" rel="noopener">GNU Bash manual</a><span class="lnote"> Expansion, quoting and builtins in detail</span></li><li><a href="https://www.shellcheck.net/" target="_blank" rel="noopener">ShellCheck</a><span class="lnote"> Lints shell scripts and explains each warning</span></li><li><a href="https://systemd.io/" target="_blank" rel="noopener">systemd documentation</a><span class="lnote"> Units, timers, journald</span></li><li><a href="https://wizardzines.com/" target="_blank" rel="noopener">Wizard Zines (Julia Evans)</a><span class="lnote"> Short illustrated guides to Linux, networking and debugging</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/body/">← Body, Mind &amp; Nature</a><a class="pn-next" href="/well-rounded-engineer/networking/">Networking →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quarkus · Well Rounded Engineer</title>
+<meta name="description" content="Quarkus 3.x: build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="quarkus">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/" aria-current="page">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="quarkus" data-name="Quarkus">
+  <div class="panel-head"><h1>Quarkus</h1><p>Quarkus 3.x: build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Spring Boot → Quarkus</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Spring Boot</th><th>Quarkus</th></tr></thead>
+      <tbody>
+      <tr><td>@RestController, @GetMapping</td><td><code>@Path</code>, <code>@GET</code> (Quarkus REST, Jakarta REST annotations)</td></tr>
+      <tr><td>@Service, @Component</td><td><code>@ApplicationScoped</code> (or <code>@Singleton</code>)</td></tr>
+      <tr><td>@Autowired</td><td><code>@Inject</code>, or constructor injection</td></tr>
+      <tr><td>@Value</td><td><code>@ConfigProperty(name = "…")</code></td></tr>
+      <tr><td>@ConfigurationProperties</td><td><code>@ConfigMapping(prefix = "…")</code> on an interface</td></tr>
+      <tr><td>application-prod.yml</td><td><code>%prod.</code> prefix in <code>application.properties</code></td></tr>
+      <tr><td>JpaRepository</td><td><code>PanacheRepository&lt;T&gt;</code> or <code>PanacheEntity</code></td></tr>
+      <tr><td>RestClient / @HttpExchange</td><td><code>@RegisterRestClient</code> interface</td></tr>
+      <tr><td>@RestControllerAdvice</td><td><code>@ServerExceptionMapper</code></td></tr>
+      <tr><td>Actuator</td><td>SmallRye Health (<code>/q/health</code>), Micrometer (<code>/q/metrics</code>)</td></tr>
+      <tr><td>@SpringBootTest, @MockitoBean</td><td><code>@QuarkusTest</code>, <code>@InjectMock</code></td></tr>
+      <tr><td>Testcontainers @ServiceConnection</td><td>Dev Services (starts the container for you)</td></tr>
+      <tr><td>Reactor Mono / Flux</td><td>Mutiny <code>Uni</code> / <code>Multi</code></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>CLI &amp; dev mode</h3>
+<div class="snip"><pre><code>quarkus create app org.acme:corpus-api \
+  --extension='rest-jackson,hibernate-orm-panache,jdbc-postgresql,hibernate-validator'
+quarkus ext list --installable
+quarkus ext add smallrye-health micrometer-registry-prometheus
+
+quarkus dev                  # live reload; press r to run tests, d for Dev UI
+./mvnw quarkus:dev           # same with Maven
+./gradlew quarkusDev         # same with Gradle
+
+./mvnw package               # target/quarkus-app/quarkus-run.jar
+java -jar target/quarkus-app/quarkus-run.jar
+./mvnw package -Dnative      # native binary (GraalVM / Mandrel)
+./mvnw package -Dnative -Dquarkus.native.container-build=true   # no local GraalVM</code></pre></div>
+    <p class="note">Dev UI: <code>http://localhost:8080/q/dev-ui</code>. Ship <code>target/quarkus-app/</code> as a directory; the <code>-run.jar</code> alone is not runnable.</p>
+  </article>
+
+  <article class="card"><h3>REST endpoint</h3>
+<div class="snip"><pre><code>@Path("/api/judgments")
+@Produces(MediaType.APPLICATION_JSON)
+public class JudgmentResource {
+  private final JudgmentService svc;
+  JudgmentResource(JudgmentService svc) { this.svc = svc; }   // constructor injection
+
+  @GET @Path("/{id}")
+  public JudgmentDto get(@RestPath UUID id) { return svc.get(id); }
+
+  @GET
+  public List&lt;JudgmentDto&gt; list(@RestQuery @DefaultValue("0") int page) { ... }
+
+  @POST @Path("/search")
+  public List&lt;JudgmentDto&gt; search(@Valid SearchRequest req) { return svc.search(req); }
+
+  @GET @Path("/{id}/raw")
+  public RestResponse&lt;String&gt; raw(@RestPath UUID id) {
+    return svc.raw(id).map(RestResponse::ok)
+              .orElse(RestResponse.notFound());
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Configuration</h3>
+<div class="snip"><pre><code># src/main/resources/application.properties
+quarkus.http.port=8080
+quarkus.datasource.db-kind=postgresql
+%prod.quarkus.datasource.jdbc.url=jdbc:postgresql://${DB_HOST}:5432/corpus
+%prod.quarkus.datasource.username=${DB_USER}
+%prod.quarkus.datasource.password=${DB_PASSWORD}
+quarkus.hibernate-orm.database.generation=none
+# JSON console logs: add the quarkus-logging-json extension
+corpus.dataset=fdp
+corpus.courts=2_5,14_25</code></pre></div>
+<div class="snip"><pre><code>@ConfigMapping(prefix = "corpus")
+public interface CorpusConfig {
+  String dataset();
+  @WithDefault("20") int maxResults();
+  List&lt;String&gt; courts();
+}
+
+@ConfigProperty(name = "corpus.dataset") String dataset;   // single value</code></pre></div>
+    <p class="note">Profiles: <code>dev</code>, <code>test</code>, <code>prod</code> built in; pick another with <code>-Dquarkus.profile=staging</code>. Env vars override: <code>CORPUS_DATASET</code>.</p>
+  </article>
+
+  <article class="card"><h3>Data with Panache</h3>
+<div class="snip"><pre><code>// Active record
+@Entity
+public class Judgment extends PanacheEntity {     // gives Long id
+  public String cnr;
+  public LocalDate decisionDate;
+
+  public static Optional&lt;Judgment&gt; byCnr(String cnr) {
+    return find("cnr", cnr).firstResultOptional();
+  }
+}
+
+// Repository style
+@ApplicationScoped
+public class JudgmentRepo implements PanacheRepository&lt;Judgment&gt; {
+  public List&lt;Judgment&gt; recent(String court) {
+    return list("courtCode = ?1 and decisionDate &gt; ?2 order by decisionDate desc",
+                court, LocalDate.now().minusDays(30));
+  }
+}
+
+@Transactional
+public void save(Judgment j) { j.persist(); }
+
+Judgment.find("courtCode", "2_5").page(Page.of(0, 50)).list();
+Judgment.count("decisionDate is null");</code></pre></div>
+    <p class="note">Dev Services: in dev and test, with no JDBC URL set, Quarkus starts a Postgres container for you (needs Docker or Podman).</p>
+  </article>
+
+  <article class="card"><h3>REST client</h3>
+<div class="snip"><pre><code>@RegisterRestClient(configKey = "mirror")
+@Path("/objects")
+public interface MirrorClient {
+  @GET Listing list(@RestQuery String prefix);
+  @GET @Path("/{key}") Uni&lt;byte[]&gt; fetch(@RestPath String key);   // reactive
+}
+
+# application.properties
+quarkus.rest-client.mirror.url=https://api.example.org
+quarkus.rest-client.mirror.read-timeout=10000
+
+@Inject @RestClient MirrorClient mirror;
+
+// fault tolerance (quarkus-smallrye-fault-tolerance)
+@Retry(maxRetries = 3, delay = 200)
+@Timeout(10_000)
+@CircuitBreaker(requestVolumeThreshold = 10)
+public Listing safeList(String p) { return mirror.list(p); }</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Threading: blocking, reactive, virtual</h3>
+<div class="snip"><pre><code>// Blocking signature → worker thread (default for non-Uni returns)
+@GET public List&lt;JudgmentDto&gt; list() { ... }
+
+// Reactive signature → event loop: never block inside it
+@GET public Uni&lt;JudgmentDto&gt; get(@RestPath UUID id) {
+  return client.fetch(id)
+      .onItem().transform(this::toDto)
+      .onFailure().retry().atMost(3)
+      .ifNoItem().after(Duration.ofSeconds(5)).fail();
+}
+
+Multi.createFrom().iterable(uris)
+     .onItem().transformToUniAndMerge(this::fetch);   // concurrent
+
+// Virtual threads (Java 21+)
+@GET @RunOnVirtualThread
+public List&lt;JudgmentDto&gt; slowList() { return blockingDao.all(); }
+
+// Force a reactive-typed method onto a worker
+@Blocking</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Errors, health, metrics</h3>
+<div class="snip"><pre><code>public class ErrorMappers {
+  @ServerExceptionMapper
+  public RestResponse&lt;Map&lt;String, String&gt;&gt; notFound(NotFoundException e) {
+    return RestResponse.status(Response.Status.NOT_FOUND,
+        Map.of("error", "not_found", "cnr", e.cnr()));
+  }
+}
+
+@Readiness @ApplicationScoped
+public class MirrorCheck implements HealthCheck {
+  public HealthCheckResponse call() {
+    return HealthCheckResponse.named("mirror").status(reachable()).build();
+  }
+}
+// /q/health/live  /q/health/ready  /q/health/started
+
+@Inject MeterRegistry registry;
+registry.counter("corpus.rows.loaded").increment(n);
+@Counted @Timed      // on methods</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Jobs &amp; scheduling</h3>
+<div class="snip"><pre><code>// Command mode: run once, exit with a code (Cloud Run job, K8s Job)
+@QuarkusMain
+public class LoaderMain implements QuarkusApplication {
+  @Inject Loader loader;
+  @Override public int run(String... args) {
+    return loader.load(args) ? 0 : 1;
+  }
+}
+// java -jar quarkus-run.jar --year=2024     (or quarkus-picocli for real flags)
+
+// In-app schedule (quarkus-scheduler); cron has a seconds field
+@Scheduled(cron = "0 15 6 * * ?", timeZone = "UTC")
+void tick() { ... }
+
+@Scheduled(every = "10m", concurrentExecution = Scheduled.ConcurrentExecution.SKIP)
+void poll() { ... }</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Testing</h3>
+<div class="snip"><pre><code>@QuarkusTest
+class JudgmentResourceTest {
+  @InjectMock JudgmentService svc;        // quarkus-junit5-mockito
+
+  @Test void returns404() {
+    when(svc.get(any())).thenThrow(new NotFoundException("x"));
+    given().when().get("/api/judgments/{id}", UUID.randomUUID())
+           .then().statusCode(404)
+           .body("error", is("not_found"));
+  }
+}
+
+@QuarkusIntegrationTest                    // runs against the built jar or native binary
+class JudgmentResourceIT extends JudgmentResourceTest {}
+
+@TestProfile(NoSchedulerProfile.class)     // per-test config overrides
+public class NoSchedulerProfile implements QuarkusTestProfile {
+  public Map&lt;String, String&gt; getConfigOverrides() {
+    return Map.of("quarkus.scheduler.enabled", "false");
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Containers, Kubernetes, GCP</h3>
+<div class="snip"><pre><code>quarkus ext add container-image-jib kubernetes
+./mvnw package -Dquarkus.container-image.build=true \
+  -Dquarkus.container-image.registry=asia-south1-docker.pkg.dev \
+  -Dquarkus.container-image.group=my-proj/apps
+# generated manifests: target/kubernetes/kubernetes.yml
+
+quarkus.kubernetes.replicas=2
+quarkus.kubernetes.resources.requests.memory=256Mi
+quarkus.kubernetes.env.secrets=db-credentials
+
+# Google Cloud clients come from the Quarkiverse extensions, e.g.
+#   io.quarkiverse.googlecloudservices:quarkus-google-cloud-bigquery
+#   ...:quarkus-google-cloud-storage
+@Inject BigQuery bigquery;
+@Inject Storage storage;</code></pre></div>
+    <p class="note">Native images start in tens of milliseconds and use less memory, which suits Cloud Run and scale-to-zero. Libraries that rely on reflection need native config; test the native build in CI.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Create a project and run dev mode</li><li>Write a REST endpoint and a @QuarkusTest</li><li>Configure with application.properties and profiles</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Panache, REST clients and fault tolerance</li><li>Choose blocking, reactive or virtual-thread endpoints</li><li>Package as a container; use Dev Services</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Build and run native images; fix reflection issues</li><li>Design for Kubernetes and serverless startup</li><li>Migrate services from Spring with clear trade-offs</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Write Quarkus extensions</li><li>Set framework strategy across Spring and Quarkus estates</li><li>Understand build-time processing and ArC internals</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Mutiny reactive programming</li><li>Native image configuration</li><li>Writing extensions</li><li>Quarkus with Kafka and messaging</li><li>Command-mode applications</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://quarkus.io/guides/" target="_blank" rel="noopener">Quarkus guides</a><span class="lnote"> Task-focused official guides</span></li><li><a href="https://quarkus.io/get-started/" target="_blank" rel="noopener">Get started with Quarkus</a><span class="lnote"> Install and first app</span></li><li><a href="https://code.quarkus.io/" target="_blank" rel="noopener">code.quarkus.io</a><span class="lnote"> Generate a project with chosen extensions</span></li><li><a href="https://smallrye.io/smallrye-mutiny/" target="_blank" rel="noopener">SmallRye Mutiny</a><span class="lnote"> Reactive programming library used by Quarkus</span></li><li><a href="https://docs.quarkiverse.io/" target="_blank" rel="noopener">Quarkiverse</a><span class="lnote"> Community extensions, including Google Cloud</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/spring/">← Spring Boot</a><a class="pn-next" href="/well-rounded-engineer/architecture/">Architecture →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

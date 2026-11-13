@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SRE · Well Rounded Engineer</title>
+<meta name="description" content="Running production as an engineering problem: reliability targets agreed with the business, error budgets that balance speed and stability, alerting on…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="sre">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/" aria-current="page">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="sre" data-name="SRE">
+  <div class="panel-head"><h1>Site reliability engineering</h1><p>Running production as an engineering problem: reliability targets agreed with the business, error budgets that balance speed and stability, alerting on what users feel, incident response, blameless learning, and removing toil. Signals and tools are on <a href="/well-rounded-engineer/observability/">Observability</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Principles</h3>
+    <ul>
+      <li><b>100% is the wrong target.</b> Users cannot tell 99.99% from 100%, and chasing it stops all change. Pick the reliability users actually need.</li>
+      <li><b>Service level objectives</b> make that target explicit and measurable.</li>
+      <li><b>Error budgets</b> turn it into a decision rule: budget left, ship faster; budget spent, slow down and fix reliability.</li>
+      <li><b>Toil is reduced by engineering:</b> automate repetitive manual work rather than staffing it.</li>
+      <li><b>Blameless postmortems:</b> incidents are system failures to learn from, not people to blame.</li>
+      <li><b>Simplicity:</b> every component you do not have cannot fail.</li>
+      <li><b>No person or laptop is the mechanism:</b> if something only works while a human watches it, it is not built yet.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>SLI, SLO, SLA, error budget</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Term</th><th>Is</th><th>Example</th></tr></thead>
+      <tbody>
+      <tr><td>SLI</td><td>A measured ratio of good events to valid events</td><td>Search requests answered successfully in under 500 ms ÷ all search requests</td></tr>
+      <tr><td>SLO</td><td>The target for an SLI over a window</td><td>99.5% over 28 days</td></tr>
+      <tr><td>Error budget</td><td>1 − SLO: the failure you may spend</td><td>0.5% of requests ≈ 3.4 hours of full outage in 28 days</td></tr>
+      <tr><td>SLA</td><td>A contract with consequences, looser than the SLO</td><td>99% monthly, or credits</td></tr>
+      </tbody></table></div>
+    <p class="note">Measure SLIs as close to the user as possible (load balancer or client), not from inside the server, which cannot see its own outages.</p>
+  </article>
+
+  <article class="card"><h3>Choosing SLIs</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>System</th><th>Typical SLIs</th></tr></thead>
+      <tbody>
+      <tr><td>Request/response API</td><td>Availability (non-5xx), latency (fraction under a threshold)</td></tr>
+      <tr><td>Data pipeline</td><td>Freshness (data newer than X), completeness (rows reconciled), correctness (tests passing)</td></tr>
+      <tr><td>Batch job</td><td>Runs completed on time; runs succeeded</td></tr>
+      <tr><td>Storage</td><td>Durability, read/write availability and latency</td></tr>
+      <tr><td>AI feature</td><td>Successful responses, latency, grounded-answer rate from evals</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>Pipeline freshness SLO example
+  SLI: minutes in which the newest decision_date served is &lt; 26 h old
+       ÷ minutes in the window
+  SLO: 99% over 28 days
+  Budget: ≈ 6.7 hours of staleness per 28 days</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Error budget policy</h3>
+    <ul>
+      <li><b>Budget healthy:</b> ship at normal speed; take calculated risks.</li>
+      <li><b>Budget at risk (e.g. 50% spent early):</b> extra review on risky changes; reliability work moves up the backlog.</li>
+      <li><b>Budget exhausted:</b> freeze non-urgent feature releases for the service until reliability fixes land and the budget recovers.</li>
+      <li><b>One incident ate over 20% of the budget:</b> a postmortem with tracked actions is mandatory.</li>
+      <li>Agree the policy with product owners <i>before</i> it is needed.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Alerting on SLOs: burn rates</h3>
+    <p><b>Burn rate</b> = how fast you are spending the budget, relative to spending exactly all of it over the window. Burn rate 1 uses the budget in exactly 28–30 days; burn rate 14.4 uses 2% of a 30-day budget in one hour.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Alert</th><th>Burn rate</th><th>Long window</th><th>Short window</th><th>Budget consumed</th><th>Action</th></tr></thead>
+      <tbody>
+      <tr><td>Fast burn</td><td>14.4</td><td>1 hour</td><td>5 minutes</td><td>2%</td><td>Page</td></tr>
+      <tr><td>Medium burn</td><td>6</td><td>6 hours</td><td>30 minutes</td><td>5%</td><td>Page</td></tr>
+      <tr><td>Slow burn</td><td>1</td><td>3 days</td><td>6 hours</td><td>10%</td><td>Ticket</td></tr>
+      </tbody></table></div>
+    <p class="note">Both windows must exceed the threshold: the long one shows it matters, the short one shows it is still happening, so the alert stops soon after recovery. These are the starting values from Google's SRE Workbook; tune to your traffic.</p>
+  </article>
+
+  <article class="card"><h3>On-call</h3>
+    <ul>
+      <li><b>Sustainable load:</b> few enough pages that each one gets real attention; track pages per shift.</li>
+      <li><b>Every page has a runbook:</b> what it means, how to check, how to mitigate, who to escalate to.</li>
+      <li><b>Primary and secondary</b> on rotation, with handover notes.</li>
+      <li><b>Access ready in advance:</b> break-glass roles, dashboards, tooling; never "I need permissions" at 3 a.m.</li>
+      <li><b>Reduce pages continuously:</b> every page should lead to a fix, a tuned alert, or an automated response.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Incident response</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Role</th><th>Does</th></tr></thead>
+      <tbody>
+      <tr><td>Incident commander</td><td>Owns the incident, coordinates, decides; does not debug</td></tr>
+      <tr><td>Operations lead</td><td>Investigates and applies mitigations</td></tr>
+      <tr><td>Communications lead</td><td>Updates stakeholders and users on a schedule</td></tr>
+      <tr><td>Scribe</td><td>Keeps the timeline: what was seen, decided, done, when</td></tr>
+      </tbody></table></div>
+    <ol>
+      <li>Declare early; set severity; open one channel.</li>
+      <li><b>Mitigate first:</b> roll back, fail over, disable the feature, shed load.</li>
+      <li>Communicate status regularly, including "no change".</li>
+      <li>Resolve, confirm with the SLIs, then hand over to the postmortem.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Severity levels</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Sev</th><th>Example</th><th>Response</th></tr></thead>
+      <tbody>
+      <tr><td>1</td><td>Product down or data loss or leak for many users</td><td>Page now, all hands, exec updates</td></tr>
+      <tr><td>2</td><td>Major feature broken or badly degraded</td><td>Page now, incident roles</td></tr>
+      <tr><td>3</td><td>Minor feature or few users affected; workaround exists</td><td>Business hours</td></tr>
+      <tr><td>4</td><td>Cosmetic or internal only</td><td>Ticket</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Blameless postmortem template</h3>
+<div class="snip"><pre><code># Incident: &lt;title&gt;            Sev: 2     Date: 2026-11-12
+## Summary          what happened, impact, duration (2–3 sentences)
+## Impact           users affected, SLO budget spent, data affected
+## Timeline (UTC)   detection, escalation, mitigation, resolution
+## Root cause(s)    the conditions that allowed it, not a person
+## Detection        how we found out; how we should have
+## What went well
+## What went badly
+## Where we got lucky
+## Action items     owner · due date · ticket — prevent, detect, mitigate
+## Lessons          what we now know about the system</code></pre></div>
+    <p class="note">Ask "what made this possible?" five times, not "who did it?". Turn each lesson into a guard: a test, an alert, a policy, an automation.</p>
+  </article>
+
+  <article class="card"><h3>Toil</h3>
+    <ul>
+      <li><b>Toil</b> is manual, repetitive, automatable, reactive work that grows with the service and leaves no lasting value: restarting jobs by hand, re-running loads, copying credentials.</li>
+      <li><b>Cap it</b> (Google aims for under 50% of an SRE's time) and spend the rest on engineering that removes it.</li>
+      <li><b>Measure it:</b> log toil tasks and their time; automate the biggest first.</li>
+      <li><b>Automation must be durable:</b> a scheduler and a job in the platform, not a script on someone's laptop or a session polling in a loop.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Production readiness review</h3>
+    <ul>
+      <li>SLOs defined, measured and on a dashboard.</li>
+      <li>Alerts on SLO burn and on missing runs, each with a runbook; proven to fire.</li>
+      <li>Logs structured, traces flowing, dashboards from the template.</li>
+      <li>Capacity tested at expected peak plus headroom.</li>
+      <li>Deploys automated, with canary or rollback tested.</li>
+      <li>Backups exist <i>and a restore has been tested</i>; RPO and RTO written down.</li>
+      <li>Dependencies listed with their failure behaviour.</li>
+      <li>Security review done; secrets in a manager; least-privilege IAM.</li>
+      <li>On-call rotation and escalation path in place.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Reliability practices</h3>
+    <ul>
+      <li><b>Progressive delivery:</b> canaries, feature flags and automatic rollback.</li>
+      <li><b>Capacity planning:</b> forecast from growth, load-test to find limits, keep headroom.</li>
+      <li><b>Graceful degradation:</b> serve partial or cached results and say so.</li>
+      <li><b>Disaster recovery:</b> multi-zone by default; multi-region when the SLO needs it; rehearsed restores.</li>
+      <li><b>Game days and chaos tests:</b> break things on purpose in a controlled way to test detection and response.</li>
+      <li><b>Dependency SLOs:</b> your SLO cannot exceed what your critical dependencies provide unless you add redundancy.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>SLOs on Google Cloud</h3>
+    <ul>
+      <li>Cloud Monitoring <b>service monitoring</b> defines services and SLOs (request-based or window-based) and charts budget.</li>
+      <li>Alert policies can use the SLO <b>burn rate</b> directly.</li>
+      <li>Declare SLOs and alerts in Terraform (<code>google_monitoring_slo</code>, <code>google_monitoring_alert_policy</code>) so they are reviewed and versioned.</li>
+      <li>For pipelines, compute freshness and completeness SLIs from run records in BigQuery and export them as custom or log-based metrics.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain SLI, SLO, error budget and SLA</li><li>Follow a runbook and escalate during an incident</li><li>Contribute to a blameless postmortem</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Define SLIs and SLOs for a service or pipeline</li><li>Set up burn-rate alerts and runbooks</li><li>Take on-call shifts and lead mitigation</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Act as incident commander; run postmortems and track actions</li><li>Write and enforce an error budget policy with product owners</li><li>Run production readiness reviews and capacity plans</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set reliability strategy and SRE practice for the organisation</li><li>Design multi-region resilience and DR programmes</li><li>Build a culture of blameless learning and toil reduction</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Multi-window, multi-burn-rate alerting</li><li>Incident command system</li><li>Chaos engineering and game days</li><li>Capacity planning and load testing</li><li>Disaster recovery: RPO, RTO and restore drills</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Site Reliability Engineering, The SRE Workbook, Building Secure and Reliable Systems</span></li><li><a href="https://sre.google/workbook/implementing-slos/" target="_blank" rel="noopener">Implementing SLOs (SRE Workbook)</a><span class="lnote"> Choosing SLIs and targets</span></li><li><a href="https://sre.google/workbook/alerting-on-slos/" target="_blank" rel="noopener">Alerting on SLOs (SRE Workbook)</a><span class="lnote"> Burn-rate alerting in detail</span></li><li><a href="https://sre.google/sre-book/postmortem-culture/" target="_blank" rel="noopener">Postmortem culture (SRE book)</a><span class="lnote"> Blameless learning from failure</span></li><li><a href="https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring" target="_blank" rel="noopener">Cloud Monitoring SLOs</a><span class="lnote"> Service monitoring and SLO alerts</span></li><li><a href="https://response.pagerduty.com/" target="_blank" rel="noopener">PagerDuty incident response guide</a><span class="lnote"> Open incident response process</span></li><li><a href="https://www.oreilly.com/library/view/implementing-service-level/9781492076803/" target="_blank" rel="noopener">Implementing Service Level Objectives (book)</a><span class="lnote"> Alex Hidalgo</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/opstools/">← Ops Tooling</a><a class="pn-next" href="/well-rounded-engineer/harness/">Harness →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Harness · Well Rounded Engineer</title>
+<meta name="description" content="A model on its own only produces text. The harness is everything around it that turns it into an agent: the loop, the tools, context management,…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="agentharness">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/" aria-current="page">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="agentharness" data-name="Agent Harness">
+  <div class="panel-head"><h1>Agent harness</h1><p>A model on its own only produces text. The <b>harness</b> is everything around it that turns it into an agent: the loop, the tools, context management, permissions, checks, memory, and the record of what happened. How harnesses are built, what makes one reliable, and the options from writing your own to using a managed one. Model basics are on <a href="/well-rounded-engineer/llm/">LLMs</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Parts of a harness</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Part</th><th>Does</th><th>Gets it wrong when</th></tr></thead>
+      <tbody>
+      <tr><td>Loop</td><td>Send messages, run requested tools, return results, repeat until done</td><td>No step or token budget: runaway cost</td></tr>
+      <tr><td>Tools</td><td>Functions the model can call (files, shell, search, APIs, MCP)</td><td>Too many, vague descriptions, huge outputs, no error detail</td></tr>
+      <tr><td>Context management</td><td>Decide what the model sees: instructions, history, retrieved files; compact or clear old content</td><td>Context fills with noise and the model loses the thread</td></tr>
+      <tr><td>Memory</td><td>Persist knowledge across sessions (project files, notes, memory tools)</td><td>Stale memory states things that are no longer true</td></tr>
+      <tr><td>Permissions and sandbox</td><td>Limit what tools may touch; ask a human for risky actions</td><td>Broad credentials; destructive commands unguarded</td></tr>
+      <tr><td>Gates and hooks</td><td>Deterministic checks that run regardless of the model (lint, tests, policy)</td><td>The agent decides on its own when it is "done"</td></tr>
+      <tr><td>Sub-agents</td><td>Delegate research or review to fresh contexts</td><td>Hand-offs lose detail; reviewers anchored on the builder's view</td></tr>
+      <tr><td>State and resume</td><td>Save progress so work survives restarts</td><td>A crash loses hours of work</td></tr>
+      <tr><td>Observability</td><td>Log every model call, tool call, cost and decision</td><td>Nobody can say why the agent did something</td></tr>
+      <tr><td>Evaluation</td><td>Measure task success, cost and interventions on a test set</td><td>Changes judged by impression</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Build or use?</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Option</th><th>You own</th></tr></thead>
+      <tbody>
+      <tr><td>Manual loop on the model API</td><td>Everything (code on the <a href="/well-rounded-engineer/llm/">LLMs</a> tab)</td></tr>
+      <tr><td>SDK tool runner</td><td>Tools and hosting; the SDK runs the loop</td></tr>
+      <tr><td>Claude Agent SDK</td><td>Prompt, options, hosting; Claude Code's harness and built-in tools come with it</td></tr>
+      <tr><td>Managed agents (hosted)</td><td>Agent configuration and your own tools; the provider runs loop and sandbox</td></tr>
+      <tr><td>Agent frameworks (e.g. LangGraph)</td><td>Graph of steps and state; framework handles orchestration</td></tr>
+      <tr><td>Ready-made agents (Claude Code, Cowork, Copilot)</td><td>Configuration: context files, skills, hooks, connectors</td></tr>
+      </tbody></table></div>
+    <p class="note">Configure a ready-made harness before building one. Build your own only when the task, tools or deployment need something they cannot give.</p>
+  </article>
+
+  <article class="card"><h3>Principles for a reliable harness</h3>
+    <ul>
+      <li><b>Done is decided by checks, not by the model:</b> tests, linters, schema validation, a reviewer.</li>
+      <li><b>Bound everything:</b> steps, tokens, time, money, attempts at the same failure (three, then stop and report).</li>
+      <li><b>Least privilege tools;</b> human approval for anything irreversible or external.</li>
+      <li><b>Append-only history:</b> do not rewrite past turns; summarise forward when context is full.</li>
+      <li><b>Fresh eyes for review:</b> a separate agent or person who sees the code, not the builder's conclusions.</li>
+      <li><b>Make lessons permanent:</b> each failure becomes a rule, test or hook in the repo.</li>
+      <li><b>Never let the agent weaken a gate</b> (skip a test, disable a check) to get to green.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Context engineering</h3>
+    <ul>
+      <li><b>Put stable things first</b> (system prompt, tools) so they are cached and consistent.</li>
+      <li><b>Load just in time:</b> give the agent tools to find files instead of pasting everything up front.</li>
+      <li><b>Keep tool outputs compact;</b> return summaries with a way to fetch details.</li>
+      <li><b>Compact or clear</b> old tool results in long sessions.</li>
+      <li><b>Use sub-agents</b> to read widely and return only conclusions.</li>
+      <li><b>Write state to files</b> (plans, progress notes) so a new context can pick up the work.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Designing tools for agents</h3>
+    <ul>
+      <li>Few tools, each matching a task a person would do ("search judgments", "run tests"), not every API endpoint.</li>
+      <li>Names and descriptions written for the model: what it does, when to use it, what it returns.</li>
+      <li>Typed inputs with enums and examples; strict schemas.</li>
+      <li>Errors that say what went wrong and how to fix it.</li>
+      <li>Distinguish "no results" from "could not search".</li>
+      <li>Read-only by default; writes need confirmation.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Failure modes to design against</h3>
+    <ul>
+      <li><b>Runaway loops</b> repeating the same failing action.</li>
+      <li><b>Context rot:</b> long sessions where early instructions are drowned out.</li>
+      <li><b>False completion:</b> claiming success without running the check.</li>
+      <li><b>Gaming the check:</b> editing tests or disabling guards to pass.</li>
+      <li><b>Prompt injection</b> from files, web pages or tool outputs.</li>
+      <li><b>Scope creep:</b> changing more than the task asked.</li>
+      <li><b>Credential misuse:</b> acting with more access than the task needs.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Measuring a harness</h3>
+    <ul>
+      <li><b>Task success rate</b> on a fixed set of real tasks, judged by checks.</li>
+      <li><b>Cost and time per completed task</b>, not per request.</li>
+      <li><b>Intervention rate:</b> how often a human had to step in.</li>
+      <li><b>Regression rate:</b> changes that later had to be reverted.</li>
+      <li><b>Gate failures caught</b> before merge vs after.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain loop, tools, context, permissions and gates</li><li>Configure a ready-made harness (context file, permissions)</li><li>Recognise runaway loops and false completion</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a bounded tool loop with honest errors and logging</li><li>Write agent-friendly tools</li><li>Add deterministic gates and a separate reviewer</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design harnesses with context engineering, memory and resume</li><li>Evaluate harnesses on task success, cost and interventions</li><li>Defend against prompt injection and gate gaming</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build agent platforms and shared harness components</li><li>Set safety and governance policy for autonomous agents</li><li>Research and adopt new agent patterns with evidence</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Context engineering</li><li>Tool design for agents</li><li>Multi-agent orchestration</li><li>Agent evaluation</li><li>Sandboxing and permission design</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a><span class="lnote"> Workflows vs agents, patterns</span></li><li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Effective context engineering for AI agents</a><span class="lnote"> Managing what the model sees</span></li><li><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" target="_blank" rel="noopener">Writing effective tools for agents</a><span class="lnote"> Tool design</span></li><li><a href="https://code.claude.com/docs/en/agent-sdk" target="_blank" rel="noopener">Claude Agent SDK</a><span class="lnote"> Claude Code's harness as a library</span></li><li><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a><span class="lnote"> Graph-based agent orchestration</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/copilot/">← GitHub Copilot</a><a class="pn-next" href="/well-rounded-engineer/rag/">RAG →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

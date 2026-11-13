@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing · Well Rounded Engineer</title>
+<meta name="description" content="What to test, at which level, and how, in Java, Python, SQL and pipelines. A test is worth having when it would fail if the code were wrong, and only then.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="testing">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/" aria-current="page">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="testing" data-name="Testing">
+  <div class="panel-head"><h1>Testing</h1><p>What to test, at which level, and how, in Java, Python, SQL and pipelines. A test is worth having when it would fail if the code were wrong, and only then.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Levels of testing</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Level</th><th>Checks</th><th>Speed</th><th>Tools</th></tr></thead>
+      <tbody>
+      <tr><td>Unit</td><td>One function or class in isolation; logic, edge cases, errors</td><td>ms</td><td>JUnit 5 + AssertJ, pytest, dbt unit tests</td></tr>
+      <tr><td>Integration</td><td>Your code with a real database, queue or HTTP layer</td><td>seconds</td><td>Testcontainers, WireMock, @SpringBootTest, @QuarkusTest, BigQuery emulator</td></tr>
+      <tr><td>Contract</td><td>Producer and consumer agree on an API or schema</td><td>seconds</td><td>Pact, Spring Cloud Contract, schema tests, dbt contracts</td></tr>
+      <tr><td>End to end</td><td>A user journey through the deployed system</td><td>minutes</td><td>Playwright, Selenium, scripted API checks</td></tr>
+      <tr><td>Data tests</td><td>The data itself: keys, nulls, ranges, freshness, row counts</td><td>per run</td><td>dbt data tests, assertions in pipelines</td></tr>
+      <tr><td>Non-functional</td><td>Load, latency, resilience, security</td><td>minutes–hours</td><td>k6, Gatling, Locust, chaos tests, ZAP</td></tr>
+      </tbody></table></div>
+    <p class="note">Most tests should be fast unit and integration tests; a few end-to-end tests cover the critical journeys. A suite nobody runs because it is slow protects nothing.</p>
+  </article>
+
+  <article class="card"><h3>What makes a good test</h3>
+    <ul>
+      <li><b>Fails for the right reason:</b> write it first, or break the code on purpose, and watch it go red. A test only ever seen green is unproven.</li>
+      <li><b>Tests behaviour, not implementation:</b> inputs and outputs, not which private method was called. Refactors should not break it.</li>
+      <li><b>One reason to fail,</b> with a name that says what it checks: <code>rejectsUnparseableDate</code>.</li>
+      <li><b>Arrange, act, assert:</b> set up, do one thing, check the result.</li>
+      <li><b>Independent:</b> no shared state or order between tests; unique test data per test.</li>
+      <li><b>Deterministic:</b> fixed clock, fixed seed, no real network, no sleeps.</li>
+      <li><b>Covers the edges:</b> empty, null, one, many, boundary values, bad input, the dependency being down.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>TDD in one loop</h3>
+    <ol>
+      <li><b>Red:</b> write a small failing test for the next behaviour.</li>
+      <li><b>Green:</b> write the least code that makes it pass.</li>
+      <li><b>Refactor:</b> clean up with the tests as a safety net.</li>
+    </ol>
+    <p>For a bug: first write a test that reproduces it and fails, then fix. The test stays, so the bug cannot return.</p>
+    <p class="note">This is also the best way to brief an AI assistant: give it the failing test as the definition of done.</p>
+  </article>
+
+  <article class="card"><h3>Java: JUnit 5 + AssertJ + Mockito</h3>
+<div class="snip"><pre><code>class DecisionDateParserTest {
+
+  @ParameterizedTest(name = "{0} → {1}")
+  @CsvSource({
+      "05-05-1959, 1959-05-05",   // SC format
+      "2024-01-31, 2024-01-31",   // HC format
+  })
+  void parsesBothFormats(String raw, LocalDate expected) {
+    assertThat(DecisionDateParser.parse(raw)).isEqualTo(expected);
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"", "31-31-2024", "yesterday"})
+  void rejectsUnparseable(String raw) {
+    assertThatThrownBy(() -&gt; DecisionDateParser.parse(raw))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("does not parse");
+  }
+}
+
+@ExtendWith(MockitoExtension.class)
+class LoaderTest {
+  @Mock BlobStore store;
+  @InjectMocks Loader loader;
+
+  @Test
+  void reportsUnknownWhenListingFails() {
+    when(store.list(any())).thenThrow(new RuntimeException("403 Forbidden"));
+    assertThat(loader.run().state()).isEqualTo(State.UNKNOWN);   // not "0 objects"
+    verify(store, never()).copy(any(), any());
+  }
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Python: pytest</h3>
+<div class="snip"><pre><code>import pytest
+from datetime import date
+from pipeline.dates import parse_decision_date
+
+@pytest.mark.parametrize("raw, expected", [
+    ("05-05-1959", date(1959, 5, 5)),
+    ("2024-01-31", date(2024, 1, 31)),
+])
+def test_parses_both_formats(raw, expected):
+    assert parse_decision_date(raw) == expected
+
+@pytest.mark.parametrize("raw", ["", "31-31-2024", None])
+def test_rejects_unparseable(raw):
+    with pytest.raises(ValueError, match="does not parse"):
+        parse_decision_date(raw)
+
+@pytest.fixture
+def fake_store(monkeypatch):
+    store = FakeStore()                 # a small in-memory fake beats a deep mock
+    monkeypatch.setattr("pipeline.land.store", store)
+    return store
+
+def test_copies_only_new_objects(fake_store):
+    fake_store.seed(["a", "b"])
+    result = land(source=["a", "b", "c"])
+    assert result.copied == 1 and result.already_current == 2</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Test doubles: pick the lightest</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Double</th><th>Is</th></tr></thead>
+      <tbody>
+      <tr><td>Dummy</td><td>Passed but never used</td></tr>
+      <tr><td>Stub</td><td>Returns canned answers</td></tr>
+      <tr><td>Fake</td><td>A working lightweight version (in-memory store)</td></tr>
+      <tr><td>Spy</td><td>Records how it was called</td></tr>
+      <tr><td>Mock</td><td>Pre-programmed with expectations it verifies</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li>Mock what you do not own only at the boundary; prefer a fake or a real container.</li>
+      <li>Build stubs from <b>captured real responses</b>, never from a guess. A stub shaped from the docs confirms the guess.</li>
+      <li>Too many mocks means the test checks wiring, not behaviour.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Integration tests with real dependencies</h3>
+<div class="snip"><pre><code>// Java: real Postgres in Docker for the test
+@Testcontainers
+@SpringBootTest
+class JudgmentRepositoryIT {
+  @Container @ServiceConnection
+  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");
+
+  @Autowired JudgmentRepository repo;
+
+  @Test
+  void upsertKeepsTheExistingId() {
+    long id = repo.upsert(sample("K1")).id();
+    long again = repo.upsert(sample("K1").withCnr("changed")).id();
+    assertThat(again).isEqualTo(id);          // ids are never renumbered
+  }
+}
+
+// HTTP dependency: WireMock serving a captured response
+stubFor(get(urlPathEqualTo("/objects"))
+    .willReturn(aResponse().withStatus(200)
+        .withBodyFile("mirror/listing-page-2.xml")));</code></pre></div>
+<div class="snip"><pre><code># Python: testcontainers
+from testcontainers.postgres import PostgresContainer
+def test_load_roundtrip():
+    with PostgresContainer("postgres:16") as pg:
+        dsn = pg.get_connection_url()
+        load_rows(dsn, rows); assert count(dsn) == len(rows)</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Testing data pipelines</h3>
+    <ul>
+      <li><b>Idempotency:</b> run the same input twice; the output must be identical (row count and content).</li>
+      <li><b>Incremental vs full:</b> an incremental run on top of yesterday equals a full rebuild.</li>
+      <li><b>Edge data:</b> empty partition, one row, duplicates, late rows, a new source column, a malformed date.</li>
+      <li><b>Reconciliation:</b> rows in = rows loaded + rows rejected + rows skipped, every run.</li>
+      <li><b>Run records:</b> assert the counters written to the ledger, not only the log line.</li>
+      <li><b>"Source down":</b> the run must end FAILED or UNKNOWN, never SUCCEEDED with zero.</li>
+      <li><b>Real dialect:</b> a SQL string checked against a mock proves its shape, not that BigQuery accepts it. Run it on the emulator or a dry run.</li>
+    </ul>
+<div class="snip"><pre><code># dbt
+dbt build -s my_model+            # models + their tests, in order
+dbt test  -s test_type:unit       # logic on fixed inputs
+dbt test  -s test_type:data       # assertions on built tables</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Property-based testing</h3>
+    <p>Instead of hand-picked examples, state a property that must hold for all inputs and let the tool generate hundreds, shrinking any failure to the smallest case.</p>
+<div class="snip"><pre><code># Python: hypothesis
+from hypothesis import given, strategies as st
+
+@given(st.dates(min_value=date(1950,1,1), max_value=date(2030,12,31)))
+def test_format_then_parse_roundtrips(d):
+    assert parse_decision_date(d.strftime("%d-%m-%Y")) == d
+
+@given(st.lists(st.text()))
+def test_dedupe_is_idempotent(xs):
+    assert dedupe(dedupe(xs)) == dedupe(xs)</code></pre></div>
+    <p class="note">Java: jqwik (<code>@Property</code>, <code>@ForAll</code>). Good properties: round trips, idempotency, invariants (sorted output stays sorted), and "never throws".</p>
+  </article>
+
+  <article class="card"><h3>Load and performance tests</h3>
+<div class="snip"><pre><code>// k6: ramp to 60 searches/s and check p95 latency
+import http from 'k6/http';
+import { check } from 'k6';
+export const options = {
+  scenarios: { search: { executor: 'ramping-arrival-rate',
+    startRate: 5, timeUnit: '1s', preAllocatedVUs: 50,
+    stages: [{ target: 60, duration: '5m' }, { target: 60, duration: '10m' }] } },
+  thresholds: { http_req_duration: ['p(95)&lt;500'], http_req_failed: ['rate&lt;0.01'] },
+};
+export default function () {
+  const r = http.get(`${__ENV.BASE}/api/search?q=land+acquisition`);
+  check(r, { '200': (x) =&gt; x.status === 200 });
+}
+// k6 run -e BASE=https://staging.example.com search.js</code></pre></div>
+    <ul>
+      <li>Test against production-sized data in a production-like environment.</li>
+      <li>Measure percentiles (p95, p99), not averages.</li>
+      <li>Find the breaking point, then decide the alert threshold below it.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Flaky tests, coverage, CI</h3>
+    <ul>
+      <li><b>Flaky test:</b> passes and fails on the same code. Causes: time, ordering, shared state, real network, async waits. Fix or delete it; never retry it into green or quarantine it forever.</li>
+      <li><b>Coverage</b> shows what was <i>executed</i>, not what was <i>checked</i>. 100% coverage with weak assertions proves little. Use it to find untested code, not as a target.</li>
+      <li><b>Mutation testing</b> (PIT for Java, mutmut for Python) changes your code and checks that some test fails. It measures test strength.</li>
+      <li><b>CI runs every test on every PR,</b> on a clean checkout. A local green and a CI red on the same commit usually mean untracked files or a different environment.</li>
+      <li><b>Never skip, disable or weaken a test to get green.</b> If a test is wrong, fix it in its own reviewed change.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Testing AI features</h3>
+    <ul>
+      <li>Unit-test everything around the model: prompt building, parsing, retries, fallbacks.</li>
+      <li>Validate structured outputs against the schema, and the values against your data.</li>
+      <li>Run an eval set in CI and track the score; fail the build on a regression beyond a threshold.</li>
+      <li>Include adversarial cases: prompt injection in documents, empty retrieval, the model refusing.</li>
+      <li>Mock the model in unit tests with recorded real responses; run the eval against the real model.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/python/">← Python</a><a class="pn-next" href="/well-rounded-engineer/security/">Security →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

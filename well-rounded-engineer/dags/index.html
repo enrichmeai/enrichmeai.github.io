@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airflow DAGs · Well Rounded Engineer</title>
+<meta name="description" content="Airflow 3 syntax (Task SDK), with 2.x differences noted. Cloud Composer runs either; check its image version first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="dags">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/" aria-current="page">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="dags" data-name="Airflow DAGs">
+  <div class="panel-head"><h1>Airflow DAGs</h1><p>Airflow 3 syntax (Task SDK), with 2.x differences noted. Cloud Composer runs either; check its image version first.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>TaskFlow DAG (Airflow 3)</h3>
+<div class="snip"><pre><code>from datetime import datetime, timedelta
+from airflow.sdk import dag, task
+
+@dag(
+    schedule="15 6 * * *",          # cron, "@daily", timedelta, Asset, None
+    start_date=datetime(2025, 1, 1),
+    catchup=False,                  # default False in 3.x (True in 2.x)
+    max_active_runs=1,
+    default_args={"retries": 2, "retry_delay": timedelta(minutes=5)},
+    tags=["corpus"],
+)
+def corpus_daily():
+
+    @task
+    def list_new(ds=None) -&gt; list[str]:
+        return find_objects(since=ds)
+
+    @task(retries=3)
+    def load(uri: str) -&gt; int:
+        return load_to_bq(uri)
+
+    @task
+    def report(counts: list[int]):
+        print(sum(counts))
+
+    report(load.expand(uri=list_new()))   # dynamic task mapping
+
+corpus_daily()</code></pre></div>
+  </article>
+
+  <article class="card"><h3>BigQuery &amp; GCS operators</h3>
+<div class="snip"><pre><code>from airflow.providers.google.cloud.operators.bigquery import (
+    BigQueryInsertJobOperator, BigQueryCheckOperator)
+from airflow.providers.google.cloud.transfers.gcs_to_bigquery import (
+    GCSToBigQueryOperator)
+from airflow.providers.google.cloud.sensors.gcs import GCSObjectExistenceSensor
+
+wait = GCSObjectExistenceSensor(
+    task_id="wait_manifest", bucket="landing",
+    object="manifests/{{ ds }}.json",
+    deferrable=True, timeout=6 * 3600)
+
+load = GCSToBigQueryOperator(
+    task_id="load_parquet", bucket="landing",
+    source_objects=["data/year={{ logical_date.year }}/*.parquet"],
+    destination_project_dataset_table="proj.odp.hc_judgment",
+    source_format="PARQUET", write_disposition="WRITE_APPEND")
+
+build = BigQueryInsertJobOperator(
+    task_id="build_fdp", location="asia-south1", deferrable=True,
+    configuration={"query": {
+        "query": "{% include 'sql/fdp_judgment.sql' %}",
+        "useLegacySql": False}})
+
+check = BigQueryCheckOperator(
+    task_id="rows_today", use_legacy_sql=False,
+    sql="SELECT COUNT(*) &gt; 0 FROM `proj.fdp.judgment` WHERE _run_date = '{{ ds }}'")
+
+wait &gt;&gt; load &gt;&gt; build &gt;&gt; check</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Templates &amp; context</h3>
+<div class="snip"><pre><code>{{ ds }}                     2025-01-31     (logical date, YYYY-MM-DD)
+{{ ds_nodash }}              20250131
+{{ logical_date }}           pendulum DateTime
+{{ data_interval_start }}    start of the period this run covers
+{{ data_interval_end }}      end (exclusive)
+{{ macros.ds_add(ds, -1) }}  2025-01-30
+{{ params.window }}          from dag(params={...})
+{{ var.value.my_var }}       Airflow Variable
+{{ conn.my_conn.host }}      Connection field
+{{ run_id }}  {{ dag.dag_id }}  {{ task_instance.try_number }}
+
+# in TaskFlow, ask for context by name
+@task
+def t(data_interval_start=None, ti=None):
+    ti.xcom_push(key="n", value=1)
+# or: from airflow.sdk import get_current_context</code></pre></div>
+    <p class="note">A daily run for 2025-01-31 starts after that interval ends. Use <code>data_interval_*</code> for "which data", never <code>now()</code>. <code>execution_date</code> is removed in Airflow 3: use <code>logical_date</code>.</p>
+  </article>
+
+  <article class="card"><h3>Running dbt from a DAG</h3>
+<div class="snip"><pre><code>from airflow.providers.standard.operators.bash import BashOperator
+# (2.x: from airflow.operators.bash import BashOperator)
+
+dbt_build = BashOperator(
+    task_id="dbt_build",
+    bash_command=(
+        "cd /home/airflow/gcs/dags/dbt/fdp &amp;&amp; "
+        "dbt build --target prod -s tag:daily "
+        "--vars '{run_date: \"{{ ds }}\"}'"),
+    env={"DBT_PROFILES_DIR": "/home/airflow/gcs/dags/dbt"},
+    append_env=True)
+
+# Or run dbt in its own image, which keeps it off the worker:
+# KubernetesPodOperator / Cloud Run job via CloudRunExecuteJobOperator
+# Or astronomer-cosmos: one Airflow task per dbt model
+from cosmos import DbtDag, ProjectConfig, ProfileConfig</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Branching, trigger rules, task groups</h3>
+<div class="snip"><pre><code>from airflow.sdk import task, task_group
+
+@task.branch
+def choose(**ctx):
+    return "full_load" if ctx["logical_date"].day == 1 else "delta_load"
+
+@task(trigger_rule="none_failed_min_one_success")
+def join(): ...
+
+@task(trigger_rule="all_done")   # always runs: cleanup, alerts
+def cleanup(): ...
+
+@task.short_circuit
+def has_work(n: int) -&gt; bool:
+    return n &gt; 0       # False skips everything downstream
+
+@task_group
+def per_court(court: str): ...</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Data-aware scheduling (Assets)</h3>
+<div class="snip"><pre><code>from airflow.sdk import Asset, dag, task
+odp = Asset("bigquery://proj/dp_odp/hc_judgment")
+
+@dag(schedule="@daily", start_date=datetime(2025,1,1))
+def producer():
+    @task(outlets=[odp])
+    def load(): ...
+    load()
+
+@dag(schedule=[odp], start_date=datetime(2025,1,1))   # runs when odp updates
+def consumer():
+    @task
+    def build(): ...
+    build()
+
+producer(); consumer()</code></pre></div>
+    <p class="note">Airflow 2.4–2.10 call these <code>Dataset</code> (<code>from airflow.datasets import Dataset</code>).</p>
+  </article>
+
+  <article class="card"><h3>Reliability checklist</h3>
+    <ul>
+      <li><b>Idempotent tasks:</b> a rerun of the same interval gives the same result. Use <code>WRITE_TRUNCATE</code> on a partition (<code>table$20250131</code>) or a MERGE, never a blind append.</li>
+      <li><b>No heavy work at parse time:</b> top-level code runs on every scheduler parse. No API calls or DB queries outside tasks.</li>
+      <li><b>Small XComs:</b> pass URIs and counts, not dataframes.</li>
+      <li><b>Deferrable operators and sensors</b> (<code>deferrable=True</code>) free worker slots while waiting.</li>
+      <li><b>Pools</b> cap concurrency against a shared resource: <code>pool="bq_slots"</code>.</li>
+      <li><b>Alert on failure:</b> <code>on_failure_callback</code> in <code>default_args</code>.</li>
+      <li><b>Pin provider versions</b> in your Composer/requirements; operator args change between majors.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>CLI &amp; local testing</h3>
+<div class="snip"><pre><code>airflow dags list
+airflow dags list-import-errors
+airflow dags test corpus_daily 2025-01-31          # full run, no scheduler
+airflow tasks test corpus_daily load 2025-01-31    # one task, no state saved
+airflow dags backfill corpus_daily -s 2025-01-01 -e 2025-01-07   # 2.x
+airflow backfill create --dag-id corpus_daily \
+  --from-date 2025-01-01 --to-date 2025-01-07                    # 3.x
+airflow dags trigger corpus_daily -c '{"window": 3}'
+
+# pytest: every DAG imports cleanly
+from airflow.models import DagBag
+def test_dags_load():
+    bag = DagBag(dag_folder="dags", include_examples=False)
+    assert not bag.import_errors</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Airflow 2 → 3 gotchas</h3>
+    <ul>
+      <li>Authoring imports move to <code>airflow.sdk</code> (<code>dag</code>, <code>task</code>, <code>Asset</code>, <code>Variable</code>).</li>
+      <li><code>schedule_interval</code> and <code>timetable</code> args are removed: use <code>schedule</code>.</li>
+      <li><code>catchup</code> now defaults to <code>False</code>.</li>
+      <li>Context keys <code>execution_date</code>, <code>next_ds</code>, <code>prev_ds</code>, <code>tomorrow_ds</code> are removed.</li>
+      <li>Bash, Python and Empty operators live in the <code>apache-airflow-providers-standard</code> package.</li>
+      <li>Tasks no longer get direct metadata-DB access; use the REST API or the SDK.</li>
+      <li><code>SubDagOperator</code> and SLAs are gone; use task groups and deadline alerts.</li>
+      <li>Run <code>ruff check --select AIR3 dags/</code> to find most of these.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a DAG; find and read a failed task's log</li><li>Rerun a task or a date</li><li>Understand logical dates and data intervals</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write idempotent TaskFlow DAGs with retries and templates</li><li>Use provider operators and deferrable sensors</li><li>Test DAGs locally and in CI</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design orchestration across many pipelines (assets, pools, SLAs)</li><li>Run Composer or Airflow reliably; plan upgrades</li><li>Decide what belongs in Airflow vs inside the job</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Choose the orchestration platform for the organisation</li><li>Run large Airflow estates: scaling, multi-tenancy, security</li><li>Set standards for scheduling and data-aware workflows</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Assets and data-aware scheduling</li><li>Dynamic task mapping</li><li>Deferrable operators and triggers</li><li>Airflow 3 Task SDK and execution API</li><li>Alternatives: Cloud Workflows, Dagster, Temporal</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html" target="_blank" rel="noopener">Apache Airflow documentation</a><span class="lnote"> Concepts and reference</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html" target="_blank" rel="noopener">Airflow best practices</a><span class="lnote"> Idempotency, top-level code, testing</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow-providers-google/stable/index.html" target="_blank" rel="noopener">Google provider for Airflow</a><span class="lnote"> BigQuery, GCS, Dataflow operators</span></li><li><a href="https://cloud.google.com/composer/docs" target="_blank" rel="noopener">Cloud Composer</a><span class="lnote"> Managed Airflow on GCP</span></li><li><a href="https://astronomer.github.io/astronomer-cosmos/" target="_blank" rel="noopener">Astronomer Cosmos</a><span class="lnote"> Run dbt projects as Airflow tasks</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/dbt/">← dbt</a><a class="pn-next" href="/well-rounded-engineer/apis/">APIs &amp; Integration →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

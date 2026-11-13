@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harness · Well Rounded Engineer</title>
+<meta name="description" content="Harness is a software delivery platform: CI, continuous delivery with verification and rollback, GitOps, feature flags, and more, organised as pipelines.…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="harness">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/" aria-current="page">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="harness" data-name="Harness">
+  <div class="panel-head"><h1>Harness CI/CD</h1><p>Harness is a software delivery platform: CI, continuous delivery with verification and rollback, GitOps, feature flags, and more, organised as pipelines. This tab walks through Harness CI and Harness CD in depth, an end-to-end pipeline to Google Cloud, troubleshooting, and how to use Harness as a blueprint for every team.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Modules</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Module</th><th>Does</th></tr></thead>
+      <tbody>
+      <tr><td>Continuous Integration</td><td>Builds and tests, with caching and test intelligence (runs only tests affected by a change)</td></tr>
+      <tr><td>Continuous Delivery &amp; GitOps</td><td>Deploys services to Kubernetes, serverless, VMs and more, with strategies, approvals, verification and rollback; Argo CD-based GitOps</td></tr>
+      <tr><td>Feature Flags</td><td>Turn features on per user or percentage, separating deploy from release</td></tr>
+      <tr><td>Security Testing Orchestration</td><td>Runs scanners in pipelines and gathers their results</td></tr>
+      <tr><td>Cloud Cost Management</td><td>Cost visibility, budgets and recommendations</td></tr>
+      <tr><td>Chaos Engineering</td><td>Inject failures to test resilience</td></tr>
+      <tr><td>Infrastructure as Code Management</td><td>Run and govern Terraform/OpenTofu workspaces</td></tr>
+      <tr><td>Internal Developer Portal</td><td>Backstage-based service catalogue and templates</td></tr>
+      </tbody></table></div>
+    <p class="note">Modules and their names change over time; check the current Harness docs for what your account includes.</p>
+  </article>
+
+  <article class="card"><h3>Building blocks</h3>
+    <ul>
+      <li><b>Account → organisation → project:</b> the hierarchy for access control and shared resources.</li>
+      <li><b>Pipeline:</b> stages run in order or parallel; each stage has steps.</li>
+      <li><b>Stage types:</b> Build (CI), Deploy (CD), Approval, Custom.</li>
+      <li><b>Service:</b> what you deploy (manifests, artefact).</li>
+      <li><b>Environment and infrastructure definition:</b> where you deploy (dev, prod; a cluster or project).</li>
+      <li><b>Connector:</b> a stored, permissioned link to GitHub, GCP, a registry or a cluster.</li>
+      <li><b>Delegate:</b> an agent running in your infrastructure that executes tasks, so Harness never needs inbound access.</li>
+      <li><b>Secrets:</b> stored in Harness or referenced from Google Secret Manager or Vault.</li>
+      <li><b>Templates:</b> versioned step, stage and pipeline templates teams reuse.</li>
+      <li><b>Triggers:</b> start pipelines on Git events, artefact pushes or schedules.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Pipeline as code (shape)</h3>
+<div class="snip"><pre><code>pipeline:
+  name: legal-api
+  identifier: legal_api
+  orgIdentifier: default
+  projectIdentifier: legal
+  stages:
+    - stage:
+        name: Build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: ./gradlew test
+    - stage:
+        name: Approve prod
+        identifier: approve
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: HarnessApproval
+                  name: Founder approval
+                  identifier: founder
+                  timeout: 1d
+                  spec:
+                    approvers:
+                      userGroups: [prod_approvers]
+                      minimumCount: 1
+    - stage:
+        name: Deploy prod
+        identifier: deploy_prod
+        type: Deployment
+        spec:
+          # service, environment, infrastructure and strategy
+          # (rolling / canary / blue-green) go here
+          ...</code></pre></div>
+    <p class="note">This shows the structure only. Build pipelines in the Harness editor first and copy its YAML into Git, since exact step specs vary by module and version.</p>
+  </article>
+
+  <article class="card"><h3>Expressions</h3>
+<div class="snip"><pre><code>&lt;+pipeline.sequenceId&gt;           run number
+&lt;+pipeline.executionId&gt;          unique run ID
+&lt;+codebase.commitSha&gt;            the commit being built
+&lt;+codebase.branch&gt;
+&lt;+artifact.tag&gt;                  deployed image tag
+&lt;+env.name&gt;                      target environment
+&lt;+service.name&gt;
+&lt;+secrets.getValue("db_password")&gt;   resolved at runtime, masked in logs
+&lt;+pipeline.variables.region&gt;</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Deploying safely</h3>
+    <ul>
+      <li><b>Strategies:</b> rolling, canary and blue-green built in, with automatic rollback steps.</li>
+      <li><b>Continuous verification:</b> compares metrics and logs (from Prometheus, Datadog, Cloud Monitoring and others) of the new version against the old, and fails the stage when they degrade.</li>
+      <li><b>Approvals:</b> Harness user groups, or Jira/ServiceNow tickets.</li>
+      <li><b>Freeze windows:</b> block deployments during set periods.</li>
+      <li><b>Policy as code:</b> OPA policies on pipelines (e.g. "prod deploys must have an approval stage and a verification step").</li>
+      <li><b>Audit trail:</b> who ran what, with which inputs, when.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Harness vs GitHub Actions</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>GitHub Actions</th><th>Harness</th></tr></thead>
+      <tbody>
+      <tr><td>Strength</td><td>CI next to the code; huge action marketplace</td><td>CD: strategies, verification, approvals, governance at scale</td></tr>
+      <tr><td>Deployment model</td><td>You script it in workflow steps</td><td>First-class services, environments and strategies</td></tr>
+      <tr><td>Governance</td><td>Environments, rulesets, required reviewers</td><td>OPA policies, templates, RBAC, freeze windows, audit</td></tr>
+      <tr><td>Fits</td><td>Small and medium teams; code-centric workflows</td><td>Many teams and services needing a standard, governed path to production</td></tr>
+      </tbody></table></div>
+    <p class="note">A common split: GitHub Actions builds and tests on every PR; Harness promotes the built artefact through environments.</p>
+  </article>
+
+  <article class="card wide"><h3>End to end: commit to production on Google Cloud</h3>
+    <ol>
+      <li><b>Trigger:</b> a push or merged pull request on GitHub starts the pipeline (webhook trigger on <code>main</code>; PR trigger runs CI only).</li>
+      <li><b>CI stage:</b> clone, restore cache, compile and run tests (with test intelligence), run scanners, then build the image once and push it to Artifact Registry tagged with the commit SHA.</li>
+      <li><b>Deploy to dev:</b> a CD stage deploys that exact image to the dev environment (GKE or Cloud Run) with a rolling strategy.</li>
+      <li><b>Verify dev:</b> smoke tests and continuous verification against dev metrics and logs.</li>
+      <li><b>Approval:</b> a named group approves prod (or a policy auto-approves outside freeze windows).</li>
+      <li><b>Deploy to prod:</b> canary or blue-green with the <i>same</i> artefact; verification watches error rate and latency; automatic rollback on degradation.</li>
+      <li><b>Notify and record:</b> Slack/email notification, deployment recorded with who, what, which commit, and the verification result.</li>
+    </ol>
+    <p class="note">Build once, promote the same artefact. Rebuilding per environment means prod runs something that was never tested.</p>
+  </article>
+
+  <article class="card"><h3>Harness CI in depth</h3>
+    <ul>
+      <li><b>Build infrastructure:</b> Harness Cloud (hosted machines), your Kubernetes cluster (pods per build), your own VMs, or a local runner. Choose by network access, cost and isolation.</li>
+      <li><b>Codebase:</b> the repo connector and clone settings for the pipeline; each CI stage can clone automatically.</li>
+      <li><b>Run step:</b> any shell command in a container image you choose (<code>eclipse-temurin:21</code>, <code>python:3.12</code>).</li>
+      <li><b>Test step with test intelligence:</b> selects only tests affected by the change, and reports results in the UI (JUnit XML).</li>
+      <li><b>Background step:</b> a service the build needs, such as Postgres or a Kafka broker, running beside the steps.</li>
+      <li><b>Build and push steps:</b> build an image and push it to Artifact Registry, Docker Hub or another registry.</li>
+      <li><b>Caching:</b> Cache Intelligence for common build tools, or explicit save/restore cache steps to GCS or S3.</li>
+      <li><b>Plugins:</b> Drone plugins and many GitHub Actions can run as steps.</li>
+      <li><b>Outputs:</b> steps export variables for later steps and stages, e.g. the image tag.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A CI stage (shape)</h3>
+<div class="snip"><pre><code>- stage:
+    name: Build
+    identifier: build
+    type: CI
+    spec:
+      cloneCodebase: true
+      platform: { os: Linux, arch: Amd64 }
+      runtime: { type: Cloud, spec: {} }       # Harness Cloud machines
+      execution:
+        steps:
+          - step:
+              type: Run
+              name: Unit tests
+              identifier: unit_tests
+              spec:
+                image: eclipse-temurin:21
+                shell: Sh
+                command: ./gradlew test
+                reports:
+                  type: JUnit
+                  spec:
+                    paths: ["**/build/test-results/test/*.xml"]
+          - step:
+              type: BuildAndPushGAR
+              name: Image
+              identifier: image
+              spec:
+                connectorRef: gcp_bld
+                host: asia-south1-docker.pkg.dev
+                projectID: my-proj
+                imageName: apps/legal-api
+                tags: [&lt;+codebase.shortCommitSha&gt;]</code></pre></div>
+    <p class="note">Field names follow Harness's YAML at the time of writing; generate the stage in the editor and compare before committing.</p>
+  </article>
+
+  <article class="card"><h3>Harness CD in depth</h3>
+    <ul>
+      <li><b>Service:</b> what you deploy: the artefact source (Artifact Registry image), manifests (Kubernetes YAML, Helm chart, Kustomize) and variables.</li>
+      <li><b>Environment:</b> dev or prod, marked pre-production or production, with environment-level overrides (replicas, URLs, secrets).</li>
+      <li><b>Infrastructure definition:</b> the exact target: a GKE cluster and namespace, or a GCP project and region for serverless.</li>
+      <li><b>Deployment types:</b> Kubernetes, Native Helm, serverless targets, VMs over SSH/WinRM, Tanzu, ECS, and custom deployments for anything else. Check Harness's current list for Google Cloud targets such as Cloud Run and Cloud Functions.</li>
+      <li><b>Execution:</b> generated from the chosen strategy, editable step by step; failure strategies say what to do on each kind of error (retry, rollback, manual intervention).</li>
+      <li><b>Rollback:</b> a rollback section per stage, run automatically on failure or on a failed verification.</li>
+      <li><b>Input sets and overlays:</b> saved sets of runtime inputs (which service, which tag) so one pipeline serves many services.</li>
+      <li><b>Multi-service and multi-environment</b> deployments from a single stage.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Deployment strategies in Harness</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Strategy</th><th>How Harness runs it</th><th>Use when</th></tr></thead>
+      <tbody>
+      <tr><td>Rolling</td><td>Replaces pods or instances gradually; rollback restores the previous release</td><td>Default for stateless services</td></tr>
+      <tr><td>Canary</td><td>Deploys a small canary set, verifies, then rolls out fully and deletes the canary</td><td>Risky changes with good metrics</td></tr>
+      <tr><td>Blue-green</td><td>Deploys the new version as a stage set, tests it, then swaps traffic</td><td>Instant switch and rollback; capacity for two copies</td></tr>
+      <tr><td>Basic / custom</td><td>Your own steps (shell, HTTP, Terraform, approvals)</td><td>Targets without a built-in type</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Connecting Harness to Google Cloud</h3>
+    <ul>
+      <li><b>GCP connector</b> with OIDC (workload identity federation) where your plan supports it, so no service account key is stored. Otherwise inherit credentials from a delegate running in GKE with Workload Identity.</li>
+      <li><b>One service account per environment</b> with only the roles deploys need (Artifact Registry reader/writer, GKE developer or Cloud Run developer, and service account user on the runtime account).</li>
+      <li><b>Delegates</b> run inside your network (for example a GKE namespace), so private clusters and services are reachable without opening inbound access. Run at least two for availability.</li>
+      <li><b>Secrets</b> referenced from Google Secret Manager through a secret manager connector.</li>
+      <li><b>GitHub connector</b> with a GitHub App for cloning, PR status checks and webhooks.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>GitHub Actions → Harness mapping</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>GitHub Actions</th><th>Harness</th></tr></thead>
+      <tbody>
+      <tr><td>Workflow</td><td>Pipeline</td></tr>
+      <tr><td>Job</td><td>Stage</td></tr>
+      <tr><td>Step / action</td><td>Step / plugin</td></tr>
+      <tr><td><code>on:</code> push, pull_request</td><td>Triggers</td></tr>
+      <tr><td>Runner</td><td>Build infrastructure / delegate</td></tr>
+      <tr><td>Secrets and variables</td><td>Secrets, variables, connectors</td></tr>
+      <tr><td>Environments + required reviewers</td><td>Environments + approval stages + OPA policies</td></tr>
+      <tr><td>Reusable workflows</td><td>Templates</td></tr>
+      <tr><td><code>services:</code> containers</td><td>Background steps</td></tr>
+      <tr><td>matrix</td><td>Looping strategies (matrix, repeat, parallelism)</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Troubleshooting</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Symptom</th><th>Check</th></tr></thead>
+      <tbody>
+      <tr><td>Step queued, never starts</td><td>No healthy delegate or build infrastructure matching the selector</td></tr>
+      <tr><td>Connector test fails</td><td>Delegate network egress, credentials, or the account's IAM roles</td></tr>
+      <tr><td>Image pull error in deploy</td><td>Cluster or runtime identity lacks Artifact Registry read; wrong tag expression</td></tr>
+      <tr><td>Deployment times out</td><td>Readiness probes failing; check pod events and logs in the step output</td></tr>
+      <tr><td>Verification fails unexpectedly</td><td>Baseline too short, wrong metric query, or too few data points; read the analysis detail</td></tr>
+      <tr><td>Expression resolves to null</td><td>Wrong scope or step identifier; use the expression picker in the editor</td></tr>
+      <tr><td>Pipeline in Git differs from UI</td><td>Remote pipeline branch selection; check which branch the run used</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Good practice</h3>
+    <ul>
+      <li>Keep pipelines, templates and input sets in Git, reviewed like code.</li>
+      <li>One pipeline template per deployment shape; services pass only inputs.</li>
+      <li>Run unit and integration tests in CI on every PR; deploy only from <code>main</code>.</li>
+      <li>Promote by artefact tag or digest; never rebuild per environment.</li>
+      <li>Every prod stage has verification and an automatic rollback.</li>
+      <li>Enforce with OPA: prod needs approval, verification, and an artefact from the trusted registry.</li>
+      <li>Watch delegate health and versions; alert when none are connected.</li>
+      <li>Track DORA metrics from Harness deployment data.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Harness as a blueprint</h3>
+    <ul>
+      <li>Publish <b>account-level templates</b> for "build a JVM service", "deploy to Cloud Run", "deploy to GKE".</li>
+      <li>Teams reference the template version; a fix to the template reaches every pipeline that uses it.</li>
+      <li>Enforce the template with OPA policies rather than reviews.</li>
+      <li>Keep pipelines in Git (remote pipelines) so changes are reviewed like code.</li>
+      <li>This is the same idea as the AI tab's blueprints card: decide once, reuse everywhere.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run a pipeline and read its logs</li><li>Understand stages, steps, services and environments</li><li>Approve or roll back a deployment</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build CI and CD pipelines with connectors, secrets and triggers</li><li>Use canary or blue-green with verification</li><li>Keep pipelines in Git and use templates</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design org-wide templates and OPA policies</li><li>Set up delegates, RBAC and environments securely</li><li>Integrate verification with monitoring and feature flags</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the delivery platform strategy and its governance</li><li>Lead migrations from other CI/CD tools</li><li>Measure and improve delivery (DORA) across teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Pipeline, stage and step templates</li><li>Continuous verification</li><li>OPA policies in Harness</li><li>GitOps with Harness</li><li>Feature flags for progressive delivery</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.harness.io/docs" target="_blank" rel="noopener">Harness developer hub</a><span class="lnote"> Official documentation and tutorials</span></li><li><a href="https://university.harness.io/" target="_blank" rel="noopener">Harness University</a><span class="lnote"> Courses and certifications</span></li><li><a href="https://www.openpolicyagent.org/docs/latest/" target="_blank" rel="noopener">Open Policy Agent</a><span class="lnote"> Policy as code used by Harness</span></li><li><a href="https://dora.dev/" target="_blank" rel="noopener">DORA</a><span class="lnote"> Measuring delivery performance</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/sre/">← SRE</a><a class="pn-next" href="/well-rounded-engineer/terraform/">Terraform →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

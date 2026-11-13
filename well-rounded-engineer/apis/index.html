@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APIs & Integration · Well Rounded Engineer</title>
+<meta name="description" content="The kinds of systems you will meet, how they talk to each other, and what REST, APIs, gateways, gRPC, GraphQL, webhooks and messaging each mean. Then…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="apis">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/" aria-current="page">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="apis" data-name="APIs &amp; Integration">
+  <div class="panel-head"><h1>Systems, APIs and integration</h1><p>The kinds of systems you will meet, how they talk to each other, and what REST, APIs, gateways, gRPC, GraphQL, webhooks and messaging each mean. Then <a href="/well-rounded-engineer/kafka/">Kafka</a>, <a href="/well-rounded-engineer/spring/">Spring Boot</a> and <a href="/well-rounded-engineer/quarkus/">Quarkus</a> for building them.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Kinds of systems</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Type</th><th>What it does</th><th>Example</th><th>Built with</th></tr></thead>
+      <tbody>
+      <tr><td>Request/response service</td><td>Answers calls synchronously</td><td>Search API, login</td><td>Spring Boot, Quarkus, FastAPI on Cloud Run or GKE</td></tr>
+      <tr><td>Event-driven service</td><td>Reacts to events; publishes its own</td><td>Index a judgment when it lands</td><td>Kafka or Pub/Sub consumers</td></tr>
+      <tr><td>Batch job</td><td>Processes a bounded set, then exits</td><td>Nightly load</td><td>Cloud Run jobs, Dataflow, Spark</td></tr>
+      <tr><td>Stream processor</td><td>Processes an unbounded stream continuously</td><td>Real-time fraud score</td><td>Dataflow, Kafka Streams, Flink</td></tr>
+      <tr><td>OLTP database system</td><td>Many small transactional reads and writes</td><td>User accounts, orders</td><td>Postgres, Cloud SQL, Spanner</td></tr>
+      <tr><td>OLAP / analytics system</td><td>Large scans and aggregates</td><td>Reporting, dashboards</td><td>BigQuery</td></tr>
+      <tr><td>Workflow / orchestration system</td><td>Coordinates multi-step processes</td><td>Pipeline stages, sagas</td><td>Airflow, Workflows, Temporal</td></tr>
+      <tr><td>Integration / API platform</td><td>Exposes, secures and manages APIs for others</td><td>Partner API</td><td>Apigee, API Gateway</td></tr>
+      <tr><td>Front end</td><td>User interface</td><td>Web or mobile app</td><td>React, native apps</td></tr>
+      <tr><td>AI-powered system</td><td>Uses models to understand or generate</td><td>Research assistant</td><td>Model APIs, RAG, agents</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>What an API is</h3>
+    <p>An <b>API</b> (application programming interface) is a contract: the operations a system offers, the inputs they take, the outputs and errors they return, and the rules for calling them. The contract is what other teams build against; the implementation behind it can change freely as long as the contract holds.</p>
+    <ul>
+      <li><b>Public / partner / internal:</b> who may call it, and so how strict versioning, security and documentation must be.</li>
+      <li><b>Synchronous:</b> the caller waits (REST, gRPC, GraphQL).</li>
+      <li><b>Asynchronous:</b> the caller sends and moves on; the result arrives later (queues, events, webhooks).</li>
+      <li><b>Spec first:</b> write the contract (OpenAPI, protobuf, AsyncAPI) before the code; generate clients and docs from it.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>REST in practice</h3>
+    <ul>
+      <li><b>Resources</b> are nouns with URLs: <code>/judgments</code>, <code>/judgments/{id}</code>, <code>/courts/{code}/judgments</code>.</li>
+      <li><b>HTTP methods</b> are the verbs: GET reads, POST creates, PUT replaces, PATCH updates part, DELETE removes.</li>
+      <li><b>Stateless:</b> each request carries everything needed (including auth); no server session required.</li>
+      <li><b>Status codes</b> carry meaning: 200, 201 Created (+ <code>Location</code>), 204, 400, 401, 403, 404, 409 Conflict, 422, 429, 500, 503.</li>
+      <li><b>Errors</b> as Problem Details (RFC 9457): <code>type</code>, <code>title</code>, <code>status</code>, <code>detail</code>.</li>
+      <li><b>Pagination</b> with a cursor (<code>?cursor=…&amp;limit=50</code>) rather than deep offsets.</li>
+      <li><b>Filtering and sorting</b> by query parameters: <code>?court=2_5&amp;from=2024-01-01&amp;sort=-decision_date</code>.</li>
+      <li><b>Caching</b> with <code>ETag</code>/<code>If-None-Match</code> and <code>Cache-Control</code>.</li>
+    </ul>
+    <div class="tbl"><table>
+      <thead><tr><th>Method</th><th>Safe</th><th>Idempotent</th></tr></thead>
+      <tbody>
+      <tr><td>GET, HEAD</td><td>yes</td><td>yes</td></tr>
+      <tr><td>PUT, DELETE</td><td>no</td><td>yes</td></tr>
+      <tr><td>POST</td><td>no</td><td>no: use an Idempotency-Key header</td></tr>
+      <tr><td>PATCH</td><td>no</td><td>not guaranteed</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>An OpenAPI contract</h3>
+<div class="snip"><pre><code>openapi: <span data-other-version>3.1.0</span>
+info: { title: Legal Search API, version: <span data-other-version>1.2.0</span> }
+paths:
+  /v1/judgments/{id}:
+    get:
+      operationId: getJudgment
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: The judgment
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Judgment" }
+        "404":
+          description: Not found
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+components:
+  schemas:
+    Judgment:
+      type: object
+      required: [id, cnr, court]
+      properties:
+        id: { type: string }
+        cnr: { type: string }
+        court: { type: string }
+        decisionDate: { type: [string, "null"], format: date }
+  securitySchemes:
+    bearer: { type: http, scheme: bearer, bearerFormat: JWT }
+security: [ { bearer: [] } ]</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>API styles compared</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Style</th><th>Shape</th><th>Strengths</th><th>Weaknesses</th><th>Use for</th></tr></thead>
+      <tbody>
+      <tr><td>REST / JSON over HTTP</td><td>Resources + HTTP verbs</td><td>Universal, cacheable, easy to debug</td><td>Over- or under-fetching; loose typing unless specified</td><td>Public and partner APIs, most web services</td></tr>
+      <tr><td>gRPC</td><td>Protobuf messages over HTTP/2, generated clients</td><td>Fast, strongly typed, streaming both ways</td><td>Not browser-native; harder to inspect</td><td>Internal service-to-service calls</td></tr>
+      <tr><td>GraphQL</td><td>One endpoint; client asks for exactly the fields it needs</td><td>Flexible for UIs; one round trip for nested data</td><td>Caching, query cost control, authorisation per field</td><td>Front ends combining many sources</td></tr>
+      <tr><td>Webhooks</td><td>Your server calls the client's URL when something happens</td><td>No polling</td><td>Delivery retries, signature checks, client downtime</td><td>Notifying partners (payments, Git events)</td></tr>
+      <tr><td>Messaging / events</td><td>Publish to a topic; subscribers consume</td><td>Decoupling, buffering, fan-out</td><td>Eventual consistency, duplicates, debugging</td><td>Integration between domains, pipelines</td></tr>
+      <tr><td>WebSockets / SSE</td><td>Long-lived connection for pushes</td><td>Real-time updates, streaming responses</td><td>Connection management at scale</td><td>Live dashboards, chat, streaming AI output</td></tr>
+      <tr><td>SOAP / XML</td><td>Envelope with WSDL contract</td><td>Strict contracts, WS-* standards</td><td>Verbose, legacy tooling</td><td>Integrating older enterprise systems</td></tr>
+      <tr><td>File exchange</td><td>CSV/Parquet drops on SFTP or buckets</td><td>Simple, bulk</td><td>Latency, partial files, schema drift</td><td>Bulk data between organisations</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>gRPC contract</h3>
+<div class="snip"><pre><code>syntax = "proto3";
+package legal.v1;
+
+service JudgmentService {
+  rpc GetJudgment(GetJudgmentRequest) returns (Judgment);
+  rpc StreamNew(StreamNewRequest) returns (stream Judgment);   // server streaming
+}
+
+message GetJudgmentRequest { string id = 1; }
+message StreamNewRequest  { string court = 1; }
+message Judgment {
+  string id = 1;
+  string cnr = 2;
+  string court = 3;
+  string decision_date = 4;      // ISO date; field numbers never reused
+}</code></pre></div>
+    <p class="note">Compatibility rules: add fields with new numbers; never change or reuse a field number; reserve removed ones.</p>
+  </article>
+
+  <article class="card wide"><h3>Gateway, load balancer, proxy, mesh: who does what</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Component</th><th>Job</th><th>Knows about</th><th>GCP examples</th></tr></thead>
+      <tbody>
+      <tr><td>Load balancer</td><td>Spread traffic across healthy instances; terminate TLS</td><td>IPs, ports, hosts, paths</td><td>Cloud Load Balancing</td></tr>
+      <tr><td>Reverse proxy</td><td>Front a server: TLS, compression, routing, caching</td><td>HTTP requests</td><td>Envoy, nginx</td></tr>
+      <tr><td>API gateway</td><td>Single entry for APIs: authentication, rate limits, routing, request transformation</td><td>API keys, tokens, routes, quotas</td><td>API Gateway, Apigee</td></tr>
+      <tr><td>API management platform</td><td>Gateway plus API products, developer portal, analytics, monetisation, lifecycle</td><td>Consumers, apps, products, plans</td><td>Apigee</td></tr>
+      <tr><td>Service mesh</td><td>Service-to-service mTLS, retries, traffic splitting, telemetry inside the platform</td><td>Every internal call</td><td>Cloud Service Mesh (Istio)</td></tr>
+      <tr><td>Backend for frontend</td><td>An API shaped for one client type</td><td>That client's screens</td><td>A small service on Cloud Run</td></tr>
+      </tbody></table></div>
+    <p class="note">North-south traffic (clients into your platform) goes through the gateway; east-west traffic (services to each other) is the mesh's job. Keep business logic out of both.</p>
+  </article>
+
+  <article class="card"><h3>API versioning and evolution</h3>
+    <ul>
+      <li><b>Additive changes are safe:</b> new endpoints, new optional fields, new enum values clients are told to tolerate.</li>
+      <li><b>Breaking changes</b> (removing or renaming fields, changing types or meaning) need a new version.</li>
+      <li><b>Where to version:</b> in the path (<code>/v1/</code>) is the most visible and the easiest to route at a gateway; headers are cleaner but harder to test.</li>
+      <li><b>Deprecate politely:</b> announce, add <code>Deprecation</code> and <code>Sunset</code> headers, measure who still calls, then remove.</li>
+      <li><b>Meaning can break without a schema change:</b> a field whose values change meaning is a breaking change even if its type is the same.</li>
+      <li><b>Contract tests</b> in CI catch accidental breaks.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Reliable integration</h3>
+    <ul>
+      <li><b>Timeouts</b> on every call; <b>retries</b> only for idempotent operations, with backoff and jitter.</li>
+      <li><b>Idempotency keys</b> for POSTs that create or charge.</li>
+      <li><b>Long-running work:</b> return <code>202 Accepted</code> with a status URL, or emit an event when done.</li>
+      <li><b>Webhooks you send:</b> sign the payload (HMAC), retry with backoff, let clients replay.</li>
+      <li><b>Webhooks you receive:</b> verify the signature, respond fast, process asynchronously, dedupe by event ID.</li>
+      <li><b>Rate limits</b> with <code>429</code> and <code>Retry-After</code>.</li>
+      <li><b>Correlation IDs</b> (<code>traceparent</code>) passed through every hop.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Integration styles (oldest to newest)</h3>
+    <ol>
+      <li><b>File transfer:</b> one system writes files, another reads them. Simple and still common for bulk data.</li>
+      <li><b>Shared database:</b> several systems read and write the same tables. Avoid: no system owns the schema.</li>
+      <li><b>Remote procedure call:</b> one system calls another's API (REST, gRPC). Simple; couples availability.</li>
+      <li><b>Messaging:</b> systems exchange messages through a broker. Decoupled in time; more moving parts.</li>
+    </ol>
+    <p class="note">From <i>Enterprise Integration Patterns</i> (Hohpe and Woolf), still the best catalogue of messaging patterns.</p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain REST resources, methods and status codes</li><li>Call an API with curl and read its OpenAPI spec</li><li>Tell sync from async integration</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a REST API with pagination, errors and versioning</li><li>Write and publish an OpenAPI contract</li><li>Add timeouts, retries and idempotency keys</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose REST, gRPC, GraphQL or events for a context</li><li>Design gateway, mesh and BFF responsibilities</li><li>Run API evolution: deprecation and contract tests</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set API standards and governance across the organisation</li><li>Design a partner and public API programme</li><li>Lead integration architecture across many systems</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Problem Details (RFC 9457)</li><li>AsyncAPI for event-driven contracts</li><li>gRPC streaming and deadlines</li><li>GraphQL federation</li><li>API design guides (Google AIP)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://google.aip.dev/" target="_blank" rel="noopener">Google API Improvement Proposals (AIP)</a><span class="lnote"> Google's detailed API design rules</span></li><li><a href="https://spec.openapis.org/oas/latest.html" target="_blank" rel="noopener">OpenAPI Specification</a><span class="lnote"> The contract format for HTTP APIs</span></li><li><a href="https://grpc.io/docs/" target="_blank" rel="noopener">gRPC documentation</a><span class="lnote"> Concepts and language guides</span></li><li><a href="https://graphql.org/learn/" target="_blank" rel="noopener">GraphQL</a><span class="lnote"> Official introduction</span></li><li><a href="https://www.asyncapi.com/docs" target="_blank" rel="noopener">AsyncAPI</a><span class="lnote"> Contracts for event-driven APIs</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener">RFC 9457: Problem Details for HTTP APIs</a><span class="lnote"> Standard error format</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging and integration patterns</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/dags/">← Airflow DAGs</a><a class="pn-next" href="/well-rounded-engineer/graphql/">GraphQL →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

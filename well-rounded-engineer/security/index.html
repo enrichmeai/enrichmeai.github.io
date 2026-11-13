@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security · Well Rounded Engineer</title>
+<meta name="description" content="The risks every engineer must recognise, and the habits that prevent most of them: in application code, APIs, data, cloud and the supply chain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="security">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/" aria-current="page">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="security" data-name="Security">
+  <div class="panel-head"><h1>Security</h1><p>The risks every engineer must recognise, and the habits that prevent most of them: in application code, APIs, data, cloud and the supply chain.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Principles</h3>
+    <ul>
+      <li><b>Least privilege:</b> every person, service and token gets only the access it needs, for only as long as it needs it.</li>
+      <li><b>Defence in depth:</b> several independent layers (network, identity, application, data), so one failure is not a breach.</li>
+      <li><b>Secure by default:</b> private unless opened, denied unless allowed, encrypted unless there is a reason not to be.</li>
+      <li><b>Never trust input:</b> anything from a user, another service, a file, a web page or a model's output is validated before use.</li>
+      <li><b>No secrets in code, images, logs or chat.</b> They live in a secret manager and are injected at runtime.</li>
+      <li><b>Fail closed:</b> when an auth or permission check cannot run, deny. A gate that opens on error is not a gate.</li>
+      <li><b>Assume breach:</b> log and alert so that a compromise is noticed and contained quickly.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>OWASP Top 10 (2021 edition)</h3>
+    <p class="note">A 2025 edition of the list has been published; compare it at owasp.org. The categories below remain a sound checklist.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Risk</th><th>Looks like</th><th>Prevent with</th></tr></thead>
+      <tbody>
+      <tr><td>A01 Broken access control</td><td><code>GET /api/cases/123</code> returns another user's case</td><td>Check ownership on every request, server side; deny by default; test it</td></tr>
+      <tr><td>A02 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
+      <tr><td>A03 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
+      <tr><td>A04 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
+      <tr><td>A05 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
+      <tr><td>A06 Vulnerable components</td><td>An old library with a known CVE</td><td>Dependency updates, SCA scanning, SBOMs</td></tr>
+      <tr><td>A07 Authentication failures</td><td>Weak passwords allowed, no MFA, session never expires</td><td>Use a proven identity provider; MFA; short-lived tokens</td></tr>
+      <tr><td>A08 Integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, protected CI</td></tr>
+      <tr><td>A09 Logging &amp; monitoring failures</td><td>A breach discovered months later</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
+      <tr><td>A10 Server-side request forgery</td><td>Server fetches a user-supplied URL that points to an internal service or metadata endpoint</td><td>Allow-list destinations; block internal ranges; separate egress</td></tr>
+      </tbody></table></div>
+    <p class="note">OWASP revises this list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
+  </article>
+
+  <article class="card"><h3>Injection: always parameterise</h3>
+<div class="snip"><pre><code>// Java JDBC
+// WRONG: "SELECT * FROM judgment WHERE cnr = '" + cnr + "'"
+PreparedStatement ps = conn.prepareStatement(
+    "SELECT * FROM judgment WHERE cnr = ?");
+ps.setString(1, cnr);
+
+// Spring JdbcClient
+jdbc.sql("SELECT * FROM judgment WHERE cnr = :cnr").param("cnr", cnr)...
+
+# Python psycopg
+cur.execute("SELECT * FROM judgment WHERE cnr = %s", (cnr,))   # never f-strings
+
+# BigQuery
+bigquery.QueryJobConfig(query_parameters=[
+    bigquery.ScalarQueryParameter("cnr", "STRING", cnr)])      # WHERE cnr = @cnr</code></pre></div>
+    <ul>
+      <li>Identifiers (table and column names) cannot be parameters: pick them from an allow-list.</li>
+      <li>Never pass user input to a shell. Use the library call, or an argument list without a shell.</li>
+      <li>Escape output for its context (HTML, JSON, URLs) to prevent XSS. Use the framework's templating, not string building.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Authentication &amp; authorisation</h3>
+    <ul>
+      <li><b>Authentication</b> is who you are; <b>authorisation</b> is what you may do. Most breaches are authorisation bugs.</li>
+      <li><b>Use OIDC / OAuth 2.0</b> with a proven provider rather than building login yourself. For browser apps, the authorisation code flow with PKCE.</li>
+      <li><b>JWTs:</b> verify the signature, issuer, audience and expiry on every request; keep them short-lived; never accept <code>alg: none</code>; never put secrets in them (they are only encoded).</li>
+      <li><b>Refresh tokens</b> rotate on use and are revocable; in browsers keep them in <code>HttpOnly; Secure; SameSite</code> cookies.</li>
+      <li><b>Check permissions on the server for every request</b> and every object: "is this user allowed this case?", not just "is the user logged in?".</li>
+      <li><b>Load roles from the source of truth</b> on each authentication; do not trust roles a client sends.</li>
+      <li><b>Passwords:</b> argon2id or bcrypt, rate-limited login, breached-password checks, MFA for admins.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Spring Security: a stateless API</h3>
+<div class="snip"><pre><code>@Bean
+SecurityFilterChain api(HttpSecurity http) throws Exception {
+  return http
+    .authorizeHttpRequests(a -&gt; a
+        .requestMatchers("/actuator/health/**").permitAll()
+        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+        .anyRequest().authenticated())            // deny by default
+    .oauth2ResourceServer(o -&gt; o.jwt(Customizer.withDefaults()))
+    .sessionManagement(s -&gt; s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+    .csrf(c -&gt; c.disable())   // only safe when auth is a bearer header, not a cookie
+    .build();
+}
+
+// object-level check in the service, not only the URL rule
+if (!caseFile.ownerId().equals(currentUserId)) throw new AccessDeniedException("not yours");</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Web &amp; API hardening</h3>
+    <ul>
+      <li><b>HTTPS only,</b> with HSTS (<code>Strict-Transport-Security</code>).</li>
+      <li><b>Content-Security-Policy</b> to limit where scripts load from; <code>X-Content-Type-Options: nosniff</code>; <code>frame-ancestors</code> against clickjacking.</li>
+      <li><b>CORS:</b> list exact origins; never reflect any origin with credentials allowed.</li>
+      <li><b>CSRF:</b> needed when the browser sends cookies automatically; use tokens or <code>SameSite</code> cookies.</li>
+      <li><b>Rate limits</b> on login, signup, password reset and expensive endpoints.</li>
+      <li><b>Validate request bodies</b> (types, lengths, ranges) and reject unknown fields where it matters.</li>
+      <li><b>Errors:</b> generic messages to the client, details to the logs. No stack traces in responses.</li>
+      <li><b>Uploads:</b> check type and size, store outside the web root, scan if users share them.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Secrets</h3>
+<div class="snip"><pre><code># store
+echo -n "$VALUE" | gcloud secrets create db-password --data-file=-
+# grant one workload access to one secret
+gcloud secrets add-iam-policy-binding db-password \
+  --member=serviceAccount:api@p.iam.gserviceaccount.com \
+  --role=roles/secretmanager.secretAccessor
+# rotate: add a version, roll the workload, then disable and destroy the old one
+gcloud secrets versions add db-password --data-file=new.txt
+gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
+    <ul>
+      <li>No service account JSON keys: Workload Identity Federation for CI, attached service accounts for workloads.</li>
+      <li>A rotation is not finished until old versions are destroyed.</li>
+      <li>Scan commits for secrets (gitleaks, GitHub secret scanning). A leaked secret is rotated, not just deleted from Git: history and forks keep it.</li>
+      <li>Never print secrets in logs, CI output, error messages or AI prompts.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Cloud security on GCP</h3>
+    <ul>
+      <li><b>IAM:</b> one service account per workload; predefined narrow roles; no Owner or Editor for services; grant to groups, not individuals.</li>
+      <li><b>Organisation policies:</b> block public buckets, service account key creation, and external IPs where not needed.</li>
+      <li><b>Network:</b> private IPs for databases; ingress limited to the load balancer; Cloud Armor in front of public apps.</li>
+      <li><b>Data:</b> encryption at rest is on by default; CMEK when you must control keys; VPC Service Controls around sensitive datasets.</li>
+      <li><b>Audit logs:</b> Admin Activity is always on; enable Data Access logs for sensitive services so reads are attributable.</li>
+      <li><b>Security Command Center</b> surfaces misconfigurations and threats across the project.</li>
+      <li><b>Separate projects</b> for dev and prod; nobody's laptop has standing prod write access.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Threat modelling in 30 minutes</h3>
+    <ol>
+      <li>Draw the data flow: users, services, stores, and the trust boundaries between them.</li>
+      <li>For each boundary, ask STRIDE questions.</li>
+      <li>List the threats, rate likelihood and impact, and pick mitigations.</li>
+      <li>Turn mitigations into tickets and tests.</li>
+    </ol>
+    <div class="tbl"><table>
+      <thead><tr><th>STRIDE</th><th>Question</th></tr></thead>
+      <tbody>
+      <tr><td>Spoofing</td><td>Can someone pretend to be another user or service?</td></tr>
+      <tr><td>Tampering</td><td>Can data be changed in transit or at rest?</td></tr>
+      <tr><td>Repudiation</td><td>Can someone deny an action because nothing recorded it?</td></tr>
+      <tr><td>Information disclosure</td><td>Can data leak to someone not entitled to it?</td></tr>
+      <tr><td>Denial of service</td><td>Can someone exhaust a resource or the budget?</td></tr>
+      <tr><td>Elevation of privilege</td><td>Can someone gain rights they should not have?</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Data protection &amp; privacy</h3>
+    <ul>
+      <li><b>Know where personal data is:</b> tag columns and datasets; keep an inventory.</li>
+      <li><b>Collect less, keep less:</b> only what the purpose needs, with a retention period.</li>
+      <li><b>Mask or tokenise</b> personal data in non-production environments and analytics.</li>
+      <li><b>Honour legal obligations:</b> deletion requests, court suppression orders, consent. Apply them on every read path, not only in one table.</li>
+      <li><b>Know the law that applies:</b> for India, the Digital Personal Data Protection Act, 2023; GDPR for EU residents.</li>
+      <li><b>Logs are data too:</b> no personal data or tokens in log lines unless necessary and protected.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Supply chain &amp; CI</h3>
+    <ul>
+      <li>Pin dependencies with lockfiles; review what new dependencies bring.</li>
+      <li>Automated updates (Dependabot, Renovate) gated by tests.</li>
+      <li>Scan: SAST (CodeQL, Semgrep), SCA (Dependabot alerts, OSV), images (Trivy), secrets (gitleaks).</li>
+      <li>Pin third-party GitHub Actions to a commit SHA; give workflows the minimum <code>permissions:</code>.</li>
+      <li>Protect <code>main</code> and deploy tags; require reviews and checks; restrict who can push release tags.</li>
+      <li>Sign images and generate SBOMs so you can prove what is running.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security testing</h3>
+    <ul>
+      <li><b>Unit and integration tests for access control:</b> user A cannot read user B's object; an expired token is refused; a missing role gets 403.</li>
+      <li><b>SAST</b> reads code for dangerous patterns; <b>DAST</b> (OWASP ZAP) probes the running app.</li>
+      <li><b>Dependency and image scans</b> on every build.</li>
+      <li><b>Fuzzing</b> parsers and file handlers with malformed input.</li>
+      <li><b>Penetration test</b> before launch and after major changes, by someone independent.</li>
+      <li><b>Prove each guard red:</b> try the forbidden action in a test and watch it fail.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security checklist for a pull request</h3>
+    <ul>
+      <li>Is every new endpoint authenticated, and does it check ownership of each object?</li>
+      <li>Is all input validated, and every query parameterised?</li>
+      <li>Any new secret? Is it in the secret manager, not in code or config?</li>
+      <li>Any new permission or IAM role? Is it the narrowest that works?</li>
+      <li>Does anything new get logged that should not be (tokens, personal data)?</li>
+      <li>New dependency: maintained, licensed acceptably, no known CVEs?</li>
+      <li>What happens on error: does it fail closed?</li>
+      <li>Is there a test that proves the forbidden case is refused?</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>When something goes wrong</h3>
+    <ol>
+      <li><b>Contain:</b> revoke the leaked key, disable the account, block the IP, take the endpoint down.</li>
+      <li><b>Preserve evidence:</b> keep logs and snapshots before cleaning up.</li>
+      <li><b>Assess:</b> what was accessed, since when, whose data.</li>
+      <li><b>Notify:</b> security lead, then customers and regulators as the law requires and within its deadlines.</li>
+      <li><b>Fix the cause</b> and add a guard (test, policy, alert) so it cannot recur.</li>
+    </ol>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Parameterise every query; never commit secrets</li><li>Check that users can only reach their own data</li><li>Apply the PR security checklist</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement OAuth 2.0 / OIDC with a provider and validate tokens properly</li><li>Use least-privilege IAM and a secret manager</li><li>Fix findings from SAST, SCA and image scans</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Threat-model a system and turn threats into tests</li><li>Design authentication, authorisation and audit for a product</li><li>Respond to and contain a security incident</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the security architecture and policies across teams</li><li>Lead compliance (DPDP, GDPR, SOC 2) and external testing</li><li>Build a security culture and secure-by-default platforms</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OWASP ASVS verification levels</li><li>OAuth 2.0 security best current practice</li><li>Supply-chain security with SLSA</li><li>Cloud security posture management</li><li>LLM and AI application security</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a><span class="lnote"> Most critical web application risks</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise how-tos for each security topic</span></li><li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a><span class="lnote"> Risks specific to APIs</span></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a><span class="lnote"> A checklist of security requirements by level</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener">Spring Security reference</a><span class="lnote"> Authentication and authorisation in Spring</span></li><li><a href="https://cloud.google.com/security/best-practices" target="_blank" rel="noopener">Google Cloud security best practices</a><span class="lnote"> IAM, network and data protection on GCP</span></li><li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA</a><span class="lnote"> Supply-chain levels for software artefacts</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/testing/">← Testing</a><a class="pn-next" href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

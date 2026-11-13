@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docker · Well Rounded Engineer</title>
+<meta name="description" content="Build small, reproducible images, run and debug containers, and compose a local stack. See Cloud Run and Kubernetes for where the images go.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="docker">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/" aria-current="page">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="docker" data-name="Docker">
+  <div class="panel-head"><h1>Docker</h1><p>Build small, reproducible images, run and debug containers, and compose a local stack. See <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a> and <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a> for where the images go.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Mental model</h3>
+    <ul>
+      <li><b>Image:</b> a read-only stack of layers plus metadata (entrypoint, env, user). Built from a Dockerfile, named <code>registry/repo:tag</code>, pinned exactly by <code>@sha256:digest</code>.</li>
+      <li><b>Container:</b> a running process from an image, with its own filesystem layer, network and process namespace. Not a VM: it shares the host kernel.</li>
+      <li><b>Layer cache:</b> each instruction is a layer. A change invalidates that layer and every one after it, so put what changes least first.</li>
+      <li><b>Volume:</b> storage that outlives the container. Anything written elsewhere disappears with it.</li>
+      <li><b>Tag vs digest:</b> a tag can be moved to a new image; a digest cannot. Deploy by digest or by an immutable tag such as the commit SHA.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Everyday commands</h3>
+<div class="snip"><pre><code>docker build -t api:dev .
+docker run --rm -p 8080:8080 -e APP_PROFILE=local api:dev
+docker run -d --name db -e POSTGRES_PASSWORD=pw -p 5433:5432 postgres:16
+docker ps -a
+docker logs -f --tail=100 db
+docker exec -it db psql -U postgres
+docker stop db &amp;&amp; docker rm db
+
+docker images
+docker image inspect api:dev --format '{{.Config.User}} {{.Size}}'
+docker history api:dev                   # layer sizes
+docker inspect db --format '{{.State.ExitCode}} {{.State.OOMKilled}}'
+docker stats                             # live CPU and memory
+
+docker tag api:dev asia-south1-docker.pkg.dev/my-proj/apps/api:3f2a9c1
+gcloud auth configure-docker asia-south1-docker.pkg.dev
+docker push asia-south1-docker.pkg.dev/my-proj/apps/api:3f2a9c1
+
+docker system df                         # what uses disk
+docker system prune                      # stopped containers, dangling images
+docker builder prune                     # build cache</code></pre></div>
+  </article>
+
+  <article class="card"><h3>A good Dockerfile</h3>
+<div class="snip"><pre><code># syntax=docker/dockerfile:1
+FROM python:3.12-slim AS base
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+WORKDIR /app
+
+# dependencies first: cached until requirements change
+COPY requirements.txt .
+RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
+
+# then the code, which changes often
+COPY src/ ./src/
+
+RUN useradd --uid 1001 --no-create-home app
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["python", "-m", "src.main"]</code></pre></div>
+<div class="snip"><pre><code># .dockerignore: keeps the build context small and secrets out
+.git
+.venv
+__pycache__/
+*.pyc
+.env
+node_modules/
+target/
+build/</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Multi-stage builds</h3>
+<div class="snip"><pre><code># Build with the full toolchain, ship only the result
+FROM eclipse-temurin:21-jdk AS build
+WORKDIR /src
+COPY gradle/ gradle/
+COPY gradlew settings.gradle.kts build.gradle.kts ./
+RUN ./gradlew dependencies --no-daemon          # cache dependencies
+COPY src/ src/
+RUN ./gradlew bootJar --no-daemon -x test
+
+FROM gcr.io/distroless/java21-debian12          # no shell, no package manager
+COPY --from=build /src/build/libs/app.jar /app.jar
+USER nonroot
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "/app.jar"]
+
+# build one stage only
+docker build --target build -t api:build .</code></pre></div>
+    <p class="note">Distroless images have no shell, which makes them smaller and safer but harder to debug. Keep a <code>-debug</code> variant or use an ephemeral debug container.</p>
+  </article>
+
+  <article class="card"><h3>Instructions that trip people up</h3>
+    <ul>
+      <li><b><code>ENTRYPOINT</code> vs <code>CMD</code>:</b> ENTRYPOINT is the program; CMD supplies default arguments that <code>docker run image …</code> replaces.</li>
+      <li><b>Exec form</b> <code>["java","-jar","app.jar"]</code> runs your process as PID 1 so it receives <code>SIGTERM</code>. Shell form <code>java -jar app.jar</code> wraps it in <code>/bin/sh</code>, which may not forward signals.</li>
+      <li><b><code>COPY</code> over <code>ADD</code>:</b> ADD also unpacks archives and fetches URLs, which surprises people.</li>
+      <li><b><code>ARG</code> vs <code>ENV</code>:</b> ARG exists only at build time; ENV persists into the running container. Neither is a safe place for secrets: use <code>RUN --mount=type=secret</code>.</li>
+      <li><b>One <code>RUN</code> per logical step,</b> cleaning up in the same command: <code>apt-get update &amp;&amp; apt-get install -y --no-install-recommends curl &amp;&amp; rm -rf /var/lib/apt/lists/*</code>.</li>
+      <li><b>Pin base images</b> to a version (<code>python:3.12-slim</code>) or a digest, never <code>latest</code>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Docker Compose for local stacks</h3>
+<div class="snip"><pre><code># compose.yaml
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: pw
+      POSTGRES_DB: corpus
+    ports: ["${DB_PORT:-5433}:5432"]
+    volumes: [dbdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 10
+  api:
+    build: .
+    ports: ["${APP_PORT:-8080}:8080"]
+    environment:
+      DB_HOST: db                      # service name is the hostname
+    depends_on:
+      db: { condition: service_healthy }
+volumes:
+  dbdata:</code></pre></div>
+<div class="snip"><pre><code>docker compose up -d --build
+docker compose logs -f api
+docker compose exec db psql -U postgres corpus
+docker compose down            # keep volumes
+docker compose down -v         # also delete volumes (data gone)
+docker compose -p wt2 up -d    # second copy with its own project name</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Multi-platform &amp; build secrets</h3>
+<div class="snip"><pre><code># Apple Silicon builds arm64 by default; Cloud Run and most servers need amd64
+docker buildx build --platform linux/amd64 -t REGISTRY/api:3f2a9c1 --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t REGISTRY/api:3f2a9c1 --push .
+docker image inspect api:dev --format '{{.Os}}/{{.Architecture}}'
+
+# secret available during one RUN, never stored in a layer
+docker build --secret id=pip_token,env=PIP_TOKEN .
+RUN --mount=type=secret,id=pip_token \
+    PIP_INDEX_URL="https://__token__:$(cat /run/secrets/pip_token)@pypi.example.com/simple" \
+    pip install -r requirements.txt</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Debugging containers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Symptom</th><th>Check</th></tr></thead>
+      <tbody>
+      <tr><td>Exits immediately</td><td><code>docker logs</code>; <code>docker inspect … .State.ExitCode</code>. 137 = killed (often OOM), 139 = segfault, 1 = app error, 127 = command not found.</td></tr>
+      <tr><td>"exec format error"</td><td>Wrong CPU architecture: rebuild with <code>--platform linux/amd64</code>.</td></tr>
+      <tr><td>Port works inside, not from host</td><td>App binds to 127.0.0.1; bind 0.0.0.0. Or a missing <code>-p host:container</code>.</td></tr>
+      <tr><td>Cannot reach another container</td><td>Use the service name on a shared network, not <code>localhost</code>.</td></tr>
+      <tr><td>Permission denied on a volume</td><td>Container user's UID does not own the host directory.</td></tr>
+      <tr><td>Image is huge</td><td><code>docker history</code>; move build tools to a build stage; add a <code>.dockerignore</code>.</td></tr>
+      <tr><td>Build ignores code change</td><td>Cached layer: check COPY order, or <code>--no-cache</code> once.</td></tr>
+      </tbody></table></div>
+<div class="snip"><pre><code>docker run --rm -it --entrypoint sh api:dev        # look inside the image
+docker run --rm -it --network container:db nicolaka/netshoot   # debug its network</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Image security</h3>
+    <ul>
+      <li>Run as a non-root user (<code>USER 1001</code>).</li>
+      <li>Start from a minimal base (slim, distroless, or Alpine where musl is fine). Fewer packages, fewer CVEs.</li>
+      <li>Scan images in CI: <code>trivy image REGISTRY/api:tag</code>, or Artifact Registry's built-in scanning.</li>
+      <li>Never bake secrets into an image or a layer; anyone who can pull it can read them with <code>docker history</code> or by unpacking layers.</li>
+      <li>Rebuild regularly so base-image security fixes reach you.</li>
+      <li>Generate an SBOM (<code>docker buildx build --sbom=true</code> or <code>syft</code>) so you can answer "are we affected?" quickly.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build, run, stop and inspect containers</li><li>Read a Dockerfile and explain each instruction</li><li>Use docker compose for a local stack</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write small multi-stage Dockerfiles with good layer caching</li><li>Run as non-root; keep secrets out of layers</li><li>Build for linux/amd64; debug exit codes and OOM kills</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Set image standards: base images, scanning, SBOMs, signing</li><li>Optimise image size and startup time for Cloud Run or Kubernetes</li><li>Design local development environments for a team</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's container supply chain</li><li>Understand the OCI image and runtime specs</li><li>Choose and govern registries, build systems and policies</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>BuildKit cache mounts and secrets</li><li>Distroless and minimal base images</li><li>OCI image format and digests</li><li>Rootless containers</li><li>Image signing with cosign and SLSA provenance</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker documentation</a><span class="lnote"> Official docs for engine, build and compose</span></li><li><a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noopener">Dockerfile best practices</a><span class="lnote"> Caching, multi-stage, small images</span></li><li><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose</a><span class="lnote"> Multi-container local stacks</span></li><li><a href="https://github.com/GoogleContainerTools/distroless" target="_blank" rel="noopener">Distroless images</a><span class="lnote"> Minimal runtime images from Google</span></li><li><a href="https://trivy.dev/" target="_blank" rel="noopener">Trivy</a><span class="lnote"> Scan images and dependencies for CVEs</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/web/">← Web Fundamentals</a><a class="pn-next" href="/well-rounded-engineer/sql/">SQL Skills →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python · Well Rounded Engineer</title>
+<meta name="description" content="Idioms for pipeline code, the Google Cloud clients, testing and packaging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="python">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/" aria-current="page">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="python" data-name="Python">
+  <div class="panel-head"><h1>Python</h1><p>Idioms for pipeline code, the Google Cloud clients, testing and packaging.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Version map</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Ver</th><th>Year</th><th>What you will use</th></tr></thead>
+      <tbody>
+      <tr><td>3.8</td><td>2019</td><td>Walrus <code>:=</code>, positional-only params <code>/</code>, f-string <code>{x=}</code></td></tr>
+      <tr><td>3.9</td><td>2020</td><td>Dict merge <code>a | b</code>, <code>str.removeprefix/removesuffix</code>, <code>list[int]</code> generics, <code>zoneinfo</code></td></tr>
+      <tr><td>3.10</td><td>2021</td><td><code>match</code> statement, <code>X | None</code> unions, <code>zip(strict=True)</code>, better error messages</td></tr>
+      <tr><td>3.11</td><td>2022</td><td>Much faster CPython, <code>tomllib</code>, <code>ExceptionGroup</code> / <code>except*</code>, <code>asyncio.TaskGroup</code>, <code>Self</code></td></tr>
+      <tr><td>3.12</td><td>2023</td><td>Generic syntax <code>def f[T](x: T)</code>, <code>type</code> aliases, freer f-strings, <code>itertools.batched</code></td></tr>
+      <tr><td>3.13</td><td>2024</td><td>New REPL, experimental free-threaded build (no GIL), experimental JIT</td></tr>
+      <tr><td>3.14</td><td>2025</td><td>Template strings <code>t"…"</code>, deferred annotations, free-threaded build officially supported, <code>compression.zstd</code>, <code>concurrent.interpreters</code></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Core idioms</h3>
+<div class="snip"><pre><code>from dataclasses import dataclass, field
+from pathlib import Path
+from datetime import date, datetime
+
+@dataclass(frozen=True, slots=True)
+class Judgment:
+    cnr: str
+    decision_date: date | None
+    tags: list[str] = field(default_factory=list)
+
+rows = [r for r in rows if r.decision_date]           # filter
+by_cnr = {r.cnr: r for r in rows}                     # index
+years = {r.decision_date.year for r in rows}          # set
+
+if (n := len(rows)) &gt; 1000: print(f"{n=}")           # walrus + debug f-string
+
+for p in Path("data").glob("**/*.parquet"): ...
+text = Path("q.sql").read_text()
+
+d = datetime.strptime("05-05-1959", "%d-%m-%Y").date()
+cfg = defaults | overrides                            # 3.9 merge</code></pre></div>
+  </article>
+
+  <article class="card"><h3>match (structural pattern matching)</h3>
+<div class="snip"><pre><code>match event:
+    case {"state": "SUCCEEDED", "rows": int(n)} if n == 0:
+        warn("succeeded with zero rows")
+    case {"state": "SUCCEEDED", "rows": int(n)}:
+        ok(n)
+    case {"state": "FAILED", "error": str(msg)}:
+        fail(msg)
+    case {"state": state}:
+        unknown(state)
+    case _:
+        raise ValueError(f"bad event: {event!r}")
+
+match path.split("/"):
+    case ["data", y, *rest] if y.startswith("year="): ...</code></pre></div>
+    <p class="note">Patterns match structure and types; they do not do string prefix matching. Use a guard (<code>if</code>) for that.</p>
+  </article>
+
+  <article class="card"><h3>Batching &amp; counting</h3>
+<div class="snip"><pre><code>from itertools import batched, groupby, chain, islice
+from collections import Counter, defaultdict
+
+for chunk in batched(rows, 500):        # 3.12; tuples of ≤500
+    client.insert_rows_json(table, chunk)
+
+counts = Counter(r.court for r in rows)
+counts.most_common(5)
+
+by_court = defaultdict(list)
+for r in rows: by_court[r.court].append(r)
+
+# groupby needs sorted input
+rows.sort(key=lambda r: r.court)
+for court, grp in groupby(rows, key=lambda r: r.court): ...
+
+flat = list(chain.from_iterable(nested))
+first10 = list(islice(gen, 10))</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Errors, logging, context managers</h3>
+<div class="snip"><pre><code>import logging, contextlib, time
+log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s %(message)s")
+
+try:
+    load(uri)
+except NotFound:
+    log.warning("missing %s", uri)          # lazy formatting
+except Exception:
+    log.exception("load failed for %s", uri) # includes traceback
+    raise
+else:
+    log.info("loaded %s", uri)
+
+@contextlib.contextmanager
+def timed(label):
+    t = time.perf_counter()
+    try: yield
+    finally: log.info("%s took %.2fs", label, time.perf_counter() - t)
+
+with timed("odp load"): run()</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Concurrency</h3>
+<div class="snip"><pre><code># Threads for blocking I/O (GCS, BQ, HTTP)
+from concurrent.futures import ThreadPoolExecutor, as_completed
+with ThreadPoolExecutor(max_workers=16) as ex:
+    futs = {ex.submit(copy, uri): uri for uri in uris}
+    for f in as_completed(futs):
+        try: f.result()
+        except Exception as e: log.error("%s: %s", futs[f], e)
+
+# asyncio with structured cancellation (3.11)
+import asyncio
+async def main():
+    async with asyncio.TaskGroup() as tg:
+        tasks = [tg.create_task(fetch(u)) for u in urls]
+    return [t.result() for t in tasks]
+asyncio.run(main())
+
+# Processes for CPU-bound work
+from concurrent.futures import ProcessPoolExecutor</code></pre></div>
+  </article>
+
+  <article class="card"><h3>BigQuery Python client</h3>
+<div class="snip"><pre><code>from google.cloud import bigquery
+client = bigquery.Client(project="my-proj", location="asia-south1")
+
+job_cfg = bigquery.QueryJobConfig(query_parameters=[
+    bigquery.ScalarQueryParameter("from_d", "DATE", "2024-01-01"),
+    bigquery.ArrayQueryParameter("courts", "STRING", ["2_5", "14_25"]),
+])
+sql = """SELECT court, COUNT(*) n FROM `my-proj.fdp.judgment`
+         WHERE decision_date &gt;= @from_d AND court IN UNNEST(@courts)
+         GROUP BY court"""
+for row in client.query(sql, job_config=job_cfg).result():
+    print(row.court, row["n"])
+
+df = client.query(sql, job_config=job_cfg).to_dataframe()   # needs db-dtypes
+
+# Dry run
+dry = client.query(sql, job_config=bigquery.QueryJobConfig(
+    query_parameters=job_cfg.query_parameters,   # same parameters as the real query
+    dry_run=True, use_query_cache=False))
+print(dry.total_bytes_processed / 1e9, "GB")
+
+# Load parquet from GCS
+load = client.load_table_from_uri(
+    "gs://bkt/data/year=2024/*.parquet", "my-proj.odp.hc_judgment",
+    job_config=bigquery.LoadJobConfig(
+        source_format=bigquery.SourceFormat.PARQUET,
+        write_disposition=bigquery.WriteDisposition.WRITE_APPEND))
+load.result()                     # raises on failure
+print(load.output_rows)
+
+client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list</code></pre></div>
+  </article>
+
+  <article class="card"><h3>GCS Python client</h3>
+<div class="snip"><pre><code>from google.cloud import storage
+gcs = storage.Client()
+bucket = gcs.bucket("my-landing")
+
+for blob in gcs.list_blobs("my-landing", prefix="data/tar/", match_glob="**/*.tar"):
+    print(blob.name, blob.size, blob.etag, blob.updated)
+
+blob = bucket.blob("manifests/run.json")
+blob.upload_from_string(json.dumps(m), content_type="application/json",
+                        if_generation_match=0)   # create-only, no overwrite
+data = bucket.blob("x.json").download_as_bytes()
+
+with bucket.blob("big.csv").open("r") as f:      # streaming read
+    for line in f: ...
+
+bucket.copy_blob(bucket.blob("a"), other_bucket, "b")</code></pre></div>
+  </article>
+
+  <article class="card"><h3>pytest</h3>
+<div class="snip"><pre><code>import pytest
+
+@pytest.fixture
+def client(monkeypatch):
+    fake = FakeBq()
+    monkeypatch.setattr("pipeline.bq.client", fake)
+    return fake
+
+@pytest.mark.parametrize("raw,expected", [
+    ("05-05-1959", date(1959, 5, 5)),
+    ("2024-01-31", date(2024, 1, 31)),
+])
+def test_parse_date(raw, expected):
+    assert parse_date(raw) == expected
+
+def test_rejects_garbage():
+    with pytest.raises(ValueError, match="does not parse"):
+        parse_date("31/31/31")
+
+def test_writes(tmp_path):
+    out = tmp_path / "o.json"; write(out); assert out.exists()
+
+# pytest -q -k parse -x --lf       (filter, stop on first fail, last failed)</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Environments &amp; packaging</h3>
+<div class="snip"><pre><code># stdlib
+python3 -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -e '.[test]'
+
+# uv (fast, lockfile)
+uv venv &amp;&amp; uv pip install -e '.[test]'
+uv add google-cloud-bigquery
+uv run pytest -q
+
+# pyproject.toml
+[project]
+name = "orchestrator"
+requires-python = "&gt;=3.11"
+dependencies = ["google-cloud-bigquery&gt;=3", "google-cloud-storage&gt;=2"]
+[project.optional-dependencies]
+test = ["pytest&gt;=8"]
+
+# lint/format
+ruff check . --fix &amp;&amp; ruff format .
+mypy src/</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Beam / Dataflow (Python)</h3>
+<div class="snip"><pre><code>import apache_beam as beam
+from apache_beam.options.pipeline_options import PipelineOptions
+
+with beam.Pipeline(options=PipelineOptions()) as p:
+    (p
+     | beam.io.ReadFromBigQuery(query="SELECT court FROM `p.odp.hc`",
+                                use_standard_sql=True)
+     | beam.Map(lambda r: (r["court"], 1))
+     | beam.CombinePerKey(sum)
+     | beam.Map(lambda kv: {"court": kv[0], "n": kv[1]})
+     | beam.io.WriteToBigQuery("p:cdp.court_counts",
+           schema="court:STRING,n:INTEGER",
+           write_disposition=beam.io.BigQueryDisposition.WRITE_TRUNCATE))
+# python job.py --runner=DataflowRunner --project=… --region=… --temp_location=gs://…</code></pre></div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write functions, comprehensions and dataclasses</li><li>Use virtual environments and install packages</li><li>Write simple pytest tests</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Type hints, logging, error handling and context managers</li><li>Use the BigQuery and GCS clients in pipelines</li><li>Package a project with pyproject.toml</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between threads, processes and asyncio</li><li>Design reusable libraries with clear APIs and tests</li><li>Profile memory and CPU; optimise data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Understand CPython internals, the GIL and free-threading</li><li>Own the organisation's Python tooling and packaging</li><li>Mentor and set code standards</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Typing: generics, Protocols, mypy or pyright</li><li>asyncio internals and TaskGroups</li><li>Packaging: wheels, lockfiles, uv</li><li>Free-threaded CPython (3.13+)</li><li>Data libraries: pandas, Polars, PyArrow</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.python.org/3/" target="_blank" rel="noopener">Python documentation</a><span class="lnote"> Language and standard library reference</span></li><li><a href="https://docs.python.org/3/whatsnew/index.html" target="_blank" rel="noopener">What's new in Python</a><span class="lnote"> Changes in each release</span></li><li><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 style guide</a><span class="lnote"> Conventions for readable Python</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Fixtures, parametrize, plugins</span></li><li><a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">uv</a><span class="lnote"> Fast package and project manager</span></li><li><a href="https://cloud.google.com/python/docs/reference/bigquery/latest" target="_blank" rel="noopener">BigQuery Python client</a><span class="lnote"> API reference</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/java/">← Java</a><a class="pn-next" href="/well-rounded-engineer/testing/">Testing →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caching · Well Rounded Engineer</title>
+<meta name="description" content="Keeping copies of expensive results closer to where they are needed. Where caches live, the patterns for reading and writing them, invalidation and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="caching">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/" aria-current="page">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="caching" data-name="Caching">
+  <div class="panel-head"><h1>Caching</h1><p>Keeping copies of expensive results closer to where they are needed. Where caches live, the patterns for reading and writing them, invalidation and consistency, stampedes, key design, and working code for Spring, Python, Redis, HTTP and BigQuery.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Where caches live</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Layer</th><th>Example</th><th>Good for</th><th>Watch out for</th></tr></thead>
+      <tbody>
+      <tr><td>Browser</td><td>HTTP cache</td><td>Static assets, per-user responses</td><td>Wrong <code>Cache-Control</code> serving stale pages</td></tr>
+      <tr><td>CDN</td><td>Cloud CDN</td><td>Public content near users</td><td>Caching personalised responses by mistake</td></tr>
+      <tr><td>Gateway</td><td>Apigee ResponseCache</td><td>Identical API responses</td><td>Keys that ignore the caller's identity</td></tr>
+      <tr><td>In-process</td><td>Caffeine, <code>functools.lru_cache</code></td><td>Hot reference data, nanosecond reads</td><td>Each instance has its own copy; memory per instance</td></tr>
+      <tr><td>Distributed</td><td>Redis / Memorystore</td><td>Shared across instances, sessions, rate limits</td><td>Network hop; one more system to run</td></tr>
+      <tr><td>Database</td><td>Buffer cache, materialised views</td><td>Repeated queries and aggregates</td><td>Refresh schedules</td></tr>
+      <tr><td>Warehouse</td><td>BigQuery cached results, BI Engine</td><td>Repeated dashboard queries</td><td>Cache is skipped for some queries (non-deterministic functions, changed tables)</td></tr>
+      <tr><td>Model API</td><td>Prompt caching</td><td>Long, repeated prompt prefixes</td><td>Any change in the prefix invalidates it</td></tr>
+      </tbody></table></div>
+    <p class="note">A cache is a copy, so every cache is a consistency decision. Add one when measurements show the need, and decide up front how stale its data may be.</p>
+  </article>
+
+  <article class="card"><h3>Read and write patterns</h3>
+    <ul>
+      <li><b>Cache-aside (lazy loading):</b> read the cache; on a miss, read the source and fill the cache. Simple and the most common.</li>
+      <li><b>Read-through:</b> the cache library loads from the source itself on a miss (Caffeine <code>LoadingCache</code>).</li>
+      <li><b>Write-through:</b> writes go to the cache and the source together; reads are always warm; writes are slower.</li>
+      <li><b>Write-behind:</b> write to the cache, persist later. Fast, but a crash loses writes. Rarely worth it.</li>
+      <li><b>Refresh-ahead:</b> refresh popular entries before they expire so users never wait for a miss.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Invalidation</h3>
+    <ul>
+      <li><b>TTL:</b> entries expire after a set time. Bounds staleness; simplest and most robust. Every cache entry should have one.</li>
+      <li><b>Delete on write:</b> after updating the source, delete the cache key (not update it), so the next read reloads fresh data.</li>
+      <li><b>Versioned keys:</b> include a version in the key (<code>judgment:v3:123</code>, or a data version number); bump it to invalidate everything at once.</li>
+      <li><b>Event-driven:</b> consume change events (CDC, domain events) and evict affected keys.</li>
+      <li><b>Immutable data</b> (a published judgment version, a fingerprinted file) can be cached forever.</li>
+    </ul>
+    <p class="note">The race to know: reader A misses and reads the old value; writer B updates the source and deletes the key; A then writes the old value into the cache. A TTL bounds the damage; versioned keys avoid it.</p>
+  </article>
+
+  <article class="card"><h3>Stampedes (thundering herd)</h3>
+    <p>A popular key expires and thousands of requests miss at once and hit the database together.</p>
+    <ul>
+      <li><b>Single flight / request coalescing:</b> only one caller loads; the others wait for its result (Caffeine does this per key in-process).</li>
+      <li><b>Distributed lock:</b> <code>SET lock:key 1 NX EX 10</code> in Redis; the winner loads, others briefly serve stale or wait.</li>
+      <li><b>Stale-while-revalidate:</b> serve the expired value while one background refresh runs.</li>
+      <li><b>Jittered TTLs:</b> add randomness so many keys do not expire at the same moment.</li>
+      <li><b>Probabilistic early refresh:</b> refresh slightly before expiry with rising probability.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Key design</h3>
+    <ul>
+      <li><b>Include every input that changes the answer:</b> IDs, filters, page, locale, user or tenant, and the API or data version.</li>
+      <li><b>Normalise</b> inputs (sort filters, lower-case where meaning allows) so equal requests share a key.</li>
+      <li><b>Namespace</b> keys: <code>service:entity:version:id</code>.</li>
+      <li><b>Never</b> share a cache entry across users when the response depends on permissions; include the permission scope in the key, or cache only the permission-independent part.</li>
+      <li><b>Keep values small</b>; large values make the cache slow and evict everything else.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>What not to cache, or not that way</h3>
+    <ul>
+      <li><b>Errors and outages as "not found":</b> caching an empty result because the source was down turns "cannot see" into a confident "nothing there" for the whole TTL.</li>
+      <li><b>Negative results</b> (genuinely not found) only briefly, if at all.</li>
+      <li><b>Secrets and tokens</b> in shared caches.</li>
+      <li><b>Personalised data</b> in public caches (CDN, gateway) without per-user keys.</li>
+      <li><b>Data with legal effect</b> (a suppression, a deletion) behind a long TTL: it must take effect immediately, so check it outside the cache or evict on change.</li>
+      <li><b>Cheap queries:</b> if the source answers in 1 ms, a cache adds complexity for little gain.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Spring Cache with Caffeine or Redis</h3>
+<div class="snip"><pre><code>@Configuration
+@EnableCaching
+class CacheConfig {
+  @Bean
+  CacheManager cacheManager() {
+    var m = new CaffeineCacheManager("judgments", "courts");
+    m.setCaffeine(Caffeine.newBuilder()
+        .maximumSize(10_000)
+        .expireAfterWrite(Duration.ofMinutes(10))
+        .recordStats());                     // hit ratio for metrics
+    return m;
+  }
+}
+
+@Service
+class JudgmentService {
+  @Cacheable(cacheNames = "judgments", key = "#id", unless = "#result == null")
+  public Judgment get(String id) { return repo.find(id).orElse(null); }
+
+  @CacheEvict(cacheNames = "judgments", key = "#j.id()")
+  public void update(Judgment j) { repo.save(j); }
+}</code></pre></div>
+<div class="snip"><pre><code># switch to Redis shared across instances
+spring:
+  cache:
+    type: redis
+    redis:
+      time-to-live: 10m
+      key-prefix: "legal:v3:"
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379</code></pre></div>
+    <p class="note"><code>@Cacheable</code> works through a proxy, like <code>@Transactional</code>: calling the method from inside the same class skips the cache.</p>
+  </article>
+
+  <article class="card"><h3>Python: in-process and Redis</h3>
+<div class="snip"><pre><code>from functools import lru_cache
+from cachetools import TTLCache, cached
+
+@lru_cache(maxsize=1024)                     # immutable inputs, never expires
+def court_name(code: str) -&gt; str: ...
+
+@cached(TTLCache(maxsize=10_000, ttl=600))   # expires after 10 minutes
+def judgment_summary(jid: str) -&gt; dict: ...</code></pre></div>
+<div class="snip"><pre><code>import json, random, redis
+r = redis.Redis(host=REDIS_HOST, port=6379, decode_responses=True)
+
+def get_judgment(jid: str) -&gt; dict | None:
+    key = f"legal:judgment:v3:{jid}"
+    if (hit := r.get(key)) is not None:
+        return json.loads(hit)
+    j = db.load_judgment(jid)                # raises if the DB is down: do not cache that
+    if j is not None:
+        r.set(key, json.dumps(j), ex=600 + random.randint(0, 60))   # jittered TTL
+    return j
+
+def update_judgment(j: dict) -&gt; None:
+    db.save(j)
+    r.delete(f"legal:judgment:v3:{j['id']}")  # delete after write</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Redis essentials</h3>
+<div class="snip"><pre><code>SET judgment:v3:123 '{"cnr":"…"}' EX 600     # with TTL
+SET lock:judgment:123 1 NX EX 10             # only if absent: a simple lock
+GET judgment:v3:123
+DEL judgment:v3:123
+TTL judgment:v3:123
+INCR ratelimit:app42:202611121015            # counters, rate limits
+EXPIRE ratelimit:app42:202611121015 60
+INFO stats                                   # keyspace_hits, keyspace_misses, evicted_keys</code></pre></div>
+    <ul>
+      <li>Set <code>maxmemory</code> and an eviction policy (<code>allkeys-lru</code> or <code>allkeys-lfu</code> for a pure cache).</li>
+      <li>Avoid <code>KEYS *</code> in production; use <code>SCAN</code>.</li>
+      <li>Design so the system still works (slower) if Redis is down; a cache should not be a single point of failure.</li>
+      <li>On GCP: Memorystore for Redis or Valkey, private IP, AUTH and in-transit encryption on.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>HTTP and CDN caching</h3>
+<div class="snip"><pre><code># fingerprinted static assets
+Cache-Control: public, max-age=31536000, immutable
+
+# public API response, shared caches allowed, short freshness
+Cache-Control: public, max-age=60, stale-while-revalidate=30
+ETag: "v3-123-a1b2"
+
+# per-user data
+Cache-Control: private, max-age=30
+
+# sensitive
+Cache-Control: no-store</code></pre></div>
+    <p class="note">More on headers on <a href="/well-rounded-engineer/web/">Web Fundamentals</a>. Configure the CDN to vary on, or bypass for, the <code>Authorization</code> header and cookies.</p>
+  </article>
+
+  <article class="card"><h3>Caching in the data stack</h3>
+    <ul>
+      <li><b>BigQuery cached results:</b> identical queries reuse results for free for about 24 hours, unless tables changed or the query is non-deterministic.</li>
+      <li><b>Materialised views:</b> BigQuery keeps aggregates up to date incrementally and can rewrite queries to use them.</li>
+      <li><b>BI Engine:</b> in-memory acceleration for dashboards.</li>
+      <li><b>Serving tables:</b> a consumable table in Postgres is itself a cache of the warehouse; it needs a refresh rule and freshness monitoring like any other cache.</li>
+      <li><b>Pipeline-level:</b> skip work whose inputs have not changed (compare ETags or content hashes) instead of recomputing.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Measuring a cache</h3>
+    <ul>
+      <li><b>Hit ratio</b> (hits ÷ requests): low ratios mean wrong keys, short TTLs or data that is not reused.</li>
+      <li><b>Latency</b> on hit and on miss.</li>
+      <li><b>Evictions and memory:</b> constant evictions mean the cache is too small for the working set.</li>
+      <li><b>Staleness:</b> how old served data is, against the agreed maximum.</li>
+      <li><b>Source load</b> with and without the cache, to prove it earns its keep.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain cache-aside, TTL and hit ratio</li><li>Use an in-process cache for reference data</li><li>Read HTTP caching headers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Add Spring or Python caching with keys, TTLs and eviction on write</li><li>Use Redis safely with TTLs, eviction policy and a fallback</li><li>Measure hit ratio and staleness</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design multi-layer caching for a system with explicit staleness rules</li><li>Prevent stampedes and invalidation races</li><li>Decide what must never be cached (outages, permissions, legal effect)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set caching standards and shared cache platforms</li><li>Design caching for global, multi-region systems</li><li>Lead consistency and cost trade-offs across products</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Caffeine's W-TinyLFU eviction</li><li>Redis data structures and persistence</li><li>CDN cache keys and purging</li><li>Materialised views and incremental maintenance</li><li>Semantic caching for LLM calls (and its risks)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis documentation</a><span class="lnote"> Commands, data types, eviction</span></li><li><a href="https://github.com/ben-manes/caffeine" target="_blank" rel="noopener">Caffeine</a><span class="lnote"> High-performance Java cache</span></li><li><a href="https://docs.spring.io/spring-boot/reference/io/caching.html" target="_blank" rel="noopener">Spring Boot caching</a><span class="lnote"> Cache abstraction and providers</span></li><li><a href="https://cachetools.readthedocs.io/" target="_blank" rel="noopener">cachetools</a><span class="lnote"> Python caches with TTL and LRU</span></li><li><a href="https://cloud.google.com/memorystore/docs" target="_blank" rel="noopener">Memorystore documentation</a><span class="lnote"> Managed Redis and Valkey on GCP</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching" target="_blank" rel="noopener">MDN: HTTP caching</a><span class="lnote"> Browser and shared caches</span></li><li><a href="https://cloud.google.com/bigquery/docs/cached-results" target="_blank" rel="noopener">BigQuery cached results</a><span class="lnote"> When BigQuery reuses query results</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/performance/">← Performance</a><a class="pn-next" href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment Gateways · Well Rounded Engineer</title>
+<meta name="description" content="How online payments work, the parties and flows (cards, UPI, subscriptions), how to integrate a gateway such as Razorpay or Stripe safely, and the…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="payments">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/" aria-current="page">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="payments" data-name="Payment Gateways">
+  <div class="panel-head"><h1>Payment gateways</h1><p>How online payments work, the parties and flows (cards, UPI, subscriptions), how to integrate a gateway such as Razorpay or Stripe safely, and the engineering that keeps money correct: idempotency, webhooks, state machines, ledgers and reconciliation.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Who is involved</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Party</th><th>Role</th></tr></thead>
+      <tbody>
+      <tr><td>Customer</td><td>Pays with a card, UPI, net banking or wallet</td></tr>
+      <tr><td>Merchant</td><td>You: the business being paid</td></tr>
+      <tr><td>Payment gateway / aggregator</td><td>Collects payment details securely, routes the transaction, gives you APIs, checkout and webhooks (Razorpay, Stripe, PayU, Cashfree)</td></tr>
+      <tr><td>Acquirer</td><td>The merchant's bank, which receives the funds</td></tr>
+      <tr><td>Card network</td><td>Visa, Mastercard, RuPay: routes card transactions between banks</td></tr>
+      <tr><td>Issuer</td><td>The customer's bank, which approves or declines</td></tr>
+      <tr><td>UPI (NPCI)</td><td>India's real-time account-to-account network; apps such as PhonePe, Google Pay, Paytm act as front ends</td></tr>
+      <tr><td>Regulator</td><td>In India the RBI: rules on recurring payments, tokenisation, data storage and aggregators</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Card payment lifecycle</h3>
+    <ol>
+      <li><b>Authorise:</b> the issuer checks funds and fraud and places a hold. With 3-D Secure (OTP or app approval) the customer authenticates.</li>
+      <li><b>Capture:</b> the merchant confirms the charge (automatically or later, e.g. after shipping). An uncaptured authorisation expires.</li>
+      <li><b>Settle:</b> funds move to the gateway, then to your bank account, usually T+1 or T+2, minus fees.</li>
+      <li><b>Refund:</b> full or partial, returned through the same route; takes days to reach the customer.</li>
+      <li><b>Chargeback / dispute:</b> the customer disputes with their bank; you submit evidence or lose the funds plus a fee.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>UPI in brief</h3>
+    <ul>
+      <li><b>Intent / QR flow:</b> your checkout opens the customer's UPI app (or shows a QR); they approve with their UPI PIN.</li>
+      <li><b>Collect flow:</b> you send a payment request to a UPI ID; the customer approves in their app. (Being phased down for many use cases; check current NPCI rules.)</li>
+      <li><b>Real-time and irrevocable</b> from the customer's side; refunds are separate transactions.</li>
+      <li><b>UPI AutoPay:</b> recurring mandates the customer approves once, for subscriptions.</li>
+      <li><b>Pending is normal:</b> a payment can sit in a pending state for minutes; your system must wait for the final status rather than assume failure.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Standard integration flow (server-verified)</h3>
+    <ol>
+      <li><b>Create an order on your server</b> with the amount in the smallest unit (paise) and your own receipt ID. Store it as <code>CREATED</code>.</li>
+      <li><b>Open the gateway's checkout</b> in the browser or app with that order ID. Card and UPI details go to the gateway, never to your servers.</li>
+      <li><b>Checkout returns</b> payment ID, order ID and a signature to your client, which sends them to your server.</li>
+      <li><b>Verify the signature on the server</b> and fetch the payment from the gateway API to confirm amount, currency and status.</li>
+      <li><b>Webhooks</b> (<code>payment.captured</code>, <code>payment.failed</code>, refunds, disputes) arrive at your endpoint; verify their signature and update state idempotently. Treat webhooks and API fetches as the source of truth, never the browser.</li>
+      <li><b>Fulfil</b> only when your order is <code>PAID</code> according to the server.</li>
+      <li><b>Reconcile</b> daily against the gateway's settlement reports.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Razorpay: order and verification</h3>
+<div class="snip"><pre><code># create an order (amount in paise: 50000 = ₹500.00)
+curl -u "$RZP_KEY_ID:$RZP_KEY_SECRET" \
+  -X POST https://api.razorpay.com/v1/orders \
+  -H "Content-Type: application/json" \
+  -d '{"amount":50000,"currency":"INR","receipt":"order_8421"}'</code></pre></div>
+<div class="snip"><pre><code>// verify checkout signature: HMAC-SHA256(order_id + "|" + payment_id, key_secret)
+static boolean validCheckout(String orderId, String paymentId, String signature, String keySecret)
+    throws Exception {
+  Mac mac = Mac.getInstance("HmacSHA256");
+  mac.init(new SecretKeySpec(keySecret.getBytes(UTF_8), "HmacSHA256"));
+  String expected = HexFormat.of().formatHex(
+      mac.doFinal((orderId + "|" + paymentId).getBytes(UTF_8)));
+  return MessageDigest.isEqual(expected.getBytes(UTF_8), signature.getBytes(UTF_8)); // constant time
+}
+
+// webhook: HMAC-SHA256 of the RAW request body with the webhook secret,
+// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Stripe: PaymentIntent and webhook</h3>
+<div class="snip"><pre><code>import stripe
+stripe.api_key = STRIPE_SECRET_KEY
+
+intent = stripe.PaymentIntent.create(
+    amount=50000, currency="inr",
+    metadata={"order_id": "order_8421"},
+    idempotency_key="order_8421-create",         # safe to retry
+)
+# return intent.client_secret to the front end, which confirms the payment
+
+# webhook endpoint
+def stripe_webhook(request):
+    payload = request.body                        # raw bytes
+    sig = request.headers["Stripe-Signature"]
+    try:
+        event = stripe.Webhook.construct_event(payload, sig, WEBHOOK_SECRET)
+    except (ValueError, stripe.SignatureVerificationError):   # older SDKs: stripe.error.SignatureVerificationError
+        return 400
+    if not seen_before(event["id"]):              # dedupe: webhooks repeat
+        handle(event)
+    return 200</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Payment state machine</h3>
+<div class="snip"><pre><code>CREATED ──checkout──▶ PENDING ──captured──▶ PAID ──refund──▶ PARTIALLY_REFUNDED / REFUNDED
+   │                     │                    │
+   │                     ├──failed──▶ FAILED  └──dispute──▶ DISPUTED ──▶ WON / LOST
+   └──expired──▶ EXPIRED └──timeout──▶ (stay PENDING; poll the gateway; never assume)</code></pre></div>
+    <ul>
+      <li>Allow only valid transitions; reject or log anything else.</li>
+      <li>Events can arrive late or out of order (a webhook before the browser callback, a failure after a success for a different attempt). Decide by the gateway's fetched status.</li>
+      <li>Keep every transition as an append-only event with its source (webhook, API fetch, user).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Money-handling rules</h3>
+    <ul>
+      <li><b>Integers in the smallest unit</b> (paise, cents) or decimal types; never floats.</li>
+      <li><b>Store the currency</b> with every amount.</li>
+      <li><b>Compute prices and totals on the server.</b> Never trust an amount sent by the client.</li>
+      <li><b>Idempotency keys</b> on every create, capture and refund call, derived from your own IDs, so a retry cannot charge twice.</li>
+      <li><b>Webhook handlers are idempotent</b>: dedupe by event ID; applying the same event twice changes nothing.</li>
+      <li><b>Unknown is not failed:</b> a timeout means "we do not know yet". Poll the gateway before telling the customer it failed or retrying the charge.</li>
+      <li><b>Round once,</b> at a defined step, with a documented rule (taxes, discounts, splits).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Double-entry ledger</h3>
+<div class="snip"><pre><code>CREATE TABLE ledger_entry (
+  id           bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  txn_id       uuid    NOT NULL,          -- groups the entries of one transaction
+  account      text    NOT NULL,          -- 'customer_receivable', 'gateway_clearing', 'revenue', 'gst_payable'
+  amount_paise bigint  NOT NULL,          -- positive = debit, negative = credit
+  currency     char(3) NOT NULL,
+  created_at   timestamptz NOT NULL DEFAULT now()
+);
+-- every txn_id must sum to zero
+SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt; 0;  -- must return nothing</code></pre></div>
+    <p class="note">Append only: corrections are new entries, never edits. Balances are sums. This makes every rupee traceable and reconciliation possible.</p>
+  </article>
+
+  <article class="card"><h3>Subscriptions and recurring payments</h3>
+    <ul>
+      <li>Gateways model <b>plans</b> (price, interval) and <b>subscriptions</b> (a customer on a plan) with a mandate or saved token for charging.</li>
+      <li><b>India:</b> RBI e-mandate rules govern recurring card and UPI payments: customer registration with authentication, pre-debit notifications, and extra authentication above a limit. Check the current limits and rules; they have changed over time.</li>
+      <li><b>Handle the lifecycle via webhooks:</b> activated, charged, payment failed, halted, cancelled, completed.</li>
+      <li><b>Dunning:</b> retries on failed renewals, customer notices, grace periods, then downgrade or cancel.</li>
+      <li><b>Entitlements</b> (what the user may use) are derived from subscription state in your system, updated only from verified events.</li>
+      <li><b>Proration</b> rules for upgrades and downgrades mid-period, decided and written down.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security and compliance</h3>
+    <ul>
+      <li><b>PCI DSS:</b> use hosted checkout or the gateway's elements so card data never reaches your servers; your compliance scope stays small.</li>
+      <li><b>Card tokenisation (India):</b> merchants may not store card numbers; saved cards use network or issuer tokens through the gateway.</li>
+      <li><b>Data localisation:</b> RBI requires payment system data to be stored in India; confirm your gateway and your own storage comply.</li>
+      <li><b>Secrets:</b> API keys and webhook secrets in a secret manager; separate test and live keys; rotate on staff changes.</li>
+      <li><b>Webhook endpoint:</b> verify signatures on the raw body, reject old timestamps where provided, respond quickly, process asynchronously.</li>
+      <li><b>Fraud:</b> use the gateway's risk tools, 3-D Secure, velocity limits, and watch for card testing (many small failed attempts).</li>
+      <li><b>Tax and invoices:</b> GST-compliant invoices with the correct rates and place of supply.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Reconciliation</h3>
+    <ol>
+      <li>Download settlement and transaction reports from the gateway daily (API or dashboard).</li>
+      <li>Match each gateway transaction to your order by order ID and amount.</li>
+      <li>Match settlements to bank credits, accounting for fees and taxes.</li>
+      <li>Flag mismatches: paid at gateway but not in your system (missed webhook), paid in your system but not settled, amount differences, unexpected refunds or disputes.</li>
+      <li>Resolve each one and record why. A rising mismatch count is an incident.</li>
+    </ol>
+    <p class="note">Run reconciliation as a scheduled job with run records, like any pipeline.</p>
+  </article>
+
+  <article class="card"><h3>Testing payments</h3>
+    <ul>
+      <li>Use the gateway's <b>test mode</b> keys, test cards and test UPI IDs for success, failure, 3-D Secure and pending cases.</li>
+      <li>Replay recorded webhook payloads in automated tests; build fixtures from real test-mode events, not guesses.</li>
+      <li>Test duplicates, out-of-order events, timeouts and partial refunds explicitly.</li>
+      <li>Keep a test-mode end-to-end checkout in your release checks.</li>
+      <li>Never test with live keys or real cards in non-production environments.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Operating payments</h3>
+    <ul>
+      <li><b>Metrics:</b> payment success rate by method and bank, latency, webhook delay, pending count and age, refund rate, dispute rate.</li>
+      <li><b>Alerts:</b> success rate drops, webhooks stop arriving, pending payments older than a threshold, reconciliation mismatches.</li>
+      <li><b>Support tools:</b> look up an order's full event history; never let support edit payment state by hand.</li>
+      <li><b>Multiple gateways:</b> routing or failover between gateways improves success rates, at the cost of more reconciliation.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain authorisation, capture, settlement, refunds and chargebacks</li><li>Explain the order → checkout → verify → webhook flow</li><li>Know why card data must never touch your servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Integrate a gateway with server-side verification and signed webhooks</li><li>Make payment calls and webhook handling idempotent</li><li>Model payments as a state machine; test with test-mode fixtures</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design subscriptions, dunning and entitlements</li><li>Build a double-entry ledger and daily reconciliation</li><li>Own payment security, PCI scope and regulatory rules (RBI)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-gateway routing and payment platforms</li><li>Lead payments compliance and audits</li><li>Set money-handling standards across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>3-D Secure and strong customer authentication</li><li>UPI AutoPay and e-mandates</li><li>Card network tokenisation</li><li>Double-entry accounting for engineers</li><li>Fraud detection and chargeback management</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://razorpay.com/docs/" target="_blank" rel="noopener">Razorpay documentation</a><span class="lnote"> Orders, checkout, webhooks, subscriptions</span></li><li><a href="https://docs.stripe.com/" target="_blank" rel="noopener">Stripe documentation</a><span class="lnote"> PaymentIntents, webhooks, billing</span></li><li><a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener">Stripe: idempotent requests</a><span class="lnote"> How idempotency keys work</span></li><li><a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener">PCI Security Standards Council</a><span class="lnote"> PCI DSS requirements</span></li><li><a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank" rel="noopener">NPCI: UPI</a><span class="lnote"> How UPI works</span></li><li><a href="https://www.rbi.org.in/" target="_blank" rel="noopener">Reserve Bank of India</a><span class="lnote"> Circulars on payments, e-mandates, tokenisation</span></li><li><a href="https://www.moderntreasury.com/journal/accounting-for-developers-part-i" target="_blank" rel="noopener">Accounting for developers (Modern Treasury)</a><span class="lnote"> Double-entry ledgers explained</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/kafka/">← Kafka</a><a class="pn-next" href="/well-rounded-engineer/spring/">Spring Boot →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

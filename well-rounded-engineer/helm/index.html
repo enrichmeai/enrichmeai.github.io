@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helm Charts · Well Rounded Engineer</title>
+<meta name="description" content="Helm packages Kubernetes manifests as charts : templates plus default values, versioned and installed as releases you can upgrade and roll back. Chart…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="helm">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/" aria-current="page">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="helm" data-name="Helm Charts">
+  <div class="panel-head"><h1>Helm charts</h1><p>Helm packages Kubernetes manifests as <b>charts</b>: templates plus default values, versioned and installed as <b>releases</b> you can upgrade and roll back. Chart structure, templating, values per environment, hooks, testing, publishing to a registry, and how Helm fits with GitOps and Kustomize. Basics are on <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Concepts</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+      <tr><td>Chart</td><td>A package: templates, default values and metadata</td></tr>
+      <tr><td>Values</td><td>Inputs that fill the templates; defaults in <code>values.yaml</code>, overridden per environment</td></tr>
+      <tr><td>Release</td><td>One installed instance of a chart in a namespace, with a name</td></tr>
+      <tr><td>Revision</td><td>Each install, upgrade or rollback of a release; the history Helm can roll back to</td></tr>
+      <tr><td>Repository / registry</td><td>Where charts are published: an HTTP chart repo or an OCI registry (e.g. Artifact Registry)</td></tr>
+      <tr><td>Chart version vs app version</td><td><code>version</code> changes when the chart changes; <code>appVersion</code> names the application it deploys</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Chart structure</h3>
+<div class="snip"><pre><code>legal-api/
+  Chart.yaml            # name, versions, dependencies
+  values.yaml           # defaults
+  values.schema.json    # optional: validate values
+  templates/
+    _helpers.tpl        # named templates (labels, names)
+    deployment.yaml
+    service.yaml
+    ingress.yaml
+    configmap.yaml
+    hpa.yaml
+    NOTES.txt           # printed after install
+    tests/
+      test-connection.yaml
+  charts/               # dependency charts (vendored)</code></pre></div>
+<div class="snip"><pre><code># Chart.yaml
+apiVersion: v2
+name: legal-api
+description: Legal search API
+type: application          # or "library" for shared templates only
+version: <span data-other-version>0.3.0</span>             # chart version (SemVer)
+appVersion: "3f2a9c1"      # image tag it deploys by default
+dependencies:
+  - name: common
+    version: "1.x.x"
+    repository: oci://asia-south1-docker.pkg.dev/my-proj/charts</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Commands</h3>
+<div class="snip"><pre><code>helm create legal-api                         # scaffold
+helm lint ./legal-api
+helm template legal ./legal-api -f values-prod.yaml    # render locally, no cluster
+helm upgrade --install legal ./legal-api \
+  -n legal --create-namespace \
+  -f values-prod.yaml --set image.tag=3f2a9c1 \
+  --atomic --timeout 5m                       # roll back automatically on failure
+# Helm 4 renamed --atomic to --rollback-on-failure; check `helm version`
+helm list -n legal
+helm history legal -n legal
+helm rollback legal 4 -n legal
+helm get values legal -n legal                # what was applied
+helm get manifest legal -n legal
+helm uninstall legal -n legal
+
+helm dependency update ./legal-api
+helm package ./legal-api                      # → legal-api-<span data-other-version>0.3.0</span>.tgz
+helm push legal-api-<span data-other-version>0.3.0</span>.tgz oci://asia-south1-docker.pkg.dev/my-proj/charts
+helm install legal oci://asia-south1-docker.pkg.dev/my-proj/charts/legal-api --version <span data-other-version>0.3.0</span></code></pre></div>
+  </article>
+
+  <article class="card"><h3>Templates</h3>
+<div class="snip"><pre><code># templates/_helpers.tpl
+{{- define "legal-api.fullname" -}}
+{{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "legal-api.selectorLabels" -}}
+app.kubernetes.io/name: {{ .Chart.Name }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}</code></pre></div>
+<div class="snip"><pre><code># templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "legal-api.fullname" . }}
+  labels:
+    {{- include "legal-api.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/version: {{ .Values.image.tag | default .Chart.AppVersion | quote }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "legal-api.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "legal-api.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ required "secretName is required" .Values.secretName }}</code></pre></div>
+    <p class="note">The <code>checksum/config</code> annotation restarts pods when the ConfigMap changes. <code>required</code> fails the render with a clear message instead of deploying something broken.</p>
+  </article>
+
+  <article class="card"><h3>Values per environment</h3>
+<div class="snip"><pre><code># values.yaml (defaults: safe, small)
+replicaCount: 1
+image:
+  repository: asia-south1-docker.pkg.dev/my-proj/apps/legal-api
+  tag: ""                       # defaults to appVersion
+resources:
+  requests: { cpu: 250m, memory: 512Mi }
+  limits:   { memory: 512Mi }
+env: []
+secretName: ""
+
+# values-prod.yaml (only what differs)
+replicaCount: 3
+resources:
+  requests: { cpu: "1", memory: 1Gi }
+  limits:   { memory: 1Gi }
+secretName: legal-api-secrets</code></pre></div>
+    <ul>
+      <li>Later <code>-f</code> files override earlier ones; <code>--set</code> overrides files. Prefer files in Git over <code>--set</code>.</li>
+      <li>Add <code>values.schema.json</code> so a typo in a value fails at install, not at runtime.</li>
+      <li>Never put secret values in values files; reference Secrets created by External Secrets or the Secret Manager CSI driver.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Hooks and tests</h3>
+<div class="snip"><pre><code># templates/migrate-job.yaml: run DB migrations before an upgrade
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "legal-api.fullname" . }}-migrate
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          args: ["migrate"]</code></pre></div>
+    <ul>
+      <li>Hook events: <code>pre-install</code>, <code>post-install</code>, <code>pre-upgrade</code>, <code>post-upgrade</code>, <code>pre-rollback</code>, <code>pre-delete</code> and more.</li>
+      <li>Migrations in a hook must be backward compatible: a rollback does not undo them.</li>
+      <li><code>helm test legal</code> runs pods annotated <code>"helm.sh/hook": test</code> to smoke-test a release.</li>
+      <li>Unit-test templates with the helm-unittest plugin; lint and install-test charts in CI with chart-testing (<code>ct</code>).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Helm, Kustomize and GitOps</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Helm</th><th>Kustomize</th></tr></thead>
+      <tbody>
+      <tr><td>Approach</td><td>Templates + values</td><td>Plain YAML + patches per overlay</td></tr>
+      <tr><td>Packaging and versions</td><td>Yes: charts, releases, rollback</td><td>No: just manifests</td></tr>
+      <tr><td>Best for</td><td>Distributing reusable apps; many similar services</td><td>Your own manifests with small per-environment differences</td></tr>
+      <tr><td>Risk</td><td>Template logic becomes hard to read</td><td>Many overlays become hard to follow</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>GitOps</b> (Argo CD, Flux): the desired chart version and values live in Git; a controller in the cluster applies them and reports drift. No one runs <code>helm upgrade</code> by hand in production.</li>
+      <li>Run <code>helm diff upgrade</code> (plugin) or the GitOps diff before every production change.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Chart best practices</h3>
+    <ul>
+      <li><b>Selector labels never change</b> after the first release: Kubernetes forbids changing a Deployment's selector.</li>
+      <li><b>Standard labels</b> (<code>app.kubernetes.io/name</code>, <code>instance</code>, <code>version</code>, <code>managed-by</code>).</li>
+      <li><b>Sensible defaults:</b> resources, probes, security context (non-root, read-only root filesystem) on by default.</li>
+      <li><b>Keep templates boring:</b> little logic; move complexity into values, not nested conditionals.</li>
+      <li><b>A library chart</b> of shared helpers is your blueprint: every service chart depends on it, so a fix reaches all of them.</li>
+      <li><b>Pin dependency versions</b>; publish charts to an OCI registry with immutable versions.</li>
+      <li><b>Document values</b> in <code>values.yaml</code> comments and the schema.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Install, upgrade, roll back and inspect a release</li><li>Read a chart's values and override them per environment</li><li>Render a chart locally with helm template</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write charts with helpers, schema-validated values and sane defaults</li><li>Use hooks for migrations and helm test for smoke tests</li><li>Publish charts to an OCI registry</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design library charts as a shared blueprint for many services</li><li>Deliver charts with GitOps (Argo CD or Flux) and diffs</li><li>Choose between Helm and Kustomize per case</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's deployment packaging standards</li><li>Run chart supply chain: signing, provenance, registries</li><li>Lead migrations between delivery models</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Library charts</li><li>values.schema.json</li><li>Helm hooks and their limits</li><li>Argo CD ApplicationSets</li><li>Chart signing and provenance</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://helm.sh/docs/" target="_blank" rel="noopener">Helm documentation</a><span class="lnote"> Concepts, commands, charts</span></li><li><a href="https://helm.sh/docs/chart_template_guide/" target="_blank" rel="noopener">Chart template guide</a><span class="lnote"> Templates, functions, helpers</span></li><li><a href="https://helm.sh/docs/chart_best_practices/" target="_blank" rel="noopener">Chart best practices</a><span class="lnote"> Conventions for maintainable charts</span></li><li><a href="https://artifacthub.io/" target="_blank" rel="noopener">Artifact Hub</a><span class="lnote"> Find public charts and operators</span></li><li><a href="https://github.com/helm-unittest/helm-unittest" target="_blank" rel="noopener">helm-unittest</a><span class="lnote"> Unit tests for templates</span></li><li><a href="https://github.com/helm/chart-testing" target="_blank" rel="noopener">chart-testing (ct)</a><span class="lnote"> Lint and install-test charts in CI</span></li><li><a href="https://argo-cd.readthedocs.io/" target="_blank" rel="noopener">Argo CD</a><span class="lnote"> GitOps for Kubernetes</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/kubernetes/">← Kubernetes</a><a class="pn-next" href="/well-rounded-engineer/operators/">Operators →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

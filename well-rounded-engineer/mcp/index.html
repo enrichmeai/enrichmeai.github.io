@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP · Well Rounded Engineer</title>
+<meta name="description" content="An open protocol for giving AI applications access to tools and data through a standard interface. What it is, how to build and add an MCP server, how to…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="mcp">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/" aria-current="page">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="mcp" data-name="MCP">
+  <div class="panel-head"><h1>MCP: Model Context Protocol</h1><p>An open protocol for giving AI applications access to tools and data through a standard interface. What it is, how to build and add an MCP server, how to call one from the API, and how to use MCP safely around a data pipeline.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>What MCP is</h3>
+    <p>Without MCP, every AI application needs custom integration code for every tool. With MCP, a tool or data source is wrapped once as an <b>MCP server</b>, and any MCP-capable <b>client</b> (Claude Code, Claude apps, IDEs, your own agent) can use it. Think of it as a standard port between models and systems.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Concept</th><th>Meaning</th></tr></thead>
+      <tbody>
+      <tr><td>Host / client</td><td>The AI application and its connection to a server</td></tr>
+      <tr><td>Server</td><td>A program exposing capabilities over MCP</td></tr>
+      <tr><td>Tools</td><td>Functions the model can call (query a table, check a pipeline run)</td></tr>
+      <tr><td>Resources</td><td>Read-only data the application can load into context (a file, a run record)</td></tr>
+      <tr><td>Prompts</td><td>Reusable prompt templates the server offers</td></tr>
+      <tr><td>Transport: stdio</td><td>Server runs as a local process; messages over stdin/stdout</td></tr>
+      <tr><td>Transport: Streamable HTTP</td><td>Server runs remotely over HTTP; authorisation with OAuth</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>A server in Python (FastMCP)</h3>
+<div class="snip"><pre><code># pip install "mcp[cli]" google-cloud-bigquery
+from mcp.server.fastmcp import FastMCP
+from google.cloud import bigquery
+
+mcp = FastMCP("pipeline-status")
+bq = bigquery.Client()
+
+@mcp.tool()
+def latest_runs(run_date: str) -&gt; list[dict]:
+    """Latest state of every pipeline stage for a run date (YYYY-MM-DD)."""
+    sql = """SELECT stage, state, objects_examined, objects_failed, event_ts
+             FROM `my-proj.dp_control.v_pipeline_run_latest`
+             WHERE run_date = @d ORDER BY stage"""
+    cfg = bigquery.QueryJobConfig(query_parameters=[
+        bigquery.ScalarQueryParameter("d", "DATE", run_date)])
+    return [dict(r) for r in bq.query(sql, job_config=cfg).result()]
+
+@mcp.resource("ledger://{run_date}")
+def ledger(run_date: str) -&gt; str:
+    """The full event history for a run date, as text."""
+    return format_events(read_events(run_date))
+
+if __name__ == "__main__":
+    mcp.run()                              # stdio by default
+    # mcp.run(transport="streamable-http") # to serve over HTTP</code></pre></div>
+    <p class="note">The function name, type hints and docstring become the tool's name, schema and description. Write the docstring for the model: what it does, inputs, and what it returns. A TypeScript SDK exists with the same concepts.</p>
+  </article>
+
+  <article class="card"><h3>Add it to Claude Code and test it</h3>
+<div class="snip"><pre><code># local stdio server, shared with the team via .mcp.json in the repo
+claude mcp add --scope project pipeline-status -- python mcp/pipeline_status.py
+
+# remote server over HTTP
+claude mcp add --transport http pipeline-status https://mcp.example.com/mcp
+
+claude mcp list
+# inside Claude Code: /mcp shows servers, status and tools
+
+# interactive testing without a model
+npx @modelcontextprotocol/inspector python mcp/pipeline_status.py</code></pre></div>
+    <ul>
+      <li>Project scope writes <code>.mcp.json</code>, so everyone on the repo gets the same server.</li>
+      <li>Keep credentials out of <code>.mcp.json</code>; servers read Application Default Credentials or environment variables.</li>
+      <li>Approve which tools may run without asking in Claude Code's permission settings.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Call MCP servers from the API</h3>
+<div class="snip"><pre><code>resp = client.beta.messages.create(
+    model="claude-opus-5-5",
+    max_tokens=16000,
+    betas=["mcp-client-2025-11-20"],
+    mcp_servers=[{"type": "url", "name": "pipeline",
+                  "url": "https://mcp.example.com/mcp"}],
+    tools=[{"type": "mcp_toolset", "mcp_server_name": "pipeline"}],
+    messages=[{"role": "user", "content": "Summarise yesterday's pipeline run."}],
+)</code></pre></div>
+    <p class="note">The MCP connector needs both halves: the server in <code>mcp_servers</code> and a matching <code>mcp_toolset</code> in <code>tools</code>. It reaches remote (HTTP) servers only; check the docs for authentication options and current beta name.</p>
+  </article>
+
+  <article class="card wide"><h3>MCP and a data pipeline: four patterns</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Pattern</th><th>What the MCP server exposes</th><th>Who uses it</th><th>Rule</th></tr></thead>
+      <tbody>
+      <tr><td>1. Pipeline observability</td><td>Run records, stage states, freshness per source, failures with reasons</td><td>Engineers in Claude Code: "why did ODP_LOAD fail on 19-09?"</td><td>Read-only. Reports UNKNOWN when it cannot read the ledger.</td></tr>
+      <tr><td>2. Governed warehouse access</td><td>Table catalog, schemas, a guarded query tool</td><td>Analysts and engineers asking questions in natural language</td><td>Dry-run first, byte cap, allow-listed datasets, read-only service account</td></tr>
+      <tr><td>3. Data catalog and lineage</td><td>Table descriptions, owners, upstream and downstream models (dbt manifest, Dataplex)</td><td>Anyone changing a model: "what breaks if I rename this column?"</td><td>Generated from the source of truth, never hand-maintained</td></tr>
+      <tr><td>4. LLM step inside the pipeline</td><td>Reference data or lookups the model needs while extracting or classifying</td><td>A pipeline job calling a model (e.g. extracting citations from judgments)</td><td>Prefer plain tool calls or batch jobs; validate outputs; never let the model write to production tables directly</td></tr>
+      </tbody></table></div>
+    <p class="note">MCP sits beside the pipeline, not inside its critical path. The pipeline must run, record and alert without any AI involved; MCP makes it easier to ask questions about it.</p>
+  </article>
+
+  <article class="card"><h3>A guarded BigQuery query tool</h3>
+<div class="snip"><pre><code>ALLOWED = {"dp_fdp", "dp_cdp", "dp_control"}
+MAX_BYTES = 5 * 1024**3                       # 5 GiB per query
+
+@mcp.tool()
+def run_query(sql: str) -&gt; dict:
+    """Run a read-only GoogleSQL SELECT over the fdp, cdp and control datasets.
+    Returns at most 200 rows. Fails if the query would scan more than 5 GiB."""
+    if not sql.lstrip().lower().startswith(("select", "with")):
+        return {"error": "only SELECT queries are allowed"}
+    dry = bq.query(sql, job_config=bigquery.QueryJobConfig(
+        dry_run=True, use_query_cache=False))
+    datasets = {t.dataset_id for t in dry.referenced_tables}
+    if not datasets &lt;= ALLOWED:
+        return {"error": f"datasets not allowed: {sorted(datasets - ALLOWED)}"}
+    if dry.total_bytes_processed &gt; MAX_BYTES:
+        return {"error": f"would scan {dry.total_bytes_processed/1e9:.1f} GB; add filters"}
+    job = bq.query(sql, job_config=bigquery.QueryJobConfig(maximum_bytes_billed=MAX_BYTES))
+    rows = [dict(r) for r in job.result(max_results=200)]
+    return {"rows": rows, "bytes_processed": job.total_bytes_processed}</code></pre></div>
+    <p class="note">The real protection is the service account: give it only <code>dataViewer</code> on those datasets and <code>jobUser</code>. The string checks are a convenience, not a security boundary.</p>
+  </article>
+
+  <article class="card"><h3>Deploying a remote MCP server</h3>
+    <ul>
+      <li>Serve with Streamable HTTP and run it on <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a> with its own service account.</li>
+      <li>Require authentication: OAuth for user-facing clients (the MCP authorisation spec builds on OAuth 2.1), or Cloud Run IAM for internal callers.</li>
+      <li>Rate-limit and log every tool call with the caller's identity.</li>
+      <li>Version tools like an API: add new ones rather than changing behaviour under the same name.</li>
+      <li>Ready-made servers exist for many systems, for example Google's MCP Toolbox for Databases (BigQuery, Postgres and others). Review what they expose before connecting them.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Designing good MCP tools</h3>
+    <ul>
+      <li><b>Few, task-shaped tools</b> ("pipeline status for a date") beat many thin wrappers over every API call.</li>
+      <li><b>Clear names and descriptions</b>: the model chooses tools from them.</li>
+      <li><b>Typed, validated inputs</b> with enums and formats where possible.</li>
+      <li><b>Compact outputs:</b> summarise and paginate; huge results waste context.</li>
+      <li><b>Honest errors:</b> return what failed and how to fix it; distinguish "no data" from "could not read".</li>
+      <li><b>Read-only by default;</b> any write needs explicit human approval in the client.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security</h3>
+    <ul>
+      <li>An MCP server runs with its own credentials: give it least privilege, as you would a service.</li>
+      <li>Only install servers you trust and have reviewed; a malicious server can return instructions that steer the model (tool poisoning).</li>
+      <li>Treat tool outputs as untrusted data in the model's context.</li>
+      <li>Never put secrets in tool descriptions, outputs or <code>.mcp.json</code>.</li>
+      <li>Audit tool calls; alert on unusual volume or failed authorisation.</li>
+    </ul>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with FastMCP and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> FastMCP and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/rag/">← RAG</a><a class="pn-next" href="/well-rounded-engineer/web3/">Web 3.0 →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
