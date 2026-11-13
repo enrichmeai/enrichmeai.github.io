@@ -1,0 +1,219 @@
+# Adversarial review: a second Claude, which did not write the change, tries to break the PR before a
+# human reads it (enrichmeai/valuedocs#1297 step 1; this repo's #80). It is the `reviewer` agent of
+# CLAUDE.md § "Autonomous build loop", moved from "the session runs it if it remembers" to "CI runs it,
+# and it can fail the PR". A human spot-checks; nobody has to read every line to find what this finds.
+#
+# The loop it closes: a PR is ready → this job reviews the head → the verdict goes into one PR
+# comment and this check's status → BLOCK fails the check → the session that owns the PR fixes it and
+# pushes → the push re-runs this job. CLAUDE.md rule 3 still caps it at three attempts. Nothing here
+# pushes, so this job never becomes a second writer in the repo.
+#   A push made by claude.yml uses GITHUB_TOKEN, and GitHub starts no workflow for those (claude.yml's
+#   header). After an `@claude` fix, re-run this check by closing and reopening the PR (`reopened` is a
+#   trigger here). Until then the comment names the head it reviewed, and an
+#   older head's verdict is stale (merge-gate).
+#
+# What a model alone would not give:
+#   - The rules come from the BASE branch. CLAUDE.md, reviewer.md, the instructions and the two scripts
+#     are read with `git show origin/<base>:<path>`, so a PR cannot rewrite them for its own review, and
+#     the post step runs its copies from outside the workspace, where Claude has no way to write. A
+#     file not on the base yet (the PR that adds it) is read from the PR, and the comment says so.
+#     The limit: GitHub runs a pull_request workflow from the PR, so a PR that edits THIS file runs its
+#     own copy. Such a PR gets a banner saying its verdict is advisory, and the founder merges it.
+#   - Test facts come from git. diff-facts.sh lists deleted test files, assertions removed and skip or
+#     focus markers added, and the comment repeats it verbatim, so a weakened test is visible to a human
+#     whatever the model makes of it. (Vaccari, "Tests as data", martinfowler.com, 2026-11-11.)
+#   - The verdict fails CLOSED (render-verdict.sh): no verdict (inputs unreadable, the action failed, the
+#     schema did not validate, turns ran out) is NOT RUN, and PASS with a blocking finding is BLOCK.
+#
+# When it runs: on every PR that is not a draft, because a merge here is a production deploy and the
+# site has no `run-ci` gate (the founder's call on enrichmeai/valuedocs#1297; say so there to change
+# it). A job skipped by its own `if:` starts no runner and reports "skipped", which also satisfies a
+# required check.
+#
+# Claims (CLAUDE.md rule 1): the prepare step clones the public product repos into .review/repos/ and
+# checks each out at its latest release tag (`git describe --tags --abbrev=0`, CLAUDE.md § "Reading the
+# product repos"). A repo that cannot be cloned stops the run: a source that cannot be read is a gate
+# that did not run, never a pass.
+#
+# What this workflow can NOT do, by construction:
+#   - change the repository: contents: read. One PR comment, written by a step outside Claude.
+#   - reach a cloud: there is no id-token: write.
+#   - run a command: Claude's tools are Read, Grep, Glob and WebFetch to the pinned docs' hosts only,
+#     with this repo's own settings and hooks not loaded (--setting-sources user).
+#   - run on someone else's PR: the author must be the founder's account and the head branch must be in
+#     this repository, because the PR body and diff go into Claude's context.
+name: Adversarial review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: adversarial-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Adversarial review
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.login == 'josepharuja' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      # The PR's head, not GitHub's merge commit: the files Claude reads are the ones the diff changes.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      # Everything Claude reads goes into .review/. The PR title and body arrive as env vars, never
+      # interpolated into the script.
+      - name: Prepare the inputs (rules from the base branch, test facts from git)
+        id: prepare
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          base="origin/${BASE_REF}"
+          for ref in "$base" "$HEAD_SHA"; do
+            git rev-parse --verify --quiet "${ref}^{commit}" >/dev/null \
+              || { echo "::error::cannot resolve ${ref}: the diff cannot be read, so it cannot be reviewed"; exit 1; }
+          done
+          mkdir -p .review
+          printf '%s...%s\n' "$base" "$HEAD_SHA" > .review/range.txt
+          : > .review/sources.txt
+          for f in CLAUDE.md .claude/agents/reviewer.md .github/adversarial-review/instructions.md \
+                   .github/adversarial-review/diff-facts.sh .github/adversarial-review/render-verdict.sh; do
+            out=".review/$(basename "$f")"
+            if git cat-file -e "${base}:${f}" 2>/dev/null; then
+              git show "${base}:${f}" > "$out"
+              echo "- \`${f}\`: from \`${base}\`" >> .review/sources.txt
+            else
+              git show "${HEAD_SHA}:${f}" > "$out"
+              echo "- \`${f}\`: **from this PR** (not on \`${base}\` yet)" >> .review/sources.txt
+            fi
+          done
+          git diff --name-only "${base}...${HEAD_SHA}" -- .github/workflows/adversarial-review.yml .github/adversarial-review/ > .review/self-change.txt
+          printf '# %s\n\n%s\n' "$PR_TITLE" "${PR_BODY:-(the PR has no body: there is no written spec)}" > .review/pr.md
+          # The product repos, each at its latest release tag, read as plain files. A clone that fails
+          # stops the run (NOT RUN): the claims cannot be checked, which is not a pass.
+          mkdir -p .review/repos
+          for p in cistern penstock culvert enrich-test-api; do
+            dir=".review/repos/${p}"
+            git clone --quiet --filter=blob:none "https://github.com/enrichmeai/${p}" "$dir" \
+              || { echo "::error::cannot clone enrichmeai/${p}: its claims cannot be checked, so this PR cannot be reviewed"; exit 1; }
+            if tag=$(git -C "$dir" describe --tags --abbrev=0 2>/dev/null); then
+              git -C "$dir" checkout --quiet "$tag"
+              echo "- ${p}: checked out at its latest release tag \`${tag}\` (\`$(git -C "$dir" rev-parse --short=12 HEAD)\`)" >> .review/repos/TAGS.md
+            else
+              echo "- ${p}: NO TAG reachable from its default branch; checked out at \`$(git -C "$dir" rev-parse --short=12 HEAD)\`, which is not a release" >> .review/repos/TAGS.md
+            fi
+            rm -rf "${dir}/.git"
+          done
+          cat .review/repos/TAGS.md
+          bash .review/diff-facts.sh "$base" "$HEAD_SHA" > .review/test-facts.md
+          # Claude gets no shell (a `git log` or `git diff` rule also admits `--output=<file>`, which
+          # would let it overwrite these files), so the diff, the log and the base copy of every
+          # changed file are written here for it to read.
+          git diff -M "${base}...${HEAD_SHA}" > .review/diff.patch
+          git log --format='%h %an %ad%n%B' "${base}..${HEAD_SHA}" > .review/log.txt
+          git diff --name-only --diff-filter=MDR -M "${base}...${HEAD_SHA}" | while IFS= read -r f; do
+            git cat-file -e "${base}:${f}" 2>/dev/null || continue
+            mkdir -p ".review/base/$(dirname "$f")" && git show "${base}:${f}" > ".review/base/${f}"
+          done
+          # The post step reads only these copies, outside the workspace.
+          mkdir -p "${RUNNER_TEMP}/review-trusted"
+          cp .review/render-verdict.sh .review/test-facts.md .review/sources.txt .review/self-change.txt .review/repos/TAGS.md "${RUNNER_TEMP}/review-trusted/"
+          cat .review/sources.txt .review/test-facts.md
+
+      # A PR that changes the scripts runs their own tests here, from the PR's copy.
+      - name: Self-test the review scripts (only when this PR changes them)
+        id: selftest
+        if: steps.prepare.outcome == 'success'
+        run: |
+          if [ -s .review/self-change.txt ]; then
+            bash .github/adversarial-review/diff-facts-test.sh
+            bash .github/adversarial-review/render-verdict-test.sh
+          else
+            echo "The review scripts are unchanged; their tests ran on the PR that last changed them."
+          fi
+
+      # Pinned to the commit behind the v1 tag on 2026-09-24, the same pin as claude.yml. With a
+      # `prompt`, the action runs in agent mode on any pull_request action, `labeled` included
+      # (src/modes/detector.ts and src/entrypoints/run.ts at this SHA). `--json-schema` makes the verdict
+      # the action's `structured_output` output (docs/usage.md § "Structured Outputs"), so the pass/fail
+      # below reads a field, not prose.
+      #   `--setting-sources user` keeps this repo's .claude/settings.json out: its allow rules and its
+      #   hooks are for a working session, not for a reviewer (parse-sdk-options.ts at this SHA loads
+      #   user, project and local settings unless told otherwise). The tools are read-only, and WebFetch
+      #   reaches only the hosts of CLAUDE.md § "Pinned docs".
+      - name: Review
+        id: review
+        if: steps.prepare.outcome == 'success' && steps.selftest.outcome == 'success'
+        continue-on-error: true
+        uses: anthropics/claude-code-action@8cf3482550831fb35a4fc3fbf7ca139cf8028b4c # v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Read .review/instructions.md and follow it exactly. Your inputs are the files in .review/:
+            the diff is .review/diff.patch, the commits .review/log.txt, and .review/base/ holds the base
+            copy of every changed file. The checkout is the PR's head. Return the verdict in the required
+            JSON shape.
+          claude_args: >-
+            --model sonnet
+            --max-turns 40
+            --setting-sources user
+            --allowedTools "Read,Grep,Glob,WebFetch(domain:developer.mozilla.org),WebFetch(domain:html.spec.whatwg.org),WebFetch(domain:www.w3.org),WebFetch(domain:docs.github.com),WebFetch(domain:github.com),WebFetch(domain:code.claude.com)"
+            --json-schema '{"type":"object","required":["verdict","summary","checked","findings"],"properties":{"verdict":{"type":"string","enum":["PASS","BLOCK"]},"summary":{"type":"string"},"checked":{"type":"string"},"findings":{"type":"array","items":{"type":"object","required":["severity","file","claim","failure_scenario"],"properties":{"severity":{"type":"string","enum":["blocking","optional"]},"file":{"type":"string"},"line":{"type":"integer"},"claim":{"type":"string"},"failure_scenario":{"type":"string"},"fix":{"type":"string"}}}}}}'
+
+      # Runs unless the run was cancelled (a newer push superseded it: that run reports instead), so a
+      # failed prepare or review still reports NOT RUN on the PR. The verdict travels in an env var,
+      # never interpolated into the script: Claude wrote it from the diff. render-verdict.sh comes from
+      # the base branch (.review/), or from this PR when the base has none yet.
+      - name: Post the verdict, and fail unless it is PASS
+        if: ${{ !cancelled() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PREPARE: ${{ steps.prepare.outcome }}
+          SELFTEST: ${{ steps.selftest.outcome }}
+          OUTCOME: ${{ steps.review.outcome }}
+          VERDICT_JSON: ${{ steps.review.outputs.structured_output }}
+        run: |
+          set -euo pipefail
+          # The trusted copies the prepare step made; if it failed before making them, nothing was
+          # reviewed, and the PR's own script only has to say so.
+          export REVIEW_DIR="${RUNNER_TEMP}/review-trusted"
+          render="${REVIEW_DIR}/render-verdict.sh"
+          [ -s "$render" ] || render=.github/adversarial-review/render-verdict.sh
+          verdict=$(bash "$render" "${RUNNER_TEMP}/comment.md")
+
+          marker='<!-- adversarial-review -->'
+          existing=$(gh api --paginate "repos/${REPO}/issues/${PR}/comments" \
+            --jq ".[] | select(.user.login == \"github-actions[bot]\" and (.body | startswith(\"${marker}\"))) | .id" | head -n1)
+          if [ -n "$existing" ]; then
+            gh api -X PATCH "repos/${REPO}/issues/comments/${existing}" -F "body=@${RUNNER_TEMP}/comment.md" >/dev/null
+          else
+            gh api -X POST "repos/${REPO}/issues/${PR}/comments" -F "body=@${RUNNER_TEMP}/comment.md" >/dev/null
+          fi
+
+          cat "${RUNNER_TEMP}/comment.md" >> "$GITHUB_STEP_SUMMARY"
+          echo "verdict: ${verdict}"
+          case "$verdict" in
+            PASS) exit 0 ;;
+            BLOCK) echo "::error::Adversarial review found blocking findings; see the PR comment."; exit 1 ;;
+            *) echo "::error::Adversarial review produced no verdict. Not a pass."; exit 1 ;;
+          esac

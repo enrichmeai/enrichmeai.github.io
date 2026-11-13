@@ -43,6 +43,12 @@ gh api --paginate repos/enrichmeai/enrichmeai.github.io/pulls/<PR>/reviews \
 ```
 Bot reviews do not show in `gh pr checks`. Act on each comment or say why not, in a PR comment,
 before merging. "The reviewer was wrong" is a fine answer; silence is not.
+The adversarial review (#80) is an ISSUE comment, so neither command above returns it:
+`gh pr checks <PR> | grep 'Adversarial review'` and
+`gh api --paginate repos/enrichmeai/enrichmeai.github.io/issues/<PR>/comments --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- adversarial-review -->"))) | .body'`.
+It must read PASS **at the current head SHA**. An older head's verdict is stale, and NOT RUN is not a
+pass. Read its "Test facts" block yourself: a deleted test or an added skip marker is a reason to look.
+Whether the check is required is the founder's decision on enrichmeai/valuedocs#1297.
 
 ### 5. State the order before acting
 Post a PR comment with the gate result and what you are about to merge, **before** merging. A
