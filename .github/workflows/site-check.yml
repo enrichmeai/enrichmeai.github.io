@@ -21,5 +21,9 @@ jobs:
         run: scripts/site_check_test.sh
       - name: Hook fixtures
         run: .claude/hooks/test-hooks.sh
+      - name: Adversarial review scripts (the test facts and the verdict rules)
+        run: |
+          .github/adversarial-review/diff-facts-test.sh
+          .github/adversarial-review/render-verdict-test.sh
       - name: Whole site
         run: python3 scripts/site_check.py
