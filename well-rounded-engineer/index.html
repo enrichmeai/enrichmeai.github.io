@@ -4902,8 +4902,8 @@ def test_dags_load():
   </article>
 
   <article class="card"><h3>An OpenAPI contract</h3>
-<div class="snip"><pre><code>openapi: 3.1.0
-info: { title: Legal Search API, version: 1.2.0 }
+<div class="snip"><pre><code>openapi: <span data-other-version>3.1.0</span>
+info: { title: Legal Search API, version: <span data-other-version>1.2.0</span> }
 paths:
   /v1/judgments/{id}:
     get:
@@ -10029,7 +10029,7 @@ output "job_names" { value = { for k, m in module.jobs : k =&gt; m.name } }
 # Registry / git sources: pin a version
 source  = "terraform-google-modules/cloud-storage/google"
 version = "~&gt; 9.0"
-source  = "git::https://github.com/org/tf-modules.git//bq?ref=v1.4.0"</code></pre></div>
+source  = "git::https://github.com/org/tf-modules.git//bq?ref=<span data-other-version>v1.4.0</span>"</code></pre></div>
   </article>
 
   <article class="card"><h3>Refactor without destroying</h3>
@@ -10475,7 +10475,7 @@ apiVersion: v2
 name: legal-api
 description: Legal search API
 type: application          # or "library" for shared templates only
-version: 0.3.0             # chart version (SemVer)
+version: <span data-other-version>0.3.0</span>             # chart version (SemVer)
 appVersion: "3f2a9c1"      # image tag it deploys by default
 dependencies:
   - name: common
@@ -10500,9 +10500,9 @@ helm get manifest legal -n legal
 helm uninstall legal -n legal
 
 helm dependency update ./legal-api
-helm package ./legal-api                      # → legal-api-0.3.0.tgz
-helm push legal-api-0.3.0.tgz oci://asia-south1-docker.pkg.dev/my-proj/charts
-helm install legal oci://asia-south1-docker.pkg.dev/my-proj/charts/legal-api --version 0.3.0</code></pre></div>
+helm package ./legal-api                      # → legal-api-<span data-other-version>0.3.0</span>.tgz
+helm push legal-api-<span data-other-version>0.3.0</span>.tgz oci://asia-south1-docker.pkg.dev/my-proj/charts
+helm install legal oci://asia-south1-docker.pkg.dev/my-proj/charts/legal-api --version <span data-other-version>0.3.0</span></code></pre></div>
   </article>
 
   <article class="card"><h3>Templates</h3>
@@ -12346,7 +12346,7 @@ def run_query(sql: str) -&gt; dict:
 
   <article class="card"><h3>A minimal smart contract</h3>
 <div class="snip"><pre><code>// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^<span data-other-version>0.8.24</span>;
 
 /// Records a document hash and who registered it, once.
 contract DocumentRegistry {

@@ -257,6 +257,14 @@ class RealPages(unittest.TestCase):
             self.assertIn(project, crp.PROJECTS)
             self.assertIn("index.html", crp.PROJECTS[project].get("also", []))
 
+    def test_the_guide_is_checked_and_states_no_stray_version(self):
+        # /well-rounded-engineer/ names Culvert, so the Culvert run scans it for stray versions.
+        self.assertIn("well-rounded-engineer/index.html", crp.PROJECTS["culvert"].get("also", []))
+        root = crp.parse((ROOT / "well-rounded-engineer/index.html").read_text(encoding="utf-8"))
+        stray: list[str] = []
+        crp.stray_versions(root, crp.PREFIXES, stray)
+        self.assertEqual(sorted(set(stray)), [])
+
 
 if __name__ == "__main__":
     unittest.main()
