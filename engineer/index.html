@@ -119,6 +119,38 @@
     <p class="note">"Know enough" below is the bar for breadth: what anyone on the team should manage without help. "Go deep" is what the specialist on that arm owns.</p>
   </article>
 
+  <article class="card wide"><h3>Fundamentals first: be the site manager, not a vibe coder</h3>
+    <p>AI hands every engineer a bulldozer. A bulldozer on a building site is only safe with a <b>site manager</b> who knows how buildings stand up: the foundations, the materials, the regulations, and what to inspect before anyone moves in. "Vibe coding", accepting whatever the model produces because it looks right, is a bulldozer with nobody in charge of the site. It feels fast until the first thing breaks and nobody can say why.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>On a building site</th><th>In software</th><th>Where to learn it</th></tr></thead>
+      <tbody>
+      <tr><td>Foundations and ground</td><td>Operating systems, networking, how the web works, databases and SQL</td><td><a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a></td></tr>
+      <tr><td>Materials and how they behave</td><td>A language well, its data structures and concurrency, the libraries you depend on</td><td><a href="#java">Java</a>, <a href="#python">Python</a>, <a href="#datalibs">Data Libraries</a></td></tr>
+      <tr><td>Plans and structure</td><td>Requirements, architecture, data models, system design</td><td><a href="#architecture">Architecture</a>, <a href="#sysdesign">System Design</a></td></tr>
+      <tr><td>Building regulations</td><td>Security, privacy, licences, compliance</td><td><a href="#security">Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></td></tr>
+      <tr><td>Inspections and sign-off</td><td>Tests, reviews, checks that must be green</td><td><a href="#testing">Testing</a>, <a href="#devops">DevOps</a></td></tr>
+      <tr><td>Running the finished building</td><td>Deploying, monitoring, incidents, cost</td><td><a href="#observability">Observability</a>, <a href="#sre">SRE</a></td></tr>
+      </tbody></table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Vibe coder</th><th>Site manager</th></tr></thead>
+      <tbody>
+      <tr><td>Starts with a prompt</td><td>Starts with the problem, the constraints and what "done" means</td></tr>
+      <tr><td>Cannot tell good output from plausible output</td><td>Knows the fundamentals well enough to spot what is wrong</td></tr>
+      <tr><td>Stuck when the AI is stuck</td><td>Debugs from first principles: logs, queries, packets, stack traces</td></tr>
+      <tr><td>Ships what runs once</td><td>Ships what is tested, secure, observable and maintainable</td></tr>
+      <tr><td>Learns little from each task</td><td>Gets better with every task, and so gets more out of the tool</td></tr>
+      </tbody></table></div>
+    <p><b>How to learn this way:</b></p>
+    <ul>
+      <li><b>Do it by hand once.</b> Write the loop, the SQL query, the Dockerfile, the deploy, the test yourself before asking AI to do it for you. Then you can judge its version.</li>
+      <li><b>Use AI as a tutor while learning:</b> ask it to explain, to quiz you, to review your attempt. Do not let it write the answer you are trying to learn.</li>
+      <li><b>Earn the bulldozer:</b> the more fundamentals you own, the more work you can safely hand to AI, because you can inspect it.</li>
+      <li><b>Follow the order:</b> Foundations, then a language, then quality and security, then your arm of the Y. The <a href="#homelab">Home Lab</a> turns each into practice.</li>
+      <li><b>Keep going back to basics:</b> when something surprises you, the gap is almost always in a fundamental, not in the tool.</li>
+    </ul>
+    <p class="note">AI raises the floor of what anyone can produce. Fundamentals raise the ceiling of what you can be trusted with.</p>
+  </article>
+
   <article class="card wide"><h3>An engineer who uses AI, not a prompt engineer</h3>
     <p>Writing a good prompt is one skill among many, and the smallest one. What makes AI work in production is engineering:</p>
     <ul>
@@ -10649,7 +10681,7 @@ print("".join(b.text for b in resp.content if b.type == "text"))</code></pre></d
   <div class="grid">
 
   <article class="card wide"><h3>Use AI like a bulldozer, not a shovel</h3>
-    <p>A shovel moves one scoop at a time while you hold the handle: ask for a line, paste it, ask again. A bulldozer moves the whole job while you choose where it goes, set the boundaries and check the result. The second gets far more done, but only if you prepare the site.</p>
+    <p>A shovel moves one scoop at a time while you hold the handle: ask for a line, paste it, ask again. A bulldozer moves the whole job while you choose where it goes, set the boundaries and check the result. The second gets far more done, but only if you prepare the site. And only if you know enough to manage the site: see <a href="#start">Fundamentals first</a> on Start here.</p>
     <div class="tbl"><table>
       <thead><tr><th>Shovel habit</th><th>Bulldozer habit</th></tr></thead>
       <tbody>
