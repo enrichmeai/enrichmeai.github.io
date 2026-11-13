@@ -288,6 +288,99 @@ gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
     </ul>
   </article>
 
+  <article class="card"><h3>Cryptography: use it, do not invent it</h3>
+    <ul>
+      <li><b>Know the three jobs:</b> hashing proves something has not changed and cannot be reversed; encryption hides data and can be reversed with the key; signing proves who produced something.</li>
+      <li><b>Passwords are hashed, never encrypted,</b> with a slow, salted algorithm. The OWASP Password Storage Cheat Sheet recommends Argon2id (at least 19 MiB of memory, 2 iterations, parallelism 1); scrypt if Argon2id is not available; bcrypt (work factor 10 or more, 72-byte password limit) for legacy systems; PBKDF2 with HMAC-SHA-256 and 600,000 or more iterations where FIPS-140 is required. Fast hashes such as SHA-256 alone are not suitable.</li>
+      <li><b>Use a vetted library and its defaults.</b> Never write your own algorithm or protocol.</li>
+      <li><b>Random means a secure generator:</b> <code>SecureRandom</code> in Java, the <code>secrets</code> module in Python, never <code>Math.random</code> or <code>random</code> for tokens.</li>
+      <li><b>Encrypt in transit</b> (TLS 1.2 or 1.3 everywhere, inside the network too) <b>and at rest,</b> and keep keys in a key management service, apart from the data, with rotation.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Containers and Kubernetes</h3>
+    <ul>
+      <li><b>Small images:</b> a minimal or distroless base has fewer packages to patch. Scan images in CI, pin them by digest, and sign them.</li>
+      <li><b>Never bake secrets into an image</b>; mount them at run time from a secret manager.</li>
+      <li><b>Pod Security Standards</b> define three cumulative profiles: Privileged, Baseline and Restricted. Aim for Restricted, and enforce it per namespace with the label <code>pod-security.kubernetes.io/enforce: restricted</code>.</li>
+      <li><b>Least privilege in the cluster:</b> narrow RBAC roles, no service-account token where a pod does not call the API, and NetworkPolicies that deny by default.</li>
+    </ul>
+<div class="snip"><pre><code># container securityContext that meets Restricted
+securityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: ["ALL"]
+  seccompProfile:
+    type: RuntimeDefault
+  readOnlyRootFilesystem: true   # good practice too</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Networks and zero trust</h3>
+    <ul>
+      <li><b>Zero trust:</b> being inside the network earns no trust. Every call is authenticated and authorised, service to service as well as user to service (mTLS and tokens; see <a href="/well-rounded-engineer/servicemesh/">Service Mesh</a>).</li>
+      <li><b>Deny by default:</b> firewalls and security groups open only the ports and sources a service needs. Control outbound traffic too: a compromised service that cannot reach the internet cannot send your data out.</li>
+      <li><b>Keep databases and internal services off the public internet;</b> use private networking and private endpoints.</li>
+      <li><b>Protect the edge:</b> a WAF and DDoS protection in front of public endpoints, rate limits on APIs (see <a href="/well-rounded-engineer/apigee/">Apigee</a>).</li>
+      <li><b>Segment:</b> a breach in one area should not open every other one.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>AI and LLM security</h3>
+    <p>The OWASP GenAI LLM Top 10 (2026 edition, published August 2026) lists the main risks for applications built on language models:</p>
+    <ul>
+      <li><b>LLM01 Prompt Injection.</b> Treat every input, including retrieved documents, web pages and tool results, as possibly carrying instructions. Separate instructions from data; never let content alone trigger an action.</li>
+      <li><b>LLM02 Sensitive Information Disclosure.</b> Do not put data in a prompt that the user may not see; filter outputs; check what your provider keeps.</li>
+      <li><b>LLM03 Excessive Agency.</b> Give tools the least privilege they need, and require a person's approval for actions that change things.</li>
+      <li><b>LLM04 Supply Chain.</b> Vet models, datasets, plugins and MCP servers as you would any dependency.</li>
+      <li><b>LLM05 Data and Model Poisoning.</b> Know where training and retrieval data come from, and who can write to them.</li>
+      <li><b>LLM06 Unbounded Consumption.</b> Rate limits, token budgets and timeouts per user and per job.</li>
+      <li><b>LLM07 Misinformation.</b> Ground answers in sources, cite them, and evaluate; never present a guess as fact.</li>
+      <li><b>LLM08 Hidden Context Exposure.</b> Assume the system prompt and tool schemas can be extracted: never put secrets or security rules only there.</li>
+      <li><b>LLM09 Vector and Embedding Weaknesses.</b> Apply access control in retrieval, so a user can only retrieve what they may read.</li>
+      <li><b>LLM10 Improper Output Handling.</b> Treat model output as untrusted input: validate, escape and parameterise it before it reaches a browser, a shell or a query.</li>
+    </ul>
+    <p class="note">More in <a href="/well-rounded-engineer/ai/">AI for Engineers</a>, <a href="/well-rounded-engineer/rag/">RAG</a>, <a href="/well-rounded-engineer/mcp/">MCP</a> and <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>.</p>
+  </article>
+
+  <article class="card"><h3>People: the most targeted part of any system</h3>
+    <ul>
+      <li><b>Most attacks start with a person,</b> not a server: a convincing email, message or call.</li>
+      <li><b>Urgency is the warning sign.</b> "Pay this now", "reset my access", "send me the file": check through another channel you already trust before acting. Voices and video can now be faked convincingly.</li>
+      <li><b>Use phishing-resistant sign-in</b> where you can (passkeys or hardware security keys), a password manager with a unique password everywhere, and multi-factor authentication on every account that offers it.</li>
+      <li><b>Keep devices updated and locked,</b> and never leave a logged-in laptop unattended.</li>
+      <li><b>Report mistakes at once, without blame.</b> A clicked link reported in five minutes is a small incident; hidden for a week, it is a big one.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Security logging and detection</h3>
+    <ul>
+      <li><b>Log what an investigator will need:</b> sign-ins that succeed and fail, permission and role changes, admin actions, data exports, and access denied.</li>
+      <li><b>Never log secrets,</b> tokens, passwords or full card numbers, and mask personal data.</li>
+      <li><b>Protect the logs:</b> separate access, append-only or write-once storage, kept long enough to investigate.</li>
+      <li><b>Alert on what matters:</b> many failed sign-ins, access from somewhere new, a sudden large export, a disabled control. See <a href="/well-rounded-engineer/observability/">Observability</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Backups and ransomware</h3>
+    <ul>
+      <li><b>A common rule of thumb is 3-2-1:</b> three copies of your data, on two different kinds of storage, with one copy off-site.</li>
+      <li><b>Keep one copy immutable or offline,</b> with separate credentials, so an attacker who gets in cannot delete or encrypt the backups too.</li>
+      <li><b>A backup you have not restored is a hope.</b> Test restores on a schedule and time them.</li>
+      <li><b>Agree the targets:</b> how much data you can lose (RPO) and how long you can be down (RTO), then design to meet them.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Compliance frameworks you will meet</h3>
+    <ul>
+      <li><b>ISO/IEC 27001:</b> an information security management system, certified by audit.</li>
+      <li><b>SOC 2:</b> an auditor's report on a service organisation's controls, common with US customers.</li>
+      <li><b>PCI DSS:</b> rules for handling payment card data (see <a href="/well-rounded-engineer/payments/">Payment Gateways</a>).</li>
+      <li><b>Data protection law:</b> the GDPR in the EU, the UK GDPR, India's Digital Personal Data Protection Act, and others where your users live.</li>
+      <li><b>Compliance is not security.</b> A certificate shows controls existed when audited; good engineering keeps them working every day.</li>
+    </ul>
+  </article>
+
   <article class="card"><h3>Security checklist for a pull request</h3>
     <ul>
       <li>Is every new endpoint authenticated, and does it check ownership of each object?</li>
@@ -332,8 +425,8 @@ gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
 
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Parameterise every query; never commit secrets</li><li>Check that users can only reach their own data</li><li>Apply the PR security checklist</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement OAuth 2.0 / OIDC with a provider and validate tokens properly</li><li>Use least-privilege IAM and a secret manager</li><li>Fix findings from SAST, SCA and image scans</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Threat-model a system and turn threats into tests</li><li>Design authentication, authorisation and audit for a product</li><li>Respond to and contain a security incident</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the security architecture and policies across teams</li><li>Lead compliance (DPDP, GDPR, SOC 2) and external testing</li><li>Build a security culture and secure-by-default platforms</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OWASP ASVS verification levels</li><li>OAuth 2.0 security best current practice</li><li>Supply-chain security with SLSA</li><li>Cloud security posture management</li><li>LLM and AI application security</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a><span class="lnote"> Most critical web application risks</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise how-tos for each security topic</span></li><li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a><span class="lnote"> Risks specific to APIs</span></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a><span class="lnote"> A checklist of security requirements by level</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener">Spring Security reference</a><span class="lnote"> Authentication and authorisation in Spring</span></li><li><a href="https://cloud.google.com/security/best-practices" target="_blank" rel="noopener">Google Cloud security best practices</a><span class="lnote"> IAM, network and data protection on GCP</span></li><li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA</a><span class="lnote"> Supply-chain levels for software artefacts</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Spot phishing; use a password manager and passkeys</li><li>Parameterise every query; never commit secrets</li><li>Check that users can only reach their own data</li><li>Apply the PR security checklist</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Hash passwords correctly and run containers to the Restricted profile</li><li>Implement OAuth 2.0 / OIDC with a provider and validate tokens properly</li><li>Use least-privilege IAM and a secret manager</li><li>Fix findings from SAST, SCA and image scans</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Threat-model a system and turn threats into tests</li><li>Design authentication, authorisation and audit for a product</li><li>Respond to and contain a security incident</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the security architecture and policies across teams</li><li>Lead compliance (DPDP, GDPR, SOC 2) and external testing</li><li>Build a security culture and secure-by-default platforms</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OWASP ASVS verification levels</li><li>OAuth 2.0 security best current practice</li><li>Supply-chain security with SLSA</li><li>Cloud security posture management</li><li>LLM and AI application security</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a><span class="lnote"> Most critical web application risks</span></li><li><a href="https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/" target="_blank" rel="noopener">OWASP GenAI LLM Top 10 (2026)</a><span class="lnote"> Risks for applications built on language models</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP Password Storage Cheat Sheet</a><span class="lnote"> Argon2id, scrypt, bcrypt and PBKDF2 settings</span></li><li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/" target="_blank" rel="noopener">Kubernetes Pod Security Standards</a><span class="lnote"> Privileged, Baseline and Restricted profiles</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise how-tos for each security topic</span></li><li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a><span class="lnote"> Risks specific to APIs</span></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a><span class="lnote"> A checklist of security requirements by level</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener">Spring Security reference</a><span class="lnote"> Authentication and authorisation in Spring</span></li><li><a href="https://cloud.google.com/security/best-practices" target="_blank" rel="noopener">Google Cloud security best practices</a><span class="lnote"> IAM, network and data protection on GCP</span></li><li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA</a><span class="lnote"> Supply-chain levels for software artefacts</span></li></ul></div></div></article>
 
   </div>
 </section>
