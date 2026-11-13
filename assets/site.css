@@ -113,6 +113,17 @@ html { scroll-behavior: smooth; }
    brand page in its body. */
 @media (min-width: 1041px) and (max-width: 1199px) { .header-text-link { display: none; } .site-nav { gap: 13px; } }
 
+/* The home page's band under the header: a link to the Well Rounded Engineer guide, shown at every
+   width (the header nav is hidden below 1040px and has no room for a seventh link above it). */
+.guide-band { background: var(--color-accent-100); border-bottom: 1px solid var(--color-divider); }
+.guide-band a { display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 15px; color: var(--color-accent-800); }
+.guide-band a:hover { text-decoration: none; }
+.guide-band a:hover .guide-band-go { text-decoration: underline; }
+.guide-band b { font-family: var(--font-heading); font-weight: 600; letter-spacing: 0.02em; }
+.guide-band-smile { width: 22px; height: 22px; flex: none; }
+.guide-band-go { margin-left: auto; white-space: nowrap; font-weight: 600; }
+@media (max-width: 600px) { .guide-band-more { display: none; } }
+
 /* ── Buttons ────────────────────────────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
