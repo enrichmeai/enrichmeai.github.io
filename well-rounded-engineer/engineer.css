@@ -1,0 +1,103 @@
+/* Well Rounded Engineer: a tabbed field guide. Scoped under .eg so it never restyles the site header,
+   footer or other pages. Colours come only from the --color-* tokens in /assets/site.css. */
+
+.eg-bar {
+  position: relative; z-index: 30;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+.eg-bar .container { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-top: 10px; padding-bottom: 10px; }
+.eg-bar nav { display: flex; flex-wrap: wrap; gap: 2px; }
+.eg-bar nav a {
+  font-family: var(--font-heading); font-weight: 600; font-size: 14.5px;
+  color: var(--color-neutral-700); padding: 4px 9px; border-radius: 4px; white-space: nowrap;
+}
+.eg-bar nav a:hover { color: var(--color-text); background: var(--color-surface); text-decoration: none; }
+.eg-bar nav a[aria-current="page"] { color: var(--color-accent-800); background: var(--color-accent-100); }
+.eg-bar .navgrp {
+  font-family: var(--font-heading); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-neutral-600); padding: 4px 2px 4px 10px; white-space: nowrap;
+}
+.eg-bar .search { margin-left: auto; flex: 1 1 220px; max-width: 320px; }
+.eg-bar .search input {
+  width: 100%; font: 15px var(--font-body); color: var(--color-text);
+  background: var(--color-neutral-100); border: 1px solid var(--color-divider); border-radius: 4px; padding: 6px 10px;
+}
+.eg-bar nav a:focus-visible, .eg-bar input:focus-visible, .eg button:focus-visible {
+  outline: 2px solid var(--color-accent-700); outline-offset: 2px;
+}
+
+.eg { padding-top: 24px; padding-bottom: 56px; font-size: 15.5px; line-height: 1.55; }
+.eg .eg-intro { margin: 0 0 22px; max-width: 75ch; color: var(--color-neutral-700); }
+.eg .eg-tagline { font-family: var(--font-heading); font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 10px; }
+.eg .eg-intro h1 { max-width: none; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; margin-bottom: 8px; color: var(--color-text); }
+.eg .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 14px; }
+.eg .panel-head h2 { font-size: clamp(24px, 3vw, 30px); line-height: 1.15; }
+.eg .panel-head p { margin: 0; color: var(--color-neutral-700); max-width: 75ch; }
+.eg .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr)); gap: 14px; align-items: start; }
+.eg .card {
+  background: var(--color-neutral-100); border: 1px solid var(--color-divider);
+  border-radius: 6px; padding: 14px 16px; min-width: 0;
+}
+.eg .card.wide { grid-column: 1 / -1; }
+.eg .card h3 { font-size: 18px; line-height: 1.3; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.eg .card p, .eg .card li { margin: 6px 0; max-width: 75ch; }
+.eg .card ul, .eg .card ol { padding-left: 20px; margin: 6px 0; }
+.eg code {
+  font: 13.5px/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  background: var(--color-neutral-200); color: var(--color-text); padding: 1px 4px; border-radius: 3px;
+}
+.eg p code, .eg li code, .eg td code { overflow-wrap: anywhere; }
+.eg .snip { position: relative; margin: 8px 0; }
+.eg pre {
+  margin: 0; background: var(--color-neutral-200); color: var(--color-text);
+  border: 1px solid var(--color-divider); border-radius: 4px; padding: 10px 12px; overflow-x: auto;
+  font: 13px/1.55 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; tab-size: 2;
+}
+.eg pre code { background: none; padding: 0; font: inherit; overflow-wrap: normal; word-break: normal; }
+.eg .copy {
+  position: absolute; top: 6px; right: 6px; font: 600 12px var(--font-body); color: var(--color-neutral-700);
+  background: var(--color-neutral-100); border: 1px solid var(--color-divider); border-radius: 3px; padding: 2px 8px; cursor: pointer;
+}
+.eg .copy:hover { color: var(--color-accent-800); }
+.eg .tag {
+  font: 600 11px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 6px; border-radius: 3px; background: var(--color-accent-100); color: var(--color-accent-800);
+  margin-left: 0;   /* site.css .tag adds a left margin meant for other layouts */
+}
+.eg .tag.lts { background: var(--color-accent-200); color: var(--color-accent-900); }
+.eg .tag.prev { background: var(--color-neutral-200); color: var(--color-neutral-800); }
+.eg .tbl { overflow-x: auto; }
+.eg table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.eg th, .eg td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--color-divider); vertical-align: top; }
+.eg th { font: 600 12px var(--font-body); letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-neutral-700); }
+.eg td:first-child { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+.eg .note { margin: 6px 0 0; font-size: 14px; color: var(--color-neutral-700); }
+.eg .empty { color: var(--color-neutral-700); padding: 24px 0; }
+.eg .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 10px; margin: 6px 0; }
+.eg .lvl { border: 1px solid var(--color-divider); border-radius: 4px; padding: 8px 10px; background: var(--color-bg); min-width: 0; }
+.eg .lvl h4, .eg .explore h4 { margin: 0 0 4px; font-size: 16px; }
+.eg .lvl ul { margin: 0; padding-left: 16px; }
+.eg .lvl p { margin: 0; }
+.eg .lvtag {
+  display: inline-block; min-width: 20px; text-align: center; border-radius: 3px;
+  background: var(--color-accent-100); color: var(--color-accent-800); font: 600 12px var(--font-body); padding: 1px 5px; margin-right: 4px;
+}
+.eg .explore { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.eg .explore ul { padding-left: 18px; margin: 4px 0; }
+.eg .links li { margin: 5px 0; }
+.eg .links a { font-weight: 600; }
+.eg .lnote { color: var(--color-neutral-700); font-size: 14px; }
+.eg details { border: 1px solid var(--color-divider); border-radius: 4px; margin: 8px 0; background: var(--color-neutral-100); }
+.eg details > summary { cursor: pointer; padding: 8px 10px; font-weight: 600; }
+.eg details[open] > summary { border-bottom: 1px solid var(--color-divider); }
+.eg details > .inner { padding: 4px 10px 8px; }
+.eg .ex { font-weight: 600; color: var(--color-accent-800); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 1040px) {
+  .eg-bar { position: sticky; top: 58px; }   /* one scrolling row of tabs stays in reach on small screens */
+  .eg-bar nav { flex-wrap: nowrap; overflow-x: auto; width: 100%; order: 3; }
+}
+@media (max-width: 620px) {
+  .eg-bar .search { max-width: none; margin-left: 0; }
+}
