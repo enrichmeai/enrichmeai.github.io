@@ -101,6 +101,8 @@
 }
 @media (max-width: 620px) {
   .eg-bar .search { max-width: none; margin-left: 0; }
+  /* on a phone a long first-column label must wrap, or it squeezes the other columns to a sliver */
+  .eg td:first-child { white-space: normal; min-width: 7em; }
 }
 
 /* One page per section: the product label links back to the guide's first page, a previous/next
