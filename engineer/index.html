@@ -93,7 +93,7 @@
       <a href="#web3" data-tab="web3">Web 3.0</a>
       <a href="#solid" data-tab="solid">Solid</a>
     </nav>
-    <label class="search"><span hidden>Filter</span><input id="q" type="search" placeholder="Filter all sections (e.g. merge, record, partition)" autocomplete="off"></label>
+    <div class="search"><input id="q" type="search" aria-label="Filter all sections" placeholder="Filter, e.g. merge" autocomplete="off"></div>
   </div>
 </div>
 
@@ -128,7 +128,7 @@
       <li><b>Security:</b> untrusted text can carry instructions (prompt injection). Least-privilege tools, no secrets in prompts, output treated as untrusted input.</li>
       <li><b>Judgement with assistants:</b> AI-written code gets the same review, tests and doc checks as yours. You stay responsible for what ships.</li>
     </ul>
-    <p class="note">The <a href="#ai">AI tab</a> covers each of these. A prompt engineer stops at the prompt; this team ships, measures and operates the whole feature.</p>
+    <p class="note">The <a href="#ai">AI tab</a> covers each of these. A prompt engineer stops at the prompt; a well-rounded engineer ships, measures and operates the whole feature.</p>
   </article>
 
   <article class="card wide" id="levels-scale"><h3>The four levels used on every tab</h3>
@@ -267,7 +267,7 @@
 
 <!-- ================= BEHAVIOURS ================= -->
 <section class="panel" id="behaviours" data-name="Behaviours">
-  <div class="panel-head"><h2>Behaviours of a well-rounded engineer</h2><p>Skills are what you can do; behaviours are what you actually do every day. In the AI era the gap between them matters more: a model can produce code, but it cannot own the outcome, check the evidence, or learn from what broke. These are the behaviours this team expects, with what they look like, and what they do not.</p></div>
+  <div class="panel-head"><h2>Behaviours of a well-rounded engineer</h2><p>Skills are what you can do; behaviours are what you actually do every day. In the AI era the gap between them matters more: a model can produce code, but it cannot own the outcome, check the evidence, or learn from what broke. These are the behaviours that make the difference, with what they look like, and what they do not.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>The headline: engaged, not prompting and resting</h3>
@@ -709,7 +709,7 @@ IFS=$'\n\t'
 usage() { echo "usage: $0 &lt;env&gt; &lt;date&gt;" &gt;&amp;2; exit 2; }
 [[ $# -eq 2 ]] || usage
 env="$1"; date="$2"
-[[ "$env" =~ ^(bld|prod)$ ]] || { echo "bad env: $env" &gt;&amp;2; exit 2; }
+[[ "$env" =~ ^(dev|prod)$ ]] || { echo "bad env: $env" &gt;&amp;2; exit 2; }
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT  # always clean up
@@ -3053,7 +3053,7 @@ gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
       <li><b>Data:</b> encryption at rest is on by default; CMEK when you must control keys; VPC Service Controls around sensitive datasets.</li>
       <li><b>Audit logs:</b> Admin Activity is always on; enable Data Access logs for sensitive services so reads are attributable.</li>
       <li><b>Security Command Center</b> surfaces misconfigurations and threats across the project.</li>
-      <li><b>Separate projects</b> for bld and prod; nobody's laptop has standing prod write access.</li>
+      <li><b>Separate projects</b> for dev and prod; nobody's laptop has standing prod write access.</li>
     </ul>
   </article>
 
@@ -3704,7 +3704,7 @@ pq.write_table(table, "out.parquet",
       <li><b>Java owns Beam:</b> the Dataflow/Beam execution layer is Java; legacy Python Beam is not carried forward. The two languages deliberately do different jobs.</li>
       <li><b>dbt, reused:</b> transformation is SQL and macros, packaged once; there is deliberately no Java transform module.</li>
       <li><b>Local-first:</b> the whole stack runs against emulators, so you can develop and test without a cloud account.</li>
-      <li><b>No silent defaults:</b> since 0.2.0, <code>Warehouse.loadFromUri</code> requires a <code>LoadOptions</code>, because a defaulted write disposition let a re-run silently double its data.</li>
+      <li><b>No silent defaults:</b> <code>Warehouse.loadFromUri</code> requires a <code>LoadOptions</code>, because a defaulted write disposition let a re-run silently double its data.</li>
       <li><b>Honest failure:</b> reconciliation runs before the target is written, so a failed load cannot be reported as succeeded.</li>
       <li><b>Not a replacement</b> for Beam, Airflow or dbt: they are engines, and Culvert is a framework around them.</li>
     </ul>
@@ -3778,9 +3778,9 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
   <article class="card"><h3>Status, stated plainly</h3>
     <ul>
-      <li>Released in both languages on Maven Central and PyPI, under Apache 2.0 (the 0.1 releases were MIT).</li>
+      <li>Released in both languages on Maven Central and PyPI, under Apache 2.0 (the earliest releases were MIT).</li>
       <li>Ran end to end on a real GCP project (Cloud Run to BigQuery, event-driven) before release; that run caught eight production-only bugs every local test had passed.</li>
-      <li>It is a 0.x line: read the changelog's upgrade notes before moving between minor versions.</li>
+      <li>Culvert is pre-1.0: read the changelog's upgrade notes before moving between versions.</li>
       <li>A book on its design is in progress.</li>
     </ul>
     <p class="note">Pin a version in your build, and verify any API against that version's sources, not against <code>main</code>.</p>
@@ -3794,7 +3794,7 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain contracts, adapters and the conformance suite</li><li>Install culvert with the right extras or add the Maven artifacts</li><li>Use an adapter through auto-discovery instead of a cloud SDK</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write pipeline code against BlobStore, Warehouse and job control</li><li>Use LoadOptions, head() and merge() for idempotent loads</li><li>Run and test against emulators locally</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design pipelines whose logic is cloud-neutral</li><li>Add an adapter that passes the conformance suite</li><li>Use StageClaim, InputReadiness and orchestration gates</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Shape the contract spec and its evolution</li><li>Lead adoption across teams and clouds</li><li>Contribute adapters for new clouds (Azure)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The contract specification (CONTRACT.md)</li><li>Conformance suites as a design tool</li><li>Job control and run records</li><li>Orchestration renderers</li><li>Upgrading across 0.x releases</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="/culvert/" target="_blank" rel="noopener">Culvert on enrichmeai.com</a><span class="lnote"> Overview, libraries, releases, status</span></li><li><a href="https://github.com/enrichmeai/culvert" target="_blank" rel="noopener">Culvert on GitHub</a><span class="lnote"> Source, issues</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md" target="_blank" rel="noopener">Contract specification</a><span class="lnote"> The authoritative list of contracts</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a><span class="lnote"> Every release, including fixes</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md" target="_blank" rel="noopener">Migration guide</a><span class="lnote"> Upgrading between versions</span></li><li><a href="https://pypi.org/project/culvert/" target="_blank" rel="noopener">culvert on PyPI</a><span class="lnote"> Python package</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The contract specification (CONTRACT.md)</li><li>Conformance suites as a design tool</li><li>Job control and run records</li><li>Orchestration renderers</li><li>Upgrading between releases</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="/culvert/" target="_blank" rel="noopener">Culvert on enrichmeai.com</a><span class="lnote"> Overview, libraries, releases, status</span></li><li><a href="https://github.com/enrichmeai/culvert" target="_blank" rel="noopener">Culvert on GitHub</a><span class="lnote"> Source, issues</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md" target="_blank" rel="noopener">Contract specification</a><span class="lnote"> The authoritative list of contracts</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a><span class="lnote"> Every release, including fixes</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md" target="_blank" rel="noopener">Migration guide</a><span class="lnote"> Upgrading between versions</span></li><li><a href="https://pypi.org/project/culvert/" target="_blank" rel="noopener">culvert on PyPI</a><span class="lnote"> Python package</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -3848,7 +3848,7 @@ dbt build -s result:error+ --state target/</code></pre></div>
     dev:
       type: bigquery
       method: oauth                 # gcloud auth application-default login
-      project: my-proj-bld
+      project: my-proj-dev
       dataset: dbt_jo               # personal dev dataset
       location: asia-south1
       threads: 8
@@ -5599,7 +5599,7 @@ public interface CorpusConfig {
 }
 
 @ConfigProperty(name = "corpus.dataset") String dataset;   // single value</code></pre></div>
-    <p class="note">Profiles: <code>dev</code>, <code>test</code>, <code>prod</code> built in; pick another with <code>-Dquarkus.profile=bld</code>. Env vars override: <code>CORPUS_DATASET</code>.</p>
+    <p class="note">Profiles: <code>dev</code>, <code>test</code>, <code>prod</code> built in; pick another with <code>-Dquarkus.profile=staging</code>. Env vars override: <code>CORPUS_DATASET</code>.</p>
   </article>
 
   <article class="card"><h3>Data with Panache</h3>
@@ -8947,7 +8947,7 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
       <li><b>Pipeline:</b> stages run in order or parallel; each stage has steps.</li>
       <li><b>Stage types:</b> Build (CI), Deploy (CD), Approval, Custom.</li>
       <li><b>Service:</b> what you deploy (manifests, artefact).</li>
-      <li><b>Environment and infrastructure definition:</b> where you deploy (bld, prod; a cluster or project).</li>
+      <li><b>Environment and infrastructure definition:</b> where you deploy (dev, prod; a cluster or project).</li>
       <li><b>Connector:</b> a stored, permissioned link to GitHub, GCP, a registry or a cluster.</li>
       <li><b>Delegate:</b> an agent running in your infrastructure that executes tasks, so Harness never needs inbound access.</li>
       <li><b>Secrets:</b> stored in Harness or referenced from Google Secret Manager or Vault.</li>
@@ -9044,8 +9044,8 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
     <ol>
       <li><b>Trigger:</b> a push or merged pull request on GitHub starts the pipeline (webhook trigger on <code>main</code>; PR trigger runs CI only).</li>
       <li><b>CI stage:</b> clone, restore cache, compile and run tests (with test intelligence), run scanners, then build the image once and push it to Artifact Registry tagged with the commit SHA.</li>
-      <li><b>Deploy to bld:</b> a CD stage deploys that exact image to the bld environment (GKE or Cloud Run) with a rolling strategy.</li>
-      <li><b>Verify bld:</b> smoke tests and continuous verification against bld metrics and logs.</li>
+      <li><b>Deploy to dev:</b> a CD stage deploys that exact image to the dev environment (GKE or Cloud Run) with a rolling strategy.</li>
+      <li><b>Verify dev:</b> smoke tests and continuous verification against dev metrics and logs.</li>
       <li><b>Approval:</b> a named group approves prod (or a policy auto-approves outside freeze windows).</li>
       <li><b>Deploy to prod:</b> canary or blue-green with the <i>same</i> artefact; verification watches error rate and latency; automatic rollback on degradation.</li>
       <li><b>Notify and record:</b> Slack/email notification, deployment recorded with who, what, which commit, and the verification result.</li>
@@ -9106,7 +9106,7 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
   <article class="card"><h3>Harness CD in depth</h3>
     <ul>
       <li><b>Service:</b> what you deploy: the artefact source (Artifact Registry image), manifests (Kubernetes YAML, Helm chart, Kustomize) and variables.</li>
-      <li><b>Environment:</b> bld or prod, marked pre-production or production, with environment-level overrides (replicas, URLs, secrets).</li>
+      <li><b>Environment:</b> dev or prod, marked pre-production or production, with environment-level overrides (replicas, URLs, secrets).</li>
       <li><b>Infrastructure definition:</b> the exact target: a GKE cluster and namespace, or a GCP project and region for serverless.</li>
       <li><b>Deployment types:</b> Kubernetes, Native Helm, serverless targets, VMs over SSH/WinRM, Tanzu, ECS, and custom deployments for anything else. Check Harness's current list for Google Cloud targets such as Cloud Run and Cloud Functions.</li>
       <li><b>Execution:</b> generated from the chosen strategy, editable step by step; failure strategies say what to do on each kind of error (retry, rollback, manual intervention).</li>
@@ -9224,7 +9224,7 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
 terraform init -upgrade              # newer providers within constraints
 terraform fmt -recursive
 terraform validate
-terraform plan -var-file=env/bld.tfvars -out=plan.tfplan
+terraform plan -var-file=env/dev.tfvars -out=plan.tfplan
 terraform show plan.tfplan           # read it before applying
 terraform apply plan.tfplan          # applies exactly what you read
 terraform plan -destroy
@@ -9256,15 +9256,15 @@ provider "google" {
 }
 
 # backend values cannot use variables; pass them at init:
-# terraform init -backend-config="bucket=my-proj-bld-tfstate"</code></pre></div>
+# terraform init -backend-config="bucket=my-proj-dev-tfstate"</code></pre></div>
   </article>
 
   <article class="card"><h3>Variables, locals, outputs</h3>
 <div class="snip"><pre><code>variable "env" {
   type = string
   validation {
-    condition     = contains(["bld", "prod"], var.env)
-    error_message = "env must be bld or prod."
+    condition     = contains(["dev", "prod"], var.env)
+    error_message = "env must be dev or prod."
   }
 }
 variable "stages" {
@@ -9285,8 +9285,8 @@ locals {
 
 output "bucket_url" { value = google_storage_bucket.landing.url }
 
-# env/bld.tfvars
-env    = "bld"
+# env/dev.tfvars
+env    = "dev"
 stages = { land = { enabled = true, args = ["--max-objects=50"] } }</code></pre></div>
   </article>
 
@@ -9559,7 +9559,7 @@ timestamp()   # changes every plan: avoid in resource arguments</code></pre></di
   <article class="card"><h3>terraform test (1.6)</h3>
 <div class="snip"><pre><code># tests/stages.tftest.hcl
 variables {
-  env    = "bld"
+  env    = "dev"
   stages = { land = { enabled = true } }
 }
 
@@ -9567,7 +9567,7 @@ run "bld_window_is_small" {
   command = plan
   assert {
     condition     = length(local.enabled) &lt;= 4
-    error_message = "bld enables too many stages."
+    error_message = "dev enables too many stages."
   }
 }
 
@@ -9584,7 +9584,7 @@ run "rejects_unknown_env" {
     <ul>
       <li><b>Read every plan line</b> that says <code>destroy</code> or <code>-/+</code> (replace). A replaced database or bucket loses its data.</li>
       <li><b>State bucket:</b> versioning on, uniform access, only the deploy identity can write. State holds secrets in plain text.</li>
-      <li><b>One state per environment</b> (separate prefix or project). Workspaces suit identical copies, not bld vs prod with different shapes.</li>
+      <li><b>One state per environment</b> (separate prefix or project). Workspaces suit identical copies, not dev vs prod with different shapes.</li>
       <li><b>Pin providers</b> with <code>~&gt;</code> and commit <code>.terraform.lock.hcl</code>.</li>
       <li><b>Images by tag or digest</b> from a variable, never <code>:latest</code>, so a plan shows when the image moves.</li>
       <li><b>No secrets in tfvars.</b> Reference Secret Manager; mark variables <code>sensitive</code>.</li>
@@ -10132,9 +10132,9 @@ spec:
 <div class="snip"><pre><code>apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: pipelineruns.data.enrichme.ai
+  name: pipelineruns.data.example.com
 spec:
-  group: data.enrichme.ai
+  group: data.example.com
   scope: Namespaced
   names:
     plural: pipelineruns
@@ -10165,7 +10165,7 @@ spec:
             status:
               type: object
               x-kubernetes-preserve-unknown-fields: true</code></pre></div>
-<div class="snip"><pre><code>apiVersion: data.enrichme.ai/v1alpha1
+<div class="snip"><pre><code>apiVersion: data.example.com/v1alpha1
 kind: PipelineRun
 metadata: { name: run-2026-11-12, namespace: data }
 spec:
@@ -10176,7 +10176,7 @@ spec:
   </article>
 
   <article class="card"><h3>Go: kubebuilder and controller-runtime</h3>
-<div class="snip"><pre><code>kubebuilder init --domain enrichme.ai --repo github.com/enrichmeai/pipeline-operator
+<div class="snip"><pre><code>kubebuilder init --domain example.com --repo github.com/example/pipeline-operator
 kubebuilder create api --group data --version v1alpha1 --kind PipelineRun
 make manifests      # generate CRDs and RBAC from code markers
 make install run    # install CRDs, run the controller locally</code></pre></div>
@@ -10212,8 +10212,8 @@ public class PipelineRunReconciler implements Reconciler&lt;PipelineRun&gt; {
 <div class="snip"><pre><code># Python: Kopf
 import kopf
 
-@kopf.on.create("data.enrichme.ai", "v1alpha1", "pipelineruns")
-@kopf.on.update("data.enrichme.ai", "v1alpha1", "pipelineruns")
+@kopf.on.create("data.example.com", "v1alpha1", "pipelineruns")
+@kopf.on.update("data.example.com", "v1alpha1", "pipelineruns")
 def reconcile(spec, name, namespace, status, logger, **_):
     next_stage = choose_next_stage(spec["stages"], status)
     if next_stage:
@@ -11120,7 +11120,7 @@ Esc          interrupt</code></pre></div>
   </article>
 
   <article class="card"><h3>Subagents and skills</h3>
-<div class="snip"><pre><code>&lt;!-- .claude/agents/reviewer.md --&gt;
+<div class="snip"><pre><code>&lt;!-- simplified example of .claude/agents/reviewer.md --&gt;
 ---
 name: reviewer
 description: Independent reviewer of a finished diff before a PR is opened.
@@ -11131,7 +11131,7 @@ model: sonnet
 Review the diff against the task, CLAUDE.md and the official docs of every
 library it touches. Report bugs, missing tests and unverified API use.
 Do not edit files.</code></pre></div>
-<div class="snip"><pre><code>&lt;!-- .claude/skills/release-sync/SKILL.md --&gt;
+<div class="snip"><pre><code>&lt;!-- simplified example of .claude/skills/&lt;name&gt;/SKILL.md --&gt;
 ---
 name: release-sync
 description: Bring a project page up to date with that project's latest
@@ -11153,7 +11153,7 @@ description: Bring a project page up to date with that project's latest
       <li><code>/compound</code> turns what went wrong into a permanent guard (a test, hook or rule).</li>
       <li>Open a PR; a human (or a gated merge skill) merges.</li>
     </ol>
-    <p class="note">This is the loop enrichme.ai uses to build this site. Each step is a skill, agent or hook, committed to the repo, so every session follows it.</p>
+    <p class="note">Each step is a skill, agent or hook committed to the repository, so every session follows the same loop.</p>
   </article>
 
   <article class="card wide"><h3>Claude Cowork</h3>
