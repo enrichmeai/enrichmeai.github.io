@@ -28,6 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -348,6 +349,11 @@ export default function () {
 
 
 
+
+  <article class="card"><h3>One we build: enrich-test-api</h3>
+    <p><a href="/enrich-test-api/">enrich-test-api</a> is a Java test library for exercising real cloud service semantics against local emulators, so a test names no cloud provider. It is an early alpha: AWS only, emulator only. It is open source (Apache 2.0).</p>
+    <p class="note">It is ours, so we are not neutral: compare it with Testcontainers and the other tools on this page.</p>
+  </article>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

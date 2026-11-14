@@ -28,6 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -257,6 +258,11 @@ print("".join(b.text for b in resp.content if b.type == "text"))</code></pre></d
 
 
 
+
+  <article class="card"><h3>One we build: Penstock</h3>
+    <p>To run agents on your own servers, on a hosted model or a local Ollama model, see <a href="/penstock/">Penstock</a>, our open-source (Apache 2.0) agent harness.</p>
+    <p class="note">It is ours, so we are not neutral: compare it with the runtimes on this page.</p>
+  </article>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain tokens, context windows, next-token prediction and training cutoffs</li><li>Make a single model call with structured output</li><li>Know when to prompt, retrieve, use tools or fine-tune</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a tool loop or use an SDK tool runner</li><li>Run a local or self-hosted model and compare it with a hosted API</li><li>Log, budget and handle errors for LLM calls</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose runtimes and models by quality, cost, latency and data controls</li><li>Design agent harnesses with bounded loops, context management and approvals</li><li>Plan self-hosting capacity (GPU memory, batching, quantisation)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's model and runtime strategy</li><li>Lead fine-tuning or custom model programmes where justified</li><li>Design platform-level AI infrastructure and governance</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
