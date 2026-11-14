@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -124,41 +125,40 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>OWASP Top 10 (2021 edition)</h3>
-    <p class="note">A 2025 edition of the list has been published; compare it at owasp.org. The categories below remain a sound checklist.</p>
+  <article class="card wide"><h3>OWASP Top 10 (2025 edition)</h3>
     <div class="tbl"><table>
       <thead><tr><th>Risk</th><th>Looks like</th><th>Prevent with</th></tr></thead>
       <tbody>
-      <tr><td>A01 Broken access control</td><td><code>GET /api/cases/123</code> returns another user's case</td><td>Check ownership on every request, server side; deny by default; test it</td></tr>
-      <tr><td>A02 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
-      <tr><td>A03 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
-      <tr><td>A04 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
-      <tr><td>A05 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
-      <tr><td>A06 Vulnerable components</td><td>An old library with a known CVE</td><td>Dependency updates, SCA scanning, SBOMs</td></tr>
+      <tr><td>A01 Broken access control</td><td><code>GET /api/orders/123</code> returns another user's order; the server fetches a user-supplied URL that points to an internal service or metadata endpoint (SSRF, now part of this category)</td><td>Check ownership on every request, server side; deny by default; test it. For URLs: allow-list destinations, block internal ranges, separate egress</td></tr>
+      <tr><td>A02 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
+      <tr><td>A03 Software supply chain failures</td><td>An old library with a known CVE; a compromised dependency or build tool</td><td>An SBOM, dependency updates, SCA scanning, components from trusted sources only, protected CI</td></tr>
+      <tr><td>A04 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
+      <tr><td>A05 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
+      <tr><td>A06 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
       <tr><td>A07 Authentication failures</td><td>Weak passwords allowed, no MFA, session never expires</td><td>Use a proven identity provider; MFA; short-lived tokens</td></tr>
-      <tr><td>A08 Integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, protected CI</td></tr>
-      <tr><td>A09 Logging &amp; monitoring failures</td><td>A breach discovered months later</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
-      <tr><td>A10 Server-side request forgery</td><td>Server fetches a user-supplied URL that points to an internal service or metadata endpoint</td><td>Allow-list destinations; block internal ranges; separate egress</td></tr>
+      <tr><td>A08 Software or data integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, verified artefacts</td></tr>
+      <tr><td>A09 Security logging &amp; alerting failures</td><td>A breach discovered months later; logs nobody is alerted on</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
+      <tr><td>A10 Mishandling of exceptional conditions</td><td>An error path that fails open, leaks a stack trace, or leaves a transaction half done</td><td>Handle errors where they happen and in one global handler; fail closed and roll back; rate limits and quotas</td></tr>
       </tbody></table></div>
-    <p class="note">OWASP revises this list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
+    <p class="note">The 2021 edition numbered these differently and had SSRF as its own A10. OWASP revises the list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
   </article>
 
   <article class="card"><h3>Injection: always parameterise</h3>
 <div class="snip"><pre><code>// Java JDBC
-// WRONG: "SELECT * FROM judgment WHERE cnr = '" + cnr + "'"
+// WRONG: "SELECT * FROM orders WHERE order_ref = '" + orderRef + "'"
 PreparedStatement ps = conn.prepareStatement(
-    "SELECT * FROM judgment WHERE cnr = ?");
-ps.setString(1, cnr);
+    "SELECT * FROM orders WHERE order_ref = ?");
+ps.setString(1, orderRef);
 
 // Spring JdbcClient
-jdbc.sql("SELECT * FROM judgment WHERE cnr = :cnr").param("cnr", cnr)...
+jdbc.sql("SELECT * FROM orders WHERE order_ref = :order_ref").param("order_ref", orderRef)...
 
 # Python psycopg
-cur.execute("SELECT * FROM judgment WHERE cnr = %s", (cnr,))   # never f-strings
+cur.execute("SELECT * FROM orders WHERE order_ref = %s", (order_ref,))   # never f-strings
 
 # BigQuery
 bigquery.QueryJobConfig(query_parameters=[
-    bigquery.ScalarQueryParameter("cnr", "STRING", cnr)])      # WHERE cnr = @cnr</code></pre></div>
+    bigquery.ScalarQueryParameter("order_ref", "STRING", order_ref)])      # WHERE order_ref = @order_ref</code></pre></div>
     <ul>
       <li>Identifiers (table and column names) cannot be parameters: pick them from an allow-list.</li>
       <li>Never pass user input to a shell. Use the library call, or an argument list without a shell.</li>
@@ -172,7 +172,7 @@ bigquery.QueryJobConfig(query_parameters=[
       <li><b>Use OIDC / OAuth 2.0</b> with a proven provider rather than building login yourself. For browser apps, the authorisation code flow with PKCE.</li>
       <li><b>JWTs:</b> verify the signature, issuer, audience and expiry on every request; keep them short-lived; never accept <code>alg: none</code>; never put secrets in them (they are only encoded).</li>
       <li><b>Refresh tokens</b> rotate on use and are revocable; in browsers keep them in <code>HttpOnly; Secure; SameSite</code> cookies.</li>
-      <li><b>Check permissions on the server for every request</b> and every object: "is this user allowed this case?", not just "is the user logged in?".</li>
+      <li><b>Check permissions on the server for every request</b> and every object: "is this user allowed this order?", not just "is the user logged in?".</li>
       <li><b>Load roles from the source of truth</b> on each authentication; do not trust roles a client sends.</li>
       <li><b>Passwords:</b> argon2id or bcrypt, rate-limited login, breached-password checks, MFA for admins.</li>
     </ul>
@@ -263,7 +263,7 @@ gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
       <li><b>Know where personal data is:</b> tag columns and datasets; keep an inventory.</li>
       <li><b>Collect less, keep less:</b> only what the purpose needs, with a retention period.</li>
       <li><b>Mask or tokenise</b> personal data in non-production environments and analytics.</li>
-      <li><b>Honour legal obligations:</b> deletion requests, court suppression orders, consent. Apply them on every read path, not only in one table.</li>
+      <li><b>Honour legal obligations:</b> deletion requests, legal holds, consent. Apply them on every read path, not only in one table.</li>
       <li><b>Know the law that applies:</b> for India, the Digital Personal Data Protection Act, 2023; GDPR for EU residents.</li>
       <li><b>Logs are data too:</b> no personal data or tokens in log lines unless necessary and protected.</li>
     </ul>

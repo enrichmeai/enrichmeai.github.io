@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -137,10 +138,10 @@ dbt retry                        # re-run only what failed last time</code></pre
 -s 2+my_model+1      # 2 levels up, 1 down
 -s @my_model         # children + their parents (safe rebuild)
 -s tag:daily
--s path:models/fdp
+-s path:models/analytics
 -s config.materialized:incremental
 -s source:raw+       # everything downstream of a source
--s "fdp_judgment,tag:daily"     # intersection (comma)
+-s "orders,tag:daily"     # intersection (comma)
 -s a b               # union (space)
 --exclude tag:slow
 
@@ -167,7 +168,7 @@ dbt build -s result:error+ --state target/</code></pre></div>
       method: service-account
       keyfile: /secrets/sa.json     # or oauth on Workload Identity
       project: my-proj-prod
-      dataset: fdp
+      dataset: analytics
       location: asia-south1
       threads: 16</code></pre></div>
   </article>
@@ -180,16 +181,16 @@ dbt build -s result:error+ --state target/</code></pre></div>
 seeds/  snapshots/  macros/  tests/  analyses/
 
 # dbt_project.yml
-name: fdp_judgments
+name: shop
 profile: my_project
 models:
-  fdp_judgments:
+  shop:
     +persist_docs: {relation: true, columns: true}
     staging:
       +materialized: view
     marts:
       +materialized: table
-      +labels: {owner: data, layer: fdp}
+      +labels: {owner: data, layer: analytics}
 vars:
   start_year: 2023</code></pre></div>
   </article>
@@ -198,35 +199,35 @@ vars:
 <div class="snip"><pre><code>{{ config(
     materialized = 'table',
     partition_by = {
-      'field': 'decision_date',
+      'field': 'order_date',
       'data_type': 'date',          # date | timestamp | datetime | int64
       'granularity': 'month'        # day | hour | month | year
     },
-    cluster_by = ['court_code', 'cnr'],   # up to 4 columns
+    cluster_by = ['store_id', 'order_ref'],   # up to 4 columns
     require_partition_filter = true,
     partition_expiration_days = none,
-    labels = {'layer': 'fdp'},
+    labels = {'layer': 'analytics'},
     tags = ['daily']
 ) }}
 
 -- integer-range partition
-partition_by = {'field': 'data_year', 'data_type': 'int64',
-                'range': {'start': 1950, 'end': 2030, 'interval': 1}}</code></pre></div>
+partition_by = {'field': 'order_year', 'data_type': 'int64',
+                'range': {'start': 1995, 'end': 2030, 'interval': 1}}</code></pre></div>
   </article>
 
   <article class="card"><h3>Incremental: merge</h3>
 <div class="snip"><pre><code>{{ config(
     materialized = 'incremental',
     incremental_strategy = 'merge',
-    unique_key = 'judgment_key',            # or a list
+    unique_key = 'order_id',            # or a list
     on_schema_change = 'append_new_columns',# ignore | fail | sync_all_columns
-    partition_by = {'field': 'decision_date', 'data_type': 'date'},
+    partition_by = {'field': 'order_date', 'data_type': 'date'},
     incremental_predicates = [
-      "DBT_INTERNAL_DEST.decision_date &gt;= date_sub(current_date(), interval 30 day)"
+      "DBT_INTERNAL_DEST.order_date &gt;= date_sub(current_date(), interval 30 day)"
     ]
 ) }}
 
-select * from {{ ref('int_judgment') }}
+select * from {{ ref('int_orders') }}
 {% if is_incremental() %}
   where _landed_at &gt; (select max(_landed_at) from {{ this }})
 {% endif %}</code></pre></div>
@@ -257,78 +258,78 @@ select * from {{ ref('stg_events') }}
 <div class="snip"><pre><code>{{ config(
     materialized = 'incremental',
     incremental_strategy = 'microbatch',
-    event_time = 'decision_date',
+    event_time = 'order_date',
     batch_size = 'day',            # hour | day | month | year
     begin = '2023-01-01',
     lookback = 2,
-    partition_by = {'field': 'decision_date', 'data_type': 'date',
+    partition_by = {'field': 'order_date', 'data_type': 'date',
                     'granularity': 'day'}
 ) }}
 -- no is_incremental() block: dbt filters each batch for you,
 -- and filters upstream refs that declare their own event_time
-select * from {{ ref('stg_judgment') }}</code></pre></div>
-<div class="snip"><pre><code>dbt run -s fct_judgment --event-time-start 2024-01-01 --event-time-end 2024-02-01
+select * from {{ ref('stg_orders') }}</code></pre></div>
+<div class="snip"><pre><code>dbt run -s fct_orders --event-time-start 2024-01-01 --event-time-end 2024-02-01
 dbt retry      # re-runs only failed batches</code></pre></div>
   </article>
 
   <article class="card"><h3>Sources &amp; freshness</h3>
 <div class="snip"><pre><code># models/staging/_sources.yml
 sources:
-  - name: odp
+  - name: raw
     database: my-proj            # = GCP project
-    schema: dp_odp               # = dataset
+    schema: raw               # = dataset
     loaded_at_field: _landed_at
     freshness:
       warn_after:  {count: 1, period: day}
       error_after: {count: 3, period: day}
     tables:
-      - name: hc_judgment
-      - name: sc_judgment
+      - name: orders
+      - name: app_orders
         freshness: null          # opt out
 
 -- usage
-select * from {{ source('odp', 'hc_judgment') }}</code></pre></div>
+select * from {{ source('raw', 'orders') }}</code></pre></div>
   </article>
 
   <article class="card"><h3>Data tests</h3>
 <div class="snip"><pre><code>models:
-  - name: fdp_judgment
+  - name: orders
     columns:
-      - name: judgment_key
+      - name: order_id
         data_tests: [unique, not_null]
-      - name: court_code
+      - name: store_id
         data_tests:
-          - relationships: {to: ref('fdp_court'), field: court_code}
+          - relationships: {to: ref('stores'), field: store_id}
       - name: status
         data_tests:
-          - accepted_values: {values: ['DISPOSED', 'PENDING']}
-      - name: decision_date
+          - accepted_values: {values: ['PAID', 'PENDING']}
+      - name: order_date
         data_tests:
           - not_null:
               config:
-                severity: warn
-                where: "data_year &gt;= 2000"
+                severity: error          # the default; with warn, dbt skips error_if
+                where: "order_year &gt;= 2000"
                 error_if: "&gt;100"
                 warn_if: "&gt;0"</code></pre></div>
 <div class="snip"><pre><code>-- tests/assert_no_future_dates.sql  (singular: fails if it returns rows)
-select * from {{ ref('fdp_judgment') }}
-where decision_date &gt; current_date()</code></pre></div>
+select * from {{ ref('orders') }}
+where order_date &gt; current_date()</code></pre></div>
     <p class="note"><code>data_tests:</code> replaced <code>tests:</code> in 1.8; the old key still works. Packages: <code>dbt-labs/dbt_utils</code>, <code>metaplane/dbt_expectations</code>.</p>
   </article>
 
   <article class="card"><h3>Unit tests <span class="tag">1.8</span></h3>
 <div class="snip"><pre><code>unit_tests:
-  - name: parses_sc_dd_mm_yyyy
-    model: int_judgment_normalised
+  - name: parses_dd_mm_yyyy
+    model: int_orders_normalised
     given:
-      - input: ref('stg_sc_judgment')
+      - input: ref('stg_app_orders')
         rows:
-          - {cnr: "SC1", raw_date: "05-05-1959"}
-          - {cnr: "SC2", raw_date: "bad"}
+          - {order_ref: "A1", raw_date: "05-05-1959"}
+          - {order_ref: "A2", raw_date: "bad"}
     expect:
       rows:
-        - {cnr: "SC1", decision_date: 1959-05-05}
-        - {cnr: "SC2", decision_date: null}
+        - {order_ref: "A1", order_date: 1959-05-05}
+        - {order_ref: "A2", order_date: null}
 
   # format: csv | dict | sql ; overrides: {macros: {is_incremental: true}}</code></pre></div>
     <p class="note">Unit tests run SQL logic on fixed inputs before the model is built. Run with <code>dbt test -s test_type:unit</code>; exclude them in prod.</p>
@@ -336,14 +337,14 @@ where decision_date &gt; current_date()</code></pre></div>
 
   <article class="card"><h3>Jinja &amp; macros</h3>
 <div class="snip"><pre><code>{{ ref('model') }}   {{ ref('other_pkg', 'model') }}
-{{ source('odp', 'hc_judgment') }}
+{{ source('raw', 'orders') }}
 {{ this }}                      -- current relation
 {{ var('start_year', 2020) }}
 {{ env_var('DBT_ENV', 'dev') }}
 {{ target.name }} {{ target.project }} {{ target.dataset }}
 
-{% set courts = ['2_5', '14_25', '16_20'] %}
-where court in ({% for c in courts %}'{{ c }}'{% if not loop.last %},{% endif %}{% endfor %})
+{% set stores = ['1_05', '4_12', '7_03'] %}
+where store_id in ({% for c in stores %}'{{ c }}'{% if not loop.last %},{% endif %}{% endfor %})
 
 -- macros/safe_date.sql
 {% macro safe_date(col, fmt='%Y-%m-%d') -%}
@@ -351,8 +352,8 @@ where court in ({% for c in courts %}'{{ c }}'{% if not loop.last %},{% endif %}
 {%- endmacro %}
 
 -- run a query at compile time
-{% set rs = run_query("select distinct court from " ~ ref('fdp_court')) %}
-{% if execute %}{% set courts = rs.columns[0].values() %}{% endif %}
+{% set rs = run_query("select distinct store_id from " ~ ref('stores')) %}
+{% if execute %}{% set stores = rs.columns[0].values() %}{% endif %}
 
 -- dev sampling
 {% if target.name == 'dev' %} limit 1000 {% endif %}</code></pre></div>
@@ -371,7 +372,7 @@ where ratio &gt; {{ max_ratio }}
 
 # use it
 columns:
-  - name: decision_date
+  - name: order_date
     data_tests:
       - null_ratio_below: {max_ratio: 0.0}</code></pre></div>
   </article>
@@ -379,23 +380,24 @@ columns:
   <article class="card"><h3>Contracts &amp; snapshots</h3>
 <div class="snip"><pre><code># Model contract: build fails if shape drifts
 models:
-  - name: serving_judgments
+  - name: serving_orders
     config:
       contract: {enforced: true}
     columns:
-      - name: judgment_key
+      - name: order_id
         data_type: string
         constraints: [{type: not_null}]
-      - name: decision_date
+      - name: order_date
         data_type: date
+      # … list every column the model returns, each with its data_type
 
 # Snapshot, YAML form (1.9): SCD type 2
 snapshots:
-  - name: court_snapshot
-    relation: source('odp', 'court')
+  - name: store_snapshot
+    relation: source('raw', 'stores')
     config:
       schema: snapshots
-      unique_key: court_code
+      unique_key: store_id
       strategy: check          # or timestamp + updated_at
       check_cols: all
       hard_deletes: invalidate # ignore | invalidate | new_record</code></pre></div>

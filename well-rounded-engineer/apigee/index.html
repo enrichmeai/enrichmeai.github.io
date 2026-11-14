@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -147,7 +148,7 @@
     &lt;/Flow&gt;
   &lt;/Flows&gt;
   &lt;HTTPProxyConnection&gt;
-    &lt;BasePath&gt;/legal/v1&lt;/BasePath&gt;
+    &lt;BasePath&gt;/shop/v1&lt;/BasePath&gt;
   &lt;/HTTPProxyConnection&gt;
   &lt;RouteRule name="default"&gt;
     &lt;TargetEndpoint&gt;default&lt;/TargetEndpoint&gt;
@@ -161,10 +162,10 @@
   &lt;HTTPTargetConnection&gt;
     &lt;Authentication&gt;
       &lt;GoogleIDToken&gt;
-        &lt;Audience&gt;https://legal-api-xxxxx.a.run.app&lt;/Audience&gt;
+        &lt;Audience&gt;https://shop-api-xxxxx.a.run.app&lt;/Audience&gt;
       &lt;/GoogleIDToken&gt;
     &lt;/Authentication&gt;
-    &lt;URL&gt;https://legal-api-xxxxx.a.run.app&lt;/URL&gt;
+    &lt;URL&gt;https://shop-api-xxxxx.a.run.app&lt;/URL&gt;
   &lt;/HTTPTargetConnection&gt;
 &lt;/TargetEndpoint&gt;</code></pre></div>
     <p class="note">Apigee calls the private Cloud Run service with a Google ID token from the proxy's service account, which needs <code>roles/run.invoker</code>. Clients never reach Cloud Run directly; set its ingress accordingly.</p>
@@ -207,7 +208,7 @@
   <article class="card"><h3>Products, apps and keys</h3>
     <ol>
       <li>Build a proxy and deploy it to an environment.</li>
-      <li>Create an <b>API product</b> listing the proxy (and operations), environments, quota and scopes, e.g. "Legal Search – Standard: 10,000 calls/day".</li>
+      <li>Create an <b>API product</b> listing the proxy (and operations), environments, quota and scopes, e.g. "Shop API – Standard: 10,000 calls/day".</li>
       <li>A <b>developer</b> registers an <b>app</b> and subscribes it to the product.</li>
       <li>The app gets a <b>consumer key</b> (and secret for OAuth). The proxy's VerifyAPIKey or OAuthV2 policy checks it and loads the product's quota.</li>
       <li>Analytics then report traffic, latency and errors per product, app and developer.</li>
@@ -215,7 +216,7 @@
     <p class="note">Products are how you package the same API differently: free and paid tiers, internal and partner access.</p>
   </article>
 
-  <article class="card"><h3>Apigee vs API Gateway vs Cloud Endpoints</h3>
+  <article class="card"><h3>Apigee vs API Gateway</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Apigee</th><th>API Gateway</th></tr></thead>
       <tbody>

@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -176,7 +177,8 @@ static boolean validCheckout(String orderId, String paymentId, String signature,
 }
 
 // webhook: HMAC-SHA256 of the RAW request body with the webhook secret,
-// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.</code></pre></div>
+// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.
+// The same event can arrive more than once: dedupe on the X-Razorpay-Event-Id header.</code></pre></div>
   </article>
 
   <article class="card"><h3>Stripe: PaymentIntent and webhook</h3>

@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -121,7 +122,7 @@
       <tr><td>10</td><td>2018</td><td><code>var</code> for locals, <code>List.copyOf</code>, <code>Collectors.toUnmodifiableList</code></td></tr>
       <tr><td>11 <span class="tag lts">LTS</span></td><td>2018</td><td><code>String.isBlank/strip/lines/repeat</code>, <code>java.net.http.HttpClient</code>, <code>Files.readString/writeString</code>, run <code>java App.java</code> directly</td></tr>
       <tr><td>12–13</td><td>2019</td><td><code>Collectors.teeing</code>, <code>String.indent/transform</code>; switch expressions &amp; text blocks in preview</td></tr>
-      <tr><td>14</td><td>2020</td><td>Switch expressions (<code>-&gt;</code>, <code>yield</code>), helpful NullPointerException messages</td></tr>
+      <tr><td>14</td><td>2020</td><td>Switch expressions (<code>-&gt;</code>, <code>yield</code>), helpful NullPointerException messages (on by default from 15)</td></tr>
       <tr><td>15</td><td>2020</td><td>Text blocks <code>"""</code></td></tr>
       <tr><td>16</td><td>2021</td><td>Records, pattern matching for <code>instanceof</code>, <code>Stream.toList()</code></td></tr>
       <tr><td>17 <span class="tag lts">LTS</span></td><td>2021</td><td>Sealed classes/interfaces, new <code>RandomGenerator</code> API, strong JDK encapsulation</td></tr>
@@ -132,7 +133,7 @@
       <tr><td>24</td><td>2025</td><td>Stream Gatherers, Class-File API, AOT class loading cache, virtual threads no longer pin on <code>synchronized</code>, ML-KEM / ML-DSA</td></tr>
       <tr><td>25 <span class="tag lts">LTS</span></td><td>2025</td><td>Compact source files &amp; instance <code>main</code>, <code>import module</code>, flexible constructor bodies, scoped values, compact object headers, KDF API, AOT ergonomics</td></tr>
       </tbody></table></div>
-    <p class="note">Still preview in 25: structured concurrency, primitive types in patterns, stable values, PEM encodings, Vector API (incubator). String templates were withdrawn after 22.</p>
+    <p class="note">Still preview in 25: structured concurrency, primitive types in patterns, stable values, PEM encodings, Vector API (incubator). String templates were withdrawn after 22. Since then, 26 (March 2026) and 27 (September 2026) are non-LTS feature releases; 25 remains the latest LTS. 27 makes G1 the default collector everywhere and compact object headers the default; structured concurrency, primitive types in patterns, lazy constants (formerly stable values), PEM encodings and the Vector API are still preview or incubator there.</p>
   </article>
 
   <article class="card"><h3>Java 8 essentials <span class="tag lts">8</span></h3>
@@ -140,9 +141,9 @@
 list.sort(Comparator.comparing(Row::date).thenComparing(Row::id).reversed());
 
 // Streams
-Map&lt;String, Long&gt; perCourt = rows.stream()
+Map&lt;String, Long&gt; perStore = rows.stream()
     .filter(r -&gt; r.year() &gt;= 2020)
-    .collect(Collectors.groupingBy(Row::court, Collectors.counting()));
+    .collect(Collectors.groupingBy(Row::store, Collectors.counting()));
 
 // Optional: never call get() blind
 String name = repo.find(id).map(User::name).orElse("unknown");
@@ -154,8 +155,8 @@ long days = ChronoUnit.DAYS.between(d, LocalDate.now());</code></pre></div>
   </article>
 
   <article class="card"><h3>Java 9–11 conveniences <span class="tag">9</span><span class="tag">10</span><span class="tag lts">11</span></h3>
-<div class="snip"><pre><code>var cols = List.of("cnr", "court", "date");   // immutable, no nulls
-var cfg  = Map.of("dataset", "odp", "loc", "asia-south1");
+<div class="snip"><pre><code>var cols = List.of("order_ref", "store", "date");   // immutable, no nulls
+var cfg  = Map.of("dataset", "raw", "loc", "asia-south1");
 
 "  ".isBlank();          // true
 " x ".strip();           // "x" (Unicode aware, unlike trim)
@@ -183,14 +184,14 @@ int quarter = switch (month) {
 
 // Text block (15)
 String sql = """
-    SELECT cnr, decision_date
-    FROM `proj.fdp.judgment`
-    WHERE data_year = @year
+    SELECT order_ref, order_date
+    FROM `proj.analytics.orders`
+    WHERE order_year = @year
     """;
 
 // Record (16): immutable carrier, equals/hashCode/toString free
-record Judgment(String cnr, LocalDate date) {
-  Judgment { Objects.requireNonNull(cnr); }   // compact constructor
+record Order(String orderRef, LocalDate date) {
+  Order { Objects.requireNonNull(orderRef); }   // compact constructor
 }
 
 // instanceof pattern (16)
@@ -229,7 +230,7 @@ linkedHashMap.firstEntry(); linkedHashMap.pollLastEntry();</code></pre></div>
   <article class="card"><h3>Java 22–25 <span class="tag">22</span><span class="tag">24</span><span class="tag lts">25</span></h3>
 <div class="snip"><pre><code>// Unnamed variables (22)
 try { parse(x); } catch (NumberFormatException _) { bad++; }
-map.forEach((_, v) -&gt; total += v);
+map.forEach((_, v) -&gt; total.add(v));   // total is a LongAdder: a lambda cannot change a local
 case Failed(_) -&gt; "failed";
 
 // Stream Gatherers (24)
@@ -261,14 +262,14 @@ ScopedValue.where(RUN_ID, "r-42").run(() -&gt; log(RUN_ID.get()));</code></pre><
 
   <article class="card"><h3>Collectors cookbook</h3>
 <div class="snip"><pre><code>// group → list / count / sum / max
-groupingBy(Row::court)
-groupingBy(Row::court, counting())
-groupingBy(Row::court, summingLong(Row::bytes))
-groupingBy(Row::court, maxBy(comparing(Row::date)))
-groupingBy(Row::court, TreeMap::new, mapping(Row::cnr, toSet()))
+groupingBy(Row::store)
+groupingBy(Row::store, counting())
+groupingBy(Row::store, summingLong(Row::bytes))
+groupingBy(Row::store, maxBy(comparing(Row::date)))
+groupingBy(Row::store, TreeMap::new, mapping(Row::orderRef, toSet()))
 
 // toMap with a merge rule (otherwise duplicate keys throw)
-toMap(Row::cnr, r -&gt; r, (a, b) -&gt; a.date().isAfter(b.date()) ? a : b)
+toMap(Row::orderRef, r -&gt; r, (a, b) -&gt; a.date().isAfter(b.date()) ? a : b)
 
 partitioningBy(r -&gt; r.date() == null)      // Map&lt;Boolean, List&lt;Row&gt;&gt;
 joining(", ", "[", "]")
@@ -283,8 +284,8 @@ IntStream.rangeClosed(1950, 2025).boxed().toList();</code></pre></div>
   </article>
 
   <article class="card"><h3>Async &amp; resources</h3>
-<div class="snip"><pre><code>CompletableFuture&lt;Long&gt; a = supplyAsync(() -&gt; countHc(), exec);
-CompletableFuture&lt;Long&gt; b = supplyAsync(() -&gt; countSc(), exec);
+<div class="snip"><pre><code>CompletableFuture&lt;Long&gt; a = supplyAsync(() -&gt; countWebOrders(), exec);
+CompletableFuture&lt;Long&gt; b = supplyAsync(() -&gt; countStoreOrders(), exec);
 long total = a.thenCombine(b, Long::sum)
               .orTimeout(30, TimeUnit.SECONDS)
               .exceptionally(e -&gt; { log.error("count", e); return -1L; })
@@ -304,21 +305,21 @@ try (var in = Files.newBufferedReader(p);
 BigQuery bq = BigQueryOptions.getDefaultInstance().getService();
 
 QueryJobConfiguration q = QueryJobConfiguration.newBuilder("""
-    SELECT court, COUNT(*) n FROM `proj.fdp.judgment`
-    WHERE decision_date &gt;= @from GROUP BY court""")
+    SELECT store, COUNT(*) n FROM `proj.analytics.orders`
+    WHERE order_date &gt;= @from GROUP BY store""")
   .addNamedParameter("from", QueryParameterValue.date("2024-01-01"))
   .setUseLegacySql(false)
   .build();
 
 TableResult rs = bq.query(q);
 for (FieldValueList row : rs.iterateAll()) {
-  String court = row.get("court").getStringValue();
+  String store = row.get("store").getStringValue();
   long n = row.get("n").getLongValue();
 }
 
 // Load parquet from GCS
 LoadJobConfiguration load = LoadJobConfiguration
-  .newBuilder(TableId.of("odp", "hc_judgment"), "gs://bkt/path/*.parquet",
+  .newBuilder(TableId.of("raw", "orders"), "gs://bkt/path/*.parquet",
               FormatOptions.parquet())
   .setWriteDisposition(JobInfo.WriteDisposition.WRITE_APPEND)
   .build();
@@ -339,15 +340,15 @@ long bytes = s.getTotalBytesProcessed();</code></pre></div>
 Pipeline p = Pipeline.create(opts);
 
 p.apply("Read", BigQueryIO.readTableRows()
-        .fromQuery("SELECT cnr, court FROM `proj.odp.hc_judgment`")
+        .fromQuery("SELECT order_ref, store FROM `proj.raw.orders`")
         .usingStandardSql())
  .apply("Key", MapElements.into(TypeDescriptors.kvs(
          TypeDescriptors.strings(), TypeDescriptors.longs()))
-       .via(r -&gt; KV.of((String) r.get("court"), 1L)))
+       .via(r -&gt; KV.of((String) r.get("store"), 1L)))
  .apply(Sum.longsPerKey())
  .apply("ToRow", MapElements.into(TypeDescriptor.of(TableRow.class))
-       .via(kv -&gt; new TableRow().set("court", kv.getKey()).set("n", kv.getValue())))
- .apply(BigQueryIO.writeTableRows().to("proj:cdp.court_counts")
+       .via(kv -&gt; new TableRow().set("store", kv.getKey()).set("n", kv.getValue())))
+ .apply(BigQueryIO.writeTableRows().to("proj:mart.store_counts")
        .withSchema(schema)
        .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_TRUNCATE)
        .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED));
@@ -375,7 +376,7 @@ java -XX:AOTCache=app.aot -jar app.jar</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write classes, records, collections and streams</li><li>Use Optional and java.time correctly</li><li>Run and write JUnit tests</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use modern features (records, sealed types, pattern switch, virtual threads)</li><li>Handle concurrency safely with executors and CompletableFuture</li><li>Build with Gradle or Maven and manage dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Tune the JVM for containers (memory, GC, startup)</li><li>Design APIs and module boundaries</li><li>Profile and fix performance problems</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead platform upgrades across LTS releases</li><li>Understand JVM internals (JIT, GC, class loading)</li><li>Set the organisation's Java standards and libraries</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>JEPs for each release since 17</li><li>Garbage collectors: G1, ZGC, Shenandoah</li><li>Java Flight Recorder and JDK Mission Control</li><li>Structured concurrency and scoped values</li><li>GraalVM native image and AOT caches</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://dev.java/learn/" target="_blank" rel="noopener">dev.java: Learn</a><span class="lnote"> Oracle's official tutorials for modern Java</span></li><li><a href="https://openjdk.org/jeps/0" target="_blank" rel="noopener">OpenJDK JEP index</a><span class="lnote"> Every enhancement proposal, with status and release</span></li><li><a href="https://openjdk.org/projects/jdk/" target="_blank" rel="noopener">JDK project releases</a><span class="lnote"> What shipped in each JDK version</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Tests, parameterised tests, extensions</span></li><li><a href="https://cloud.google.com/java/docs/reference/google-cloud-bigquery/latest/overview" target="_blank" rel="noopener">BigQuery Java client</a><span class="lnote"> API reference</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam documentation</a><span class="lnote"> Programming guide for Dataflow pipelines</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>JEPs for each release since 17</li><li>Garbage collectors: G1, ZGC, Shenandoah</li><li>Java Flight Recorder and JDK Mission Control</li><li>Structured concurrency and scoped values</li><li>GraalVM native image and AOT caches</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://dev.java/learn/" target="_blank" rel="noopener">dev.java: Learn</a><span class="lnote"> Oracle's official tutorials for modern Java</span></li><li><a href="https://openjdk.org/jeps/0" target="_blank" rel="noopener">OpenJDK JEP index</a><span class="lnote"> Every enhancement proposal, with status and release</span></li><li><a href="https://openjdk.org/projects/jdk/" target="_blank" rel="noopener">JDK project releases</a><span class="lnote"> What shipped in each JDK version</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Tests, parameterised tests, extensions</span></li><li><a href="https://cloud.google.com/java/docs/reference/google-cloud-bigquery/latest/overview" target="_blank" rel="noopener">BigQuery Java client</a><span class="lnote"> API reference</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam documentation</a><span class="lnote"> Programming guide for Dataflow pipelines</span></li></ul></div></div></article>
 
   </div>
 </section>

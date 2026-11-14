@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -145,7 +146,7 @@
 
   <article class="card"><h3>How to split services</h3>
     <ul>
-      <li><b>By business capability or bounded context</b> (domain-driven design): search, case files, billing, identity. Not by technical layer (a "database service" is an anti-pattern).</li>
+      <li><b>By business capability or bounded context</b> (domain-driven design): search, carts, billing, identity. Not by technical layer (a "database service" is an anti-pattern).</li>
       <li><b>Each service owns its data</b> and is the only one that writes it. Others ask through its API or react to its events.</li>
       <li><b>High cohesion inside, loose coupling between:</b> a typical change should touch one service.</li>
       <li><b>Align with teams</b> (Conway's law): one team owns a service end to end.</li>
@@ -181,31 +182,31 @@
 
   <article class="card"><h3>Resilience in code (Spring + Resilience4j)</h3>
 <div class="snip"><pre><code>@Service
-class MirrorClient {
+class SupplierClient {
   private final RestClient http;
-  MirrorClient(RestClient http) { this.http = http; }
+  SupplierClient(RestClient http) { this.http = http; }
 
-  @CircuitBreaker(name = "mirror", fallbackMethod = "unavailable")
-  @Retry(name = "mirror")
+  @CircuitBreaker(name = "supplier", fallbackMethod = "unavailable")
+  @Retry(name = "supplier")
   Listing list(String prefix) {
     return http.get().uri("/objects?prefix={p}", prefix).retrieve().body(Listing.class);
   }
 
   // honest degradation: "cannot see", never "nothing there"
   Listing unavailable(String prefix, Throwable t) {
-    return Listing.unknown("mirror unavailable: " + t.getMessage());
+    return Listing.unknown("supplier unavailable: " + t.getMessage());
   }
 }</code></pre></div>
 <div class="snip"><pre><code>resilience4j:
   circuitbreaker:
     instances:
-      mirror:
+      supplier:
         slidingWindowSize: 20
         failureRateThreshold: 50
         waitDurationInOpenState: 30s
   retry:
     instances:
-      mirror:
+      supplier:
         maxAttempts: 3
         waitDuration: 200ms
         enableExponentialBackoff: true</code></pre></div>

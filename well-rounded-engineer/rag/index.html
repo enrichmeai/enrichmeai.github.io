@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -158,16 +159,16 @@
   </article>
 
   <article class="card"><h3>Hybrid search with rank fusion (Postgres)</h3>
-<div class="snip"><pre><code>-- chunks(id, doc_id, body, tsv tsvector, embedding vector(768), court text)
+<div class="snip"><pre><code>-- chunks(id, doc_id, body, tsv tsvector, embedding vector(768), store text)
 WITH vec AS (
   SELECT id, ROW_NUMBER() OVER (ORDER BY embedding &lt;=&gt; $1) AS r
-  FROM chunks WHERE court = ANY($3)            -- filter first: permissions, metadata
+  FROM chunks WHERE store = ANY($3)            -- filter first: permissions, metadata
   ORDER BY embedding &lt;=&gt; $1 LIMIT 50
 ),
 kw AS (
   SELECT id, ROW_NUMBER() OVER (ORDER BY ts_rank_cd(tsv, q) DESC) AS r
   FROM chunks, websearch_to_tsquery('english', $2) AS q
-  WHERE tsv @@ q AND court = ANY($3)
+  WHERE tsv @@ q AND store = ANY($3)
   ORDER BY ts_rank_cd(tsv, q) DESC LIMIT 50
 )
 SELECT id, SUM(1.0 / (60 + r)) AS score       -- reciprocal rank fusion, k = 60
@@ -175,15 +176,15 @@ FROM (SELECT * FROM vec UNION ALL SELECT * FROM kw) AS both_lists
 GROUP BY id
 ORDER BY score DESC
 LIMIT 20;                                      -- then rerank these 20</code></pre></div>
-    <p class="note">Vectors find meaning ("compensation for acquired land"); keywords find exact names, citations and section numbers that vectors miss. Fusion combines both without tuning score scales.</p>
+    <p class="note">Vectors find meaning ("money back for a parcel that never came"); keywords find exact names, citations and section numbers that vectors miss. Fusion combines both without tuning score scales.</p>
   </article>
 
   <article class="card"><h3>Reranking and query handling</h3>
     <ul>
       <li><b>Rerank</b> the top 20–50 with a cross-encoder or reranking API (for example Vertex AI ranking, or a provider's rerank model); keep the best 5–10.</li>
-      <li><b>Query rewriting:</b> turn a conversational follow-up into a standalone query ("and in Himachal?" → full question).</li>
+      <li><b>Query rewriting:</b> turn a conversational follow-up into a standalone query ("and last year?" → full question).</li>
       <li><b>Multi-query:</b> generate a few phrasings and fuse their results.</li>
-      <li><b>Metadata extraction:</b> pull filters out of the question (court, year) and apply them in SQL.</li>
+      <li><b>Metadata extraction:</b> pull filters out of the question (store, year) and apply them in SQL.</li>
       <li><b>Agentic retrieval:</b> let the model call a search tool several times when one search is not enough, with a step budget.</li>
     </ul>
   </article>
@@ -192,12 +193,12 @@ LIMIT 20;                                      -- then rerank these 20</code></p
 <div class="snip"><pre><code>import anthropic
 client = anthropic.Anthropic()
 
-passages = retrieve(question, courts=user.allowed_courts)    # hybrid + rerank, top 8
+passages = retrieve(question, stores=user.allowed_stores)    # hybrid + rerank, top 8
 
 content = [
     {"type": "document",
      "source": {"type": "text", "media_type": "text/plain", "data": p.body},
-     "title": f"{p.case_name} ¶{p.paragraph} ({p.doc_id})",
+     "title": f"{p.title} ¶{p.paragraph} ({p.doc_id})",
      "citations": {"enabled": True}}
     for p in passages
 ]
@@ -220,7 +221,7 @@ resp = client.messages.create(model="claude-opus-5-5", max_tokens=16000,
 CREATE OR REPLACE TABLE `p.rag.chunk_emb` AS
 SELECT * FROM ML.GENERATE_EMBEDDING(
   MODEL `p.rag.embedding_model`,
-  (SELECT chunk_id, doc_id, court, body AS content FROM `p.rag.chunks`));
+  (SELECT chunk_id, doc_id, store, body AS content FROM `p.rag.chunks`));
 
 -- 2. optional vector index for large tables
 CREATE VECTOR INDEX chunk_idx ON `p.rag.chunk_emb`(ml_generate_embedding_result)
@@ -229,7 +230,7 @@ OPTIONS (index_type = 'IVF', distance_type = 'COSINE');
 -- 3. search
 SELECT base.chunk_id, base.doc_id, base.content, distance
 FROM VECTOR_SEARCH(
-  (SELECT * FROM `p.rag.chunk_emb` WHERE court IN ('2_5', '14_25')),
+  (SELECT * FROM `p.rag.chunk_emb` WHERE store IN ('1_05', '4_12')),
   'ml_generate_embedding_result',
   (SELECT ml_generate_embedding_result FROM ML.GENERATE_EMBEDDING(
      MODEL `p.rag.embedding_model`,
@@ -260,7 +261,7 @@ FROM VECTOR_SEARCH(
     <ul>
       <li><b>Filter by permission at retrieval time.</b> Never retrieve documents the user may not see and hope the model ignores them.</li>
       <li><b>Prompt injection:</b> documents can contain instructions. Keep tools read-only, constrain outputs, and do not let retrieved text trigger actions.</li>
-      <li><b>Legal holds and suppressions</b> apply to the index too: remove or filter suppressed documents immediately.</li>
+      <li><b>Legal holds and erasure requests</b> apply to the index too: remove or filter those documents immediately.</li>
       <li><b>Personal data:</b> decide what may be embedded and sent to a model; embeddings can leak content.</li>
       <li><b>Audit:</b> log the question, retrieved IDs and answer (with sensitive fields protected).</li>
     </ul>

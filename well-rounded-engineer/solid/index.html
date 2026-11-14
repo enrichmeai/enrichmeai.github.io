@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -154,7 +155,7 @@ import { getSolidDataset, getThing, getStringNoLocale }
 await handleIncomingRedirect();
 if (!getDefaultSession().info.isLoggedIn) {
   await login({ oidcIssuer: "https://login.example-provider.com",
-                redirectUrl: window.location.href, clientName: "Case Notes" });
+                redirectUrl: window.location.href, clientName: "Order Notes" });
 }
 
 const profileUrl = "https://asha.pod.example/profile/card";

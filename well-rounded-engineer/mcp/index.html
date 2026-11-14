@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -127,19 +128,19 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>A server in Python (FastMCP)</h3>
-<div class="snip"><pre><code># pip install "mcp[cli]" google-cloud-bigquery
-from mcp.server.fastmcp import FastMCP
+  <article class="card"><h3>A server in Python (MCPServer)</h3>
+<div class="snip"><pre><code># pip install "mcp[cli]" google-cloud-bigquery      (mcp 2.x)
+from mcp.server import MCPServer
 from google.cloud import bigquery
 
-mcp = FastMCP("pipeline-status")
+mcp = MCPServer("pipeline-status")
 bq = bigquery.Client()
 
 @mcp.tool()
 def latest_runs(run_date: str) -&gt; list[dict]:
     """Latest state of every pipeline stage for a run date (YYYY-MM-DD)."""
     sql = """SELECT stage, state, objects_examined, objects_failed, event_ts
-             FROM `my-proj.dp_control.v_pipeline_run_latest`
+             FROM `my-proj.ops.v_job_run_latest`
              WHERE run_date = @d ORDER BY stage"""
     cfg = bigquery.QueryJobConfig(query_parameters=[
         bigquery.ScalarQueryParameter("d", "DATE", run_date)])
@@ -153,7 +154,7 @@ def ledger(run_date: str) -&gt; str:
 if __name__ == "__main__":
     mcp.run()                              # stdio by default
     # mcp.run(transport="streamable-http") # to serve over HTTP</code></pre></div>
-    <p class="note">The function name, type hints and docstring become the tool's name, schema and description. Write the docstring for the model: what it does, inputs, and what it returns. A TypeScript SDK exists with the same concepts.</p>
+    <p class="note">The function name, type hints and docstring become the tool's name, schema and description. Write the docstring for the model: what it does, inputs, and what it returns. A TypeScript SDK exists with the same concepts. In mcp 1.x the same class was <code>FastMCP</code>, imported from <code>mcp.server.fastmcp</code>; that import fails on 2.x.</p>
   </article>
 
   <article class="card"><h3>Add it to Claude Code and test it</h3>
@@ -192,21 +193,21 @@ npx @modelcontextprotocol/inspector python mcp/pipeline_status.py</code></pre></
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>What the MCP server exposes</th><th>Who uses it</th><th>Rule</th></tr></thead>
       <tbody>
-      <tr><td>1. Pipeline observability</td><td>Run records, stage states, freshness per source, failures with reasons</td><td>Engineers in Claude Code: "why did ODP_LOAD fail on 19-09?"</td><td>Read-only. Reports UNKNOWN when it cannot read the ledger.</td></tr>
+      <tr><td>1. Pipeline observability</td><td>Run records, stage states, freshness per source, failures with reasons</td><td>Engineers in Claude Code: "why did RAW_LOAD fail on 19-09?"</td><td>Read-only. Reports UNKNOWN when it cannot read the ledger.</td></tr>
       <tr><td>2. Governed warehouse access</td><td>Table catalog, schemas, a guarded query tool</td><td>Analysts and engineers asking questions in natural language</td><td>Dry-run first, byte cap, allow-listed datasets, read-only service account</td></tr>
       <tr><td>3. Data catalog and lineage</td><td>Table descriptions, owners, upstream and downstream models (dbt manifest, Dataplex)</td><td>Anyone changing a model: "what breaks if I rename this column?"</td><td>Generated from the source of truth, never hand-maintained</td></tr>
-      <tr><td>4. LLM step inside the pipeline</td><td>Reference data or lookups the model needs while extracting or classifying</td><td>A pipeline job calling a model (e.g. extracting citations from judgments)</td><td>Prefer plain tool calls or batch jobs; validate outputs; never let the model write to production tables directly</td></tr>
+      <tr><td>4. LLM step inside the pipeline</td><td>Reference data or lookups the model needs while extracting or classifying</td><td>A pipeline job calling a model (e.g. extracting product names from support tickets)</td><td>Prefer plain tool calls or batch jobs; validate outputs; never let the model write to production tables directly</td></tr>
       </tbody></table></div>
     <p class="note">MCP sits beside the pipeline, not inside its critical path. The pipeline must run, record and alert without any AI involved; MCP makes it easier to ask questions about it.</p>
   </article>
 
   <article class="card"><h3>A guarded BigQuery query tool</h3>
-<div class="snip"><pre><code>ALLOWED = {"dp_fdp", "dp_cdp", "dp_control"}
+<div class="snip"><pre><code>ALLOWED = {"analytics", "mart", "ops"}
 MAX_BYTES = 5 * 1024**3                       # 5 GiB per query
 
 @mcp.tool()
 def run_query(sql: str) -&gt; dict:
-    """Run a read-only GoogleSQL SELECT over the fdp, cdp and control datasets.
+    """Run a read-only GoogleSQL SELECT over the analytics, mart and ops datasets.
     Returns at most 200 rows. Fails if the query would scan more than 5 GiB."""
     if not sql.lstrip().lower().startswith(("select", "with")):
         return {"error": "only SELECT queries are allowed"}
@@ -276,8 +277,8 @@ def run_query(sql: str) -&gt; dict:
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with FastMCP and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> FastMCP and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with the Python SDK and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> MCPServer (formerly FastMCP) and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div></article>
 
   </div>
 </section>
