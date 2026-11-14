@@ -776,3 +776,15 @@ D["body"] = dict(
         ("NINDS: Brain Basics","https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-know-your-brain","How the brain and nervous system are organised"),
         ("AskNature","https://asknature.org/","The Biomimicry Institute's library of nature's designs"),
         ("Green Software Foundation","https://greensoftware.foundation/","Principles and practice for greener software")])
+
+D["agentsgcp"] = dict(
+ F=["Explain where an agent runs, what it can reach and who sees its logs","Run a containerised task as a Cloud Run job","Keep secrets in Secret Manager"],
+ P=["Give each agent its own least-privilege service account","Trigger agent jobs from Scheduler, Pub/Sub or a Workflow","Preview agent changes on a tagged, no-traffic revision"],
+ S=["Design an agent platform with workspaces, approvals and audit","Set budgets, timeouts and network limits for agents","Evaluate agents on real tasks before widening their access"],
+ E=["Own the organisation's policy for where agents run and what they touch","Balance hosted agent services against self-run ones","Make agent work auditable end to end"],
+ topics=["Cloud Workstations","Cloud Run jobs","Workflows and Eventarc","Secret Manager and IAM","VPC Service Controls","Vertex AI Model Garden"],
+ links=[("Cloud Workstations","https://cloud.google.com/workstations/docs","Managed development environments"),
+        ("Cloud Run jobs","https://cloud.google.com/run/docs/create-jobs","Containers that run to completion"),
+        ("Workflows","https://cloud.google.com/workflows/docs","Orchestrate steps and services"),
+        ("Secret Manager","https://cloud.google.com/secret-manager/docs","Store and audit secrets"),
+        ("Vertex AI Model Garden","https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models","Google and partner models")])

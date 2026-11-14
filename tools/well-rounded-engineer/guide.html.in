@@ -161,6 +161,7 @@ details>.inner{padding:4px 10px 8px}
       <a href="#claudetools" data-tab="claudetools">Claude Code &amp; Cowork</a>
       <a href="#copilot" data-tab="copilot">GitHub Copilot</a>
       <a href="#agentharness" data-tab="agentharness">Agent Harness</a>
+      <a href="#agentsgcp" data-tab="agentsgcp">Agents on GCP</a>
       <a href="#rag" data-tab="rag">RAG</a>
       <a href="#mcp" data-tab="mcp">MCP</a>
       <span class="navgrp">Decentralised web</span>
@@ -317,6 +318,7 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#claudetools">Claude Code &amp; Cowork</a></td><td>Run Claude Code in a repo; write a CLAUDE.md; review its changes.</td><td>Hooks, skills, subagents, gated agent workflows, Cowork plugins.</td></tr>
       <tr><td><a href="#copilot">GitHub Copilot</a></td><td>Use completions and chat; follow repo instructions.</td><td>Instructions, coding agent, policies, consistency with other agents.</td></tr>
       <tr><td><a href="#agentharness">Agent Harness</a></td><td>Explain the parts of a harness; configure a ready-made one.</td><td>Building bounded, gated, evaluated harnesses.</td></tr>
+      <tr><td><a href="#agentsgcp">Agents on GCP</a></td><td>Run one agent task as a Cloud Run job with its own service account.</td><td>Workspaces, triggers, approvals and guard rails for agents in your own project.</td></tr>
       <tr><td><a href="#rag">RAG</a></td><td>Explain the RAG phases; run a vector search; prompt with citations.</td><td>Chunking, hybrid search, reranking, evaluation and security for retrieval.</td></tr>
       <tr><td><a href="#mcp">MCP</a></td><td>Add an MCP server to Claude Code; explain tools and resources.</td><td>Building and deploying MCP servers; MCP around data pipelines.</td></tr>
       <tr><td><a href="#web3">Web 3.0</a></td><td>Tell Web3 from the Semantic Web; know when a blockchain is not needed.</td><td>Smart contracts, linked data, knowledge graphs, legal data standards.</td></tr>
@@ -379,7 +381,7 @@ details>.inner{padding:4px 10px 8px}
       <li><b>Design:</b> <a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#performance">Performance</a>, <a href="#caching">Caching</a></li>
       <li><b>Cloud:</b> <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a></li>
       <li><b>Delivery &amp; ops:</b> <a href="#devops">DevOps</a>, <a href="#observability">Observability</a>, <a href="#opstools">Ops Tooling</a>, <a href="#sre">SRE</a>, <a href="#harness">Harness</a>, <a href="#terraform">Terraform</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a></li>
-      <li><b>AI:</b> <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></li>
+      <li><b>AI:</b> <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></li>
       <li><b>Decentralised web:</b> <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></li>
     </ol>
     <p class="note">Then pick the area you want to go deep in and work through its self-check until every item is a yes.</p>
@@ -11954,6 +11956,103 @@ This repo is a Spring Boot 3 WebFlux service on Java 21.
   </div>
 </section>
 
+<section class="panel" id="p-agentsgcp" data-name="Agents on GCP">
+  <div class="panel-head"><h2>Running agents on Google Cloud</h2><p>Many teams run coding agents on GitHub: an issue starts the agent, Actions runs it, a pull request comes back. That is convenient, but the work, the secrets and the logs then live on someone else's platform. This page shows the other way: a cloud workspace in your own Google Cloud project, in the style of browser-based tools such as Replit, where people and agents share a running environment, and where triggers, secrets, models, approvals and audit all stay under your project's control.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The shape of it</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Need</th><th>On GitHub</th><th>In your Google Cloud project</th></tr></thead>
+      <tbody>
+      <tr><td>A place to work</td><td>Codespaces</td><td>Cloud Workstations: managed development environments from a container image you define, in the browser or your own IDE</td></tr>
+      <tr><td>Run an agent task</td><td>An Actions job</td><td>A Cloud Run job: a container that runs to completion, with its own service account, timeout and retries</td></tr>
+      <tr><td>Start it</td><td>Issue, comment, schedule</td><td>Cloud Scheduler, Pub/Sub messages, Eventarc events, or a Workflow</td></tr>
+      <tr><td>Several steps and a human approval</td><td>Workflow jobs and environments</td><td>Workflows, which can run steps in order, wait, and call your services</td></tr>
+      <tr><td>Secrets</td><td>Repository secrets</td><td>Secret Manager, with IAM on each secret and audit logs of every access</td></tr>
+      <tr><td>Build and test</td><td>Actions</td><td>Cloud Build</td></tr>
+      <tr><td>A live preview</td><td>A preview deployment</td><td>A Cloud Run revision with no traffic and its own tagged URL</td></tr>
+      <tr><td>The model</td><td>Copilot, or a key in a secret</td><td>Vertex AI (Google's models and partner models in Model Garden), or any provider with its key in Secret Manager</td></tr>
+      </tbody></table></div>
+    <p class="note">Git stays: the history of the code still lives in a Git repository, wherever you host it. What moves is where the agent runs, what it can reach, and who can see what it did.</p>
+  </article>
+
+  <article class="card"><h3>Why run it yourself</h3>
+    <ul>
+      <li><b>Your data stays in your project and region.</b> Useful when code or data may not leave a country or a company.</li>
+      <li><b>One identity model.</b> The agent is a service account with exactly the IAM roles it needs, like any other workload.</li>
+      <li><b>One audit trail.</b> Cloud Audit Logs record what the agent touched, next to everything else in the project.</li>
+      <li><b>Your choice of model,</b> including models you are allowed to use under your own agreements.</li>
+      <li><b>The trade-off:</b> you build and run the plumbing that a hosted service gives you for free. Start small.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A shared workspace, Replit style</h3>
+<div class="snip"><pre><code># a workspace image you control, in your project
+gcloud workstations configs create agent-ws \
+  --cluster=dev --region=europe-west2 \
+  --machine-type=e2-standard-4 \
+  --container-custom-image=europe-west2-docker.pkg.dev/my-proj/tools/agent-ws:1 \
+  --service-account=agent-ws@my-proj.iam.gserviceaccount.com \
+  --idle-timeout=3600 \
+  --disable-public-ip-addresses
+
+gcloud workstations create alice \
+  --config=agent-ws --cluster=dev --region=europe-west2
+gcloud workstations start alice \
+  --config=agent-ws --cluster=dev --region=europe-west2</code></pre></div>
+    <p class="note">Bake the agent's tools (CLI, language runtimes, test tools) into the image, so every workspace and every agent run starts the same. <code>--idle-timeout</code> is in seconds and stops idle workspaces, which saves money.</p>
+  </article>
+
+  <article class="card"><h3>An agent task as a Cloud Run job</h3>
+<div class="snip"><pre><code>gcloud run jobs create agent-task \
+  --image=europe-west2-docker.pkg.dev/my-proj/agents/runner:1 \
+  --region=europe-west2 \
+  --service-account=agent-runner@my-proj.iam.gserviceaccount.com \
+  --set-secrets=MODEL_API_KEY=model-api-key:latest \
+  --task-timeout=30m --max-retries=0
+
+# run one task and wait for the result
+gcloud run jobs execute agent-task --region=europe-west2 \
+  --update-env-vars=TASK="add tests for the date parser" --wait
+
+# or on a schedule, calling the Cloud Run API
+gcloud scheduler jobs create http nightly-triage \
+  --location=europe-west2 --schedule="0 6 * * 1-5" \
+  --uri="https://run.googleapis.com/v2/projects/my-proj/locations/europe-west2/jobs/agent-task:run" \
+  --http-method=POST \
+  --oauth-service-account-email=scheduler@my-proj.iam.gserviceaccount.com</code></pre></div>
+    <p class="note">One container, one task, a hard timeout, and no automatic retries for work that changes things: an agent that failed halfway should be looked at, not rerun blindly.</p>
+  </article>
+
+  <article class="card"><h3>Preview what the agent built</h3>
+<div class="snip"><pre><code># deploy the agent's branch with no traffic, at its own URL
+gcloud run deploy web --image=…/web:agent-1234 \
+  --region=europe-west2 --no-traffic --tag=agent-1234
+# open https://agent-1234---web-xxxxx.a.run.app, then
+# move traffic only after a person has looked</code></pre></div>
+    <p class="note">This is the "see it running" moment that makes Replit-style tools feel good, with the same blue-green and canary steps as any release (see <a href="#devops">DevOps</a>).</p>
+  </article>
+
+  <article class="card wide"><h3>Guard rails, before the first run</h3>
+    <ul>
+      <li><b>A service account per agent,</b> with only the roles its task needs. No owner or editor roles, ever.</li>
+      <li><b>No direct path to production.</b> The agent proposes (a branch, a preview, a plan); a person approves the merge or the deploy.</li>
+      <li><b>Secrets from Secret Manager at run time,</b> never in the image, the prompt or the repository.</li>
+      <li><b>Limit the network:</b> private workspaces (<code>--disable-public-ip-addresses</code>), egress only to what the agent needs, and VPC Service Controls around sensitive data.</li>
+      <li><b>Budgets and alerts</b> on the project, and timeouts on every job, so a runaway loop costs minutes, not a month.</li>
+      <li><b>Log every step</b> the agent takes with a run ID, so a person can follow the journey and undo it if needed (see <a href="#observability">Observability</a>).</li>
+      <li><b>Evaluate the agent</b> on real tasks before trusting it with more (see <a href="#agentharness">Agent Harness</a>).</li>
+    </ul>
+    <p class="note">One open-source option for the agent runtime itself is <a href="/penstock/">Penstock</a>, our headless, self-hosted harness, which runs agents from CI, Slack or webhooks and can run as a container like the job above. It is ours, so we are not neutral.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain where an agent runs, what it can reach and who sees its logs</li><li>Run a containerised task as a Cloud Run job</li><li>Keep secrets in Secret Manager</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Give each agent its own least-privilege service account</li><li>Trigger agent jobs from Scheduler, Pub/Sub or a Workflow</li><li>Preview agent changes on a tagged, no-traffic revision</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design an agent platform with workspaces, approvals and audit</li><li>Set budgets, timeouts and network limits for agents</li><li>Evaluate agents on real tasks before widening their access</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's policy for where agents run and what they touch</li><li>Balance hosted agent services against self-run ones</li><li>Make agent work auditable end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Cloud Workstations</li><li>Cloud Run jobs</li><li>Workflows and Eventarc</li><li>Secret Manager and IAM</li><li>VPC Service Controls</li><li>Vertex AI Model Garden</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/workstations/docs" target="_blank" rel="noopener">Cloud Workstations</a><span class="lnote"> Managed development environments</span></li><li><a href="https://cloud.google.com/run/docs/create-jobs" target="_blank" rel="noopener">Cloud Run jobs</a><span class="lnote"> Containers that run to completion</span></li><li><a href="https://cloud.google.com/workflows/docs" target="_blank" rel="noopener">Workflows</a><span class="lnote"> Orchestrate steps and services</span></li><li><a href="https://cloud.google.com/secret-manager/docs" target="_blank" rel="noopener">Secret Manager</a><span class="lnote"> Store and audit secrets</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models" target="_blank" rel="noopener">Vertex AI Model Garden</a><span class="lnote"> Google and partner models</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
 <!-- ================= RAG ================= -->
 <section class="panel" id="p-rag" data-name="RAG">
   <div class="panel-head"><h2>Building RAG systems</h2><p>Retrieval-augmented generation: find the right passages from your own data and give them to the model, so answers are current, specific and cited. The whole pipeline, each design choice, code for Postgres and BigQuery, and how to evaluate it. RAG is a data pipeline first: see <a href="#data">Data Engineering</a>.</p></div>
@@ -12504,7 +12603,7 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
 
 <script>
 (function(){
-  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","rag","mcp","web3","solid"];
+  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","web3","solid"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
