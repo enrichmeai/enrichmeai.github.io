@@ -124,6 +124,10 @@ html { scroll-behavior: smooth; }
 .guide-band-go { margin-left: auto; white-space: nowrap; font-weight: 600; }
 @media (max-width: 600px) { .guide-band-more { display: none; } }
 
+/* A product page's closing note linking to the matching section of the Well Rounded Engineer guide. */
+.learn-note { border-top: 1px solid var(--color-divider); padding: 22px 0 64px; }
+.learn-note p { margin: 0; max-width: 75ch; font-size: 16.5px; color: var(--color-neutral-800); }
+
 /* ── Buttons ────────────────────────────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;

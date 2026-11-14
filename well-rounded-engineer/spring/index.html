@@ -28,6 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -414,6 +415,10 @@ plugins {
 
 
 
+
+  <article class="card"><h3>Samples we publish</h3>
+    <p><a href="https://github.com/enrichmeai/spring-boot-samples" target="_blank" rel="noopener">spring-boot-samples</a> holds small, runnable Spring Boot samples, each a self-contained Maven project with its own tests. The first shows auditing every backend update in a blocking app: a transactional outbox, a polling publisher, Kafka and an idempotent consumer.</p>
+  </article>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build a REST endpoint with validation and a test</li><li>Configure an app with application.yml and profiles</li><li>Use Spring Data or JdbcClient for simple queries</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Handle errors with ProblemDetail; write slice and integration tests</li><li>Use transactions correctly; understand proxies</li><li>Add Actuator, metrics and structured logging</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose servlet vs reactive and design for throughput</li><li>Secure APIs with Spring Security and OAuth 2.0</li><li>Tune startup, memory and connection pools for the cloud</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead major upgrades (3.x to 4.x) across services</li><li>Build internal starters and platform libraries</li><li>Set architecture and module boundaries (Spring Modulith)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
