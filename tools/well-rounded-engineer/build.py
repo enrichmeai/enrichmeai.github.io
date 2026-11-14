@@ -12,11 +12,12 @@ groups=[("",["start","aiworry"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
  ("Quality",["testing","performance"]),
  ("Security",["security","cyber","oauth"]),
- ("Data",["data","datalibs","dbt","dags","gcpdata","bigquery","awsdata"]),
+ ("Data",["data","datalibs","dbt","dags"]),
  ("Architecture &amp; design",["architecture","microservices","eventsourcing","sysdesign","caching"]),
- ("Cloud &amp; platform",["cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","k8sdr","helm","operators","servicemesh"]),
- ("Delivery &amp; operations",["devops","observability","opstools","sre","harness"]),
- ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp"]),
+ ("Platform &amp; operations",["devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre"]),
+ ("Cloud providers",["cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata"]),
+ ("AI",["llm","ai","rag","mcp","agentharness","blueprints"]),
+ ("Tools",["claudetools","copilot","agentsgcp","harness","opstools"]),
  ("Thinking &amp; character",["behaviours","mathematics","science","philosophy","goodhuman","body"]),
  ("Frontiers",["quantum","robotics","bitcoin","web3","solid"]),
  ("About this guide",["why","history"]),
@@ -32,11 +33,12 @@ blurb={
  "Building services":"APIs, messaging and the frameworks that turn code into services.",
  "Quality":"Proving it works, and that it stays fast under load.",
  "Security":"Building it safely, and thinking like a defender.",
- "Data":"Moving, shaping and trusting data, from a file to a warehouse.",
+ "Data":"Moving, shaping and trusting data, from a file to a warehouse, on any platform.",
  "Architecture &amp; design":"Choosing boundaries and trade-offs you can explain.",
- "Cloud &amp; platform":"What the cloud is made of, and the tools that run software on it.",
- "Delivery &amp; operations":"Shipping safely, seeing what is happening, and keeping it up.",
+ "Cloud providers":"What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.",
+ "Platform &amp; operations":"Shipping safely, running containers, seeing what is happening, and keeping it up.",
  "AI":"Using AI with judgement: how it works, where it helps, and the guard rails.",
+ "Tools":"Specific products and services, kept apart so the concepts above stay neutral.",
  "Thinking &amp; character":"How to think clearly and live well. The part no tool replaces.",
  "Frontiers":"Ideas to understand now that may matter more later.",
 }
@@ -175,7 +177,7 @@ def gcard(g,ts):
 cs=[]
 for n,(g,ts) in enumerate([x for x in groups if x[0] in blurb],1):
     cs.append(gcard(g,ts))
-gmap=('  <article class="card wide" id="guide-map"><h3>The map: twelve groups, in the order to learn them</h3>\n'
+gmap=('  <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>\n'
       '    <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>\n'
       '    <div class="gmap">'+''.join(cs)+'</div>\n  </article>\n\n')
 s=re.sub(r'  <article class="card wide" id="guide-map">.*?</article>\n\n','',s,flags=re.S)

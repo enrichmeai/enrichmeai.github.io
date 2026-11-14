@@ -62,42 +62,43 @@
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="/well-rounded-engineer/architecture/">Architecture</a>
       <a href="/well-rounded-engineer/microservices/">Microservices</a>
       <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
       <a href="/well-rounded-engineer/sysdesign/">System Design</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Cloud &amp; platform</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
       <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
       <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
       <a href="/well-rounded-engineer/helm/">Helm Charts</a>
       <a href="/well-rounded-engineer/operators/">Operators</a>
       <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <span class="navgrp">Delivery &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
       <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <a href="/well-rounded-engineer/sre/">SRE</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">AI</span>
       <a href="/well-rounded-engineer/llm/">LLMs</a>
       <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
@@ -128,7 +129,7 @@
   <div class="grid">
 
   <article class="card wide"><h3>The tills are a good picture</h3>
-    <p>When I was younger, a supermarket had a long row of tills, each with a person behind it. Today most shops have a few staffed tills and a bank of self-service ones. Fewer people do the scanning. But the shop still needs people: someone approves an age check, clears a jammed scanner, helps the customer who is stuck, and knows what to do when the system goes down.</p>
+    <p>Supermarkets once had a long row of tills, each with a person behind it. Over the years most have moved to a few staffed tills and a bank of self-service ones. Fewer people do the scanning. But the shop still needs people: someone approves an age check, clears a jammed scanner, helps the customer who is stuck, and knows what to do when the system goes down.</p>
     <p>Software is going the same way. Fewer people will type routine code by hand. The people who stay most useful are the ones who understand what the machines are doing, and can take over when they stop.</p>
   </article>
 
@@ -138,12 +139,12 @@
   </article>
 
   <article class="card"><h3>Keep a hand on the controls</h3>
-    <p>The Boeing 737 MAX accidents of October 2018 and March 2019 are the lesson I keep coming back to. Official investigations found that a new automated flight-control feature, MCAS, contributed to both crashes, and references to it had been removed from the pilots' flight manual. When it misbehaved, the crews did not have what they needed to take back control.</p>
-    <p>I am not against agents that heal themselves. They are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
+    <p>The Boeing 737 MAX accidents of October 2018 and March 2019 carry a lesson worth remembering. Official investigations found that a new automated flight-control feature, MCAS, contributed to both crashes, and references to it had been removed from the pilots' flight manual. When it misbehaved, the crews did not have what they needed to take back control.</p>
+    <p>Agents that heal themselves are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
   </article>
 
   <article class="card wide"><h3>We will use it more than we meant to</h3>
-    <p>I am not an expert in where this goes, and nobody knows for sure. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
+    <p>Nobody knows for sure where this goes. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
     <p>It is good for someone who has the idea and knows the specification but could never find the hundreds of hours to build it. For people with that experience, it is a genuinely useful tool, and solo builders who want to make a product should start: doing something beats waiting. It is bad when it becomes a habit of prompting and never going back to check. A mind that stops checking slowly stops being able to.</p>
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
   </article>
