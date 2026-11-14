@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitcoin & Blockchain · Well Rounded Engineer</title>
+<meta name="description" content="How a blockchain works underneath, using Bitcoin as the example: hashes, linked blocks, proof of work and keys. Understand the mechanism before forming a…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="bitcoin">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud &amp; platform</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">Delivery &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/robotics/">Robotics</a>
+      <a href="/well-rounded-engineer/bitcoin/" aria-current="page">Bitcoin &amp; Blockchain</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="bitcoin" data-name="Bitcoin &amp; Blockchain">
+  <div class="panel-head"><h1>Bitcoin and blockchain, from first principles</h1><p>How a blockchain works underneath, using Bitcoin as the example: hashes, linked blocks, proof of work and keys. Understand the mechanism before forming a view on the money. Smart contracts and the wider Web3 ideas are on <a href="/well-rounded-engineer/web3/">Web 3.0</a>.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>The story in brief</h3>
+    <ul>
+      <li><b>31 October 2008:</b> a white paper by Satoshi Nakamoto, <i>Bitcoin: A Peer-to-Peer Electronic Cash System</i>, was posted to a cryptography mailing list.</li>
+      <li><b>3 January 2009:</b> the network started when the first block, the genesis block, was mined.</li>
+      <li><b>The problem it solved:</b> how strangers can agree on who owns what, with no bank or central server in the middle, and without anyone spending the same coin twice.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>How a blockchain works</h3>
+    <ul>
+      <li><b>Hashes:</b> a hash is a short fingerprint of data. Change one character and the fingerprint changes completely. See <a href="/well-rounded-engineer/mathematics/">Mathematics</a>.</li>
+      <li><b>Linked blocks:</b> each block holds transactions and the hash of the block before it, so changing an old block breaks every link after it.</li>
+      <li><b>Proof of work:</b> to add a block, miners search for a number (a nonce) that makes the block's double SHA-256 hash fall below a target. Finding it costs a lot of computing; checking it costs one hash.</li>
+      <li><b>Consensus:</b> thousands of independent nodes check every block and follow the chain with the most accumulated work. Rewriting history means redoing that work faster than everyone else combined.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Build a toy blockchain</h3>
+    <p>Plain Python, standard library only. It mines three blocks, checks the chain, then tampers with a past transaction and shows the chain fail. The nonce it prints changes from run to run, because the timestamp does.</p>
+    <pre><code class="language-python">&quot;&quot;&quot;A toy blockchain: blocks linked by hashes, sealed by proof of work.&quot;&quot;&quot;
+import hashlib, json, time
+
+def block_hash(block):
+    data = json.dumps(block, sort_keys=True).encode()
+    return hashlib.sha256(hashlib.sha256(data).digest()).hexdigest()  # double SHA-256, as Bitcoin does
+
+def mine(prev_hash, transactions, difficulty=4):
+    &quot;&quot;&quot;Try nonces until the hash starts with `difficulty` zeros: costly to find, cheap to check.&quot;&quot;&quot;
+    block = {&quot;prev&quot;: prev_hash, &quot;tx&quot;: transactions, &quot;time&quot;: int(time.time()), &quot;nonce&quot;: 0}
+    while not block_hash(block).startswith(&quot;0&quot; * difficulty):
+        block[&quot;nonce&quot;] += 1
+    return block
+
+def valid(chain, difficulty=4):
+    for prev, block in zip(chain, chain[1:]):
+        if block[&quot;prev&quot;] != block_hash(prev):
+            return False                          # a link is broken
+        if not block_hash(block).startswith(&quot;0&quot; * difficulty):
+            return False                          # no proof of work
+    return True
+
+genesis = mine(&quot;0&quot; * 64, [&quot;genesis&quot;])
+chain = [genesis]
+chain.append(mine(block_hash(chain[-1]), [&quot;alice pays bob 5&quot;]))
+chain.append(mine(block_hash(chain[-1]), [&quot;bob pays carol 2&quot;]))
+print(&quot;valid:&quot;, valid(chain), &quot;| nonce of block 2:&quot;, chain[2][&quot;nonce&quot;])
+
+chain[1][&quot;tx&quot;] = [&quot;alice pays bob 500&quot;]          # tamper with history
+print(&quot;after tampering:&quot;, valid(chain))          # every later link now breaks</code></pre>
+    <pre><code>valid: True | nonce of block 2: 116188
+after tampering: False</code></pre>
+  </article>
+
+  <article class="card"><h3>Bitcoin's rules, in numbers</h3>
+    <ul>
+      <li><b>About 10 minutes</b> per block on average; the difficulty adjusts so it stays there as miners come and go.</li>
+      <li><b>A fixed supply</b> of 21 million bitcoin at most.</li>
+      <li><b>The mining reward halves every 210,000 blocks</b>, roughly every four years.</li>
+      <li><b>Keys:</b> an address is computed from a randomly generated private key. Computing the address is instant; finding the key from the address is practically impossible. Whoever holds the key controls the coins.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Trade-offs and risks</h3>
+    <ul>
+      <li><b>Energy:</b> proof of work uses a great deal of electricity, and has been criticised for its environmental impact. Ethereum moved from proof of work to proof of stake in September 2022 ("The Merge"), cutting its energy use by over 99%.</li>
+      <li><b>No undo:</b> a payment to the wrong address, or a lost key, is usually gone for good.</li>
+      <li><b>Scams thrive</b> where payments are irreversible: fake investments, "recovery" services, impersonation. Nobody legitimate asks for your private key or seed phrase.</li>
+      <li><b>Volatility:</b> prices can swing widely. This page explains the technology; it is not investment advice.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>What engineers can take from it</h3>
+    <p>Even if you never touch a cryptocurrency, the ideas travel: content-addressed data (Git commits are linked by hashes too, see <a href="/well-rounded-engineer/devops/">DevOps</a>), append-only logs (see <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>), public-key cryptography (see <a href="/well-rounded-engineer/security/">Security</a>), and agreement between machines that do not trust each other. Ask the question on <a href="/well-rounded-engineer/web3/">Web 3.0</a> first: do you actually need a blockchain, or a database with good audit logs?</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain hashes and how blocks link</li><li>Explain proof of work and why rewriting history is hard</li><li>Keep keys safe and recognise common scams</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a toy chain and validate it</li><li>Explain Bitcoin's supply, halving and difficulty rules</li><li>Compare proof of work and proof of stake</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Judge whether a problem needs a blockchain at all</li><li>Design key custody and recovery</li><li>Assess the security model of a chain or protocol</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Advise an organisation on distributed-ledger strategy</li><li>Review consensus and cryptographic designs</li><li>Explain the technology to non-specialists without hype</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>SHA-256 and Merkle trees</li><li>Proof of work and difficulty</li><li>Public-key cryptography and wallets</li><li>Proof of stake</li><li>Layer 2 payment channels</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">Bitcoin: A Peer-to-Peer Electronic Cash System</a><span class="lnote"> Satoshi Nakamoto's white paper, nine pages</span></li><li><a href="https://en.wikipedia.org/wiki/Bitcoin_protocol" target="_blank" rel="noopener">Bitcoin protocol (Wikipedia)</a><span class="lnote"> How mining, blocks and transactions work</span></li><li><a href="https://github.com/bitcoin/bitcoin" target="_blank" rel="noopener">Bitcoin Core source</a><span class="lnote"> The reference implementation</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBitcoin%20%26%20Blockchain%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/robotics/">← Robotics</a><a class="pn-next" href="/well-rounded-engineer/web3/">Web 3.0 →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
