@@ -571,6 +571,17 @@ D["blueprints"] = dict(
         ("Semantic Versioning","https://semver.org/","Version numbers that communicate compatibility"),
         ("Team Topologies","https://teamtopologies.com/","Platform teams and their consumers")])
 
+D["cloudinside"] = dict(
+ F=["Explain zones, regions and why work is spread across them","Tell a virtual machine from a container and a serverless function","Name what the provider secures and what you secure"],
+ P=["Choose zones and regions for a service's availability, latency and data residency","Read a bill and trace each line to a layer: compute, storage, network","Explain what a managed service still leaves to you"],
+ S=["Design for a machine, a zone or a region failing, and test it","Choose isolation (VM, container, sandbox) for untrusted or multi-tenant work","Estimate cost from first principles, including egress and copies"],
+ E=["Set organisation standards for failure domains, tenancy and shared responsibility","Lead decisions on regions, providers and lock-in with the layers in view","Teach how the cloud works underneath, not only which button to press"],
+ topics=["Failure domains: machine, zone, region","Hypervisors and microVMs","Container isolation and sandboxes","Cluster scheduling and bin packing","The shared responsibility model"],
+ links=[("Firecracker","https://github.com/firecracker-microvm/firecracker","MicroVMs built at AWS for services such as Lambda, open source"),
+        ("gVisor","https://github.com/google/gvisor","An application kernel that sandboxes containers"),
+        ("Kubernetes","https://github.com/kubernetes/kubernetes","The open-source scheduler and orchestrator for containers"),
+        ("The Borg paper","https://research.google.com/pubs/pub43438.html?authuser=1","Google's paper on Borg, as linked from the Kubernetes README")])
+
 D["cloudcompare"] = dict(
  F=["Map common services across GCP, AWS and Azure","Explain projects vs accounts vs subscriptions","Use each provider's CLI for basic tasks"],
  P=["Translate a design from one cloud to another, including IAM and networking","Compare prices for a workload, including egress","Use Terraform across providers"],

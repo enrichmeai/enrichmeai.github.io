@@ -138,6 +138,7 @@ details>.inner{padding:4px 10px 8px}
       <a href="#performance" data-tab="performance">Performance</a>
       <a href="#caching" data-tab="caching">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="#cloudinside" data-tab="cloudinside">How the cloud is built</a>
       <a href="#cloudcompare" data-tab="cloudcompare">GCP vs AWS vs Azure</a>
       <a href="#gcpdata" data-tab="gcpdata">Data on GCP</a>
       <a href="#bigquery" data-tab="bigquery">BigQuery</a>
@@ -297,6 +298,7 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#sysdesign">System Design</a></td><td>Walk through the method for a small system: requirements, estimates, API, data, a diagram, trade-offs.</td><td>Capacity planning, caching and partitioning strategy, failure design, writing design documents others build from.</td></tr>
       <tr><td><a href="#performance">Performance</a></td><td>Read latency percentiles; spot N+1 queries and missing indexes.</td><td>Profiling, load testing, capacity planning and cost-performance trade-offs.</td></tr>
       <tr><td><a href="#caching">Caching</a></td><td>Explain cache-aside, TTLs and hit ratio; read HTTP cache headers.</td><td>Multi-layer caching, invalidation, stampedes, what never to cache.</td></tr>
+      <tr><td><a href="#cloudinside">How the cloud is built</a></td><td>Explain zones, regions, VMs, containers and the control plane.</td><td>Failure domains, isolation, shared responsibility and cost from first principles.</td></tr>
       <tr><td><a href="#cloudcompare">GCP vs AWS vs Azure</a></td><td>Map common services across the three clouds; know their account structures.</td><td>Provider choice, portability, IAM and networking differences, data residency.</td></tr>
       <tr><td><a href="#gcpdata">Data on GCP</a></td><td>Name the service for each data stage; load and query data on GCP.</td><td>Platform design across Dataflow, Pub/Sub, Datastream, Dataplex; cost and governance.</td></tr>
       <tr><td><a href="#bigquery">BigQuery</a></td><td>Write a correct, cheap query: named columns, partition filter, dry run first.</td><td>Table design (partitioning, clustering), MERGE patterns, cost analysis from INFORMATION_SCHEMA.</td></tr>
@@ -379,7 +381,7 @@ details>.inner{padding:4px 10px 8px}
       <li><b>Data:</b> <a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#culvert">Culvert</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></li>
       <li><b>Systems:</b> <a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></li>
       <li><b>Design:</b> <a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#performance">Performance</a>, <a href="#caching">Caching</a></li>
-      <li><b>Cloud:</b> <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a></li>
+      <li><b>Cloud:</b> <a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a></li>
       <li><b>Delivery &amp; ops:</b> <a href="#devops">DevOps</a>, <a href="#observability">Observability</a>, <a href="#opstools">Ops Tooling</a>, <a href="#sre">SRE</a>, <a href="#harness">Harness</a>, <a href="#terraform">Terraform</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a></li>
       <li><b>AI:</b> <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></li>
       <li><b>Decentralised web:</b> <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></li>
@@ -7710,6 +7712,71 @@ Cache-Control: no-store</code></pre></div>
   </div>
 </section>
 
+<!-- ================= HOW THE CLOUD IS BUILT ================= -->
+<section class="panel" id="p-cloudinside" data-name="How the cloud is built">
+  <div class="panel-head"><h2>How the cloud is built</h2><p>"The cloud" is not magic, and it is not a genie that grants servers. It is buildings full of ordinary computers, joined by networks, run by software that lets millions of customers share them safely. Once you can see the layers, cost, failure, speed and lock-in all start to make sense.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The layers, from the ground up</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Layer</th><th>What it really is</th><th>Why it matters to you</th></tr></thead>
+      <tbody>
+      <tr><td>Buildings</td><td>Data centres: power, cooling, physical security, fibre. A <b>zone</b> is one or more of them that fail together; a <b>region</b> is a group of zones close enough to talk fast</td><td>Spread work across zones to survive a building failing; pick a region for latency and data residency</td></tr>
+      <tr><td>Servers</td><td>Racks of ordinary machines: CPUs, memory, local disks, network cards. They fail every day at this scale</td><td>Design as if any one machine can disappear, because it will</td></tr>
+      <tr><td>Virtualisation</td><td>A hypervisor splits one physical server into many virtual machines, each believing it has its own hardware</td><td>Your "server" shares a machine with strangers; isolation is the provider's hardest job</td></tr>
+      <tr><td>Network</td><td>Software-defined networking: your private network, firewall rules and load balancers are configuration on shared switches and fibre</td><td>Moving data costs money and time, especially between regions and out to the internet</td></tr>
+      <tr><td>Storage</td><td>Block disks attached over the network, object stores that spread copies of your files across machines and zones, managed file systems</td><td>Durability comes from copies in different places; every copy and every read has a price</td></tr>
+      <tr><td>Control plane</td><td>The APIs, identity and permissions, scheduling, quotas and billing that turn all of the above into "click to create"</td><td>Every console click and every Terraform line is an API call; IAM decides who can make it</td></tr>
+      <tr><td>Managed services</td><td>Databases, queues, serverless and AI services: software the provider runs for you, built from the same layers</td><td>You trade control for convenience; the parts underneath still fail and still cost money</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Virtual machines, containers and sandboxes</h3>
+    <ul>
+      <li><b>A virtual machine</b> has its own operating system kernel on virtual hardware. Strong isolation, slower to start.</li>
+      <li><b>A container</b> shares the host's kernel and isolates processes with kernel features. Fast and light, but sharing a kernel means weaker isolation.</li>
+      <li><b>Providers close the gap</b> with sandboxes. Firecracker, developed at Amazon Web Services for services such as AWS Lambda and now open source, uses Linux KVM to run lightweight "microVMs" that start fast but keep virtual-machine isolation. gVisor, open-sourced by Google, is an "application kernel" that sits between a container and the host, because, in its own words, containers are not a sandbox.</li>
+      <li><b>Serverless</b> is this underneath: someone else's servers, packed densely, started on demand, and billed by the request or the second.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Scheduling: who runs where</h3>
+    <ul>
+      <li><b>A scheduler</b> decides which machine runs each piece of work, packing jobs tightly to use the hardware well and moving them when machines fail.</li>
+      <li><b>Kubernetes</b> brings this idea to everyone. Its own README says it builds on Google's experience running production workloads at scale with an internal system called Borg.</li>
+      <li><b>Why you care:</b> requests and limits, bin packing and preemption decide both your bill and whether your work gets evicted. See <a href="#kubernetes">Kubernetes</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>What "managed" really means</h3>
+    <ul>
+      <li><b>A managed database</b> is still a database server on virtual machines with disks, replicas and backups. The provider patches and fails it over for you.</li>
+      <li><b>Object storage</b> is many machines holding copies or encoded fragments of your files, with an API in front. That is why it is durable, cheap and slower than a local disk.</li>
+      <li><b>A serverless function</b> runs in a sandbox on a shared machine; a "cold start" is that sandbox being created for you.</li>
+      <li><b>Knowing the parts helps you ask the right questions:</b> where are the copies, what happens when a zone fails, what is billed, and what can I take elsewhere.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Shared responsibility</h3>
+    <ul>
+      <li><b>The provider secures the cloud:</b> buildings, hardware, hypervisors, their network and their services.</li>
+      <li><b>You secure what you put in it:</b> identities and permissions, your data, your network rules, your code and its dependencies, and the settings you choose.</li>
+      <li><b>The more managed the service,</b> the more the provider takes on, but your identities, data and settings are always yours. Most cloud breaches are a setting someone left open, not a broken data centre. See <a href="#security">Security</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Follow one request through the layers</h3>
+    <p>You open a web page served from the cloud. Your request reaches the provider's edge and a load balancer (software on shared hardware), which picks a healthy instance in one zone. That instance is a container or virtual machine, placed by a scheduler on a physical server in a data centre. It reads from a managed database (more virtual machines, with a replica in another zone) and from object storage (copies spread across machines), writes logs and metrics (yet more storage), and every step is checked against permissions and metered for the bill. When one machine, or one building, fails, the layers above route around it, if you designed for it.</p>
+    <p class="note">Try it yourself: run a small app on <a href="#cloudrun">Cloud Run</a>, then find each layer in the console: the region and zone, the revision and its instances, the logs, the IAM roles, and the bill.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain zones, regions and why work is spread across them</li><li>Tell a virtual machine from a container and a serverless function</li><li>Name what the provider secures and what you secure</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Choose zones and regions for a service's availability, latency and data residency</li><li>Read a bill and trace each line to a layer: compute, storage, network</li><li>Explain what a managed service still leaves to you</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for a machine, a zone or a region failing, and test it</li><li>Choose isolation (VM, container, sandbox) for untrusted or multi-tenant work</li><li>Estimate cost from first principles, including egress and copies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set organisation standards for failure domains, tenancy and shared responsibility</li><li>Lead decisions on regions, providers and lock-in with the layers in view</li><li>Teach how the cloud works underneath, not only which button to press</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Failure domains: machine, zone, region</li><li>Hypervisors and microVMs</li><li>Container isolation and sandboxes</li><li>Cluster scheduling and bin packing</li><li>The shared responsibility model</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/firecracker-microvm/firecracker" target="_blank" rel="noopener">Firecracker</a><span class="lnote"> MicroVMs built at AWS for services such as Lambda, open source</span></li><li><a href="https://github.com/google/gvisor" target="_blank" rel="noopener">gVisor</a><span class="lnote"> An application kernel that sandboxes containers</span></li><li><a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">Kubernetes</a><span class="lnote"> The open-source scheduler and orchestrator for containers</span></li><li><a href="https://research.google.com/pubs/pub43438.html?authuser=1" target="_blank" rel="noopener">The Borg paper</a><span class="lnote"> Google's paper on Borg, as linked from the Kubernetes README</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
 <!-- ================= CLOUD COMPARISON ================= -->
 <section class="panel" id="p-cloudcompare" data-name="GCP vs AWS vs Azure">
   <div class="panel-head"><h2>GCP vs AWS vs Azure</h2><p>The same building blocks under three names: a service-by-service map, how the providers differ in structure, identity, networking and pricing, each one's strengths, and how to stay portable. Service names change often; check each provider's own comparison page before deciding.</p></div>
@@ -12631,7 +12698,7 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
 
 <script>
 (function(){
-  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","web3","solid"];
+  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","web3","solid"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");

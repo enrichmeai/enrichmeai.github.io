@@ -14,13 +14,13 @@ groups=[("",["start","why","history","behaviours","homelab"]),
  ("Data",["data","datalibs","culvert","dbt","dags"]),
  ("Systems",["apis","graphql","kafka","payments","spring","quarkus"]),
  ("Design",["architecture","microservices","eventsourcing","sysdesign","performance","caching"]),
- ("Cloud",["cloudcompare","gcpdata","bigquery","cloudrun","apigee"]),
+ ("Cloud",["cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee"]),
  ("Delivery &amp; ops",["devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh"]),
  ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp"]),
  ("Decentralised web",["web3","solid"])]
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -71,6 +71,7 @@ scale='''  <article class="card wide" id="levels-scale"><h3>The four levels used
 if 'id="levels-scale"' not in s:
     i=s.index('  <article class="card wide"><h3>How much of each tab you need</h3>'); s=s[:i]+scale+s[i:]
 newrows={
+  "cloudinside":("How the cloud is built","Explain zones, regions, VMs, containers and the control plane.","Failure domains, isolation, shared responsibility and cost from first principles."),
  "oauth":('OAuth &amp; OIDC','Protect an API with JWT validation; use the code flow with PKCE through a library.','Identity architecture, flow choice per client, token lifetimes, advanced specs.'),
  "apis":('APIs &amp; Integration','Explain REST and status codes; read an OpenAPI spec; tell sync from async.','Choosing API styles, gateway and mesh design, versioning and API governance.'),
  "web":("Web Fundamentals","Explain a page load end to end; read headers in DevTools; know cookies and CORS.","Caching, rendering models, web security headers, performance and accessibility."),
