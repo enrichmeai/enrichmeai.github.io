@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
 <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
-<script>(function(){var t=location.hash.slice(1),k=["why", "history", "behaviours", "homelab", "mathematics", "science", "philosophy", "goodhuman", "body", "linux", "networking", "web", "docker", "sql", "database", "java", "python", "testing", "security", "oauth", "data", "datalibs", "culvert", "dbt", "dags", "apis", "graphql", "kafka", "payments", "spring", "quarkus", "architecture", "microservices", "eventsourcing", "sysdesign", "performance", "caching", "cloudinside", "cloudcompare", "gcpdata", "bigquery", "cloudrun", "apigee", "devops", "observability", "opstools", "sre", "harness", "terraform", "kubernetes", "helm", "operators", "servicemesh", "llm", "ai", "blueprints", "claudetools", "copilot", "agentharness", "agentsgcp", "rag", "mcp", "web3", "solid"];if(k.indexOf(t)>=0)location.replace("/well-rounded-engineer/"+t+"/");})();</script>
+<script>(function(){var t=location.hash.slice(1),k=["why", "history", "behaviours", "homelab", "mathematics", "science", "quantum", "philosophy", "goodhuman", "body", "linux", "networking", "web", "docker", "sql", "database", "java", "python", "testing", "security", "cyber", "oauth", "data", "datalibs", "culvert", "dbt", "dags", "apis", "graphql", "kafka", "payments", "spring", "quarkus", "architecture", "microservices", "eventsourcing", "sysdesign", "performance", "caching", "cloudinside", "cloudcompare", "gcpdata", "bigquery", "cloudrun", "apigee", "devops", "observability", "opstools", "sre", "harness", "terraform", "kubernetes", "helm", "operators", "servicemesh", "llm", "ai", "blueprints", "claudetools", "copilot", "agentharness", "agentsgcp", "rag", "mcp", "web3", "solid"];if(k.indexOf(t)>=0)location.replace("/well-rounded-engineer/"+t+"/");})();</script>
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
 <body data-tab="start">
@@ -36,6 +36,7 @@
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
       <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
       <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
@@ -52,6 +53,7 @@
       <span class="navgrp">Quality &amp; security</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
       <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
@@ -206,6 +208,7 @@
       <tbody>
       <tr><td><a href="/well-rounded-engineer/mathematics/">Mathematics</a></td><td>Read Big-O; use percentiles over averages; know why floats are wrong for money.</td><td>Complexity, probability, statistics and linear algebra applied with rigour.</td></tr>
       <tr><td><a href="/well-rounded-engineer/science/">Science &amp; Method</a></td><td>Reproduce, change one thing, measure before and after.</td><td>Falsifiable hypotheses, controlled experiments, reading research critically.</td></tr>
+      <tr><td><a href="/well-rounded-engineer/quantum/">Quantum Computing</a></td><td>Explain qubits, superposition and why Shor's algorithm threatens RSA.</td><td>Post-quantum migration: inventory, crypto agility, ML-KEM and ML-DSA.</td></tr>
       <tr><td><a href="/well-rounded-engineer/philosophy/">Philosophy</a></td><td>Ask how we know; spot fallacies; know the codes of ethics.</td><td>Systems thinking, ethical trade-offs, wise judgement under uncertainty.</td></tr>
       <tr><td><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a></td><td>Honesty, kindness, gratitude; look after your health.</td><td>Psychological safety, mentoring, integrity under pressure.</td></tr>
       <tr><td><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></td><td>Sleep, move and take breaks; notice stress in your body.</td><td>Sustainable pace for a team; humane on-call; greener systems.</td></tr>
@@ -219,6 +222,7 @@
       <tr><td><a href="/well-rounded-engineer/python/">Python</a></td><td>Write a script that reads GCS and queries BigQuery, with a pytest test.</td><td>Packaging, async and threading choices, Beam pipelines, typed and tested libraries.</td></tr>
       <tr><td><a href="/well-rounded-engineer/testing/">Testing</a></td><td>Write a unit test that fails before a fix and passes after; run the suite; read a CI failure.</td><td>Test strategy across levels, Testcontainers, property-based and load tests, pipeline and AI testing.</td></tr>
       <tr><td><a href="/well-rounded-engineer/security/">Security</a></td><td>Parameterise queries, check object ownership, keep secrets out of code, review a PR against the checklist.</td><td>Threat modelling, identity and OAuth design, cloud IAM and policies, supply-chain security, incident response.</td></tr>
+      <tr><td><a href="/well-rounded-engineer/cyber/">Cybersecurity</a></td><td>Know how attacks unfold (MITRE ATT&amp;CK) and report incidents fast.</td><td>Detection engineering, incident response and red/blue/purple teaming.</td></tr>
       <tr><td><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></td><td>Protect an API with JWT validation; use the code flow with PKCE through a library.</td><td>Identity architecture, flow choice per client, token lifetimes, advanced specs.</td></tr>
       <tr><td><a href="/well-rounded-engineer/data/">Data Engineering</a></td><td>Explain the lifecycle, the layers, and why pipelines must be idempotent.</td><td>Ingestion patterns, modelling, quality and governance across a whole platform.</td></tr>
       <tr><td><a href="/well-rounded-engineer/datalibs/">Data Libraries</a></td><td>Process a file with pandas or Polars; read Parquet; match library to data size.</td><td>Engine choice, pushdown and file layout, distributed and streaming processing.</td></tr>
@@ -313,10 +317,10 @@
 
   <article class="card"><h3>Suggested order for a newcomer</h3>
     <ol>
-      <li><b>Thinking &amp; character:</b> <a href="/well-rounded-engineer/mathematics/">Mathematics</a>, <a href="/well-rounded-engineer/science/">Science &amp; Method</a>, <a href="/well-rounded-engineer/philosophy/">Philosophy</a>, <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>, <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></li>
+      <li><b>Thinking &amp; character:</b> <a href="/well-rounded-engineer/mathematics/">Mathematics</a>, <a href="/well-rounded-engineer/science/">Science &amp; Method</a>, <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>, <a href="/well-rounded-engineer/philosophy/">Philosophy</a>, <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>, <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></li>
       <li><b>Foundations:</b> <a href="/well-rounded-engineer/linux/">Linux</a>, <a href="/well-rounded-engineer/networking/">Networking</a>, <a href="/well-rounded-engineer/web/">Web Fundamentals</a>, <a href="/well-rounded-engineer/docker/">Docker</a>, <a href="/well-rounded-engineer/sql/">SQL Skills</a>, <a href="/well-rounded-engineer/database/">Database Design</a></li>
       <li><b>Languages:</b> <a href="/well-rounded-engineer/java/">Java</a>, <a href="/well-rounded-engineer/python/">Python</a></li>
-      <li><b>Quality &amp; security:</b> <a href="/well-rounded-engineer/testing/">Testing</a>, <a href="/well-rounded-engineer/security/">Security</a>, <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></li>
+      <li><b>Quality &amp; security:</b> <a href="/well-rounded-engineer/testing/">Testing</a>, <a href="/well-rounded-engineer/security/">Security</a>, <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>, <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></li>
       <li><b>Data:</b> <a href="/well-rounded-engineer/data/">Data Engineering</a>, <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>, <a href="/well-rounded-engineer/culvert/">Culvert</a>, <a href="/well-rounded-engineer/dbt/">dbt</a>, <a href="/well-rounded-engineer/dags/">Airflow DAGs</a></li>
       <li><b>Systems:</b> <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>, <a href="/well-rounded-engineer/graphql/">GraphQL</a>, <a href="/well-rounded-engineer/kafka/">Kafka</a>, <a href="/well-rounded-engineer/payments/">Payment Gateways</a>, <a href="/well-rounded-engineer/spring/">Spring Boot</a>, <a href="/well-rounded-engineer/quarkus/">Quarkus</a></li>
       <li><b>Design:</b> <a href="/well-rounded-engineer/architecture/">Architecture</a>, <a href="/well-rounded-engineer/microservices/">Microservices</a>, <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>, <a href="/well-rounded-engineer/sysdesign/">System Design</a>, <a href="/well-rounded-engineer/performance/">Performance</a>, <a href="/well-rounded-engineer/caching/">Caching</a></li>

@@ -799,3 +799,21 @@ D["agentsgcp"] = dict(
         ("Workflows","https://cloud.google.com/workflows/docs","Orchestrate steps and services"),
         ("Secret Manager","https://cloud.google.com/secret-manager/docs","Store and audit secrets"),
         ("Vertex AI Model Garden","https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models","Google and partner models")])
+
+D["cyber"] = dict(
+ F=["Explain how a typical intrusion unfolds","Spot phishing and report incidents quickly","Know that you only test systems you may test"],
+ P=["Map your system's exposure to common attacker techniques","Log the signals an investigation needs","Follow the incident plan during an incident"],
+ S=["Write and tune detections; run a tabletop exercise","Lead containment and recovery in an incident","Design defence in depth for a product"],
+ E=["Own the organisation's security operations and incident response","Run red, blue and purple team programmes","Build a security culture across teams"],
+ topics=["MITRE ATT&CK tactics and techniques","Detection engineering","Incident response","Threat modelling","Responsible disclosure"],
+ links=[("MITRE ATT&CK data on GitHub","https://github.com/mitre-attack/attack-stix-data","The ATT&CK knowledge base as STIX data"),
+        ("OWASP Cheat Sheet Series","https://github.com/OWASP/CheatSheetSeries","Concise, practical security guidance")])
+
+D["quantum"] = dict(
+ F=["Explain qubits, superposition and entanglement in plain words","Say what quantum computers are and are not good for","Explain why Shor's algorithm threatens RSA and elliptic curves"],
+ P=["Inventory where your systems use public-key cryptography","Keep crypto libraries current and follow their post-quantum options","Build and run a simple circuit on a simulator"],
+ S=["Plan a post-quantum migration, long-lived secrets first","Design for crypto agility","Judge vendor quantum claims critically"],
+ E=["Own the organisation's post-quantum roadmap","Advise on where quantum computing could genuinely help","Track standards and research and translate them for teams"],
+ topics=["Qubits and measurement","Shor's and Grover's algorithms","Post-quantum cryptography (ML-KEM, ML-DSA, SLH-DSA)","Quantum error correction","Hybrid quantum-classical algorithms"],
+ links=[("Open Quantum Safe (liboqs)","https://github.com/open-quantum-safe/liboqs","Open-source post-quantum algorithms, including the NIST standards"),
+        ("Qiskit","https://github.com/Qiskit/qiskit","Open-source SDK for quantum circuits")])

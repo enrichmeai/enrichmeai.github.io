@@ -7,10 +7,10 @@ from levels_data import D
 p=os.path.join(HERE, 'guide.html.in'); s=open(p).read()
 
 groups=[("",["start","why","history","behaviours","homelab"]),
- ("Thinking &amp; character",["mathematics","science","philosophy","goodhuman","body"]),
+ ("Thinking &amp; character",["mathematics","science","quantum","philosophy","goodhuman","body"]),
  ("Foundations",["linux","networking","web","docker","sql","database"]),
  ("Languages",["java","python"]),
- ("Quality &amp; security",["testing","security","oauth"]),
+ ("Quality &amp; security",["testing","security","cyber","oauth"]),
  ("Data",["data","datalibs","culvert","dbt","dags"]),
  ("Systems",["apis","graphql","kafka","payments","spring","quarkus"]),
  ("Design",["architecture","microservices","eventsourcing","sysdesign","performance","caching"]),
@@ -20,7 +20,7 @@ groups=[("",["start","why","history","behaviours","homelab"]),
  ("Decentralised web",["web3","solid"])]
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -100,6 +100,8 @@ newrows={
  "operators":("Operators","Explain CRDs, controllers and reconcile; use well-known operators.","Building idempotent controllers, CRD versioning, operator testing."),
  "servicemesh":("Service Mesh &amp; Istio","Explain what a mesh does; read Istio routing and policy resources.","mTLS rollout, authorisation, traffic shifting, ambient vs sidecar, mesh operations."),
  "mathematics":("Mathematics","Read Big-O; use percentiles over averages; know why floats are wrong for money.","Complexity, probability, statistics and linear algebra applied with rigour."),
+ "quantum":("Quantum Computing","Explain qubits, superposition and why Shor's algorithm threatens RSA.","Post-quantum migration: inventory, crypto agility, ML-KEM and ML-DSA."),
+ "cyber":("Cybersecurity","Know how attacks unfold (MITRE ATT&amp;CK) and report incidents fast.","Detection engineering, incident response and red/blue/purple teaming."),
  "science":("Science &amp; Method","Reproduce, change one thing, measure before and after.","Falsifiable hypotheses, controlled experiments, reading research critically."),
  "philosophy":("Philosophy","Ask how we know; spot fallacies; know the codes of ethics.","Systems thinking, ethical trade-offs, wise judgement under uncertainty."),
  "body":("Body, Mind &amp; Nature","Sleep, move and take breaks; notice stress in your body.","Sustainable pace for a team; humane on-call; greener systems."),

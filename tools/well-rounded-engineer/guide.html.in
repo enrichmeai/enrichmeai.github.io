@@ -100,6 +100,7 @@ details>.inner{padding:4px 10px 8px}
       <span class="navgrp">Thinking &amp; character</span>
       <a href="#mathematics" data-tab="mathematics">Mathematics</a>
       <a href="#science" data-tab="science">Science &amp; Method</a>
+      <a href="#quantum" data-tab="quantum">Quantum Computing</a>
       <a href="#philosophy" data-tab="philosophy">Philosophy</a>
       <a href="#goodhuman" data-tab="goodhuman">Being a Good Human</a>
       <a href="#body" data-tab="body">Body, Mind &amp; Nature</a>
@@ -116,6 +117,7 @@ details>.inner{padding:4px 10px 8px}
       <span class="navgrp">Quality &amp; security</span>
       <a href="#testing" data-tab="testing">Testing</a>
       <a href="#security" data-tab="security">Security</a>
+      <a href="#cyber" data-tab="cyber">Cybersecurity</a>
       <a href="#oauth" data-tab="oauth">OAuth &amp; OIDC</a>
       <span class="navgrp">Data</span>
       <a href="#data" data-tab="data">Data Engineering</a>
@@ -267,6 +269,7 @@ details>.inner{padding:4px 10px 8px}
       <tbody>
       <tr><td><a href="#mathematics">Mathematics</a></td><td>Read Big-O; use percentiles over averages; know why floats are wrong for money.</td><td>Complexity, probability, statistics and linear algebra applied with rigour.</td></tr>
       <tr><td><a href="#science">Science &amp; Method</a></td><td>Reproduce, change one thing, measure before and after.</td><td>Falsifiable hypotheses, controlled experiments, reading research critically.</td></tr>
+      <tr><td><a href="#quantum">Quantum Computing</a></td><td>Explain qubits, superposition and why Shor's algorithm threatens RSA.</td><td>Post-quantum migration: inventory, crypto agility, ML-KEM and ML-DSA.</td></tr>
       <tr><td><a href="#philosophy">Philosophy</a></td><td>Ask how we know; spot fallacies; know the codes of ethics.</td><td>Systems thinking, ethical trade-offs, wise judgement under uncertainty.</td></tr>
       <tr><td><a href="#goodhuman">Being a Good Human</a></td><td>Honesty, kindness, gratitude; look after your health.</td><td>Psychological safety, mentoring, integrity under pressure.</td></tr>
       <tr><td><a href="#body">Body, Mind &amp; Nature</a></td><td>Sleep, move and take breaks; notice stress in your body.</td><td>Sustainable pace for a team; humane on-call; greener systems.</td></tr>
@@ -280,6 +283,7 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#python">Python</a></td><td>Write a script that reads GCS and queries BigQuery, with a pytest test.</td><td>Packaging, async and threading choices, Beam pipelines, typed and tested libraries.</td></tr>
       <tr><td><a href="#testing">Testing</a></td><td>Write a unit test that fails before a fix and passes after; run the suite; read a CI failure.</td><td>Test strategy across levels, Testcontainers, property-based and load tests, pipeline and AI testing.</td></tr>
       <tr><td><a href="#security">Security</a></td><td>Parameterise queries, check object ownership, keep secrets out of code, review a PR against the checklist.</td><td>Threat modelling, identity and OAuth design, cloud IAM and policies, supply-chain security, incident response.</td></tr>
+      <tr><td><a href="#cyber">Cybersecurity</a></td><td>Know how attacks unfold (MITRE ATT&amp;CK) and report incidents fast.</td><td>Detection engineering, incident response and red/blue/purple teaming.</td></tr>
       <tr><td><a href="#oauth">OAuth &amp; OIDC</a></td><td>Protect an API with JWT validation; use the code flow with PKCE through a library.</td><td>Identity architecture, flow choice per client, token lifetimes, advanced specs.</td></tr>
       <tr><td><a href="#data">Data Engineering</a></td><td>Explain the lifecycle, the layers, and why pipelines must be idempotent.</td><td>Ingestion patterns, modelling, quality and governance across a whole platform.</td></tr>
       <tr><td><a href="#datalibs">Data Libraries</a></td><td>Process a file with pandas or Polars; read Parquet; match library to data size.</td><td>Engine choice, pushdown and file layout, distributed and streaming processing.</td></tr>
@@ -374,10 +378,10 @@ details>.inner{padding:4px 10px 8px}
 
   <article class="card"><h3>Suggested order for a newcomer</h3>
     <ol>
-      <li><b>Thinking &amp; character:</b> <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></li>
+      <li><b>Thinking &amp; character:</b> <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#quantum">Quantum Computing</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></li>
       <li><b>Foundations:</b> <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a></li>
       <li><b>Languages:</b> <a href="#java">Java</a>, <a href="#python">Python</a></li>
-      <li><b>Quality &amp; security:</b> <a href="#testing">Testing</a>, <a href="#security">Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></li>
+      <li><b>Quality &amp; security:</b> <a href="#testing">Testing</a>, <a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></li>
       <li><b>Data:</b> <a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#culvert">Culvert</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></li>
       <li><b>Systems:</b> <a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></li>
       <li><b>Design:</b> <a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#performance">Performance</a>, <a href="#caching">Caching</a></li>
@@ -1132,6 +1136,80 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Reproduce a bug before fixing it</li><li>Change one thing at a time and measure before and after</li><li>Write down hypotheses and results while debugging</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Debug systematically with falsifiable hypotheses and bisection</li><li>Run fair benchmarks with baselines and error bars</li><li>Spot common biases in your own reasoning</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design controlled experiments and A/B tests correctly</li><li>Read papers critically and apply their results with care</li><li>Teach the method through how you run investigations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build a culture of evidence and experiment across the organisation</li><li>Lead research-style work with rigour and reproducibility</li><li>Judge competing claims across fields</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Falsifiability (Karl Popper)</li><li>Experimental design and controls</li><li>Cognitive biases</li><li>Memory hierarchy and computer architecture</li><li>How to read a paper</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank" rel="noopener">You and Your Research (Richard Hamming)</a><span class="lnote"> A classic talk on doing important work</span></li><li><a href="https://press.stripe.com/the-art-of-doing-science-and-engineering" target="_blank" rel="noopener">The Art of Doing Science and Engineering (Hamming)</a><span class="lnote"> Book on thinking as a scientist-engineer</span></li><li><a href="https://calteches.library.caltech.edu/51/2/CargoCult.htm" target="_blank" rel="noopener">Cargo Cult Science (Richard Feynman)</a><span class="lnote"> On scientific integrity</span></li><li><a href="http://ccr.sigcomm.org/online/files/p83-keshavA.pdf" target="_blank" rel="noopener">How to Read a Paper (S. Keshav)</a><span class="lnote"> The three-pass method</span></li><li><a href="https://csapp.cs.cmu.edu/" target="_blank" rel="noopener">Computer Systems: A Programmer's Perspective</a><span class="lnote"> How computers really work, for programmers</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-quantum" data-name="Quantum Computing">
+  <div class="panel-head"><h2>Quantum computing, in plain words</h2><p>Quantum computers are not faster versions of ordinary computers. They are a different kind of machine that is very good at a few specific problems and no help at most others. For engineers today, the most practical part is not building quantum programs: it is preparing cryptography for the day large quantum computers exist.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>The core ideas</h3>
+    <ul>
+      <li><b>A qubit</b> is the quantum version of a bit. Before it is measured it can be in a combination (a superposition) of 0 and 1; measuring it gives 0 or 1 with certain probabilities.</li>
+      <li><b>Entanglement</b> links qubits so that their measurement results are correlated in ways ordinary bits cannot be.</li>
+      <li><b>Interference</b> is how quantum algorithms work: they arrange for wrong answers to cancel out and right answers to reinforce, so that measuring gives a useful result.</li>
+      <li><b>Noise is the hard part.</b> Qubits are fragile; today's machines make errors, and correcting them needs many physical qubits for each reliable one.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>What it is good for, and what it is not</h3>
+    <ul>
+      <li><b>Promising:</b> simulating molecules and materials, some optimisation and sampling problems, and certain mathematical problems such as factoring large numbers. In finance, a technique called quantum amplitude estimation could in principle speed up Monte Carlo risk calculations; today that is research and pilots, not production.</li>
+      <li><b>Not useful for:</b> running websites, databases, everyday apps or most business software. Ordinary computers stay better at almost everything.</li>
+      <li><b>Be wary of hype:</b> claims of quantum advantage are usually about narrow, carefully chosen problems.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>From Planck to quantum computers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>When</th><th>Who</th><th>What changed</th></tr></thead>
+      <tbody>
+      <tr><td>1900</td><td>Max Planck</td><td>Energy comes in small, fixed packets, "quanta". Quantum physics begins.</td></tr>
+      <tr><td>1905</td><td>Albert Einstein</td><td>Light itself comes in packets (photons).</td></tr>
+      <tr><td>1925–26</td><td>Heisenberg, Schrödinger, Dirac</td><td>Full quantum mechanics, including superposition.</td></tr>
+      <tr><td>1935</td><td>Einstein, Podolsky and Rosen; Schrödinger</td><td>Entanglement is identified.</td></tr>
+      <tr><td>1980–82</td><td>Paul Benioff, Richard Feynman</td><td>Computers could run on quantum mechanics, and only quantum computers could simulate nature efficiently.</td></tr>
+      <tr><td>1985</td><td>David Deutsch</td><td>The universal quantum computer, and the first algorithm that beats a classical one.</td></tr>
+      <tr><td>1994</td><td>Peter Shor</td><td>A quantum algorithm to factor large numbers: the threat to today's public-key cryptography.</td></tr>
+      <tr><td>1996</td><td>Lov Grover</td><td>A quadratic speed-up for searching.</td></tr>
+      </tbody></table></div>
+    <p class="note">The ideas behind a qubit go back to Planck; using them to compute comes from Deutsch. See also <a href="#history">A brief history</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>Shor's algorithm in simple terms</h3>
+    <p>Multiplying two primes is easy: 61 × 53 = 3,233. Going back, finding which primes make 3,233, is hard, and for the very large numbers used in RSA it is impractical for ordinary computers. Shor turned factoring into finding a repeating pattern. Here it is for 15:</p>
+    <ol>
+      <li>Pick a number, say 7, and take its powers, keeping only the remainder after dividing by 15: 7, 4, 13, 1, 7, 4, 13, 1…</li>
+      <li>The pattern repeats every 4 steps, so the period is 4.</li>
+      <li>Take half the period: 7² − 1 = 48 and 7² + 1 = 50.</li>
+      <li>What each shares with 15: 48 and 15 share 3; 50 and 15 share 5. So 15 = 3 × 5.</li>
+    </ol>
+    <p>Every step is easy for an ordinary computer except finding the period when the number has hundreds of digits. That is the one step the quantum computer does: it puts many powers into superposition, computes them together, and uses interference (the quantum Fourier transform) so that the period stands out when measured. The rest runs on an ordinary computer, so it is a hybrid of the two.</p>
+    <p class="note">The numbers factored this way on real quantum hardware are still tiny. Breaking RSA needs a large, error-corrected machine that does not exist yet, which is why the move to post-quantum cryptography is happening now, before it does.</p>
+  </article>
+
+  <article class="card wide"><h3>Why it matters for security: post-quantum cryptography</h3>
+    <ul>
+      <li><b>Shor's algorithm</b>, on a large, error-corrected quantum computer, could break the public-key cryptography the internet relies on today (RSA and elliptic-curve keys and signatures).</li>
+      <li><b>"Harvest now, decrypt later":</b> someone can record encrypted traffic today and decrypt it once such a machine exists, so data that must stay secret for many years is already at risk.</li>
+      <li><b>New standards exist.</b> NIST has standardised post-quantum algorithms: <b>ML-KEM</b> (FIPS 203) for key exchange, based on Kyber, and <b>ML-DSA</b> (FIPS 204) and <b>SLH-DSA</b> (FIPS 205) for digital signatures.</li>
+      <li><b>Symmetric cryptography holds up better:</b> Grover's algorithm only gives a quadratic speed-up, so longer keys (such as AES-256) remain a sound choice.</li>
+      <li><b>What to do now:</b> know where your systems use public-key cryptography (TLS, signing, key exchange); keep crypto libraries current, since many are adding post-quantum and hybrid options; design so algorithms can be swapped (crypto agility); and plan the move for long-lived secrets first.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Try it yourself</h3>
+    <p><a href="https://github.com/Qiskit/qiskit" target="_blank" rel="noopener">Qiskit</a> is an open-source SDK for building quantum circuits in Python and running them on simulators on your laptop. A good first exercise: build a circuit that entangles two qubits (a Bell state), run it many times on the simulator, and see that the two results always agree.</p>
+  </article>
+
+  <article class="card"><h3>Keep your feet on the ground</h3>
+    <p>You do not need quantum physics to be ready. You need to know where your cryptography lives, keep it up to date, and be able to change it. That is good engineering whether quantum computers arrive soon or late.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain qubits, superposition and entanglement in plain words</li><li>Say what quantum computers are and are not good for</li><li>Explain why Shor's algorithm threatens RSA and elliptic curves</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Inventory where your systems use public-key cryptography</li><li>Keep crypto libraries current and follow their post-quantum options</li><li>Build and run a simple circuit on a simulator</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Plan a post-quantum migration, long-lived secrets first</li><li>Design for crypto agility</li><li>Judge vendor quantum claims critically</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's post-quantum roadmap</li><li>Advise on where quantum computing could genuinely help</li><li>Track standards and research and translate them for teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Qubits and measurement</li><li>Shor's and Grover's algorithms</li><li>Post-quantum cryptography (ML-KEM, ML-DSA, SLH-DSA)</li><li>Quantum error correction</li><li>Hybrid quantum-classical algorithms</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/open-quantum-safe/liboqs" target="_blank" rel="noopener">Open Quantum Safe (liboqs)</a><span class="lnote"> Open-source post-quantum algorithms, including the NIST standards</span></li><li><a href="https://github.com/Qiskit/qiskit" target="_blank" rel="noopener">Qiskit</a><span class="lnote"> Open-source SDK for quantum circuits</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -4028,6 +4106,66 @@ securityContext:
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Spot phishing; use a password manager and passkeys</li><li>Parameterise every query; never commit secrets</li><li>Check that users can only reach their own data</li><li>Apply the PR security checklist</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Hash passwords correctly and run containers to the Restricted profile</li><li>Implement OAuth 2.0 / OIDC with a provider and validate tokens properly</li><li>Use least-privilege IAM and a secret manager</li><li>Fix findings from SAST, SCA and image scans</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Threat-model a system and turn threats into tests</li><li>Design authentication, authorisation and audit for a product</li><li>Respond to and contain a security incident</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the security architecture and policies across teams</li><li>Lead compliance (DPDP, GDPR, SOC 2) and external testing</li><li>Build a security culture and secure-by-default platforms</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OWASP ASVS verification levels</li><li>OAuth 2.0 security best current practice</li><li>Supply-chain security with SLSA</li><li>Cloud security posture management</li><li>LLM and AI application security</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a><span class="lnote"> Most critical web application risks</span></li><li><a href="https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/" target="_blank" rel="noopener">OWASP GenAI LLM Top 10 (2026)</a><span class="lnote"> Risks for applications built on language models</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP Password Storage Cheat Sheet</a><span class="lnote"> Argon2id, scrypt, bcrypt and PBKDF2 settings</span></li><li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/" target="_blank" rel="noopener">Kubernetes Pod Security Standards</a><span class="lnote"> Privileged, Baseline and Restricted profiles</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise how-tos for each security topic</span></li><li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a><span class="lnote"> Risks specific to APIs</span></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a><span class="lnote"> A checklist of security requirements by level</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener">Spring Security reference</a><span class="lnote"> Authentication and authorisation in Spring</span></li><li><a href="https://cloud.google.com/security/best-practices" target="_blank" rel="noopener">Google Cloud security best practices</a><span class="lnote"> IAM, network and data protection on GCP</span></li><li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA</a><span class="lnote"> Supply-chain levels for software artefacts</span></li></ul></div></div></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-cyber" data-name="Cybersecurity">
+  <div class="panel-head"><h2>Cybersecurity: thinking like a defender</h2><p>The <a href="#security">Security</a> page is about building secure software. This page is about the wider field: how real attacks unfold, how organisations defend, detect and recover, and the people and roles involved. You do not need to become a specialist, but every engineer should understand the game being played against their systems.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>How real attacks unfold</h3>
+    <p>MITRE ATT&amp;CK is a public knowledge base of attackers' tactics and techniques, based on real-world observations. Its Enterprise matrix (version 20.1) groups what attackers do into 15 tactics, roughly in the order an intrusion progresses:</p>
+    <p><b>Reconnaissance → Resource Development → Initial Access → Execution → Persistence → Privilege Escalation → Stealth → Defense Impairment → Credential Access → Discovery → Lateral Movement → Collection → Command and Control → Exfiltration → Impact</b></p>
+    <ul>
+      <li><b>Attackers rarely need anything clever.</b> A stolen password, an unpatched server, a misconfigured bucket or a convincing email is usually enough to start.</li>
+      <li><b>Every step is a chance to stop them.</b> Defence is not one wall; it is noticing and blocking at many of these stages.</li>
+      <li><b>Use it practically:</b> for each system you own, ask which techniques would work against it, and whether you would see them.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Defence in depth</h3>
+    <ul>
+      <li><b>Identity first:</b> strong, phishing-resistant sign-in, least privilege, and removing access people no longer need.</li>
+      <li><b>Keep things patched and known:</b> you cannot protect what you do not know you have. Keep an inventory of systems, software and data.</li>
+      <li><b>Segment:</b> a breach in one place should not open everything else.</li>
+      <li><b>Assume breach:</b> design so that one compromised laptop, account or service does limited damage.</li>
+      <li><b>Back up, offline:</b> see "Backups and ransomware" on the <a href="#security">Security</a> page.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Detect and respond</h3>
+    <ul>
+      <li><b>Collect the right signals:</b> sign-ins, admin actions, process and network activity, cloud audit logs.</li>
+      <li><b>Detection is a craft:</b> write rules for behaviour attackers cannot easily avoid, test them, and tune out noise, so real alerts are not drowned.</li>
+      <li><b>Have an incident plan before you need it:</b> who leads, who decides, how you contain (isolate a machine, revoke a credential), how you communicate, and when you call in help or the authorities.</li>
+      <li><b>Learn without blame</b> afterwards, and fix the root cause, not just the symptom.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The people and roles</h3>
+    <ul>
+      <li><b>Blue team / security operations (SOC):</b> watch, detect and respond.</li>
+      <li><b>Red team and penetration testers:</b> attack, with written permission, to find weaknesses first.</li>
+      <li><b>Purple teaming:</b> both sides together, turning each attack into a detection.</li>
+      <li><b>Application and cloud security engineers:</b> help builders get it right from the start (see <a href="#security">Security</a>).</li>
+      <li><b>Governance, risk and compliance:</b> policies, audits and standards (see "Compliance frameworks" on the Security page).</li>
+      <li><b>Threat intelligence:</b> who is attacking whom, and how.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Ethics and the law</h3>
+    <ul>
+      <li><b>Only test systems you own, or have written permission to test.</b> Scanning or probing someone else's systems without permission is illegal in many countries, whatever your intent.</li>
+      <li><b>Practise legally:</b> deliberately vulnerable training apps, capture-the-flag events and your own <a href="#homelab">home lab</a>.</li>
+      <li><b>Report what you find responsibly:</b> through the organisation's security contact or vulnerability disclosure programme, and give them time to fix it.</li>
+    </ul>
+    <p class="note">Security is a team sport. The best defence is ordinary engineers who patch, review, log, ask "what if this is stolen?", and report mistakes quickly.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain how a typical intrusion unfolds</li><li>Spot phishing and report incidents quickly</li><li>Know that you only test systems you may test</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Map your system's exposure to common attacker techniques</li><li>Log the signals an investigation needs</li><li>Follow the incident plan during an incident</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Write and tune detections; run a tabletop exercise</li><li>Lead containment and recovery in an incident</li><li>Design defence in depth for a product</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's security operations and incident response</li><li>Run red, blue and purple team programmes</li><li>Build a security culture across teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MITRE ATT&CK tactics and techniques</li><li>Detection engineering</li><li>Incident response</li><li>Threat modelling</li><li>Responsible disclosure</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/mitre-attack/attack-stix-data" target="_blank" rel="noopener">MITRE ATT&CK data on GitHub</a><span class="lnote"> The ATT&CK knowledge base as STIX data</span></li><li><a href="https://github.com/OWASP/CheatSheetSeries" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise, practical security guidance</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -12698,7 +12836,7 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
 
 <script>
 (function(){
-  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","web3","solid"];
+  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","quantum","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","cyber","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","web3","solid"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
