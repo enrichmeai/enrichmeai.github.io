@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents on GCP · Well Rounded Engineer</title>
+<meta name="description" content="Many teams run coding agents on GitHub: an issue starts the agent, Actions runs it, a pull request comes back. That is convenient, but the work, the…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="agentsgcp">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/agentsgcp/" aria-current="page">Agents on GCP</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="agentsgcp" data-name="Agents on GCP">
+  <div class="panel-head"><h1>Running agents on Google Cloud</h1><p>Many teams run coding agents on GitHub: an issue starts the agent, Actions runs it, a pull request comes back. That is convenient, but the work, the secrets and the logs then live on someone else's platform. This page shows the other way: a cloud workspace in your own Google Cloud project, in the style of browser-based tools such as Replit, where people and agents share a running environment, and where triggers, secrets, models, approvals and audit all stay under your project's control.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The shape of it</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Need</th><th>On GitHub</th><th>In your Google Cloud project</th></tr></thead>
+      <tbody>
+      <tr><td>A place to work</td><td>Codespaces</td><td>Cloud Workstations: managed development environments from a container image you define, in the browser or your own IDE</td></tr>
+      <tr><td>Run an agent task</td><td>An Actions job</td><td>A Cloud Run job: a container that runs to completion, with its own service account, timeout and retries</td></tr>
+      <tr><td>Start it</td><td>Issue, comment, schedule</td><td>Cloud Scheduler, Pub/Sub messages, Eventarc events, or a Workflow</td></tr>
+      <tr><td>Several steps and a human approval</td><td>Workflow jobs and environments</td><td>Workflows, which can run steps in order, wait, and call your services</td></tr>
+      <tr><td>Secrets</td><td>Repository secrets</td><td>Secret Manager, with IAM on each secret and audit logs of every access</td></tr>
+      <tr><td>Build and test</td><td>Actions</td><td>Cloud Build</td></tr>
+      <tr><td>A live preview</td><td>A preview deployment</td><td>A Cloud Run revision with no traffic and its own tagged URL</td></tr>
+      <tr><td>The model</td><td>Copilot, or a key in a secret</td><td>Vertex AI (Google's models and partner models in Model Garden), or any provider with its key in Secret Manager</td></tr>
+      </tbody></table></div>
+    <p class="note">Git stays: the history of the code still lives in a Git repository, wherever you host it. What moves is where the agent runs, what it can reach, and who can see what it did.</p>
+  </article>
+
+  <article class="card"><h3>Why run it yourself</h3>
+    <ul>
+      <li><b>Your data stays in your project and region.</b> Useful when code or data may not leave a country or a company.</li>
+      <li><b>One identity model.</b> The agent is a service account with exactly the IAM roles it needs, like any other workload.</li>
+      <li><b>One audit trail.</b> Cloud Audit Logs record what the agent touched, next to everything else in the project.</li>
+      <li><b>Your choice of model,</b> including models you are allowed to use under your own agreements.</li>
+      <li><b>The trade-off:</b> you build and run the plumbing that a hosted service gives you for free. Start small.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A shared workspace, Replit style</h3>
+<div class="snip"><pre><code># a workspace image you control, in your project
+gcloud workstations configs create agent-ws \
+  --cluster=dev --region=europe-west2 \
+  --machine-type=e2-standard-4 \
+  --container-custom-image=europe-west2-docker.pkg.dev/my-proj/tools/agent-ws:1 \
+  --service-account=agent-ws@my-proj.iam.gserviceaccount.com \
+  --idle-timeout=3600 \
+  --disable-public-ip-addresses
+
+gcloud workstations create alice \
+  --config=agent-ws --cluster=dev --region=europe-west2
+gcloud workstations start alice \
+  --config=agent-ws --cluster=dev --region=europe-west2</code></pre></div>
+    <p class="note">Bake the agent's tools (CLI, language runtimes, test tools) into the image, so every workspace and every agent run starts the same. <code>--idle-timeout</code> is in seconds and stops idle workspaces, which saves money.</p>
+  </article>
+
+  <article class="card"><h3>An agent task as a Cloud Run job</h3>
+<div class="snip"><pre><code>gcloud run jobs create agent-task \
+  --image=europe-west2-docker.pkg.dev/my-proj/agents/runner:1 \
+  --region=europe-west2 \
+  --service-account=agent-runner@my-proj.iam.gserviceaccount.com \
+  --set-secrets=MODEL_API_KEY=model-api-key:latest \
+  --task-timeout=30m --max-retries=0
+
+# run one task and wait for the result
+gcloud run jobs execute agent-task --region=europe-west2 \
+  --update-env-vars=TASK="add tests for the date parser" --wait
+
+# or on a schedule, calling the Cloud Run API
+gcloud scheduler jobs create http nightly-triage \
+  --location=europe-west2 --schedule="0 6 * * 1-5" \
+  --uri="https://run.googleapis.com/v2/projects/my-proj/locations/europe-west2/jobs/agent-task:run" \
+  --http-method=POST \
+  --oauth-service-account-email=scheduler@my-proj.iam.gserviceaccount.com</code></pre></div>
+    <p class="note">One container, one task, a hard timeout, and no automatic retries for work that changes things: an agent that failed halfway should be looked at, not rerun blindly.</p>
+  </article>
+
+  <article class="card"><h3>Preview what the agent built</h3>
+<div class="snip"><pre><code># deploy the agent's branch with no traffic, at its own URL
+gcloud run deploy web --image=…/web:agent-1234 \
+  --region=europe-west2 --no-traffic --tag=agent-1234
+# open https://agent-1234---web-xxxxx.a.run.app, then
+# move traffic only after a person has looked</code></pre></div>
+    <p class="note">This is the "see it running" moment that makes Replit-style tools feel good, with the same blue-green and canary steps as any release (see <a href="/well-rounded-engineer/devops/">DevOps</a>).</p>
+  </article>
+
+  <article class="card wide"><h3>Guard rails, before the first run</h3>
+    <ul>
+      <li><b>A service account per agent,</b> with only the roles its task needs. No owner or editor roles, ever.</li>
+      <li><b>No direct path to production.</b> The agent proposes (a branch, a preview, a plan); a person approves the merge or the deploy.</li>
+      <li><b>Secrets from Secret Manager at run time,</b> never in the image, the prompt or the repository.</li>
+      <li><b>Limit the network:</b> private workspaces (<code>--disable-public-ip-addresses</code>), egress only to what the agent needs, and VPC Service Controls around sensitive data.</li>
+      <li><b>Budgets and alerts</b> on the project, and timeouts on every job, so a runaway loop costs minutes, not a month.</li>
+      <li><b>Log every step</b> the agent takes with a run ID, so a person can follow the journey and undo it if needed (see <a href="/well-rounded-engineer/observability/">Observability</a>).</li>
+      <li><b>Evaluate the agent</b> on real tasks before trusting it with more (see <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>).</li>
+    </ul>
+    <p class="note">One open-source option for the agent runtime itself is <a href="/penstock/">Penstock</a>, our headless, self-hosted harness, which runs agents from CI, Slack or webhooks and can run as a container like the job above. It is ours, so we are not neutral.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain where an agent runs, what it can reach and who sees its logs</li><li>Run a containerised task as a Cloud Run job</li><li>Keep secrets in Secret Manager</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Give each agent its own least-privilege service account</li><li>Trigger agent jobs from Scheduler, Pub/Sub or a Workflow</li><li>Preview agent changes on a tagged, no-traffic revision</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design an agent platform with workspaces, approvals and audit</li><li>Set budgets, timeouts and network limits for agents</li><li>Evaluate agents on real tasks before widening their access</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's policy for where agents run and what they touch</li><li>Balance hosted agent services against self-run ones</li><li>Make agent work auditable end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Cloud Workstations</li><li>Cloud Run jobs</li><li>Workflows and Eventarc</li><li>Secret Manager and IAM</li><li>VPC Service Controls</li><li>Vertex AI Model Garden</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/workstations/docs" target="_blank" rel="noopener">Cloud Workstations</a><span class="lnote"> Managed development environments</span></li><li><a href="https://cloud.google.com/run/docs/create-jobs" target="_blank" rel="noopener">Cloud Run jobs</a><span class="lnote"> Containers that run to completion</span></li><li><a href="https://cloud.google.com/workflows/docs" target="_blank" rel="noopener">Workflows</a><span class="lnote"> Orchestrate steps and services</span></li><li><a href="https://cloud.google.com/secret-manager/docs" target="_blank" rel="noopener">Secret Manager</a><span class="lnote"> Store and audit secrets</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models" target="_blank" rel="noopener">Vertex AI Model Garden</a><span class="lnote"> Google and partner models</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/agentharness/">← Agent Harness</a><a class="pn-next" href="/well-rounded-engineer/rag/">RAG →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

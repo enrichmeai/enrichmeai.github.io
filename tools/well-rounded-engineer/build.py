@@ -16,11 +16,11 @@ groups=[("",["start","why","history","behaviours","homelab"]),
  ("Design",["architecture","microservices","eventsourcing","sysdesign","performance","caching"]),
  ("Cloud",["cloudcompare","gcpdata","bigquery","cloudrun","apigee"]),
  ("Delivery &amp; ops",["devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh"]),
- ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","rag","mcp"]),
+ ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp"]),
  ("Decentralised web",["web3","solid"])]
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -91,6 +91,7 @@ newrows={
  "culvert":("Culvert","Explain contracts and adapters; install and use an adapter.","Cloud-neutral pipeline design, adapters, job control and orchestration gates."),
  "claudetools":("Claude Code &amp; Cowork","Run Claude Code in a repo; write a CLAUDE.md; review its changes.","Hooks, skills, subagents, gated agent workflows, Cowork plugins."),
  "copilot":("GitHub Copilot","Use completions and chat; follow repo instructions.","Instructions, coding agent, policies, consistency with other agents."),
+ "agentsgcp":("Agents on GCP","Run one agent task as a Cloud Run job with its own service account.","Workspaces, triggers, approvals and guard rails for agents in your own project."),
  "agentharness":("Agent Harness","Explain the parts of a harness; configure a ready-made one.","Building bounded, gated, evaluated harnesses."),
  "web3":("Web 3.0","Tell Web3 from the Semantic Web; know when a blockchain is not needed.","Smart contracts, linked data, knowledge graphs, legal data standards."),
  "solid":("Solid","Explain Pods, WebIDs and app–data separation.","Solid apps, access control, consent-based data sharing."),
