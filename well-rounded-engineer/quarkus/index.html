@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -359,7 +362,7 @@ quarkus.kubernetes.env.secrets=db-credentials
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Create a project and run dev mode</li><li>Write a REST endpoint and a @QuarkusTest</li><li>Configure with application.properties and profiles</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Panache, REST clients and fault tolerance</li><li>Choose blocking, reactive or virtual-thread endpoints</li><li>Package as a container; use Dev Services</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Build and run native images; fix reflection issues</li><li>Design for Kubernetes and serverless startup</li><li>Migrate services from Spring with clear trade-offs</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Write Quarkus extensions</li><li>Set framework strategy across Spring and Quarkus estates</li><li>Understand build-time processing and ArC internals</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Mutiny reactive programming</li><li>Native image configuration</li><li>Writing extensions</li><li>Quarkus with Kafka and messaging</li><li>Command-mode applications</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://quarkus.io/guides/" target="_blank" rel="noopener">Quarkus guides</a><span class="lnote"> Task-focused official guides</span></li><li><a href="https://quarkus.io/get-started/" target="_blank" rel="noopener">Get started with Quarkus</a><span class="lnote"> Install and first app</span></li><li><a href="https://code.quarkus.io/" target="_blank" rel="noopener">code.quarkus.io</a><span class="lnote"> Generate a project with chosen extensions</span></li><li><a href="https://smallrye.io/smallrye-mutiny/" target="_blank" rel="noopener">SmallRye Mutiny</a><span class="lnote"> Reactive programming library used by Quarkus</span></li><li><a href="https://docs.quarkiverse.io/" target="_blank" rel="noopener">Quarkiverse</a><span class="lnote"> Community extensions, including Google Cloud</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Mutiny reactive programming</li><li>Native image configuration</li><li>Writing extensions</li><li>Quarkus with Kafka and messaging</li><li>Command-mode applications</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://quarkus.io/guides/" target="_blank" rel="noopener">Quarkus guides</a><span class="lnote"> Task-focused official guides</span></li><li><a href="https://quarkus.io/get-started/" target="_blank" rel="noopener">Get started with Quarkus</a><span class="lnote"> Install and first app</span></li><li><a href="https://code.quarkus.io/" target="_blank" rel="noopener">code.quarkus.io</a><span class="lnote"> Generate a project with chosen extensions</span></li><li><a href="https://smallrye.io/smallrye-mutiny/" target="_blank" rel="noopener">SmallRye Mutiny</a><span class="lnote"> Reactive programming library used by Quarkus</span></li><li><a href="https://docs.quarkiverse.io/" target="_blank" rel="noopener">Quarkiverse</a><span class="lnote"> Community extensions, including Google Cloud</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BQuarkus%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>

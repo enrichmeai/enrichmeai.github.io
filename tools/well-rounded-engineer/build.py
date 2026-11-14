@@ -6,22 +6,26 @@ sys.path.insert(0, HERE)
 from levels_data import D
 p=os.path.join(HERE, 'guide.html.in'); s=open(p).read()
 
-groups=[("",["start","why","aiworry","history","behaviours","homelab"]),
- ("Foundations",["linux","networking","web","docker","sql","database"]),
+groups=[("",["start","aiworry"]),
+ ("Foundations",["linux","networking","web","docker","sql","database","homelab"]),
  ("Languages",["java","python"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
  ("Quality",["testing","performance"]),
  ("Security",["security","cyber","oauth"]),
- ("Data",["data","datalibs","culvert","dbt","dags","gcpdata","bigquery"]),
+ ("Data",["data","datalibs","dbt","dags","gcpdata","bigquery"]),
  ("Architecture &amp; design",["architecture","microservices","eventsourcing","sysdesign","caching"]),
  ("Cloud &amp; platform",["cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh"]),
  ("Delivery &amp; operations",["devops","observability","opstools","sre","harness"]),
  ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp"]),
- ("Thinking &amp; character",["mathematics","science","philosophy","goodhuman","body"]),
- ("Frontiers",["quantum","web3","solid"])]
-NARRATIVE=("start","why","aiworry","history","behaviours","homelab")
+ ("Thinking &amp; character",["behaviours","mathematics","science","philosophy","goodhuman","body"]),
+ ("Frontiers",["quantum","web3","solid"]),
+ ("About this guide",["why","history"]),
+ ("EnrichMeAI open source",["opensource","culvert"])]
+NARRATIVE=("start","why","aiworry","history","behaviours","homelab","opensource")
 # what each group is for, and where its running code lives (only folders that exist and run)
 GH="https://github.com/enrichmeai/"
+SITE="enrichmeai.github.io"
+from urllib.parse import quote
 blurb={
  "Foundations":"How computers, networks and the web work, and the data underneath. Everything else stands on this.",
  "Languages":"Two languages learned properly: how they run, test and fail.",
@@ -48,7 +52,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -71,7 +75,10 @@ def cards(t):
     lv=''.join(f'<div class="lvl"><h4><span class="lvtag">{n}</span> {name}</h4><ul>'+''.join(f'<li>{x}</li>' for x in d[k])+'</ul></div>' for k,n,name in NAMES)
     tp=''.join(f'<li>{x}</li>' for x in d["topics"])
     ln=''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{ti}</a><span class="lnote"> {no}</span></li>' for ti,u,no in d["links"])
-    run=(f'<p class="runcode"><b>Run the code:</b> <a href="{coderef(t)}" target="_blank" rel="noopener">{code[t][0]}/{code[t][1]}</a>, with a README that says how to run it and what it shows.</p>' if t in code else '')
+    repo=code[t][0] if t in code else SITE
+    ask=f'<a href="{GH}{repo}/issues/new?title={quote("["+html.unescape(labels[t])+"] ")}" target="_blank" rel="noopener">open an issue on GitHub</a>'
+    run=(f'<p class="runcode"><b>Run the code:</b> <a href="{coderef(t)}" target="_blank" rel="noopener">{code[t][0]}/{code[t][1]}</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? {ask}.</p>' if t in code
+         else f'<p class="runcode">A question, or found a mistake? {ask}. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p>')
     return (f'\n  <!-- levels -->\n  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels">{lv}</div>'
             f'<p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>\n'
             f'  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul>{tp}</ul></div>'
@@ -159,10 +166,10 @@ def gcard(g,ts):
     run=''.join(f'<p class="gmap-run"><a href="{GH}{r}" target="_blank" rel="noopener">Run the code: {r}</a></p>' for r in repos)
     return f'<div class="gmap-card"><h4><span class="gmap-n">{n}</span> {g}</h4><p>{blurb[g]}</p><p class="gmap-pages">{pages}</p>{run}</div>'
 cs=[]
-for n,(g,ts) in enumerate(groups[1:],1):
+for n,(g,ts) in enumerate([x for x in groups if x[0] in blurb],1):
     cs.append(gcard(g,ts))
 gmap=('  <article class="card wide" id="guide-map"><h3>The map: twelve groups, in the order to learn them</h3>\n'
-      '    <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next and, where it exists, code you can run.</p>\n'
+      '    <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>\n'
       '    <div class="gmap">'+''.join(cs)+'</div>\n  </article>\n\n')
 s=re.sub(r'  <article class="card wide" id="guide-map">.*?</article>\n\n','',s,flags=re.S)
 i=s.index('<section class="panel" id="p-start"'); j=s.index('  <div class="grid">\n',i)+len('  <div class="grid">\n')

@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -365,7 +368,7 @@ export default function () {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/testing" target="_blank" rel="noopener">well-rounded-engineer-code/testing</a>, with a README that says how to run it and what it shows.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/testing" target="_blank" rel="noopener">well-rounded-engineer-code/testing</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BTesting%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>

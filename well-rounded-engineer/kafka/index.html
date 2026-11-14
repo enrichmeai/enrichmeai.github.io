@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -290,7 +293,7 @@ while True:
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain topics, partitions, offsets and consumer groups</li><li>Produce and consume with the CLI</li><li>Read consumer lag</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build producers and consumers in Spring, Quarkus or Python with correct acks and commits</li><li>Make consumers idempotent; use dead-letter topics</li><li>Use a schema registry</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design topics, keys and partition counts for scale and ordering</li><li>Run Kafka Connect and CDC pipelines</li><li>Tune throughput, latency and durability</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Operate Kafka platforms (or choose managed) for the organisation</li><li>Design event-driven architectures across domains</li><li>Lead stream processing with Kafka Streams or Flink</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Exactly-once semantics and transactions</li><li>Consumer rebalancing protocols</li><li>Tiered storage</li><li>KRaft operations</li><li>Kafka Streams state stores</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">Apache Kafka documentation</a><span class="lnote"> Design, configuration, operations</span></li><li><a href="https://docs.spring.io/spring-kafka/reference/" target="_blank" rel="noopener">Spring for Apache Kafka</a><span class="lnote"> Templates, listeners, error handling</span></li><li><a href="https://quarkus.io/guides/kafka" target="_blank" rel="noopener">Quarkus Kafka guide</a><span class="lnote"> Reactive messaging with Kafka</span></li><li><a href="https://docs.confluent.io/kafka-clients/python/current/overview.html" target="_blank" rel="noopener">confluent-kafka-python</a><span class="lnote"> Python client</span></li><li><a href="https://developer.confluent.io/" target="_blank" rel="noopener">Confluent Developer courses</a><span class="lnote"> Free courses on Kafka fundamentals and patterns</span></li><li><a href="https://cloud.google.com/managed-service-for-apache-kafka/docs" target="_blank" rel="noopener">Managed Service for Apache Kafka</a><span class="lnote"> Kafka on Google Cloud</span></li><li><a href="https://debezium.io/documentation/" target="_blank" rel="noopener">Debezium</a><span class="lnote"> Change data capture into Kafka</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Exactly-once semantics and transactions</li><li>Consumer rebalancing protocols</li><li>Tiered storage</li><li>KRaft operations</li><li>Kafka Streams state stores</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">Apache Kafka documentation</a><span class="lnote"> Design, configuration, operations</span></li><li><a href="https://docs.spring.io/spring-kafka/reference/" target="_blank" rel="noopener">Spring for Apache Kafka</a><span class="lnote"> Templates, listeners, error handling</span></li><li><a href="https://quarkus.io/guides/kafka" target="_blank" rel="noopener">Quarkus Kafka guide</a><span class="lnote"> Reactive messaging with Kafka</span></li><li><a href="https://docs.confluent.io/kafka-clients/python/current/overview.html" target="_blank" rel="noopener">confluent-kafka-python</a><span class="lnote"> Python client</span></li><li><a href="https://developer.confluent.io/" target="_blank" rel="noopener">Confluent Developer courses</a><span class="lnote"> Free courses on Kafka fundamentals and patterns</span></li><li><a href="https://cloud.google.com/managed-service-for-apache-kafka/docs" target="_blank" rel="noopener">Managed Service for Apache Kafka</a><span class="lnote"> Kafka on Google Cloud</span></li><li><a href="https://debezium.io/documentation/" target="_blank" rel="noopener">Debezium</a><span class="lnote"> Change data capture into Kafka</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKafka%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>

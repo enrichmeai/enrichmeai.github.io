@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -493,7 +496,7 @@ run "rejects_unknown_env" {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run init, plan and apply; read a plan</li><li>Change a resource's arguments safely</li><li>Use variables and outputs</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write reusable modules with validation</li><li>Manage state in a remote backend; use moved and import blocks</li><li>Run Terraform from CI with keyless auth</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design module and state layout for many environments</li><li>Refactor live infrastructure without destroying it</li><li>Write terraform tests and policy checks</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own infrastructure-as-code standards for the organisation</li><li>Design org-wide landing zones and guardrails</li><li>Lead provider upgrades and large migrations</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>State locking and drift detection</li><li>Policy as code (OPA, Sentinel)</li><li>Terraform test and mock providers</li><li>Ephemeral values and write-only arguments</li><li>Landing zones on GCP</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener">Terraform documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://developer.hashicorp.com/terraform/language" target="_blank" rel="noopener">Terraform language</a><span class="lnote"> HCL, modules, expressions, state</span></li><li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank" rel="noopener">Terraform tutorials</a><span class="lnote"> Step-by-step learning</span></li><li><a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs" target="_blank" rel="noopener">Google provider docs</a><span class="lnote"> Every GCP resource and argument</span></li><li><a href="https://cloud.google.com/docs/terraform" target="_blank" rel="noopener">Terraform on Google Cloud</a><span class="lnote"> Google's guides and best practices</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>State locking and drift detection</li><li>Policy as code (OPA, Sentinel)</li><li>Terraform test and mock providers</li><li>Ephemeral values and write-only arguments</li><li>Landing zones on GCP</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener">Terraform documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://developer.hashicorp.com/terraform/language" target="_blank" rel="noopener">Terraform language</a><span class="lnote"> HCL, modules, expressions, state</span></li><li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank" rel="noopener">Terraform tutorials</a><span class="lnote"> Step-by-step learning</span></li><li><a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs" target="_blank" rel="noopener">Google provider docs</a><span class="lnote"> Every GCP resource and argument</span></li><li><a href="https://cloud.google.com/docs/terraform" target="_blank" rel="noopener">Terraform on Google Cloud</a><span class="lnote"> Google's guides and best practices</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BTerraform%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>

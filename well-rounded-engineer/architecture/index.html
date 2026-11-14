@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -340,7 +343,7 @@ Links:    load test results, issue #…</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain layered and hexagonal architecture</li><li>Tell events from commands; choreography from orchestration</li><li>Recognise retries that need idempotency</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement outbox, idempotent consumers and retries with backoff</li><li>Design a saga with compensations</li><li>Apply circuit breakers, bulkheads and timeouts</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose monolith, modular monolith or services for a context</li><li>Design event-driven systems with contracts and evolution</li><li>Run design reviews and write decision records</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set architecture direction across many teams</li><li>Balance consistency, availability, cost and team structure</li><li>Lead large migrations (strangler fig) safely</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts</li><li>Architecture decision records (ADRs)</li><li>Event schema evolution and registries</li><li>CQRS and event sourcing in practice</li><li>Team topologies and Conway's law</li><li>Architecture characteristics and fitness functions</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io patterns</a><span class="lnote"> Saga, outbox, CQRS and more, with trade-offs</span></li><li><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Martin Fowler: architecture</a><span class="lnote"> Essays on patterns and evolution</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/" target="_blank" rel="noopener">Azure cloud design patterns</a><span class="lnote"> Vendor-neutral pattern catalogue</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging patterns</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures on GCP</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems (Unmesh Joshi)</a><span class="lnote"> Leader election, write-ahead log, quorum and more</span></li><li><a href="https://adr.github.io/" target="_blank" rel="noopener">Architecture decision records</a><span class="lnote"> Templates and tools for ADRs</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/patterns" target="_blank" rel="noopener">well-rounded-engineer-code/patterns</a>, with a README that says how to run it and what it shows.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts</li><li>Architecture decision records (ADRs)</li><li>Event schema evolution and registries</li><li>CQRS and event sourcing in practice</li><li>Team topologies and Conway's law</li><li>Architecture characteristics and fitness functions</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io patterns</a><span class="lnote"> Saga, outbox, CQRS and more, with trade-offs</span></li><li><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Martin Fowler: architecture</a><span class="lnote"> Essays on patterns and evolution</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/" target="_blank" rel="noopener">Azure cloud design patterns</a><span class="lnote"> Vendor-neutral pattern catalogue</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging patterns</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures on GCP</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems (Unmesh Joshi)</a><span class="lnote"> Leader election, write-ahead log, quorum and more</span></li><li><a href="https://adr.github.io/" target="_blank" rel="noopener">Architecture decision records</a><span class="lnote"> Templates and tools for ADRs</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/patterns" target="_blank" rel="noopener">well-rounded-engineer-code/patterns</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BArchitecture%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>

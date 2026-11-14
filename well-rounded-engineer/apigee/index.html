@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -257,7 +260,7 @@
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain proxies, policies, products and apps</li><li>Call an API through Apigee with a key</li><li>Read Apigee analytics for an API</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a proxy with key/token verification, spike arrest and quota</li><li>Use shared flows; deploy through environments from CI</li><li>Connect securely to Cloud Run backends</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design API products, tiers and the developer portal</li><li>Run Apigee across environments with Terraform and CI</li><li>Secure APIs at the edge with OAuth and Advanced API Security</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's API management platform and governance</li><li>Design hybrid or multi-region Apigee deployments</li><li>Lead API monetisation and partner programmes</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Shared flows and flow hooks</li><li>Apigee hybrid on GKE</li><li>Advanced API Security</li><li>Developer portals (integrated and Drupal)</li><li>apigeelint and proxy testing</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/apigee/docs" target="_blank" rel="noopener">Apigee documentation</a><span class="lnote"> Official docs for Apigee X and hybrid</span></li><li><a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/reference-overview-policy" target="_blank" rel="noopener">Apigee policy reference</a><span class="lnote"> Every policy and its options</span></li><li><a href="https://github.com/GoogleCloudPlatform/apigee-samples" target="_blank" rel="noopener">Apigee samples</a><span class="lnote"> Working proxy examples</span></li><li><a href="https://github.com/apigee/apigeelint" target="_blank" rel="noopener">apigeelint</a><span class="lnote"> Static checks for proxy bundles</span></li><li><a href="https://cloud.google.com/api-gateway/docs" target="_blank" rel="noopener">API Gateway documentation</a><span class="lnote"> The lighter-weight alternative</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Shared flows and flow hooks</li><li>Apigee hybrid on GKE</li><li>Advanced API Security</li><li>Developer portals (integrated and Drupal)</li><li>apigeelint and proxy testing</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/apigee/docs" target="_blank" rel="noopener">Apigee documentation</a><span class="lnote"> Official docs for Apigee X and hybrid</span></li><li><a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/reference-overview-policy" target="_blank" rel="noopener">Apigee policy reference</a><span class="lnote"> Every policy and its options</span></li><li><a href="https://github.com/GoogleCloudPlatform/apigee-samples" target="_blank" rel="noopener">Apigee samples</a><span class="lnote"> Working proxy examples</span></li><li><a href="https://github.com/apigee/apigeelint" target="_blank" rel="noopener">apigeelint</a><span class="lnote"> Static checks for proxy bundles</span></li><li><a href="https://cloud.google.com/api-gateway/docs" target="_blank" rel="noopener">API Gateway documentation</a><span class="lnote"> The lighter-weight alternative</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BApigee%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>

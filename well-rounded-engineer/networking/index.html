@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/" aria-current="page">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -258,7 +261,7 @@ gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain IP, port, DNS, TCP vs UDP and HTTP status classes</li><li>Use curl, dig and nc to test reachability</li><li>Tell a DNS failure from a refusal from a timeout</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Size subnets with CIDR; read firewall rules and routes</li><li>Debug TLS and certificate errors</li><li>Configure private access, NAT and egress for cloud workloads</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a VPC: ranges, subnets, private service access, load balancers</li><li>Choose L4 vs L7 load balancing and set health checks</li><li>Trace a latency problem across the network path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design hybrid and multi-region connectivity</li><li>Set network security policy for an organisation</li><li>Lead incident response for network-level outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>TCP handshake, congestion control and keep-alive</li><li>TLS 1.3 handshake and certificate chains</li><li>HTTP/2 and HTTP/3 (QUIC)</li><li>Anycast, global load balancing and CDNs</li><li>VPC Service Controls and Private Service Connect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://hpbn.co/" target="_blank" rel="noopener">High Performance Browser Networking (free book)</a><span class="lnote"> TCP, TLS, HTTP/2 explained for engineers</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN: HTTP</a><span class="lnote"> Methods, headers, caching, CORS</span></li><li><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">Cloudflare Learning Center</a><span class="lnote"> Clear explainers on DNS, TLS, CDN, DDoS</span></li><li><a href="https://cloud.google.com/vpc/docs/overview" target="_blank" rel="noopener">Google Cloud VPC overview</a><span class="lnote"> Networks, subnets, firewall, routes on GCP</span></li><li><a href="https://cloud.google.com/load-balancing/docs/load-balancing-overview" target="_blank" rel="noopener">Cloud Load Balancing overview</a><span class="lnote"> Which load balancer for which job</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/networking" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/networking</a>, with a README that says how to run it and what it shows.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>TCP handshake, congestion control and keep-alive</li><li>TLS 1.3 handshake and certificate chains</li><li>HTTP/2 and HTTP/3 (QUIC)</li><li>Anycast, global load balancing and CDNs</li><li>VPC Service Controls and Private Service Connect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://hpbn.co/" target="_blank" rel="noopener">High Performance Browser Networking (free book)</a><span class="lnote"> TCP, TLS, HTTP/2 explained for engineers</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN: HTTP</a><span class="lnote"> Methods, headers, caching, CORS</span></li><li><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">Cloudflare Learning Center</a><span class="lnote"> Clear explainers on DNS, TLS, CDN, DDoS</span></li><li><a href="https://cloud.google.com/vpc/docs/overview" target="_blank" rel="noopener">Google Cloud VPC overview</a><span class="lnote"> Networks, subnets, firewall, routes on GCP</span></li><li><a href="https://cloud.google.com/load-balancing/docs/load-balancing-overview" target="_blank" rel="noopener">Cloud Load Balancing overview</a><span class="lnote"> Which load balancer for which job</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/networking" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/networking</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BNetworking%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>

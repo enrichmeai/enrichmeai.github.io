@@ -28,11 +28,7 @@
   <div class="container">
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
@@ -40,6 +36,7 @@
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
       <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="/well-rounded-engineer/java/">Java</a>
       <a href="/well-rounded-engineer/python/">Python</a>
@@ -60,7 +57,6 @@
       <span class="navgrp">Data</span>
       <a href="/well-rounded-engineer/data/">Data Engineering</a>
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/" aria-current="page">Airflow DAGs</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
@@ -98,6 +94,7 @@
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
       <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
@@ -107,6 +104,12 @@
       <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
       <a href="/well-rounded-engineer/web3/">Web 3.0</a>
       <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
     </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
   </div>
@@ -304,7 +307,7 @@ def test_dags_load():
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read a DAG; find and read a failed task's log</li><li>Rerun a task or a date</li><li>Understand logical dates and data intervals</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write idempotent TaskFlow DAGs with retries and templates</li><li>Use provider operators and deferrable sensors</li><li>Test DAGs locally and in CI</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design orchestration across many pipelines (assets, pools, SLAs)</li><li>Run Composer or Airflow reliably; plan upgrades</li><li>Decide what belongs in Airflow vs inside the job</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Choose the orchestration platform for the organisation</li><li>Run large Airflow estates: scaling, multi-tenancy, security</li><li>Set standards for scheduling and data-aware workflows</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Assets and data-aware scheduling</li><li>Dynamic task mapping</li><li>Deferrable operators and triggers</li><li>Airflow 3 Task SDK and execution API</li><li>Alternatives: Cloud Workflows, Dagster, Temporal</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html" target="_blank" rel="noopener">Apache Airflow documentation</a><span class="lnote"> Concepts and reference</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html" target="_blank" rel="noopener">Airflow best practices</a><span class="lnote"> Idempotency, top-level code, testing</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow-providers-google/stable/index.html" target="_blank" rel="noopener">Google provider for Airflow</a><span class="lnote"> BigQuery, GCS, Dataflow operators</span></li><li><a href="https://cloud.google.com/composer/docs" target="_blank" rel="noopener">Cloud Composer</a><span class="lnote"> Managed Airflow on GCP</span></li><li><a href="https://astronomer.github.io/astronomer-cosmos/" target="_blank" rel="noopener">Astronomer Cosmos</a><span class="lnote"> Run dbt projects as Airflow tasks</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-data/tree/main/airflow" target="_blank" rel="noopener">well-rounded-engineer-data/airflow</a>, with a README that says how to run it and what it shows.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Assets and data-aware scheduling</li><li>Dynamic task mapping</li><li>Deferrable operators and triggers</li><li>Airflow 3 Task SDK and execution API</li><li>Alternatives: Cloud Workflows, Dagster, Temporal</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html" target="_blank" rel="noopener">Apache Airflow documentation</a><span class="lnote"> Concepts and reference</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html" target="_blank" rel="noopener">Airflow best practices</a><span class="lnote"> Idempotency, top-level code, testing</span></li><li><a href="https://airflow.apache.org/docs/apache-airflow-providers-google/stable/index.html" target="_blank" rel="noopener">Google provider for Airflow</a><span class="lnote"> BigQuery, GCS, Dataflow operators</span></li><li><a href="https://cloud.google.com/composer/docs" target="_blank" rel="noopener">Cloud Composer</a><span class="lnote"> Managed Airflow on GCP</span></li><li><a href="https://astronomer.github.io/astronomer-cosmos/" target="_blank" rel="noopener">Astronomer Cosmos</a><span class="lnote"> Run dbt projects as Airflow tasks</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-data/tree/main/airflow" target="_blank" rel="noopener">well-rounded-engineer-data/airflow</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-data/issues/new?title=%5BAirflow%20DAGs%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
