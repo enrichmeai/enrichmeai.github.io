@@ -176,7 +176,8 @@ static boolean validCheckout(String orderId, String paymentId, String signature,
 }
 
 // webhook: HMAC-SHA256 of the RAW request body with the webhook secret,
-// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.</code></pre></div>
+// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.
+// The same event can arrive more than once: dedupe on the X-Razorpay-Event-Id header.</code></pre></div>
   </article>
 
   <article class="card"><h3>Stripe: PaymentIntent and webhook</h3>

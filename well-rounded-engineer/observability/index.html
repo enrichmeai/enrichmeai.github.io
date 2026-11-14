@@ -209,8 +209,9 @@ service:
 management:
   endpoints.web.exposure.include: health,prometheus
   tracing.sampling.probability: 0.1
-  otlp.tracing.endpoint: http://otel-collector:4318/v1/traces
-logging.structured.format.console: ecs</code></pre></div>
+  otlp.tracing.endpoint: http://otel-collector:4318/v1/traces   # Boot 4: opentelemetry.tracing.export.otlp.endpoint
+  observations.annotations.enabled: true   # makes @Observed work (needs AspectJ on the classpath)
+logging.structured.format.console: ecs     # 3.4+</code></pre></div>
 <div class="snip"><pre><code>@Component
 class LoadMetrics {
   private final Counter loaded, failed;

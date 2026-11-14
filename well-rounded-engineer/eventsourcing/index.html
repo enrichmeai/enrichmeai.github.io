@@ -157,10 +157,10 @@
   </article>
 
   <article class="card"><h3>An aggregate in Java</h3>
-<div class="snip"><pre><code>sealed interface SubEvent permits Started, Upgraded, Cancelled {}
-record Started(String id, String plan, Instant at)   implements SubEvent {}
-record Upgraded(String id, String plan, Instant at)  implements SubEvent {}
-record Cancelled(String id, String reason, Instant at) implements SubEvent {}
+<div class="snip"><pre><code>sealed interface SubEvent permits Started, PlanUpgraded, Cancelled {}
+record Started(String id, String plan, Instant at)      implements SubEvent {}
+record PlanUpgraded(String id, String plan, Instant at) implements SubEvent {}
+record Cancelled(String id, String reason, Instant at)  implements SubEvent {}
 
 enum Status { ACTIVE, CANCELLED }
 
@@ -174,16 +174,16 @@ record Subscription(String id, String plan, Status status, int version) {
 
   static Subscription apply(Subscription s, SubEvent e) {     // pure: no side effects
     return switch (e) {
-      case Started st   -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
-      case Upgraded u   -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
-      case Cancelled c  -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
+      case Started st     -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
+      case PlanUpgraded u -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
+      case Cancelled c    -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
     };
   }
 
   List&lt;SubEvent&gt; upgrade(String newPlan, Instant now) {        // decide
     if (status != Status.ACTIVE) throw new IllegalStateException("subscription not active");
     if (plan.equals(newPlan)) return List.of();                 // idempotent: nothing to do
-    return List.of(new Upgraded(id, newPlan, now));
+    return List.of(new PlanUpgraded(id, newPlan, now));
   }
 }</code></pre></div>
     <p class="note">Separate <i>decide</i> (rules, may reject) from <i>apply</i> (pure state change). Apply must never fail for a stored event: it already happened.</p>
@@ -217,9 +217,9 @@ VALUES ('subscription-42', 4, 'PlanUpgraded', '{"plan":"pro"}');
 void handle(StoredEvent e) {
   tx.run(() -&gt; {
     switch (e.payload()) {
-      case Started s   -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
-      case Upgraded u  -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
-      case Cancelled c -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
+      case Started s      -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
+      case PlanUpgraded u -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
+      case Cancelled c    -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
     }
     db.saveCheckpoint("subscription_view", e.globalPosition());  // same transaction
   });
@@ -256,7 +256,7 @@ void handle(StoredEvent e) {
 void upgradeEmitsEventWhenActive() {
   var given = List.&lt;SubEvent&gt;of(new Started("s1", "basic", T0));
   var events = Subscription.replay(given).upgrade("pro", T1);          // when
-  assertThat(events).containsExactly(new Upgraded("s1", "pro", T1));   // then
+  assertThat(events).containsExactly(new PlanUpgraded("s1", "pro", T1));   // then
 }
 
 @Test

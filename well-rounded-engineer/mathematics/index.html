@@ -186,7 +186,7 @@
       <tr><td>O(n²)</td><td>Nested loops, a self-join without an index</td><td>1 trillion steps</td></tr>
       <tr><td>O(2ⁿ)</td><td>Trying every subset</td><td>never finishes</td></tr>
       </tbody></table></div>
-    <p class="note">The jump from O(n log n) to O(n²) is the difference between a second and days. An N+1 query pattern and a nested loop over two big lists are the usual ways it sneaks in.</p>
+    <p class="note">At a million items, the jump from O(n log n) to O(n²) is a factor of about 50,000: a fraction of a second becomes many minutes, and at larger sizes, days. An N+1 query pattern and a nested loop over two big lists are the usual ways it sneaks in.</p>
   </article>
 
   <article class="card"><h3>Numbers computers get "wrong"</h3>

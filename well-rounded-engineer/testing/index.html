@@ -116,7 +116,7 @@
     <div class="tbl"><table>
       <thead><tr><th>Level</th><th>Checks</th><th>Speed</th><th>Tools</th></tr></thead>
       <tbody>
-      <tr><td>Unit</td><td>One function or class in isolation; logic, edge cases, errors</td><td>ms</td><td>JUnit 5 + AssertJ, pytest, dbt unit tests</td></tr>
+      <tr><td>Unit</td><td>One function or class in isolation; logic, edge cases, errors</td><td>ms</td><td>JUnit + AssertJ, pytest, dbt unit tests</td></tr>
       <tr><td>Integration</td><td>Your code with a real database, queue or HTTP layer</td><td>seconds</td><td>Testcontainers, WireMock, @SpringBootTest, @QuarkusTest, BigQuery emulator</td></tr>
       <tr><td>Contract</td><td>Producer and consumer agree on an API or schema</td><td>seconds</td><td>Pact, Spring Cloud Contract, schema tests, dbt contracts</td></tr>
       <tr><td>End to end</td><td>A user journey through the deployed system</td><td>minutes</td><td>Playwright, Selenium, scripted API checks</td></tr>
@@ -148,7 +148,7 @@
     <p class="note">This is also the best way to brief an AI assistant: give it the failing test as the definition of done.</p>
   </article>
 
-  <article class="card"><h3>Java: JUnit 5 + AssertJ + Mockito</h3>
+  <article class="card"><h3>Java: JUnit + AssertJ + Mockito</h3>
 <div class="snip"><pre><code>class DecisionDateParserTest {
 
   @ParameterizedTest(name = "{0} → {1}")
@@ -181,6 +181,7 @@ class LoaderTest {
     verify(store, never()).copy(any(), any());
   }
 }</code></pre></div>
+    <p class="note">This code runs on JUnit 5 and JUnit 6 alike. JUnit 6 needs Java 17 or newer.</p>
   </article>
 
   <article class="card"><h3>Python: pytest</h3>
@@ -234,8 +235,8 @@ def test_copies_only_new_objects(fake_store):
 @Testcontainers
 @SpringBootTest
 class JudgmentRepositoryIT {
-  @Container @ServiceConnection
-  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");
+  @Container @ServiceConnection   // Testcontainers 2: org.testcontainers.postgresql (1.x: PostgreSQLContainer&lt;?&gt;)
+  static PostgreSQLContainer pg = new PostgreSQLContainer("postgres:16");
 
   @Autowired JudgmentRepository repo;
 
@@ -252,10 +253,10 @@ stubFor(get(urlPathEqualTo("/objects"))
     .willReturn(aResponse().withStatus(200)
         .withBodyFile("mirror/listing-page-2.xml")));</code></pre></div>
 <div class="snip"><pre><code># Python: testcontainers
-from testcontainers.postgres import PostgresContainer
+from testcontainers.community.postgres import PostgresContainer
 def test_load_roundtrip():
     with PostgresContainer("postgres:16") as pg:
-        dsn = pg.get_connection_url()
+        dsn = pg.get_connection_url(driver=None)   # postgresql://… (the default adds +psycopg2 for SQLAlchemy)
         load_rows(dsn, rows); assert count(dsn) == len(rows)</code></pre></div>
   </article>
 
@@ -359,7 +360,7 @@ export default function () {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div></article>
 
   </div>
 </section>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quarkus · Well Rounded Engineer</title>
-<meta name="description" content="Quarkus 3.x: build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.">
+<meta name="description" content="Quarkus 3.x (4.0 is at release candidate): build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -109,7 +109,7 @@
 
 <main id="main" class="container eg">
 <section class="panel" id="quarkus" data-name="Quarkus">
-  <div class="panel-head"><h1>Quarkus</h1><p>Quarkus 3.x: build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.</p></div>
+  <div class="panel-head"><h1>Quarkus</h1><p>Quarkus 3.x (4.0 is at release candidate): build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>Spring Boot → Quarkus</h3>
@@ -312,7 +312,7 @@ void poll() { ... }</code></pre></div>
   <article class="card"><h3>Testing</h3>
 <div class="snip"><pre><code>@QuarkusTest
 class JudgmentResourceTest {
-  @InjectMock JudgmentService svc;        // quarkus-junit5-mockito
+  @InjectMock JudgmentService svc;        // quarkus-junit-mockito (before 3.31: quarkus-junit5-mockito)
 
   @Test void returns404() {
     when(svc.get(any())).thenThrow(new NotFoundException("x"));

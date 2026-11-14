@@ -159,7 +159,8 @@
    https://legal.example.com/callback?code=AUTH_CODE&amp;state=RANDOM
    (client checks state matches)
 
-4. Client exchanges the code (server to server):
+4. Client exchanges the code at the token endpoint
+   (from the server for a web app or BFF; from the device for a mobile or desktop app):
    POST /token
    grant_type=authorization_code&amp;code=AUTH_CODE
    &amp;redirect_uri=…&amp;client_id=legal-web&amp;code_verifier=ORIGINAL

@@ -149,7 +149,7 @@
       <tr><td>Hosted model API</td><td>Provider runs the model (Anthropic API, others)</td><td>Best models, no GPUs to run, pay per token</td></tr>
       <tr><td>Cloud platform</td><td>Models through your cloud account (Vertex AI, Bedrock, Foundry)</td><td>Billing, IAM, region and data controls in your cloud</td></tr>
       <tr><td>Managed open-model endpoints</td><td>Deploy open-weight models to a managed endpoint (Vertex AI Model Garden)</td><td>Open models without running servers yourself</td></tr>
-      <tr><td>Self-hosted server</td><td>vLLM, Hugging Face TGI or llama.cpp server on your GPUs (GKE, Cloud Run with GPUs, VMs)</td><td>Data must stay on your infrastructure; steady high volume; custom models</td></tr>
+      <tr><td>Self-hosted server</td><td>vLLM or llama.cpp server (Hugging Face TGI is now in maintenance mode) on your GPUs (GKE, Cloud Run with GPUs, VMs)</td><td>Data must stay on your infrastructure; steady high volume; custom models</td></tr>
       <tr><td>Local</td><td>Ollama or llama.cpp on a laptop</td><td>Experiments, offline development, small models</td></tr>
       </tbody></table></div>
   </article>

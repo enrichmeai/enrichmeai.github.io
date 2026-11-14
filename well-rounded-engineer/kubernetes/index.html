@@ -243,6 +243,7 @@ kind: Ingress
 metadata: { name: api }
 spec:
   ingressClassName: nginx          # GKE's own controller uses the annotation kubernetes.io/ingress.class: gce instead
+                                   # Ingress NGINX was retired in March 2026: prefer Gateway API or a maintained controller
   rules:
     - host: api.example.com
       http:
@@ -336,8 +337,8 @@ gcloud container clusters get-credentials main --region=asia-south1
 gcloud container clusters list
 
 # Helm: packaged apps with values
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install redis bitnami/redis -n cache --create-namespace -f values.yaml
+helm install redis oci://registry-1.docker.io/bitnamicharts/redis \
+  -n cache --create-namespace -f values.yaml     # check the chart's README for where its images come from
 helm upgrade --install api ./chart --set image.tag=3f2a9c1
 helm template ./chart | kubectl diff -f -
 helm rollback api 1

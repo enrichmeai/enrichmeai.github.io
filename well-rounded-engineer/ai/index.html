@@ -139,13 +139,15 @@
   </article>
 
   <article class="card"><h3>A brief that moves earth</h3>
-<div class="snip"><pre><code>Goal:     Reject Supreme Court dates that do not parse, instead of storing NULL.
-Why:      12% of SC rows lost their decision_date silently (issue #123).
-Where:    dbt/fdp/models/int_judgment_normalised.sql and its unit tests.
-Rules:    Follow CLAUDE.md. Do not change the HC path. No new dependencies.
+<div class="snip"><pre><code>(An illustrative brief: the problem and the paths are examples.)
+Goal:     Reject dates that do not parse, instead of storing NULL.
+Why:      One source sends dd-mm-yyyy; the parser turns those into NULL
+          without saying so, and the rows look like "no date".
+Where:    models/intermediate/int_cases_normalised.sql and its unit tests.
+Rules:    Follow CLAUDE.md. Do not change the other sources. No new dependencies.
 Done when:
   - a unit test with "05-05-1959" and "bad" fails before the fix, passes after
-  - dbt build -s int_judgment_normalised+ is green
+  - dbt build -s int_cases_normalised+ is green
   - the reject table counts unparseable rows
 Out of scope: backfilling old rows (separate issue).
 Report:   what changed, the test output, anything you could not verify.</code></pre></div>

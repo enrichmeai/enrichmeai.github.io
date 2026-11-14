@@ -184,7 +184,7 @@ RUN ./gradlew dependencies --no-daemon          # cache dependencies
 COPY src/ src/
 RUN ./gradlew bootJar --no-daemon -x test
 
-FROM gcr.io/distroless/java21-debian12          # no shell, no package manager
+FROM gcr.io/distroless/java21-debian13          # no shell, no package manager
 COPY --from=build /src/build/libs/app.jar /app.jar
 USER nonroot
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "/app.jar"]

@@ -173,8 +173,11 @@ spring:
     consumer:
       group-id: indexer
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer   # the default is String
       properties:
-        spring.json.trusted.packages: "com.example.events"</code></pre></div>
+        spring.json.trusted.packages: "com.example.events"
+# Spring Kafka 4 (Boot 4) deprecates JsonSerializer/JsonDeserializer for JacksonJsonSerializer/JacksonJsonDeserializer</code></pre></div>
 <div class="snip"><pre><code>@Service
 class Publisher {
   private final KafkaTemplate&lt;String, JudgmentLanded&gt; kafka;
@@ -204,7 +207,10 @@ mp.messaging.incoming.landed.connector=smallrye-kafka
 mp.messaging.incoming.landed.topic=judgment.landed
 mp.messaging.incoming.landed.group.id=indexer
 mp.messaging.outgoing.indexed.connector=smallrye-kafka
-mp.messaging.outgoing.indexed.topic=judgment.indexed</code></pre></div>
+mp.messaging.outgoing.indexed.topic=judgment.indexed
+# the Emitter below needs its own channel: a channel has one producer unless you merge
+mp.messaging.outgoing.reindexed.connector=smallrye-kafka
+mp.messaging.outgoing.reindexed.topic=judgment.indexed</code></pre></div>
 <div class="snip"><pre><code>@ApplicationScoped
 public class Indexer {
   @Incoming("landed")
@@ -216,7 +222,7 @@ public class Indexer {
 
 @ApplicationScoped
 public class Publisher {
-  @Inject @Channel("indexed") Emitter&lt;JudgmentIndexed&gt; out;
+  @Inject @Channel("reindexed") Emitter&lt;JudgmentIndexed&gt; out;   // not "indexed": the method above feeds that
   void send(JudgmentIndexed e) { out.send(e); }
 }</code></pre></div>
     <p class="note">In dev and test, Dev Services starts a Kafka-compatible broker for you.</p>

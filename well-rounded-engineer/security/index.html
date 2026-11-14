@@ -124,23 +124,22 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>OWASP Top 10 (2021 edition)</h3>
-    <p class="note">A 2025 edition of the list has been published; compare it at owasp.org. The categories below remain a sound checklist.</p>
+  <article class="card wide"><h3>OWASP Top 10 (2025 edition)</h3>
     <div class="tbl"><table>
       <thead><tr><th>Risk</th><th>Looks like</th><th>Prevent with</th></tr></thead>
       <tbody>
-      <tr><td>A01 Broken access control</td><td><code>GET /api/cases/123</code> returns another user's case</td><td>Check ownership on every request, server side; deny by default; test it</td></tr>
-      <tr><td>A02 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
-      <tr><td>A03 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
-      <tr><td>A04 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
-      <tr><td>A05 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
-      <tr><td>A06 Vulnerable components</td><td>An old library with a known CVE</td><td>Dependency updates, SCA scanning, SBOMs</td></tr>
+      <tr><td>A01 Broken access control</td><td><code>GET /api/cases/123</code> returns another user's case; the server fetches a user-supplied URL that points to an internal service or metadata endpoint (SSRF, now part of this category)</td><td>Check ownership on every request, server side; deny by default; test it. For URLs: allow-list destinations, block internal ranges, separate egress</td></tr>
+      <tr><td>A02 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
+      <tr><td>A03 Software supply chain failures</td><td>An old library with a known CVE; a compromised dependency or build tool</td><td>An SBOM, dependency updates, SCA scanning, components from trusted sources only, protected CI</td></tr>
+      <tr><td>A04 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
+      <tr><td>A05 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
+      <tr><td>A06 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
       <tr><td>A07 Authentication failures</td><td>Weak passwords allowed, no MFA, session never expires</td><td>Use a proven identity provider; MFA; short-lived tokens</td></tr>
-      <tr><td>A08 Integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, protected CI</td></tr>
-      <tr><td>A09 Logging &amp; monitoring failures</td><td>A breach discovered months later</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
-      <tr><td>A10 Server-side request forgery</td><td>Server fetches a user-supplied URL that points to an internal service or metadata endpoint</td><td>Allow-list destinations; block internal ranges; separate egress</td></tr>
+      <tr><td>A08 Software or data integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, verified artefacts</td></tr>
+      <tr><td>A09 Security logging &amp; alerting failures</td><td>A breach discovered months later; logs nobody is alerted on</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
+      <tr><td>A10 Mishandling of exceptional conditions</td><td>An error path that fails open, leaks a stack trace, or leaves a transaction half done</td><td>Handle errors where they happen and in one global handler; fail closed and roll back; rate limits and quotas</td></tr>
       </tbody></table></div>
-    <p class="note">OWASP revises this list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
+    <p class="note">The 2021 edition numbered these differently and had SSRF as its own A10. OWASP revises the list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
   </article>
 
   <article class="card"><h3>Injection: always parameterise</h3>

@@ -178,7 +178,7 @@ wait &gt;&gt; load &gt;&gt; build &gt;&gt; check</code></pre></div>
 <div class="snip"><pre><code>{{ ds }}                     2025-01-31     (logical date, YYYY-MM-DD)
 {{ ds_nodash }}              20250131
 {{ logical_date }}           pendulum DateTime
-{{ data_interval_start }}    start of the period this run covers
+{{ data_interval_start }}    start of the period this run covers (see below)
 {{ data_interval_end }}      end (exclusive)
 {{ macros.ds_add(ds, -1) }}  2025-01-30
 {{ params.window }}          from dag(params={...})
@@ -191,7 +191,7 @@ wait &gt;&gt; load &gt;&gt; build &gt;&gt; check</code></pre></div>
 def t(data_interval_start=None, ti=None):
     ti.xcom_push(key="n", value=1)
 # or: from airflow.sdk import get_current_context</code></pre></div>
-    <p class="note">A daily run for 2025-01-31 starts after that interval ends. Use <code>data_interval_*</code> for "which data", never <code>now()</code>. <code>execution_date</code> is removed in Airflow 3: use <code>logical_date</code>.</p>
+    <p class="note">In Airflow 3 a cron string such as <code>"15 6 * * *"</code> or <code>"@daily"</code> uses <code>CronTriggerTimetable</code>: the run for 2025-01-31 starts at 06:15 that day, its logical date is that time, and <code>data_interval_start</code> equals <code>data_interval_end</code>. For a real window, schedule with <code>CronDataIntervalTimetable</code> (each run starts after its interval ends, as cron schedules did in 2.x) or pass <code>interval=</code> to <code>CronTriggerTimetable</code>. Decide which you use before writing "which data" logic, and never use <code>now()</code>. <code>execution_date</code> is removed in Airflow 3: use <code>logical_date</code>.</p>
   </article>
 
   <article class="card"><h3>Running dbt from a DAG</h3>
@@ -270,14 +270,15 @@ producer(); consumer()</code></pre></div>
 <div class="snip"><pre><code>airflow dags list
 airflow dags list-import-errors
 airflow dags test corpus_daily 2025-01-31          # full run, no scheduler
-airflow tasks test corpus_daily load 2025-01-31    # one task, no state saved
+airflow tasks test corpus_daily list_new 2025-01-31   # one task, no state saved
+                                                      # (a mapped task also needs --map-index N)
 airflow dags backfill corpus_daily -s 2025-01-01 -e 2025-01-07   # 2.x
 airflow backfill create --dag-id corpus_daily \
   --from-date 2025-01-01 --to-date 2025-01-07                    # 3.x
 airflow dags trigger corpus_daily -c '{"window": 3}'
 
 # pytest: every DAG imports cleanly
-from airflow.models import DagBag
+from airflow.dag_processing.dagbag import DagBag   # 3.2+; before: airflow.models
 def test_dags_load():
     bag = DagBag(dag_folder="dags", include_examples=False)
     assert not bag.import_errors</code></pre></div>

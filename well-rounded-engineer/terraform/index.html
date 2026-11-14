@@ -134,7 +134,7 @@ terraform providers lock -platform=linux_amd64 -platform=darwin_arm64</code></pr
 <div class="snip"><pre><code>terraform {
   required_version = "&gt;= 1.7"
   required_providers {
-    google = { source = "hashicorp/google", version = "~&gt; 7.0" }   # pin the major version you have tested
+    google = { source = "hashicorp/google", version = "~&gt; 8.0" }   # pin the major version you have tested
   }
   backend "gcs" {
     bucket = "my-proj-tfstate"      # versioning on!
@@ -373,7 +373,7 @@ output "job_names" { value = { for k, m in module.jobs : k =&gt; m.name } }
 
 # Registry / git sources: pin a version
 source  = "terraform-google-modules/cloud-storage/google"
-version = "~&gt; 9.0"
+version = "~&gt; 12.0"
 source  = "git::https://github.com/org/tf-modules.git//bq?ref=<span data-other-version>v1.4.0</span>"</code></pre></div>
   </article>
 

@@ -147,7 +147,7 @@
   1. Billing:  create pending invoice        ↺ compensate: void invoice
   2. Payments: charge card                   ↺ compensate: refund charge
   3. Accounts: activate plan                 ↺ compensate: deactivate plan
-  4. Email:    send welcome                  (no compensation needed; last, pivot-free)
+  4. Email:    send welcome                  (no compensation: an email cannot be undone, so it runs last)
 
 Step 3 fails → run compensations in reverse: refund (2), void invoice (1).</code></pre></div>
     <ul>

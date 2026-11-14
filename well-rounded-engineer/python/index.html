@@ -123,6 +123,7 @@
       <tr><td>3.12</td><td>2023</td><td>Generic syntax <code>def f[T](x: T)</code>, <code>type</code> aliases, freer f-strings, <code>itertools.batched</code></td></tr>
       <tr><td>3.13</td><td>2024</td><td>New REPL, experimental free-threaded build (no GIL), experimental JIT</td></tr>
       <tr><td>3.14</td><td>2025</td><td>Template strings <code>t"…"</code>, deferred annotations, free-threaded build officially supported, <code>compression.zstd</code>, <code>concurrent.interpreters</code></td></tr>
+      <tr><td>3.15</td><td>2026</td><td>Explicit <code>lazy</code> imports, <code>frozendict</code> and <code>sentinel</code> builtins, UTF-8 as the default encoding, unpacking in comprehensions, the <code>profiling</code> package with the Tachyon sampling profiler</td></tr>
       </tbody></table></div>
   </article>
 
@@ -266,7 +267,8 @@ load = client.load_table_from_uri(
 load.result()                     # raises on failure
 print(load.output_rows)
 
-client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list</code></pre></div>
+client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list
+# insert_rows_json is the legacy streaming API (insertAll): for volume, use a load job or the Storage Write API</code></pre></div>
   </article>
 
   <article class="card"><h3>GCS Python client</h3>

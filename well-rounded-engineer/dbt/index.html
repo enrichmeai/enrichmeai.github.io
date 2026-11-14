@@ -306,7 +306,7 @@ select * from {{ source('odp', 'hc_judgment') }}</code></pre></div>
         data_tests:
           - not_null:
               config:
-                severity: warn
+                severity: error          # the default; with warn, dbt skips error_if
                 where: "data_year &gt;= 2000"
                 error_if: "&gt;100"
                 warn_if: "&gt;0"</code></pre></div>
@@ -388,6 +388,7 @@ models:
         constraints: [{type: not_null}]
       - name: decision_date
         data_type: date
+      # … list every column the model returns, each with its data_type
 
 # Snapshot, YAML form (1.9): SCD type 2
 snapshots:

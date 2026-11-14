@@ -115,7 +115,7 @@
   <article class="card wide"><h3>Set up once</h3>
     <ul>
       <li><b>Machine:</b> a laptop with 16 GB RAM is enough for most labs; an old PC or mini PC running Linux makes a good always-on lab server.</li>
-      <li><b>Tools:</b> Git, Docker (or Podman), <code>kubectl</code>, <code>kind</code> or <code>k3d</code>, Helm, Python 3.12+, a JDK 21, and the <code>gcloud</code> CLI.</li>
+      <li><b>Tools:</b> Git, Docker (or Podman), <code>kubectl</code>, <code>kind</code> or <code>k3d</code>, Helm, Python 3.12+ (3.13+ for Lab 5), a JDK 21 or newer, and the <code>gcloud</code> CLI.</li>
       <li><b>Cloud, carefully:</b> new Google Cloud accounts get free-trial credit, and BigQuery has a free sandbox. Set a <b>budget alert</b> on day one and delete what you are not using.</li>
       <li><b>Your lab journal:</b> one Git repository with a folder per lab and a README in each: goal, steps, numbers you measured, what broke and why. This becomes your portfolio.</li>
     </ul>
@@ -170,8 +170,8 @@ kubectl port-forward -n argocd svc/argocd-server 8443:443</code></pre></div>
     <p><b>Repo:</b> <code>dbt-labs/jaffle_shop_duckdb</code> (dbt's demo project, running on DuckDB, no cloud account).</p>
 <div class="snip"><pre><code>git clone https://github.com/dbt-labs/jaffle_shop_duckdb
 cd jaffle_shop_duckdb
-python3 -m venv .venv &amp;&amp; . .venv/bin/activate
-pip install -r requirements.txt
+python3 -m venv .venv &amp;&amp; . .venv/bin/activate   # this repo asks for Python 3.13+
+pip install -r requirements.txt  # or: uv sync
 dbt build                       # seeds, models and tests
 dbt docs generate &amp;&amp; dbt docs serve</code></pre></div>
     <p><b>Then:</b> add an incremental model, a unit test and a test that fails on purpose; load a public dataset of your own (BigQuery public datasets or the Registry of Open Data on AWS) into DuckDB and model it in layers.</p>

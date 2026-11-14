@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Spring Boot · Well Rounded Engineer</title>
-<meta name="description" content="Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changes in 4.0. Servlet (MVC) and reactive (WebFlux) shown side by side.">
+<meta name="description" content="Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changed in 4.0 and 4.1. The examples are 3.x; 4.0 renamed or removed some properties, so…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -109,7 +109,7 @@
 
 <main id="main" class="container eg">
 <section class="panel" id="spring" data-name="Spring Boot">
-  <div class="panel-head"><h1>Spring Boot</h1><p>Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changes in 4.0. Servlet (MVC) and reactive (WebFlux) shown side by side.</p></div>
+  <div class="panel-head"><h1>Spring Boot</h1><p>Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changed in 4.0 and 4.1. The examples are 3.x; 4.0 renamed or removed some properties, so check its migration guide. Servlet (MVC) and reactive (WebFlux) shown side by side.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>Version map</h3>
@@ -122,8 +122,9 @@
       <tr><td>3.2</td><td>2023</td><td>Virtual threads (<code>spring.threads.virtual.enabled</code>), <code>RestClient</code>, <code>JdbcClient</code></td></tr>
       <tr><td>3.3</td><td>2024</td><td>Class Data Sharing support, SBOM actuator endpoint</td></tr>
       <tr><td>3.4</td><td>2024</td><td>Structured logging (ECS, Logstash, GELF), <code>@MockitoBean</code> replaces <code>@MockBean</code>, graceful shutdown by default</td></tr>
-      <tr><td>3.5</td><td>2025</td><td>The last 3.x feature release; upgrade here before moving to 4.0</td></tr>
+      <tr><td>3.5</td><td>2025</td><td>The last 3.x feature release; upgrade here before moving to 4.x</td></tr>
       <tr><td>4.0</td><td>2025</td><td>Spring Framework 7, Jakarta EE 11, Jackson 3, smaller modular starters, API versioning, JSpecify null-safety; deprecated 3.x APIs removed</td></tr>
+      <tr><td>4.1</td><td>2026</td><td>Spring gRPC support, SSRF protection for HTTP clients (<code>InetAddressFilter</code>), OpenTelemetry improvements, Gradle 9 supported</td></tr>
       </tbody></table></div>
     <p class="note">Moving to 4.0: upgrade to the latest 3.5 first, clear every deprecation warning, then follow the official migration guide.</p>
   </article>
@@ -167,7 +168,7 @@ spring:
 corpus:
   dataset: fdp
   max-results: 50
-  courts: [2_5, 14_25]
+  courts: ["2_5", "14_25"]   # quote them: unquoted, YAML reads 2_5 as the number 25
 ---
 spring.config.activate.on-profile: prod
 logging.structured.format.console: ecs  # 3.4+</code></pre></div>
@@ -213,7 +214,8 @@ interface JudgmentRepo extends JpaRepository&lt;Judgment, Long&gt; {
 
 @Transactional            // on a public method of a Spring bean, called from outside it
 public void reload() { ... }
-@Transactional(readOnly = true)</code></pre></div>
+@Transactional(readOnly = true)
+public List&lt;JudgmentDto&gt; list() { ... }</code></pre></div>
     <p class="note"><code>@Transactional</code> works through a proxy: a call from another method in the same class skips it.</p>
   </article>
 
@@ -346,7 +348,8 @@ class JudgmentControllerTest {
 @Testcontainers
 class DaoIT {
   @Container @ServiceConnection               // 3.1+: wires the datasource
-  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");
+  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");  // Boot 3.x (Testcontainers 1.x)
+  // Boot 4 uses Testcontainers 2: org.testcontainers.postgresql.PostgreSQLContainer, no &lt;?&gt;
   @Autowired JudgmentDao dao;
   @Test void upserts() { assertThat(dao.upsert(sample())).isEqualTo(1); }
 }
@@ -391,7 +394,7 @@ java -Djarmode=tools -jar app.jar extract --layers --launcher
 
 # Gradle plugins
 plugins {
-  id("org.springframework.boot") version "3.5.x"
+  id("org.springframework.boot") version "3.5.x"   // matches the 3.x examples; a new project starts on 4.1.x
   id("io.spring.dependency-management") version "1.1.x"
   java
 }</code></pre></div>

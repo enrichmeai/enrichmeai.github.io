@@ -723,7 +723,7 @@ details>.inner{padding:4px 10px 8px}
   <article class="card wide"><h3>Set up once</h3>
     <ul>
       <li><b>Machine:</b> a laptop with 16 GB RAM is enough for most labs; an old PC or mini PC running Linux makes a good always-on lab server.</li>
-      <li><b>Tools:</b> Git, Docker (or Podman), <code>kubectl</code>, <code>kind</code> or <code>k3d</code>, Helm, Python 3.12+, a JDK 21, and the <code>gcloud</code> CLI.</li>
+      <li><b>Tools:</b> Git, Docker (or Podman), <code>kubectl</code>, <code>kind</code> or <code>k3d</code>, Helm, Python 3.12+ (3.13+ for Lab 5), a JDK 21 or newer, and the <code>gcloud</code> CLI.</li>
       <li><b>Cloud, carefully:</b> new Google Cloud accounts get free-trial credit, and BigQuery has a free sandbox. Set a <b>budget alert</b> on day one and delete what you are not using.</li>
       <li><b>Your lab journal:</b> one Git repository with a folder per lab and a README in each: goal, steps, numbers you measured, what broke and why. This becomes your portfolio.</li>
     </ul>
@@ -778,8 +778,8 @@ kubectl port-forward -n argocd svc/argocd-server 8443:443</code></pre></div>
     <p><b>Repo:</b> <code>dbt-labs/jaffle_shop_duckdb</code> (dbt's demo project, running on DuckDB, no cloud account).</p>
 <div class="snip"><pre><code>git clone https://github.com/dbt-labs/jaffle_shop_duckdb
 cd jaffle_shop_duckdb
-python3 -m venv .venv &amp;&amp; . .venv/bin/activate
-pip install -r requirements.txt
+python3 -m venv .venv &amp;&amp; . .venv/bin/activate   # this repo asks for Python 3.13+
+pip install -r requirements.txt  # or: uv sync
 dbt build                       # seeds, models and tests
 dbt docs generate &amp;&amp; dbt docs serve</code></pre></div>
     <p><b>Then:</b> add an incremental model, a unit test and a test that fails on purpose; load a public dataset of your own (BigQuery public datasets or the Registry of Open Data on AWS) into DuckDB and model it in layers.</p>
@@ -933,7 +933,7 @@ stripe trigger payment_intent.succeeded</code></pre></div>
       <tr><td>O(n²)</td><td>Nested loops, a self-join without an index</td><td>1 trillion steps</td></tr>
       <tr><td>O(2ⁿ)</td><td>Trying every subset</td><td>never finishes</td></tr>
       </tbody></table></div>
-    <p class="note">The jump from O(n log n) to O(n²) is the difference between a second and days. An N+1 query pattern and a nested loop over two big lists are the usual ways it sneaks in.</p>
+    <p class="note">At a million items, the jump from O(n log n) to O(n²) is a factor of about 50,000: a fraction of a second becomes many minutes, and at larger sizes, days. An N+1 query pattern and a nested loop over two big lists are the usual ways it sneaks in.</p>
   </article>
 
   <article class="card"><h3>Numbers computers get "wrong"</h3>
@@ -1600,6 +1600,7 @@ journalctl --disk-usage
 # /etc/systemd/system/myapp.service
 [Unit]
 Description=Corpus API
+Wants=network-online.target
 After=network-online.target
 [Service]
 User=app
@@ -1855,8 +1856,8 @@ gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></
 
   <article class="card"><h3>Anatomy of a URL</h3>
 <div class="snip"><pre><code>https://legal.example.com:443/v1/judgments/123?court=2_5&amp;page=2#para-14
-└─┬─┘   └──────┬────────┘└┬┘└──────┬───────┘└───────┬───────┘└──┬──┘
-scheme        host      port     path            query       fragment</code></pre></div>
+└─┬─┘   └───────┬───────┘└┬─┘└───────┬───────┘└───────┬───────┘└──┬───┘
+scheme        host      port       path             query     fragment</code></pre></div>
     <ul>
       <li><b>Origin</b> = scheme + host + port. It is the browser's security boundary.</li>
       <li><b>Path</b> names the resource; <b>query</b> parameters filter or modify it.</li>
@@ -2112,7 +2113,7 @@ RUN ./gradlew dependencies --no-daemon          # cache dependencies
 COPY src/ src/
 RUN ./gradlew bootJar --no-daemon -x test
 
-FROM gcr.io/distroless/java21-debian12          # no shell, no package manager
+FROM gcr.io/distroless/java21-debian13          # no shell, no package manager
 COPY --from=build /src/build/libs/app.jar /app.jar
 USER nonroot
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "/app.jar"]
@@ -2825,7 +2826,7 @@ ORDER BY total_exec_time DESC LIMIT 10;</code></pre></div>
 
   <article class="card"><h3>Partitioning (one database)</h3>
 <div class="snip"><pre><code>CREATE TABLE event (
-  id         bigserial,                -- identity columns on partitioned tables need PostgreSQL 17+
+  id         bigserial,                -- fine here; GENERATED … AS IDENTITY on a partitioned table needs PostgreSQL 17+
   event_date date NOT NULL,
   payload    jsonb,
   PRIMARY KEY (id, event_date)          -- must include the partition key
@@ -2857,7 +2858,7 @@ DROP TABLE event_2025;
       <li><b>Directory / lookup</b> sharding maps keys to shards in a table: flexible, but the directory becomes critical.</li>
       <li><b>Costs:</b> cross-shard joins and transactions become application problems; resharding is a migration project; operations multiply.</li>
       <li><b>Try first:</b> better indexes, read replicas, caching, partitioning, a bigger instance, archiving cold data. Shard when one primary truly cannot take the writes.</li>
-      <li><b>Managed options</b> do it for you: Spanner, AlloyDB with read pools, Citus, Vitess, CockroachDB.</li>
+      <li><b>Managed or distributed options</b> do it for you: Spanner, CockroachDB, Citus (Postgres), Vitess (MySQL). AlloyDB read pools scale reads only; they do not shard.</li>
     </ul>
   </article>
 
@@ -2876,7 +2877,7 @@ DROP TABLE event_2025;
       <thead><tr><th>Isolation</th><th>Prevents</th></tr></thead>
       <tbody>
       <tr><td>Read committed (Postgres default)</td><td>Dirty reads. Each statement sees data committed before it began.</td></tr>
-      <tr><td>Repeatable read</td><td>Non-repeatable reads: the transaction sees one snapshot throughout.</td></tr>
+      <tr><td>Repeatable read</td><td>Non-repeatable reads (and, in PostgreSQL, phantom reads): the transaction sees one snapshot throughout.</td></tr>
       <tr><td>Serializable</td><td>All anomalies; transactions behave as if run one by one. Retry on serialization failure.</td></tr>
       </tbody></table></div>
 <div class="snip"><pre><code>-- pessimistic: lock the row you will change
@@ -2949,7 +2950,7 @@ WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</co
       <tr><td>10</td><td>2018</td><td><code>var</code> for locals, <code>List.copyOf</code>, <code>Collectors.toUnmodifiableList</code></td></tr>
       <tr><td>11 <span class="tag lts">LTS</span></td><td>2018</td><td><code>String.isBlank/strip/lines/repeat</code>, <code>java.net.http.HttpClient</code>, <code>Files.readString/writeString</code>, run <code>java App.java</code> directly</td></tr>
       <tr><td>12–13</td><td>2019</td><td><code>Collectors.teeing</code>, <code>String.indent/transform</code>; switch expressions &amp; text blocks in preview</td></tr>
-      <tr><td>14</td><td>2020</td><td>Switch expressions (<code>-&gt;</code>, <code>yield</code>), helpful NullPointerException messages</td></tr>
+      <tr><td>14</td><td>2020</td><td>Switch expressions (<code>-&gt;</code>, <code>yield</code>), helpful NullPointerException messages (on by default from 15)</td></tr>
       <tr><td>15</td><td>2020</td><td>Text blocks <code>"""</code></td></tr>
       <tr><td>16</td><td>2021</td><td>Records, pattern matching for <code>instanceof</code>, <code>Stream.toList()</code></td></tr>
       <tr><td>17 <span class="tag lts">LTS</span></td><td>2021</td><td>Sealed classes/interfaces, new <code>RandomGenerator</code> API, strong JDK encapsulation</td></tr>
@@ -2960,7 +2961,7 @@ WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</co
       <tr><td>24</td><td>2025</td><td>Stream Gatherers, Class-File API, AOT class loading cache, virtual threads no longer pin on <code>synchronized</code>, ML-KEM / ML-DSA</td></tr>
       <tr><td>25 <span class="tag lts">LTS</span></td><td>2025</td><td>Compact source files &amp; instance <code>main</code>, <code>import module</code>, flexible constructor bodies, scoped values, compact object headers, KDF API, AOT ergonomics</td></tr>
       </tbody></table></div>
-    <p class="note">Still preview in 25: structured concurrency, primitive types in patterns, stable values, PEM encodings, Vector API (incubator). String templates were withdrawn after 22.</p>
+    <p class="note">Still preview in 25: structured concurrency, primitive types in patterns, stable values, PEM encodings, Vector API (incubator). String templates were withdrawn after 22. Since then, 26 (March 2026) and 27 (September 2026) are non-LTS feature releases; 25 remains the latest LTS. 27 makes G1 the default collector everywhere and compact object headers the default; structured concurrency, primitive types in patterns, lazy constants (formerly stable values), PEM encodings and the Vector API are still preview or incubator there.</p>
   </article>
 
   <article class="card"><h3>Java 8 essentials <span class="tag lts">8</span></h3>
@@ -3057,7 +3058,7 @@ linkedHashMap.firstEntry(); linkedHashMap.pollLastEntry();</code></pre></div>
   <article class="card"><h3>Java 22–25 <span class="tag">22</span><span class="tag">24</span><span class="tag lts">25</span></h3>
 <div class="snip"><pre><code>// Unnamed variables (22)
 try { parse(x); } catch (NumberFormatException _) { bad++; }
-map.forEach((_, v) -&gt; total += v);
+map.forEach((_, v) -&gt; total.add(v));   // total is a LongAdder: a lambda cannot change a local
 case Failed(_) -&gt; "failed";
 
 // Stream Gatherers (24)
@@ -3203,7 +3204,7 @@ java -XX:AOTCache=app.aot -jar app.jar</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write classes, records, collections and streams</li><li>Use Optional and java.time correctly</li><li>Run and write JUnit tests</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use modern features (records, sealed types, pattern switch, virtual threads)</li><li>Handle concurrency safely with executors and CompletableFuture</li><li>Build with Gradle or Maven and manage dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Tune the JVM for containers (memory, GC, startup)</li><li>Design APIs and module boundaries</li><li>Profile and fix performance problems</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead platform upgrades across LTS releases</li><li>Understand JVM internals (JIT, GC, class loading)</li><li>Set the organisation's Java standards and libraries</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>JEPs for each release since 17</li><li>Garbage collectors: G1, ZGC, Shenandoah</li><li>Java Flight Recorder and JDK Mission Control</li><li>Structured concurrency and scoped values</li><li>GraalVM native image and AOT caches</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://dev.java/learn/" target="_blank" rel="noopener">dev.java: Learn</a><span class="lnote"> Oracle's official tutorials for modern Java</span></li><li><a href="https://openjdk.org/jeps/0" target="_blank" rel="noopener">OpenJDK JEP index</a><span class="lnote"> Every enhancement proposal, with status and release</span></li><li><a href="https://openjdk.org/projects/jdk/" target="_blank" rel="noopener">JDK project releases</a><span class="lnote"> What shipped in each JDK version</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Tests, parameterised tests, extensions</span></li><li><a href="https://cloud.google.com/java/docs/reference/google-cloud-bigquery/latest/overview" target="_blank" rel="noopener">BigQuery Java client</a><span class="lnote"> API reference</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam documentation</a><span class="lnote"> Programming guide for Dataflow pipelines</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>JEPs for each release since 17</li><li>Garbage collectors: G1, ZGC, Shenandoah</li><li>Java Flight Recorder and JDK Mission Control</li><li>Structured concurrency and scoped values</li><li>GraalVM native image and AOT caches</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://dev.java/learn/" target="_blank" rel="noopener">dev.java: Learn</a><span class="lnote"> Oracle's official tutorials for modern Java</span></li><li><a href="https://openjdk.org/jeps/0" target="_blank" rel="noopener">OpenJDK JEP index</a><span class="lnote"> Every enhancement proposal, with status and release</span></li><li><a href="https://openjdk.org/projects/jdk/" target="_blank" rel="noopener">JDK project releases</a><span class="lnote"> What shipped in each JDK version</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Tests, parameterised tests, extensions</span></li><li><a href="https://cloud.google.com/java/docs/reference/google-cloud-bigquery/latest/overview" target="_blank" rel="noopener">BigQuery Java client</a><span class="lnote"> API reference</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam documentation</a><span class="lnote"> Programming guide for Dataflow pipelines</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -3224,6 +3225,7 @@ java -XX:AOTCache=app.aot -jar app.jar</code></pre></div>
       <tr><td>3.12</td><td>2023</td><td>Generic syntax <code>def f[T](x: T)</code>, <code>type</code> aliases, freer f-strings, <code>itertools.batched</code></td></tr>
       <tr><td>3.13</td><td>2024</td><td>New REPL, experimental free-threaded build (no GIL), experimental JIT</td></tr>
       <tr><td>3.14</td><td>2025</td><td>Template strings <code>t"…"</code>, deferred annotations, free-threaded build officially supported, <code>compression.zstd</code>, <code>concurrent.interpreters</code></td></tr>
+      <tr><td>3.15</td><td>2026</td><td>Explicit <code>lazy</code> imports, <code>frozendict</code> and <code>sentinel</code> builtins, UTF-8 as the default encoding, unpacking in comprehensions, the <code>profiling</code> package with the Tachyon sampling profiler</td></tr>
       </tbody></table></div>
   </article>
 
@@ -3367,7 +3369,8 @@ load = client.load_table_from_uri(
 load.result()                     # raises on failure
 print(load.output_rows)
 
-client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list</code></pre></div>
+client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list
+# insert_rows_json is the legacy streaming API (insertAll): for volume, use a load job or the Storage Write API</code></pre></div>
   </article>
 
   <article class="card"><h3>GCS Python client</h3>
@@ -3471,7 +3474,7 @@ with beam.Pipeline(options=PipelineOptions()) as p:
     <div class="tbl"><table>
       <thead><tr><th>Level</th><th>Checks</th><th>Speed</th><th>Tools</th></tr></thead>
       <tbody>
-      <tr><td>Unit</td><td>One function or class in isolation; logic, edge cases, errors</td><td>ms</td><td>JUnit 5 + AssertJ, pytest, dbt unit tests</td></tr>
+      <tr><td>Unit</td><td>One function or class in isolation; logic, edge cases, errors</td><td>ms</td><td>JUnit + AssertJ, pytest, dbt unit tests</td></tr>
       <tr><td>Integration</td><td>Your code with a real database, queue or HTTP layer</td><td>seconds</td><td>Testcontainers, WireMock, @SpringBootTest, @QuarkusTest, BigQuery emulator</td></tr>
       <tr><td>Contract</td><td>Producer and consumer agree on an API or schema</td><td>seconds</td><td>Pact, Spring Cloud Contract, schema tests, dbt contracts</td></tr>
       <tr><td>End to end</td><td>A user journey through the deployed system</td><td>minutes</td><td>Playwright, Selenium, scripted API checks</td></tr>
@@ -3503,7 +3506,7 @@ with beam.Pipeline(options=PipelineOptions()) as p:
     <p class="note">This is also the best way to brief an AI assistant: give it the failing test as the definition of done.</p>
   </article>
 
-  <article class="card"><h3>Java: JUnit 5 + AssertJ + Mockito</h3>
+  <article class="card"><h3>Java: JUnit + AssertJ + Mockito</h3>
 <div class="snip"><pre><code>class DecisionDateParserTest {
 
   @ParameterizedTest(name = "{0} → {1}")
@@ -3536,6 +3539,7 @@ class LoaderTest {
     verify(store, never()).copy(any(), any());
   }
 }</code></pre></div>
+    <p class="note">This code runs on JUnit 5 and JUnit 6 alike. JUnit 6 needs Java 17 or newer.</p>
   </article>
 
   <article class="card"><h3>Python: pytest</h3>
@@ -3589,8 +3593,8 @@ def test_copies_only_new_objects(fake_store):
 @Testcontainers
 @SpringBootTest
 class JudgmentRepositoryIT {
-  @Container @ServiceConnection
-  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");
+  @Container @ServiceConnection   // Testcontainers 2: org.testcontainers.postgresql (1.x: PostgreSQLContainer&lt;?&gt;)
+  static PostgreSQLContainer pg = new PostgreSQLContainer("postgres:16");
 
   @Autowired JudgmentRepository repo;
 
@@ -3607,10 +3611,10 @@ stubFor(get(urlPathEqualTo("/objects"))
     .willReturn(aResponse().withStatus(200)
         .withBodyFile("mirror/listing-page-2.xml")));</code></pre></div>
 <div class="snip"><pre><code># Python: testcontainers
-from testcontainers.postgres import PostgresContainer
+from testcontainers.community.postgres import PostgresContainer
 def test_load_roundtrip():
     with PostgresContainer("postgres:16") as pg:
-        dsn = pg.get_connection_url()
+        dsn = pg.get_connection_url(driver=None)   # postgresql://… (the default adds +psycopg2 for SQLAlchemy)
         load_rows(dsn, rows); assert count(dsn) == len(rows)</code></pre></div>
   </article>
 
@@ -3714,7 +3718,7 @@ export default function () {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit 5 user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -3736,23 +3740,22 @@ export default function () {
     </ul>
   </article>
 
-  <article class="card wide"><h3>OWASP Top 10 (2021 edition)</h3>
-    <p class="note">A 2025 edition of the list has been published; compare it at owasp.org. The categories below remain a sound checklist.</p>
+  <article class="card wide"><h3>OWASP Top 10 (2025 edition)</h3>
     <div class="tbl"><table>
       <thead><tr><th>Risk</th><th>Looks like</th><th>Prevent with</th></tr></thead>
       <tbody>
-      <tr><td>A01 Broken access control</td><td><code>GET /api/cases/123</code> returns another user's case</td><td>Check ownership on every request, server side; deny by default; test it</td></tr>
-      <tr><td>A02 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
-      <tr><td>A03 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
-      <tr><td>A04 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
-      <tr><td>A05 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
-      <tr><td>A06 Vulnerable components</td><td>An old library with a known CVE</td><td>Dependency updates, SCA scanning, SBOMs</td></tr>
+      <tr><td>A01 Broken access control</td><td><code>GET /api/cases/123</code> returns another user's case; the server fetches a user-supplied URL that points to an internal service or metadata endpoint (SSRF, now part of this category)</td><td>Check ownership on every request, server side; deny by default; test it. For URLs: allow-list destinations, block internal ranges, separate egress</td></tr>
+      <tr><td>A02 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
+      <tr><td>A03 Software supply chain failures</td><td>An old library with a known CVE; a compromised dependency or build tool</td><td>An SBOM, dependency updates, SCA scanning, components from trusted sources only, protected CI</td></tr>
+      <tr><td>A04 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
+      <tr><td>A05 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
+      <tr><td>A06 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
       <tr><td>A07 Authentication failures</td><td>Weak passwords allowed, no MFA, session never expires</td><td>Use a proven identity provider; MFA; short-lived tokens</td></tr>
-      <tr><td>A08 Integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, protected CI</td></tr>
-      <tr><td>A09 Logging &amp; monitoring failures</td><td>A breach discovered months later</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
-      <tr><td>A10 Server-side request forgery</td><td>Server fetches a user-supplied URL that points to an internal service or metadata endpoint</td><td>Allow-list destinations; block internal ranges; separate egress</td></tr>
+      <tr><td>A08 Software or data integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, verified artefacts</td></tr>
+      <tr><td>A09 Security logging &amp; alerting failures</td><td>A breach discovered months later; logs nobody is alerted on</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
+      <tr><td>A10 Mishandling of exceptional conditions</td><td>An error path that fails open, leaks a stack trace, or leaves a transaction half done</td><td>Handle errors where they happen and in one global handler; fail closed and roll back; rate limits and quotas</td></tr>
       </tbody></table></div>
-    <p class="note">OWASP revises this list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
+    <p class="note">The 2021 edition numbered these differently and had SSRF as its own A10. OWASP revises the list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
   </article>
 
   <article class="card"><h3>Injection: always parameterise</h3>
@@ -4078,7 +4081,8 @@ securityContext:
    https://legal.example.com/callback?code=AUTH_CODE&amp;state=RANDOM
    (client checks state matches)
 
-4. Client exchanges the code (server to server):
+4. Client exchanges the code at the token endpoint
+   (from the server for a web app or BFF; from the device for a mobile or desktop app):
    POST /token
    grant_type=authorization_code&amp;code=AUTH_CODE
    &amp;redirect_uri=…&amp;client_id=legal-web&amp;code_verifier=ORIGINAL
@@ -4825,7 +4829,7 @@ select * from {{ source('odp', 'hc_judgment') }}</code></pre></div>
         data_tests:
           - not_null:
               config:
-                severity: warn
+                severity: error          # the default; with warn, dbt skips error_if
                 where: "data_year &gt;= 2000"
                 error_if: "&gt;100"
                 warn_if: "&gt;0"</code></pre></div>
@@ -4907,6 +4911,7 @@ models:
         constraints: [{type: not_null}]
       - name: decision_date
         data_type: date
+      # … list every column the model returns, each with its data_type
 
 # Snapshot, YAML form (1.9): SCD type 2
 snapshots:
@@ -5014,7 +5019,7 @@ wait &gt;&gt; load &gt;&gt; build &gt;&gt; check</code></pre></div>
 <div class="snip"><pre><code>{{ ds }}                     2025-01-31     (logical date, YYYY-MM-DD)
 {{ ds_nodash }}              20250131
 {{ logical_date }}           pendulum DateTime
-{{ data_interval_start }}    start of the period this run covers
+{{ data_interval_start }}    start of the period this run covers (see below)
 {{ data_interval_end }}      end (exclusive)
 {{ macros.ds_add(ds, -1) }}  2025-01-30
 {{ params.window }}          from dag(params={...})
@@ -5027,7 +5032,7 @@ wait &gt;&gt; load &gt;&gt; build &gt;&gt; check</code></pre></div>
 def t(data_interval_start=None, ti=None):
     ti.xcom_push(key="n", value=1)
 # or: from airflow.sdk import get_current_context</code></pre></div>
-    <p class="note">A daily run for 2025-01-31 starts after that interval ends. Use <code>data_interval_*</code> for "which data", never <code>now()</code>. <code>execution_date</code> is removed in Airflow 3: use <code>logical_date</code>.</p>
+    <p class="note">In Airflow 3 a cron string such as <code>"15 6 * * *"</code> or <code>"@daily"</code> uses <code>CronTriggerTimetable</code>: the run for 2025-01-31 starts at 06:15 that day, its logical date is that time, and <code>data_interval_start</code> equals <code>data_interval_end</code>. For a real window, schedule with <code>CronDataIntervalTimetable</code> (each run starts after its interval ends, as cron schedules did in 2.x) or pass <code>interval=</code> to <code>CronTriggerTimetable</code>. Decide which you use before writing "which data" logic, and never use <code>now()</code>. <code>execution_date</code> is removed in Airflow 3: use <code>logical_date</code>.</p>
   </article>
 
   <article class="card"><h3>Running dbt from a DAG</h3>
@@ -5106,14 +5111,15 @@ producer(); consumer()</code></pre></div>
 <div class="snip"><pre><code>airflow dags list
 airflow dags list-import-errors
 airflow dags test corpus_daily 2025-01-31          # full run, no scheduler
-airflow tasks test corpus_daily load 2025-01-31    # one task, no state saved
+airflow tasks test corpus_daily list_new 2025-01-31   # one task, no state saved
+                                                      # (a mapped task also needs --map-index N)
 airflow dags backfill corpus_daily -s 2025-01-01 -e 2025-01-07   # 2.x
 airflow backfill create --dag-id corpus_daily \
   --from-date 2025-01-01 --to-date 2025-01-07                    # 3.x
 airflow dags trigger corpus_daily -c '{"window": 3}'
 
 # pytest: every DAG imports cleanly
-from airflow.models import DagBag
+from airflow.dag_processing.dagbag import DagBag   # 3.2+; before: airflow.models
 def test_dags_load():
     bag = DagBag(dag_folder="dags", include_examples=False)
     assert not bag.import_errors</code></pre></div>
@@ -5427,6 +5433,12 @@ class JudgmentGraphQl {
   }
 }
 
+// scalar Date needs an implementation, here from graphql-java-extended-scalars
+@Configuration
+class GraphQlConfig {
+  @Bean RuntimeWiringConfigurer scalars() { return w -&gt; w.scalar(ExtendedScalars.Date); }
+}
+
 // test
 @GraphQlTest(JudgmentGraphQl.class)
 class JudgmentGraphQlTest {
@@ -5634,8 +5646,11 @@ spring:
     consumer:
       group-id: indexer
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer   # the default is String
       properties:
-        spring.json.trusted.packages: "com.example.events"</code></pre></div>
+        spring.json.trusted.packages: "com.example.events"
+# Spring Kafka 4 (Boot 4) deprecates JsonSerializer/JsonDeserializer for JacksonJsonSerializer/JacksonJsonDeserializer</code></pre></div>
 <div class="snip"><pre><code>@Service
 class Publisher {
   private final KafkaTemplate&lt;String, JudgmentLanded&gt; kafka;
@@ -5665,7 +5680,10 @@ mp.messaging.incoming.landed.connector=smallrye-kafka
 mp.messaging.incoming.landed.topic=judgment.landed
 mp.messaging.incoming.landed.group.id=indexer
 mp.messaging.outgoing.indexed.connector=smallrye-kafka
-mp.messaging.outgoing.indexed.topic=judgment.indexed</code></pre></div>
+mp.messaging.outgoing.indexed.topic=judgment.indexed
+# the Emitter below needs its own channel: a channel has one producer unless you merge
+mp.messaging.outgoing.reindexed.connector=smallrye-kafka
+mp.messaging.outgoing.reindexed.topic=judgment.indexed</code></pre></div>
 <div class="snip"><pre><code>@ApplicationScoped
 public class Indexer {
   @Incoming("landed")
@@ -5677,7 +5695,7 @@ public class Indexer {
 
 @ApplicationScoped
 public class Publisher {
-  @Inject @Channel("indexed") Emitter&lt;JudgmentIndexed&gt; out;
+  @Inject @Channel("reindexed") Emitter&lt;JudgmentIndexed&gt; out;   // not "indexed": the method above feeds that
   void send(JudgmentIndexed e) { out.send(e); }
 }</code></pre></div>
     <p class="note">In dev and test, Dev Services starts a Kafka-compatible broker for you.</p>
@@ -5814,7 +5832,8 @@ static boolean validCheckout(String orderId, String paymentId, String signature,
 }
 
 // webhook: HMAC-SHA256 of the RAW request body with the webhook secret,
-// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.</code></pre></div>
+// compared with the X-Razorpay-Signature header. Never re-serialise the JSON first.
+// The same event can arrive more than once: dedupe on the X-Razorpay-Event-Id header.</code></pre></div>
   </article>
 
   <article class="card"><h3>Stripe: PaymentIntent and webhook</h3>
@@ -5941,7 +5960,7 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
 
 <!-- ================= SPRING BOOT ================= -->
 <section class="panel" id="p-spring" data-name="Spring Boot">
-  <div class="panel-head"><h2>Spring Boot</h2><p>Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changes in 4.0. Servlet (MVC) and reactive (WebFlux) shown side by side.</p></div>
+  <div class="panel-head"><h2>Spring Boot</h2><p>Spring Boot 3.x on Java 17+, with what 3.2–3.5 added and what changed in 4.0 and 4.1. The examples are 3.x; 4.0 renamed or removed some properties, so check its migration guide. Servlet (MVC) and reactive (WebFlux) shown side by side.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>Version map</h3>
@@ -5954,8 +5973,9 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
       <tr><td>3.2</td><td>2023</td><td>Virtual threads (<code>spring.threads.virtual.enabled</code>), <code>RestClient</code>, <code>JdbcClient</code></td></tr>
       <tr><td>3.3</td><td>2024</td><td>Class Data Sharing support, SBOM actuator endpoint</td></tr>
       <tr><td>3.4</td><td>2024</td><td>Structured logging (ECS, Logstash, GELF), <code>@MockitoBean</code> replaces <code>@MockBean</code>, graceful shutdown by default</td></tr>
-      <tr><td>3.5</td><td>2025</td><td>The last 3.x feature release; upgrade here before moving to 4.0</td></tr>
+      <tr><td>3.5</td><td>2025</td><td>The last 3.x feature release; upgrade here before moving to 4.x</td></tr>
       <tr><td>4.0</td><td>2025</td><td>Spring Framework 7, Jakarta EE 11, Jackson 3, smaller modular starters, API versioning, JSpecify null-safety; deprecated 3.x APIs removed</td></tr>
+      <tr><td>4.1</td><td>2026</td><td>Spring gRPC support, SSRF protection for HTTP clients (<code>InetAddressFilter</code>), OpenTelemetry improvements, Gradle 9 supported</td></tr>
       </tbody></table></div>
     <p class="note">Moving to 4.0: upgrade to the latest 3.5 first, clear every deprecation warning, then follow the official migration guide.</p>
   </article>
@@ -5999,7 +6019,7 @@ spring:
 corpus:
   dataset: fdp
   max-results: 50
-  courts: [2_5, 14_25]
+  courts: ["2_5", "14_25"]   # quote them: unquoted, YAML reads 2_5 as the number 25
 ---
 spring.config.activate.on-profile: prod
 logging.structured.format.console: ecs  # 3.4+</code></pre></div>
@@ -6045,7 +6065,8 @@ interface JudgmentRepo extends JpaRepository&lt;Judgment, Long&gt; {
 
 @Transactional            // on a public method of a Spring bean, called from outside it
 public void reload() { ... }
-@Transactional(readOnly = true)</code></pre></div>
+@Transactional(readOnly = true)
+public List&lt;JudgmentDto&gt; list() { ... }</code></pre></div>
     <p class="note"><code>@Transactional</code> works through a proxy: a call from another method in the same class skips it.</p>
   </article>
 
@@ -6178,7 +6199,8 @@ class JudgmentControllerTest {
 @Testcontainers
 class DaoIT {
   @Container @ServiceConnection               // 3.1+: wires the datasource
-  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");
+  static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");  // Boot 3.x (Testcontainers 1.x)
+  // Boot 4 uses Testcontainers 2: org.testcontainers.postgresql.PostgreSQLContainer, no &lt;?&gt;
   @Autowired JudgmentDao dao;
   @Test void upserts() { assertThat(dao.upsert(sample())).isEqualTo(1); }
 }
@@ -6223,7 +6245,7 @@ java -Djarmode=tools -jar app.jar extract --layers --launcher
 
 # Gradle plugins
 plugins {
-  id("org.springframework.boot") version "3.5.x"
+  id("org.springframework.boot") version "3.5.x"   // matches the 3.x examples; a new project starts on 4.1.x
   id("io.spring.dependency-management") version "1.1.x"
   java
 }</code></pre></div>
@@ -6263,7 +6285,7 @@ plugins {
 
 <!-- ================= QUARKUS ================= -->
 <section class="panel" id="p-quarkus" data-name="Quarkus">
-  <div class="panel-head"><h2>Quarkus</h2><p>Quarkus 3.x: build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.</p></div>
+  <div class="panel-head"><h2>Quarkus</h2><p>Quarkus 3.x (4.0 is at release candidate): build-time dependency injection, fast startup, optional native images. Each card maps to its Spring Boot equivalent where one exists.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>Spring Boot → Quarkus</h3>
@@ -6466,7 +6488,7 @@ void poll() { ... }</code></pre></div>
   <article class="card"><h3>Testing</h3>
 <div class="snip"><pre><code>@QuarkusTest
 class JudgmentResourceTest {
-  @InjectMock JudgmentService svc;        // quarkus-junit5-mockito
+  @InjectMock JudgmentService svc;        // quarkus-junit-mockito (before 3.31: quarkus-junit5-mockito)
 
   @Test void returns404() {
     when(svc.get(any())).thenThrow(new NotFoundException("x"));
@@ -6553,7 +6575,7 @@ quarkus.kubernetes.env.secrets=db-credentials
   1. Billing:  create pending invoice        ↺ compensate: void invoice
   2. Payments: charge card                   ↺ compensate: refund charge
   3. Accounts: activate plan                 ↺ compensate: deactivate plan
-  4. Email:    send welcome                  (no compensation needed; last, pivot-free)
+  4. Email:    send welcome                  (no compensation: an email cannot be undone, so it runs last)
 
 Step 3 fails → run compensations in reverse: refund (2), void invoice (1).</code></pre></div>
     <ul>
@@ -6981,10 +7003,10 @@ class MirrorClient {
   </article>
 
   <article class="card"><h3>An aggregate in Java</h3>
-<div class="snip"><pre><code>sealed interface SubEvent permits Started, Upgraded, Cancelled {}
-record Started(String id, String plan, Instant at)   implements SubEvent {}
-record Upgraded(String id, String plan, Instant at)  implements SubEvent {}
-record Cancelled(String id, String reason, Instant at) implements SubEvent {}
+<div class="snip"><pre><code>sealed interface SubEvent permits Started, PlanUpgraded, Cancelled {}
+record Started(String id, String plan, Instant at)      implements SubEvent {}
+record PlanUpgraded(String id, String plan, Instant at) implements SubEvent {}
+record Cancelled(String id, String reason, Instant at)  implements SubEvent {}
 
 enum Status { ACTIVE, CANCELLED }
 
@@ -6998,16 +7020,16 @@ record Subscription(String id, String plan, Status status, int version) {
 
   static Subscription apply(Subscription s, SubEvent e) {     // pure: no side effects
     return switch (e) {
-      case Started st   -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
-      case Upgraded u   -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
-      case Cancelled c  -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
+      case Started st     -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
+      case PlanUpgraded u -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
+      case Cancelled c    -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
     };
   }
 
   List&lt;SubEvent&gt; upgrade(String newPlan, Instant now) {        // decide
     if (status != Status.ACTIVE) throw new IllegalStateException("subscription not active");
     if (plan.equals(newPlan)) return List.of();                 // idempotent: nothing to do
-    return List.of(new Upgraded(id, newPlan, now));
+    return List.of(new PlanUpgraded(id, newPlan, now));
   }
 }</code></pre></div>
     <p class="note">Separate <i>decide</i> (rules, may reject) from <i>apply</i> (pure state change). Apply must never fail for a stored event: it already happened.</p>
@@ -7041,9 +7063,9 @@ VALUES ('subscription-42', 4, 'PlanUpgraded', '{"plan":"pro"}');
 void handle(StoredEvent e) {
   tx.run(() -&gt; {
     switch (e.payload()) {
-      case Started s   -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
-      case Upgraded u  -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
-      case Cancelled c -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
+      case Started s      -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
+      case PlanUpgraded u -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
+      case Cancelled c    -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
     }
     db.saveCheckpoint("subscription_view", e.globalPosition());  // same transaction
   });
@@ -7080,7 +7102,7 @@ void handle(StoredEvent e) {
 void upgradeEmitsEventWhenActive() {
   var given = List.&lt;SubEvent&gt;of(new Started("s1", "basic", T0));
   var events = Subscription.replay(given).upgrade("pro", T1);          // when
-  assertThat(events).containsExactly(new Upgraded("s1", "pro", T1));   // then
+  assertThat(events).containsExactly(new PlanUpgraded("s1", "pro", T1));   // then
 }
 
 @Test
@@ -7261,7 +7283,7 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
       <li><b>Partitioning / sharding</b> splits data for write scale and size. Choose a key that spreads load and matches the main access pattern.</li>
       <li><b>Consistent hashing</b> places keys and nodes on a ring, so adding or removing a node moves only about 1/N of the keys. Used by caches and distributed stores.</li>
       <li><b>Hot keys</b> (one celebrity, one big tenant, today's date) defeat even spreading. Split them, cache them, or add a random suffix.</li>
-      <li><b>Quorums:</b> with N replicas, reading R and writing W where R + W &gt; N guarantees a read sees the latest write.</li>
+      <li><b>Quorums:</b> with N replicas, reading R and writing W where R + W &gt; N means every read set overlaps every write set, so a read sees the latest acknowledged write.</li>
     </ul>
   </article>
 
@@ -7335,7 +7357,7 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Follow the method: requirements, estimates, API, data, diagram</li><li>Name the building blocks and what each is for</li><li>Do back-of-the-envelope estimates</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a small service end to end with caching and a queue</li><li>Identify bottlenecks and failure modes</li><li>Write a design document others can build from</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for scale, availability targets and cost together</li><li>Choose storage and consistency models with clear trade-offs</li><li>Lead design reviews and challenge assumptions with numbers</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-region, highly available systems</li><li>Set reliability and capacity strategy for the organisation</li><li>Mentor others in design and trade-off thinking</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Consistent hashing and partitioning</li><li>Consensus (Raft) and leader election</li><li>Multi-region active-active design</li><li>Capacity planning and load testing</li><li>SLOs and error budgets</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a><span class="lnote"> Free, broad introduction with examples</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The deep reference behind most designs</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Reliability, SLOs, operations at scale</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Reliability, cost, security, performance pillars</span></li><li><a href="https://highscalability.com/" target="_blank" rel="noopener">High Scalability</a><span class="lnote"> Real-world architecture write-ups</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Consistent hashing and partitioning</li><li>Consensus (Raft) and leader election</li><li>Multi-region active-active design</li><li>Capacity planning and load testing</li><li>SLOs and error budgets</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a><span class="lnote"> Free, broad introduction with examples</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The deep reference behind most designs</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Reliability, SLOs, operations at scale</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Well-Architected Framework</a><span class="lnote"> Reliability, cost, security, performance pillars</span></li><li><a href="https://highscalability.com/" target="_blank" rel="noopener">High Scalability</a><span class="lnote"> Real-world architecture write-ups</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -7870,7 +7892,7 @@ az keyvault secret show --vault-name v -n s</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Map common services across GCP, AWS and Azure</li><li>Explain projects vs accounts vs subscriptions</li><li>Use each provider's CLI for basic tasks</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Translate a design from one cloud to another, including IAM and networking</li><li>Compare prices for a workload, including egress</li><li>Use Terraform across providers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose a provider for a workload with written trade-offs</li><li>Design portable architectures where it matters, and accept lock-in deliberately</li><li>Plan data residency and region choices</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's cloud strategy, contracts and multi-cloud policy</li><li>Lead migrations between clouds or from on-premises</li><li>Govern cost, security and compliance across providers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Well-Architected frameworks of each provider</li><li>Cloud IAM models compared</li><li>Cross-cloud networking and egress costs</li><li>Open table formats for portability</li><li>FinOps practices</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud: compare AWS and Azure services</a><span class="lnote"> Google's official service mapping</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/" target="_blank" rel="noopener">Azure for AWS professionals</a><span class="lnote"> Microsoft's AWS-to-Azure mapping</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Google's design pillars</span></li><li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected</a><span class="lnote"> AWS design pillars</span></li><li><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a><span class="lnote"> Azure design pillars</span></li><li><a href="https://www.finops.org/" target="_blank" rel="noopener">FinOps Foundation</a><span class="lnote"> Managing cloud cost across providers</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Well-Architected frameworks of each provider</li><li>Cloud IAM models compared</li><li>Cross-cloud networking and egress costs</li><li>Open table formats for portability</li><li>FinOps practices</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud: compare AWS and Azure services</a><span class="lnote"> Google's official service mapping</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/" target="_blank" rel="noopener">Azure for AWS professionals</a><span class="lnote"> Microsoft's AWS-to-Azure mapping</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Well-Architected Framework</a><span class="lnote"> Google's design pillars</span></li><li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected</a><span class="lnote"> AWS design pillars</span></li><li><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a><span class="lnote"> Azure design pillars</span></li><li><a href="https://www.finops.org/" target="_blank" rel="noopener">FinOps Foundation</a><span class="lnote"> Managing cloud cost across providers</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -8003,7 +8025,7 @@ gcloud datastream streams list --location=asia-south1</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Name the GCP service for each lifecycle stage</li><li>Load files from GCS into BigQuery and query them</li><li>Navigate IAM roles for data access</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a batch ELT pipeline: landing, BigQuery layers, dbt, scheduling</li><li>Set up Pub/Sub to BigQuery, or Datastream CDC</li><li>Apply dataset-level IAM and cost controls</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between Dataflow, Dataproc, SQL and Cloud Run for a workload</li><li>Design a platform with governance (Dataplex), lineage and quality</li><li>Plan cost, regions and data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's GCP data architecture</li><li>Lead migrations from other clouds or on-premises</li><li>Hold the Professional Data Engineer or Architect level of judgement, and teach it</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dataflow streaming: windows, triggers, late data</li><li>BigLake and Iceberg on GCS</li><li>Dataplex data quality and lineage</li><li>Analytics Hub data sharing</li><li>Professional Data Engineer exam guide</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/products/data-analytics" target="_blank" rel="noopener">Google Cloud data analytics products</a><span class="lnote"> Overview of every data service</span></li><li><a href="https://cloud.google.com/dataflow/docs" target="_blank" rel="noopener">Dataflow documentation</a><span class="lnote"> Beam pipelines on GCP</span></li><li><a href="https://cloud.google.com/pubsub/docs" target="_blank" rel="noopener">Pub/Sub documentation</a><span class="lnote"> Messaging, including BigQuery subscriptions</span></li><li><a href="https://cloud.google.com/datastream/docs" target="_blank" rel="noopener">Datastream documentation</a><span class="lnote"> Change data capture</span></li><li><a href="https://cloud.google.com/dataproc/docs" target="_blank" rel="noopener">Dataproc documentation</a><span class="lnote"> Spark and Hadoop</span></li><li><a href="https://cloud.google.com/dataplex/docs" target="_blank" rel="noopener">Dataplex documentation</a><span class="lnote"> Governance, quality and lineage</span></li><li><a href="https://cloud.google.com/learn/certification/data-engineer" target="_blank" rel="noopener">Professional Data Engineer certification</a><span class="lnote"> Exam guide and learning path</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dataflow streaming: windows, triggers, late data</li><li>BigLake and Iceberg on GCS</li><li>Dataplex data quality and lineage</li><li>BigQuery sharing (formerly Analytics Hub)</li><li>Professional Data Engineer exam guide</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/products/data-analytics" target="_blank" rel="noopener">Google Cloud data analytics products</a><span class="lnote"> Overview of every data service</span></li><li><a href="https://cloud.google.com/dataflow/docs" target="_blank" rel="noopener">Dataflow documentation</a><span class="lnote"> Beam pipelines on GCP</span></li><li><a href="https://cloud.google.com/pubsub/docs" target="_blank" rel="noopener">Pub/Sub documentation</a><span class="lnote"> Messaging, including BigQuery subscriptions</span></li><li><a href="https://cloud.google.com/datastream/docs" target="_blank" rel="noopener">Datastream documentation</a><span class="lnote"> Change data capture</span></li><li><a href="https://cloud.google.com/dataproc/docs" target="_blank" rel="noopener">Dataproc documentation</a><span class="lnote"> Spark and Hadoop</span></li><li><a href="https://cloud.google.com/dataplex/docs" target="_blank" rel="noopener">Dataplex documentation</a><span class="lnote"> Governance, quality and lineage</span></li><li><a href="https://cloud.google.com/learn/certification/data-engineer" target="_blank" rel="noopener">Professional Data Engineer certification</a><span class="lnote"> Exam guide and learning path</span></li></ul></div></div></article>
 
   </div>
 </section>
@@ -8664,7 +8686,7 @@ gcloud run jobs replace job.yaml --region=asia-south1</code></pre></div>
     <p class="note">Products are how you package the same API differently: free and paid tiers, internal and partner access.</p>
   </article>
 
-  <article class="card"><h3>Apigee vs API Gateway vs Cloud Endpoints</h3>
+  <article class="card"><h3>Apigee vs API Gateway</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Apigee</th><th>API Gateway</th></tr></thead>
       <tbody>
@@ -8755,8 +8777,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
         with: { distribution: temurin, java-version: 21, cache: gradle }
       - run: ./gradlew test
   deploy:
@@ -8764,20 +8786,20 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod          # environment secrets, protection rules
     steps:
-      - uses: actions/checkout@v4
-      - uses: google-github-actions/auth@v2
+      - uses: actions/checkout@v7
+      - uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: ${{ vars.WIF_PROVIDER }}
           service_account: ${{ vars.DEPLOY_SA }}
-      - uses: google-github-actions/setup-gcloud@v2
+      - uses: google-github-actions/setup-gcloud@v3
       - run: |
           IMG=asia-south1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/apps/api:${GITHUB_SHA::12}
           gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
           docker build -t "$IMG" . &amp;&amp; docker push "$IMG"
           echo "IMG=$IMG" &gt;&gt; "$GITHUB_ENV"
-      - uses: google-github-actions/deploy-cloudrun@v2
+      - uses: google-github-actions/deploy-cloudrun@v3
         with: { service: api, region: asia-south1, image: "${{ env.IMG }}" }</code></pre></div>
-    <p class="note">For security, pin third-party actions to a full commit SHA rather than a tag. A workflow-level <code>paths:</code> filter on a required check can leave a PR waiting forever; skip inside the job instead.</p>
+    <p class="note">The major versions shown were current in November 2026; check each action's latest release. For security, pin third-party actions to a full commit SHA rather than a tag. A workflow-level <code>paths:</code> filter on a required check can leave a PR waiting forever; skip inside the job instead.</p>
   </article>
 
   <article class="card"><h3>Release strategies</h3>
@@ -8897,7 +8919,8 @@ gcloud run services update-traffic api \
       <tr><td>Deployment frequency</td><td>How often do we ship to production?</td></tr>
       <tr><td>Lead time for changes</td><td>Commit to production: how long?</td></tr>
       <tr><td>Change failure rate</td><td>What share of deploys cause a failure?</td></tr>
-      <tr><td>Time to restore</td><td>How fast do we recover?</td></tr>
+      <tr><td>Failed deployment recovery time (formerly time to restore)</td><td>How fast do we recover from a failed deploy?</td></tr>
+      <tr><td>Deployment rework rate</td><td>What share of deploys are unplanned fixes for a production incident?</td></tr>
       </tbody></table></div>
     <p class="note">Speed and stability rise together when changes are small, tested and easy to roll back.</p>
   </article>
@@ -9023,8 +9046,9 @@ service:
 management:
   endpoints.web.exposure.include: health,prometheus
   tracing.sampling.probability: 0.1
-  otlp.tracing.endpoint: http://otel-collector:4318/v1/traces
-logging.structured.format.console: ecs</code></pre></div>
+  otlp.tracing.endpoint: http://otel-collector:4318/v1/traces   # Boot 4: opentelemetry.tracing.export.otlp.endpoint
+  observations.annotations.enabled: true   # makes @Observed work (needs AspectJ on the classpath)
+logging.structured.format.console: ecs     # 3.4+</code></pre></div>
 <div class="snip"><pre><code>@Component
 class LoadMetrics {
   private final Counter loaded, failed;
@@ -9845,7 +9869,7 @@ terraform providers lock -platform=linux_amd64 -platform=darwin_arm64</code></pr
 <div class="snip"><pre><code>terraform {
   required_version = "&gt;= 1.7"
   required_providers {
-    google = { source = "hashicorp/google", version = "~&gt; 7.0" }   # pin the major version you have tested
+    google = { source = "hashicorp/google", version = "~&gt; 8.0" }   # pin the major version you have tested
   }
   backend "gcs" {
     bucket = "my-proj-tfstate"      # versioning on!
@@ -10084,7 +10108,7 @@ output "job_names" { value = { for k, m in module.jobs : k =&gt; m.name } }
 
 # Registry / git sources: pin a version
 source  = "terraform-google-modules/cloud-storage/google"
-version = "~&gt; 9.0"
+version = "~&gt; 12.0"
 source  = "git::https://github.com/org/tf-modules.git//bq?ref=v1.4.0"</code></pre></div>
   </article>
 
@@ -10340,6 +10364,7 @@ kind: Ingress
 metadata: { name: api }
 spec:
   ingressClassName: nginx          # GKE's own controller uses the annotation kubernetes.io/ingress.class: gce instead
+                                   # Ingress NGINX was retired in March 2026: prefer Gateway API or a maintained controller
   rules:
     - host: api.example.com
       http:
@@ -10433,8 +10458,8 @@ gcloud container clusters get-credentials main --region=asia-south1
 gcloud container clusters list
 
 # Helm: packaged apps with values
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install redis bitnami/redis -n cache --create-namespace -f values.yaml
+helm install redis oci://registry-1.docker.io/bitnamicharts/redis \
+  -n cache --create-namespace -f values.yaml     # check the chart's README for where its images come from
 helm upgrade --install api ./chart --set image.tag=3f2a9c1
 helm template ./chart | kubectl diff -f -
 helm rollback api 1
@@ -11089,7 +11114,7 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n legal         # sidecar access log</c
       <tr><td>Hosted model API</td><td>Provider runs the model (Anthropic API, others)</td><td>Best models, no GPUs to run, pay per token</td></tr>
       <tr><td>Cloud platform</td><td>Models through your cloud account (Vertex AI, Bedrock, Foundry)</td><td>Billing, IAM, region and data controls in your cloud</td></tr>
       <tr><td>Managed open-model endpoints</td><td>Deploy open-weight models to a managed endpoint (Vertex AI Model Garden)</td><td>Open models without running servers yourself</td></tr>
-      <tr><td>Self-hosted server</td><td>vLLM, Hugging Face TGI or llama.cpp server on your GPUs (GKE, Cloud Run with GPUs, VMs)</td><td>Data must stay on your infrastructure; steady high volume; custom models</td></tr>
+      <tr><td>Self-hosted server</td><td>vLLM or llama.cpp server (Hugging Face TGI is now in maintenance mode) on your GPUs (GKE, Cloud Run with GPUs, VMs)</td><td>Data must stay on your infrastructure; steady high volume; custom models</td></tr>
       <tr><td>Local</td><td>Ollama or llama.cpp on a laptop</td><td>Experiments, offline development, small models</td></tr>
       </tbody></table></div>
   </article>
@@ -11245,13 +11270,15 @@ print("".join(b.text for b in resp.content if b.type == "text"))</code></pre></d
   </article>
 
   <article class="card"><h3>A brief that moves earth</h3>
-<div class="snip"><pre><code>Goal:     Reject Supreme Court dates that do not parse, instead of storing NULL.
-Why:      12% of SC rows lost their decision_date silently (issue #123).
-Where:    dbt/fdp/models/int_judgment_normalised.sql and its unit tests.
-Rules:    Follow CLAUDE.md. Do not change the HC path. No new dependencies.
+<div class="snip"><pre><code>(An illustrative brief: the problem and the paths are examples.)
+Goal:     Reject dates that do not parse, instead of storing NULL.
+Why:      One source sends dd-mm-yyyy; the parser turns those into NULL
+          without saying so, and the rows look like "no date".
+Where:    models/intermediate/int_cases_normalised.sql and its unit tests.
+Rules:    Follow CLAUDE.md. Do not change the other sources. No new dependencies.
 Done when:
   - a unit test with "05-05-1959" and "bad" fails before the fix, passes after
-  - dbt build -s int_judgment_normalised+ is green
+  - dbt build -s int_cases_normalised+ is green
   - the reject table counts unparseable rows
 Out of scope: backfilling old rows (separate issue).
 Report:   what changed, the test output, anything you could not verify.</code></pre></div>
@@ -12252,12 +12279,12 @@ FROM VECTOR_SEARCH(
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>A server in Python (FastMCP)</h3>
-<div class="snip"><pre><code># pip install "mcp[cli]" google-cloud-bigquery
-from mcp.server.fastmcp import FastMCP
+  <article class="card"><h3>A server in Python (MCPServer)</h3>
+<div class="snip"><pre><code># pip install "mcp[cli]" google-cloud-bigquery      (mcp 2.x)
+from mcp.server import MCPServer
 from google.cloud import bigquery
 
-mcp = FastMCP("pipeline-status")
+mcp = MCPServer("pipeline-status")
 bq = bigquery.Client()
 
 @mcp.tool()
@@ -12278,7 +12305,7 @@ def ledger(run_date: str) -&gt; str:
 if __name__ == "__main__":
     mcp.run()                              # stdio by default
     # mcp.run(transport="streamable-http") # to serve over HTTP</code></pre></div>
-    <p class="note">The function name, type hints and docstring become the tool's name, schema and description. Write the docstring for the model: what it does, inputs, and what it returns. A TypeScript SDK exists with the same concepts.</p>
+    <p class="note">The function name, type hints and docstring become the tool's name, schema and description. Write the docstring for the model: what it does, inputs, and what it returns. A TypeScript SDK exists with the same concepts. In mcp 1.x the same class was <code>FastMCP</code>, imported from <code>mcp.server.fastmcp</code>; that import fails on 2.x.</p>
   </article>
 
   <article class="card"><h3>Add it to Claude Code and test it</h3>
@@ -12401,8 +12428,8 @@ def run_query(sql: str) -&gt; dict:
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with FastMCP and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> FastMCP and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with the Python SDK and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> MCPServer (formerly FastMCP) and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div></article>
 
   </div>
 </section>

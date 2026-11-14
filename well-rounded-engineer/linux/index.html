@@ -223,6 +223,7 @@ journalctl --disk-usage
 # /etc/systemd/system/myapp.service
 [Unit]
 Description=Corpus API
+Wants=network-online.target
 After=network-online.target
 [Service]
 User=app

@@ -218,6 +218,12 @@ class JudgmentGraphQl {
   }
 }
 
+// scalar Date needs an implementation, here from graphql-java-extended-scalars
+@Configuration
+class GraphQlConfig {
+  @Bean RuntimeWiringConfigurer scalars() { return w -&gt; w.scalar(ExtendedScalars.Date); }
+}
+
 // test
 @GraphQlTest(JudgmentGraphQl.class)
 class JudgmentGraphQlTest {

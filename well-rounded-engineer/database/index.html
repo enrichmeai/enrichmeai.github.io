@@ -200,7 +200,7 @@ ORDER BY total_exec_time DESC LIMIT 10;</code></pre></div>
 
   <article class="card"><h3>Partitioning (one database)</h3>
 <div class="snip"><pre><code>CREATE TABLE event (
-  id         bigserial,                -- identity columns on partitioned tables need PostgreSQL 17+
+  id         bigserial,                -- fine here; GENERATED … AS IDENTITY on a partitioned table needs PostgreSQL 17+
   event_date date NOT NULL,
   payload    jsonb,
   PRIMARY KEY (id, event_date)          -- must include the partition key
@@ -232,7 +232,7 @@ DROP TABLE event_2025;
       <li><b>Directory / lookup</b> sharding maps keys to shards in a table: flexible, but the directory becomes critical.</li>
       <li><b>Costs:</b> cross-shard joins and transactions become application problems; resharding is a migration project; operations multiply.</li>
       <li><b>Try first:</b> better indexes, read replicas, caching, partitioning, a bigger instance, archiving cold data. Shard when one primary truly cannot take the writes.</li>
-      <li><b>Managed options</b> do it for you: Spanner, AlloyDB with read pools, Citus, Vitess, CockroachDB.</li>
+      <li><b>Managed or distributed options</b> do it for you: Spanner, CockroachDB, Citus (Postgres), Vitess (MySQL). AlloyDB read pools scale reads only; they do not shard.</li>
     </ul>
   </article>
 
@@ -251,7 +251,7 @@ DROP TABLE event_2025;
       <thead><tr><th>Isolation</th><th>Prevents</th></tr></thead>
       <tbody>
       <tr><td>Read committed (Postgres default)</td><td>Dirty reads. Each statement sees data committed before it began.</td></tr>
-      <tr><td>Repeatable read</td><td>Non-repeatable reads: the transaction sees one snapshot throughout.</td></tr>
+      <tr><td>Repeatable read</td><td>Non-repeatable reads (and, in PostgreSQL, phantom reads): the transaction sees one snapshot throughout.</td></tr>
       <tr><td>Serializable</td><td>All anomalies; transactions behave as if run one by one. Retry on serialization failure.</td></tr>
       </tbody></table></div>
 <div class="snip"><pre><code>-- pessimistic: lock the row you will change
