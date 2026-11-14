@@ -31,7 +31,6 @@ check optional-only '{"verdict":"PASS","summary":"s","checked":"c","findings":[{
 check findings-not-objects '{"verdict":"PASS","summary":"s","checked":"c","findings":["x"]}' 'NOT RUN' 'This is not a pass'
 check severity-capitalised '{"verdict":"PASS","summary":"s","checked":"c","findings":[{"severity":"Blocking","file":"a","claim":"x","failure_scenario":"y"}]}' BLOCK 'a blocking finding is a BLOCK'
 check severity-missing '{"verdict":"PASS","summary":"s","checked":"c","findings":[{"file":"a","claim":"x","failure_scenario":"y"}]}' BLOCK 'a blocking finding is a BLOCK'
-SELFTEST=failure check selftest-failed '' 'NOT RUN' 'the self-test of the review scripts failed'
 
 printf '.github/workflows/adversarial-review.yml\n' > "$REVIEW_DIR/self-change.txt"
 check self-change '{"verdict":"PASS","summary":"s","checked":"c","findings":[]}' PASS 'this verdict is advisory'

@@ -53,7 +53,8 @@ edit → `reviewer` → fix (max 3 attempts) → `/compound` → PR → `merge-g
 **CI's adversarial review (enrichmeai/valuedocs#1297, #80).** Every ready PR also gets the check
 `Adversarial review`. A Claude that did not write the change applies `reviewer.md` and
 `.github/adversarial-review/instructions.md`, both read from the PR's base branch, so a PR cannot
-rewrite them for its own review. The limit: GitHub runs a PR's own copy of the workflow, so a PR
+rewrite them for its own review. No code from the PR runs on the review job: the verdict is posted
+by trusted copies kept outside the workspace. The limit: GitHub runs a PR's own copy of the workflow, so a PR
 that edits the reviewer gets a banner calling its verdict advisory, and the founder merges it. A push
 by `claude.yml` starts no workflow: close and reopen the PR to re-run the check on the new head. It checks each claim against the product's latest release tag. BLOCK fails the check, and
 no verdict fails it as NOT RUN. Wording in the founder's voice is reported, never blocked: the founder

@@ -3,8 +3,8 @@
 # verdict the check must act on: PASS, BLOCK or NOT RUN. The workflow posts OUT_FILE and fails the
 # check unless this prints PASS. Tested by render-verdict-test.sh.
 #
-# Environment: VERDICT_JSON (the action's structured_output, maybe empty), PREPARE, SELFTEST and OUTCOME
-# (step outcomes), HEAD_SHA, RUN_URL, REVIEW_DIR (default .review).
+# Environment: VERDICT_JSON (the action's structured_output, maybe empty), PREPARE and OUTCOME (step
+# outcomes), HEAD_SHA, RUN_URL, REVIEW_DIR (default .review).
 #
 # Fails closed three ways:
 #   - no parseable verdict, or one that is neither PASS nor BLOCK: NOT RUN.
@@ -40,7 +40,6 @@ if [ -n "${VERDICT_JSON:-}" ] && jq -e "$shape" <<<"$VERDICT_JSON" >/dev/null 2>
     "\n<details><summary>What the reviewer checked</summary>\n\n\(.checked // "")\n</details>"' <<<"$VERDICT_JSON")
 else
   body="No verdict: the prepare step ended \`${PREPARE:-unknown}\` and the review step \`${OUTCOME:-skipped}\`. This is not a pass: the diff was not reviewed. Re-run the job, or read the [run](${RUN_URL:-})."
-  [ "${SELFTEST:-}" = failure ] && body="No verdict: the self-test of the review scripts failed, so the review did not run. This is not a pass. Read the [run](${RUN_URL:-})."
 fi
 
 {
