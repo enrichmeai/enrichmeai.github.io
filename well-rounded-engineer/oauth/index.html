@@ -116,7 +116,7 @@
     <div class="tbl"><table>
       <thead><tr><th>Role</th><th>Is</th><th>Example</th></tr></thead>
       <tbody>
-      <tr><td>Resource owner</td><td>The user who owns the data</td><td>A lawyer</td></tr>
+      <tr><td>Resource owner</td><td>The user who owns the data</td><td>A customer</td></tr>
       <tr><td>Client</td><td>The app that wants access</td><td>The web app, a mobile app, a partner's server</td></tr>
       <tr><td>Authorisation server</td><td>Authenticates the user and issues tokens</td><td>Google Identity, Okta, Auth0, Keycloak, Entra ID</td></tr>
       <tr><td>Resource server</td><td>The API that accepts tokens</td><td>The search API, or Apigee in front of it</td></tr>
@@ -148,22 +148,22 @@
 
 2. Browser is sent to the authorisation server:
    GET /authorize?response_type=code
-       &amp;client_id=legal-web
-       &amp;redirect_uri=https://legal.example.com/callback
+       &amp;client_id=shop-web
+       &amp;redirect_uri=https://shop.example.com/callback
        &amp;scope=openid%20profile%20email%20search.read
        &amp;state=RANDOM            (CSRF protection)
        &amp;nonce=RANDOM            (ID-token replay protection)
        &amp;code_challenge=…&amp;code_challenge_method=S256
 
 3. User logs in and consents; server redirects back:
-   https://legal.example.com/callback?code=AUTH_CODE&amp;state=RANDOM
+   https://shop.example.com/callback?code=AUTH_CODE&amp;state=RANDOM
    (client checks state matches)
 
 4. Client exchanges the code at the token endpoint
    (from the server for a web app or BFF; from the device for a mobile or desktop app):
    POST /token
    grant_type=authorization_code&amp;code=AUTH_CODE
-   &amp;redirect_uri=…&amp;client_id=legal-web&amp;code_verifier=ORIGINAL
+   &amp;redirect_uri=…&amp;client_id=shop-web&amp;code_verifier=ORIGINAL
 
 5. Response: access_token, id_token, refresh_token, expires_in
 
@@ -176,10 +176,10 @@
 <div class="snip"><pre><code>curl -s https://auth.example.com/oauth2/token \
   -u "$CLIENT_ID:$CLIENT_SECRET" \
   -d grant_type=client_credentials \
-  -d scope=judgments.read
+  -d scope=orders.read
 
 # → {"access_token":"…","token_type":"Bearer","expires_in":3600}
-curl -H "Authorization: Bearer $TOKEN" https://api.example.com/v1/judgments/123</code></pre></div>
+curl -H "Authorization: Bearer $TOKEN" https://api.example.com/v1/orders/123</code></pre></div>
     <ul>
       <li>Cache the token until shortly before it expires; do not fetch one per call.</li>
       <li>Prefer private-key JWT or mTLS client authentication over shared secrets where supported.</li>
@@ -214,7 +214,7 @@ quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
 
   <article class="card"><h3>Scopes, claims and roles</h3>
     <ul>
-      <li><b>Scopes</b> limit what a client may do on the user's behalf (<code>judgments.read</code>). They are about the app, not the user's own rights.</li>
+      <li><b>Scopes</b> limit what a client may do on the user's behalf (<code>orders.read</code>). They are about the app, not the user's own rights.</li>
       <li><b>Claims</b> are facts in the token: <code>sub</code> (stable user ID), <code>email</code>, <code>groups</code>, custom claims.</li>
       <li><b>Roles and permissions</b> are your application's rules. Load them from your source of truth; do not trust a role the client could have influenced.</li>
       <li>Key users by <code>sub</code> plus issuer, not by email, which can change or be reused.</li>

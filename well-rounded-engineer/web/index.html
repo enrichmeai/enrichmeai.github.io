@@ -127,9 +127,9 @@
   </article>
 
   <article class="card"><h3>Anatomy of a URL</h3>
-<div class="snip"><pre><code>https://legal.example.com:443/v1/judgments/123?court=2_5&amp;page=2#para-14
-└─┬─┘   └───────┬───────┘└┬─┘└───────┬───────┘└───────┬───────┘└──┬───┘
-scheme        host      port       path             query     fragment</code></pre></div>
+<div class="snip"><pre><code>https://shop.example.com:443/v1/orders/123?store=1_05&amp;page=2#items
+└─┬─┘   └──────┬───────┘└┬─┘└─────┬──────┘└───────┬────────┘└─┬──┘
+scheme       host      port     path            query     fragment</code></pre></div>
     <ul>
       <li><b>Origin</b> = scheme + host + port. It is the browser's security boundary.</li>
       <li><b>Path</b> names the resource; <b>query</b> parameters filter or modify it.</li>
@@ -139,8 +139,8 @@ scheme        host      port       path             query     fragment</code></p
   </article>
 
   <article class="card"><h3>HTTP request and response</h3>
-<div class="snip"><pre><code>GET /v1/judgments/123 HTTP/1.1
-Host: legal.example.com
+<div class="snip"><pre><code>GET /v1/orders/123 HTTP/1.1
+Host: shop.example.com
 Accept: application/json
 Accept-Encoding: br, gzip
 Authorization: Bearer eyJ…
@@ -153,7 +153,7 @@ Cache-Control: private, max-age=60
 ETag: "a1b2c3"
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-{"id":"123","cnr":"HPHC010001232024", …}</code></pre></div>
+{"id":"123","order_ref":"ORD-2024-000123", …}</code></pre></div>
     <ul>
       <li><b>Content negotiation:</b> <code>Accept</code> / <code>Content-Type</code> for format, <code>Accept-Language</code> for language, <code>Accept-Encoding</code> for compression.</li>
       <li><b>Compression:</b> Brotli or gzip for text; never for already-compressed images or video.</li>

@@ -116,7 +116,7 @@
     <div class="tbl"><table>
       <thead><tr><th>Concept</th><th>Meaning</th></tr></thead>
       <tbody>
-      <tr><td>Topic</td><td>A named stream of records, e.g. <code>judgment.landed</code></td></tr>
+      <tr><td>Topic</td><td>A named stream of records, e.g. <code>order.placed</code></td></tr>
       <tr><td>Partition</td><td>An ordered, append-only log; a topic has many. Ordering is guaranteed only within a partition.</td></tr>
       <tr><td>Record</td><td>Key, value, headers, timestamp. The <b>key</b> decides the partition (same key → same partition → ordered).</td></tr>
       <tr><td>Offset</td><td>A record's position in its partition. Consumers track how far they have read.</td></tr>
@@ -138,26 +138,26 @@
       <li><b>At-least-once consuming:</b> process, then commit the offset. A crash between the two replays the record, so consumers must be idempotent.</li>
       <li><b>At-most-once:</b> commit before processing. Rarely what you want.</li>
       <li><b>Exactly-once</b> inside Kafka (read-process-write between topics) with transactions and <code>isolation.level=read_committed</code>. Side effects outside Kafka still need idempotency.</li>
-      <li><b>Ordering:</b> choose the key for the entity whose events must stay in order (case ID, account ID).</li>
+      <li><b>Ordering:</b> choose the key for the entity whose events must stay in order (order ID, account ID).</li>
     </ul>
   </article>
 
   <article class="card"><h3>CLI essentials</h3>
 <div class="snip"><pre><code>B=localhost:9092
-kafka-topics.sh --bootstrap-server $B --create --topic judgment.landed \
+kafka-topics.sh --bootstrap-server $B --create --topic order.placed \
   --partitions 6 --replication-factor 3 --config retention.ms=604800000
-kafka-topics.sh --bootstrap-server $B --describe --topic judgment.landed
+kafka-topics.sh --bootstrap-server $B --describe --topic order.placed
 
-kafka-console-producer.sh --bootstrap-server $B --topic judgment.landed \
+kafka-console-producer.sh --bootstrap-server $B --topic order.placed \
   --property parse.key=true --property key.separator=:
-# type:  CNR123:{"court":"2_5"}
+# type:  ORD123:{"store":"1_05"}
 
-kafka-console-consumer.sh --bootstrap-server $B --topic judgment.landed \
+kafka-console-consumer.sh --bootstrap-server $B --topic order.placed \
   --group debug --from-beginning --property print.key=true
 
 kafka-consumer-groups.sh --bootstrap-server $B --describe --group indexer   # lag per partition
 kafka-consumer-groups.sh --bootstrap-server $B --group indexer \
-  --reset-offsets --to-datetime 2026-11-01T00:00:00.000 --topic judgment.landed --execute</code></pre></div>
+  --reset-offsets --to-datetime 2026-11-01T00:00:00.000 --topic order.placed --execute</code></pre></div>
     <p class="note">Consumer <b>lag</b> (latest offset minus committed offset) is the key health metric: growing lag means consumers cannot keep up.</p>
   </article>
 
@@ -180,15 +180,15 @@ spring:
 # Spring Kafka 4 (Boot 4) deprecates JsonSerializer/JsonDeserializer for JacksonJsonSerializer/JacksonJsonDeserializer</code></pre></div>
 <div class="snip"><pre><code>@Service
 class Publisher {
-  private final KafkaTemplate&lt;String, JudgmentLanded&gt; kafka;
-  Publisher(KafkaTemplate&lt;String, JudgmentLanded&gt; kafka) { this.kafka = kafka; }
-  void publish(JudgmentLanded e) { kafka.send("judgment.landed", e.cnr(), e); }  // key = cnr
+  private final KafkaTemplate&lt;String, OrderPlaced&gt; kafka;
+  Publisher(KafkaTemplate&lt;String, OrderPlaced&gt; kafka) { this.kafka = kafka; }
+  void publish(OrderPlaced e) { kafka.send("order.placed", e.orderRef(), e); }  // key = order ref
 }
 
 @Component
 class Indexer {
-  @KafkaListener(topics = "judgment.landed", groupId = "indexer")
-  void on(JudgmentLanded e) {
+  @KafkaListener(topics = "order.placed", groupId = "indexer")
+  void on(OrderPlaced e) {
     index.upsert(e);           // idempotent: same event twice is harmless
   }
 }
@@ -203,27 +203,27 @@ class Indexer {
   <article class="card"><h3>Quarkus with Kafka</h3>
 <div class="snip"><pre><code># application.properties (quarkus-messaging-kafka)
 kafka.bootstrap.servers=${KAFKA_BOOTSTRAP}
-mp.messaging.incoming.landed.connector=smallrye-kafka
-mp.messaging.incoming.landed.topic=judgment.landed
-mp.messaging.incoming.landed.group.id=indexer
+mp.messaging.incoming.placed.connector=smallrye-kafka
+mp.messaging.incoming.placed.topic=order.placed
+mp.messaging.incoming.placed.group.id=indexer
 mp.messaging.outgoing.indexed.connector=smallrye-kafka
-mp.messaging.outgoing.indexed.topic=judgment.indexed
+mp.messaging.outgoing.indexed.topic=order.indexed
 # the Emitter below needs its own channel: a channel has one producer unless you merge
 mp.messaging.outgoing.reindexed.connector=smallrye-kafka
-mp.messaging.outgoing.reindexed.topic=judgment.indexed</code></pre></div>
+mp.messaging.outgoing.reindexed.topic=order.indexed</code></pre></div>
 <div class="snip"><pre><code>@ApplicationScoped
 public class Indexer {
-  @Incoming("landed")
+  @Incoming("placed")
   @Outgoing("indexed")
-  public JudgmentIndexed process(JudgmentLanded e) {
+  public OrderIndexed process(OrderPlaced e) {
     return index.upsert(e);
   }
 }
 
 @ApplicationScoped
 public class Publisher {
-  @Inject @Channel("reindexed") Emitter&lt;JudgmentIndexed&gt; out;   // not "indexed": the method above feeds that
-  void send(JudgmentIndexed e) { out.send(e); }
+  @Inject @Channel("reindexed") Emitter&lt;OrderIndexed&gt; out;   // not "indexed": the method above feeds that
+  void send(OrderIndexed e) { out.send(e); }
 }</code></pre></div>
     <p class="note">In dev and test, Dev Services starts a Kafka-compatible broker for you.</p>
   </article>
@@ -233,13 +233,13 @@ public class Publisher {
 
 p = Producer({"bootstrap.servers": BOOTSTRAP, "acks": "all",
               "enable.idempotence": True})
-p.produce("judgment.landed", key=cnr, value=json.dumps(evt),
+p.produce("order.placed", key=order_ref, value=json.dumps(evt),
           callback=lambda err, msg: err and log.error("send failed: %s", err))
 p.flush()
 
 c = Consumer({"bootstrap.servers": BOOTSTRAP, "group.id": "indexer",
               "auto.offset.reset": "earliest", "enable.auto.commit": False})
-c.subscribe(["judgment.landed"])
+c.subscribe(["order.placed"])
 while True:
     msg = c.poll(1.0)
     if msg is None: continue
@@ -274,7 +274,7 @@ while True:
 
   <article class="card"><h3>Designing topics</h3>
     <ul>
-      <li><b>Name by event, past tense:</b> <code>judgment.landed</code>, <code>order.paid</code>.</li>
+      <li><b>Name by event, past tense:</b> <code>order.placed</code>, <code>order.paid</code>.</li>
       <li><b>Partitions:</b> enough for peak consumer parallelism with headroom; adding later changes key-to-partition mapping.</li>
       <li><b>Keys:</b> the entity that needs ordering; avoid hot keys.</li>
       <li><b>Payload:</b> include an event ID, type, version and timestamp; keep events self-describing.</li>

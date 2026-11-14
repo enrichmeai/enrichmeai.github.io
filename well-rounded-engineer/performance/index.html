@@ -188,7 +188,7 @@ public class ParseBench {
 
   @Benchmark
   public LocalDate parse() {
-    return DecisionDateParser.parse(raw);    // return the result so it is not optimised away
+    return OrderDateParser.parse(raw);    // return the result so it is not optimised away
   }
 }</code></pre></div>
     <p class="note">Hand-written timing loops on the JVM lie: no warm-up, dead-code elimination, JIT effects. Use JMH, and only after a profile shows the code matters.</p>

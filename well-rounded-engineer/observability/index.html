@@ -129,7 +129,7 @@
 <div class="snip"><pre><code>{"timestamp":"2026-11-12T06:15:04.120Z",
  "severity":"ERROR",
  "message":"load failed",
- "service":"odp-load", "version":"3f2a9c1", "env":"prod",
+ "service":"orders-load", "version":"3f2a9c1", "env":"prod",
  "run_id":"r-2026-11-12", "stage":"ODP_LOAD",
  "object":"gs://landing/data/year=2024/part-3.parquet",
  "error":"400 Bad Request", "error_body":"InvalidArgument: …",
@@ -170,17 +170,17 @@
     <p>The vendor-neutral standard for producing logs, metrics and traces: one <b>API</b> in your code, an <b>SDK</b> that processes and exports, the <b>OTLP</b> protocol, and an optional <b>Collector</b> that receives, filters, samples and forwards to any backend.</p>
 <div class="snip"><pre><code># Java: zero-code instrumentation with the agent (HTTP, JDBC, Kafka, gRPC …)
 java -javaagent:/otel/opentelemetry-javaagent.jar -jar app.jar
-#   OTEL_SERVICE_NAME=legal-api
+#   OTEL_SERVICE_NAME=shop-api
 #   OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
 #   OTEL_TRACES_SAMPLER=parentbased_traceidratio  OTEL_TRACES_SAMPLER_ARG=0.1
 
 # Python: auto-instrumentation
 pip install opentelemetry-distro opentelemetry-exporter-otlp
 opentelemetry-bootstrap -a install
-OTEL_SERVICE_NAME=odp-load opentelemetry-instrument python -m loader</code></pre></div>
+OTEL_SERVICE_NAME=orders-load opentelemetry-instrument python -m loader</code></pre></div>
 <div class="snip"><pre><code># manual span around meaningful work (Python)
 from opentelemetry import trace
-tracer = trace.get_tracer("odp-load")
+tracer = trace.get_tracer("orders-load")
 
 with tracer.start_as_current_span("load_object") as span:
     span.set_attribute("object.uri", uri)
@@ -217,14 +217,14 @@ class LoadMetrics {
   private final Counter loaded, failed;
   private final Timer duration;
   LoadMetrics(MeterRegistry r) {
-    loaded   = Counter.builder("odp.objects").tag("outcome", "loaded").register(r);
-    failed   = Counter.builder("odp.objects").tag("outcome", "failed").register(r);
-    duration = Timer.builder("odp.load.duration").publishPercentileHistogram().register(r);
+    loaded   = Counter.builder("orders.objects").tag("outcome", "loaded").register(r);
+    failed   = Counter.builder("orders.objects").tag("outcome", "failed").register(r);
+    duration = Timer.builder("orders.load.duration").publishPercentileHistogram().register(r);
   }
 }
 
-@Observed(name = "judgment.search")   // timer + span in one annotation
-public List&lt;Judgment&gt; search(String q) { … }</code></pre></div>
+@Observed(name = "order.search")   // timer + span in one annotation
+public List&lt;Order&gt; search(String q) { … }</code></pre></div>
   </article>
 
   <article class="card wide"><h3>Google Cloud Observability</h3>
@@ -241,15 +241,15 @@ public List&lt;Judgment&gt; search(String q) { … }</code></pre></div>
       </tbody></table></div>
 <div class="snip"><pre><code># Logs Explorer query
 resource.type="cloud_run_revision"
-resource.labels.service_name="legal-api"
+resource.labels.service_name="shop-api"
 severity&gt;=ERROR
 jsonPayload.run_id="r-2026-11-12"
 timestamp&gt;="2026-11-12T00:00:00Z"
 
 # log-based metric from a marker in the text
-gcloud logging metrics create dp_incidents \
+gcloud logging metrics create pipeline_incidents \
   --description="Pipeline incidents" \
-  --log-filter='textPayload:"dp_incident"'
+  --log-filter='textPayload:"pipeline_incident"'
 
 # PromQL in Cloud Monitoring: 5xx ratio and p95 latency
 sum(rate(http_server_requests_seconds_count{status=~"5.."}[5m]))

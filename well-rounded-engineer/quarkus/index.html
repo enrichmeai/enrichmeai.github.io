@@ -133,7 +133,7 @@
   </article>
 
   <article class="card"><h3>CLI &amp; dev mode</h3>
-<div class="snip"><pre><code>quarkus create app org.acme:corpus-api \
+<div class="snip"><pre><code>quarkus create app org.acme:shop-api \
   --extension='rest-jackson,hibernate-orm-panache,jdbc-postgresql,hibernate-validator'
 quarkus ext list --installable
 quarkus ext add smallrye-health micrometer-registry-prometheus
@@ -150,20 +150,20 @@ java -jar target/quarkus-app/quarkus-run.jar
   </article>
 
   <article class="card"><h3>REST endpoint</h3>
-<div class="snip"><pre><code>@Path("/api/judgments")
+<div class="snip"><pre><code>@Path("/api/orders")
 @Produces(MediaType.APPLICATION_JSON)
-public class JudgmentResource {
-  private final JudgmentService svc;
-  JudgmentResource(JudgmentService svc) { this.svc = svc; }   // constructor injection
+public class OrderResource {
+  private final OrderService svc;
+  OrderResource(OrderService svc) { this.svc = svc; }   // constructor injection
 
   @GET @Path("/{id}")
-  public JudgmentDto get(@RestPath UUID id) { return svc.get(id); }
+  public OrderDto get(@RestPath UUID id) { return svc.get(id); }
 
   @GET
-  public List&lt;JudgmentDto&gt; list(@RestQuery @DefaultValue("0") int page) { ... }
+  public List&lt;OrderDto&gt; list(@RestQuery @DefaultValue("0") int page) { ... }
 
   @POST @Path("/search")
-  public List&lt;JudgmentDto&gt; search(@Valid SearchRequest req) { return svc.search(req); }
+  public List&lt;OrderDto&gt; search(@Valid SearchRequest req) { return svc.search(req); }
 
   @GET @Path("/{id}/raw")
   public RestResponse&lt;String&gt; raw(@RestPath UUID id) {
@@ -177,50 +177,50 @@ public class JudgmentResource {
 <div class="snip"><pre><code># src/main/resources/application.properties
 quarkus.http.port=8080
 quarkus.datasource.db-kind=postgresql
-%prod.quarkus.datasource.jdbc.url=jdbc:postgresql://${DB_HOST}:5432/corpus
+%prod.quarkus.datasource.jdbc.url=jdbc:postgresql://${DB_HOST}:5432/shop
 %prod.quarkus.datasource.username=${DB_USER}
 %prod.quarkus.datasource.password=${DB_PASSWORD}
 quarkus.hibernate-orm.database.generation=none
 # JSON console logs: add the quarkus-logging-json extension
-corpus.dataset=fdp
-corpus.courts=2_5,14_25</code></pre></div>
-<div class="snip"><pre><code>@ConfigMapping(prefix = "corpus")
-public interface CorpusConfig {
+shop.dataset=analytics
+shop.stores=1_05,4_12</code></pre></div>
+<div class="snip"><pre><code>@ConfigMapping(prefix = "shop")
+public interface ShopConfig {
   String dataset();
   @WithDefault("20") int maxResults();
-  List&lt;String&gt; courts();
+  List&lt;String&gt; stores();
 }
 
-@ConfigProperty(name = "corpus.dataset") String dataset;   // single value</code></pre></div>
-    <p class="note">Profiles: <code>dev</code>, <code>test</code>, <code>prod</code> built in; pick another with <code>-Dquarkus.profile=staging</code>. Env vars override: <code>CORPUS_DATASET</code>.</p>
+@ConfigProperty(name = "shop.dataset") String dataset;   // single value</code></pre></div>
+    <p class="note">Profiles: <code>dev</code>, <code>test</code>, <code>prod</code> built in; pick another with <code>-Dquarkus.profile=staging</code>. Env vars override: <code>SHOP_DATASET</code>.</p>
   </article>
 
   <article class="card"><h3>Data with Panache</h3>
 <div class="snip"><pre><code>// Active record
 @Entity
-public class Judgment extends PanacheEntity {     // gives Long id
-  public String cnr;
-  public LocalDate decisionDate;
+public class Order extends PanacheEntity {     // gives Long id
+  public String orderRef;
+  public LocalDate orderDate;
 
-  public static Optional&lt;Judgment&gt; byCnr(String cnr) {
-    return find("cnr", cnr).firstResultOptional();
+  public static Optional&lt;Order&gt; byOrderRef(String orderRef) {
+    return find("orderRef", orderRef).firstResultOptional();
   }
 }
 
 // Repository style
 @ApplicationScoped
-public class JudgmentRepo implements PanacheRepository&lt;Judgment&gt; {
-  public List&lt;Judgment&gt; recent(String court) {
-    return list("courtCode = ?1 and decisionDate &gt; ?2 order by decisionDate desc",
-                court, LocalDate.now().minusDays(30));
+public class OrderRepo implements PanacheRepository&lt;Order&gt; {
+  public List&lt;Order&gt; recent(String store) {
+    return list("storeId = ?1 and orderDate &gt; ?2 order by orderDate desc",
+                store, LocalDate.now().minusDays(30));
   }
 }
 
 @Transactional
-public void save(Judgment j) { j.persist(); }
+public void save(Order o) { o.persist(); }
 
-Judgment.find("courtCode", "2_5").page(Page.of(0, 50)).list();
-Judgment.count("decisionDate is null");</code></pre></div>
+Order.find("storeId", "1_05").page(Page.of(0, 50)).list();
+Order.count("orderDate is null");</code></pre></div>
     <p class="note">Dev Services: in dev and test, with no JDBC URL set, Quarkus starts a Postgres container for you (needs Docker or Podman).</p>
   </article>
 
@@ -247,10 +247,10 @@ public Listing safeList(String p) { return mirror.list(p); }</code></pre></div>
 
   <article class="card"><h3>Threading: blocking, reactive, virtual</h3>
 <div class="snip"><pre><code>// Blocking signature → worker thread (default for non-Uni returns)
-@GET public List&lt;JudgmentDto&gt; list() { ... }
+@GET public List&lt;OrderDto&gt; list() { ... }
 
 // Reactive signature → event loop: never block inside it
-@GET public Uni&lt;JudgmentDto&gt; get(@RestPath UUID id) {
+@GET public Uni&lt;OrderDto&gt; get(@RestPath UUID id) {
   return client.fetch(id)
       .onItem().transform(this::toDto)
       .onFailure().retry().atMost(3)
@@ -262,7 +262,7 @@ Multi.createFrom().iterable(uris)
 
 // Virtual threads (Java 21+)
 @GET @RunOnVirtualThread
-public List&lt;JudgmentDto&gt; slowList() { return blockingDao.all(); }
+public List&lt;OrderDto&gt; slowList() { return blockingDao.all(); }
 
 // Force a reactive-typed method onto a worker
 @Blocking</code></pre></div>
@@ -273,7 +273,7 @@ public List&lt;JudgmentDto&gt; slowList() { return blockingDao.all(); }
   @ServerExceptionMapper
   public RestResponse&lt;Map&lt;String, String&gt;&gt; notFound(NotFoundException e) {
     return RestResponse.status(Response.Status.NOT_FOUND,
-        Map.of("error", "not_found", "cnr", e.cnr()));
+        Map.of("error", "not_found", "orderRef", e.orderRef()));
   }
 }
 
@@ -286,7 +286,7 @@ public class MirrorCheck implements HealthCheck {
 // /q/health/live  /q/health/ready  /q/health/started
 
 @Inject MeterRegistry registry;
-registry.counter("corpus.rows.loaded").increment(n);
+registry.counter("orders.rows.loaded").increment(n);
 @Counted @Timed      // on methods</code></pre></div>
   </article>
 
@@ -311,19 +311,19 @@ void poll() { ... }</code></pre></div>
 
   <article class="card"><h3>Testing</h3>
 <div class="snip"><pre><code>@QuarkusTest
-class JudgmentResourceTest {
-  @InjectMock JudgmentService svc;        // quarkus-junit-mockito (before 3.31: quarkus-junit5-mockito)
+class OrderResourceTest {
+  @InjectMock OrderService svc;        // quarkus-junit-mockito (before 3.31: quarkus-junit5-mockito)
 
   @Test void returns404() {
     when(svc.get(any())).thenThrow(new NotFoundException("x"));
-    given().when().get("/api/judgments/{id}", UUID.randomUUID())
+    given().when().get("/api/orders/{id}", UUID.randomUUID())
            .then().statusCode(404)
            .body("error", is("not_found"));
   }
 }
 
 @QuarkusIntegrationTest                    // runs against the built jar or native binary
-class JudgmentResourceIT extends JudgmentResourceTest {}
+class OrderResourceIT extends OrderResourceTest {}
 
 @TestProfile(NoSchedulerProfile.class)     // per-test config overrides
 public class NoSchedulerProfile implements QuarkusTestProfile {

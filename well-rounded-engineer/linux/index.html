@@ -222,7 +222,7 @@ journalctl --disk-usage
 
 # /etc/systemd/system/myapp.service
 [Unit]
-Description=Corpus API
+Description=Shop API
 Wants=network-online.target
 After=network-online.target
 [Service]
@@ -294,7 +294,7 @@ EOF
 a &amp;&amp; b                 # b only if a succeeded
 a || b                 # b only if a failed
 
-export DATASET=fdp; env | grep DATA; unset DATASET
+export DATASET=analytics; env | grep DATA; unset DATASET
 echo "$PATH" | tr ':' '\n'
 which java; type ll; command -v gcloud
 history | grep deploy; !!; Ctrl-r (search)</code></pre></div>

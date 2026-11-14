@@ -126,7 +126,7 @@
   </article>
 
   <article class="card"><h3>Chart structure</h3>
-<div class="snip"><pre><code>legal-api/
+<div class="snip"><pre><code>shop-api/
   Chart.yaml            # name, versions, dependencies
   values.yaml           # defaults
   values.schema.json    # optional: validate values
@@ -143,8 +143,8 @@
   charts/               # dependency charts (vendored)</code></pre></div>
 <div class="snip"><pre><code># Chart.yaml
 apiVersion: v2
-name: legal-api
-description: Legal search API
+name: shop-api
+description: Shop API
 type: application          # or "library" for shared templates only
 version: <span data-other-version>0.3.0</span>             # chart version (SemVer)
 appVersion: "3f2a9c1"      # image tag it deploys by default
@@ -155,34 +155,34 @@ dependencies:
   </article>
 
   <article class="card"><h3>Commands</h3>
-<div class="snip"><pre><code>helm create legal-api                         # scaffold
-helm lint ./legal-api
-helm template legal ./legal-api -f values-prod.yaml    # render locally, no cluster
-helm upgrade --install legal ./legal-api \
-  -n legal --create-namespace \
+<div class="snip"><pre><code>helm create shop-api                         # scaffold
+helm lint ./shop-api
+helm template shop ./shop-api -f values-prod.yaml    # render locally, no cluster
+helm upgrade --install shop ./shop-api \
+  -n shop --create-namespace \
   -f values-prod.yaml --set image.tag=3f2a9c1 \
   --atomic --timeout 5m                       # roll back automatically on failure
 # Helm 4 renamed --atomic to --rollback-on-failure; check `helm version`
-helm list -n legal
-helm history legal -n legal
-helm rollback legal 4 -n legal
-helm get values legal -n legal                # what was applied
-helm get manifest legal -n legal
-helm uninstall legal -n legal
+helm list -n shop
+helm history shop -n shop
+helm rollback shop 4 -n shop
+helm get values shop -n shop                # what was applied
+helm get manifest shop -n shop
+helm uninstall shop -n shop
 
-helm dependency update ./legal-api
-helm package ./legal-api                      # → legal-api-<span data-other-version>0.3.0</span>.tgz
-helm push legal-api-<span data-other-version>0.3.0</span>.tgz oci://asia-south1-docker.pkg.dev/my-proj/charts
-helm install legal oci://asia-south1-docker.pkg.dev/my-proj/charts/legal-api --version <span data-other-version>0.3.0</span></code></pre></div>
+helm dependency update ./shop-api
+helm package ./shop-api                      # → shop-api-<span data-other-version>0.3.0</span>.tgz
+helm push shop-api-<span data-other-version>0.3.0</span>.tgz oci://asia-south1-docker.pkg.dev/my-proj/charts
+helm install shop oci://asia-south1-docker.pkg.dev/my-proj/charts/shop-api --version <span data-other-version>0.3.0</span></code></pre></div>
   </article>
 
   <article class="card"><h3>Templates</h3>
 <div class="snip"><pre><code># templates/_helpers.tpl
-{{- define "legal-api.fullname" -}}
+{{- define "shop-api.fullname" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "legal-api.selectorLabels" -}}
+{{- define "shop-api.selectorLabels" -}}
 app.kubernetes.io/name: {{ .Chart.Name }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}</code></pre></div>
@@ -190,19 +190,19 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "legal-api.fullname" . }}
+  name: {{ include "shop-api.fullname" . }}
   labels:
-    {{- include "legal-api.selectorLabels" . | nindent 4 }}
+    {{- include "shop-api.selectorLabels" . | nindent 4 }}
     app.kubernetes.io/version: {{ .Values.image.tag | default .Chart.AppVersion | quote }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "legal-api.selectorLabels" . | nindent 6 }}
+      {{- include "shop-api.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "legal-api.selectorLabels" . | nindent 8 }}
+        {{- include "shop-api.selectorLabels" . | nindent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
@@ -225,7 +225,7 @@ spec:
 <div class="snip"><pre><code># values.yaml (defaults: safe, small)
 replicaCount: 1
 image:
-  repository: asia-south1-docker.pkg.dev/my-proj/apps/legal-api
+  repository: asia-south1-docker.pkg.dev/my-proj/apps/shop-api
   tag: ""                       # defaults to appVersion
 resources:
   requests: { cpu: 250m, memory: 512Mi }
@@ -238,7 +238,7 @@ replicaCount: 3
 resources:
   requests: { cpu: "1", memory: 1Gi }
   limits:   { memory: 1Gi }
-secretName: legal-api-secrets</code></pre></div>
+secretName: shop-api-secrets</code></pre></div>
     <ul>
       <li>Later <code>-f</code> files override earlier ones; <code>--set</code> overrides files. Prefer files in Git over <code>--set</code>.</li>
       <li>Add <code>values.schema.json</code> so a typo in a value fails at install, not at runtime.</li>
@@ -251,7 +251,7 @@ secretName: legal-api-secrets</code></pre></div>
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "legal-api.fullname" . }}-migrate
+  name: {{ include "shop-api.fullname" . }}-migrate
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-weight": "0"
@@ -268,7 +268,7 @@ spec:
     <ul>
       <li>Hook events: <code>pre-install</code>, <code>post-install</code>, <code>pre-upgrade</code>, <code>post-upgrade</code>, <code>pre-rollback</code>, <code>pre-delete</code> and more.</li>
       <li>Migrations in a hook must be backward compatible: a rollback does not undo them.</li>
-      <li><code>helm test legal</code> runs pods annotated <code>"helm.sh/hook": test</code> to smoke-test a release.</li>
+      <li><code>helm test shop</code> runs pods annotated <code>"helm.sh/hook": test</code> to smoke-test a release.</li>
       <li>Unit-test templates with the helm-unittest plugin; lint and install-test charts in CI with chart-testing (<code>ct</code>).</li>
     </ul>
   </article>

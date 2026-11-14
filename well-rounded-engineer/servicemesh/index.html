@@ -155,15 +155,15 @@
   <article class="card"><h3>Install and enrol workloads</h3>
 <div class="snip"><pre><code># sidecar mode
 istioctl install --set profile=default -y
-kubectl label namespace legal istio-injection=enabled
-kubectl rollout restart deploy -n legal        # pods get sidecars on restart
+kubectl label namespace shop istio-injection=enabled
+kubectl rollout restart deploy -n shop        # pods get sidecars on restart
 
 # ambient mode
 istioctl install --set profile=ambient -y
-kubectl label namespace legal istio.io/dataplane-mode=ambient   # no restart needed
-istioctl waypoint apply -n legal --enroll-namespace             # add L7 where needed
+kubectl label namespace shop istio.io/dataplane-mode=ambient   # no restart needed
+istioctl waypoint apply -n shop --enroll-namespace             # add L7 where needed
 
-istioctl analyze -n legal                      # check configuration for problems</code></pre></div>
+istioctl analyze -n shop                      # check configuration for problems</code></pre></div>
     <p class="note">In production, install and upgrade Istio through Helm charts or your platform's managed offering, from Git, with canary upgrades of the control plane (revisions).</p>
   </article>
 
@@ -194,9 +194,9 @@ spec:
 # only the frontend may call the API, and only GET on /api/*
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
-metadata: { name: legal-api-allow, namespace: legal }
+metadata: { name: shop-api-allow, namespace: shop }
 spec:
-  selector: { matchLabels: { app: legal-api } }
+  selector: { matchLabels: { app: shop-api } }
   action: ALLOW
   rules:
     - from:
@@ -207,9 +207,9 @@ spec:
 # validate end-user JWTs at the proxy
 apiVersion: security.istio.io/v1
 kind: RequestAuthentication
-metadata: { name: jwt, namespace: legal }
+metadata: { name: jwt, namespace: shop }
 spec:
-  selector: { matchLabels: { app: legal-api } }
+  selector: { matchLabels: { app: shop-api } }
   jwtRules:
     - issuer: "https://auth.example.com/"
       jwksUri: "https://auth.example.com/.well-known/jwks.json"</code></pre></div>
@@ -219,9 +219,9 @@ spec:
   <article class="card"><h3>Traffic: canary, retries, timeouts</h3>
 <div class="snip"><pre><code>apiVersion: networking.istio.io/v1
 kind: DestinationRule
-metadata: { name: legal-api, namespace: legal }
+metadata: { name: shop-api, namespace: shop }
 spec:
-  host: legal-api
+  host: shop-api
   subsets:
     - { name: v1, labels: { version: v1 } }
     - { name: v2, labels: { version: v2 } }
@@ -234,26 +234,26 @@ spec:
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
-metadata: { name: legal-api, namespace: legal }
+metadata: { name: shop-api, namespace: shop }
 spec:
-  hosts: [legal-api]
+  hosts: [shop-api]
   http:
     - timeout: 3s
       retries: { attempts: 2, perTryTimeout: 1s, retryOn: "5xx,connect-failure" }
       route:
-        - { destination: { host: legal-api, subset: v1 }, weight: 90 }
-        - { destination: { host: legal-api, subset: v2 }, weight: 10 }</code></pre></div>
+        - { destination: { host: shop-api, subset: v1 }, weight: 90 }
+        - { destination: { host: shop-api, subset: v2 }, weight: 10 }</code></pre></div>
 <div class="snip"><pre><code># the same split with the Gateway API
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
-metadata: { name: legal-api, namespace: legal }
+metadata: { name: shop-api, namespace: shop }
 spec:
-  parentRefs: [{ name: legal-gateway }]
+  parentRefs: [{ name: shop-gateway }]
   hostnames: ["api.example.com"]
   rules:
     - backendRefs:
-        - { name: legal-api-v1, port: 8080, weight: 90 }
-        - { name: legal-api-v2, port: 8080, weight: 10 }</code></pre></div>
+        - { name: shop-api-v1, port: 8080, weight: 90 }
+        - { name: shop-api-v2, port: 8080, weight: 10 }</code></pre></div>
     <p class="note">Put retries in one place, mesh or application, not both: retries multiplied at every layer turn a slowdown into a retry storm. Retry only idempotent requests.</p>
   </article>
 
@@ -261,9 +261,9 @@ spec:
 <div class="snip"><pre><code># with outbound traffic policy REGISTRY_ONLY, only registered hosts are reachable
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
-metadata: { name: indian-kanoon-mirror, namespace: legal }
+metadata: { name: payment-gateway, namespace: shop }
 spec:
-  hosts: ["api.example-mirror.org"]
+  hosts: ["api.example-payments.com"]
   ports: [{ number: 443, name: https, protocol: TLS }]
   resolution: DNS
   location: MESH_EXTERNAL</code></pre></div>
@@ -285,10 +285,10 @@ sum by (destination_service) (rate(istio_requests_total{response_code=~"5.."}[5m
   <article class="card"><h3>Debugging</h3>
 <div class="snip"><pre><code>istioctl analyze -A                                # config problems across namespaces
 istioctl proxy-status                              # is every proxy in sync with istiod?
-istioctl proxy-config routes   deploy/legal-api -n legal
-istioctl proxy-config clusters deploy/legal-api -n legal
-istioctl x describe pod &lt;pod&gt; -n legal             # which policies apply to this pod
-kubectl logs &lt;pod&gt; -c istio-proxy -n legal         # sidecar access log</code></pre></div>
+istioctl proxy-config routes   deploy/shop-api -n shop
+istioctl proxy-config clusters deploy/shop-api -n shop
+istioctl x describe pod &lt;pod&gt; -n shop             # which policies apply to this pod
+kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</code></pre></div>
     <div class="tbl"><table>
       <thead><tr><th>Symptom</th><th>Usually</th></tr></thead>
       <tbody>

@@ -149,21 +149,21 @@
   </article>
 
   <article class="card"><h3>Java: JUnit + AssertJ + Mockito</h3>
-<div class="snip"><pre><code>class DecisionDateParserTest {
+<div class="snip"><pre><code>class OrderDateParserTest {
 
   @ParameterizedTest(name = "{0} → {1}")
   @CsvSource({
-      "05-05-1959, 1959-05-05",   // SC format
-      "2024-01-31, 2024-01-31",   // HC format
+      "05-05-1959, 1959-05-05",   // day-first, from one source
+      "2024-01-31, 2024-01-31",   // ISO, from the others
   })
   void parsesBothFormats(String raw, LocalDate expected) {
-    assertThat(DecisionDateParser.parse(raw)).isEqualTo(expected);
+    assertThat(OrderDateParser.parse(raw)).isEqualTo(expected);
   }
 
   @ParameterizedTest
   @ValueSource(strings = {"", "31-31-2024", "yesterday"})
   void rejectsUnparseable(String raw) {
-    assertThatThrownBy(() -&gt; DecisionDateParser.parse(raw))
+    assertThatThrownBy(() -&gt; OrderDateParser.parse(raw))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("does not parse");
   }
@@ -187,19 +187,19 @@ class LoaderTest {
   <article class="card"><h3>Python: pytest</h3>
 <div class="snip"><pre><code>import pytest
 from datetime import date
-from pipeline.dates import parse_decision_date
+from pipeline.dates import parse_order_date
 
 @pytest.mark.parametrize("raw, expected", [
     ("05-05-1959", date(1959, 5, 5)),
     ("2024-01-31", date(2024, 1, 31)),
 ])
 def test_parses_both_formats(raw, expected):
-    assert parse_decision_date(raw) == expected
+    assert parse_order_date(raw) == expected
 
 @pytest.mark.parametrize("raw", ["", "31-31-2024", None])
 def test_rejects_unparseable(raw):
     with pytest.raises(ValueError, match="does not parse"):
-        parse_decision_date(raw)
+        parse_order_date(raw)
 
 @pytest.fixture
 def fake_store(monkeypatch):
@@ -234,16 +234,16 @@ def test_copies_only_new_objects(fake_store):
 <div class="snip"><pre><code>// Java: real Postgres in Docker for the test
 @Testcontainers
 @SpringBootTest
-class JudgmentRepositoryIT {
+class OrderRepositoryIT {
   @Container @ServiceConnection   // Testcontainers 2: org.testcontainers.postgresql (1.x: PostgreSQLContainer&lt;?&gt;)
   static PostgreSQLContainer pg = new PostgreSQLContainer("postgres:16");
 
-  @Autowired JudgmentRepository repo;
+  @Autowired OrderRepository repo;
 
   @Test
   void upsertKeepsTheExistingId() {
     long id = repo.upsert(sample("K1")).id();
-    long again = repo.upsert(sample("K1").withCnr("changed")).id();
+    long again = repo.upsert(sample("K1").withOrderRef("changed")).id();
     assertThat(again).isEqualTo(id);          // ids are never renumbered
   }
 }
@@ -283,7 +283,7 @@ from hypothesis import given, strategies as st
 
 @given(st.dates(min_value=date(1950,1,1), max_value=date(2030,12,31)))
 def test_format_then_parse_roundtrips(d):
-    assert parse_decision_date(d.strftime("%d-%m-%Y")) == d
+    assert parse_order_date(d.strftime("%d-%m-%Y")) == d
 
 @given(st.lists(st.text()))
 def test_dedupe_is_idempotent(xs):

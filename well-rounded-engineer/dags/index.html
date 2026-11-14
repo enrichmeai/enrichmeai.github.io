@@ -122,9 +122,9 @@ from airflow.sdk import dag, task
     catchup=False,                  # default False in 3.x (True in 2.x)
     max_active_runs=1,
     default_args={"retries": 2, "retry_delay": timedelta(minutes=5)},
-    tags=["corpus"],
+    tags=["orders"],
 )
-def corpus_daily():
+def orders_daily():
 
     @task
     def list_new(ds=None) -&gt; list[str]:
@@ -140,7 +140,7 @@ def corpus_daily():
 
     report(load.expand(uri=list_new()))   # dynamic task mapping
 
-corpus_daily()</code></pre></div>
+orders_daily()</code></pre></div>
   </article>
 
   <article class="card"><h3>BigQuery &amp; GCS operators</h3>
@@ -158,18 +158,18 @@ wait = GCSObjectExistenceSensor(
 load = GCSToBigQueryOperator(
     task_id="load_parquet", bucket="landing",
     source_objects=["data/year={{ logical_date.year }}/*.parquet"],
-    destination_project_dataset_table="proj.odp.hc_judgment",
+    destination_project_dataset_table="proj.raw.orders",
     source_format="PARQUET", write_disposition="WRITE_APPEND")
 
 build = BigQueryInsertJobOperator(
     task_id="build_fdp", location="asia-south1", deferrable=True,
     configuration={"query": {
-        "query": "{% include 'sql/fdp_judgment.sql' %}",
+        "query": "{% include 'sql/orders.sql' %}",
         "useLegacySql": False}})
 
 check = BigQueryCheckOperator(
     task_id="rows_today", use_legacy_sql=False,
-    sql="SELECT COUNT(*) &gt; 0 FROM `proj.fdp.judgment` WHERE _run_date = '{{ ds }}'")
+    sql="SELECT COUNT(*) &gt; 0 FROM `proj.analytics.orders` WHERE _run_date = '{{ ds }}'")
 
 wait &gt;&gt; load &gt;&gt; build &gt;&gt; check</code></pre></div>
   </article>
@@ -201,7 +201,7 @@ def t(data_interval_start=None, ti=None):
 dbt_build = BashOperator(
     task_id="dbt_build",
     bash_command=(
-        "cd /home/airflow/gcs/dags/dbt/fdp &amp;&amp; "
+        "cd /home/airflow/gcs/dags/dbt/analytics &amp;&amp; "
         "dbt build --target prod -s tag:daily "
         "--vars '{run_date: \"{{ ds }}\"}'"),
     env={"DBT_PROFILES_DIR": "/home/airflow/gcs/dags/dbt"},
@@ -231,20 +231,20 @@ def has_work(n: int) -&gt; bool:
     return n &gt; 0       # False skips everything downstream
 
 @task_group
-def per_court(court: str): ...</code></pre></div>
+def per_store(store: str): ...</code></pre></div>
   </article>
 
   <article class="card"><h3>Data-aware scheduling (Assets)</h3>
 <div class="snip"><pre><code>from airflow.sdk import Asset, dag, task
-odp = Asset("bigquery://proj/dp_odp/hc_judgment")
+raw = Asset("bigquery://proj/raw/orders")
 
 @dag(schedule="@daily", start_date=datetime(2025,1,1))
 def producer():
-    @task(outlets=[odp])
+    @task(outlets=[raw])
     def load(): ...
     load()
 
-@dag(schedule=[odp], start_date=datetime(2025,1,1))   # runs when odp updates
+@dag(schedule=[raw], start_date=datetime(2025,1,1))   # runs when raw updates
 def consumer():
     @task
     def build(): ...
@@ -269,13 +269,13 @@ producer(); consumer()</code></pre></div>
   <article class="card"><h3>CLI &amp; local testing</h3>
 <div class="snip"><pre><code>airflow dags list
 airflow dags list-import-errors
-airflow dags test corpus_daily 2025-01-31          # full run, no scheduler
-airflow tasks test corpus_daily list_new 2025-01-31   # one task, no state saved
+airflow dags test orders_daily 2025-01-31          # full run, no scheduler
+airflow tasks test orders_daily list_new 2025-01-31   # one task, no state saved
                                                       # (a mapped task also needs --map-index N)
-airflow dags backfill corpus_daily -s 2025-01-01 -e 2025-01-07   # 2.x
-airflow backfill create --dag-id corpus_daily \
+airflow dags backfill orders_daily -s 2025-01-01 -e 2025-01-07   # 2.x
+airflow backfill create --dag-id orders_daily \
   --from-date 2025-01-01 --to-date 2025-01-07                    # 3.x
-airflow dags trigger corpus_daily -c '{"window": 3}'
+airflow dags trigger orders_daily -c '{"window": 3}'
 
 # pytest: every DAG imports cleanly
 from airflow.dag_processing.dagbag import DagBag   # 3.2+; before: airflow.models

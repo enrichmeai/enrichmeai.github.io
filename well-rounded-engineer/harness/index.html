@@ -145,10 +145,10 @@
 
   <article class="card"><h3>Pipeline as code (shape)</h3>
 <div class="snip"><pre><code>pipeline:
-  name: legal-api
-  identifier: legal_api
+  name: shop-api
+  identifier: shop_api
   orgIdentifier: default
-  projectIdentifier: legal
+  projectIdentifier: shop
   stages:
     - stage:
         name: Build
@@ -285,7 +285,7 @@
                 connectorRef: gcp_bld
                 host: asia-south1-docker.pkg.dev
                 projectID: my-proj
-                imageName: apps/legal-api
+                imageName: apps/shop-api
                 tags: [&lt;+codebase.shortCommitSha&gt;]</code></pre></div>
     <p class="note">Field names follow Harness's YAML at the time of writing; generate the stage in the editor and compare before committing.</p>
   </article>

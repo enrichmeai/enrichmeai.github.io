@@ -93,7 +93,7 @@ newrows={
  "copilot":("GitHub Copilot","Use completions and chat; follow repo instructions.","Instructions, coding agent, policies, consistency with other agents."),
  "agentsgcp":("Agents on GCP","Run one agent task as a Cloud Run job with its own service account.","Workspaces, triggers, approvals and guard rails for agents in your own project."),
  "agentharness":("Agent Harness","Explain the parts of a harness; configure a ready-made one.","Building bounded, gated, evaluated harnesses."),
- "web3":("Web 3.0","Tell Web3 from the Semantic Web; know when a blockchain is not needed.","Smart contracts, linked data, knowledge graphs, legal data standards."),
+ "web3":("Web 3.0","Tell Web3 from the Semantic Web; know when a blockchain is not needed.","Smart contracts, linked data, knowledge graphs, product data standards."),
  "solid":("Solid","Explain Pods, WebIDs and app–data separation.","Solid apps, access control, consent-based data sharing."),
  "helm":("Helm Charts","Install, upgrade and roll back a release; read a chart's values.","Chart design, library charts, hooks, testing, GitOps delivery."),
  "operators":("Operators","Explain CRDs, controllers and reconcile; use well-known operators.","Building idempotent controllers, CRD versioning, operator testing."),

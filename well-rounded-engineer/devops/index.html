@@ -115,7 +115,7 @@
   <article class="card"><h3>Git you will use daily</h3>
 <div class="snip"><pre><code>git switch -c feat/123-short-name origin/main
 git add -p                         # stage hunk by hunk
-git commit -m "fix: reject unparseable SC dates"
+git commit -m "fix: reject unparseable order dates"
 git fetch origin &amp;&amp; git rebase origin/main
 git push -u origin feat/123-short-name
 git push --force-with-lease        # after a rebase; never plain --force
@@ -204,7 +204,7 @@ jobs:
 <div class="snip"><pre><code># Kubernetes: a Deployment per colour,
 # labelled version: blue / version: green.
 # The Service's selector picks the live one.
-kubectl patch service legal-api \
+kubectl patch service shop-api \
   -p '{"spec":{"selector":{"version":"green"}}}'
 # Roll back: patch it back to "blue".
 
@@ -229,16 +229,16 @@ gcloud run services update-traffic api \
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: legal-api
+  name: shop-api
 spec:
   parentRefs:
     - name: public-gw
   rules:
     - backendRefs:
-        - name: legal-api-stable
+        - name: shop-api-stable
           port: 8080
           weight: 95
-        - name: legal-api-canary
+        - name: shop-api-canary
           port: 8080
           weight: 5
 

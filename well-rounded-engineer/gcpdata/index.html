@@ -167,10 +167,10 @@
 
   <article class="card"><h3>Handy commands</h3>
 <div class="snip"><pre><code># Pub/Sub straight into BigQuery
-gcloud pubsub topics create judgment-events
-gcloud pubsub subscriptions create judgment-to-bq \
-  --topic=judgment-events \
-  --bigquery-table=my-proj:dp_odp.judgment_events \
+gcloud pubsub topics create order-events
+gcloud pubsub subscriptions create order-to-bq \
+  --topic=order-events \
+  --bigquery-table=my-proj:raw.order_events \
   --use-table-schema
 
 # Storage Transfer: one-off copy between buckets

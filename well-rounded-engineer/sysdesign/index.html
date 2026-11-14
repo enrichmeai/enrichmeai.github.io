@@ -138,10 +138,10 @@
       <tr><td>One Postgres instance</td><td>thousands of simple queries/s; much less for heavy ones</td></tr>
       <tr><td>One app instance</td><td>hundreds to a few thousand requests/s, workload-dependent</td></tr>
       </tbody></table></div>
-<div class="snip"><pre><code>Example: search API for 50k lawyers
+<div class="snip"><pre><code>Example: order search for 50k shop staff
   50k users × 20 searches/day = 1 M/day ≈ 12/s avg, ~60/s peak
-  20M judgments × 2 KB metadata ≈ 40 GB  (fits one Postgres with indexes)
-  full text: 20M × ~7 KB avg ≈ 140 GB    (store separately; index for search)
+  20M orders × 2 KB metadata ≈ 40 GB  (fits one Postgres with indexes)
+  line items and notes: 20M × ~7 KB avg ≈ 140 GB   (store separately; index for search)
 → one primary + read replica + cache is plenty; no sharding needed</code></pre></div>
   </article>
 
@@ -268,14 +268,14 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>Worked example: legal search over 20 M judgments</h3>
+  <article class="card wide"><h3>Worked example: search over 20 M orders</h3>
     <ul>
-      <li><b>Requirements:</b> keyword and filter search (court, date, judge), open a judgment, cite-check a reference. Results within 500 ms at p95. Data refreshed daily. Court-ordered suppressions must apply everywhere immediately.</li>
-      <li><b>Estimates:</b> ~60 searches/s at peak; 20 M records, ~40 GB metadata, ~140 GB text.</li>
-      <li><b>Data flow:</b> open-data mirrors → landing bucket → warehouse layers (raw → foundation → consumable) → serving Postgres. The warehouse is the record; Postgres is a read-optimised copy. See <a href="/well-rounded-engineer/data/">Data Engineering</a>.</li>
-      <li><b>Serving:</b> stateless API on Cloud Run; Postgres with full-text (GIN) and B-tree indexes on filter columns; read replica for search; cache for hot queries and judgment pages.</li>
-      <li><b>Stable identity:</b> IDs never renumber, because URLs, citations and suppression orders refer to them. Loads upsert on a stable key.</li>
-      <li><b>Suppressions:</b> checked on every read path (search, page, API, exports) from the application database, not baked into the copy, so a new order takes effect without a reload.</li>
+      <li><b>Requirements:</b> keyword and filter search (store, date, product), open an order, look up its refunds. Results within 500 ms at p95. Data refreshed daily. A customer's erasure request must apply everywhere immediately.</li>
+      <li><b>Estimates:</b> ~60 searches/s at peak; 20 M records, ~40 GB metadata, ~140 GB line items and notes.</li>
+      <li><b>Data flow:</b> order-system exports → landing bucket → warehouse layers (raw → foundation → consumable) → serving Postgres. The warehouse is the record; Postgres is a read-optimised copy. See <a href="/well-rounded-engineer/data/">Data Engineering</a>.</li>
+      <li><b>Serving:</b> stateless API on Cloud Run; Postgres with full-text (GIN) and B-tree indexes on filter columns; read replica for search; cache for hot queries and order pages.</li>
+      <li><b>Stable identity:</b> IDs never renumber, because URLs, invoices and refunds refer to them. Loads upsert on a stable key.</li>
+      <li><b>Erasure requests:</b> checked on every read path (search, page, API, exports) from the application database, not baked into the copy, so a new request takes effect without a reload.</li>
       <li><b>Freshness and honesty:</b> each result carries its source and date; when a source is stale or unreachable, the API says so rather than returning a confident empty result.</li>
       <li><b>Scaling later:</b> move search to a dedicated index (or add semantic search with embeddings) when relevance or load outgrows Postgres; keep Postgres for lookups.</li>
     </ul>

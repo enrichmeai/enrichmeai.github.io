@@ -651,7 +651,7 @@ D["agentharness"] = dict(
 D["web3"] = dict(
  F=["Tell Web3 (blockchain) from the Semantic Web","Explain blockchains, wallets, smart contracts and tokens","Ask whether a problem really needs a blockchain"],
  P=["Write and test a simple smart contract on a testnet","Publish structured data with JSON-LD and schema.org","Query linked data with SPARQL"],
- S=["Assess security, cost, privacy and regulation of a Web3 design","Design knowledge graphs and ontologies for a domain","Integrate legal-document standards (Akoma Ntoso, ELI)"],
+ S=["Assess security, cost, privacy and regulation of a Web3 design","Design knowledge graphs and ontologies for a domain","Model product data with shared vocabularies (schema.org Product, GTIN codes)"],
  E=["Set strategy on decentralised and linked-data technologies","Lead audits and governance for on-chain systems","Shape open data standards in a sector"],
  topics=["Ethereum and proof of stake","Smart contract security","Layer 2 rollups","RDF, OWL and SHACL","Knowledge graphs for AI grounding"],
  links=[("ethereum.org developers","https://ethereum.org/en/developers/","Concepts and tutorials"),
@@ -660,7 +660,7 @@ D["web3"] = dict(
         ("JSON-LD","https://json-ld.org/","Linked data in JSON"),
         ("schema.org","https://schema.org/","Shared vocabulary for structured data"),
         ("SPARQL 1.1 Query Language","https://www.w3.org/TR/sparql11-query/","The specification"),
-        ("OASIS LegalDocML (Akoma Ntoso)","https://www.oasis-open.org/committees/legaldocml/","Standard for legal documents")])
+        ("schema.org vocabulary source","https://github.com/schemaorg/schemaorg","The Product, Offer and other type definitions")])
 
 D["solid"] = dict(
  F=["Explain Pods, WebIDs and why apps and data are separated","Read a public resource from a Pod","Compare Solid with Web3 and platforms"],

@@ -117,7 +117,7 @@
       <thead><tr><th>Step</th><th>In science</th><th>In engineering</th></tr></thead>
       <tbody>
       <tr><td>Observe</td><td>Notice something unexplained</td><td>p95 latency doubled after Tuesday's deploy</td></tr>
-      <tr><td>Hypothesise</td><td>A testable explanation</td><td>The new query skips the index on <code>court_code</code></td></tr>
+      <tr><td>Hypothesise</td><td>A testable explanation</td><td>The new query skips the index on <code>store_id</code></td></tr>
       <tr><td>Predict</td><td>What must be true if the hypothesis holds</td><td><code>EXPLAIN</code> will show a sequential scan; reverting the query will restore latency</td></tr>
       <tr><td>Test</td><td>An experiment that could prove it wrong</td><td>Run <code>EXPLAIN ANALYZE</code>; try the fix on a copy with production-sized data</td></tr>
       <tr><td>Conclude</td><td>Accept, reject or refine</td><td>Sequential scan confirmed; index added; p95 back to normal, measured</td></tr>
@@ -130,7 +130,7 @@
     <p>Science is the best method we have for questions about what is true of the world and how it works: questions an observation or an experiment could answer. Keep it for those, and keep a balance. Trying to find every answer in science is the same mistake as trying to find every answer in a religion, or in any single tradition: one tool treated as the whole toolbox.</p>
     <ul>
       <li><b>What is, and how it works.</b> Does this index make the query faster? Does this drug lower blood pressure? Observation, measurement and experiment answer these: this is science's home ground.</li>
-      <li><b>What we ought to do.</b> Should we collect this data at all? Is this model fair to the people it scores? Ethics, law and judgment answer these, <b>informed</b> by evidence about what the consequences will be.</li>
+      <li><b>What we ought to do.</b> Should we collect this data at all? Is this model fair to the people it scores? Ethics, law and judgement answer these, <b>informed</b> by evidence about what the consequences will be.</li>
       <li><b>What matters, and why.</b> What makes work worth doing? What gives a life meaning? People find these answers in philosophy, faith, tradition, art, relationships and their own experience.</li>
     </ul>
     <ul>

@@ -133,89 +133,89 @@
 <div class="snip"><pre><code>@SpringBootApplication
 public class App { public static void main(String[] a) { SpringApplication.run(App.class, a); } }
 
-record JudgmentDto(String cnr, LocalDate decisionDate) {}
+record OrderDto(String orderRef, LocalDate orderDate) {}
 record SearchRequest(@NotBlank String q, @Min(1) @Max(100) int size) {}
 
 @RestController
-@RequestMapping("/api/judgments")
-class JudgmentController {
-  private final JudgmentService svc;
-  JudgmentController(JudgmentService svc) { this.svc = svc; }   // constructor injection
+@RequestMapping("/api/orders")
+class OrderController {
+  private final OrderService svc;
+  OrderController(OrderService svc) { this.svc = svc; }   // constructor injection
 
   @GetMapping("/{id}")
-  JudgmentDto get(@PathVariable UUID id) { return svc.get(id); }
+  OrderDto get(@PathVariable UUID id) { return svc.get(id); }
 
   @PostMapping("/search")
-  List&lt;JudgmentDto&gt; search(@Valid @RequestBody SearchRequest req) {
+  List&lt;OrderDto&gt; search(@Valid @RequestBody SearchRequest req) {
     return svc.search(req);
   }
 
   @GetMapping
-  Page&lt;JudgmentDto&gt; list(@RequestParam(defaultValue = "0") int page) { ... }
+  Page&lt;OrderDto&gt; list(@RequestParam(defaultValue = "0") int page) { ... }
 }</code></pre></div>
   </article>
 
   <article class="card"><h3>Configuration</h3>
 <div class="snip"><pre><code># application.yml
 spring:
-  application.name: corpus-api
+  application.name: shop-api
   profiles.active: ${APP_PROFILE:local}
   threads.virtual.enabled: true          # 3.2+, Java 21
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/corpus
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/shop
     username: ${DB_USER}
     password: ${DB_PASSWORD}
-corpus:
-  dataset: fdp
+shop:
+  dataset: analytics
   max-results: 50
-  courts: ["2_5", "14_25"]   # quote them: unquoted, YAML reads 2_5 as the number 25
+  stores: ["1_05", "4_12"]   # quote them: unquoted, YAML reads 1_05 as the number 105
 ---
 spring.config.activate.on-profile: prod
 logging.structured.format.console: ecs  # 3.4+</code></pre></div>
-<div class="snip"><pre><code>@ConfigurationProperties("corpus")
+<div class="snip"><pre><code>@ConfigurationProperties("shop")
 @Validated
-record CorpusProps(@NotBlank String dataset,
+record ShopProps(@NotBlank String dataset,
                    @DefaultValue("20") int maxResults,
-                   List&lt;String&gt; courts) {}
+                   List&lt;String&gt; stores) {}
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
 class App {}</code></pre></div>
-    <p class="note">Precedence, highest first: command-line args, env vars (<code>CORPUS_MAX_RESULTS</code>), profile files, <code>application.yml</code>.</p>
+    <p class="note">Precedence, highest first: command-line args, env vars (<code>SHOP_MAX_RESULTS</code>), profile files, <code>application.yml</code>.</p>
   </article>
 
   <article class="card"><h3>Data access</h3>
 <div class="snip"><pre><code>// JdbcClient (3.2): plain SQL, records out
 @Repository
-class JudgmentDao {
+class OrderDao {
   private final JdbcClient jdbc;
-  JudgmentDao(JdbcClient jdbc) { this.jdbc = jdbc; }
+  OrderDao(JdbcClient jdbc) { this.jdbc = jdbc; }
 
-  Optional&lt;JudgmentDto&gt; find(String cnr) {
-    return jdbc.sql("SELECT cnr, decision_date FROM court_judgments WHERE cnr = :cnr")
-               .param("cnr", cnr)
-               .query(JudgmentDto.class)
+  Optional&lt;OrderDto&gt; find(String orderRef) {
+    return jdbc.sql("SELECT order_ref, order_date FROM orders WHERE order_ref = :order_ref")
+               .param("order_ref", orderRef)
+               .query(OrderDto.class)
                .optional();
   }
-  int upsert(JudgmentDto j) {
+  int upsert(OrderDto o) {
     return jdbc.sql("""
-        INSERT INTO court_judgments (cnr, decision_date) VALUES (:cnr, :d)
-        ON CONFLICT (cnr) DO UPDATE SET decision_date = EXCLUDED.decision_date""")
-      .param("cnr", j.cnr()).param("d", j.decisionDate()).update();
+        INSERT INTO orders (order_ref, order_date) VALUES (:order_ref, :d)
+        ON CONFLICT (order_ref) DO UPDATE SET order_date = EXCLUDED.order_date""")
+      .param("order_ref", o.orderRef()).param("d", o.orderDate()).update();
   }
 }
 
 // Spring Data JPA
-interface JudgmentRepo extends JpaRepository&lt;Judgment, Long&gt; {
-  List&lt;Judgment&gt; findByCourtCodeAndDecisionDateAfter(String court, LocalDate d);
-  @Query("select j from Judgment j where j.cnr in :cnrs")
-  List&lt;Judgment&gt; byCnrs(Collection&lt;String&gt; cnrs);
+interface OrderRepo extends JpaRepository&lt;Order, Long&gt; {
+  List&lt;Order&gt; findByStoreIdAndOrderDateAfter(String store, LocalDate d);
+  @Query("select o from Order o where o.orderRef in :refs")
+  List&lt;Order&gt; byOrderRefs(Collection&lt;String&gt; refs);
 }
 
 @Transactional            // on a public method of a Spring bean, called from outside it
 public void reload() { ... }
 @Transactional(readOnly = true)
-public List&lt;JudgmentDto&gt; list() { ... }</code></pre></div>
+public List&lt;OrderDto&gt; list() { ... }</code></pre></div>
     <p class="note"><code>@Transactional</code> works through a proxy: a call from another method in the same class skips it.</p>
   </article>
 
@@ -248,10 +248,10 @@ interface MirrorApi {
 <div class="snip"><pre><code>@RestController
 class SearchController {
   @GetMapping("/api/search")
-  Flux&lt;JudgmentDto&gt; search(@RequestParam String q) { return svc.search(q); }
+  Flux&lt;OrderDto&gt; search(@RequestParam String q) { return svc.search(q); }
 
-  @GetMapping("/api/judgments/{id}")
-  Mono&lt;ResponseEntity&lt;JudgmentDto&gt;&gt; get(@PathVariable UUID id) {
+  @GetMapping("/api/orders/{id}")
+  Mono&lt;ResponseEntity&lt;OrderDto&gt;&gt; get(@PathVariable UUID id) {
     return svc.get(id).map(ResponseEntity::ok)
               .defaultIfEmpty(ResponseEntity.notFound().build());
   }
@@ -264,7 +264,7 @@ Mono&lt;Listing&gt; m = wc.get().uri("/objects").retrieve()
     .retryWhen(Retry.backoff(3, Duration.ofMillis(200)));
 
 // combine
-Mono.zip(countHc(), countSc()).map(t -&gt; t.getT1() + t.getT2());
+Mono.zip(countWebOrders(), countStoreOrders()).map(t -&gt; t.getT1() + t.getT2());
 Flux.fromIterable(uris).flatMap(this::fetch, 8);     // concurrency 8</code></pre></div>
     <p class="note">Never call <code>.block()</code> on a request thread. Wrap blocking calls with <code>Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())</code>.</p>
   </article>
@@ -275,14 +275,14 @@ class ApiErrors {
   @ExceptionHandler(NotFoundException.class)
   ProblemDetail notFound(NotFoundException e) {
     ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
-    pd.setTitle("Judgment not found");
-    pd.setProperty("cnr", e.cnr());
+    pd.setTitle("Order not found");
+    pd.setProperty("orderRef", e.orderRef());
     return pd;
   }
 }
 // application.yml: spring.mvc.problemdetails.enabled: true
 //                  (spring.webflux.problemdetails.enabled for WebFlux)
-// Response: application/problem+json {type,title,status,detail,instance,cnr}</code></pre></div>
+// Response: application/problem+json {type,title,status,detail,instance,orderRef}</code></pre></div>
   </article>
 
   <article class="card"><h3>Batch job / Cloud Run job</h3>
@@ -311,7 +311,7 @@ void tick() { ... }</code></pre></div>
 <div class="snip"><pre><code>// com.google.cloud:spring-cloud-gcp-starter-bigquery / -storage
 // (import spring-cloud-gcp-dependencies BOM for versions)
 spring.cloud.gcp.project-id: my-proj
-spring.cloud.gcp.bigquery.dataset-name: fdp
+spring.cloud.gcp.bigquery.dataset-name: analytics
 
 @Service
 class Counts {
@@ -319,7 +319,7 @@ class Counts {
   Counts(BigQuery bq) { this.bq = bq; }
   long total() throws InterruptedException {
     return bq.query(QueryJobConfiguration.of(
-        "SELECT COUNT(*) n FROM `my-proj.fdp.judgment`"))
+        "SELECT COUNT(*) n FROM `my-proj.analytics.orders`"))
       .iterateAll().iterator().next().get("n").getLongValue();
   }
 }
@@ -331,16 +331,16 @@ String json = manifest.getContentAsString(StandardCharsets.UTF_8);</code></pre><
   </article>
 
   <article class="card"><h3>Testing</h3>
-<div class="snip"><pre><code>@WebMvcTest(JudgmentController.class)          // web slice only
-class JudgmentControllerTest {
+<div class="snip"><pre><code>@WebMvcTest(OrderController.class)          // web slice only
+class OrderControllerTest {
   @Autowired MockMvc mvc;
-  @MockitoBean JudgmentService svc;            // 3.4+ (was @MockBean)
+  @MockitoBean OrderService svc;            // 3.4+ (was @MockBean)
 
   @Test void returns404() throws Exception {
     when(svc.get(any())).thenThrow(new NotFoundException("x"));
-    mvc.perform(get("/api/judgments/{id}", UUID.randomUUID()))
+    mvc.perform(get("/api/orders/{id}", UUID.randomUUID()))
        .andExpect(status().isNotFound())
-       .andExpect(jsonPath("$.title").value("Judgment not found"));
+       .andExpect(jsonPath("$.title").value("Order not found"));
   }
 }
 
@@ -350,7 +350,7 @@ class DaoIT {
   @Container @ServiceConnection               // 3.1+: wires the datasource
   static PostgreSQLContainer&lt;?&gt; pg = new PostgreSQLContainer&lt;&gt;("postgres:16");  // Boot 3.x (Testcontainers 1.x)
   // Boot 4 uses Testcontainers 2: org.testcontainers.postgresql.PostgreSQLContainer, no &lt;?&gt;
-  @Autowired JudgmentDao dao;
+  @Autowired OrderDao dao;
   @Test void upserts() { assertThat(dao.upsert(sample())).isEqualTo(1); }
 }
 
@@ -368,7 +368,7 @@ class DaoIT {
 @Component
 class LoadMetrics {
   private final Counter loaded;
-  LoadMetrics(MeterRegistry r) { loaded = r.counter("corpus.rows.loaded"); }
+  LoadMetrics(MeterRegistry r) { loaded = r.counter("orders.rows.loaded"); }
   void add(long n) { loaded.increment(n); }
 }
 

@@ -197,7 +197,7 @@ pip install 'culvert[gcp]'
     <p><b>Repo:</b> the official <code>apache/kafka</code> Docker image, plus a producer and consumer you write.</p>
 <div class="snip"><pre><code>docker run -d --name kafka -p 9092:9092 apache/kafka:latest   # pin a version once it works
 docker exec -it kafka /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server localhost:9092 --create --topic judgment.landed --partitions 3</code></pre></div>
+  --bootstrap-server localhost:9092 --create --topic order.placed --partitions 3</code></pre></div>
     <p><b>Then:</b> write a consumer that is idempotent, kill it mid-batch, restart it and prove no event was applied twice; add a dead-letter topic for a poison message.</p>
     <p class="note"><b>Done when:</b> you can show consumer lag rising and recovering, and duplicates handled. Tab: <a href="/well-rounded-engineer/kafka/">Kafka</a>.</p>
   </article>

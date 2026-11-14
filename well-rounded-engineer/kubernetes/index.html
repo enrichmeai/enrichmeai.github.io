@@ -135,7 +135,7 @@
   <article class="card"><h3>kubectl daily</h3>
 <div class="snip"><pre><code>kubectl config get-contexts
 kubectl config use-context gke_my-proj_asia-south1_main
-kubectl config set-context --current --namespace=corpus
+kubectl config set-context --current --namespace=shop
 
 kubectl get pods -o wide
 kubectl get deploy,svc,ing
@@ -203,7 +203,7 @@ spec:
   <article class="card"><h3>Job &amp; CronJob</h3>
 <div class="snip"><pre><code>apiVersion: batch/v1
 kind: CronJob
-metadata: { name: corpus-load }
+metadata: { name: orders-load }
 spec:
   schedule: "15 6 * * *"
   timeZone: "Etc/UTC"
@@ -225,7 +225,7 @@ spec:
               image: asia-south1-docker.pkg.dev/my-proj/apps/loader:3f2a9c1
               args: ["--year=2024"]
               resources: { requests: { cpu: "1", memory: 2Gi }, limits: { memory: 2Gi } }</code></pre></div>
-<div class="snip"><pre><code>kubectl create job --from=cronjob/corpus-load manual-20250131   # run now
+<div class="snip"><pre><code>kubectl create job --from=cronjob/orders-load manual-20250131   # run now
 kubectl get jobs; kubectl logs job/manual-20250131</code></pre></div>
   </article>
 
@@ -284,7 +284,7 @@ kubectl run tmp --rm -it --image=nicolaka/netshoot -- bash          # network to
   </article>
 
   <article class="card"><h3>Config, secrets, scaling, safety</h3>
-<div class="snip"><pre><code>kubectl create configmap api-config --from-literal=DATASET=fdp --from-file=app.yml
+<div class="snip"><pre><code>kubectl create configmap api-config --from-literal=DATASET=analytics --from-file=app.yml
 kubectl create secret generic db --from-literal=password='...'   # base64, NOT encrypted
 kubectl get secret db -o jsonpath='{.data.password}' | base64 -d
 
@@ -315,19 +315,19 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: loader
-  namespace: corpus
+  namespace: shop
   annotations:
     iam.gke.io/gcp-service-account: dp-loader@my-proj.iam.gserviceaccount.com
 
 gcloud iam service-accounts add-iam-policy-binding \
   dp-loader@my-proj.iam.gserviceaccount.com \
   --role=roles/iam.workloadIdentityUser \
-  --member="serviceAccount:my-proj.svc.id.goog[corpus/loader]"
+  --member="serviceAccount:my-proj.svc.id.goog[shop/loader]"
 
 # RBAC: read-only on pods in one namespace
-kubectl create role pod-reader --verb=get,list,watch --resource=pods -n corpus
-kubectl create rolebinding jo-reads --role=pod-reader --user=jo@example.com -n corpus
-kubectl auth can-i delete pods -n corpus --as=jo@example.com</code></pre></div>
+kubectl create role pod-reader --verb=get,list,watch --resource=pods -n shop
+kubectl create rolebinding jo-reads --role=pod-reader --user=jo@example.com -n shop
+kubectl auth can-i delete pods -n shop --as=jo@example.com</code></pre></div>
     <p class="note">GKE can also grant IAM roles straight to the Kubernetes principal (<code>principal://iam.googleapis.com/projects/&lt;number&gt;/locations/global/workloadIdentityPools/&lt;proj&gt;.svc.id.goog/subject/ns/&lt;ns&gt;/sa/&lt;ksa&gt;</code>) without a Google service account.</p>
   </article>
 

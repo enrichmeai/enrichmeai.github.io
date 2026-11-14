@@ -154,7 +154,7 @@ import { getSolidDataset, getThing, getStringNoLocale }
 await handleIncomingRedirect();
 if (!getDefaultSession().info.isLoggedIn) {
   await login({ oidcIssuer: "https://login.example-provider.com",
-                redirectUrl: window.location.href, clientName: "Case Notes" });
+                redirectUrl: window.location.href, clientName: "Order Notes" });
 }
 
 const profileUrl = "https://asha.pod.example/profile/card";

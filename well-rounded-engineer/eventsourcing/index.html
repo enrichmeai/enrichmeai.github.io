@@ -271,8 +271,8 @@ void cannotUpgradeCancelled() {
   <article class="card"><h3>The lightweight version: an append-only ledger</h3>
     <p>Many systems get most of the benefit without full event sourcing: an append-only table with one row per state change, and current state from a "latest event" view. Never UPDATE, never DELETE.</p>
 <div class="snip"><pre><code>-- BigQuery: current state of each pipeline stage from its event log
-CREATE OR REPLACE VIEW `p.dp_control.v_pipeline_run_latest` AS
-SELECT * FROM `p.dp_control.pipeline_run_events`
+CREATE OR REPLACE VIEW `p.ops.v_job_run_latest` AS
+SELECT * FROM `p.ops.job_run_events`
 WHERE TRUE
 QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) = 1;</code></pre></div>
     <p class="note">You get history, auditability and "what happened on date X" with ordinary SQL. Add aggregates, projections and replay only if the domain needs them.</p>

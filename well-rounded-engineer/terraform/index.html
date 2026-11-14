@@ -186,11 +186,11 @@ stages = { land = { enabled = true, args = ["--max-objects=50"] } }</code></pre>
   <article class="card"><h3>count, for_each, dynamic</h3>
 <div class="snip"><pre><code># for_each over a set or map: stable addresses by key (prefer over count)
 resource "google_bigquery_dataset" "layer" {
-  for_each   = toset(["odp", "fdp", "cdp"])
-  dataset_id = "dp_${each.key}"
+  for_each   = toset(["raw", "analytics", "mart"])
+  dataset_id = each.key
   location   = var.region
 }
-# reference: google_bigquery_dataset.layer["fdp"].dataset_id
+# reference: google_bigquery_dataset.layer["analytics"].dataset_id
 
 # count for on/off
 resource "google_cloud_scheduler_job" "tick" {
@@ -214,35 +214,35 @@ for_each = { for t in var.tables : t.name =&gt; t }</code></pre></div>
   </article>
 
   <article class="card"><h3>BigQuery dataset &amp; table</h3>
-<div class="snip"><pre><code>resource "google_bigquery_dataset" "fdp" {
-  dataset_id                 = "dp_fdp"
+<div class="snip"><pre><code>resource "google_bigquery_dataset" "analytics" {
+  dataset_id                 = "analytics"
   location                   = "asia-south1"
   delete_contents_on_destroy = false
-  labels = { layer = "fdp" }
+  labels = { layer = "analytics" }
 }
 
-resource "google_bigquery_table" "judgment" {
-  dataset_id          = google_bigquery_dataset.fdp.dataset_id
-  table_id            = "fdp_judgment"
+resource "google_bigquery_table" "orders" {
+  dataset_id          = google_bigquery_dataset.analytics.dataset_id
+  table_id            = "orders"
   deletion_protection = true
   require_partition_filter = true
 
   time_partitioning {
     type  = "MONTH"
-    field = "decision_date"
+    field = "order_date"
   }
-  clustering = ["court_code", "cnr"]
+  clustering = ["store_id", "order_ref"]
 
   schema = jsonencode([
-    { name = "judgment_key",  type = "STRING", mode = "REQUIRED" },
-    { name = "court_code",    type = "STRING" },
-    { name = "cnr",           type = "STRING" },
-    { name = "decision_date", type = "DATE" },
+    { name = "order_id",   type = "STRING", mode = "REQUIRED" },
+    { name = "store_id",   type = "STRING" },
+    { name = "order_ref",  type = "STRING" },
+    { name = "order_date", type = "DATE" },
   ])
 }
 
 resource "google_bigquery_dataset_iam_member" "api_reader" {
-  dataset_id = google_bigquery_dataset.fdp.dataset_id
+  dataset_id = google_bigquery_dataset.analytics.dataset_id
   role       = "roles/bigquery.dataViewer"
   member     = "serviceAccount:${google_service_account.api.email}"
 }</code></pre></div>
@@ -338,7 +338,7 @@ resource "google_project_iam_member" "loader_bq" {
 
 resource "google_service_account" "loader" {
   account_id   = "dp-loader"
-  display_name = "Corpus loader job"
+  display_name = "Orders loader job"
 }
 
 # Workload Identity Federation for GitHub Actions: no JSON keys
@@ -405,7 +405,7 @@ terraform state rm  google_bigquery_table.legacy</code></pre></div>
   </article>
 
   <article class="card"><h3>lifecycle, checks, preconditions</h3>
-<div class="snip"><pre><code>resource "google_sql_database_instance" "corpus" {
+<div class="snip"><pre><code>resource "google_sql_database_instance" "shop" {
   ...
   lifecycle {
     prevent_destroy       = true           # plan fails instead of destroying
@@ -433,7 +433,7 @@ check "landing_bucket_reachable" {
 
   <article class="card"><h3>Functions &amp; expressions</h3>
 <div class="snip"><pre><code>"${var.env}-landing"                  format("dp-%s-%03d", var.env, 7)
-join(",", var.courts)                 split(",", "a,b,c")
+join(",", var.stores)                 split(",", "a,b,c")
 merge(local.base_labels, var.labels)  concat(list_a, list_b)
 lookup(var.tiers, var.env, "small")   try(var.cfg.timeout, "600s")
 coalesce(var.override, "default")     one(resource.x[*].id)

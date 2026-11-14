@@ -113,7 +113,7 @@
   <div class="grid">
 
   <article class="card wide"><h3>Event-driven systems</h3>
-    <p>Services communicate by publishing <b>events</b> (facts about something that happened: <code>JudgmentLanded</code>, <code>OrderPaid</code>) to a broker. Other services subscribe and react. The producer does not know or wait for its consumers.</p>
+    <p>Services communicate by publishing <b>events</b> (facts about something that happened: <code>OrderPlaced</code>, <code>OrderPaid</code>) to a broker. Other services subscribe and react. The producer does not know or wait for its consumers.</p>
     <div class="tbl"><table>
       <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
       <tbody>
@@ -320,9 +320,9 @@ COMMIT;</code></pre></div>
   </article>
 
   <article class="card"><h3>Architecture decision record</h3>
-<div class="snip"><pre><code># ADR 0042: Serve corpus search from Postgres, not a search engine
+<div class="snip"><pre><code># ADR 0042: Serve order search from Postgres, not a search engine
 Status:   Accepted (2026-11-12)
-Context:  20 M judgments, ~60 searches/s peak, p95 &lt; 500 ms;
+Context:  20 M orders, ~60 searches/s peak, p95 &lt; 500 ms;
           team already runs Postgres; no search-engine skills.
 Decision: Postgres full-text (GIN) + B-tree filters on a read replica;
           revisit if p95 &gt; 500 ms or relevance complaints exceed X/month.

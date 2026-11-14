@@ -150,7 +150,7 @@
       <li><b>Batch:</b> process a bounded chunk (yesterday, one file, one partition) on a schedule. Simple, cheap, easy to rerun. Latency of minutes to a day.</li>
       <li><b>Streaming:</b> process events continuously as they arrive. Latency of seconds, but harder: ordering, late events, state, exactly-once.</li>
       <li><b>Micro-batch:</b> small batches every few minutes. Often the practical middle.</li>
-      <li><b>Choose by the consumer's need,</b> not by fashion. Most reporting and legal research is fine with daily or hourly batch.</li>
+      <li><b>Choose by the consumer's need,</b> not by fashion. Most reporting is fine with daily or hourly batch.</li>
     </ul>
   </article>
 
@@ -190,10 +190,10 @@
 
   <article class="card"><h3>Modelling basics</h3>
     <ul>
-      <li><b>Grain:</b> what one row means ("one judgment", "one order line per day"). State it for every table; most bugs are grain confusion.</li>
+      <li><b>Grain:</b> what one row means ("one order", "one order line per day"). State it for every table; most bugs are grain confusion.</li>
       <li><b>Keys:</b> a natural key from the source and, where needed, a surrogate key you generate. Never reuse or renumber a key that others store.</li>
       <li><b>Normalised</b> (many narrow tables, no repetition) suits OLTP. <b>Dimensional</b> (facts plus dimensions, a star schema) suits analytics. <b>One big table</b> is fine on BigQuery for a single use.</li>
-      <li><b>Facts</b> are events with measures (a decision, a payment). <b>Dimensions</b> describe them (court, judge, date).</li>
+      <li><b>Facts</b> are events with measures (an order, a payment). <b>Dimensions</b> describe them (store, product, date).</li>
       <li><b>Slowly changing dimensions:</b> type 1 overwrites; type 2 keeps history with valid-from/valid-to rows (dbt snapshots).</li>
     </ul>
   </article>
@@ -217,7 +217,7 @@
       <tr><td>Completeness</td><td>Row count matches the source; no unexpected NULLs</td></tr>
       <tr><td>Validity</td><td>Dates parse; codes are in the allowed set</td></tr>
       <tr><td>Uniqueness</td><td>One row per key at the stated grain</td></tr>
-      <tr><td>Consistency</td><td>Every court code exists in the court table</td></tr>
+      <tr><td>Consistency</td><td>Every store code exists in the store table</td></tr>
       <tr><td>Freshness</td><td>Newest record is within the expected age</td></tr>
       <tr><td>Accuracy</td><td>Values match the source on a sample</td></tr>
       </tbody></table></div>
@@ -240,7 +240,7 @@
       <li><b>Ownership:</b> every table has a named owner and a description.</li>
       <li><b>Lineage:</b> you can say which sources feed a column and which products a change will affect.</li>
       <li><b>Access:</b> least privilege per dataset; serving systems get read-only access.</li>
-      <li><b>Personal and sensitive data:</b> know where it is, mask or restrict it, honour deletion and suppression orders.</li>
+      <li><b>Personal and sensitive data:</b> know where it is, mask or restrict it, honour deletion requests and legal holds.</li>
       <li><b>Licences:</b> respect source terms; carry attribution (for example CC-BY) into every published output.</li>
       <li><b>Retention and cost:</b> decide how long each layer is kept and who pays for scans.</li>
       <li><b>Contracts:</b> agree the schema and meaning of anything another team reads, and change it on purpose.</li>
@@ -248,15 +248,15 @@
   </article>
 
   <article class="card wide"><h3>A worked example, end to end</h3>
-    <p>Indian court judgments published as open data, served to lawyers through a search API.</p>
+    <p>An online shop's orders, exported daily by its stores and served to the shop's staff through a reporting API.</p>
     <ol>
-      <li><b>Source:</b> two public mirrors publish judgment metadata as Parquet and JSON archives, partitioned by year, under CC-BY-4.0. Partitions are sometimes republished in place.</li>
-      <li><b>Ingest (LAND):</b> a Cloud Run job compares the mirror's listing with the GCS landing bucket and copies only new or changed objects. It records examined, copied, already-current and failed counts.</li>
+      <li><b>Source:</b> two order systems (the website and the store tills) export orders as Parquet and JSON files to object storage, partitioned by year. Files are sometimes re-exported in place.</li>
+      <li><b>Ingest (LAND):</b> a Cloud Run job compares the source bucket's listing with the GCS landing bucket and copies only new or changed objects. It records examined, copied, already-current and failed counts.</li>
       <li><b>Raw:</b> the bucket keeps the originals byte for byte, so anything later can be replayed.</li>
-      <li><b>Load (ODP):</b> each landed file becomes rows in BigQuery tables, with run ID and load time, exactly as published.</li>
-      <li><b>Transform (FDP):</b> dbt cleans and conforms: parses two date formats (and rejects what does not parse), computes a stable judgment key, deduplicates republished rows, joins court reference data, and runs tests.</li>
-      <li><b>Consumable (CDP):</b> a dbt model shapes exactly what the search API needs, with a contract on its columns.</li>
-      <li><b>Serve:</b> a loader upserts that table into Postgres on the stable key, without renumbering existing IDs that links and legal records depend on. The API reads Postgres read-only.</li>
+      <li><b>Load (raw):</b> each landed file becomes rows in BigQuery tables, with run ID and load time, exactly as exported.</li>
+      <li><b>Transform (analytics):</b> dbt cleans and conforms: parses two date formats (and rejects what does not parse), computes a stable order key, deduplicates re-exported rows, joins store reference data, and runs tests.</li>
+      <li><b>Consumable (mart):</b> a dbt model shapes exactly what the reporting API needs, with a contract on its columns.</li>
+      <li><b>Serve:</b> a loader upserts that table into Postgres on the stable key, without renumbering existing IDs that links, invoices and refunds depend on. The API reads Postgres read-only.</li>
       <li><b>Orchestrate and observe:</b> a scheduler ticks daily; an orchestrator runs each stage when its input is ready and appends every state change to a ledger, so "what happened on 2026-09-19?" has an answer.</li>
     </ol>
     <p class="note">Every tab in this guide appears somewhere in that path. That is why a data engineer needs breadth.</p>

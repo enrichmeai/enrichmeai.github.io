@@ -143,11 +143,11 @@
 Goal:     Reject dates that do not parse, instead of storing NULL.
 Why:      One source sends dd-mm-yyyy; the parser turns those into NULL
           without saying so, and the rows look like "no date".
-Where:    models/intermediate/int_cases_normalised.sql and its unit tests.
+Where:    models/intermediate/int_orders_normalised.sql and its unit tests.
 Rules:    Follow CLAUDE.md. Do not change the other sources. No new dependencies.
 Done when:
   - a unit test with "05-05-1959" and "bad" fails before the fix, passes after
-  - dbt build -s int_cases_normalised+ is green
+  - dbt build -s int_orders_normalised+ is green
   - the reject table counts unparseable rows
 Out of scope: backfilling old rows (separate issue).
 Report:   what changed, the test output, anything you could not verify.</code></pre></div>
@@ -220,8 +220,8 @@ client = anthropic.Anthropic()
 resp = client.messages.create(
     model="claude-opus-5-5",
     max_tokens=16000,
-    system="You summarise Indian court judgments for lawyers. Cite paragraph numbers.",
-    messages=[{"role": "user", "content": judgment_text}],
+    system="You summarise customer reviews for the shop's buyers. Quote the review IDs you rely on.",
+    messages=[{"role": "user", "content": reviews_text}],
 )
 if resp.stop_reason == "refusal":
     handle_refusal(resp)                   # check before reading content
@@ -235,43 +235,43 @@ print(resp.usage.input_tokens, resp.usage.output_tokens)   # log every call's co
   <article class="card"><h3>Structured output, not string parsing</h3>
 <div class="snip"><pre><code>from pydantic import BaseModel
 
-class Citation(BaseModel):
-    case_name: str
-    year: int | None
-    court: str | None
-    paragraph: str | None
+class ProductMention(BaseModel):
+    name: str
+    sku: str | None
+    store: str | None
+    quantity: int | None
 
 class Extraction(BaseModel):
-    citations: list[Citation]
+    products: list[ProductMention]
 
 resp = client.messages.parse(
     model="claude-opus-5-5",
     max_tokens=16000,
-    messages=[{"role": "user", "content": f"Extract every case cited:\n\n{text}"}],
+    messages=[{"role": "user", "content": f"Extract every product mentioned:\n\n{text}"}],
     output_format=Extraction,
 )
 result: Extraction = resp.parsed_output     # validated against the schema</code></pre></div>
-    <p class="note">The schema guarantees shape, not truth. Still check values against your data: does that case exist in the corpus?</p>
+    <p class="note">The schema guarantees shape, not truth. Still check values against your data: does that order exist in your data?</p>
   </article>
 
   <article class="card"><h3>Tools: let the model call your code</h3>
 <div class="snip"><pre><code>from anthropic import beta_tool
 
 @beta_tool
-def search_corpus(query: str, court: str | None = None) -&gt; str:
-    """Search the judgment corpus. Returns up to 10 results as JSON.
+def search_orders(query: str, store: str | None = None) -&gt; str:
+    """Search the shop's orders. Returns up to 10 results as JSON.
 
     Args:
         query: Full-text search terms.
-        court: Optional court code, e.g. "2_5".
+        store: Optional store code, e.g. "1_05".
     """
-    return json.dumps(corpus.search(query, court=court, limit=10))
+    return json.dumps(index.search(query, store=store, limit=10))
 
 runner = client.beta.messages.tool_runner(
     model="claude-opus-5-5",
     max_tokens=16000,
-    tools=[search_corpus],
-    messages=[{"role": "user", "content": "Find recent Himachal judgments on land acquisition."}],
+    tools=[search_orders],
+    messages=[{"role": "user", "content": "Find recent orders for umbrellas in store 1_05."}],
 )
 for message in runner:          # the SDK runs the call → tool → call loop
     print(message)</code></pre></div>

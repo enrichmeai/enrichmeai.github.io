@@ -157,40 +157,40 @@
   </article>
 
   <article class="card wide"><h3>The same task in five libraries</h3>
-    <p>Count judgments per court since 2020 from Parquet files partitioned by year.</p>
+    <p>Count orders per store since 2020 from Parquet files partitioned by year.</p>
 <div class="snip"><pre><code># pandas: reads into memory, eager
 import pandas as pd
-df = pd.read_parquet("data/", columns=["court", "year"],
+df = pd.read_parquet("data/", columns=["store", "year"],
                      filters=[("year", "&gt;=", 2020)])   # pushdown; partition columns arrive as category
-out = (df.groupby("court", observed=True).size()
+out = (df.groupby("store", observed=True).size()
          .sort_values(ascending=False))</code></pre></div>
 <div class="snip"><pre><code># Polars: lazy; filters and column selection pushed into the scan
 import polars as pl
 out = (pl.scan_parquet("data/year=*/*.parquet", hive_partitioning=True)
          .filter(pl.col("year") &gt;= 2020)
-         .group_by("court").agg(pl.len().alias("n"))
+         .group_by("store").agg(pl.len().alias("n"))
          .sort("n", descending=True)
          .collect())</code></pre></div>
 <div class="snip"><pre><code># DuckDB: SQL straight over the files
 import duckdb
 out = duckdb.sql("""
-  SELECT court, count(*) AS n
+  SELECT store, count(*) AS n
   FROM read_parquet('data/year=*/*.parquet', hive_partitioning = true)
   WHERE year &gt;= 2020
-  GROUP BY court ORDER BY n DESC
+  GROUP BY store ORDER BY n DESC
 """).df()</code></pre></div>
 <div class="snip"><pre><code># PySpark: distributed, writes results back to GCS
 from pyspark.sql import SparkSession, functions as F
 spark = SparkSession.builder.getOrCreate()
 (spark.read.parquet("gs://landing/data/")
    .where(F.col("year") &gt;= 2020)
-   .groupBy("court").count()
+   .groupBy("store").count()
    .orderBy(F.desc("count"))
-   .write.mode("overwrite").parquet("gs://out/court_counts/"))</code></pre></div>
+   .write.mode("overwrite").parquet("gs://out/store_counts/"))</code></pre></div>
 <div class="snip"><pre><code># BigQuery DataFrames: pandas-like code, executed inside BigQuery
 import bigframes.pandas as bpd
-df = bpd.read_gbq("my-proj.dp_fdp.fdp_judgment")
-out = df[df["data_year"] &gt;= 2020].groupby("court_code").size()</code></pre></div>
+df = bpd.read_gbq("my-proj.analytics.orders")
+out = df[df["order_year"] &gt;= 2020].groupby("store_id").size()</code></pre></div>
   </article>
 
   <article class="card"><h3>Arrow and Parquet in Python</h3>
@@ -198,7 +198,7 @@ out = df[df["data_year"] &gt;= 2020].groupby("court_code").size()</code></pre></
 import pyarrow.parquet as pq
 
 dataset = ds.dataset("data/", format="parquet", partitioning="hive")
-table = dataset.to_table(columns=["cnr", "court", "decision_date"],
+table = dataset.to_table(columns=["order_ref", "store", "order_date"],
                          filter=ds.field("year") &gt;= 2020)   # pushdown
 
 print(table.schema)          # check types before trusting them

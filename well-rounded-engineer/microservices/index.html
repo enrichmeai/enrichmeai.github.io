@@ -145,7 +145,7 @@
 
   <article class="card"><h3>How to split services</h3>
     <ul>
-      <li><b>By business capability or bounded context</b> (domain-driven design): search, case files, billing, identity. Not by technical layer (a "database service" is an anti-pattern).</li>
+      <li><b>By business capability or bounded context</b> (domain-driven design): search, carts, billing, identity. Not by technical layer (a "database service" is an anti-pattern).</li>
       <li><b>Each service owns its data</b> and is the only one that writes it. Others ask through its API or react to its events.</li>
       <li><b>High cohesion inside, loose coupling between:</b> a typical change should touch one service.</li>
       <li><b>Align with teams</b> (Conway's law): one team owns a service end to end.</li>

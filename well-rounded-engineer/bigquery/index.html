@@ -113,36 +113,36 @@
   <div class="grid">
 
   <article class="card"><h3>Partitioned, clustered table</h3>
-<div class="snip"><pre><code>CREATE TABLE IF NOT EXISTS `proj.fdp.judgment` (
-  judgment_key STRING NOT NULL,
-  cnr          STRING,
-  court_code   STRING,
-  decision_date DATE,
-  parties      ARRAY&lt;STRUCT&lt;role STRING, name STRING&gt;&gt;,
-  _landed_at   TIMESTAMP
+<div class="snip"><pre><code>CREATE TABLE IF NOT EXISTS `proj.analytics.orders` (
+  order_id    STRING NOT NULL,
+  order_ref   STRING,
+  store_id    STRING,
+  order_date  DATE,
+  lines       ARRAY&lt;STRUCT&lt;sku STRING, qty INT64&gt;&gt;,
+  _landed_at  TIMESTAMP
 )
-PARTITION BY DATE_TRUNC(decision_date, MONTH)
-CLUSTER BY court_code, cnr
+PARTITION BY DATE_TRUNC(order_date, MONTH)
+CLUSTER BY store_id, order_ref
 OPTIONS (
   require_partition_filter = TRUE,
-  description = 'FDP judgments, one row per judgment_key',
-  labels = [('layer', 'fdp')]
+  description = 'Orders, one row per order_id',
+  labels = [('layer', 'analytics')]
 );
 
 -- integer range partition
-PARTITION BY RANGE_BUCKET(data_year, GENERATE_ARRAY(1950, 2031, 1))
+PARTITION BY RANGE_BUCKET(order_year, GENERATE_ARRAY(1995, 2031, 1))
 -- ingestion-time partition
 PARTITION BY _PARTITIONDATE</code></pre></div>
-    <p class="note">Limit: 10,000 partitions per table. Daily partitions over 76 years overflow it; use MONTH or YEAR.</p>
+    <p class="note">Limit: 10,000 partitions per table. Daily partitions over 30 years (about 11,000 days) overflow it; use MONTH or YEAR.</p>
   </article>
 
   <article class="card"><h3>Deduplicate with QUALIFY</h3>
 <div class="snip"><pre><code>-- latest version of each key
 SELECT *
-FROM `proj.odp.hc_judgment`
-WHERE data_year = 2024
+FROM `proj.raw.orders`
+WHERE order_year = 2024
 QUALIFY ROW_NUMBER() OVER (
-  PARTITION BY cnr, order_number
+  PARTITION BY store_id, order_ref
   ORDER BY _landed_at DESC
 ) = 1;
 
@@ -150,32 +150,32 @@ QUALIFY ROW_NUMBER() OVER (
 SELECT * EXCEPT(rn) FROM (
   SELECT *, ROW_NUMBER() OVER (PARTITION BY run_id, stage
                                ORDER BY event_ts DESC) rn
-  FROM `proj.dp_control.pipeline_run_events`)
+  FROM `proj.ops.job_run_events`)
 WHERE rn = 1;
 
 -- whole row of the max, no window
-SELECT ARRAY_AGG(t ORDER BY decision_date DESC LIMIT 1)[OFFSET(0)].*
-FROM `proj.fdp.judgment` t GROUP BY court_code;</code></pre></div>
+SELECT ARRAY_AGG(t ORDER BY order_date DESC LIMIT 1)[OFFSET(0)].*
+FROM `proj.analytics.orders` t GROUP BY store_id;</code></pre></div>
   </article>
 
   <article class="card"><h3>MERGE (upsert)</h3>
-<div class="snip"><pre><code>MERGE `proj.cdp.serving` T
+<div class="snip"><pre><code>MERGE `proj.mart.serving` T
 USING (
-  SELECT * FROM `proj.fdp.judgment`
-  WHERE decision_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+  SELECT * FROM `proj.analytics.orders`
+  WHERE order_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
 ) S
-ON T.judgment_key = S.judgment_key
-   AND T.decision_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)  -- prune T
+ON T.order_id = S.order_id
+   AND T.order_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)  -- prune T
 WHEN MATCHED AND T.row_hash != S.row_hash THEN
-  UPDATE SET cnr = S.cnr, decision_date = S.decision_date, row_hash = S.row_hash
+  UPDATE SET order_ref = S.order_ref, order_date = S.order_date, row_hash = S.row_hash
 WHEN NOT MATCHED BY TARGET THEN
   INSERT ROW
-WHEN NOT MATCHED BY SOURCE AND T.decision_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) THEN
+WHEN NOT MATCHED BY SOURCE AND T.order_date &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) THEN
   DELETE;
 
 -- change detection hash
-TO_HEX(SHA256(TO_JSON_STRING(STRUCT(cnr, court_code, decision_date)))) AS row_hash
-FARM_FINGERPRINT(CONCAT(cnr, '|', order_number))   -- INT64 key</code></pre></div>
+TO_HEX(SHA256(TO_JSON_STRING(STRUCT(order_ref, store_id, order_date)))) AS row_hash
+FARM_FINGERPRINT(CONCAT(store_id, '|', order_ref))   -- INT64 key</code></pre></div>
   </article>
 
   <article class="card"><h3>Dates &amp; safe parsing</h3>
@@ -200,22 +200,22 @@ LEFT JOIN facts f ON f.dt = d WHERE f.dt IS NULL;</code></pre></div>
 
   <article class="card"><h3>ARRAY, STRUCT, UNNEST, JSON</h3>
 <div class="snip"><pre><code>-- explode
-SELECT j.cnr, p.role, p.name
-FROM `proj.fdp.judgment` j, UNNEST(j.parties) p;      -- comma = CROSS JOIN
+SELECT o.order_ref, i.sku, i.qty
+FROM `proj.analytics.orders` o, UNNEST(o.lines) i;      -- comma = CROSS JOIN
 -- keep rows with empty arrays
-LEFT JOIN UNNEST(j.parties) p
+LEFT JOIN UNNEST(o.lines) i
 
 -- build
-SELECT cnr, ARRAY_AGG(STRUCT(role, name) ORDER BY role) parties
-FROM parties GROUP BY cnr;
+SELECT order_ref, ARRAY_AGG(STRUCT(sku, qty) ORDER BY sku) lines
+FROM order_lines GROUP BY order_ref;
 
 ARRAY_LENGTH(a)  a[SAFE_OFFSET(0)]  ARRAY_TO_STRING(a, ',')
 'x' IN UNNEST(a)  EXISTS(SELECT 1 FROM UNNEST(a) v WHERE v &gt; 3)
 
 -- JSON
-JSON_VALUE(payload, '$.court.code')            -- scalar as STRING
-JSON_QUERY(payload, '$.parties')               -- JSON fragment
-JSON_QUERY_ARRAY(payload, '$.parties')         -- ARRAY&lt;JSON&gt; on a JSON column, ARRAY&lt;STRING&gt; on a STRING
+JSON_VALUE(payload, '$.store.code')            -- scalar as STRING
+JSON_QUERY(payload, '$.lines')                  -- JSON fragment
+JSON_QUERY_ARRAY(payload, '$.lines')            -- ARRAY&lt;JSON&gt; on a JSON column, ARRAY&lt;STRING&gt; on a STRING
 LAX_INT64(payload.count)                       -- on a JSON column
 TO_JSON_STRING(STRUCT(a, b))
 PARSE_JSON(s)</code></pre></div>
@@ -223,34 +223,34 @@ PARSE_JSON(s)</code></pre></div>
 
   <article class="card"><h3>Window functions</h3>
 <div class="snip"><pre><code>SELECT
-  court, decision_date, n,
-  SUM(n) OVER (PARTITION BY court ORDER BY decision_date)          AS running,
-  AVG(n) OVER (PARTITION BY court ORDER BY decision_date
+  store, order_date, n,
+  SUM(n) OVER (PARTITION BY store ORDER BY order_date)          AS running,
+  AVG(n) OVER (PARTITION BY store ORDER BY order_date
                ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)           AS avg_7d,
-  LAG(n) OVER (PARTITION BY court ORDER BY decision_date)          AS prev,
-  n / SUM(n) OVER (PARTITION BY court)                             AS share,
-  RANK() OVER (PARTITION BY court ORDER BY n DESC)                 AS rnk,
+  LAG(n) OVER (PARTITION BY store ORDER BY order_date)          AS prev,
+  n / SUM(n) OVER (PARTITION BY store)                             AS share,
+  RANK() OVER (PARTITION BY store ORDER BY n DESC)                 AS rnk,
   NTILE(4) OVER (ORDER BY n)                                       AS quartile
 FROM daily;
 
 -- named window
 SELECT SUM(n) OVER w, MAX(n) OVER w FROM daily
-WINDOW w AS (PARTITION BY court ORDER BY decision_date);
+WINDOW w AS (PARTITION BY store ORDER BY order_date);
 
-APPROX_COUNT_DISTINCT(cnr)   APPROX_QUANTILES(n, 100)[OFFSET(50)]</code></pre></div>
+APPROX_COUNT_DISTINCT(order_ref)   APPROX_QUANTILES(n, 100)[OFFSET(50)]</code></pre></div>
   </article>
 
   <article class="card"><h3>Load, export, external</h3>
-<div class="snip"><pre><code>LOAD DATA INTO `proj.odp.hc_judgment`
+<div class="snip"><pre><code>LOAD DATA INTO `proj.raw.orders`
 FROM FILES (format = 'PARQUET',
             uris = ['gs://landing/data/year=2024/*.parquet']);
 
 EXPORT DATA OPTIONS (
   uri = 'gs://exports/serving/2025-01-31/*.parquet',   -- one * required
   format = 'PARQUET', overwrite = TRUE, compression = 'SNAPPY'
-) AS SELECT * FROM `proj.cdp.serving` WHERE _run_date = '2025-01-31';
+) AS SELECT * FROM `proj.mart.serving` WHERE _run_date = '2025-01-31';
 
-CREATE OR REPLACE EXTERNAL TABLE `proj.raw.hc_ext`
+CREATE OR REPLACE EXTERNAL TABLE `proj.raw.orders_ext`
 WITH PARTITION COLUMNS
 OPTIONS (format = 'PARQUET',
          uris = ['gs://landing/data/*'],
@@ -261,14 +261,14 @@ OPTIONS (format = 'PARQUET',
 <div class="snip"><pre><code>DECLARE run_date DATE DEFAULT CURRENT_DATE();
 DECLARE n INT64;
 
-SET n = (SELECT COUNT(*) FROM `proj.fdp.judgment` WHERE _run_date = run_date);
+SET n = (SELECT COUNT(*) FROM `proj.analytics.orders` WHERE _run_date = run_date);
 IF n = 0 THEN
   RAISE USING MESSAGE = FORMAT('no rows for %t', run_date);
 END IF;
 
 BEGIN TRANSACTION;
-  DELETE FROM `proj.cdp.serving` WHERE _run_date = run_date;
-  INSERT INTO `proj.cdp.serving` SELECT * FROM staging;
+  DELETE FROM `proj.mart.serving` WHERE _run_date = run_date;
+  INSERT INTO `proj.mart.serving` SELECT * FROM staging;
 COMMIT TRANSACTION;
 
 EXECUTE IMMEDIATE FORMAT('SELECT COUNT(*) FROM `proj.%s.t`', ds);
@@ -279,9 +279,9 @@ CALL `proj.ops.rebuild`(DATE '2025-01-31');</code></pre></div>
   </article>
 
   <article class="card"><h3>Pipe syntax</h3>
-<div class="snip"><pre><code>FROM `proj.fdp.judgment`
-|&gt; WHERE decision_date &gt;= '2024-01-01'
-|&gt; AGGREGATE COUNT(*) AS n GROUP BY court_code
+<div class="snip"><pre><code>FROM `proj.analytics.orders`
+|&gt; WHERE order_date &gt;= '2024-01-01'
+|&gt; AGGREGATE COUNT(*) AS n GROUP BY store_id
 |&gt; ORDER BY n DESC
 |&gt; LIMIT 10;
 
@@ -302,30 +302,30 @@ ORDER BY total_bytes_billed DESC LIMIT 20;
 
 -- partitions and their row counts
 SELECT partition_id, total_rows, total_logical_bytes
-FROM `proj.fdp.INFORMATION_SCHEMA.PARTITIONS`
-WHERE table_name = 'judgment' ORDER BY partition_id;
+FROM `proj.analytics.INFORMATION_SCHEMA.PARTITIONS`
+WHERE table_name = 'orders' ORDER BY partition_id;
 
 -- columns of a table
 SELECT column_name, data_type, is_nullable
-FROM `proj.fdp.INFORMATION_SCHEMA.COLUMNS` WHERE table_name = 'judgment';
+FROM `proj.analytics.INFORMATION_SCHEMA.COLUMNS` WHERE table_name = 'orders';
 
 -- table sizes
 SELECT table_id, row_count, size_bytes / 1e9 AS gb
-FROM `proj.fdp.__TABLES__` ORDER BY size_bytes DESC;</code></pre></div>
+FROM `proj.analytics.__TABLES__` ORDER BY size_bytes DESC;</code></pre></div>
   </article>
 
   <article class="card"><h3>Time travel, snapshots, wildcards</h3>
 <div class="snip"><pre><code>-- read the table as it was (up to 7 days back by default)
-SELECT * FROM `proj.fdp.judgment`
+SELECT * FROM `proj.analytics.orders`
 FOR SYSTEM_TIME AS OF TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR);
 
 -- undo a bad write
-CREATE OR REPLACE TABLE `proj.fdp.judgment_restore` AS
-SELECT * FROM `proj.fdp.judgment` FOR SYSTEM_TIME AS OF '2025-01-31 06:00:00+00';
+CREATE OR REPLACE TABLE `proj.analytics.orders_restore` AS
+SELECT * FROM `proj.analytics.orders` FOR SYSTEM_TIME AS OF '2025-01-31 06:00:00+00';
 
 -- zero-copy snapshot / clone
-CREATE SNAPSHOT TABLE `proj.backup.judgment_20250131` CLONE `proj.fdp.judgment`;
-CREATE TABLE `proj.dev.judgment` CLONE `proj.fdp.judgment`;
+CREATE SNAPSHOT TABLE `proj.backup.orders_20250131` CLONE `proj.analytics.orders`;
+CREATE TABLE `proj.dev.orders` CLONE `proj.analytics.orders`;
 
 -- sharded tables
 SELECT * FROM `proj.logs.events_*` WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250131';</code></pre></div>
@@ -349,20 +349,20 @@ SELECT * FROM `proj.logs.events_*` WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '2
 <div class="snip"><pre><code>bq query --use_legacy_sql=false --dry_run 'SELECT ...'
 bq query --use_legacy_sql=false --format=prettyjson --max_rows=20 \
   --parameter=from_d:DATE:2024-01-01 \
-  'SELECT COUNT(*) FROM `proj.fdp.judgment` WHERE decision_date &gt;= @from_d'
+  'SELECT COUNT(*) FROM `proj.analytics.orders` WHERE order_date &gt;= @from_d'
 bq query --nouse_legacy_sql --maximum_bytes_billed=10000000000 &lt; q.sql
 
-bq ls proj:fdp
-bq show --schema --format=prettyjson proj:fdp.judgment
-bq head -n 10 proj:fdp.judgment
+bq ls proj:analytics
+bq show --schema --format=prettyjson proj:analytics.orders
+bq head -n 10 proj:analytics.orders
 
 bq load --source_format=PARQUET --replace \
-  'proj:odp.events$20250131' 'gs://landing/events/dt=2025-01-31/*.parquet'   # one partition
-bq extract --destination_format=PARQUET proj:cdp.serving 'gs://exp/serving-*.parquet'
+  'proj:raw.events$20250131' 'gs://landing/events/dt=2025-01-31/*.parquet'   # one partition
+bq extract --destination_format=PARQUET proj:mart.serving 'gs://exp/serving-*.parquet'
 
-bq cp proj:fdp.judgment proj:backup.judgment_20250131
-bq mk --table --time_partitioning_field=decision_date --clustering_fields=court_code \
-  proj:fdp.t schema.json
+bq cp proj:analytics.orders proj:backup.orders_20250131
+bq mk --table --time_partitioning_field=order_date --clustering_fields=store_id \
+  proj:analytics.t schema.json
 bq ls -j -a -n 20          # recent jobs
 bq show -j &lt;job_id&gt;</code></pre></div>
   </article>

@@ -140,9 +140,9 @@
 list.sort(Comparator.comparing(Row::date).thenComparing(Row::id).reversed());
 
 // Streams
-Map&lt;String, Long&gt; perCourt = rows.stream()
+Map&lt;String, Long&gt; perStore = rows.stream()
     .filter(r -&gt; r.year() &gt;= 2020)
-    .collect(Collectors.groupingBy(Row::court, Collectors.counting()));
+    .collect(Collectors.groupingBy(Row::store, Collectors.counting()));
 
 // Optional: never call get() blind
 String name = repo.find(id).map(User::name).orElse("unknown");
@@ -154,8 +154,8 @@ long days = ChronoUnit.DAYS.between(d, LocalDate.now());</code></pre></div>
   </article>
 
   <article class="card"><h3>Java 9–11 conveniences <span class="tag">9</span><span class="tag">10</span><span class="tag lts">11</span></h3>
-<div class="snip"><pre><code>var cols = List.of("cnr", "court", "date");   // immutable, no nulls
-var cfg  = Map.of("dataset", "odp", "loc", "asia-south1");
+<div class="snip"><pre><code>var cols = List.of("order_ref", "store", "date");   // immutable, no nulls
+var cfg  = Map.of("dataset", "raw", "loc", "asia-south1");
 
 "  ".isBlank();          // true
 " x ".strip();           // "x" (Unicode aware, unlike trim)
@@ -183,14 +183,14 @@ int quarter = switch (month) {
 
 // Text block (15)
 String sql = """
-    SELECT cnr, decision_date
-    FROM `proj.fdp.judgment`
-    WHERE data_year = @year
+    SELECT order_ref, order_date
+    FROM `proj.analytics.orders`
+    WHERE order_year = @year
     """;
 
 // Record (16): immutable carrier, equals/hashCode/toString free
-record Judgment(String cnr, LocalDate date) {
-  Judgment { Objects.requireNonNull(cnr); }   // compact constructor
+record Order(String orderRef, LocalDate date) {
+  Order { Objects.requireNonNull(orderRef); }   // compact constructor
 }
 
 // instanceof pattern (16)
@@ -261,14 +261,14 @@ ScopedValue.where(RUN_ID, "r-42").run(() -&gt; log(RUN_ID.get()));</code></pre><
 
   <article class="card"><h3>Collectors cookbook</h3>
 <div class="snip"><pre><code>// group → list / count / sum / max
-groupingBy(Row::court)
-groupingBy(Row::court, counting())
-groupingBy(Row::court, summingLong(Row::bytes))
-groupingBy(Row::court, maxBy(comparing(Row::date)))
-groupingBy(Row::court, TreeMap::new, mapping(Row::cnr, toSet()))
+groupingBy(Row::store)
+groupingBy(Row::store, counting())
+groupingBy(Row::store, summingLong(Row::bytes))
+groupingBy(Row::store, maxBy(comparing(Row::date)))
+groupingBy(Row::store, TreeMap::new, mapping(Row::orderRef, toSet()))
 
 // toMap with a merge rule (otherwise duplicate keys throw)
-toMap(Row::cnr, r -&gt; r, (a, b) -&gt; a.date().isAfter(b.date()) ? a : b)
+toMap(Row::orderRef, r -&gt; r, (a, b) -&gt; a.date().isAfter(b.date()) ? a : b)
 
 partitioningBy(r -&gt; r.date() == null)      // Map&lt;Boolean, List&lt;Row&gt;&gt;
 joining(", ", "[", "]")
@@ -283,8 +283,8 @@ IntStream.rangeClosed(1950, 2025).boxed().toList();</code></pre></div>
   </article>
 
   <article class="card"><h3>Async &amp; resources</h3>
-<div class="snip"><pre><code>CompletableFuture&lt;Long&gt; a = supplyAsync(() -&gt; countHc(), exec);
-CompletableFuture&lt;Long&gt; b = supplyAsync(() -&gt; countSc(), exec);
+<div class="snip"><pre><code>CompletableFuture&lt;Long&gt; a = supplyAsync(() -&gt; countWebOrders(), exec);
+CompletableFuture&lt;Long&gt; b = supplyAsync(() -&gt; countStoreOrders(), exec);
 long total = a.thenCombine(b, Long::sum)
               .orTimeout(30, TimeUnit.SECONDS)
               .exceptionally(e -&gt; { log.error("count", e); return -1L; })
@@ -304,21 +304,21 @@ try (var in = Files.newBufferedReader(p);
 BigQuery bq = BigQueryOptions.getDefaultInstance().getService();
 
 QueryJobConfiguration q = QueryJobConfiguration.newBuilder("""
-    SELECT court, COUNT(*) n FROM `proj.fdp.judgment`
-    WHERE decision_date &gt;= @from GROUP BY court""")
+    SELECT store, COUNT(*) n FROM `proj.analytics.orders`
+    WHERE order_date &gt;= @from GROUP BY store""")
   .addNamedParameter("from", QueryParameterValue.date("2024-01-01"))
   .setUseLegacySql(false)
   .build();
 
 TableResult rs = bq.query(q);
 for (FieldValueList row : rs.iterateAll()) {
-  String court = row.get("court").getStringValue();
+  String store = row.get("store").getStringValue();
   long n = row.get("n").getLongValue();
 }
 
 // Load parquet from GCS
 LoadJobConfiguration load = LoadJobConfiguration
-  .newBuilder(TableId.of("odp", "hc_judgment"), "gs://bkt/path/*.parquet",
+  .newBuilder(TableId.of("raw", "orders"), "gs://bkt/path/*.parquet",
               FormatOptions.parquet())
   .setWriteDisposition(JobInfo.WriteDisposition.WRITE_APPEND)
   .build();
@@ -339,15 +339,15 @@ long bytes = s.getTotalBytesProcessed();</code></pre></div>
 Pipeline p = Pipeline.create(opts);
 
 p.apply("Read", BigQueryIO.readTableRows()
-        .fromQuery("SELECT cnr, court FROM `proj.odp.hc_judgment`")
+        .fromQuery("SELECT order_ref, store FROM `proj.raw.orders`")
         .usingStandardSql())
  .apply("Key", MapElements.into(TypeDescriptors.kvs(
          TypeDescriptors.strings(), TypeDescriptors.longs()))
-       .via(r -&gt; KV.of((String) r.get("court"), 1L)))
+       .via(r -&gt; KV.of((String) r.get("store"), 1L)))
  .apply(Sum.longsPerKey())
  .apply("ToRow", MapElements.into(TypeDescriptor.of(TableRow.class))
-       .via(kv -&gt; new TableRow().set("court", kv.getKey()).set("n", kv.getValue())))
- .apply(BigQueryIO.writeTableRows().to("proj:cdp.court_counts")
+       .via(kv -&gt; new TableRow().set("store", kv.getKey()).set("n", kv.getValue())))
+ .apply(BigQueryIO.writeTableRows().to("proj:mart.store_counts")
        .withSchema(schema)
        .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_TRUNCATE)
        .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED));

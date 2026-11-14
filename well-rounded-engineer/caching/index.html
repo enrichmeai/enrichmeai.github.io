@@ -142,9 +142,9 @@
     <ul>
       <li><b>TTL:</b> entries expire after a set time. Bounds staleness; simplest and most robust. Every cache entry should have one.</li>
       <li><b>Delete on write:</b> after updating the source, delete the cache key (not update it), so the next read reloads fresh data.</li>
-      <li><b>Versioned keys:</b> include a version in the key (<code>judgment:v3:123</code>, or a data version number); bump it to invalidate everything at once.</li>
+      <li><b>Versioned keys:</b> include a version in the key (<code>order:v3:123</code>, or a data version number); bump it to invalidate everything at once.</li>
       <li><b>Event-driven:</b> consume change events (CDC, domain events) and evict affected keys.</li>
-      <li><b>Immutable data</b> (a published judgment version, a fingerprinted file) can be cached forever.</li>
+      <li><b>Immutable data</b> (an issued invoice, a fingerprinted file) can be cached forever.</li>
     </ul>
     <p class="note">The race to know: reader A misses and reads the old value; writer B updates the source and deletes the key; A then writes the old value into the cache. A TTL bounds the damage; versioned keys avoid it.</p>
   </article>
@@ -176,7 +176,7 @@
       <li><b>Negative results</b> (genuinely not found) only briefly, if at all.</li>
       <li><b>Secrets and tokens</b> in shared caches.</li>
       <li><b>Personalised data</b> in public caches (CDN, gateway) without per-user keys.</li>
-      <li><b>Data with legal effect</b> (a suppression, a deletion) behind a long TTL: it must take effect immediately, so check it outside the cache or evict on change.</li>
+      <li><b>Data with legal effect</b> (an erasure request, a deletion) behind a long TTL: it must take effect immediately, so check it outside the cache or evict on change.</li>
       <li><b>Cheap queries:</b> if the source answers in 1 ms, a cache adds complexity for little gain.</li>
     </ul>
   </article>
@@ -187,7 +187,7 @@
 class CacheConfig {
   @Bean
   CacheManager cacheManager() {
-    var m = new CaffeineCacheManager("judgments", "courts");
+    var m = new CaffeineCacheManager("orders", "stores");
     m.setCaffeine(Caffeine.newBuilder()
         .maximumSize(10_000)
         .expireAfterWrite(Duration.ofMinutes(10))
@@ -197,12 +197,12 @@ class CacheConfig {
 }
 
 @Service
-class JudgmentService {
-  @Cacheable(cacheNames = "judgments", key = "#id", unless = "#result == null")
-  public Judgment get(String id) { return repo.find(id).orElse(null); }
+class OrderService {
+  @Cacheable(cacheNames = "orders", key = "#id", unless = "#result == null")
+  public Order get(String id) { return repo.find(id).orElse(null); }
 
-  @CacheEvict(cacheNames = "judgments", key = "#j.id()")
-  public void update(Judgment j) { repo.save(j); }
+  @CacheEvict(cacheNames = "orders", key = "#o.id()")
+  public void update(Order o) { repo.save(o); }
 }</code></pre></div>
 <div class="snip"><pre><code># switch to Redis shared across instances
 spring:
@@ -210,7 +210,7 @@ spring:
     type: redis
     redis:
       time-to-live: 10m
-      key-prefix: "legal:v3:"
+      key-prefix: "shop:v3:"
   data:
     redis:
       host: ${REDIS_HOST}
@@ -223,33 +223,33 @@ spring:
 from cachetools import TTLCache, cached
 
 @lru_cache(maxsize=1024)                     # immutable inputs, never expires
-def court_name(code: str) -&gt; str: ...
+def store_name(code: str) -&gt; str: ...
 
 @cached(TTLCache(maxsize=10_000, ttl=600))   # expires after 10 minutes
-def judgment_summary(jid: str) -&gt; dict: ...</code></pre></div>
+def order_summary(order_id: str) -&gt; dict: ...</code></pre></div>
 <div class="snip"><pre><code>import json, random, redis
 r = redis.Redis(host=REDIS_HOST, port=6379, decode_responses=True)
 
-def get_judgment(jid: str) -&gt; dict | None:
-    key = f"legal:judgment:v3:{jid}"
+def get_order(order_id: str) -&gt; dict | None:
+    key = f"shop:order:v3:{order_id}"
     if (hit := r.get(key)) is not None:
         return json.loads(hit)
-    j = db.load_judgment(jid)                # raises if the DB is down: do not cache that
-    if j is not None:
-        r.set(key, json.dumps(j), ex=600 + random.randint(0, 60))   # jittered TTL
-    return j
+    o = db.load_order(order_id)           # raises if the DB is down: do not cache that
+    if o is not None:
+        r.set(key, json.dumps(o), ex=600 + random.randint(0, 60))   # jittered TTL
+    return o
 
-def update_judgment(j: dict) -&gt; None:
-    db.save(j)
-    r.delete(f"legal:judgment:v3:{j['id']}")  # delete after write</code></pre></div>
+def update_order(o: dict) -&gt; None:
+    db.save(o)
+    r.delete(f"shop:order:v3:{o['id']}")  # delete after write</code></pre></div>
   </article>
 
   <article class="card"><h3>Redis essentials</h3>
-<div class="snip"><pre><code>SET judgment:v3:123 '{"cnr":"…"}' EX 600     # with TTL
-SET lock:judgment:123 1 NX EX 10             # only if absent: a simple lock
-GET judgment:v3:123
-DEL judgment:v3:123
-TTL judgment:v3:123
+<div class="snip"><pre><code>SET order:v3:123 '{"order_ref":"…"}' EX 600     # with TTL
+SET lock:order:123 1 NX EX 10             # only if absent: a simple lock
+GET order:v3:123
+DEL order:v3:123
+TTL order:v3:123
 INCR ratelimit:app42:202611121015            # counters, rate limits
 EXPIRE ratelimit:app42:202611121015 60
 INFO stats                                   # keyspace_hits, keyspace_misses, evicted_keys</code></pre></div>

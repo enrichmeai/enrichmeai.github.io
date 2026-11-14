@@ -24,7 +24,7 @@ assert '0.6.1' not in body
 def _ov(v): return f'<span data-other-version>{v}</span>'
 other = [
  ('version: 0.3.0             # chart version', None, '0.3.0'),
- ('legal-api-0.3.0.tgz', 2, '0.3.0'),
+ ('shop-api-0.3.0.tgz', 2, '0.3.0'),
  ('--version 0.3.0</code>', None, '0.3.0'),
  ('pragma solidity ^0.8.24;', None, '0.8.24'),
  ('version: 1.2.0 }', None, '1.2.0'),
