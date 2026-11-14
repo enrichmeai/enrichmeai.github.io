@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum Computing · Well Rounded Engineer</title>
+<meta name="description" content="Quantum computers are not faster versions of ordinary computers. They are a different kind of machine that is very good at a few specific problems and no…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="quantum">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/quantum/" aria-current="page">Quantum Computing</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <span class="navgrp">Quality &amp; security</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Systems</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <span class="navgrp">Delivery &amp; ops</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Decentralised web</span>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="quantum" data-name="Quantum Computing">
+  <div class="panel-head"><h1>Quantum computing, in plain words</h1><p>Quantum computers are not faster versions of ordinary computers. They are a different kind of machine that is very good at a few specific problems and no help at most others. For engineers today, the most practical part is not building quantum programs: it is preparing cryptography for the day large quantum computers exist.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>The core ideas</h3>
+    <ul>
+      <li><b>A qubit</b> is the quantum version of a bit. Before it is measured it can be in a combination (a superposition) of 0 and 1; measuring it gives 0 or 1 with certain probabilities.</li>
+      <li><b>Entanglement</b> links qubits so that their measurement results are correlated in ways ordinary bits cannot be.</li>
+      <li><b>Interference</b> is how quantum algorithms work: they arrange for wrong answers to cancel out and right answers to reinforce, so that measuring gives a useful result.</li>
+      <li><b>Noise is the hard part.</b> Qubits are fragile; today's machines make errors, and correcting them needs many physical qubits for each reliable one.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>What it is good for, and what it is not</h3>
+    <ul>
+      <li><b>Promising:</b> simulating molecules and materials, some optimisation and sampling problems, and certain mathematical problems such as factoring large numbers. In finance, a technique called quantum amplitude estimation could in principle speed up Monte Carlo risk calculations; today that is research and pilots, not production.</li>
+      <li><b>Not useful for:</b> running websites, databases, everyday apps or most business software. Ordinary computers stay better at almost everything.</li>
+      <li><b>Be wary of hype:</b> claims of quantum advantage are usually about narrow, carefully chosen problems.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>From Planck to quantum computers</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>When</th><th>Who</th><th>What changed</th></tr></thead>
+      <tbody>
+      <tr><td>1900</td><td>Max Planck</td><td>Energy comes in small, fixed packets, "quanta". Quantum physics begins.</td></tr>
+      <tr><td>1905</td><td>Albert Einstein</td><td>Light itself comes in packets (photons).</td></tr>
+      <tr><td>1925–26</td><td>Heisenberg, Schrödinger, Dirac</td><td>Full quantum mechanics, including superposition.</td></tr>
+      <tr><td>1935</td><td>Einstein, Podolsky and Rosen; Schrödinger</td><td>Entanglement is identified.</td></tr>
+      <tr><td>1980–82</td><td>Paul Benioff, Richard Feynman</td><td>Computers could run on quantum mechanics, and only quantum computers could simulate nature efficiently.</td></tr>
+      <tr><td>1985</td><td>David Deutsch</td><td>The universal quantum computer, and the first algorithm that beats a classical one.</td></tr>
+      <tr><td>1994</td><td>Peter Shor</td><td>A quantum algorithm to factor large numbers: the threat to today's public-key cryptography.</td></tr>
+      <tr><td>1996</td><td>Lov Grover</td><td>A quadratic speed-up for searching.</td></tr>
+      </tbody></table></div>
+    <p class="note">The ideas behind a qubit go back to Planck; using them to compute comes from Deutsch. See also <a href="/well-rounded-engineer/history/">A brief history</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>Shor's algorithm in simple terms</h3>
+    <p>Multiplying two primes is easy: 61 × 53 = 3,233. Going back, finding which primes make 3,233, is hard, and for the very large numbers used in RSA it is impractical for ordinary computers. Shor turned factoring into finding a repeating pattern. Here it is for 15:</p>
+    <ol>
+      <li>Pick a number, say 7, and take its powers, keeping only the remainder after dividing by 15: 7, 4, 13, 1, 7, 4, 13, 1…</li>
+      <li>The pattern repeats every 4 steps, so the period is 4.</li>
+      <li>Take half the period: 7² − 1 = 48 and 7² + 1 = 50.</li>
+      <li>What each shares with 15: 48 and 15 share 3; 50 and 15 share 5. So 15 = 3 × 5.</li>
+    </ol>
+    <p>Every step is easy for an ordinary computer except finding the period when the number has hundreds of digits. That is the one step the quantum computer does: it puts many powers into superposition, computes them together, and uses interference (the quantum Fourier transform) so that the period stands out when measured. The rest runs on an ordinary computer, so it is a hybrid of the two.</p>
+    <p class="note">The numbers factored this way on real quantum hardware are still tiny. Breaking RSA needs a large, error-corrected machine that does not exist yet, which is why the move to post-quantum cryptography is happening now, before it does.</p>
+  </article>
+
+  <article class="card wide"><h3>Why it matters for security: post-quantum cryptography</h3>
+    <ul>
+      <li><b>Shor's algorithm</b>, on a large, error-corrected quantum computer, could break the public-key cryptography the internet relies on today (RSA and elliptic-curve keys and signatures).</li>
+      <li><b>"Harvest now, decrypt later":</b> someone can record encrypted traffic today and decrypt it once such a machine exists, so data that must stay secret for many years is already at risk.</li>
+      <li><b>New standards exist.</b> NIST has standardised post-quantum algorithms: <b>ML-KEM</b> (FIPS 203) for key exchange, based on Kyber, and <b>ML-DSA</b> (FIPS 204) and <b>SLH-DSA</b> (FIPS 205) for digital signatures.</li>
+      <li><b>Symmetric cryptography holds up better:</b> Grover's algorithm only gives a quadratic speed-up, so longer keys (such as AES-256) remain a sound choice.</li>
+      <li><b>What to do now:</b> know where your systems use public-key cryptography (TLS, signing, key exchange); keep crypto libraries current, since many are adding post-quantum and hybrid options; design so algorithms can be swapped (crypto agility); and plan the move for long-lived secrets first.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Try it yourself</h3>
+    <p><a href="https://github.com/Qiskit/qiskit" target="_blank" rel="noopener">Qiskit</a> is an open-source SDK for building quantum circuits in Python and running them on simulators on your laptop. A good first exercise: build a circuit that entangles two qubits (a Bell state), run it many times on the simulator, and see that the two results always agree.</p>
+  </article>
+
+  <article class="card"><h3>Keep your feet on the ground</h3>
+    <p>You do not need quantum physics to be ready. You need to know where your cryptography lives, keep it up to date, and be able to change it. That is good engineering whether quantum computers arrive soon or late.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain qubits, superposition and entanglement in plain words</li><li>Say what quantum computers are and are not good for</li><li>Explain why Shor's algorithm threatens RSA and elliptic curves</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Inventory where your systems use public-key cryptography</li><li>Keep crypto libraries current and follow their post-quantum options</li><li>Build and run a simple circuit on a simulator</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Plan a post-quantum migration, long-lived secrets first</li><li>Design for crypto agility</li><li>Judge vendor quantum claims critically</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's post-quantum roadmap</li><li>Advise on where quantum computing could genuinely help</li><li>Track standards and research and translate them for teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Qubits and measurement</li><li>Shor's and Grover's algorithms</li><li>Post-quantum cryptography (ML-KEM, ML-DSA, SLH-DSA)</li><li>Quantum error correction</li><li>Hybrid quantum-classical algorithms</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/open-quantum-safe/liboqs" target="_blank" rel="noopener">Open Quantum Safe (liboqs)</a><span class="lnote"> Open-source post-quantum algorithms, including the NIST standards</span></li><li><a href="https://github.com/Qiskit/qiskit" target="_blank" rel="noopener">Qiskit</a><span class="lnote"> Open-source SDK for quantum circuits</span></li></ul></div></div></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/science/">← Science &amp; Method</a><a class="pn-next" href="/well-rounded-engineer/philosophy/">Philosophy →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
