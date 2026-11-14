@@ -115,3 +115,13 @@ a.product-label:hover { text-decoration: none; color: var(--color-accent-800); }
 .eg .elsewhere ul { padding-left: 20px; margin: 0; }
 .eg .elsewhere li { margin: 6px 0; }
 .eg .elsewhere a { font-weight: 600; }
+
+/* Start here: the map of groups, and the "Run the code" line on each page */
+.eg .gmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; margin-top: 8px; }
+.eg .gmap-card { border: 1px solid var(--color-divider); border-radius: 6px; padding: 10px 12px; background: var(--color-bg); min-width: 0; }
+.eg .gmap-card h4 { margin: 0 0 4px; font-size: 17px; }
+.eg .gmap-card p { margin: 4px 0; }
+.eg .gmap-n { display: inline-block; min-width: 22px; text-align: center; border-radius: 3px; background: var(--color-accent-100); color: var(--color-accent-800); font: 600 13px var(--font-body); padding: 1px 5px; margin-right: 4px; }
+.eg .gmap-pages { font-size: 14.5px; color: var(--color-neutral-700); }
+.eg .gmap-run a, .eg .runcode a { font-weight: 600; overflow-wrap: anywhere; }
+.eg .runcode { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--color-divider); }
