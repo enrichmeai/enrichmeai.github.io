@@ -6,7 +6,7 @@ sys.path.insert(0, HERE)
 from levels_data import D
 p=os.path.join(HERE, 'guide.html.in'); s=open(p).read()
 
-groups=[("",["start","why","behaviours","homelab"]),
+groups=[("",["start","why","history","behaviours","homelab"]),
  ("Thinking &amp; character",["mathematics","science","philosophy","goodhuman","body"]),
  ("Foundations",["linux","networking","web","docker","sql","database"]),
  ("Languages",["java","python"]),
@@ -20,7 +20,7 @@ groups=[("",["start","why","behaviours","homelab"]),
  ("Decentralised web",["web3","solid"])]
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -48,7 +48,7 @@ def cards(t):
             f'  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul>{tp}</ul></div>'
             f'<div><h4>Official docs and good reading</h4><ul class="links">{ln}</ul></div></div></article>\n')
 for t in order:
-    if t in ("start","why","behaviours","homelab"): continue
+    if t in ("start","why","history","behaviours","homelab"): continue
     b=blocks[t]
     b=re.sub(r'\n  <!-- levels -->.*?</article>\n  <article class="card wide"><h3>Explore further</h3>.*?</article>\n','',b,flags=re.S)
     k=b.rindex('  </div>\n</section>')
@@ -113,7 +113,7 @@ for t,(name,k,d) in newrows.items():
         row=f'      <tr><td><a href="#{t}">{name}</a></td><td>{k}</td><td>{d}</td></tr>\n'
         i=s.index('      <tr><td><a href="#linux">'); s=s[:i]+row+s[i:]
 rows=dict((m.group(2),m.group(1)) for m in re.finditer(r'(      <tr><td><a href="#([a-z0-9]+)">.*?</tr>\n)',s,flags=re.S))
-assert set(rows)==set(order)-{"start","why","behaviours","homelab"}, set(rows)^(set(order)-{"start","why","behaviours","homelab"})
+assert set(rows)==set(order)-{"start","why","history","behaviours","homelab"}, set(rows)^(set(order)-{"start","why","history","behaviours","homelab"})
 first=min(s.index(r) for r in rows.values()); last=max(s.index(r)+len(r) for r in rows.values())
 s=s[:first]+''.join(rows[t] for t in order if t in rows)+s[last:]
 lis=[]

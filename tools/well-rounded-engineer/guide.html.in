@@ -94,6 +94,7 @@ details>.inner{padding:4px 10px 8px}
     <nav aria-label="Sections">
       <a href="#start" data-tab="start">Start here</a>
       <a href="#why" data-tab="why">Why this guide exists</a>
+      <a href="#history" data-tab="history">A brief history</a>
       <a href="#behaviours" data-tab="behaviours">Behaviours</a>
       <a href="#homelab" data-tab="homelab">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -190,6 +191,17 @@ details>.inner{padding:4px 10px 8px}
 
   <article class="card wide"><h3>Not only for engineers</h3>
     <p>We get one life, and whatever job we do, we can make the journey beautiful. The tabs under <b>Thinking &amp; character</b> (<a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a> and <a href="#body">Body, Mind &amp; Nature</a>) and the <a href="#behaviours">Behaviours</a> page are written for engineers, but they hold for anyone: a nurse, a teacher, an accountant, a builder. Read them that way. The engineering tabs show what "fundamentals first" looks like in one craft; every craft has its own.</p>
+  </article>
+
+  <article class="card wide"><h3>From data to wisdom</h3>
+    <p>There is more information within reach today than ever, but information is not understanding. A useful way to think about learning is a ladder of four steps, often called DIKW:</p>
+    <ul>
+      <li><b>Data:</b> raw facts. A stack trace, a column of numbers, a snippet of code.</li>
+      <li><b>Information:</b> data with meaning. This error happens when that field is empty.</li>
+      <li><b>Knowledge:</b> understanding how and why. The field is empty because the upstream system sends dates in another format.</li>
+      <li><b>Wisdom:</b> knowing what to do, and what not to do. Validate at the boundary, and design so this whole kind of error cannot happen again.</li>
+    </ul>
+    <p>A search result or an AI answer can hand you information, sometimes even text shaped like knowledge. Wisdom only comes from understanding the fundamentals and applying them yourself, again and again. Nobody can learn everything; the aim is enough foundations to climb from data to wisdom in whatever you take on. This guide is here to help you climb.</p>
   </article>
 
   <article class="card wide"><h3>Fundamentals first: be the site manager, not a vibe coder</h3>
@@ -396,8 +408,14 @@ details>.inner{padding:4px 10px 8px}
   </article>
 
   <article class="card"><h3>The framework years</h3>
-    <p>Enterprise Java was hard. We wrestled with CORBA and its interface definitions, with two-phase commits for transactions that spanned systems, and later with enterprise service buses. Then came Spring, which its own documentation says came into being in 2003 as a response to the complexity of the early J2EE specifications. As I remember it, Rod Johnson's ideas about plain Java objects and simpler domain models were at its heart, and after VMware took the company over, Spring became the standard choice. For many of us, it started with a single core jar.</p>
+    <p>Enterprise Java was hard. We wrestled with CORBA and its interface definitions, with two-phase commits for transactions that spanned systems, and later with enterprise service buses. Then came Spring, which its own documentation says came into being in 2003 as a response to the complexity of the early J2EE specifications. Rod Johnson had argued for simpler designs in his book <i>Expert One-on-One J2EE Design and Development</i> (Wrox), which is still on my shelf; as I remember it, his ideas about plain Java objects were at Spring's heart, and after VMware took the company over, Spring became the standard choice. For many of us, it started with a single core jar.</p>
     <p>Something changed in those years. Many engineers learned the frameworks without ever looking at a servlet. The frameworks were good, but the foundations underneath them became invisible.</p>
+  </article>
+
+  <article class="card"><h3>My bookshelf</h3>
+    <p>The first technical book I read cover to cover was Hunter and Crawford's <i>Java Servlet Programming</i> (O'Reilly). My first UML tool was MagicDraw.</p>
+    <p>At my first startup, from 2000 to 2002, I could not afford <i>Enterprise Java with UML</i> (Arrington and Rayhan, Wiley). When I could, in 2003, I bought it for myself, out of love for it: it explained every layer, why DTOs exist, and when a plain hash map is enough. Seeing why each layer is there is what today's polished frameworks and generated answers rarely show.</p>
+    <p>Beside them still: <i>Java Message Service</i> (Monson-Haefel and Chappell), <i>Java Enterprise Best Practices</i>, <i>JavaServer Pages</i> and Rod Johnson's <i>Expert One-on-One J2EE Design and Development</i>, packed away for a house move and going back on a shelf soon.</p>
   </article>
 
   <article class="card"><h3>What worries me now</h3>
@@ -410,6 +428,82 @@ details>.inner{padding:4px 10px 8px}
     <p><b>A click is cheaper than a prompt.</b> For what is already known, read the tab. Use AI where it earns its keep: complex business logic, building frameworks, investigating a hard problem, or when you genuinely need to move fast. AI is here to stay; use it in the right context.</p>
     <p>And keep the foundations. They are what let you tell a good answer from one that only looks good.</p>
     <p class="note">Joseph Aruja · start with <a href="#start">Start here</a></p>
+  </article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-history" data-name="A brief history">
+  <div class="panel-head"><h2>A brief history of software systems</h2><p>How we got here, in plain words: each era solved the last one's pain and rediscovered the same hard problems. Knowing the story makes today's tools easier to understand, and easier to judge.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The thread through it all</h3>
+    <p>Every era wrestled with the same four questions: <b>how do two programs agree on a contract, where does state live, what happens when something fails, and how do we see what went wrong?</b> The answers moved from heavy and agreed in advance, to light and flexible, and back again whenever the light way hurt. The questions never went away.</p>
+  </article>
+
+  <article class="card"><h3>Distributed objects: everything agreed in advance</h3>
+    <ul>
+      <li><b>CORBA</b>, from the Object Management Group, let programs in different languages call each other's objects across a network. You wrote the contract in an interface definition language and generated client stubs and server skeletons before anything could talk.</li>
+      <li><b>Java RMI</b> did the same between Java programs, more simply, and Java could load the classes it needed over the network.</li>
+      <li><b>Application servers</b> such as WebLogic, and Enterprise JavaBeans, wrapped this with transactions, security and pooling. Powerful, and heavy.</li>
+      <li><b>What it taught us:</b> a remote call is not a local call. It can be slow, fail halfway, or never answer.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The early web: stateless by design</h3>
+    <ul>
+      <li><b>HTTP forgets you between requests.</b> To remember who you were, pages carried state in <b>hidden form fields</b>, in the URL (URL rewriting) and, increasingly, in cookies.</li>
+      <li><b>HTML was standardised</b> in the mid-1990s, but browsers still differed: code checked whether it ran in Internet Explorer or Netscape, and what we now call Ajax worked first through Microsoft's XMLHTTP object.</li>
+      <li><b>Caching mattered</b> because bandwidth was precious on dial-up: browsers and proxies kept copies, and pages said how long a copy stayed fresh.</li>
+      <li><b>What it taught us:</b> statelessness scales, and every bit of state has to live somewhere on purpose.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Pages made on the server</h3>
+    <ul>
+      <li><b>CGI scripts</b> started a new process for every request.</li>
+      <li><b>PHP</b> began in 1994 as Rasmus Lerdorf's "Personal Home Page" tools and grew into a language for building web pages on the server.</li>
+      <li><b>Java servlets and JSP</b> ran inside a long-lived server, handling many requests without starting a process each time.</li>
+      <li><b>Struts</b>, an Apache project founded in May 2000, brought the model-view-controller pattern to Java web applications.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Runtimes get fast, and get company</h3>
+    <ul>
+      <li><b>Java began by interpreting bytecode,</b> which was slow. Just-in-time (JIT) compilers, which compile the busiest code to machine code while the program runs, made it fast, and the JVM's HotSpot became the standard approach.</li>
+      <li><b>Microsoft's C# and .NET</b> arrived in the early 2000s with many of the same ideas: a managed runtime, garbage collection and code compiled just in time.</li>
+      <li><b>What it taught us:</b> a good runtime lets you write simpler code and still go fast, and ideas spread quickly once they work.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Integration: buses, services and lighter ways</h3>
+    <ul>
+      <li><b>SOAP web services</b> brought back contracts agreed in advance, written in WSDL, with generated clients, much as CORBA had done.</li>
+      <li><b>Enterprise service buses</b> put routing, transformation and orchestration into one large central product.</li>
+      <li><b>Lighter tools followed.</b> Apache Camel implemented the patterns from Hohpe and Woolf's <i>Enterprise Integration Patterns</i> as a library. Spring came into being in 2003, by its own account, as a response to the complexity of the early J2EE specifications.</li>
+      <li><b>What it taught us:</b> one big central hub becomes the bottleneck and the single point of failure.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>REST, long journeys, and sagas</h3>
+    <ul>
+      <li><b>REST</b>, which Roy Fielding described in his doctoral dissertation, used the web's own design (resources, URLs, standard methods, caching) instead of a custom remote-call layer.</li>
+      <li><b>Without distributed transactions,</b> a long piece of work becomes a journey of steps. If it fails halfway, you undo the completed steps in reverse order, which only works if you recorded every step you took.</li>
+      <li><b>This idea is old.</b> It was described as the "saga" in a 1987 database paper by Hector Garcia-Molina and Kenneth Salem, long before microservices made the word popular again. See <a href="#architecture">Architecture</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Microservices, cloud, and seeing what happens</h3>
+    <ul>
+      <li><b>Microservices</b> split systems into small services that each own their data. They brought back every distributed-systems problem at once, now spread across many teams.</li>
+      <li><b>For years, failures were hard to follow</b> from one service to the next. Observability caught up: logs, metrics and traces, and a shared trace context passed with every call (the W3C <code>traceparent</code> header). See <a href="#observability">Observability</a>.</li>
+      <li><b>The cloud</b> turned servers into something you rent by the minute and declare in code.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>And now, AI</h3>
+    <p>AI can generate the code that each of these eras made us write by hand: the stubs, the boilerplate, the glue. But the four questions have not changed: contracts, state, failure, and seeing what went wrong. People who know this history recognise an old problem in a new form, and do not mistake generated code for understanding. See <a href="#ai">AI for Engineers</a>.</p>
+    <p class="note">Dates here are given where we could check them against the project's own record; elsewhere the page speaks in eras rather than years.</p>
   </article>
 
   </div>
@@ -8995,6 +9089,17 @@ histogram_quantile(0.95,
     </ul>
   </article>
 
+  <article class="card wide"><h3>Following a journey across services</h3>
+    <ul>
+      <li><b>Give every request an ID,</b> and pass it on to every service the request touches. Log it with every line.</li>
+      <li><b>Give every user journey an ID too,</b> when several requests belong together, such as a multi-step form or a checkout. Then you can follow the whole journey, not just one request.</li>
+      <li><b>Use the standard for tracing:</b> the W3C Trace Context <code>traceparent</code> header carries a trace ID and the caller's span ID between services, so tools from different vendors can join the pieces up. OpenTelemetry propagates it for you.</li>
+      <li><b>An audit trail makes rollback safe.</b> If a journey fails halfway, you can only undo the steps you know were taken. Record each step and why, then compensate in reverse order (see <a href="#architecture">Architecture</a> on sagas).</li>
+    </ul>
+<div class="snip"><pre><code># a W3C Trace Context header: version, trace ID, parent span ID, flags
+traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01</code></pre></div>
+  </article>
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Find a request's or run's logs and errors in Cloud Logging</li><li>Read a service dashboard: traffic, errors, latency</li><li>Write structured logs with IDs and evidence</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Instrument a service with OpenTelemetry and custom metrics</li><li>Write log queries, log-based metrics and PromQL</li><li>Build dashboards and actionable alerts with runbooks</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design observability for a system: signals, sampling, cardinality, cost</li><li>Trace problems across services, queues and pipelines</li><li>Set dashboard and alert templates for teams</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the observability platform and its standards</li><li>Lead cost and data-governance strategy for telemetry</li><li>Drive observability-led reliability across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OpenTelemetry Collector pipelines and tail sampling</li><li>High-cardinality observability and wide events</li><li>Continuous profiling</li><li>Exemplars linking metrics to traces</li><li>eBPF-based instrumentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry documentation</a><span class="lnote"> APIs, SDKs, collector, semantic conventions</span></li><li><a href="https://cloud.google.com/logging/docs" target="_blank" rel="noopener">Cloud Logging documentation</a><span class="lnote"> Logs, sinks, log-based metrics</span></li><li><a href="https://cloud.google.com/logging/docs/view/logging-query-language" target="_blank" rel="noopener">Logging query language</a><span class="lnote"> Filter syntax for Logs Explorer and alerts</span></li><li><a href="https://cloud.google.com/monitoring/docs" target="_blank" rel="noopener">Cloud Monitoring documentation</a><span class="lnote"> Metrics, dashboards, alerting, PromQL</span></li><li><a href="https://cloud.google.com/trace/docs" target="_blank" rel="noopener">Cloud Trace documentation</a><span class="lnote"> Distributed tracing on GCP</span></li><li><a href="https://prometheus.io/docs/" target="_blank" rel="noopener">Prometheus documentation</a><span class="lnote"> Metric types and PromQL</span></li><li><a href="https://docs.micrometer.io/micrometer/reference/" target="_blank" rel="noopener">Micrometer documentation</a><span class="lnote"> Metrics and observations for Java</span></li><li><a href="https://www.oreilly.com/library/view/observability-engineering/9781492076438/" target="_blank" rel="noopener">Observability Engineering (book)</a><span class="lnote"> Majors, Fong-Jones and Miranda</span></li></ul></div></div></article>
@@ -12364,7 +12469,7 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
 
 <script>
 (function(){
-  const tabs = ["start","why","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","rag","mcp","web3","solid"];
+  const tabs = ["start","why","history","behaviours","homelab","mathematics","science","philosophy","goodhuman","body","linux","networking","web","docker","sql","database","java","python","testing","security","oauth","data","datalibs","culvert","dbt","dags","apis","graphql","kafka","payments","spring","quarkus","architecture","microservices","eventsourcing","sysdesign","performance","caching","cloudcompare","gcpdata","bigquery","cloudrun","apigee","devops","observability","opstools","sre","harness","terraform","kubernetes","helm","operators","servicemesh","llm","ai","blueprints","claudetools","copilot","agentharness","rag","mcp","web3","solid"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");

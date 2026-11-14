@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -308,6 +309,17 @@ histogram_quantile(0.95,
       <li>Route long-term logs to BigQuery or GCS with retention rules instead of keeping everything hot.</li>
       <li>Label resources so observability cost can be attributed to teams.</li>
     </ul>
+  </article>
+
+  <article class="card wide"><h3>Following a journey across services</h3>
+    <ul>
+      <li><b>Give every request an ID,</b> and pass it on to every service the request touches. Log it with every line.</li>
+      <li><b>Give every user journey an ID too,</b> when several requests belong together, such as a multi-step form or a checkout. Then you can follow the whole journey, not just one request.</li>
+      <li><b>Use the standard for tracing:</b> the W3C Trace Context <code>traceparent</code> header carries a trace ID and the caller's span ID between services, so tools from different vendors can join the pieces up. OpenTelemetry propagates it for you.</li>
+      <li><b>An audit trail makes rollback safe.</b> If a journey fails halfway, you can only undo the steps you know were taken. Record each step and why, then compensate in reverse order (see <a href="/well-rounded-engineer/architecture/">Architecture</a> on sagas).</li>
+    </ul>
+<div class="snip"><pre><code># a W3C Trace Context header: version, trace ID, parent span ID, flags
+traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01</code></pre></div>
   </article>
 
   <!-- levels -->
