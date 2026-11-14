@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -113,9 +114,9 @@
   <div class="grid">
 
   <article class="card wide"><h3>Practice schema used on this tab</h3>
-<div class="snip"><pre><code>judgment(judgment_key STRING, cnr STRING, court_code STRING, decision_date DATE,
-         data_year INT64, judges ARRAY&lt;STRING&gt;, raw_date STRING, _landed_at TIMESTAMP)
-court(court_code STRING, name STRING, state STRING)</code></pre></div>
+<div class="snip"><pre><code>orders(order_id STRING, order_ref STRING, store_id STRING, order_date DATE,
+       order_year INT64, items ARRAY&lt;STRING&gt;, raw_date STRING, _landed_at TIMESTAMP)
+stores(store_id STRING, name STRING, state STRING)</code></pre></div>
     <p class="note">Practise for free in the BigQuery sandbox (no billing account needed) against <code>bigquery-public-data</code>, for example <code>bigquery-public-data.stackoverflow.posts_questions</code> or <code>bigquery-public-data.new_york_taxi_trips</code>. Always dry-run first and select only the columns you need.</p>
   </article>
 
@@ -138,18 +139,18 @@ court(court_code STRING, name STRING, state STRING)</code></pre></div>
   <article class="card"><h3>Write it so it reads top to bottom</h3>
 <div class="snip"><pre><code>WITH
 landed AS (                         -- 1. narrow the input early
-  SELECT judgment_key, court_code, decision_date
-  FROM `p.fdp.judgment`
-  WHERE decision_date BETWEEN '2024-01-01' AND '2024-12-31'
+  SELECT order_id, store_id, order_date
+  FROM `p.analytics.orders`
+  WHERE order_date BETWEEN '2024-01-01' AND '2024-12-31'
 ),
-per_court AS (                      -- 2. aggregate at one grain
-  SELECT court_code, COUNT(*) AS n
+per_store AS (                      -- 2. aggregate at one grain
+  SELECT store_id, COUNT(*) AS n
   FROM landed
-  GROUP BY court_code
+  GROUP BY store_id
 )
 SELECT c.name, COALESCE(p.n, 0) AS n  -- 3. join for labels last
-FROM `p.ref.court` AS c
-LEFT JOIN per_court AS p USING (court_code)
+FROM `p.ref.stores` AS c
+LEFT JOIN per_store AS p USING (store_id)
 ORDER BY n DESC;</code></pre></div>
     <ul>
       <li>One CTE per step, named for what it holds.</li>
@@ -168,10 +169,10 @@ ORDER BY n DESC;</code></pre></div>
       <li><code>SAFE_CAST</code> and <code>SAFE.PARSE_DATE</code> turn bad input into NULL. Count those NULLs, or the failure is invisible.</li>
     </ul>
 <div class="snip"><pre><code>SELECT
-  COUNT(*)                                        AS total_rows,
-  COUNT(decision_date)                            AS with_date,
-  COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL) AS failed_parse
-FROM `p.fdp.judgment`;</code></pre></div>
+  COUNT(*)                                             AS total_rows,
+  COUNT(order_date)                                    AS with_date,
+  COUNTIF(raw_date IS NOT NULL AND order_date IS NULL) AS failed_parse
+FROM `p.analytics.orders`;</code></pre></div>
   </article>
 
   <article class="card"><h3>Joins without surprises</h3>
@@ -181,84 +182,84 @@ FROM `p.fdp.judgment`;</code></pre></div>
       <li><b>A filter on the right table in <code>WHERE</code></b> turns a <code>LEFT JOIN</code> into an inner join. Put it in <code>ON</code>.</li>
       <li><b>Check row counts</b> before and after each join while developing.</li>
     </ul>
-<div class="snip"><pre><code>-- WRONG: courts with no 2024 judgments disappear
-SELECT c.court_code, COUNT(j.judgment_key) n
-FROM court c LEFT JOIN judgment j USING (court_code)
-WHERE j.data_year = 2024
+<div class="snip"><pre><code>-- WRONG: stores with no 2024 orders disappear
+SELECT c.store_id, COUNT(o.order_id) n
+FROM stores c LEFT JOIN orders o USING (store_id)
+WHERE o.order_year = 2024
 GROUP BY 1;
 
 -- RIGHT: the filter belongs to the join
-SELECT c.court_code, COUNT(j.judgment_key) n
-FROM court c
-LEFT JOIN judgment j
-  ON j.court_code = c.court_code AND j.data_year = 2024
+SELECT c.store_id, COUNT(o.order_id) n
+FROM stores c
+LEFT JOIN orders o
+  ON o.store_id = c.store_id AND o.order_year = 2024
 GROUP BY 1;
 
 -- did my join fan out? keys should be unique on the "one" side
-SELECT court_code, COUNT(*) FROM court GROUP BY 1 HAVING COUNT(*) &gt; 1;</code></pre></div>
+SELECT store_id, COUNT(*) FROM stores GROUP BY 1 HAVING COUNT(*) &gt; 1;</code></pre></div>
   </article>
 
   <article class="card"><h3>Semi-joins and anti-joins</h3>
-<div class="snip"><pre><code>-- semi-join: courts that HAVE at least one judgment (no duplicates)
-SELECT * FROM court c
-WHERE EXISTS (SELECT 1 FROM judgment j WHERE j.court_code = c.court_code);
+<div class="snip"><pre><code>-- semi-join: stores that HAVE at least one order (no duplicates)
+SELECT * FROM stores c
+WHERE EXISTS (SELECT 1 FROM orders o WHERE o.store_id = c.store_id);
 
--- anti-join: courts with NO judgment
-SELECT * FROM court c
-WHERE NOT EXISTS (SELECT 1 FROM judgment j WHERE j.court_code = c.court_code);
+-- anti-join: stores with NO order
+SELECT * FROM stores c
+WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.store_id = c.store_id);
 
 -- same anti-join with LEFT JOIN
-SELECT c.* FROM court c
-LEFT JOIN judgment j USING (court_code)
-WHERE j.court_code IS NULL;
+SELECT c.* FROM stores c
+LEFT JOIN orders o USING (store_id)
+WHERE o.store_id IS NULL;
 
 -- set operations (columns by position)
-SELECT cnr FROM a EXCEPT DISTINCT SELECT cnr FROM b;   -- in a, not in b
-SELECT cnr FROM a INTERSECT DISTINCT SELECT cnr FROM b;
-SELECT cnr FROM a UNION ALL SELECT cnr FROM b;          -- keeps duplicates, cheaper</code></pre></div>
+SELECT order_ref FROM a EXCEPT DISTINCT SELECT order_ref FROM b;   -- in a, not in b
+SELECT order_ref FROM a INTERSECT DISTINCT SELECT order_ref FROM b;
+SELECT order_ref FROM a UNION ALL SELECT order_ref FROM b;          -- keeps duplicates, cheaper</code></pre></div>
   </article>
 
   <article class="card"><h3>Aggregation toolkit</h3>
 <div class="snip"><pre><code>SELECT
-  court_code,
+  store_id,
   COUNT(*)                                  AS n,
-  COUNT(DISTINCT cnr)                       AS cases,
-  COUNTIF(decision_date IS NULL)            AS undated,
-  SAFE_DIVIDE(COUNTIF(decision_date IS NULL), COUNT(*)) AS undated_share,
-  MIN(decision_date) AS first_d, MAX(decision_date) AS last_d,
-  ANY_VALUE(cnr HAVING MAX decision_date)   AS latest_cnr,   -- value at the max
-  STRING_AGG(DISTINCT CAST(data_year AS STRING), ',' ORDER BY CAST(data_year AS STRING)) AS years,
-  APPROX_QUANTILES(DATE_DIFF(DATE(_landed_at), decision_date, DAY), 100)[OFFSET(50)] AS median_lag_days,
-  LOGICAL_AND(decision_date IS NOT NULL)    AS all_dated
-FROM `p.fdp.judgment`
+  COUNT(DISTINCT order_ref)                 AS orders_n,
+  COUNTIF(order_date IS NULL)               AS undated,
+  SAFE_DIVIDE(COUNTIF(order_date IS NULL), COUNT(*)) AS undated_share,
+  MIN(order_date) AS first_d, MAX(order_date) AS last_d,
+  ANY_VALUE(order_ref HAVING MAX order_date) AS latest_order_ref,   -- value at the max
+  STRING_AGG(DISTINCT CAST(order_year AS STRING), ',' ORDER BY CAST(order_year AS STRING)) AS years,
+  APPROX_QUANTILES(DATE_DIFF(DATE(_landed_at), order_date, DAY), 100)[OFFSET(50)] AS median_lag_days,
+  LOGICAL_AND(order_date IS NOT NULL)       AS all_dated
+FROM `p.analytics.orders`
 GROUP BY ALL;            -- groups by every non-aggregated column
 
 -- subtotals in one pass
-SELECT state, court_code, COUNT(*) n
-FROM judgment JOIN court USING (court_code)
-GROUP BY ROLLUP (state, court_code);       -- per court, per state, grand total</code></pre></div>
+SELECT state, store_id, COUNT(*) n
+FROM orders JOIN stores USING (store_id)
+GROUP BY ROLLUP (state, store_id);       -- per store, per state, grand total</code></pre></div>
   </article>
 
   <article class="card wide"><h3>Window functions, properly</h3>
     <p>A window function computes a value for each row from a set of related rows, <b>without collapsing them</b>. Three parts: <code>PARTITION BY</code> (which rows are related), <code>ORDER BY</code> (their sequence), and the frame (which of them count for this row).</p>
 <div class="snip"><pre><code>SELECT
-  court_code, d, n,
+  store_id, d, n,
   ROW_NUMBER() OVER w_date                            AS rn,          -- 1,2,3 no ties
-  RANK()       OVER (PARTITION BY court_code ORDER BY n DESC) AS rnk, -- 1,1,3
-  DENSE_RANK() OVER (PARTITION BY court_code ORDER BY n DESC) AS drnk,-- 1,1,2
+  RANK()       OVER (PARTITION BY store_id ORDER BY n DESC) AS rnk, -- 1,1,3
+  DENSE_RANK() OVER (PARTITION BY store_id ORDER BY n DESC) AS drnk,-- 1,1,2
   LAG(n)  OVER w_date                                 AS prev_day,
   LEAD(n) OVER w_date                                 AS next_day,
-  SUM(n)  OVER (PARTITION BY court_code ORDER BY d
+  SUM(n)  OVER (PARTITION BY store_id ORDER BY d
                 ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total,
-  AVG(n)  OVER (PARTITION BY court_code ORDER BY d
+  AVG(n)  OVER (PARTITION BY store_id ORDER BY d
                 ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)         AS avg_7_rows,
-  AVG(n)  OVER (PARTITION BY court_code ORDER BY UNIX_DATE(d)
+  AVG(n)  OVER (PARTITION BY store_id ORDER BY UNIX_DATE(d)
                 RANGE BETWEEN 6 PRECEDING AND CURRENT ROW)        AS avg_7_days,
-  n / SUM(n) OVER (PARTITION BY court_code)           AS share_of_court,
+  n / SUM(n) OVER (PARTITION BY store_id)           AS share_of_store,
   FIRST_VALUE(d) OVER w_date                          AS first_day,
   LAST_VALUE(d)  OVER (w_date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_day
 FROM daily
-WINDOW w_date AS (PARTITION BY court_code ORDER BY d);</code></pre></div>
+WINDOW w_date AS (PARTITION BY store_id ORDER BY d);</code></pre></div>
     <ul>
       <li><b>ROWS vs RANGE:</b> <code>ROWS 6 PRECEDING</code> means six rows back, even if days are missing. <code>RANGE</code> on a numeric day number means six calendar days back. Fill gaps with a date spine or use RANGE.</li>
       <li><b>Default frame trap:</b> with <code>ORDER BY</code> and no frame, the frame ends at the current row, so <code>LAST_VALUE</code> returns the current row. Give an explicit frame.</li>
@@ -267,27 +268,27 @@ WINDOW w_date AS (PARTITION BY court_code ORDER BY d);</code></pre></div>
   </article>
 
   <article class="card"><h3>Pattern: top N per group</h3>
-<div class="snip"><pre><code>-- 3 most recent judgments per court
-SELECT court_code, cnr, decision_date
-FROM `p.fdp.judgment`
-WHERE decision_date IS NOT NULL
+<div class="snip"><pre><code>-- 3 most recent orders per store
+SELECT store_id, order_ref, order_date
+FROM `p.analytics.orders`
+WHERE order_date IS NOT NULL
 QUALIFY ROW_NUMBER() OVER (
-  PARTITION BY court_code
-  ORDER BY decision_date DESC, judgment_key      -- tie-breaker
+  PARTITION BY store_id
+  ORDER BY order_date DESC, order_id      -- tie-breaker
 ) &lt;= 3;</code></pre></div>
     <p class="note">Use <code>RANK</code> instead of <code>ROW_NUMBER</code> if ties should all be included. If BigQuery complains that <code>QUALIFY</code> needs a <code>WHERE</code>, <code>GROUP BY</code> or <code>HAVING</code> clause, add <code>WHERE TRUE</code>.</p>
   </article>
 
   <article class="card"><h3>Pattern: deduplicate</h3>
 <div class="snip"><pre><code>-- find duplicates first: never dedupe blind
-SELECT cnr, COUNT(*) AS copies, COUNT(DISTINCT _landed_at) AS loads
-FROM `p.odp.hc_judgment`
-GROUP BY cnr HAVING COUNT(*) &gt; 1
+SELECT order_ref, COUNT(*) AS copies, COUNT(DISTINCT _landed_at) AS loads
+FROM `p.raw.orders`
+GROUP BY order_ref HAVING COUNT(*) &gt; 1
 ORDER BY copies DESC LIMIT 20;
 
 -- keep the latest copy of each key
-SELECT * FROM `p.odp.hc_judgment`
-QUALIFY ROW_NUMBER() OVER (PARTITION BY cnr ORDER BY _landed_at DESC) = 1;
+SELECT * FROM `p.raw.orders`
+QUALIFY ROW_NUMBER() OVER (PARTITION BY order_ref ORDER BY _landed_at DESC) = 1;
 
 -- exact duplicate rows only
 SELECT DISTINCT * EXCEPT (_run_id) FROM t;   -- DISTINCT * fails on ARRAY columns</code></pre></div>
@@ -297,118 +298,118 @@ SELECT DISTINCT * EXCEPT (_run_id) FROM t;   -- DISTINCT * fails on ARRAY column
 <div class="snip"><pre><code>WITH days AS (
   SELECT d FROM UNNEST(GENERATE_DATE_ARRAY('2025-01-01', '2025-03-31')) AS d
 ),
-grid AS (                                  -- every court × every day
-  SELECT c.court_code, days.d FROM `p.ref.court` c CROSS JOIN days
+grid AS (                                  -- every store × every day
+  SELECT c.store_id, days.d FROM `p.ref.stores` c CROSS JOIN days
 ),
 actual AS (
-  SELECT court_code, decision_date AS d, COUNT(*) AS n
-  FROM `p.fdp.judgment`
-  WHERE decision_date BETWEEN '2025-01-01' AND '2025-03-31'
+  SELECT store_id, order_date AS d, COUNT(*) AS n
+  FROM `p.analytics.orders`
+  WHERE order_date BETWEEN '2025-01-01' AND '2025-03-31'
   GROUP BY 1, 2
 )
-SELECT g.court_code, g.d, COALESCE(a.n, 0) AS n
-FROM grid g LEFT JOIN actual a USING (court_code, d)
+SELECT g.store_id, g.d, COALESCE(a.n, 0) AS n
+FROM grid g LEFT JOIN actual a USING (store_id, d)
 ORDER BY 1, 2;</code></pre></div>
     <p class="note">Without the spine, days with zero rows simply do not appear, and averages and LAGs are computed over the wrong set.</p>
   </article>
 
   <article class="card"><h3>Pattern: gaps and islands</h3>
-<div class="snip"><pre><code>-- streaks of consecutive days on which a court published decisions
+<div class="snip"><pre><code>-- streaks of consecutive days on which a store took orders
 WITH d AS (
-  SELECT DISTINCT court_code, decision_date
-  FROM `p.fdp.judgment` WHERE decision_date IS NOT NULL
+  SELECT DISTINCT store_id, order_date
+  FROM `p.analytics.orders` WHERE order_date IS NOT NULL
 ),
 tagged AS (
   SELECT *,
-    DATE_SUB(decision_date,
-      INTERVAL ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY decision_date) DAY
+    DATE_SUB(order_date,
+      INTERVAL ROW_NUMBER() OVER (PARTITION BY store_id ORDER BY order_date) DAY
     ) AS island                            -- constant within a run of consecutive days
   FROM d
 )
-SELECT court_code, MIN(decision_date) AS start_d, MAX(decision_date) AS end_d,
+SELECT store_id, MIN(order_date) AS start_d, MAX(order_date) AS end_d,
        COUNT(*) AS days
 FROM tagged
-GROUP BY court_code, island
+GROUP BY store_id, island
 ORDER BY days DESC;</code></pre></div>
     <p class="note">The trick: a date minus its row number stays the same while dates are consecutive and jumps at each gap.</p>
   </article>
 
   <article class="card"><h3>Pattern: change vs previous period</h3>
 <div class="snip"><pre><code>WITH yearly AS (
-  SELECT court_code, data_year, COUNT(*) AS n
-  FROM `p.fdp.judgment` GROUP BY ALL
+  SELECT store_id, order_year, COUNT(*) AS n
+  FROM `p.analytics.orders` GROUP BY ALL
 )
 SELECT * FROM (
   SELECT *,
-    LAG(n) OVER (PARTITION BY court_code ORDER BY data_year) AS prev_n
+    LAG(n) OVER (PARTITION BY store_id ORDER BY order_year) AS prev_n
   FROM yearly
 )
 WHERE SAFE_DIVIDE(n - prev_n, prev_n) &lt; -0.2;   -- fell by more than 20%</code></pre></div>
-    <p class="note">LAG takes the previous <i>row</i>. If a year is missing for a court, "previous" is two years back. Use a spine when that matters.</p>
+    <p class="note">LAG takes the previous <i>row</i>. If a year is missing for a store, "previous" is two years back. Use a spine when that matters.</p>
   </article>
 
   <article class="card"><h3>Pattern: arrays (one-to-many in one row)</h3>
-<div class="snip"><pre><code>-- top 3 judges per court by number of judgments
-WITH per_judge AS (
-  SELECT court_code, TRIM(judge) AS judge, COUNT(*) AS n
-  FROM `p.fdp.judgment`, UNNEST(judges) AS judge
+<div class="snip"><pre><code>-- top 3 items per store by number of orders
+WITH per_item AS (
+  SELECT store_id, TRIM(item) AS item, COUNT(*) AS n
+  FROM `p.analytics.orders`, UNNEST(items) AS item
   GROUP BY ALL
 )
-SELECT * FROM per_judge
-QUALIFY ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY n DESC, judge) &lt;= 3;
+SELECT * FROM per_item
+QUALIFY ROW_NUMBER() OVER (PARTITION BY store_id ORDER BY n DESC, item) &lt;= 3;
 
 -- filter rows by array content without exploding
-SELECT cnr FROM `p.fdp.judgment`
-WHERE EXISTS (SELECT 1 FROM UNNEST(judges) j WHERE j LIKE '%SHARMA%');
+SELECT order_ref FROM `p.analytics.orders`
+WHERE EXISTS (SELECT 1 FROM UNNEST(items) i WHERE i LIKE '%UMBRELLA%');
 
 -- array size, and rows whose array is empty or NULL
-SELECT ARRAY_LENGTH(judges) AS n_judges FROM t;
-SELECT COUNTIF(ARRAY_LENGTH(judges) = 0 OR judges IS NULL) FROM t;</code></pre></div>
-    <p class="note">The comma before <code>UNNEST</code> is a CROSS JOIN: rows with an empty array vanish. Use <code>LEFT JOIN UNNEST(judges) AS judge</code> to keep them.</p>
+SELECT ARRAY_LENGTH(items) AS n_items FROM t;
+SELECT COUNTIF(ARRAY_LENGTH(items) = 0 OR items IS NULL) FROM t;</code></pre></div>
+    <p class="note">The comma before <code>UNNEST</code> is a CROSS JOIN: rows with an empty array vanish. Use <code>LEFT JOIN UNNEST(items) AS item</code> to keep them.</p>
   </article>
 
   <article class="card"><h3>Pattern: pivot and unpivot</h3>
-<div class="snip"><pre><code>-- one row per court, a column per year
+<div class="snip"><pre><code>-- one row per store, a column per year
 SELECT * FROM (
-  SELECT court_code, data_year, judgment_key FROM `p.fdp.judgment`
-  WHERE data_year BETWEEN 2023 AND 2025
+  SELECT store_id, order_year, order_id FROM `p.analytics.orders`
+  WHERE order_year BETWEEN 2023 AND 2025
 )
-PIVOT (COUNT(judgment_key) FOR data_year IN (2023 AS y2023, 2024 AS y2024, 2025 AS y2025));
+PIVOT (COUNT(order_id) FOR order_year IN (2023 AS y2023, 2024 AS y2024, 2025 AS y2025));
 
 -- the portable way, works in any SQL
-SELECT court_code,
-  COUNTIF(data_year = 2023) AS y2023,
-  COUNTIF(data_year = 2024) AS y2024,
-  COUNTIF(data_year = 2025) AS y2025
-FROM `p.fdp.judgment` GROUP BY court_code;
+SELECT store_id,
+  COUNTIF(order_year = 2023) AS y2023,
+  COUNTIF(order_year = 2024) AS y2024,
+  COUNTIF(order_year = 2025) AS y2025
+FROM `p.analytics.orders` GROUP BY store_id;
 
 -- columns back to rows
 SELECT * FROM wide UNPIVOT (n FOR year IN (y2023, y2024, y2025));</code></pre></div>
   </article>
 
   <article class="card"><h3>Pattern: recursive hierarchy</h3>
-<div class="snip"><pre><code>-- every judgment that cites X, directly or through a chain (max depth 5)
+<div class="snip"><pre><code>-- every category under X, directly or through a chain (max depth 5)
 WITH RECURSIVE chain AS (
-  SELECT citing_key, cited_key, 1 AS depth
-  FROM `p.fdp.citation`
-  WHERE cited_key = 'X'
+  SELECT category_id, parent_id, 1 AS depth
+  FROM `p.analytics.categories`
+  WHERE parent_id = 'X'
   UNION ALL
-  SELECT c.citing_key, c.cited_key, chain.depth + 1
-  FROM `p.fdp.citation` c
-  JOIN chain ON c.cited_key = chain.citing_key
+  SELECT c.category_id, c.parent_id, chain.depth + 1
+  FROM `p.analytics.categories` c
+  JOIN chain ON c.parent_id = chain.category_id
   WHERE chain.depth &lt; 5                    -- always bound the recursion
 )
-SELECT DISTINCT citing_key, MIN(depth) AS depth FROM chain GROUP BY citing_key;</code></pre></div>
+SELECT category_id, MIN(depth) AS depth FROM chain GROUP BY category_id;</code></pre></div>
   </article>
 
   <article class="card"><h3>Pattern: point-in-time join (SCD type 2)</h3>
-<div class="snip"><pre><code>-- which court name was valid on the decision date?
-SELECT j.cnr, j.decision_date, s.name
-FROM `p.fdp.judgment` j
-JOIN `p.snapshots.court_snapshot` s
-  ON s.court_code = j.court_code
- AND j.decision_date &gt;= DATE(s.dbt_valid_from)
- AND (s.dbt_valid_to IS NULL OR j.decision_date &lt; DATE(s.dbt_valid_to));</code></pre></div>
+<div class="snip"><pre><code>-- which store name was valid on the order date?
+SELECT o.order_ref, o.order_date, s.name
+FROM `p.analytics.orders` o
+JOIN `p.snapshots.store_snapshot` s
+  ON s.store_id = o.store_id
+ AND o.order_date &gt;= DATE(s.dbt_valid_from)
+ AND (s.dbt_valid_to IS NULL OR o.order_date &lt; DATE(s.dbt_valid_to));</code></pre></div>
     <p class="note">Half-open intervals (<code>&gt;= from AND &lt; to</code>) never match two versions for one date.</p>
   </article>
 
@@ -425,9 +426,9 @@ CREATE OR REPLACE FUNCTION `p.util.safe_ratio`(a FLOAT64, b FLOAT64) AS (
 );
 
 -- table function: a parameterised view
-CREATE OR REPLACE TABLE FUNCTION `p.util.court_year`(c STRING, y INT64) AS
-SELECT * FROM `p.fdp.judgment` WHERE court_code = c AND data_year = y;
-SELECT COUNT(*) FROM `p.util.court_year`('2_5', 2024);</code></pre></div>
+CREATE OR REPLACE TABLE FUNCTION `p.util.store_year`(c STRING, y INT64) AS
+SELECT * FROM `p.analytics.orders` WHERE store_id = c AND order_year = y;
+SELECT COUNT(*) FROM `p.util.store_year`('1_05', 2024);</code></pre></div>
   </article>
 
   <article class="card wide"><h3>Making BigQuery fast and cheap</h3>
@@ -476,39 +477,39 @@ SELECT COUNT(*) FROM `p.util.court_year`('2_5', 2024);</code></pre></div>
   <article class="card wide"><h3>Exercises (open each for a solution)</h3>
     <p class="note">Try each on the practice schema, or adapt it to a public dataset. Solutions are one good answer, not the only one.</p>
 
-    <details><summary><span class="ex">1.</span> Judgments per court in 2024, including courts with none.</summary><div class="inner">
-<div class="snip"><pre><code>SELECT c.court_code, c.name, COUNT(j.judgment_key) AS n
-FROM `p.ref.court` c
-LEFT JOIN `p.fdp.judgment` j
-  ON j.court_code = c.court_code AND j.data_year = 2024
+    <details><summary><span class="ex">1.</span> Orders per store in 2024, including stores with none.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT c.store_id, c.name, COUNT(o.order_id) AS n
+FROM `p.ref.stores` c
+LEFT JOIN `p.analytics.orders` o
+  ON o.store_id = c.store_id AND o.order_year = 2024
 GROUP BY ALL
 ORDER BY n DESC;</code></pre></div>
-      <p class="note">Filter in <code>ON</code>, and count a column from the right table so empty courts give 0.</p></div></details>
+      <p class="note">Filter in <code>ON</code>, and count a column from the right table so empty stores give 0.</p></div></details>
 
-    <details><summary><span class="ex">2.</span> The most recent judgment per court, with ties broken consistently.</summary><div class="inner">
-<div class="snip"><pre><code>SELECT court_code, cnr, decision_date
-FROM `p.fdp.judgment`
-WHERE decision_date IS NOT NULL
-QUALIFY ROW_NUMBER() OVER (PARTITION BY court_code
-                           ORDER BY decision_date DESC, judgment_key) = 1;</code></pre></div></div></details>
+    <details><summary><span class="ex">2.</span> The most recent order per store, with ties broken consistently.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT store_id, order_ref, order_date
+FROM `p.analytics.orders`
+WHERE order_date IS NOT NULL
+QUALIFY ROW_NUMBER() OVER (PARTITION BY store_id
+                           ORDER BY order_date DESC, order_id) = 1;</code></pre></div></div></details>
 
-    <details><summary><span class="ex">3.</span> What share of each court's rows failed to parse their date? Only courts above 1%.</summary><div class="inner">
-<div class="snip"><pre><code>SELECT court_code,
+    <details><summary><span class="ex">3.</span> What share of each store's rows failed to parse their date? Only stores above 1%.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT store_id,
        COUNT(*) AS n,
-       COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL) AS failed,
-       SAFE_DIVIDE(COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL), COUNT(*)) AS failed_share
-FROM `p.fdp.judgment`
-GROUP BY court_code
-HAVING SAFE_DIVIDE(COUNTIF(raw_date IS NOT NULL AND decision_date IS NULL), COUNT(*)) &gt; 0.01
+       COUNTIF(raw_date IS NOT NULL AND order_date IS NULL) AS failed,
+       SAFE_DIVIDE(COUNTIF(raw_date IS NOT NULL AND order_date IS NULL), COUNT(*)) AS failed_share
+FROM `p.analytics.orders`
+GROUP BY store_id
+HAVING SAFE_DIVIDE(COUNTIF(raw_date IS NOT NULL AND order_date IS NULL), COUNT(*)) &gt; 0.01
 ORDER BY failed_share DESC;</code></pre></div></div></details>
 
-    <details><summary><span class="ex">4.</span> Daily counts for one court with a 7-day moving average, including days with zero.</summary><div class="inner">
+    <details><summary><span class="ex">4.</span> Daily counts for one store with a 7-day moving average, including days with zero.</summary><div class="inner">
 <div class="snip"><pre><code>WITH days AS (
   SELECT d FROM UNNEST(GENERATE_DATE_ARRAY('2025-01-01', '2025-06-30')) d
 ),
 daily AS (
-  SELECT decision_date AS d, COUNT(*) n FROM `p.fdp.judgment`
-  WHERE court_code = '2_5' AND decision_date BETWEEN '2025-01-01' AND '2025-06-30'
+  SELECT order_date AS d, COUNT(*) n FROM `p.analytics.orders`
+  WHERE store_id = '1_05' AND order_date BETWEEN '2025-01-01' AND '2025-06-30'
   GROUP BY 1
 )
 SELECT days.d, COALESCE(n, 0) AS n,
@@ -517,53 +518,53 @@ FROM days LEFT JOIN daily USING (d)
 ORDER BY d;</code></pre></div>
       <p class="note">The spine makes ROWS equal to days, so the moving average is over seven calendar days.</p></div></details>
 
-    <details><summary><span class="ex">5.</span> Courts whose yearly count fell by more than 20% compared with the previous year.</summary><div class="inner">
+    <details><summary><span class="ex">5.</span> Stores whose yearly count fell by more than 20% compared with the previous year.</summary><div class="inner">
 <div class="snip"><pre><code>WITH y AS (
-  SELECT court_code, data_year, COUNT(*) n FROM `p.fdp.judgment` GROUP BY ALL
+  SELECT store_id, order_year, COUNT(*) n FROM `p.analytics.orders` GROUP BY ALL
 ),
 c AS (
-  SELECT *, LAG(n) OVER (PARTITION BY court_code ORDER BY data_year) AS prev_n,
-            LAG(data_year) OVER (PARTITION BY court_code ORDER BY data_year) AS prev_year
+  SELECT *, LAG(n) OVER (PARTITION BY store_id ORDER BY order_year) AS prev_n,
+            LAG(order_year) OVER (PARTITION BY store_id ORDER BY order_year) AS prev_year
   FROM y
 )
 SELECT *, SAFE_DIVIDE(n - prev_n, prev_n) AS change
 FROM c
-WHERE prev_year = data_year - 1               -- only compare adjacent years
+WHERE prev_year = order_year - 1               -- only compare adjacent years
   AND SAFE_DIVIDE(n - prev_n, prev_n) &lt; -0.2;</code></pre></div></div></details>
 
     <details><summary><span class="ex">6.</span> Find duplicate keys, then build the deduplicated table keeping the latest load.</summary><div class="inner">
-<div class="snip"><pre><code>SELECT cnr, COUNT(*) copies FROM `p.odp.hc_judgment`
-GROUP BY cnr HAVING COUNT(*) &gt; 1;
+<div class="snip"><pre><code>SELECT order_ref, COUNT(*) copies FROM `p.raw.orders`
+GROUP BY order_ref HAVING COUNT(*) &gt; 1;
 
-CREATE OR REPLACE TABLE `p.scratch.hc_dedup` AS
-SELECT * FROM `p.odp.hc_judgment`
-QUALIFY ROW_NUMBER() OVER (PARTITION BY cnr ORDER BY _landed_at DESC) = 1;
+CREATE OR REPLACE TABLE `p.scratch.orders_dedup` AS
+SELECT * FROM `p.raw.orders`
+QUALIFY ROW_NUMBER() OVER (PARTITION BY order_ref ORDER BY _landed_at DESC) = 1;
 
 -- verify: should return 0
-SELECT COUNT(*) - COUNT(DISTINCT cnr) FROM `p.scratch.hc_dedup`;</code></pre></div></div></details>
+SELECT COUNT(*) - COUNT(DISTINCT order_ref) FROM `p.scratch.orders_dedup`;</code></pre></div></div></details>
 
-    <details><summary><span class="ex">7.</span> The longest run of consecutive publishing days for each court.</summary><div class="inner">
+    <details><summary><span class="ex">7.</span> The longest run of consecutive trading days for each store.</summary><div class="inner">
 <div class="snip"><pre><code>WITH d AS (
-  SELECT DISTINCT court_code, decision_date FROM `p.fdp.judgment`
-  WHERE decision_date IS NOT NULL
+  SELECT DISTINCT store_id, order_date FROM `p.analytics.orders`
+  WHERE order_date IS NOT NULL
 ),
 t AS (
-  SELECT *, DATE_SUB(decision_date, INTERVAL
-           ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY decision_date) DAY) AS grp
+  SELECT *, DATE_SUB(order_date, INTERVAL
+           ROW_NUMBER() OVER (PARTITION BY store_id ORDER BY order_date) DAY) AS grp
   FROM d
 ),
 runs AS (
-  SELECT court_code, MIN(decision_date) s, MAX(decision_date) e, COUNT(*) len
-  FROM t GROUP BY court_code, grp
+  SELECT store_id, MIN(order_date) s, MAX(order_date) e, COUNT(*) len
+  FROM t GROUP BY store_id, grp
 )
 SELECT * FROM runs
-QUALIFY ROW_NUMBER() OVER (PARTITION BY court_code ORDER BY len DESC, s) = 1;</code></pre></div></div></details>
+QUALIFY ROW_NUMBER() OVER (PARTITION BY store_id ORDER BY len DESC, s) = 1;</code></pre></div></div></details>
 
-    <details><summary><span class="ex">8.</span> Each court's share of all 2024 judgments, and its rank within its state.</summary><div class="inner">
+    <details><summary><span class="ex">8.</span> Each store's share of all 2024 orders, and its rank within its state.</summary><div class="inner">
 <div class="snip"><pre><code>WITH n AS (
-  SELECT c.state, j.court_code, COUNT(*) n
-  FROM `p.fdp.judgment` j JOIN `p.ref.court` c USING (court_code)
-  WHERE j.data_year = 2024
+  SELECT c.state, o.store_id, COUNT(*) n
+  FROM `p.analytics.orders` o JOIN `p.ref.stores` c USING (store_id)
+  WHERE o.order_year = 2024
   GROUP BY ALL
 )
 SELECT *,
@@ -572,42 +573,42 @@ SELECT *,
 FROM n
 ORDER BY state, rank_in_state;</code></pre></div></div></details>
 
-    <details><summary><span class="ex">9.</span> Courts present in the reference table but absent from the landed data, and the reverse.</summary><div class="inner">
-<div class="snip"><pre><code>(SELECT 'missing_data' AS issue, court_code FROM `p.ref.court`
+    <details><summary><span class="ex">9.</span> Stores present in the reference table but absent from the landed data, and the reverse.</summary><div class="inner">
+<div class="snip"><pre><code>(SELECT 'missing_data' AS issue, store_id FROM `p.ref.stores`
  EXCEPT DISTINCT
- SELECT 'missing_data', court_code FROM `p.fdp.judgment`)
+ SELECT 'missing_data', store_id FROM `p.analytics.orders`)
 UNION ALL
-(SELECT 'unknown_court', court_code FROM `p.fdp.judgment`
+(SELECT 'unknown_store', store_id FROM `p.analytics.orders`
  EXCEPT DISTINCT
- SELECT 'unknown_court', court_code FROM `p.ref.court`);</code></pre></div>
+ SELECT 'unknown_store', store_id FROM `p.ref.stores`);</code></pre></div>
       <p class="note">Parenthesise when mixing different set operators; BigQuery requires it.</p></div></details>
 
-    <details><summary><span class="ex">10.</span> Median, 90th percentile and maximum lag (days) between decision and landing, per court.</summary><div class="inner">
-<div class="snip"><pre><code>SELECT court_code,
+    <details><summary><span class="ex">10.</span> Median, 90th percentile and maximum lag (days) between order and landing, per store.</summary><div class="inner">
+<div class="snip"><pre><code>SELECT store_id,
   APPROX_QUANTILES(lag_d, 100)[OFFSET(50)] AS p50,
   APPROX_QUANTILES(lag_d, 100)[OFFSET(90)] AS p90,
   MAX(lag_d) AS max_lag
 FROM (
-  SELECT court_code, DATE_DIFF(DATE(_landed_at), decision_date, DAY) AS lag_d
-  FROM `p.fdp.judgment` WHERE decision_date IS NOT NULL
+  SELECT store_id, DATE_DIFF(DATE(_landed_at), order_date, DAY) AS lag_d
+  FROM `p.analytics.orders` WHERE order_date IS NOT NULL
 )
-GROUP BY court_code
+GROUP BY store_id
 ORDER BY p90 DESC;</code></pre></div></div></details>
 
     <details><summary><span class="ex">11.</span> Upsert a day's new rows into a target table without creating duplicates.</summary><div class="inner">
-<div class="snip"><pre><code>MERGE `p.cdp.serving` T
+<div class="snip"><pre><code>MERGE `p.mart.serving` T
 USING (
-  SELECT * FROM `p.fdp.judgment`
+  SELECT * FROM `p.analytics.orders`
   WHERE DATE(_landed_at) = @run_date
-  QUALIFY ROW_NUMBER() OVER (PARTITION BY judgment_key ORDER BY _landed_at DESC) = 1
+  QUALIFY ROW_NUMBER() OVER (PARTITION BY order_id ORDER BY _landed_at DESC) = 1
 ) S
-ON T.judgment_key = S.judgment_key
-WHEN MATCHED THEN UPDATE SET decision_date = S.decision_date, cnr = S.cnr
+ON T.order_id = S.order_id
+WHEN MATCHED THEN UPDATE SET order_date = S.order_date, order_ref = S.order_ref
 WHEN NOT MATCHED THEN INSERT ROW;</code></pre></div>
       <p class="note">Deduplicate the source first: MERGE fails if two source rows match one target row.</p></div></details>
 
-    <details><summary><span class="ex">12.</span> Explain why this returns no rows: <code>SELECT * FROM court WHERE court_code NOT IN (SELECT court_code FROM judgment)</code>.</summary><div class="inner">
-      <p>If any <code>judgment.court_code</code> is NULL, <code>x NOT IN (…, NULL)</code> evaluates to NULL for every x, never TRUE, so no row passes. Use <code>NOT EXISTS</code>, or add <code>WHERE court_code IS NOT NULL</code> inside the subquery.</p></div></details>
+    <details><summary><span class="ex">12.</span> Explain why this returns no rows: <code>SELECT * FROM stores WHERE store_id NOT IN (SELECT store_id FROM orders)</code>.</summary><div class="inner">
+      <p>If any <code>orders.store_id</code> is NULL, <code>x NOT IN (…, NULL)</code> evaluates to NULL for every x, never TRUE, so no row passes. Use <code>NOT EXISTS</code>, or add <code>WHERE store_id IS NOT NULL</code> inside the subquery.</p></div></details>
   </article>
 
   <article class="card"><h3>A plan to get better</h3>

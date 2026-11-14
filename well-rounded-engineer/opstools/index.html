@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -142,34 +143,34 @@
 global:
   scrape_interval: 30s
 scrape_configs:
-  - job_name: legal-api
+  - job_name: shop-api
     metrics_path: /actuator/prometheus
     static_configs:
-      - targets: ["legal-api:8080"]
+      - targets: ["shop-api:8080"]
 rule_files: ["rules/*.yml"]
 alerting:
   alertmanagers:
     - static_configs:
         - targets: ["alertmanager:9093"]</code></pre></div>
-<div class="snip"><pre><code># rules/legal-api.yml
+<div class="snip"><pre><code># rules/shop-api.yml
 groups:
-  - name: legal-api
+  - name: shop-api
     rules:
       - record: job:http_5xx_ratio:rate5m
         expr: |
           sum by (job) (rate(http_server_requests_seconds_count{status=~"5.."}[5m]))
           / sum by (job) (rate(http_server_requests_seconds_count[5m]))
-      - alert: LegalApiHighErrorRate
-        expr: job:http_5xx_ratio:rate5m{job="legal-api"} &gt; 0.02
+      - alert: ShopApiHighErrorRate
+        expr: job:http_5xx_ratio:rate5m{job="shop-api"} &gt; 0.02
         for: 10m
         labels: { severity: page }
         annotations:
-          summary: "legal-api 5xx above 2% for 10 minutes"
-          runbook_url: "https://runbooks.example.com/legal-api/high-errors"
-      - alert: CorpusLoadMissing
-        expr: time() - corpus_last_success_timestamp_seconds &gt; 26 * 3600
+          summary: "shop-api 5xx above 2% for 10 minutes"
+          runbook_url: "https://runbooks.example.com/shop-api/high-errors"
+      - alert: OrdersLoadMissing
+        expr: time() - orders_load_last_success_timestamp_seconds &gt; 26 * 3600
         labels: { severity: page }
-        annotations: { summary: "No successful corpus load for 26 hours" }</code></pre></div>
+        annotations: { summary: "No successful orders load for 26 hours" }</code></pre></div>
   </article>
 
   <article class="card"><h3>PromQL you will use</h3>
@@ -177,9 +178,9 @@ groups:
 sum by (status) (rate(http_server_requests_seconds_count[5m])) # grouped
 histogram_quantile(0.95,
   sum by (le) (rate(http_server_requests_seconds_bucket[5m])))  # p95 latency
-increase(odp_objects_total{outcome="failed"}[1h])             # count over a window
+increase(orders_objects_total{outcome="failed"}[1h])             # count over a window
 up == 0                                                       # targets not scraped
-absent(corpus_last_success_timestamp_seconds)                 # metric missing entirely
+absent(orders_load_last_success_timestamp_seconds)                 # metric missing entirely
 topk(5, sum by (pod) (container_memory_working_set_bytes))    # top memory users</code></pre></div>
     <p class="note">Always <code>rate()</code> a counter before summing; never sum raw counters. Alert on <code>absent()</code> or <code>up == 0</code> so a dead exporter is not mistaken for health.</p>
   </article>
@@ -309,7 +310,7 @@ curl -s -u "$SN_USER:$SN_PASS" -H "Accept: application/json" \
 curl -s -u "$SN_USER:$SN_PASS" -X POST \
   -H "Content-Type: application/json" -H "Accept: application/json" \
   "https://$INSTANCE.service-now.com/api/now/table/incident" \
-  -d '{"short_description":"Corpus load missing for 26h",
+  -d '{"short_description":"Orders load missing for 26h",
        "urgency":"2","impact":"2",
        "assignment_group":"&lt;sys_id of the Data Platform group&gt;",
        "description":"Ledger shows no SUCCEEDED LAND since 2026-11-11 06:15 UTC. Runbook: …"}'</code></pre></div>

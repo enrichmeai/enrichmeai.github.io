@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -123,6 +124,7 @@
       <tr><td>3.12</td><td>2023</td><td>Generic syntax <code>def f[T](x: T)</code>, <code>type</code> aliases, freer f-strings, <code>itertools.batched</code></td></tr>
       <tr><td>3.13</td><td>2024</td><td>New REPL, experimental free-threaded build (no GIL), experimental JIT</td></tr>
       <tr><td>3.14</td><td>2025</td><td>Template strings <code>t"…"</code>, deferred annotations, free-threaded build officially supported, <code>compression.zstd</code>, <code>concurrent.interpreters</code></td></tr>
+      <tr><td>3.15</td><td>2026</td><td>Explicit <code>lazy</code> imports, <code>frozendict</code> and <code>sentinel</code> builtins, UTF-8 as the default encoding, unpacking in comprehensions, the <code>profiling</code> package with the Tachyon sampling profiler</td></tr>
       </tbody></table></div>
   </article>
 
@@ -132,14 +134,14 @@ from pathlib import Path
 from datetime import date, datetime
 
 @dataclass(frozen=True, slots=True)
-class Judgment:
-    cnr: str
-    decision_date: date | None
+class Order:
+    order_ref: str
+    order_date: date | None
     tags: list[str] = field(default_factory=list)
 
-rows = [r for r in rows if r.decision_date]           # filter
-by_cnr = {r.cnr: r for r in rows}                     # index
-years = {r.decision_date.year for r in rows}          # set
+rows = [r for r in rows if r.order_date]           # filter
+by_order_ref = {r.order_ref: r for r in rows}                     # index
+years = {r.order_date.year for r in rows}          # set
 
 if (n := len(rows)) &gt; 1000: print(f"{n=}")           # walrus + debug f-string
 
@@ -175,15 +177,15 @@ from collections import Counter, defaultdict
 for chunk in batched(rows, 500):        # 3.12; tuples of ≤500
     client.insert_rows_json(table, chunk)
 
-counts = Counter(r.court for r in rows)
+counts = Counter(r.store for r in rows)
 counts.most_common(5)
 
-by_court = defaultdict(list)
-for r in rows: by_court[r.court].append(r)
+by_store = defaultdict(list)
+for r in rows: by_store[r.store].append(r)
 
 # groupby needs sorted input
-rows.sort(key=lambda r: r.court)
-for court, grp in groupby(rows, key=lambda r: r.court): ...
+rows.sort(key=lambda r: r.store)
+for store, grp in groupby(rows, key=lambda r: r.store): ...
 
 flat = list(chain.from_iterable(nested))
 first10 = list(islice(gen, 10))</code></pre></div>
@@ -211,7 +213,7 @@ def timed(label):
     try: yield
     finally: log.info("%s took %.2fs", label, time.perf_counter() - t)
 
-with timed("odp load"): run()</code></pre></div>
+with timed("orders load"): run()</code></pre></div>
   </article>
 
   <article class="card"><h3>Concurrency</h3>
@@ -241,13 +243,13 @@ client = bigquery.Client(project="my-proj", location="asia-south1")
 
 job_cfg = bigquery.QueryJobConfig(query_parameters=[
     bigquery.ScalarQueryParameter("from_d", "DATE", "2024-01-01"),
-    bigquery.ArrayQueryParameter("courts", "STRING", ["2_5", "14_25"]),
+    bigquery.ArrayQueryParameter("stores", "STRING", ["1_05", "4_12"]),
 ])
-sql = """SELECT court, COUNT(*) n FROM `my-proj.fdp.judgment`
-         WHERE decision_date &gt;= @from_d AND court IN UNNEST(@courts)
-         GROUP BY court"""
+sql = """SELECT store, COUNT(*) n FROM `my-proj.analytics.orders`
+         WHERE order_date &gt;= @from_d AND store IN UNNEST(@stores)
+         GROUP BY store"""
 for row in client.query(sql, job_config=job_cfg).result():
-    print(row.court, row["n"])
+    print(row.store, row["n"])
 
 df = client.query(sql, job_config=job_cfg).to_dataframe()   # needs db-dtypes
 
@@ -259,14 +261,15 @@ print(dry.total_bytes_processed / 1e9, "GB")
 
 # Load parquet from GCS
 load = client.load_table_from_uri(
-    "gs://bkt/data/year=2024/*.parquet", "my-proj.odp.hc_judgment",
+    "gs://bkt/data/year=2024/*.parquet", "my-proj.raw.orders",
     job_config=bigquery.LoadJobConfig(
         source_format=bigquery.SourceFormat.PARQUET,
         write_disposition=bigquery.WriteDisposition.WRITE_APPEND))
 load.result()                     # raises on failure
 print(load.output_rows)
 
-client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list</code></pre></div>
+client.insert_rows_json("my-proj.ops.events", [{"k": "v"}])  # returns errors list
+# insert_rows_json is the legacy streaming API (insertAll): for volume, use a load job or the Storage Write API</code></pre></div>
   </article>
 
   <article class="card"><h3>GCS Python client</h3>
@@ -343,13 +346,13 @@ from apache_beam.options.pipeline_options import PipelineOptions
 
 with beam.Pipeline(options=PipelineOptions()) as p:
     (p
-     | beam.io.ReadFromBigQuery(query="SELECT court FROM `p.odp.hc`",
+     | beam.io.ReadFromBigQuery(query="SELECT store FROM `p.raw.orders`",
                                 use_standard_sql=True)
-     | beam.Map(lambda r: (r["court"], 1))
+     | beam.Map(lambda r: (r["store"], 1))
      | beam.CombinePerKey(sum)
-     | beam.Map(lambda kv: {"court": kv[0], "n": kv[1]})
-     | beam.io.WriteToBigQuery("p:cdp.court_counts",
-           schema="court:STRING,n:INTEGER",
+     | beam.Map(lambda kv: {"store": kv[0], "n": kv[1]})
+     | beam.io.WriteToBigQuery("p:mart.store_counts",
+           schema="store:STRING,n:INTEGER",
            write_disposition=beam.io.BigQueryDisposition.WRITE_TRUNCATE))
 # python job.py --runner=DataflowRunner --project=… --region=… --temp_location=gs://…</code></pre></div>
   </article>

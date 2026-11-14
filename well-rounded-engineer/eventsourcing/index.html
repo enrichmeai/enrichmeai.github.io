@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -157,10 +158,10 @@
   </article>
 
   <article class="card"><h3>An aggregate in Java</h3>
-<div class="snip"><pre><code>sealed interface SubEvent permits Started, Upgraded, Cancelled {}
-record Started(String id, String plan, Instant at)   implements SubEvent {}
-record Upgraded(String id, String plan, Instant at)  implements SubEvent {}
-record Cancelled(String id, String reason, Instant at) implements SubEvent {}
+<div class="snip"><pre><code>sealed interface SubEvent permits Started, PlanUpgraded, Cancelled {}
+record Started(String id, String plan, Instant at)      implements SubEvent {}
+record PlanUpgraded(String id, String plan, Instant at) implements SubEvent {}
+record Cancelled(String id, String reason, Instant at)  implements SubEvent {}
 
 enum Status { ACTIVE, CANCELLED }
 
@@ -174,16 +175,16 @@ record Subscription(String id, String plan, Status status, int version) {
 
   static Subscription apply(Subscription s, SubEvent e) {     // pure: no side effects
     return switch (e) {
-      case Started st   -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
-      case Upgraded u   -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
-      case Cancelled c  -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
+      case Started st     -&gt; new Subscription(st.id(), st.plan(), Status.ACTIVE, 1);
+      case PlanUpgraded u -&gt; new Subscription(s.id(), u.plan(), s.status(), s.version() + 1);
+      case Cancelled c    -&gt; new Subscription(s.id(), s.plan(), Status.CANCELLED, s.version() + 1);
     };
   }
 
   List&lt;SubEvent&gt; upgrade(String newPlan, Instant now) {        // decide
     if (status != Status.ACTIVE) throw new IllegalStateException("subscription not active");
     if (plan.equals(newPlan)) return List.of();                 // idempotent: nothing to do
-    return List.of(new Upgraded(id, newPlan, now));
+    return List.of(new PlanUpgraded(id, newPlan, now));
   }
 }</code></pre></div>
     <p class="note">Separate <i>decide</i> (rules, may reject) from <i>apply</i> (pure state change). Apply must never fail for a stored event: it already happened.</p>
@@ -217,9 +218,9 @@ VALUES ('subscription-42', 4, 'PlanUpgraded', '{"plan":"pro"}');
 void handle(StoredEvent e) {
   tx.run(() -&gt; {
     switch (e.payload()) {
-      case Started s   -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
-      case Upgraded u  -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
-      case Cancelled c -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
+      case Started s      -&gt; db.upsert("subscription_view", s.id(), Map.of("plan", s.plan(), "status", "ACTIVE"));
+      case PlanUpgraded u -&gt; db.update("subscription_view", u.id(), Map.of("plan", u.plan()));
+      case Cancelled c    -&gt; db.update("subscription_view", c.id(), Map.of("status", "CANCELLED"));
     }
     db.saveCheckpoint("subscription_view", e.globalPosition());  // same transaction
   });
@@ -256,7 +257,7 @@ void handle(StoredEvent e) {
 void upgradeEmitsEventWhenActive() {
   var given = List.&lt;SubEvent&gt;of(new Started("s1", "basic", T0));
   var events = Subscription.replay(given).upgrade("pro", T1);          // when
-  assertThat(events).containsExactly(new Upgraded("s1", "pro", T1));   // then
+  assertThat(events).containsExactly(new PlanUpgraded("s1", "pro", T1));   // then
 }
 
 @Test
@@ -271,8 +272,8 @@ void cannotUpgradeCancelled() {
   <article class="card"><h3>The lightweight version: an append-only ledger</h3>
     <p>Many systems get most of the benefit without full event sourcing: an append-only table with one row per state change, and current state from a "latest event" view. Never UPDATE, never DELETE.</p>
 <div class="snip"><pre><code>-- BigQuery: current state of each pipeline stage from its event log
-CREATE OR REPLACE VIEW `p.dp_control.v_pipeline_run_latest` AS
-SELECT * FROM `p.dp_control.pipeline_run_events`
+CREATE OR REPLACE VIEW `p.ops.v_job_run_latest` AS
+SELECT * FROM `p.ops.job_run_events`
 WHERE TRUE
 QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) = 1;</code></pre></div>
     <p class="note">You get history, auditability and "what happened on date X" with ordinary SQL. Add aggregates, projections and replay only if the domain needs them.</p>

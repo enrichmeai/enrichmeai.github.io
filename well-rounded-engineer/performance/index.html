@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/" aria-current="page">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -188,7 +189,7 @@ public class ParseBench {
 
   @Benchmark
   public LocalDate parse() {
-    return DecisionDateParser.parse(raw);    // return the result so it is not optimised away
+    return OrderDateParser.parse(raw);    // return the result so it is not optimised away
   }
 }</code></pre></div>
     <p class="note">Hand-written timing loops on the JVM lie: no warm-up, dead-code elimination, JIT effects. Use JMH, and only after a profile shows the code matters.</p>

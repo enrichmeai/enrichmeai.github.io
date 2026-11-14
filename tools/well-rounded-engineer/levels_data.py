@@ -72,7 +72,7 @@ D["java"] = dict(
  links=[("dev.java: Learn","https://dev.java/learn/","Oracle's official tutorials for modern Java"),
         ("OpenJDK JEP index","https://openjdk.org/jeps/0","Every enhancement proposal, with status and release"),
         ("JDK project releases","https://openjdk.org/projects/jdk/","What shipped in each JDK version"),
-        ("JUnit 5 user guide","https://junit.org/junit5/docs/current/user-guide/","Tests, parameterised tests, extensions"),
+        ("JUnit user guide","https://junit.org/junit5/docs/current/user-guide/","Tests, parameterised tests, extensions"),
         ("BigQuery Java client","https://cloud.google.com/java/docs/reference/google-cloud-bigquery/latest/overview","API reference"),
         ("Apache Beam documentation","https://beam.apache.org/documentation/","Programming guide for Dataflow pipelines")])
 
@@ -96,7 +96,7 @@ D["testing"] = dict(
  E=["Set testing standards and quality gates for the organisation","Build test infrastructure: environments, data, emulators","Measure test effectiveness, not just coverage"],
  topics=["Contract testing with Pact","Mutation testing with PIT or mutmut","Test data management and synthetic data","Testing in production: canaries and feature flags","Chaos engineering"],
  links=[("The Practical Test Pyramid (Martin Fowler)","https://martinfowler.com/articles/practical-test-pyramid.html","How to balance test levels"),
-        ("JUnit 5 user guide","https://junit.org/junit5/docs/current/user-guide/","Java testing"),
+        ("JUnit user guide","https://junit.org/junit5/docs/current/user-guide/","Java testing"),
         ("pytest documentation","https://docs.pytest.org/en/stable/","Python testing"),
         ("Testcontainers","https://testcontainers.com/","Real dependencies in Docker for tests"),
         ("WireMock","https://wiremock.org/docs/","HTTP stubs and recording"),
@@ -219,7 +219,7 @@ D["sysdesign"] = dict(
  links=[("System Design Primer","https://github.com/donnemartin/system-design-primer","Free, broad introduction with examples"),
         ("Designing Data-Intensive Applications","https://dataintensive.net/","The deep reference behind most designs"),
         ("Google SRE books (free)","https://sre.google/books/","Reliability, SLOs, operations at scale"),
-        ("Google Cloud Architecture Framework","https://cloud.google.com/architecture/framework","Reliability, cost, security, performance pillars"),
+        ("Google Cloud Well-Architected Framework","https://cloud.google.com/architecture/framework","Reliability, cost, security, performance pillars"),
         ("High Scalability","https://highscalability.com/","Real-world architecture write-ups")])
 
 D["devops"] = dict(
@@ -293,7 +293,7 @@ D["gcpdata"] = dict(
  P=["Build a batch ELT pipeline: landing, BigQuery layers, dbt, scheduling","Set up Pub/Sub to BigQuery, or Datastream CDC","Apply dataset-level IAM and cost controls"],
  S=["Choose between Dataflow, Dataproc, SQL and Cloud Run for a workload","Design a platform with governance (Dataplex), lineage and quality","Plan cost, regions and data residency"],
  E=["Own the organisation's GCP data architecture","Lead migrations from other clouds or on-premises","Hold the Professional Data Engineer or Architect level of judgement, and teach it"],
- topics=["Dataflow streaming: windows, triggers, late data","BigLake and Iceberg on GCS","Dataplex data quality and lineage","Analytics Hub data sharing","Professional Data Engineer exam guide"],
+ topics=["Dataflow streaming: windows, triggers, late data","BigLake and Iceberg on GCS","Dataplex data quality and lineage","BigQuery sharing (formerly Analytics Hub)","Professional Data Engineer exam guide"],
  links=[("Google Cloud data analytics products","https://cloud.google.com/products/data-analytics","Overview of every data service"),
         ("Dataflow documentation","https://cloud.google.com/dataflow/docs","Beam pipelines on GCP"),
         ("Pub/Sub documentation","https://cloud.google.com/pubsub/docs","Messaging, including BigQuery subscriptions"),
@@ -455,12 +455,12 @@ D["rag"] = dict(
 
 D["mcp"] = dict(
  F=["Explain servers, clients, tools, resources and transports","Add an existing MCP server to Claude Code and use it","Know the security risks of untrusted servers"],
- P=["Build an MCP server with FastMCP and test it with the Inspector","Expose read-only pipeline or warehouse tools with guardrails","Share servers with a team via project configuration"],
+ P=["Build an MCP server with the Python SDK and test it with the Inspector","Expose read-only pipeline or warehouse tools with guardrails","Share servers with a team via project configuration"],
  S=["Design task-shaped tool sets with honest errors and compact outputs","Deploy remote servers on Cloud Run with OAuth or IAM","Integrate MCP with data pipelines without putting it on the critical path"],
  E=["Set MCP standards, review and approval process for the organisation","Build shared MCP platforms over core data and systems","Contribute to the protocol ecosystem"],
  topics=["MCP specification and transports","MCP authorisation (OAuth)","Tool design for agents","MCP Toolbox for Databases","Tool poisoning and prompt injection defences"],
  links=[("Model Context Protocol","https://modelcontextprotocol.io/","Specification, concepts and SDKs"),
-        ("MCP Python SDK","https://github.com/modelcontextprotocol/python-sdk","FastMCP and server examples"),
+        ("MCP Python SDK","https://github.com/modelcontextprotocol/python-sdk","MCPServer (formerly FastMCP) and server examples"),
         ("MCP TypeScript SDK","https://github.com/modelcontextprotocol/typescript-sdk","Servers and clients in TypeScript"),
         ("MCP Inspector","https://github.com/modelcontextprotocol/inspector","Test servers interactively"),
         ("Claude Code: MCP","https://code.claude.com/docs/en/mcp","Adding servers, scopes and permissions"),
@@ -571,6 +571,17 @@ D["blueprints"] = dict(
         ("Semantic Versioning","https://semver.org/","Version numbers that communicate compatibility"),
         ("Team Topologies","https://teamtopologies.com/","Platform teams and their consumers")])
 
+D["cloudinside"] = dict(
+ F=["Explain zones, regions and why work is spread across them","Tell a virtual machine from a container and a serverless function","Name what the provider secures and what you secure"],
+ P=["Choose zones and regions for a service's availability, latency and data residency","Read a bill and trace each line to a layer: compute, storage, network","Explain what a managed service still leaves to you"],
+ S=["Design for a machine, a zone or a region failing, and test it","Choose isolation (VM, container, sandbox) for untrusted or multi-tenant work","Estimate cost from first principles, including egress and copies"],
+ E=["Set organisation standards for failure domains, tenancy and shared responsibility","Lead decisions on regions, providers and lock-in with the layers in view","Teach how the cloud works underneath, not only which button to press"],
+ topics=["Failure domains: machine, zone, region","Hypervisors and microVMs","Container isolation and sandboxes","Cluster scheduling and bin packing","The shared responsibility model"],
+ links=[("Firecracker","https://github.com/firecracker-microvm/firecracker","MicroVMs built at AWS for services such as Lambda, open source"),
+        ("gVisor","https://github.com/google/gvisor","An application kernel that sandboxes containers"),
+        ("Kubernetes","https://github.com/kubernetes/kubernetes","The open-source scheduler and orchestrator for containers"),
+        ("The Borg paper","https://research.google.com/pubs/pub43438.html?authuser=1","Google's paper on Borg, as linked from the Kubernetes README")])
+
 D["cloudcompare"] = dict(
  F=["Map common services across GCP, AWS and Azure","Explain projects vs accounts vs subscriptions","Use each provider's CLI for basic tasks"],
  P=["Translate a design from one cloud to another, including IAM and networking","Compare prices for a workload, including egress","Use Terraform across providers"],
@@ -579,7 +590,7 @@ D["cloudcompare"] = dict(
  topics=["Well-Architected frameworks of each provider","Cloud IAM models compared","Cross-cloud networking and egress costs","Open table formats for portability","FinOps practices"],
  links=[("Google Cloud: compare AWS and Azure services","https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison","Google's official service mapping"),
         ("Azure for AWS professionals","https://learn.microsoft.com/en-us/azure/architecture/aws-professional/","Microsoft's AWS-to-Azure mapping"),
-        ("Google Cloud Architecture Framework","https://cloud.google.com/architecture/framework","Google's design pillars"),
+        ("Google Cloud Well-Architected Framework","https://cloud.google.com/architecture/framework","Google's design pillars"),
         ("AWS Well-Architected","https://aws.amazon.com/architecture/well-architected/","AWS design pillars"),
         ("Azure Well-Architected Framework","https://learn.microsoft.com/en-us/azure/well-architected/","Azure design pillars"),
         ("FinOps Foundation","https://www.finops.org/","Managing cloud cost across providers")])
@@ -651,7 +662,7 @@ D["agentharness"] = dict(
 D["web3"] = dict(
  F=["Tell Web3 (blockchain) from the Semantic Web","Explain blockchains, wallets, smart contracts and tokens","Ask whether a problem really needs a blockchain"],
  P=["Write and test a simple smart contract on a testnet","Publish structured data with JSON-LD and schema.org","Query linked data with SPARQL"],
- S=["Assess security, cost, privacy and regulation of a Web3 design","Design knowledge graphs and ontologies for a domain","Integrate legal-document standards (Akoma Ntoso, ELI)"],
+ S=["Assess security, cost, privacy and regulation of a Web3 design","Design knowledge graphs and ontologies for a domain","Model product data with shared vocabularies (schema.org Product, GTIN codes)"],
  E=["Set strategy on decentralised and linked-data technologies","Lead audits and governance for on-chain systems","Shape open data standards in a sector"],
  topics=["Ethereum and proof of stake","Smart contract security","Layer 2 rollups","RDF, OWL and SHACL","Knowledge graphs for AI grounding"],
  links=[("ethereum.org developers","https://ethereum.org/en/developers/","Concepts and tutorials"),
@@ -660,7 +671,7 @@ D["web3"] = dict(
         ("JSON-LD","https://json-ld.org/","Linked data in JSON"),
         ("schema.org","https://schema.org/","Shared vocabulary for structured data"),
         ("SPARQL 1.1 Query Language","https://www.w3.org/TR/sparql11-query/","The specification"),
-        ("OASIS LegalDocML (Akoma Ntoso)","https://www.oasis-open.org/committees/legaldocml/","Standard for legal documents")])
+        ("schema.org vocabulary source","https://github.com/schemaorg/schemaorg","The Product, Offer and other type definitions")])
 
 D["solid"] = dict(
  F=["Explain Pods, WebIDs and why apps and data are separated","Read a public resource from a Pod","Compare Solid with Web3 and platforms"],

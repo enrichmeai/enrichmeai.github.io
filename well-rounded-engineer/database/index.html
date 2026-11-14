@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -115,7 +116,7 @@
   <article class="card"><h3>Modelling rules</h3>
     <ul>
       <li><b>Start normalised</b> (third normal form): each fact stored once, in the table it describes. Denormalise later, on purpose, for a measured read need.</li>
-      <li><b>Every table has a primary key.</b> Surrogate (<code>bigint</code> identity or UUID) for internal identity; natural keys (CNR, email) get a <code>UNIQUE</code> constraint.</li>
+      <li><b>Every table has a primary key.</b> Surrogate (<code>bigint</code> identity or UUID) for internal identity; natural keys (order reference, email) get a <code>UNIQUE</code> constraint.</li>
       <li><b>Never reuse or renumber a key</b> that others store: URLs, foreign systems, legal records.</li>
       <li><b>Constraints are free correctness:</b> <code>NOT NULL</code>, <code>UNIQUE</code>, <code>CHECK</code>, <code>FOREIGN KEY</code>. The database enforces them for every writer, including the one you forgot.</li>
       <li><b>Right types:</b> <code>date</code> / <code>timestamptz</code> not strings; <code>numeric</code> for money, never float; <code>text</code> over arbitrary <code>varchar(n)</code>; <code>jsonb</code> for truly variable attributes, not as a substitute for columns.</li>
@@ -124,28 +125,29 @@
   </article>
 
   <article class="card"><h3>A schema example</h3>
-<div class="snip"><pre><code>CREATE TABLE court (
-  court_code text PRIMARY KEY,
-  name       text NOT NULL
+<div class="snip"><pre><code>CREATE TABLE store (
+  store_id text PRIMARY KEY,
+  name     text NOT NULL
 );
 
-CREATE TABLE judgment (
-  id            bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  judgment_key  text NOT NULL UNIQUE,             -- stable natural key
-  cnr           text NOT NULL,
-  court_code    text NOT NULL REFERENCES court,
-  decision_date date,
-  status        text NOT NULL CHECK (status IN ('DISPOSED','PENDING')),
-  full_text     text,
-  created_at    timestamptz NOT NULL DEFAULT now(),
-  updated_at    timestamptz NOT NULL DEFAULT now()
+CREATE TABLE orders (                         -- "order" is a reserved word
+  id          bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  order_id    text NOT NULL UNIQUE,             -- stable natural key
+  order_ref   text NOT NULL,                    -- what the customer sees
+  store_id    text NOT NULL REFERENCES store,
+  order_date  date,
+  status      text NOT NULL CHECK (status IN ('PAID','PENDING')),
+  notes       text,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  updated_at  timestamptz NOT NULL DEFAULT now()
 );
 
 -- many-to-many through a join table
-CREATE TABLE judgment_citation (
-  citing_id bigint NOT NULL REFERENCES judgment ON DELETE CASCADE,
-  cited_id  bigint NOT NULL REFERENCES judgment,
-  PRIMARY KEY (citing_id, cited_id)
+CREATE TABLE order_item (
+  order_id   text NOT NULL REFERENCES orders (order_id) ON DELETE CASCADE,
+  product_id text NOT NULL REFERENCES product,
+  quantity   int  NOT NULL CHECK (quantity &gt; 0),
+  PRIMARY KEY (order_id, product_id)
 );</code></pre></div>
   </article>
 
@@ -153,13 +155,13 @@ CREATE TABLE judgment_citation (
     <div class="tbl"><table>
       <thead><tr><th>Type</th><th>Good for</th><th>Example</th></tr></thead>
       <tbody>
-      <tr><td>B-tree (default)</td><td>Equality, ranges, sorting, prefix <code>LIKE 'abc%'</code> (with C collation, or an index using <code>text_pattern_ops</code>)</td><td><code>CREATE INDEX ON judgment (decision_date);</code></td></tr>
-      <tr><td>Composite</td><td>Filters on several columns; column order matters</td><td><code>(court_code, decision_date DESC)</code></td></tr>
-      <tr><td>Covering (<code>INCLUDE</code>)</td><td>Answering a query from the index alone (index-only scan)</td><td><code>(court_code) INCLUDE (cnr, decision_date)</code></td></tr>
-      <tr><td>Partial</td><td>Indexing only the rows you query; small and fast</td><td><code>(id) WHERE full_text IS NULL</code></td></tr>
+      <tr><td>B-tree (default)</td><td>Equality, ranges, sorting, prefix <code>LIKE 'abc%'</code> (with C collation, or an index using <code>text_pattern_ops</code>)</td><td><code>CREATE INDEX ON orders (order_date);</code></td></tr>
+      <tr><td>Composite</td><td>Filters on several columns; column order matters</td><td><code>(store_id, order_date DESC)</code></td></tr>
+      <tr><td>Covering (<code>INCLUDE</code>)</td><td>Answering a query from the index alone (index-only scan)</td><td><code>(store_id) INCLUDE (order_ref, order_date)</code></td></tr>
+      <tr><td>Partial</td><td>Indexing only the rows you query; small and fast</td><td><code>(id) WHERE status = 'PENDING'</code></td></tr>
       <tr><td>Expression</td><td>Queries on a computed value</td><td><code>(lower(email))</code></td></tr>
-      <tr><td>Unique</td><td>Enforcing uniqueness, and lookups</td><td><code>UNIQUE (cnr, order_number)</code></td></tr>
-      <tr><td>GIN</td><td>Full-text search (<code>tsvector</code>), <code>jsonb</code> containment, arrays</td><td><code>USING gin (to_tsvector('english', full_text))</code></td></tr>
+      <tr><td>Unique</td><td>Enforcing uniqueness, and lookups</td><td><code>UNIQUE (store_id, order_ref)</code></td></tr>
+      <tr><td>GIN</td><td>Full-text search (<code>tsvector</code>), <code>jsonb</code> containment, arrays</td><td><code>USING gin (to_tsvector('english', notes))</code></td></tr>
       <tr><td>BRIN</td><td>Huge tables physically ordered by a column (append-only by time); tiny index</td><td><code>USING brin (created_at)</code></td></tr>
       <tr><td>HNSW / IVFFlat (pgvector)</td><td>Approximate nearest-neighbour search on embeddings</td><td><code>USING hnsw (embedding vector_cosine_ops)</code></td></tr>
       </tbody></table></div>
@@ -168,7 +170,7 @@ CREATE TABLE judgment_citation (
   <article class="card"><h3>Index rules of thumb</h3>
     <ul>
       <li><b>Index for your queries,</b> not your columns. Start from the slow query's <code>WHERE</code>, <code>JOIN</code> and <code>ORDER BY</code>.</li>
-      <li><b>Composite order:</b> equality columns first, then the range or sort column. <code>(court_code, decision_date)</code> serves <code>court_code = ? AND decision_date &gt; ?</code>; the reverse order serves it poorly.</li>
+      <li><b>Composite order:</b> equality columns first, then the range or sort column. <code>(store_id, order_date)</code> serves <code>store_id = ? AND order_date &gt; ?</code>; the reverse order serves it poorly.</li>
       <li><b>Leftmost prefix:</b> an index on <code>(a, b, c)</code> helps queries on <code>a</code>, <code>a,b</code>, <code>a,b,c</code>, not on <code>b</code> alone.</li>
       <li><b>Foreign keys</b> usually need an index on the referencing column, or deletes and joins scan.</li>
       <li><b>Every index slows writes</b> and uses disk. Drop unused ones (<code>pg_stat_user_indexes.idx_scan = 0</code>).</li>
@@ -180,9 +182,9 @@ CREATE TABLE judgment_citation (
 
   <article class="card"><h3>Reading a query plan</h3>
 <div class="snip"><pre><code>EXPLAIN (ANALYZE, BUFFERS)
-SELECT cnr, decision_date FROM judgment
-WHERE court_code = '2_5' AND decision_date &gt;= '2024-01-01'
-ORDER BY decision_date DESC LIMIT 20;
+SELECT order_ref, order_date FROM orders
+WHERE store_id = '1_05' AND order_date &gt;= '2024-01-01'
+ORDER BY order_date DESC LIMIT 20;
 
 -- look for:
 --   Seq Scan on a big table          → missing or unusable index
@@ -200,7 +202,7 @@ ORDER BY total_exec_time DESC LIMIT 10;</code></pre></div>
 
   <article class="card"><h3>Partitioning (one database)</h3>
 <div class="snip"><pre><code>CREATE TABLE event (
-  id         bigserial,                -- identity columns on partitioned tables need PostgreSQL 17+
+  id         bigserial,                -- fine here; GENERATED … AS IDENTITY on a partitioned table needs PostgreSQL 17+
   event_date date NOT NULL,
   payload    jsonb,
   PRIMARY KEY (id, event_date)          -- must include the partition key
@@ -232,7 +234,7 @@ DROP TABLE event_2025;
       <li><b>Directory / lookup</b> sharding maps keys to shards in a table: flexible, but the directory becomes critical.</li>
       <li><b>Costs:</b> cross-shard joins and transactions become application problems; resharding is a migration project; operations multiply.</li>
       <li><b>Try first:</b> better indexes, read replicas, caching, partitioning, a bigger instance, archiving cold data. Shard when one primary truly cannot take the writes.</li>
-      <li><b>Managed options</b> do it for you: Spanner, AlloyDB with read pools, Citus, Vitess, CockroachDB.</li>
+      <li><b>Managed or distributed options</b> do it for you: Spanner, CockroachDB, Citus (Postgres), Vitess (MySQL). AlloyDB read pools scale reads only; they do not shard.</li>
     </ul>
   </article>
 
@@ -251,7 +253,7 @@ DROP TABLE event_2025;
       <thead><tr><th>Isolation</th><th>Prevents</th></tr></thead>
       <tbody>
       <tr><td>Read committed (Postgres default)</td><td>Dirty reads. Each statement sees data committed before it began.</td></tr>
-      <tr><td>Repeatable read</td><td>Non-repeatable reads: the transaction sees one snapshot throughout.</td></tr>
+      <tr><td>Repeatable read</td><td>Non-repeatable reads (and, in PostgreSQL, phantom reads): the transaction sees one snapshot throughout.</td></tr>
       <tr><td>Serializable</td><td>All anomalies; transactions behave as if run one by one. Retry on serialization failure.</td></tr>
       </tbody></table></div>
 <div class="snip"><pre><code>-- pessimistic: lock the row you will change

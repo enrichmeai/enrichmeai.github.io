@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -113,7 +114,7 @@
   <div class="grid">
 
   <article class="card wide"><h3>Event-driven systems</h3>
-    <p>Services communicate by publishing <b>events</b> (facts about something that happened: <code>JudgmentLanded</code>, <code>OrderPaid</code>) to a broker. Other services subscribe and react. The producer does not know or wait for its consumers.</p>
+    <p>Services communicate by publishing <b>events</b> (facts about something that happened: <code>OrderPlaced</code>, <code>OrderPaid</code>) to a broker. Other services subscribe and react. The producer does not know or wait for its consumers.</p>
     <div class="tbl"><table>
       <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
       <tbody>
@@ -147,7 +148,7 @@
   1. Billing:  create pending invoice        ↺ compensate: void invoice
   2. Payments: charge card                   ↺ compensate: refund charge
   3. Accounts: activate plan                 ↺ compensate: deactivate plan
-  4. Email:    send welcome                  (no compensation needed; last, pivot-free)
+  4. Email:    send welcome                  (no compensation: an email cannot be undone, so it runs last)
 
 Step 3 fails → run compensations in reverse: refund (2), void invoice (1).</code></pre></div>
     <ul>
@@ -320,9 +321,9 @@ COMMIT;</code></pre></div>
   </article>
 
   <article class="card"><h3>Architecture decision record</h3>
-<div class="snip"><pre><code># ADR 0042: Serve corpus search from Postgres, not a search engine
+<div class="snip"><pre><code># ADR 0042: Serve order search from Postgres, not a search engine
 Status:   Accepted (2026-11-12)
-Context:  20 M judgments, ~60 searches/s peak, p95 &lt; 500 ms;
+Context:  20 M orders, ~60 searches/s peak, p95 &lt; 500 ms;
           team already runs Postgres; no search-engine skills.
 Decision: Postgres full-text (GIN) + B-tree filters on a read replica;
           revisit if p95 &gt; 500 ms or relevance complaints exceed X/month.

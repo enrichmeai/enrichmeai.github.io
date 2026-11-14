@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -184,7 +185,7 @@ RUN ./gradlew dependencies --no-daemon          # cache dependencies
 COPY src/ src/
 RUN ./gradlew bootJar --no-daemon -x test
 
-FROM gcr.io/distroless/java21-debian12          # no shell, no package manager
+FROM gcr.io/distroless/java21-debian13          # no shell, no package manager
 COPY --from=build /src/build/libs/app.jar /app.jar
 USER nonroot
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "/app.jar"]
@@ -212,7 +213,7 @@ services:
     image: postgres:16
     environment:
       POSTGRES_PASSWORD: pw
-      POSTGRES_DB: corpus
+      POSTGRES_DB: shop
     ports: ["${DB_PORT:-5433}:5432"]
     volumes: [dbdata:/var/lib/postgresql/data]
     healthcheck:
@@ -230,7 +231,7 @@ volumes:
   dbdata:</code></pre></div>
 <div class="snip"><pre><code>docker compose up -d --build
 docker compose logs -f api
-docker compose exec db psql -U postgres corpus
+docker compose exec db psql -U postgres shop
 docker compose down            # keep volumes
 docker compose down -v         # also delete volumes (data gone)
 docker compose -p wt2 up -d    # second copy with its own project name</code></pre></div>

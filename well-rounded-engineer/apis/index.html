@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -117,7 +118,7 @@
       <thead><tr><th>Type</th><th>What it does</th><th>Example</th><th>Built with</th></tr></thead>
       <tbody>
       <tr><td>Request/response service</td><td>Answers calls synchronously</td><td>Search API, login</td><td>Spring Boot, Quarkus, FastAPI on Cloud Run or GKE</td></tr>
-      <tr><td>Event-driven service</td><td>Reacts to events; publishes its own</td><td>Index a judgment when it lands</td><td>Kafka or Pub/Sub consumers</td></tr>
+      <tr><td>Event-driven service</td><td>Reacts to events; publishes its own</td><td>Index an order when it is placed</td><td>Kafka or Pub/Sub consumers</td></tr>
       <tr><td>Batch job</td><td>Processes a bounded set, then exits</td><td>Nightly load</td><td>Cloud Run jobs, Dataflow, Spark</td></tr>
       <tr><td>Stream processor</td><td>Processes an unbounded stream continuously</td><td>Real-time fraud score</td><td>Dataflow, Kafka Streams, Flink</td></tr>
       <tr><td>OLTP database system</td><td>Many small transactional reads and writes</td><td>User accounts, orders</td><td>Postgres, Cloud SQL, Spanner</td></tr>
@@ -141,13 +142,13 @@
 
   <article class="card"><h3>REST in practice</h3>
     <ul>
-      <li><b>Resources</b> are nouns with URLs: <code>/judgments</code>, <code>/judgments/{id}</code>, <code>/courts/{code}/judgments</code>.</li>
+      <li><b>Resources</b> are nouns with URLs: <code>/orders</code>, <code>/orders/{id}</code>, <code>/stores/{code}/orders</code>.</li>
       <li><b>HTTP methods</b> are the verbs: GET reads, POST creates, PUT replaces, PATCH updates part, DELETE removes.</li>
       <li><b>Stateless:</b> each request carries everything needed (including auth); no server session required.</li>
       <li><b>Status codes</b> carry meaning: 200, 201 Created (+ <code>Location</code>), 204, 400, 401, 403, 404, 409 Conflict, 422, 429, 500, 503.</li>
       <li><b>Errors</b> as Problem Details (RFC 9457): <code>type</code>, <code>title</code>, <code>status</code>, <code>detail</code>.</li>
       <li><b>Pagination</b> with a cursor (<code>?cursor=…&amp;limit=50</code>) rather than deep offsets.</li>
-      <li><b>Filtering and sorting</b> by query parameters: <code>?court=2_5&amp;from=2024-01-01&amp;sort=-decision_date</code>.</li>
+      <li><b>Filtering and sorting</b> by query parameters: <code>?store=1_05&amp;from=2024-01-01&amp;sort=-order_date</code>.</li>
       <li><b>Caching</b> with <code>ETag</code>/<code>If-None-Match</code> and <code>Cache-Control</code>.</li>
     </ul>
     <div class="tbl"><table>
@@ -162,19 +163,19 @@
 
   <article class="card"><h3>An OpenAPI contract</h3>
 <div class="snip"><pre><code>openapi: <span data-other-version>3.1.0</span>
-info: { title: Legal Search API, version: <span data-other-version>1.2.0</span> }
+info: { title: Shop API, version: <span data-other-version>1.2.0</span> }
 paths:
-  /v1/judgments/{id}:
+  /v1/orders/{id}:
     get:
-      operationId: getJudgment
+      operationId: getOrder
       parameters:
         - { name: id, in: path, required: true, schema: { type: string } }
       responses:
         "200":
-          description: The judgment
+          description: The order
           content:
             application/json:
-              schema: { $ref: "#/components/schemas/Judgment" }
+              schema: { $ref: "#/components/schemas/Order" }
         "404":
           description: Not found
           content:
@@ -182,14 +183,14 @@ paths:
               schema: { $ref: "#/components/schemas/Problem" }
 components:
   schemas:
-    Judgment:
+    Order:
       type: object
-      required: [id, cnr, court]
+      required: [id, orderRef, store]
       properties:
         id: { type: string }
-        cnr: { type: string }
-        court: { type: string }
-        decisionDate: { type: [string, "null"], format: date }
+        orderRef: { type: string }
+        store: { type: string }
+        orderDate: { type: [string, "null"], format: date }
   securitySchemes:
     bearer: { type: http, scheme: bearer, bearerFormat: JWT }
 security: [ { bearer: [] } ]</code></pre></div>
@@ -212,20 +213,20 @@ security: [ { bearer: [] } ]</code></pre></div>
 
   <article class="card"><h3>gRPC contract</h3>
 <div class="snip"><pre><code>syntax = "proto3";
-package legal.v1;
+package shop.v1;
 
-service JudgmentService {
-  rpc GetJudgment(GetJudgmentRequest) returns (Judgment);
-  rpc StreamNew(StreamNewRequest) returns (stream Judgment);   // server streaming
+service OrderService {
+  rpc GetOrder(GetOrderRequest) returns (Order);
+  rpc StreamNew(StreamNewRequest) returns (stream Order);   // server streaming
 }
 
-message GetJudgmentRequest { string id = 1; }
-message StreamNewRequest  { string court = 1; }
-message Judgment {
+message GetOrderRequest { string id = 1; }
+message StreamNewRequest  { string store = 1; }
+message Order {
   string id = 1;
-  string cnr = 2;
-  string court = 3;
-  string decision_date = 4;      // ISO date; field numbers never reused
+  string order_ref = 2;
+  string store = 3;
+  string order_date = 4;      // ISO date; field numbers never reused
 }</code></pre></div>
     <p class="note">Compatibility rules: add fields with new numbers; never change or reuse a field number; reserve removed ones.</p>
   </article>

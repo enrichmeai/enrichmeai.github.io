@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -138,10 +139,10 @@
       <tr><td>One Postgres instance</td><td>thousands of simple queries/s; much less for heavy ones</td></tr>
       <tr><td>One app instance</td><td>hundreds to a few thousand requests/s, workload-dependent</td></tr>
       </tbody></table></div>
-<div class="snip"><pre><code>Example: search API for 50k lawyers
+<div class="snip"><pre><code>Example: order search for 50k shop staff
   50k users × 20 searches/day = 1 M/day ≈ 12/s avg, ~60/s peak
-  20M judgments × 2 KB metadata ≈ 40 GB  (fits one Postgres with indexes)
-  full text: 20M × ~7 KB avg ≈ 140 GB    (store separately; index for search)
+  20M orders × 2 KB metadata ≈ 40 GB  (fits one Postgres with indexes)
+  line items and notes: 20M × ~7 KB avg ≈ 140 GB   (store separately; index for search)
 → one primary + read replica + cache is plenty; no sharding needed</code></pre></div>
   </article>
 
@@ -239,7 +240,7 @@
       <li><b>Partitioning / sharding</b> splits data for write scale and size. Choose a key that spreads load and matches the main access pattern.</li>
       <li><b>Consistent hashing</b> places keys and nodes on a ring, so adding or removing a node moves only about 1/N of the keys. Used by caches and distributed stores.</li>
       <li><b>Hot keys</b> (one celebrity, one big tenant, today's date) defeat even spreading. Split them, cache them, or add a random suffix.</li>
-      <li><b>Quorums:</b> with N replicas, reading R and writing W where R + W &gt; N guarantees a read sees the latest write.</li>
+      <li><b>Quorums:</b> with N replicas, reading R and writing W where R + W &gt; N means every read set overlaps every write set, so a read sees the latest acknowledged write.</li>
     </ul>
   </article>
 
@@ -268,14 +269,14 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>Worked example: legal search over 20 M judgments</h3>
+  <article class="card wide"><h3>Worked example: search over 20 M orders</h3>
     <ul>
-      <li><b>Requirements:</b> keyword and filter search (court, date, judge), open a judgment, cite-check a reference. Results within 500 ms at p95. Data refreshed daily. Court-ordered suppressions must apply everywhere immediately.</li>
-      <li><b>Estimates:</b> ~60 searches/s at peak; 20 M records, ~40 GB metadata, ~140 GB text.</li>
-      <li><b>Data flow:</b> open-data mirrors → landing bucket → warehouse layers (raw → foundation → consumable) → serving Postgres. The warehouse is the record; Postgres is a read-optimised copy. See <a href="/well-rounded-engineer/data/">Data Engineering</a>.</li>
-      <li><b>Serving:</b> stateless API on Cloud Run; Postgres with full-text (GIN) and B-tree indexes on filter columns; read replica for search; cache for hot queries and judgment pages.</li>
-      <li><b>Stable identity:</b> IDs never renumber, because URLs, citations and suppression orders refer to them. Loads upsert on a stable key.</li>
-      <li><b>Suppressions:</b> checked on every read path (search, page, API, exports) from the application database, not baked into the copy, so a new order takes effect without a reload.</li>
+      <li><b>Requirements:</b> keyword and filter search (store, date, product), open an order, look up its refunds. Results within 500 ms at p95. Data refreshed daily. A customer's erasure request must apply everywhere immediately.</li>
+      <li><b>Estimates:</b> ~60 searches/s at peak; 20 M records, ~40 GB metadata, ~140 GB line items and notes.</li>
+      <li><b>Data flow:</b> order-system exports → landing bucket → warehouse layers (raw → foundation → consumable) → serving Postgres. The warehouse is the record; Postgres is a read-optimised copy. See <a href="/well-rounded-engineer/data/">Data Engineering</a>.</li>
+      <li><b>Serving:</b> stateless API on Cloud Run; Postgres with full-text (GIN) and B-tree indexes on filter columns; read replica for search; cache for hot queries and order pages.</li>
+      <li><b>Stable identity:</b> IDs never renumber, because URLs, invoices and refunds refer to them. Loads upsert on a stable key.</li>
+      <li><b>Erasure requests:</b> checked on every read path (search, page, API, exports) from the application database, not baked into the copy, so a new request takes effect without a reload.</li>
       <li><b>Freshness and honesty:</b> each result carries its source and date; when a source is stale or unreachable, the API says so rather than returning a confident empty result.</li>
       <li><b>Scaling later:</b> move search to a dedicated index (or add semantic search with embeddings) when relevance or load outgrows Postgres; keep Postgres for lookups.</li>
     </ul>
@@ -313,7 +314,7 @@
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Follow the method: requirements, estimates, API, data, diagram</li><li>Name the building blocks and what each is for</li><li>Do back-of-the-envelope estimates</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a small service end to end with caching and a queue</li><li>Identify bottlenecks and failure modes</li><li>Write a design document others can build from</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for scale, availability targets and cost together</li><li>Choose storage and consistency models with clear trade-offs</li><li>Lead design reviews and challenge assumptions with numbers</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-region, highly available systems</li><li>Set reliability and capacity strategy for the organisation</li><li>Mentor others in design and trade-off thinking</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Consistent hashing and partitioning</li><li>Consensus (Raft) and leader election</li><li>Multi-region active-active design</li><li>Capacity planning and load testing</li><li>SLOs and error budgets</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a><span class="lnote"> Free, broad introduction with examples</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The deep reference behind most designs</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Reliability, SLOs, operations at scale</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Architecture Framework</a><span class="lnote"> Reliability, cost, security, performance pillars</span></li><li><a href="https://highscalability.com/" target="_blank" rel="noopener">High Scalability</a><span class="lnote"> Real-world architecture write-ups</span></li></ul></div></div></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Consistent hashing and partitioning</li><li>Consensus (Raft) and leader election</li><li>Multi-region active-active design</li><li>Capacity planning and load testing</li><li>SLOs and error budgets</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a><span class="lnote"> Free, broad introduction with examples</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> The deep reference behind most designs</span></li><li><a href="https://sre.google/books/" target="_blank" rel="noopener">Google SRE books (free)</a><span class="lnote"> Reliability, SLOs, operations at scale</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Well-Architected Framework</a><span class="lnote"> Reliability, cost, security, performance pillars</span></li><li><a href="https://highscalability.com/" target="_blank" rel="noopener">High Scalability</a><span class="lnote"> Real-world architecture write-ups</span></li></ul></div></div></article>
 
   </div>
 </section>

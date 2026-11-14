@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -144,7 +145,7 @@
   --concurrency=80 --min-instances=0 --max-instances=10 \
   --timeout=300 \
   --cpu-boost \
-  --set-env-vars=APP_PROFILE=prod,DATASET=fdp \
+  --set-env-vars=APP_PROFILE=prod,DATASET=analytics \
   --set-secrets=DB_PASSWORD=db-password:3 \
   --labels=env=prod,team=data
 
@@ -263,9 +264,9 @@ String token = creds.getIdToken().getTokenValue();</code></pre></div>
 --vpc-egress=all-traffic        # everything via VPC → Cloud NAT gives a static egress IP
 
 # Cloud SQL via the built-in connector: unix socket in the container
---add-cloudsql-instances=my-proj:asia-south1:corpus
-# JDBC: jdbc:postgresql:///corpus?cloudSqlInstance=my-proj:asia-south1:corpus&amp;socketFactory=com.google.cloud.sql.postgres.SocketFactory
-# psycopg: host=/cloudsql/my-proj:asia-south1:corpus</code></pre></div>
+--add-cloudsql-instances=my-proj:asia-south1:shop
+# JDBC: jdbc:postgresql:///shop?cloudSqlInstance=my-proj:asia-south1:shop&amp;socketFactory=com.google.cloud.sql.postgres.SocketFactory
+# psycopg: host=/cloudsql/my-proj:asia-south1:shop</code></pre></div>
     <p class="note">A third party that allowlists IPs needs <code>all-traffic</code> egress through Cloud NAT with a reserved address. Without it, egress comes from shared Google ranges.</p>
   </article>
 

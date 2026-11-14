@@ -73,6 +73,7 @@
       <a href="/well-rounded-engineer/performance/">Performance</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
       <span class="navgrp">Cloud</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
       <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
       <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
       <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
@@ -222,7 +223,8 @@ journalctl --disk-usage
 
 # /etc/systemd/system/myapp.service
 [Unit]
-Description=Corpus API
+Description=Shop API
+Wants=network-online.target
 After=network-online.target
 [Service]
 User=app
@@ -293,7 +295,7 @@ EOF
 a &amp;&amp; b                 # b only if a succeeded
 a || b                 # b only if a failed
 
-export DATASET=fdp; env | grep DATA; unset DATASET
+export DATASET=analytics; env | grep DATA; unset DATASET
 echo "$PATH" | tr ':' '\n'
 which java; type ll; command -v gcloud
 history | grep deploy; !!; Ctrl-r (search)</code></pre></div>
