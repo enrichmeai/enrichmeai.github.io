@@ -5006,7 +5006,7 @@ load = GCSToBigQueryOperator(
     source_format="PARQUET", write_disposition="WRITE_APPEND")
 
 build = BigQueryInsertJobOperator(
-    task_id="build_fdp", location="asia-south1", deferrable=True,
+    task_id="build_analytics", location="asia-south1", deferrable=True,
     configuration={"query": {
         "query": "{% include 'sql/orders.sql' %}",
         "useLegacySql": False}})
@@ -9035,7 +9035,7 @@ gcloud run services update-traffic api \
  "severity":"ERROR",
  "message":"load failed",
  "service":"orders-load", "version":"3f2a9c1", "env":"prod",
- "run_id":"r-2026-11-12", "stage":"ODP_LOAD",
+ "run_id":"r-2026-11-12", "stage":"RAW_LOAD",
  "object":"gs://landing/data/year=2024/part-3.parquet",
  "error":"400 Bad Request", "error_body":"InvalidArgument: …",
  "logging.googleapis.com/trace":"projects/p/traces/4bf92f…"}</code></pre></div>
@@ -10822,7 +10822,7 @@ spec:
                 runDate: { type: string, format: date }
                 stages:
                   type: array
-                  items: { type: string, enum: [LAND, ODP_LOAD, BUILD] }
+                  items: { type: string, enum: [LAND, RAW_LOAD, BUILD] }
             status:
               type: object
               x-kubernetes-preserve-unknown-fields: true</code></pre></div>
@@ -10831,7 +10831,7 @@ kind: PipelineRun
 metadata: { name: run-2026-11-12, namespace: data }
 spec:
   runDate: "2026-11-12"
-  stages: [LAND, ODP_LOAD, BUILD]
+  stages: [LAND, RAW_LOAD, BUILD]
 
 # kubectl get plr -n data</code></pre></div>
   </article>
@@ -12412,7 +12412,7 @@ npx @modelcontextprotocol/inspector python mcp/pipeline_status.py</code></pre></
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>What the MCP server exposes</th><th>Who uses it</th><th>Rule</th></tr></thead>
       <tbody>
-      <tr><td>1. Pipeline observability</td><td>Run records, stage states, freshness per source, failures with reasons</td><td>Engineers in Claude Code: "why did ODP_LOAD fail on 19-09?"</td><td>Read-only. Reports UNKNOWN when it cannot read the ledger.</td></tr>
+      <tr><td>1. Pipeline observability</td><td>Run records, stage states, freshness per source, failures with reasons</td><td>Engineers in Claude Code: "why did RAW_LOAD fail on 19-09?"</td><td>Read-only. Reports UNKNOWN when it cannot read the ledger.</td></tr>
       <tr><td>2. Governed warehouse access</td><td>Table catalog, schemas, a guarded query tool</td><td>Analysts and engineers asking questions in natural language</td><td>Dry-run first, byte cap, allow-listed datasets, read-only service account</td></tr>
       <tr><td>3. Data catalog and lineage</td><td>Table descriptions, owners, upstream and downstream models (dbt manifest, Dataplex)</td><td>Anyone changing a model: "what breaks if I rename this column?"</td><td>Generated from the source of truth, never hand-maintained</td></tr>
       <tr><td>4. LLM step inside the pipeline</td><td>Reference data or lookups the model needs while extracting or classifying</td><td>A pipeline job calling a model (e.g. extracting product names from support tickets)</td><td>Prefer plain tool calls or batch jobs; validate outputs; never let the model write to production tables directly</td></tr>

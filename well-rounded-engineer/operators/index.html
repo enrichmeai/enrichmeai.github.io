@@ -181,7 +181,7 @@ spec:
                 runDate: { type: string, format: date }
                 stages:
                   type: array
-                  items: { type: string, enum: [LAND, ODP_LOAD, BUILD] }
+                  items: { type: string, enum: [LAND, RAW_LOAD, BUILD] }
             status:
               type: object
               x-kubernetes-preserve-unknown-fields: true</code></pre></div>
@@ -190,7 +190,7 @@ kind: PipelineRun
 metadata: { name: run-2026-11-12, namespace: data }
 spec:
   runDate: "2026-11-12"
-  stages: [LAND, ODP_LOAD, BUILD]
+  stages: [LAND, RAW_LOAD, BUILD]
 
 # kubectl get plr -n data</code></pre></div>
   </article>

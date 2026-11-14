@@ -163,7 +163,7 @@ load = GCSToBigQueryOperator(
     source_format="PARQUET", write_disposition="WRITE_APPEND")
 
 build = BigQueryInsertJobOperator(
-    task_id="build_fdp", location="asia-south1", deferrable=True,
+    task_id="build_analytics", location="asia-south1", deferrable=True,
     configuration={"query": {
         "query": "{% include 'sql/orders.sql' %}",
         "useLegacySql": False}})
