@@ -178,6 +178,8 @@ details>.inner{padding:4px 10px 8px}
       <a href="#body" data-tab="body">Body, Mind &amp; Nature</a>
       <span class="navgrp">Frontiers</span>
       <a href="#quantum" data-tab="quantum">Quantum Computing</a>
+      <a href="#robotics" data-tab="robotics">Robotics</a>
+      <a href="#bitcoin" data-tab="bitcoin">Bitcoin &amp; Blockchain</a>
       <a href="#web3" data-tab="web3">Web 3.0</a>
       <a href="#solid" data-tab="solid">Solid</a>
       <span class="navgrp">About this guide</span>
@@ -199,7 +201,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: twelve groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers, networks and the web work, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#awsdata">Data on AWS</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Cloud &amp; platform</h4><p>What the cloud is made of, and the tools that run software on it.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#terraform">Terraform</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Delivery &amp; operations</h4><p>Shipping safely, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#observability">Observability</a>, <a href="#opstools">Ops Tooling</a>, <a href="#sre">SRE</a>, <a href="#harness">Harness</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers, networks and the web work, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#awsdata">Data on AWS</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Cloud &amp; platform</h4><p>What the cloud is made of, and the tools that run software on it.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#terraform">Terraform</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Delivery &amp; operations</h4><p>Shipping safely, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#observability">Observability</a>, <a href="#opstools">Ops Tooling</a>, <a href="#sre">SRE</a>, <a href="#harness">Harness</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
 
@@ -351,6 +353,8 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#goodhuman">Being a Good Human</a></td><td>Honesty, kindness, gratitude; look after your health.</td><td>Psychological safety, mentoring, integrity under pressure.</td></tr>
       <tr><td><a href="#body">Body, Mind &amp; Nature</a></td><td>Sleep, move and take breaks; notice stress in your body.</td><td>Sustainable pace for a team; humane on-call; greener systems.</td></tr>
       <tr><td><a href="#quantum">Quantum Computing</a></td><td>Explain qubits, superposition and why Shor's algorithm threatens RSA.</td><td>Post-quantum migration: inventory, crypto agility, ML-KEM and ML-DSA.</td></tr>
+      <tr><td><a href="#robotics">Robotics</a></td><td>Explain sense-think-act and tune a PID loop in simulation.</td><td>Kinematics, SLAM and planning on ROS 2, with safety designed in.</td></tr>
+      <tr><td><a href="#bitcoin">Bitcoin &amp; Blockchain</a></td><td>Explain hashes, linked blocks, proof of work and keys.</td><td>Consensus trade-offs, key custody, and when a blockchain is the wrong tool.</td></tr>
       <tr><td><a href="#web3">Web 3.0</a></td><td>Tell Web3 from the Semantic Web; know when a blockchain is not needed.</td><td>Smart contracts, linked data, knowledge graphs, legal data standards.</td></tr>
       <tr><td><a href="#solid">Solid</a></td><td>Explain Pods, WebIDs and app–data separation.</td><td>Solid apps, access control, consent-based data sharing.</td></tr>
       <tr><td><a href="#culvert">Culvert</a></td><td>Explain contracts and adapters; install and use an adapter.</td><td>Cloud-neutral pipeline design, adapters, job control and orchestration gates.</td></tr>
@@ -415,11 +419,11 @@ details>.inner{padding:4px 10px 8px}
 
   <article class="card"><h3>The risk of a team that can only prompt</h3>
     <p>Picture a team whose only skill is asking an AI to do the work. Everything is automated. Then something fails, and the only thing they know how to do is ask the AI to fix it. If the AI is wrong, unavailable, or part of what failed, nobody in the room can help.</p>
-    <p>We have seen what large automated failures look like. In July 2024, as I remember it, a faulty security-software update stopped millions of Windows computers from starting, and many had to be repaired by hand, one machine at a time. People with hands-on skills were the way out.</p>
+    <p>We have seen what large automated failures look like. On 19 July 2024 a faulty update to a widely used security product crashed about 8.5 million Windows computers, by Microsoft's estimate, and many had to be repaired by hand, one machine at a time. People with hands-on skills were the way out.</p>
   </article>
 
   <article class="card"><h3>Keep a hand on the controls</h3>
-    <p>The Boeing 737 MAX accidents of 2018 and 2019 are the lesson I keep coming back to. As I remember it, an automated flight-control system was not properly explained in the pilots' manuals and training, so when it misbehaved, the crews did not have what they needed to take back control.</p>
+    <p>The Boeing 737 MAX accidents of October 2018 and March 2019 are the lesson I keep coming back to. Official investigations found that a new automated flight-control feature, MCAS, contributed to both crashes, and references to it had been removed from the pilots' flight manual. When it misbehaved, the crews did not have what they needed to take back control.</p>
     <p>I am not against agents that heal themselves. They are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
   </article>
 
@@ -12895,7 +12899,167 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
   </div>
 </section>
 
+<section class="panel" id="p-robotics" data-name="Robotics">
+  <div class="panel-head"><h2>Robotics: software that moves things</h2><p>A robot senses the world, decides what to do and acts on it, over and over, many times a second. Robotics joins electronics, mechanics, control theory and software, and mistakes move real objects near real people, so safety comes first.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Sense, think, act</h3>
+    <ul>
+      <li><b>Sense:</b> cameras, lidar, encoders on the wheels and joints, inertial sensors, force and touch sensors.</li>
+      <li><b>Think:</b> work out where the robot is, what is around it, and what to do next.</li>
+      <li><b>Act:</b> motors and actuators turn decisions into movement.</li>
+      <li><b>The loop never stops:</b> every sensor is noisy and every motor imperfect, so the robot measures again and corrects, all the time.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The core ideas</h3>
+    <ul>
+      <li><b>Control:</b> a PID controller turns the error between where you are and where you want to be into a command. The example below shows each term at work.</li>
+      <li><b>Kinematics:</b> forward kinematics asks where the hand is, given the joint angles; inverse kinematics asks which joint angles put the hand there. The second is the hard one.</li>
+      <li><b>Localisation and mapping (SLAM):</b> building a map of an unknown place while keeping track of where you are in it, the problem self-driving cars and warehouse robots solve.</li>
+      <li><b>Planning:</b> finding a path that avoids obstacles and respects what the robot can physically do.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A PID controller you can run</h3>
+    <p>Plain Python. A toy motor with friction is driven to a target speed of 100. Proportional control alone settles short, because it needs an error to produce any power; the integral term removes that gap.</p>
+    <pre><code class="language-python">&quot;&quot;&quot;A PID controller holding a simple motor at a target speed.&quot;&quot;&quot;
+def simulate(kp, ki, kd, target=100.0, steps=200, dt=0.05):
+    speed, integral, prev_error = 0.0, 0.0, target
+    for _ in range(steps):
+        error = target - speed                    # how far off are we?
+        integral += error * dt                    # I: past error that has not gone away
+        derivative = (error - prev_error) / dt    # D: how fast the error is changing
+        prev_error = error
+        power = kp * error + ki * integral + kd * derivative
+        power = max(-100.0, min(100.0, power))    # real motors have limits
+        speed += (power - 0.5 * speed) * dt       # toy physics: power pushes, friction resists
+    return round(speed, 1)
+
+print(&quot;P only:  &quot;, simulate(kp=2.0, ki=0.0, kd=0.0))   # settles short of the target
+print(&quot;PI:      &quot;, simulate(kp=2.0, ki=1.0, kd=0.0))   # the integral removes the gap
+print(&quot;PID:     &quot;, simulate(kp=2.0, ki=1.0, kd=0.1))</code></pre>
+    <pre><code>P only:   80.0
+PI:       100.1
+PID:      100.1</code></pre>
+  </article>
+
+  <article class="card"><h3>The software stack: ROS 2</h3>
+    <ul>
+      <li><b>ROS (Robot Operating System)</b> is open-source robotics middleware, not an operating system. ROS 2 is the current generation.</li>
+      <li><b>Nodes and topics:</b> each part of the robot (a camera driver, a planner, a motor controller) is a node; nodes exchange messages over named topics. It is publish/subscribe, as in <a href="#kafka">Kafka</a>, on a robot.</li>
+      <li><b>Simulate first:</b> test in a simulator before the real hardware, where a bug costs a crash in software rather than a broken arm.</li>
+      <li><b>Languages:</b> C++ where timing matters, Python for tools and glue; <a href="#rust">Rust</a> is growing.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Safety comes first</h3>
+    <ul>
+      <li><b>Standards exist</b> for a reason: ISO 10218 is the international standard for industrial robot safety.</li>
+      <li><b>Emergency stop:</b> every robot has one a person can reach, and it works even when the software does not. The manual override from <a href="#aiworry">Worried about AI?</a>, made of hardware.</li>
+      <li><b>Fail safe:</b> on lost signal, low battery or a sensor fault, stop or move to a safe state.</li>
+      <li><b>Test the bad cases</b> in simulation and on the bench: a person stepping in, a sensor going dark, a motor stalling.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Where to start</h3>
+    <p>Begin small and physical: a microcontroller, two motors, a distance sensor and a line to follow. Then add a PID loop, then a camera, then ROS 2 in a simulator. Robotics rewards the foundations: <a href="#mathematics">Mathematics</a> (geometry, probability), <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, and patient <a href="#science">experiment</a>. AI models are increasingly part of the "think" step, but the loop, the limits and the emergency stop stay the engineer's job.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the sense-think-act loop</li><li>Tune a PID controller in simulation</li><li>Know why every robot has an emergency stop</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a small robot or simulated one with ROS 2 nodes and topics</li><li>Read sensor data and filter its noise</li><li>Apply forward and inverse kinematics to an arm</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design localisation, mapping and path planning</li><li>Design for functional safety and failure modes</li><li>Move from simulation to hardware safely</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead a robotics platform or product</li><li>Set safety and testing standards</li><li>Combine learned models with classical control responsibly</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>PID control</li><li>Kinematics</li><li>SLAM</li><li>ROS 2 nodes, topics and services</li><li>Robot safety standards (ISO 10218)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Robot_Operating_System" target="_blank" rel="noopener">Robot Operating System (Wikipedia)</a><span class="lnote"> What ROS is and how it is organised</span></li><li><a href="https://github.com/ros2/ros2" target="_blank" rel="noopener">ROS 2 source</a><span class="lnote"> The ROS 2 repositories and installation</span></li><li><a href="https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller" target="_blank" rel="noopener">PID controller (Wikipedia)</a><span class="lnote"> The maths behind the example</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BRobotics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
 <!-- ================= WEB3 ================= -->
+<section class="panel" id="p-bitcoin" data-name="Bitcoin &amp; Blockchain">
+  <div class="panel-head"><h2>Bitcoin and blockchain, from first principles</h2><p>How a blockchain works underneath, using Bitcoin as the example: hashes, linked blocks, proof of work and keys. Understand the mechanism before forming a view on the money. Smart contracts and the wider Web3 ideas are on <a href="#web3">Web 3.0</a>.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>The story in brief</h3>
+    <ul>
+      <li><b>31 October 2008:</b> a white paper by Satoshi Nakamoto, <i>Bitcoin: A Peer-to-Peer Electronic Cash System</i>, was posted to a cryptography mailing list.</li>
+      <li><b>3 January 2009:</b> the network started when the first block, the genesis block, was mined.</li>
+      <li><b>The problem it solved:</b> how strangers can agree on who owns what, with no bank or central server in the middle, and without anyone spending the same coin twice.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>How a blockchain works</h3>
+    <ul>
+      <li><b>Hashes:</b> a hash is a short fingerprint of data. Change one character and the fingerprint changes completely. See <a href="#mathematics">Mathematics</a>.</li>
+      <li><b>Linked blocks:</b> each block holds transactions and the hash of the block before it, so changing an old block breaks every link after it.</li>
+      <li><b>Proof of work:</b> to add a block, miners search for a number (a nonce) that makes the block's double SHA-256 hash fall below a target. Finding it costs a lot of computing; checking it costs one hash.</li>
+      <li><b>Consensus:</b> thousands of independent nodes check every block and follow the chain with the most accumulated work. Rewriting history means redoing that work faster than everyone else combined.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Build a toy blockchain</h3>
+    <p>Plain Python, standard library only. It mines three blocks, checks the chain, then tampers with a past transaction and shows the chain fail. The nonce it prints changes from run to run, because the timestamp does.</p>
+    <pre><code class="language-python">&quot;&quot;&quot;A toy blockchain: blocks linked by hashes, sealed by proof of work.&quot;&quot;&quot;
+import hashlib, json, time
+
+def block_hash(block):
+    data = json.dumps(block, sort_keys=True).encode()
+    return hashlib.sha256(hashlib.sha256(data).digest()).hexdigest()  # double SHA-256, as Bitcoin does
+
+def mine(prev_hash, transactions, difficulty=4):
+    &quot;&quot;&quot;Try nonces until the hash starts with `difficulty` zeros: costly to find, cheap to check.&quot;&quot;&quot;
+    block = {&quot;prev&quot;: prev_hash, &quot;tx&quot;: transactions, &quot;time&quot;: int(time.time()), &quot;nonce&quot;: 0}
+    while not block_hash(block).startswith(&quot;0&quot; * difficulty):
+        block[&quot;nonce&quot;] += 1
+    return block
+
+def valid(chain, difficulty=4):
+    for prev, block in zip(chain, chain[1:]):
+        if block[&quot;prev&quot;] != block_hash(prev):
+            return False                          # a link is broken
+        if not block_hash(block).startswith(&quot;0&quot; * difficulty):
+            return False                          # no proof of work
+    return True
+
+genesis = mine(&quot;0&quot; * 64, [&quot;genesis&quot;])
+chain = [genesis]
+chain.append(mine(block_hash(chain[-1]), [&quot;alice pays bob 5&quot;]))
+chain.append(mine(block_hash(chain[-1]), [&quot;bob pays carol 2&quot;]))
+print(&quot;valid:&quot;, valid(chain), &quot;| nonce of block 2:&quot;, chain[2][&quot;nonce&quot;])
+
+chain[1][&quot;tx&quot;] = [&quot;alice pays bob 500&quot;]          # tamper with history
+print(&quot;after tampering:&quot;, valid(chain))          # every later link now breaks</code></pre>
+    <pre><code>valid: True | nonce of block 2: 116188
+after tampering: False</code></pre>
+  </article>
+
+  <article class="card"><h3>Bitcoin's rules, in numbers</h3>
+    <ul>
+      <li><b>About 10 minutes</b> per block on average; the difficulty adjusts so it stays there as miners come and go.</li>
+      <li><b>A fixed supply</b> of 21 million bitcoin at most.</li>
+      <li><b>The mining reward halves every 210,000 blocks</b>, roughly every four years.</li>
+      <li><b>Keys:</b> an address is computed from a randomly generated private key. Computing the address is instant; finding the key from the address is practically impossible. Whoever holds the key controls the coins.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Trade-offs and risks</h3>
+    <ul>
+      <li><b>Energy:</b> proof of work uses a great deal of electricity, and has been criticised for its environmental impact. Ethereum moved from proof of work to proof of stake in September 2022 ("The Merge"), cutting its energy use by over 99%.</li>
+      <li><b>No undo:</b> a payment to the wrong address, or a lost key, is usually gone for good.</li>
+      <li><b>Scams thrive</b> where payments are irreversible: fake investments, "recovery" services, impersonation. Nobody legitimate asks for your private key or seed phrase.</li>
+      <li><b>Volatility:</b> prices can swing widely. This page explains the technology; it is not investment advice.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>What engineers can take from it</h3>
+    <p>Even if you never touch a cryptocurrency, the ideas travel: content-addressed data (Git commits are linked by hashes too, see <a href="#devops">DevOps</a>), append-only logs (see <a href="#eventsourcing">Event Sourcing</a>), public-key cryptography (see <a href="#security">Security</a>), and agreement between machines that do not trust each other. Ask the question on <a href="#web3">Web 3.0</a> first: do you actually need a blockchain, or a database with good audit logs?</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain hashes and how blocks link</li><li>Explain proof of work and why rewriting history is hard</li><li>Keep keys safe and recognise common scams</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a toy chain and validate it</li><li>Explain Bitcoin's supply, halving and difficulty rules</li><li>Compare proof of work and proof of stake</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Judge whether a problem needs a blockchain at all</li><li>Design key custody and recovery</li><li>Assess the security model of a chain or protocol</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Advise an organisation on distributed-ledger strategy</li><li>Review consensus and cryptographic designs</li><li>Explain the technology to non-specialists without hype</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>SHA-256 and Merkle trees</li><li>Proof of work and difficulty</li><li>Public-key cryptography and wallets</li><li>Proof of stake</li><li>Layer 2 payment channels</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">Bitcoin: A Peer-to-Peer Electronic Cash System</a><span class="lnote"> Satoshi Nakamoto's white paper, nine pages</span></li><li><a href="https://en.wikipedia.org/wiki/Bitcoin_protocol" target="_blank" rel="noopener">Bitcoin protocol (Wikipedia)</a><span class="lnote"> How mining, blocks and transactions work</span></li><li><a href="https://github.com/bitcoin/bitcoin" target="_blank" rel="noopener">Bitcoin Core source</a><span class="lnote"> The reference implementation</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBitcoin%20%26%20Blockchain%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
 <section class="panel" id="p-web3" data-name="Web 3.0">
   <div class="panel-head"><h2>Web 3.0</h2><p>"Web 3.0" means two different things. <b>Web3</b> is the blockchain-based vision: decentralised ledgers, smart contracts, tokens and wallets. The <b>Semantic Web</b> (Tim Berners-Lee's earlier "Web 3.0") is about machine-readable, linked data. Both matter to engineers, for different reasons. The <a href="#solid">Solid</a> tab covers Berners-Lee's current project for personal data.</p></div>
   <div class="grid">
@@ -13389,7 +13553,7 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","linux","networking","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","gcpdata","bigquery","awsdata","architecture","microservices","eventsourcing","sysdesign","caching","cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh","devops","observability","opstools","sre","harness","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","behaviours","mathematics","science","philosophy","goodhuman","body","quantum","web3","solid","why","history","opensource","culvert"];
+  const tabs = ["start","aiworry","linux","networking","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","gcpdata","bigquery","awsdata","architecture","microservices","eventsourcing","sysdesign","caching","cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh","devops","observability","opstools","sre","harness","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","behaviours","mathematics","science","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");

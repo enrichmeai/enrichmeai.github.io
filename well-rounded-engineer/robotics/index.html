@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robotics · Well Rounded Engineer</title>
+<meta name="description" content="A robot senses the world, decides what to do and acts on it, over and over, many times a second. Robotics joins electronics, mechanics, control theory and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="robotics">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud &amp; platform</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">Delivery &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/robotics/" aria-current="page">Robotics</a>
+      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="robotics" data-name="Robotics">
+  <div class="panel-head"><h1>Robotics: software that moves things</h1><p>A robot senses the world, decides what to do and acts on it, over and over, many times a second. Robotics joins electronics, mechanics, control theory and software, and mistakes move real objects near real people, so safety comes first.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Sense, think, act</h3>
+    <ul>
+      <li><b>Sense:</b> cameras, lidar, encoders on the wheels and joints, inertial sensors, force and touch sensors.</li>
+      <li><b>Think:</b> work out where the robot is, what is around it, and what to do next.</li>
+      <li><b>Act:</b> motors and actuators turn decisions into movement.</li>
+      <li><b>The loop never stops:</b> every sensor is noisy and every motor imperfect, so the robot measures again and corrects, all the time.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The core ideas</h3>
+    <ul>
+      <li><b>Control:</b> a PID controller turns the error between where you are and where you want to be into a command. The example below shows each term at work.</li>
+      <li><b>Kinematics:</b> forward kinematics asks where the hand is, given the joint angles; inverse kinematics asks which joint angles put the hand there. The second is the hard one.</li>
+      <li><b>Localisation and mapping (SLAM):</b> building a map of an unknown place while keeping track of where you are in it, the problem self-driving cars and warehouse robots solve.</li>
+      <li><b>Planning:</b> finding a path that avoids obstacles and respects what the robot can physically do.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A PID controller you can run</h3>
+    <p>Plain Python. A toy motor with friction is driven to a target speed of 100. Proportional control alone settles short, because it needs an error to produce any power; the integral term removes that gap.</p>
+    <pre><code class="language-python">&quot;&quot;&quot;A PID controller holding a simple motor at a target speed.&quot;&quot;&quot;
+def simulate(kp, ki, kd, target=100.0, steps=200, dt=0.05):
+    speed, integral, prev_error = 0.0, 0.0, target
+    for _ in range(steps):
+        error = target - speed                    # how far off are we?
+        integral += error * dt                    # I: past error that has not gone away
+        derivative = (error - prev_error) / dt    # D: how fast the error is changing
+        prev_error = error
+        power = kp * error + ki * integral + kd * derivative
+        power = max(-100.0, min(100.0, power))    # real motors have limits
+        speed += (power - 0.5 * speed) * dt       # toy physics: power pushes, friction resists
+    return round(speed, 1)
+
+print(&quot;P only:  &quot;, simulate(kp=2.0, ki=0.0, kd=0.0))   # settles short of the target
+print(&quot;PI:      &quot;, simulate(kp=2.0, ki=1.0, kd=0.0))   # the integral removes the gap
+print(&quot;PID:     &quot;, simulate(kp=2.0, ki=1.0, kd=0.1))</code></pre>
+    <pre><code>P only:   80.0
+PI:       100.1
+PID:      100.1</code></pre>
+  </article>
+
+  <article class="card"><h3>The software stack: ROS 2</h3>
+    <ul>
+      <li><b>ROS (Robot Operating System)</b> is open-source robotics middleware, not an operating system. ROS 2 is the current generation.</li>
+      <li><b>Nodes and topics:</b> each part of the robot (a camera driver, a planner, a motor controller) is a node; nodes exchange messages over named topics. It is publish/subscribe, as in <a href="/well-rounded-engineer/kafka/">Kafka</a>, on a robot.</li>
+      <li><b>Simulate first:</b> test in a simulator before the real hardware, where a bug costs a crash in software rather than a broken arm.</li>
+      <li><b>Languages:</b> C++ where timing matters, Python for tools and glue; <a href="/well-rounded-engineer/rust/">Rust</a> is growing.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Safety comes first</h3>
+    <ul>
+      <li><b>Standards exist</b> for a reason: ISO 10218 is the international standard for industrial robot safety.</li>
+      <li><b>Emergency stop:</b> every robot has one a person can reach, and it works even when the software does not. The manual override from <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>, made of hardware.</li>
+      <li><b>Fail safe:</b> on lost signal, low battery or a sensor fault, stop or move to a safe state.</li>
+      <li><b>Test the bad cases</b> in simulation and on the bench: a person stepping in, a sensor going dark, a motor stalling.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Where to start</h3>
+    <p>Begin small and physical: a microcontroller, two motors, a distance sensor and a line to follow. Then add a PID loop, then a camera, then ROS 2 in a simulator. Robotics rewards the foundations: <a href="/well-rounded-engineer/mathematics/">Mathematics</a> (geometry, probability), <a href="/well-rounded-engineer/linux/">Linux</a>, <a href="/well-rounded-engineer/networking/">Networking</a>, and patient <a href="/well-rounded-engineer/science/">experiment</a>. AI models are increasingly part of the "think" step, but the loop, the limits and the emergency stop stay the engineer's job.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the sense-think-act loop</li><li>Tune a PID controller in simulation</li><li>Know why every robot has an emergency stop</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a small robot or simulated one with ROS 2 nodes and topics</li><li>Read sensor data and filter its noise</li><li>Apply forward and inverse kinematics to an arm</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design localisation, mapping and path planning</li><li>Design for functional safety and failure modes</li><li>Move from simulation to hardware safely</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead a robotics platform or product</li><li>Set safety and testing standards</li><li>Combine learned models with classical control responsibly</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>PID control</li><li>Kinematics</li><li>SLAM</li><li>ROS 2 nodes, topics and services</li><li>Robot safety standards (ISO 10218)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Robot_Operating_System" target="_blank" rel="noopener">Robot Operating System (Wikipedia)</a><span class="lnote"> What ROS is and how it is organised</span></li><li><a href="https://github.com/ros2/ros2" target="_blank" rel="noopener">ROS 2 source</a><span class="lnote"> The ROS 2 repositories and installation</span></li><li><a href="https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller" target="_blank" rel="noopener">PID controller (Wikipedia)</a><span class="lnote"> The maths behind the example</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BRobotics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/quantum/">← Quantum Computing</a><a class="pn-next" href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

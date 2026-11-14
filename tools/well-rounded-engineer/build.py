@@ -18,7 +18,7 @@ groups=[("",["start","aiworry"]),
  ("Delivery &amp; operations",["devops","observability","opstools","sre","harness"]),
  ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp"]),
  ("Thinking &amp; character",["behaviours","mathematics","science","philosophy","goodhuman","body"]),
- ("Frontiers",["quantum","web3","solid"]),
+ ("Frontiers",["quantum","robotics","bitcoin","web3","solid"]),
  ("About this guide",["why","history"]),
  ("EnrichMeAI open source",["opensource","culvert"])]
 NARRATIVE=("start","why","aiworry","history","behaviours","homelab","opensource")
@@ -52,7 +52,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -107,6 +107,8 @@ scale='''  <article class="card wide" id="levels-scale"><h3>The four levels used
 if 'id="levels-scale"' not in s:
     i=s.index('  <article class="card wide"><h3>How much of each tab you need</h3>'); s=s[:i]+scale+s[i:]
 newrows={
+ "bitcoin":("Bitcoin &amp; Blockchain","Explain hashes, linked blocks, proof of work and keys.","Consensus trade-offs, key custody, and when a blockchain is the wrong tool."),
+ "robotics":("Robotics","Explain sense-think-act and tune a PID loop in simulation.","Kinematics, SLAM and planning on ROS 2, with safety designed in."),
  "kotlin":("Kotlin","Read and write Kotlin beside Java; use null safety and data classes.","Coroutines, Java interop at scale, multiplatform and Android or server architecture."),
  "go":("Go","Write a small service with errors as values and a table-driven test.","Concurrency with goroutines and context, profiling, and reading cloud tools' source."),
  "rust":("Rust","Explain ownership and borrowing; use Result, Option and match.","Lifetimes, traits and async; safe interfaces around unsafe code; performance work."),

@@ -859,3 +859,23 @@ D["awsdata"]=dict(
         ("Amazon Redshift documentation","https://docs.aws.amazon.com/redshift/","The data warehouse"),
         ("AWS Lake Formation documentation","https://docs.aws.amazon.com/lake-formation/","Fine-grained data access"),
         ("AWS SDK for pandas","https://github.com/aws/aws-sdk-pandas","Open-source pandas integration for S3, Athena, Glue and Redshift")])
+
+D["bitcoin"]=dict(
+ F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
+ P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
+ S=["Judge whether a problem needs a blockchain at all","Design key custody and recovery","Assess the security model of a chain or protocol"],
+ E=["Advise an organisation on distributed-ledger strategy","Review consensus and cryptographic designs","Explain the technology to non-specialists without hype"],
+ topics=["SHA-256 and Merkle trees","Proof of work and difficulty","Public-key cryptography and wallets","Proof of stake","Layer 2 payment channels"],
+ links=[("Bitcoin: A Peer-to-Peer Electronic Cash System","https://bitcoin.org/bitcoin.pdf","Satoshi Nakamoto's white paper, nine pages"),
+        ("Bitcoin protocol (Wikipedia)","https://en.wikipedia.org/wiki/Bitcoin_protocol","How mining, blocks and transactions work"),
+        ("Bitcoin Core source","https://github.com/bitcoin/bitcoin","The reference implementation")])
+
+D["robotics"]=dict(
+ F=["Explain the sense-think-act loop","Tune a PID controller in simulation","Know why every robot has an emergency stop"],
+ P=["Build a small robot or simulated one with ROS 2 nodes and topics","Read sensor data and filter its noise","Apply forward and inverse kinematics to an arm"],
+ S=["Design localisation, mapping and path planning","Design for functional safety and failure modes","Move from simulation to hardware safely"],
+ E=["Lead a robotics platform or product","Set safety and testing standards","Combine learned models with classical control responsibly"],
+ topics=["PID control","Kinematics","SLAM","ROS 2 nodes, topics and services","Robot safety standards (ISO 10218)"],
+ links=[("Robot Operating System (Wikipedia)","https://en.wikipedia.org/wiki/Robot_Operating_System","What ROS is and how it is organised"),
+        ("ROS 2 source","https://github.com/ros2/ros2","The ROS 2 repositories and installation"),
+        ("PID controller (Wikipedia)","https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller","The maths behind the example")])
