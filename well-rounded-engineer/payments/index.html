@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -291,19 +292,6 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
       <li><b>Multiple gateways:</b> routing or failover between gateways improves success rates, at the cost of more reconciliation.</li>
     </ul>
   </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain authorisation, capture, settlement, refunds and chargebacks</li><li>Explain the order → checkout → verify → webhook flow</li><li>Know why card data must never touch your servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Integrate a gateway with server-side verification and signed webhooks</li><li>Make payment calls and webhook handling idempotent</li><li>Model payments as a state machine; test with test-mode fixtures</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design subscriptions, dunning and entitlements</li><li>Build a double-entry ledger and daily reconciliation</li><li>Own payment security, PCI scope and regulatory rules (RBI)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-gateway routing and payment platforms</li><li>Lead payments compliance and audits</li><li>Set money-handling standards across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

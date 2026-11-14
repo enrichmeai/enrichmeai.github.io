@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -300,26 +301,6 @@ WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</co
       <tr><td>Updates</td><td>Row by row, transactional</td><td>Batch loads and MERGE; avoid row-by-row DML</td></tr>
       </tbody></table></div>
   </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Design a normalised table with a primary key and constraints</li><li>Add an index for a slow lookup</li><li>Understand what a transaction guarantees</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Read EXPLAIN ANALYZE and fix the plan</li><li>Choose composite, partial and covering indexes</li><li>Write safe, additive migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Partition large tables; plan retention and archiving</li><li>Choose isolation levels and locking strategies</li><li>Plan replicas, pooling and capacity</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Decide between scaling up, partitioning, sharding or a distributed database</li><li>Run zero-downtime migrations on very large tables</li><li>Set database standards and review all schema changes</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

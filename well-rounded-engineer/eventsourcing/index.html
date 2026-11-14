@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -295,23 +296,6 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
       <li>Treating eventual consistency of read models as a bug rather than designing for it.</li>
     </ul>
   </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain events, streams, aggregates, projections and CQRS</li><li>Read an event stream and follow how state was built</li><li>Tell an append-only ledger from full event sourcing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement an aggregate with decide/apply and given-when-then tests</li><li>Build idempotent projections with checkpoints</li><li>Append with optimistic concurrency</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide where event sourcing fits in a system and where it does not</li><li>Design event schemas, versioning and upcasting</li><li>Plan snapshots, replay, rebuilds and personal-data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead event-sourced architectures across domains and teams</li><li>Choose and operate event stores at scale</li><li>Set standards for event modelling and governance</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

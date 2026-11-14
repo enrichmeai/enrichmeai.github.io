@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -242,16 +243,6 @@ pq.write_table(table, "out.parquet",
       <li><b>Schema drift:</b> a new or renamed source column must fail loudly or be mapped on purpose.</li>
     </ul>
   </article>
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Load, filter and aggregate a file with pandas or Polars</li><li>Read Parquet and inspect its schema</li><li>Know which library suits which data size</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use lazy Polars, DuckDB or PyArrow with pushdown on large files</li><li>Write a PySpark or Beam job for data beyond one machine</li><li>Validate data with pandera or dbt tests and count rejects</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose engines per workload: warehouse SQL, single-node, distributed, streaming</li><li>Tune memory, partitioning and file layout</li><li>Design portable pipelines with open formats</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's processing stack and standards</li><li>Lead migrations between engines (pandas to Polars, Spark to BigQuery)</li><li>Understand engine internals: query optimisers, vectorised execution</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

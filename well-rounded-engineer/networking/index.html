@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -248,26 +249,6 @@ gcloud compute firewall-rules list --format="table(name,direction,sourceRanges.l
 gcloud compute routers nats list --router=my-router --region=asia-south1
 gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></pre></div>
   </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain IP, port, DNS, TCP vs UDP and HTTP status classes</li><li>Use curl, dig and nc to test reachability</li><li>Tell a DNS failure from a refusal from a timeout</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Size subnets with CIDR; read firewall rules and routes</li><li>Debug TLS and certificate errors</li><li>Configure private access, NAT and egress for cloud workloads</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a VPC: ranges, subnets, private service access, load balancers</li><li>Choose L4 vs L7 load balancing and set health checks</li><li>Trace a latency problem across the network path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design hybrid and multi-region connectivity</li><li>Set network security policy for an organisation</li><li>Lead incident response for network-level outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

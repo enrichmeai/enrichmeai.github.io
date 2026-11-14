@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -273,26 +274,6 @@ docker run --rm -it --network container:db nicolaka/netshoot   # debug its netwo
       <li>Generate an SBOM (<code>docker buildx build --sbom=true</code> or <code>syft</code>) so you can answer "are we affected?" quickly.</li>
     </ul>
   </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build, run, stop and inspect containers</li><li>Read a Dockerfile and explain each instruction</li><li>Use docker compose for a local stack</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write small multi-stage Dockerfiles with good layer caching</li><li>Run as non-root; keep secrets out of layers</li><li>Build for linux/amd64; debug exit codes and OOM kills</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Set image standards: base images, scanning, SBOMs, signing</li><li>Optimise image size and startup time for Cloud Run or Kubernetes</li><li>Design local development environments for a team</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's container supply chain</li><li>Understand the OCI image and runtime specs</li><li>Choose and govern registries, build systems and policies</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>

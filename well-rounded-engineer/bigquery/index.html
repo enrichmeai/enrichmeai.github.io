@@ -29,6 +29,7 @@
     <nav aria-label="Guide sections">
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/homelab/">Home Lab</a>
       <span class="navgrp">Thinking &amp; character</span>
@@ -364,26 +365,6 @@ bq mk --table --time_partitioning_field=decision_date --clustering_fields=court_
 bq ls -j -a -n 20          # recent jobs
 bq show -j &lt;job_id&gt;</code></pre></div>
   </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Query with named columns and partition filters</li><li>Dry-run and read bytes processed</li><li>Load data from GCS</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design partitioned and clustered tables</li><li>Write MERGE, scripting and parameterised queries</li><li>Use INFORMATION_SCHEMA to find cost and usage</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Optimise slot time and cost across a project</li><li>Choose pricing models and reservations</li><li>Design security: datasets, authorised views, row and column policies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the warehouse platform and its cost governance</li><li>Integrate BigQuery with streaming, ML and the wider lakehouse</li><li>Advise on architecture across many teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
