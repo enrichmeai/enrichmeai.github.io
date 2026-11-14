@@ -415,6 +415,31 @@ details>.inner{padding:4px 10px 8px}
     <p>I am not against agents that heal themselves. They are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
   </article>
 
+  <article class="card wide"><h3>We will use it more than we meant to</h3>
+    <p>I am not an expert in where this goes, and nobody knows for sure. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
+    <p>It is good for someone who has the idea and knows the specification but could never find the hundreds of hours to build it. For people with that experience, it is a genuinely useful tool, and solo builders who want to make a product should start: doing something beats waiting. It is bad when it becomes a habit of prompting and never going back to check. A mind that stops checking slowly stops being able to.</p>
+    <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
+  </article>
+
+  <article class="card"><h3>More with fewer, or more with the same</h3>
+    <p>Come back to the bulldozer. Companies may expect the same work from fewer engineers, or more work from the same number. We can already see some reduction across the industry, and there will be disruption, though no one can say yet how much.</p>
+    <p>The people who come through it best will be the ones who can direct the machine and still understand the ground it is moving.</p>
+  </article>
+
+  <article class="card"><h3>Four ways people use AI</h3>
+    <ul>
+      <li><b>To automate without learning.</b> Fast today, fragile tomorrow: when it breaks, nothing was learned.</li>
+      <li><b>To learn.</b> Ask it to explain, then check the explanation against the docs.</li>
+      <li><b>As a tester.</b> Ask it to find the cases you missed and to try to break your code.</li>
+      <li><b>As a tutor and mentor.</b> Ask it to quiz you, review your reasoning, and say what to read next.</li>
+    </ul>
+    <p>Only the first one makes you weaker.</p>
+  </article>
+
+  <article class="card wide"><h3>You may not read every line, but you must understand it and test it</h3>
+    <p>With AI writing more of the code, we may not read every line it produces. That can be acceptable, on two conditions: we understand most of it, how it is shaped, what it depends on, and where it can fail; and we can <b>test all of it in the right way</b>, even the lines we did not read. Tests, types, reviews and monitoring become how we know the code works. See <a href="#testing">Testing</a> and <a href="#observability">Observability</a>.</p>
+  </article>
+
   <article class="card wide"><h3>Every role is changing, not only engineering</h3>
     <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says.</p>
     <p>What helps most is not one course or one tool. It is the <b>will to adapt</b>: understanding what is changing, trying it, and changing how we work. It will be hard, and some days it will feel slow. Learning one small thing every day still adds up: a command, a concept, a page of this guide, a question asked out loud.</p>
