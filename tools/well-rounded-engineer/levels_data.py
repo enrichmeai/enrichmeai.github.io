@@ -879,3 +879,14 @@ D["robotics"]=dict(
  links=[("Robot Operating System (Wikipedia)","https://en.wikipedia.org/wiki/Robot_Operating_System","What ROS is and how it is organised"),
         ("ROS 2 source","https://github.com/ros2/ros2","The ROS 2 repositories and installation"),
         ("PID controller (Wikipedia)","https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller","The maths behind the example")])
+
+D["k8sdr"]=dict(
+ F=["Run workloads as Deployments with several replicas","Add readiness and liveness probes","Explain RPO and RTO"],
+ P=["Add PodDisruptionBudgets and zone spreading","Schedule Velero or managed backups and restore one","Keep all manifests in Git so a cluster is replaceable"],
+ S=["Choose a DR strategy against agreed RPO and RTO","Design multi-zone and multi-region clusters","Run restore drills and game days"],
+ E=["Own platform resilience across clusters and regions","Set backup, restore and DR standards","Lead recovery during a major incident"],
+ topics=["etcd snapshots","Velero backup and restore","Volume snapshots","Topology spread constraints","Disaster recovery strategies"],
+ links=[("Operating etcd clusters for Kubernetes","https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/","Snapshots and restore, from the Kubernetes docs"),
+        ("Disruptions and PodDisruptionBudgets","https://kubernetes.io/docs/concepts/workloads/pods/disruptions/","Voluntary and involuntary disruptions"),
+        ("Velero: disaster recovery","https://velero.io/docs/main/disaster-case/","The DR flow with schedules and restores"),
+        ("Disaster recovery options in the cloud","https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html","The four strategies, from AWS's whitepaper")])
