@@ -817,3 +817,45 @@ D["quantum"] = dict(
  topics=["Qubits and measurement","Shor's and Grover's algorithms","Post-quantum cryptography (ML-KEM, ML-DSA, SLH-DSA)","Quantum error correction","Hybrid quantum-classical algorithms"],
  links=[("Open Quantum Safe (liboqs)","https://github.com/open-quantum-safe/liboqs","Open-source post-quantum algorithms, including the NIST standards"),
         ("Qiskit","https://github.com/Qiskit/qiskit","Open-source SDK for quantum circuits")])
+
+D["kotlin"]=dict(
+ F=["Read Kotlin code beside Java","Use null safety, data classes and when","Write and run a test with kotlin.test"],
+ P=["Build a service in Kotlin with Spring Boot or Ktor","Handle Java interop and platform types safely","Use coroutines for asynchronous work"],
+ S=["Design structured concurrency and cancellation","Mix Kotlin and Java in one codebase cleanly","Set style and lint rules for a team"],
+ E=["Lead a Java-to-Kotlin migration","Share code across platforms with Kotlin Multiplatform","Teach idiomatic Kotlin and review for it"],
+ topics=["Null safety and platform types","Sealed types and exhaustive when","Coroutines and structured concurrency","Gradle Kotlin DSL","Kotlin Multiplatform"],
+ links=[("Kotlin documentation","https://kotlinlang.org/docs/home.html","The official docs, from JetBrains"),
+        ("Coroutines overview","https://kotlinlang.org/docs/coroutines-overview.html","Asynchronous code in Kotlin"),
+        ("kotlinx.coroutines","https://github.com/Kotlin/kotlinx.coroutines","The coroutines library's source and guide")])
+
+D["go"]=dict(
+ F=["Write and run a small Go program","Handle errors as values","Write a table-driven test"],
+ P=["Build an HTTP service with the standard library","Use goroutines, channels and context safely","Run tests with the race detector and coverage"],
+ S=["Design packages and interfaces for a large codebase","Profile and tune with pprof","Read and debug cloud tools written in Go"],
+ E=["Set Go standards across teams","Build operators or platform tooling in Go","Teach Go's concurrency model and review for it"],
+ topics=["Errors and wrapping","Goroutines, channels and context","Interfaces and composition","Modules and versioning","Profiling with pprof"],
+ links=[("A Tour of Go","https://go.dev/tour/","Interactive introduction"),
+        ("Effective Go","https://go.dev/doc/effective_go","How to write idiomatic Go"),
+        ("The Go source","https://github.com/golang/go","The language, compiler and standard library")])
+
+D["rust"]=dict(
+ F=["Explain ownership and borrowing","Use Result, Option and match","Build and test with Cargo"],
+ P=["Write a CLI or service in Rust","Use traits, iterators and error types well","Keep Clippy clean and the code formatted"],
+ S=["Design with lifetimes and generics","Write async Rust and choose a runtime","Wrap unsafe or foreign code behind safe interfaces"],
+ E=["Lead Rust adoption where safety and speed matter","Write libraries other languages call","Teach Rust and review for soundness"],
+ topics=["Ownership, borrowing and lifetimes","Traits and generics","Error handling with Result","Async Rust","Unsafe Rust and FFI"],
+ links=[("The Rust Programming Language (the book)","https://doc.rust-lang.org/book/","The official book"),
+        ("The book's source","https://github.com/rust-lang/book","Read and contribute on GitHub"),
+        ("Rustlings","https://github.com/rust-lang/rustlings","Small exercises to learn by doing")])
+
+D["awsdata"]=dict(
+ F=["Name the AWS service for each data stage","Land files in S3 and query them with Athena","Explain IAM roles for data jobs"],
+ P=["Build a pipeline: S3 raw, Glue, curated Parquet or Iceberg, Athena","Use Lake Formation to grant table access","Model with dbt on Athena or Redshift"],
+ S=["Choose between Athena and Redshift, Glue and EMR, Kinesis and MSK","Design a governed data lake with a catalog","Plan cost, regions and data residency"],
+ E=["Own the organisation's AWS data architecture","Lead migrations between clouds or from on-premises","Set data platform standards across teams"],
+ topics=["S3 Tables and Apache Iceberg","Glue jobs and crawlers","Lake Formation permissions","Redshift Serverless","Kinesis and MSK streaming"],
+ links=[("AWS Glue documentation","https://docs.aws.amazon.com/glue/","ETL and the Data Catalog"),
+        ("Amazon Athena documentation","https://docs.aws.amazon.com/athena/","SQL on S3"),
+        ("Amazon Redshift documentation","https://docs.aws.amazon.com/redshift/","The data warehouse"),
+        ("AWS Lake Formation documentation","https://docs.aws.amazon.com/lake-formation/","Fine-grained data access"),
+        ("AWS SDK for pandas","https://github.com/aws/aws-sdk-pandas","Open-source pandas integration for S3, Athena, Glue and Redshift")])

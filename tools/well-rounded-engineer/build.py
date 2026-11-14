@@ -8,11 +8,11 @@ p=os.path.join(HERE, 'guide.html.in'); s=open(p).read()
 
 groups=[("",["start","aiworry"]),
  ("Foundations",["linux","networking","web","docker","sql","database","homelab"]),
- ("Languages",["java","python"]),
+ ("Languages",["java","kotlin","python","go","rust"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
  ("Quality",["testing","performance"]),
  ("Security",["security","cyber","oauth"]),
- ("Data",["data","datalibs","dbt","dags","gcpdata","bigquery"]),
+ ("Data",["data","datalibs","dbt","dags","gcpdata","bigquery","awsdata"]),
  ("Architecture &amp; design",["architecture","microservices","eventsourcing","sysdesign","caching"]),
  ("Cloud &amp; platform",["cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh"]),
  ("Delivery &amp; operations",["devops","observability","opstools","sre","harness"]),
@@ -28,7 +28,7 @@ SITE="enrichmeai.github.io"
 from urllib.parse import quote
 blurb={
  "Foundations":"How computers, networks and the web work, and the data underneath. Everything else stands on this.",
- "Languages":"Two languages learned properly: how they run, test and fail.",
+ "Languages":"Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.",
  "Building services":"APIs, messaging and the frameworks that turn code into services.",
  "Quality":"Proving it works, and that it stays fast under load.",
  "Security":"Building it safely, and thinking like a defender.",
@@ -52,7 +52,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -107,6 +107,10 @@ scale='''  <article class="card wide" id="levels-scale"><h3>The four levels used
 if 'id="levels-scale"' not in s:
     i=s.index('  <article class="card wide"><h3>How much of each tab you need</h3>'); s=s[:i]+scale+s[i:]
 newrows={
+ "kotlin":("Kotlin","Read and write Kotlin beside Java; use null safety and data classes.","Coroutines, Java interop at scale, multiplatform and Android or server architecture."),
+ "go":("Go","Write a small service with errors as values and a table-driven test.","Concurrency with goroutines and context, profiling, and reading cloud tools' source."),
+ "rust":("Rust","Explain ownership and borrowing; use Result, Option and match.","Lifetimes, traits and async; safe interfaces around unsafe code; performance work."),
+ "awsdata":("Data on AWS","Name the AWS service for each data stage; query S3 data with Athena.","Lake design with Glue, Lake Formation, Redshift and streaming; IAM and cost."),
   "cloudinside":("How the cloud is built","Explain zones, regions, VMs, containers and the control plane.","Failure domains, isolation, shared responsibility and cost from first principles."),
  "oauth":('OAuth &amp; OIDC','Protect an API with JWT validation; use the code flow with PKCE through a library.','Identity architecture, flow choice per client, token lifetimes, advanced specs.'),
  "apis":('APIs &amp; Integration','Explain REST and status codes; read an OpenAPI spec; tell sync from async.','Choosing API styles, gateway and mesh design, versioning and API governance.'),
