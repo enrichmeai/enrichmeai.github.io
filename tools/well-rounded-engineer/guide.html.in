@@ -3612,7 +3612,7 @@ class OrderRepositoryIT {
 // HTTP dependency: WireMock serving a captured response
 stubFor(get(urlPathEqualTo("/objects"))
     .willReturn(aResponse().withStatus(200)
-        .withBodyFile("mirror/listing-page-2.xml")));</code></pre></div>
+        .withBodyFile("supplier/listing-page-2.xml")));</code></pre></div>
 <div class="snip"><pre><code># Python: testcontainers
 from testcontainers.community.postgres import PostgresContainer
 def test_load_roundtrip():
@@ -6075,11 +6075,11 @@ public List&lt;OrderDto&gt; list() { ... }</code></pre></div>
 
   <article class="card"><h3>HTTP clients</h3>
 <div class="snip"><pre><code>// RestClient (3.2): synchronous, fluent
-@Bean RestClient mirror(RestClient.Builder b) {
+@Bean RestClient supplier(RestClient.Builder b) {
   return b.baseUrl("https://api.example.org").build();
 }
 
-Listing l = mirror.get()
+Listing l = supplier.get()
     .uri("/objects?prefix={p}", prefix)
     .retrieve()
     .onStatus(HttpStatusCode::is4xxClientError, (req, res) -&gt; {
@@ -6089,12 +6089,12 @@ Listing l = mirror.get()
     .body(Listing.class);
 
 // Declarative interface client
-interface MirrorApi {
+interface SupplierApi {
   @GetExchange("/objects") Listing list(@RequestParam String prefix);
 }
-@Bean MirrorApi api(RestClient mirror) {
-  return HttpServiceProxyFactory.builderFor(RestClientAdapter.create(mirror))
-      .build().createClient(MirrorApi.class);
+@Bean SupplierApi api(RestClient supplier) {
+  return HttpServiceProxyFactory.builderFor(RestClientAdapter.create(supplier))
+      .build().createClient(SupplierApi.class);
 }</code></pre></div>
   </article>
 
@@ -6228,10 +6228,10 @@ class LoadMetrics {
 
 // custom health
 @Component
-class MirrorHealth implements HealthIndicator {
+class SupplierHealth implements HealthIndicator {
   public Health health() {
     return reachable() ? Health.up().build()
-                       : Health.down().withDetail("mirror", "unreachable").build();
+                       : Health.down().withDetail("supplier", "unreachable").build();
   }
 }</code></pre></div>
   </article>
@@ -6404,24 +6404,24 @@ Order.count("orderDate is null");</code></pre></div>
   </article>
 
   <article class="card"><h3>REST client</h3>
-<div class="snip"><pre><code>@RegisterRestClient(configKey = "mirror")
+<div class="snip"><pre><code>@RegisterRestClient(configKey = "supplier")
 @Path("/objects")
-public interface MirrorClient {
+public interface SupplierClient {
   @GET Listing list(@RestQuery String prefix);
   @GET @Path("/{key}") Uni&lt;byte[]&gt; fetch(@RestPath String key);   // reactive
 }
 
 # application.properties
-quarkus.rest-client.mirror.url=https://api.example.org
-quarkus.rest-client.mirror.read-timeout=10000
+quarkus.rest-client.supplier.url=https://api.example.org
+quarkus.rest-client.supplier.read-timeout=10000
 
-@Inject @RestClient MirrorClient mirror;
+@Inject @RestClient SupplierClient supplier;
 
 // fault tolerance (quarkus-smallrye-fault-tolerance)
 @Retry(maxRetries = 3, delay = 200)
 @Timeout(10_000)
 @CircuitBreaker(requestVolumeThreshold = 10)
-public Listing safeList(String p) { return mirror.list(p); }</code></pre></div>
+public Listing safeList(String p) { return supplier.list(p); }</code></pre></div>
   </article>
 
   <article class="card"><h3>Threading: blocking, reactive, virtual</h3>
@@ -6457,9 +6457,9 @@ public List&lt;OrderDto&gt; slowList() { return blockingDao.all(); }
 }
 
 @Readiness @ApplicationScoped
-public class MirrorCheck implements HealthCheck {
+public class SupplierCheck implements HealthCheck {
   public HealthCheckResponse call() {
-    return HealthCheckResponse.named("mirror").status(reachable()).build();
+    return HealthCheckResponse.named("supplier").status(reachable()).build();
   }
 }
 // /q/health/live  /q/health/ready  /q/health/started
@@ -6845,31 +6845,31 @@ Links:    load test results, issue #…</code></pre></div>
 
   <article class="card"><h3>Resilience in code (Spring + Resilience4j)</h3>
 <div class="snip"><pre><code>@Service
-class MirrorClient {
+class SupplierClient {
   private final RestClient http;
-  MirrorClient(RestClient http) { this.http = http; }
+  SupplierClient(RestClient http) { this.http = http; }
 
-  @CircuitBreaker(name = "mirror", fallbackMethod = "unavailable")
-  @Retry(name = "mirror")
+  @CircuitBreaker(name = "supplier", fallbackMethod = "unavailable")
+  @Retry(name = "supplier")
   Listing list(String prefix) {
     return http.get().uri("/objects?prefix={p}", prefix).retrieve().body(Listing.class);
   }
 
   // honest degradation: "cannot see", never "nothing there"
   Listing unavailable(String prefix, Throwable t) {
-    return Listing.unknown("mirror unavailable: " + t.getMessage());
+    return Listing.unknown("supplier unavailable: " + t.getMessage());
   }
 }</code></pre></div>
 <div class="snip"><pre><code>resilience4j:
   circuitbreaker:
     instances:
-      mirror:
+      supplier:
         slidingWindowSize: 20
         failureRateThreshold: 50
         waitDurationInOpenState: 30s
   retry:
     instances:
-      mirror:
+      supplier:
         maxAttempts: 3
         waitDuration: 200ms
         enableExponentialBackoff: true</code></pre></div>
@@ -9975,7 +9975,7 @@ variable "db_password" {
 }
 
 locals {
-  name_prefix = "dp-${var.env}"
+  name_prefix = "shop-${var.env}"
   enabled     = { for k, v in var.stages : k =&gt; v if v.enabled }
 }
 
@@ -10140,7 +10140,7 @@ resource "google_project_iam_member" "loader_bq" {
 # _policy:  OWNS the whole policy (removes everything else, can lock you out)
 
 resource "google_service_account" "loader" {
-  account_id   = "dp-loader"
+  account_id   = "shop-loader"
   display_name = "Orders loader job"
 }
 
@@ -10235,7 +10235,7 @@ check "landing_bucket_reachable" {
   </article>
 
   <article class="card"><h3>Functions &amp; expressions</h3>
-<div class="snip"><pre><code>"${var.env}-landing"                  format("dp-%s-%03d", var.env, 7)
+<div class="snip"><pre><code>"${var.env}-landing"                  format("shop-%s-%03d", var.env, 7)
 join(",", var.stores)                 split(",", "a,b,c")
 merge(local.base_labels, var.labels)  concat(list_a, list_b)
 lookup(var.tiers, var.env, "small")   try(var.cfg.timeout, "600s")
@@ -10506,10 +10506,10 @@ metadata:
   name: loader
   namespace: shop
   annotations:
-    iam.gke.io/gcp-service-account: dp-loader@my-proj.iam.gserviceaccount.com
+    iam.gke.io/gcp-service-account: shop-loader@my-proj.iam.gserviceaccount.com
 
 gcloud iam service-accounts add-iam-policy-binding \
-  dp-loader@my-proj.iam.gserviceaccount.com \
+  shop-loader@my-proj.iam.gserviceaccount.com \
   --role=roles/iam.workloadIdentityUser \
   --member="serviceAccount:my-proj.svc.id.goog[shop/loader]"
 

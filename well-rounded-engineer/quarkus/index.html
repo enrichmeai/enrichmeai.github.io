@@ -226,24 +226,24 @@ Order.count("orderDate is null");</code></pre></div>
   </article>
 
   <article class="card"><h3>REST client</h3>
-<div class="snip"><pre><code>@RegisterRestClient(configKey = "mirror")
+<div class="snip"><pre><code>@RegisterRestClient(configKey = "supplier")
 @Path("/objects")
-public interface MirrorClient {
+public interface SupplierClient {
   @GET Listing list(@RestQuery String prefix);
   @GET @Path("/{key}") Uni&lt;byte[]&gt; fetch(@RestPath String key);   // reactive
 }
 
 # application.properties
-quarkus.rest-client.mirror.url=https://api.example.org
-quarkus.rest-client.mirror.read-timeout=10000
+quarkus.rest-client.supplier.url=https://api.example.org
+quarkus.rest-client.supplier.read-timeout=10000
 
-@Inject @RestClient MirrorClient mirror;
+@Inject @RestClient SupplierClient supplier;
 
 // fault tolerance (quarkus-smallrye-fault-tolerance)
 @Retry(maxRetries = 3, delay = 200)
 @Timeout(10_000)
 @CircuitBreaker(requestVolumeThreshold = 10)
-public Listing safeList(String p) { return mirror.list(p); }</code></pre></div>
+public Listing safeList(String p) { return supplier.list(p); }</code></pre></div>
   </article>
 
   <article class="card"><h3>Threading: blocking, reactive, virtual</h3>
@@ -279,9 +279,9 @@ public List&lt;OrderDto&gt; slowList() { return blockingDao.all(); }
 }
 
 @Readiness @ApplicationScoped
-public class MirrorCheck implements HealthCheck {
+public class SupplierCheck implements HealthCheck {
   public HealthCheckResponse call() {
-    return HealthCheckResponse.named("mirror").status(reachable()).build();
+    return HealthCheckResponse.named("supplier").status(reachable()).build();
   }
 }
 // /q/health/live  /q/health/ready  /q/health/started

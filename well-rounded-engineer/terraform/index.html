@@ -173,7 +173,7 @@ variable "db_password" {
 }
 
 locals {
-  name_prefix = "dp-${var.env}"
+  name_prefix = "shop-${var.env}"
   enabled     = { for k, v in var.stages : k =&gt; v if v.enabled }
 }
 
@@ -338,7 +338,7 @@ resource "google_project_iam_member" "loader_bq" {
 # _policy:  OWNS the whole policy (removes everything else, can lock you out)
 
 resource "google_service_account" "loader" {
-  account_id   = "dp-loader"
+  account_id   = "shop-loader"
   display_name = "Orders loader job"
 }
 
@@ -433,7 +433,7 @@ check "landing_bucket_reachable" {
   </article>
 
   <article class="card"><h3>Functions &amp; expressions</h3>
-<div class="snip"><pre><code>"${var.env}-landing"                  format("dp-%s-%03d", var.env, 7)
+<div class="snip"><pre><code>"${var.env}-landing"                  format("shop-%s-%03d", var.env, 7)
 join(",", var.stores)                 split(",", "a,b,c")
 merge(local.base_labels, var.labels)  concat(list_a, list_b)
 lookup(var.tiers, var.env, "small")   try(var.cfg.timeout, "600s")

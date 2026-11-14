@@ -318,10 +318,10 @@ metadata:
   name: loader
   namespace: shop
   annotations:
-    iam.gke.io/gcp-service-account: dp-loader@my-proj.iam.gserviceaccount.com
+    iam.gke.io/gcp-service-account: shop-loader@my-proj.iam.gserviceaccount.com
 
 gcloud iam service-accounts add-iam-policy-binding \
-  dp-loader@my-proj.iam.gserviceaccount.com \
+  shop-loader@my-proj.iam.gserviceaccount.com \
   --role=roles/iam.workloadIdentityUser \
   --member="serviceAccount:my-proj.svc.id.goog[shop/loader]"
 

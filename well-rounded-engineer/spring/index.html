@@ -222,11 +222,11 @@ public List&lt;OrderDto&gt; list() { ... }</code></pre></div>
 
   <article class="card"><h3>HTTP clients</h3>
 <div class="snip"><pre><code>// RestClient (3.2): synchronous, fluent
-@Bean RestClient mirror(RestClient.Builder b) {
+@Bean RestClient supplier(RestClient.Builder b) {
   return b.baseUrl("https://api.example.org").build();
 }
 
-Listing l = mirror.get()
+Listing l = supplier.get()
     .uri("/objects?prefix={p}", prefix)
     .retrieve()
     .onStatus(HttpStatusCode::is4xxClientError, (req, res) -&gt; {
@@ -236,12 +236,12 @@ Listing l = mirror.get()
     .body(Listing.class);
 
 // Declarative interface client
-interface MirrorApi {
+interface SupplierApi {
   @GetExchange("/objects") Listing list(@RequestParam String prefix);
 }
-@Bean MirrorApi api(RestClient mirror) {
-  return HttpServiceProxyFactory.builderFor(RestClientAdapter.create(mirror))
-      .build().createClient(MirrorApi.class);
+@Bean SupplierApi api(RestClient supplier) {
+  return HttpServiceProxyFactory.builderFor(RestClientAdapter.create(supplier))
+      .build().createClient(SupplierApi.class);
 }</code></pre></div>
   </article>
 
@@ -375,10 +375,10 @@ class LoadMetrics {
 
 // custom health
 @Component
-class MirrorHealth implements HealthIndicator {
+class SupplierHealth implements HealthIndicator {
   public Health health() {
     return reachable() ? Health.up().build()
-                       : Health.down().withDetail("mirror", "unreachable").build();
+                       : Health.down().withDetail("supplier", "unreachable").build();
   }
 }</code></pre></div>
   </article>

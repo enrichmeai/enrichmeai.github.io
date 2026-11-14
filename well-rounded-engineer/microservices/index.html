@@ -182,31 +182,31 @@
 
   <article class="card"><h3>Resilience in code (Spring + Resilience4j)</h3>
 <div class="snip"><pre><code>@Service
-class MirrorClient {
+class SupplierClient {
   private final RestClient http;
-  MirrorClient(RestClient http) { this.http = http; }
+  SupplierClient(RestClient http) { this.http = http; }
 
-  @CircuitBreaker(name = "mirror", fallbackMethod = "unavailable")
-  @Retry(name = "mirror")
+  @CircuitBreaker(name = "supplier", fallbackMethod = "unavailable")
+  @Retry(name = "supplier")
   Listing list(String prefix) {
     return http.get().uri("/objects?prefix={p}", prefix).retrieve().body(Listing.class);
   }
 
   // honest degradation: "cannot see", never "nothing there"
   Listing unavailable(String prefix, Throwable t) {
-    return Listing.unknown("mirror unavailable: " + t.getMessage());
+    return Listing.unknown("supplier unavailable: " + t.getMessage());
   }
 }</code></pre></div>
 <div class="snip"><pre><code>resilience4j:
   circuitbreaker:
     instances:
-      mirror:
+      supplier:
         slidingWindowSize: 20
         failureRateThreshold: 50
         waitDurationInOpenState: 30s
   retry:
     instances:
-      mirror:
+      supplier:
         maxAttempts: 3
         waitDuration: 200ms
         enableExponentialBackoff: true</code></pre></div>

@@ -252,7 +252,7 @@ class OrderRepositoryIT {
 // HTTP dependency: WireMock serving a captured response
 stubFor(get(urlPathEqualTo("/objects"))
     .willReturn(aResponse().withStatus(200)
-        .withBodyFile("mirror/listing-page-2.xml")));</code></pre></div>
+        .withBodyFile("supplier/listing-page-2.xml")));</code></pre></div>
 <div class="snip"><pre><code># Python: testcontainers
 from testcontainers.community.postgres import PostgresContainer
 def test_load_roundtrip():
