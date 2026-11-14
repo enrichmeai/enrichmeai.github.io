@@ -249,26 +249,6 @@ gcloud compute routers nats list --router=my-router --region=asia-south1
 gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></pre></div>
   </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain IP, port, DNS, TCP vs UDP and HTTP status classes</li><li>Use curl, dig and nc to test reachability</li><li>Tell a DNS failure from a refusal from a timeout</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Size subnets with CIDR; read firewall rules and routes</li><li>Debug TLS and certificate errors</li><li>Configure private access, NAT and egress for cloud workloads</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a VPC: ranges, subnets, private service access, load balancers</li><li>Choose L4 vs L7 load balancing and set health checks</li><li>Trace a latency problem across the network path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design hybrid and multi-region connectivity</li><li>Set network security policy for an organisation</li><li>Lead incident response for network-level outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>TCP handshake, congestion control and keep-alive</li><li>TLS 1.3 handshake and certificate chains</li><li>HTTP/2 and HTTP/3 (QUIC)</li><li>Anycast, global load balancing and CDNs</li><li>VPC Service Controls and Private Service Connect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://hpbn.co/" target="_blank" rel="noopener">High Performance Browser Networking (free book)</a><span class="lnote"> TCP, TLS, HTTP/2 explained for engineers</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN: HTTP</a><span class="lnote"> Methods, headers, caching, CORS</span></li><li><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">Cloudflare Learning Center</a><span class="lnote"> Clear explainers on DNS, TLS, CDN, DDoS</span></li><li><a href="https://cloud.google.com/vpc/docs/overview" target="_blank" rel="noopener">Google Cloud VPC overview</a><span class="lnote"> Networks, subnets, firewall, routes on GCP</span></li><li><a href="https://cloud.google.com/load-balancing/docs/load-balancing-overview" target="_blank" rel="noopener">Cloud Load Balancing overview</a><span class="lnote"> Which load balancer for which job</span></li></ul></div></div></article>

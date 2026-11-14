@@ -295,20 +295,6 @@ Cache-Control: no-store</code></pre></div>
     </ul>
   </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain cache-aside, TTL and hit ratio</li><li>Use an in-process cache for reference data</li><li>Read HTTP caching headers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Add Spring or Python caching with keys, TTLs and eviction on write</li><li>Use Redis safely with TTLs, eviction policy and a fallback</li><li>Measure hit ratio and staleness</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design multi-layer caching for a system with explicit staleness rules</li><li>Prevent stampedes and invalidation races</li><li>Decide what must never be cached (outages, permissions, legal effect)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set caching standards and shared cache platforms</li><li>Design caching for global, multi-region systems</li><li>Lead consistency and cost trade-offs across products</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Caffeine's W-TinyLFU eviction</li><li>Redis data structures and persistence</li><li>CDN cache keys and purging</li><li>Materialised views and incremental maintenance</li><li>Semantic caching for LLM calls (and its risks)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis documentation</a><span class="lnote"> Commands, data types, eviction</span></li><li><a href="https://github.com/ben-manes/caffeine" target="_blank" rel="noopener">Caffeine</a><span class="lnote"> High-performance Java cache</span></li><li><a href="https://docs.spring.io/spring-boot/reference/io/caching.html" target="_blank" rel="noopener">Spring Boot caching</a><span class="lnote"> Cache abstraction and providers</span></li><li><a href="https://cachetools.readthedocs.io/" target="_blank" rel="noopener">cachetools</a><span class="lnote"> Python caches with TTL and LRU</span></li><li><a href="https://cloud.google.com/memorystore/docs" target="_blank" rel="noopener">Memorystore documentation</a><span class="lnote"> Managed Redis and Valkey on GCP</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching" target="_blank" rel="noopener">MDN: HTTP caching</a><span class="lnote"> Browser and shared caches</span></li><li><a href="https://cloud.google.com/bigquery/docs/cached-results" target="_blank" rel="noopener">BigQuery cached results</a><span class="lnote"> When BigQuery reuses query results</span></li></ul></div></div></article>

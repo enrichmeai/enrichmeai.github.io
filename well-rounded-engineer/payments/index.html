@@ -292,19 +292,6 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
     </ul>
   </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain authorisation, capture, settlement, refunds and chargebacks</li><li>Explain the order → checkout → verify → webhook flow</li><li>Know why card data must never touch your servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Integrate a gateway with server-side verification and signed webhooks</li><li>Make payment calls and webhook handling idempotent</li><li>Model payments as a state machine; test with test-mode fixtures</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design subscriptions, dunning and entitlements</li><li>Build a double-entry ledger and daily reconciliation</li><li>Own payment security, PCI scope and regulatory rules (RBI)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-gateway routing and payment platforms</li><li>Lead payments compliance and audits</li><li>Set money-handling standards across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>3-D Secure and strong customer authentication</li><li>UPI AutoPay and e-mandates</li><li>Card network tokenisation</li><li>Double-entry accounting for engineers</li><li>Fraud detection and chargeback management</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://razorpay.com/docs/" target="_blank" rel="noopener">Razorpay documentation</a><span class="lnote"> Orders, checkout, webhooks, subscriptions</span></li><li><a href="https://docs.stripe.com/" target="_blank" rel="noopener">Stripe documentation</a><span class="lnote"> PaymentIntents, webhooks, billing</span></li><li><a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener">Stripe: idempotent requests</a><span class="lnote"> How idempotency keys work</span></li><li><a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener">PCI Security Standards Council</a><span class="lnote"> PCI DSS requirements</span></li><li><a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank" rel="noopener">NPCI: UPI</a><span class="lnote"> How UPI works</span></li><li><a href="https://www.rbi.org.in/" target="_blank" rel="noopener">Reserve Bank of India</a><span class="lnote"> Circulars on payments, e-mandates, tokenisation</span></li><li><a href="https://www.moderntreasury.com/journal/accounting-for-developers-part-i" target="_blank" rel="noopener">Accounting for developers (Modern Treasury)</a><span class="lnote"> Double-entry ledgers explained</span></li></ul></div></div></article>

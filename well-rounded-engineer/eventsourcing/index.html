@@ -296,23 +296,6 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
     </ul>
   </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain events, streams, aggregates, projections and CQRS</li><li>Read an event stream and follow how state was built</li><li>Tell an append-only ledger from full event sourcing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement an aggregate with decide/apply and given-when-then tests</li><li>Build idempotent projections with checkpoints</li><li>Append with optimistic concurrency</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide where event sourcing fits in a system and where it does not</li><li>Design event schemas, versioning and upcasting</li><li>Plan snapshots, replay, rebuilds and personal-data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead event-sourced architectures across domains and teams</li><li>Choose and operate event stores at scale</li><li>Set standards for event modelling and governance</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Event storming workshops</li><li>Upcasting and event versioning</li><li>Process managers and sagas over events</li><li>Crypto-shredding for personal data</li><li>Projection rebuild strategies</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Event Sourcing (Martin Fowler)</a><span class="lnote"> The classic explanation</span></li><li><a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">CQRS (Martin Fowler)</a><span class="lnote"> When separate read and write models help</span></li><li><a href="https://microservices.io/patterns/data/event-sourcing.html" target="_blank" rel="noopener">Event sourcing pattern (microservices.io)</a><span class="lnote"> In a microservices context</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing" target="_blank" rel="noopener">Event Sourcing pattern (Azure Architecture Center)</a><span class="lnote"> Issues and considerations</span></li><li><a href="https://leanpub.com/esversioning" target="_blank" rel="noopener">Versioning in an Event Sourced System (Greg Young)</a><span class="lnote"> Free book on evolving events</span></li><li><a href="https://docs.kurrent.io/" target="_blank" rel="noopener">KurrentDB documentation</a><span class="lnote"> Event store (formerly EventStoreDB)</span></li><li><a href="https://docs.axoniq.io/" target="_blank" rel="noopener">Axon documentation</a><span class="lnote"> Java framework for event sourcing and CQRS</span></li></ul></div></div></article>

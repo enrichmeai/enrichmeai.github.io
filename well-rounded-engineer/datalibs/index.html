@@ -243,16 +243,6 @@ pq.write_table(table, "out.parquet",
     </ul>
   </article>
 
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Load, filter and aggregate a file with pandas or Polars</li><li>Read Parquet and inspect its schema</li><li>Know which library suits which data size</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use lazy Polars, DuckDB or PyArrow with pushdown on large files</li><li>Write a PySpark or Beam job for data beyond one machine</li><li>Validate data with pandera or dbt tests and count rejects</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose engines per workload: warehouse SQL, single-node, distributed, streaming</li><li>Tune memory, partitioning and file layout</li><li>Design portable pipelines with open formats</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's processing stack and standards</li><li>Lead migrations between engines (pandas to Polars, Spark to BigQuery)</li><li>Understand engine internals: query optimisers, vectorised execution</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Apache Arrow memory format</li><li>Polars lazy query optimisation</li><li>DuckDB extensions (httpfs, Iceberg)</li><li>Spark adaptive query execution</li><li>Beam windowing and triggers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://pandas.pydata.org/docs/" target="_blank" rel="noopener">pandas</a><span class="lnote"> User guide and API</span></li><li><a href="https://docs.pola.rs/" target="_blank" rel="noopener">Polars</a><span class="lnote"> User guide, lazy API</span></li><li><a href="https://duckdb.org/docs/" target="_blank" rel="noopener">DuckDB</a><span class="lnote"> SQL, Python API, Parquet and remote files</span></li><li><a href="https://arrow.apache.org/docs/python/" target="_blank" rel="noopener">Apache Arrow (PyArrow)</a><span class="lnote"> Datasets, Parquet, compute</span></li><li><a href="https://spark.apache.org/docs/latest/" target="_blank" rel="noopener">Apache Spark</a><span class="lnote"> PySpark and SQL</span></li><li><a href="https://beam.apache.org/documentation/" target="_blank" rel="noopener">Apache Beam</a><span class="lnote"> Programming guide</span></li><li><a href="https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction" target="_blank" rel="noopener">BigQuery DataFrames</a><span class="lnote"> pandas-like API in BigQuery</span></li><li><a href="https://pandera.readthedocs.io/" target="_blank" rel="noopener">pandera</a><span class="lnote"> DataFrame validation</span></li></ul></div></div></article>

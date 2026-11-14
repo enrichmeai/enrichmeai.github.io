@@ -274,26 +274,6 @@ docker run --rm -it --network container:db nicolaka/netshoot   # debug its netwo
     </ul>
   </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build, run, stop and inspect containers</li><li>Read a Dockerfile and explain each instruction</li><li>Use docker compose for a local stack</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write small multi-stage Dockerfiles with good layer caching</li><li>Run as non-root; keep secrets out of layers</li><li>Build for linux/amd64; debug exit codes and OOM kills</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Set image standards: base images, scanning, SBOMs, signing</li><li>Optimise image size and startup time for Cloud Run or Kubernetes</li><li>Design local development environments for a team</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's container supply chain</li><li>Understand the OCI image and runtime specs</li><li>Choose and govern registries, build systems and policies</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>BuildKit cache mounts and secrets</li><li>Distroless and minimal base images</li><li>OCI image format and digests</li><li>Rootless containers</li><li>Image signing with cosign and SLSA provenance</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker documentation</a><span class="lnote"> Official docs for engine, build and compose</span></li><li><a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noopener">Dockerfile best practices</a><span class="lnote"> Caching, multi-stage, small images</span></li><li><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose</a><span class="lnote"> Multi-container local stacks</span></li><li><a href="https://github.com/GoogleContainerTools/distroless" target="_blank" rel="noopener">Distroless images</a><span class="lnote"> Minimal runtime images from Google</span></li><li><a href="https://trivy.dev/" target="_blank" rel="noopener">Trivy</a><span class="lnote"> Scan images and dependencies for CVEs</span></li></ul></div></div></article>

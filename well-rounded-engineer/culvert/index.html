@@ -209,16 +209,6 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
     <p class="note">Pin a version in your build, and verify any API against that version's sources, not against <code>main</code>.</p>
   </article>
 
-
-
-
-
-
-
-
-
-
-
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain contracts, adapters and the conformance suite</li><li>Install culvert with the right extras or add the Maven artifacts</li><li>Use an adapter through auto-discovery instead of a cloud SDK</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write pipeline code against BlobStore, Warehouse and job control</li><li>Use LoadOptions, head() and merge() for idempotent loads</li><li>Run and test against emulators locally</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design pipelines whose logic is cloud-neutral</li><li>Add an adapter that passes the conformance suite</li><li>Use StageClaim, InputReadiness and orchestration gates</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Shape the contract spec and its evolution</li><li>Lead adoption across teams and clouds</li><li>Contribute adapters for new clouds (Azure)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The contract specification (CONTRACT.md)</li><li>Conformance suites as a design tool</li><li>Job control and run records</li><li>Orchestration renderers</li><li>Upgrading across 0.x releases</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="/culvert/" target="_blank" rel="noopener">Culvert on enrichmeai.com</a><span class="lnote"> Overview, libraries, releases, status</span></li><li><a href="https://github.com/enrichmeai/culvert" target="_blank" rel="noopener">Culvert on GitHub</a><span class="lnote"> Source, issues</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/docs/CONTRACT.md" target="_blank" rel="noopener">Contract specification</a><span class="lnote"> The authoritative list of contracts</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a><span class="lnote"> Every release, including fixes</span></li><li><a href="https://github.com/enrichmeai/culvert/blob/main/MIGRATION.md" target="_blank" rel="noopener">Migration guide</a><span class="lnote"> Upgrading between versions</span></li><li><a href="https://pypi.org/project/culvert/" target="_blank" rel="noopener">culvert on PyPI</a><span class="lnote"> Python package</span></li></ul></div></div></article>
