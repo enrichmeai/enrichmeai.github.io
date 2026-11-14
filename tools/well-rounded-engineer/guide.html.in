@@ -402,6 +402,10 @@ details>.inner{padding:4px 10px 8px}
     <p>Browsers were not standard. What we now call Ajax worked through Microsoft's XMLHTTP object in Internet Explorer, so we wrote separate code for Internet Explorer and Netscape. There was no Chrome.</p>
   </article>
 
+  <article class="card"><h3>The EJB years</h3>
+    <p>At one of the biggest retail software companies of the time, we built with Enterprise JavaBeans: stateless session beans to read data, entity beans for the database, and, in booking systems of that era, stateful session beans holding a conversation while the database held the lock on a ticket. XSLT generated our screens from data, and UML and model-driven architecture promised that drawing the model would write the code.</p>
+  </article>
+
   <article class="card"><h3>We generated code long before AI</h3>
     <p>Code generation is not new. I used database metadata to generate reusable boilerplate code, much as people use AI today, and XSLT templates to turn data into dynamic screens. We generated the JavaScript for tree structures, pagination and web-based tutorials.</p>
     <p>The lesson has stayed with me: generating code is easy; understanding what you generate is the job.</p>
@@ -445,8 +449,27 @@ details>.inner{padding:4px 10px 8px}
     <ul>
       <li><b>CORBA</b>, from the Object Management Group, let programs in different languages call each other's objects across a network. You wrote the contract in an interface definition language and generated client stubs and server skeletons before anything could talk.</li>
       <li><b>Java RMI</b> did the same between Java programs, more simply, and Java could load the classes it needed over the network.</li>
-      <li><b>Application servers</b> such as WebLogic, and Enterprise JavaBeans, wrapped this with transactions, security and pooling. Powerful, and heavy.</li>
+      <li><b>Application servers</b> such as WebLogic wrapped this with transactions, security and pooling. Powerful, and heavy.</li>
       <li><b>What it taught us:</b> a remote call is not a local call. It can be slow, fail halfway, or never answer.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Enterprise JavaBeans: the beans we lived with</h3>
+    <ul>
+      <li><b>Session beans</b> held business logic. <b>Stateless</b> ones served any caller and were pooled, so they suited reads and simple operations. <b>Stateful</b> ones kept a conversation with one client across calls.</li>
+      <li><b>Stateful session beans and database locks</b> were how some booking and ticketing systems held a seat while a customer finished: the bean kept the conversation, the database kept the lock.</li>
+      <li><b>Entity beans</b> represented rows in the database, with the container managing how they were loaded and saved. They were heavy and slow to work with, and plain Java objects mapped by tools such as Hibernate, and later JPA, replaced them.</li>
+      <li><b>Message-driven beans</b> consumed messages from a JMS queue or topic, bringing event-driven work inside the application server.</li>
+      <li><b>What it taught us:</b> the ideas (stateless services, conversations, transactions, messaging) were right; the weight was not. Spring, and later EJB itself, kept the ideas and dropped the ceremony.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Models, UML and generated screens</h3>
+    <ul>
+      <li><b>UML</b> gave teams one language for drawing systems: class diagrams, sequence diagrams, use cases. Grady Booch, James Rumbaugh and Ivar Jacobson brought their methods together into it.</li>
+      <li><b>Model-driven architecture</b>, from the Object Management Group, went further: draw the model, then generate the code from it. It worked well for some layers and poorly for the rest.</li>
+      <li><b>XSLT</b> transformed XML into HTML, so screens could be generated from data and templates rather than written by hand.</li>
+      <li><b>What it taught us:</b> generating code from a model is powerful when the model is the truth, and painful when people edit the generated code. The same lesson applies to AI-generated code today.</li>
     </ul>
   </article>
 
@@ -499,6 +522,18 @@ details>.inner{padding:4px 10px 8px}
       <li><b>For years, failures were hard to follow</b> from one service to the next. Observability caught up: logs, metrics and traces, and a shared trace context passed with every call (the W3C <code>traceparent</code> header). See <a href="#observability">Observability</a>.</li>
       <li><b>The cloud</b> turned servers into something you rent by the minute and declare in code.</li>
     </ul>
+  </article>
+
+  <article class="card wide"><h3>The people behind the ideas</h3>
+    <p>We remember the famous product launches and forget many of the people whose ideas we use every day. A few worth knowing, and reading:</p>
+    <ul>
+      <li><b>The "Gang of Four"</b>, Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides, wrote <i>Design Patterns: Elements of Reusable Object-Oriented Software</i>, which gave us a shared vocabulary: factory, observer, strategy, adapter.</li>
+      <li><b>Martin Fowler</b> wrote <i>Refactoring</i> and <i>Patterns of Enterprise Application Architecture</i>, and has explained ideas such as continuous integration and microservices to a generation of engineers.</li>
+      <li><b>Kent Beck</b> led Extreme Programming and popularised test-driven development.</li>
+      <li><b>Grady Booch, James Rumbaugh and Ivar Jacobson</b> created UML. <b>Gregor Hohpe and Bobby Woolf</b> wrote <i>Enterprise Integration Patterns</i>. <b>Roy Fielding</b> described REST. <b>Hector Garcia-Molina and Kenneth Salem</b> described sagas.</li>
+      <li><b>And thousands of open-source maintainers</b> whose names most of us never learn, whose work runs in almost everything we build.</li>
+    </ul>
+    <p class="note">Before you ask an AI to explain a pattern, read the person who named it. The original is usually clearer, and it tells you why.</p>
   </article>
 
   <article class="card wide"><h3>And now, AI</h3>
