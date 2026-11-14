@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data on AWS · Well Rounded Engineer</title>
+<meta name="description" content="The same lifecycle as Data on GCP , on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas in Data…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="awsdata">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/awsdata/" aria-current="page">Data on AWS</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud &amp; platform</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">Delivery &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="awsdata" data-name="Data on AWS">
+  <div class="panel-head"><h1>Data engineering on AWS</h1><p>The same lifecycle as <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>, on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas in <a href="/well-rounded-engineer/data/">Data Engineering</a> do not. <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a> maps the services side by side.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Service map by lifecycle stage</h3>
+    <table>
+      <tr><th>Stage</th><th>AWS service</th><th>What it is for</th></tr>
+      <tr><td>Land and store</td><td>S3</td><td>Object storage: the data lake's files, raw and curated</td></tr>
+      <tr><td>Stream in</td><td>Kinesis Data Streams; Amazon MSK (managed Kafka)</td><td>Events and change streams</td></tr>
+      <tr><td>Change data capture</td><td>Database Migration Service (DMS)</td><td>Copy and replicate from operational databases</td></tr>
+      <tr><td>Process (ETL)</td><td>Glue (Spark jobs, crawlers); EMR and EMR Serverless; Managed Service for Apache Flink</td><td>Batch and streaming transformation</td></tr>
+      <tr><td>Open tables</td><td>S3 Tables (Apache Iceberg)</td><td>Tables on S3 with schema, snapshots and time travel</td></tr>
+      <tr><td>Query</td><td>Athena (SQL on S3); Redshift (warehouse, provisioned or serverless)</td><td>Analysis and serving</td></tr>
+      <tr><td>Orchestrate</td><td>MWAA (managed Airflow); Step Functions</td><td>Schedules and dependencies. See <a href="/well-rounded-engineer/dags/">Airflow DAGs</a></td></tr>
+      <tr><td>Catalog and govern</td><td>Glue Data Catalog; Lake Formation</td><td>Table metadata, and fine-grained access to it</td></tr>
+      <tr><td>Visualise</td><td>QuickSight</td><td>Dashboards</td></tr>
+    </table>
+  </article>
+
+  <article class="card"><h3>A reference architecture</h3>
+    <ol>
+      <li>Files and events land in an S3 <b>raw</b> prefix, never edited.</li>
+      <li>A Glue crawler or job registers the schema in the <b>Glue Data Catalog</b>.</li>
+      <li>Glue or EMR jobs write cleaned, partitioned Parquet or Iceberg tables to a <b>curated</b> prefix.</li>
+      <li>Athena queries the curated tables directly; Redshift serves heavy, repeated BI workloads.</li>
+      <li>dbt models the curated layer into products (dbt has Athena and Redshift adapters). See <a href="/well-rounded-engineer/dbt/">dbt</a>.</li>
+      <li>Lake Formation grants each team only the tables and columns it needs.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Choosing between similar services</h3>
+    <ul>
+      <li><b>Athena or Redshift?</b> Athena for ad-hoc SQL on files, paid by data scanned. Redshift for a warehouse with steady, heavy queries and many users.</li>
+      <li><b>Glue or EMR?</b> Glue for serverless Spark jobs without managing clusters. EMR when you need control of the cluster, other engines, or long-running jobs.</li>
+      <li><b>Kinesis or MSK?</b> Kinesis for AWS-native streams with little to run. MSK when you want Kafka's API, tools and portability. See <a href="/well-rounded-engineer/kafka/">Kafka</a>.</li>
+      <li><b>MWAA or Step Functions?</b> Airflow for data pipelines with many dependencies; Step Functions for event-driven workflows across AWS services.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Handy commands</h3>
+    <p>The AWS CLI calls the same APIs the console does. Names in angle brackets are yours to fill in.</p>
+    <pre><code class="language-bash"># copy a file into the lake's raw prefix
+aws s3 cp orders.csv s3://&lt;bucket&gt;/raw/orders/dt=2026-11-14/
+
+# register its schema, then run a Glue job
+aws glue start-crawler --name &lt;crawler&gt;
+aws glue start-job-run --job-name &lt;job&gt; --arguments '{"--run_date":"2026-11-14"}'
+
+# query it with Athena, then fetch the results
+aws athena start-query-execution --work-group primary \
+  --result-configuration OutputLocation=s3://&lt;bucket&gt;/athena-results/ \
+  --query-string "SELECT status, count(*) FROM shop.orders GROUP BY status"
+aws athena get-query-results --query-execution-id &lt;id-from-above&gt;
+
+# run SQL on Redshift Serverless without a JDBC driver
+aws redshift-data execute-statement --workgroup-name &lt;wg&gt; --database dev \
+  --sql "SELECT count(*) FROM orders"
+
+# put one event on a Kinesis stream
+aws kinesis put-record --stream-name orders --partition-key a1 --data &lt;data&gt;</code></pre>
+    <p class="note">Each operation and parameter was checked against the AWS SDK's service definitions (botocore).</p>
+  </article>
+
+  <article class="card"><h3>IAM for data, in practice</h3>
+    <ul>
+      <li><b>Roles, not keys:</b> jobs run as IAM roles; people sign in through single sign-on. No long-lived access keys in code.</li>
+      <li><b>Two layers:</b> IAM decides who may call a service; Lake Formation decides which databases, tables, columns and rows they may read.</li>
+      <li><b>Separate raw from curated</b> with different prefixes or buckets and different grants.</li>
+      <li><b>Block public access</b> on every data bucket, and encrypt with KMS keys you control.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Cost controls</h3>
+    <ul>
+      <li><b>Athena bills by data scanned:</b> Parquet or Iceberg, partitions and selecting only the columns you need cut it sharply. Workgroups can cap a query's scan.</li>
+      <li><b>S3 lifecycle rules</b> move old raw data to cheaper storage classes.</li>
+      <li><b>Pause or size</b> Redshift and EMR to the workload; serverless options bill only while they run.</li>
+      <li><b>Budgets and tags</b> per team and pipeline, so a cost has an owner.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Name the AWS service for each data stage</li><li>Land files in S3 and query them with Athena</li><li>Explain IAM roles for data jobs</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a pipeline: S3 raw, Glue, curated Parquet or Iceberg, Athena</li><li>Use Lake Formation to grant table access</li><li>Model with dbt on Athena or Redshift</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between Athena and Redshift, Glue and EMR, Kinesis and MSK</li><li>Design a governed data lake with a catalog</li><li>Plan cost, regions and data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's AWS data architecture</li><li>Lead migrations between clouds or from on-premises</li><li>Set data platform standards across teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>S3 Tables and Apache Iceberg</li><li>Glue jobs and crawlers</li><li>Lake Formation permissions</li><li>Redshift Serverless</li><li>Kinesis and MSK streaming</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.aws.amazon.com/glue/" target="_blank" rel="noopener">AWS Glue documentation</a><span class="lnote"> ETL and the Data Catalog</span></li><li><a href="https://docs.aws.amazon.com/athena/" target="_blank" rel="noopener">Amazon Athena documentation</a><span class="lnote"> SQL on S3</span></li><li><a href="https://docs.aws.amazon.com/redshift/" target="_blank" rel="noopener">Amazon Redshift documentation</a><span class="lnote"> The data warehouse</span></li><li><a href="https://docs.aws.amazon.com/lake-formation/" target="_blank" rel="noopener">AWS Lake Formation documentation</a><span class="lnote"> Fine-grained data access</span></li><li><a href="https://github.com/aws/aws-sdk-pandas" target="_blank" rel="noopener">AWS SDK for pandas</a><span class="lnote"> Open-source pandas integration for S3, Athena, Glue and Redshift</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BData%20on%20AWS%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/bigquery/">← BigQuery</a><a class="pn-next" href="/well-rounded-engineer/architecture/">Architecture →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

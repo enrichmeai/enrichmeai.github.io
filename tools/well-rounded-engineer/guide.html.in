@@ -111,7 +111,10 @@ details>.inner{padding:4px 10px 8px}
       <a href="#homelab" data-tab="homelab">Home Lab</a>
       <span class="navgrp">Languages</span>
       <a href="#java" data-tab="java">Java</a>
+      <a href="#kotlin" data-tab="kotlin">Kotlin</a>
       <a href="#python" data-tab="python">Python</a>
+      <a href="#go" data-tab="go">Go</a>
+      <a href="#rust" data-tab="rust">Rust</a>
       <span class="navgrp">Building services</span>
       <a href="#apis" data-tab="apis">APIs &amp; Integration</a>
       <a href="#graphql" data-tab="graphql">GraphQL</a>
@@ -133,6 +136,7 @@ details>.inner{padding:4px 10px 8px}
       <a href="#dags" data-tab="dags">Airflow DAGs</a>
       <a href="#gcpdata" data-tab="gcpdata">Data on GCP</a>
       <a href="#bigquery" data-tab="bigquery">BigQuery</a>
+      <a href="#awsdata" data-tab="awsdata">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="#architecture" data-tab="architecture">Architecture</a>
       <a href="#microservices" data-tab="microservices">Microservices</a>
@@ -195,7 +199,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: twelve groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers, networks and the web work, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Two languages learned properly: how they run, test and fail.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#python">Python</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Cloud &amp; platform</h4><p>What the cloud is made of, and the tools that run software on it.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#terraform">Terraform</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Delivery &amp; operations</h4><p>Shipping safely, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#observability">Observability</a>, <a href="#opstools">Ops Tooling</a>, <a href="#sre">SRE</a>, <a href="#harness">Harness</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers, networks and the web work, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#awsdata">Data on AWS</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Cloud &amp; platform</h4><p>What the cloud is made of, and the tools that run software on it.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#terraform">Terraform</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Delivery &amp; operations</h4><p>Shipping safely, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#observability">Observability</a>, <a href="#opstools">Ops Tooling</a>, <a href="#sre">SRE</a>, <a href="#harness">Harness</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#blueprints">Frameworks vs AI</a>, <a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
 
@@ -291,7 +295,10 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#sql">SQL Skills</a></td><td>Write correct joins and aggregates, handle NULLs, use window functions and QUALIFY.</td><td>Gaps and islands, recursive queries, reading BigQuery execution graphs, cutting cost.</td></tr>
       <tr><td><a href="#database">Database Design</a></td><td>Design a normalised table with keys and constraints; read a query plan; add the right index.</td><td>Partitioning, sharding, replication, isolation levels, zero-downtime migrations.</td></tr>
       <tr><td><a href="#java">Java</a></td><td>Read modern Java (records, streams, switch patterns), fix a small bug, run the tests.</td><td>Concurrency and virtual threads, JVM tuning in containers, the BigQuery and Beam clients.</td></tr>
+      <tr><td><a href="#kotlin">Kotlin</a></td><td>Read and write Kotlin beside Java; use null safety and data classes.</td><td>Coroutines, Java interop at scale, multiplatform and Android or server architecture.</td></tr>
       <tr><td><a href="#python">Python</a></td><td>Write a script that reads GCS and queries BigQuery, with a pytest test.</td><td>Packaging, async and threading choices, Beam pipelines, typed and tested libraries.</td></tr>
+      <tr><td><a href="#go">Go</a></td><td>Write a small service with errors as values and a table-driven test.</td><td>Concurrency with goroutines and context, profiling, and reading cloud tools' source.</td></tr>
+      <tr><td><a href="#rust">Rust</a></td><td>Explain ownership and borrowing; use Result, Option and match.</td><td>Lifetimes, traits and async; safe interfaces around unsafe code; performance work.</td></tr>
       <tr><td><a href="#apis">APIs &amp; Integration</a></td><td>Explain REST and status codes; read an OpenAPI spec; tell sync from async.</td><td>Choosing API styles, gateway and mesh design, versioning and API governance.</td></tr>
       <tr><td><a href="#graphql">GraphQL</a></td><td>Read a schema and write queries with variables; explain resolvers.</td><td>Batching, federation, schema evolution, GraphQL security.</td></tr>
       <tr><td><a href="#kafka">Kafka</a></td><td>Explain partitions, offsets and consumer groups; read consumer lag.</td><td>Topic and key design, delivery guarantees, Connect and stream processing.</td></tr>
@@ -309,6 +316,7 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#dags">Airflow DAGs</a></td><td>Read a DAG, find a failed task's log, rerun one date.</td><td>Idempotent design, data intervals, sensors and deferrables, dynamic mapping, upgrades.</td></tr>
       <tr><td><a href="#gcpdata">Data on GCP</a></td><td>Name the service for each data stage; load and query data on GCP.</td><td>Platform design across Dataflow, Pub/Sub, Datastream, Dataplex; cost and governance.</td></tr>
       <tr><td><a href="#bigquery">BigQuery</a></td><td>Write a correct, cheap query: named columns, partition filter, dry run first.</td><td>Table design (partitioning, clustering), MERGE patterns, cost analysis from INFORMATION_SCHEMA.</td></tr>
+      <tr><td><a href="#awsdata">Data on AWS</a></td><td>Name the AWS service for each data stage; query S3 data with Athena.</td><td>Lake design with Glue, Lake Formation, Redshift and streaming; IAM and cost.</td></tr>
       <tr><td><a href="#architecture">Architecture</a></td><td>Tell choreography from orchestration; explain a saga and the outbox pattern.</td><td>Designing event-driven systems, consistency trade-offs, resilience patterns.</td></tr>
       <tr><td><a href="#microservices">Microservices</a></td><td>Explain when to split and why services own data; work within one service.</td><td>Service boundaries, resilience, sagas and read models, monolith migration.</td></tr>
       <tr><td><a href="#eventsourcing">Event Sourcing</a></td><td>Explain events, aggregates, projections and CQRS.</td><td>Event modelling and versioning, projections, snapshots, when to use it.</td></tr>
@@ -2346,6 +2354,89 @@ java -XX:AOTCache=app.aot -jar app.jar</code></pre></div>
 </section>
 
 <!-- ================= PYTHON ================= -->
+<section class="panel" id="p-kotlin" data-name="Kotlin">
+  <div class="panel-head"><h2>Kotlin: concise, null-safe, on the JVM</h2><p>Kotlin is a concise multiplatform language from JetBrains. It runs on the JVM beside Java, uses the same libraries, and adds null safety, data classes and coroutines. Learn <a href="#java">Java</a> first; Kotlin then reads as Java with the boilerplate taken away.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Where you meet it</h3>
+    <ul>
+      <li><b>Android apps</b>, where it is widely used.</li>
+      <li><b>Server-side services</b> with Spring Boot or Ktor, mixed freely with Java in one codebase.</li>
+      <li><b>Build scripts:</b> Gradle's Kotlin DSL (<code>build.gradle.kts</code>).</li>
+      <li><b>Shared code across platforms</b> with Kotlin Multiplatform.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The ideas that matter</h3>
+    <ul>
+      <li><b>Null safety:</b> <code>String</code> can never be null; <code>String?</code> can, and the compiler makes you handle it with <code>?.</code>, <code>?:</code> or a check.</li>
+      <li><b>Data classes:</b> <code>equals</code>, <code>hashCode</code>, <code>toString</code> and <code>copy</code> for free.</li>
+      <li><b>Sealed types and <code>when</code>:</b> the compiler checks you handled every case.</li>
+      <li><b>Extension functions:</b> add behaviour to a type you do not own.</li>
+      <li><b>Coroutines:</b> asynchronous code written like sequential code (the <code>kotlinx.coroutines</code> library).</li>
+      <li><b>Java interop:</b> call Java and be called from it; watch nullability at the boundary, where Java types arrive as "platform types" the compiler cannot check.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A small program, and its test</h3>
+    <p>Run with Maven or Gradle and the Kotlin plugin. This compiles and its tests pass on the JVM.</p>
+    <pre><code class="language-kotlin">data class Order(val id: String, val pence: Int, val note: String? = null)
+
+sealed interface Check {
+    data class Ok(val pence: Int) : Check
+    data class Invalid(val reason: String) : Check
+}
+
+fun validate(o: Order): Check = when {
+    o.pence &lt;= 0 -&gt; Check.Invalid(&quot;order ${o.id} has no amount&quot;)
+    else -&gt; Check.Ok(o.pence)
+}
+
+// An extension function: adds behaviour to a type you do not own.
+fun Int.asPounds(): String = &quot;£%d.%02d&quot;.format(this / 100, this % 100)
+
+fun main() {
+    val orders = listOf(Order(&quot;a1&quot;, 1250, note = &quot;gift&quot;), Order(&quot;a2&quot;, 0), Order(&quot;a3&quot;, 499))
+    val total = orders.map(::validate).filterIsInstance&lt;Check.Ok&gt;().sumOf { it.pence }
+    println(&quot;total: ${total.asPounds()}&quot;)
+    // Null safety: note is String?, so the compiler makes you handle null.
+    orders.forEach { println(&quot;${it.id}: ${it.note?.uppercase() ?: &quot;no note&quot;}&quot;) }
+}</code></pre>
+    <pre><code class="language-kotlin">import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertIs
+
+class OrdersTest {
+    @Test fun `zero amount is invalid`() { assertIs&lt;Check.Invalid&gt;(validate(Order(&quot;a2&quot;, 0))) }
+    @Test fun `pence format as pounds`() { assertEquals(&quot;£17.49&quot;, 1749.asPounds()) }
+}</code></pre>
+  </article>
+
+  <article class="card"><h3>Build and tools</h3>
+    <ul>
+      <li><b>Gradle</b> with the Kotlin DSL is the most common build; Maven has a Kotlin plugin too.</li>
+      <li><b>Tests:</b> <code>kotlin.test</code> on JUnit 5; MockK for mocks; Kotest if you like a specification style.</li>
+      <li><b>Style:</b> ktlint or detekt in CI.</li>
+      <li><b>IDE:</b> IntelliJ IDEA, from the same company, has the deepest support.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Common mistakes</h3>
+    <ul>
+      <li><b><code>!!</code> everywhere:</b> it turns a compile-time check back into a runtime crash. Handle the null instead.</li>
+      <li><b>Trusting Java types:</b> a value from a Java method may be null even if you declared it non-null.</li>
+      <li><b>Blocking inside a coroutine:</b> a blocking call ties up the thread; use a suspending API or the IO dispatcher.</li>
+      <li><b>Clever over clear:</b> scope functions (<code>let</code>, <code>apply</code>, <code>also</code>) nested three deep are hard to read.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read Kotlin code beside Java</li><li>Use null safety, data classes and when</li><li>Write and run a test with kotlin.test</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a service in Kotlin with Spring Boot or Ktor</li><li>Handle Java interop and platform types safely</li><li>Use coroutines for asynchronous work</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design structured concurrency and cancellation</li><li>Mix Kotlin and Java in one codebase cleanly</li><li>Set style and lint rules for a team</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead a Java-to-Kotlin migration</li><li>Share code across platforms with Kotlin Multiplatform</li><li>Teach idiomatic Kotlin and review for it</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Null safety and platform types</li><li>Sealed types and exhaustive when</li><li>Coroutines and structured concurrency</li><li>Gradle Kotlin DSL</li><li>Kotlin Multiplatform</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener">Kotlin documentation</a><span class="lnote"> The official docs, from JetBrains</span></li><li><a href="https://kotlinlang.org/docs/coroutines-overview.html" target="_blank" rel="noopener">Coroutines overview</a><span class="lnote"> Asynchronous code in Kotlin</span></li><li><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">kotlinx.coroutines</a><span class="lnote"> The coroutines library's source and guide</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKotlin%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
 <section class="panel" id="p-python" data-name="Python">
   <div class="panel-head"><h2>Python</h2><p>Idioms for pipeline code, the Google Cloud clients, testing and packaging.</p></div>
   <div class="grid">
@@ -2597,6 +2688,265 @@ with beam.Pipeline(options=PipelineOptions()) as p:
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write functions, comprehensions and dataclasses</li><li>Use virtual environments and install packages</li><li>Write simple pytest tests</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Type hints, logging, error handling and context managers</li><li>Use the BigQuery and GCS clients in pipelines</li><li>Package a project with pyproject.toml</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between threads, processes and asyncio</li><li>Design reusable libraries with clear APIs and tests</li><li>Profile memory and CPU; optimise data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Understand CPython internals, the GIL and free-threading</li><li>Own the organisation's Python tooling and packaging</li><li>Mentor and set code standards</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Typing: generics, Protocols, mypy or pyright</li><li>asyncio internals and TaskGroups</li><li>Packaging: wheels, lockfiles, uv</li><li>Free-threaded CPython (3.13+)</li><li>Data libraries: pandas, Polars, PyArrow</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.python.org/3/" target="_blank" rel="noopener">Python documentation</a><span class="lnote"> Language and standard library reference</span></li><li><a href="https://docs.python.org/3/whatsnew/index.html" target="_blank" rel="noopener">What's new in Python</a><span class="lnote"> Changes in each release</span></li><li><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 style guide</a><span class="lnote"> Conventions for readable Python</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Fixtures, parametrize, plugins</span></li><li><a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">uv</a><span class="lnote"> Fast package and project manager</span></li><li><a href="https://cloud.google.com/python/docs/reference/bigquery/latest" target="_blank" rel="noopener">BigQuery Python client</a><span class="lnote"> API reference</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/python" target="_blank" rel="noopener">well-rounded-engineer-code/python</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BPython%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-go" data-name="Go">
+  <div class="panel-head"><h2>Go: simple, fast to build, made for services</h2><p>Go is an open-source language for building simple, reliable and efficient software. It compiles to a single binary, starts fast, and has concurrency built in. Much of the cloud's own tooling is written in it, including Docker, Kubernetes and Terraform.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Where you meet it</h3>
+    <ul>
+      <li><b>Cloud and platform tools:</b> Docker, Kubernetes, Terraform, Prometheus and many operators are written in Go. Reading Go helps you debug the tools you run. See <a href="#kubernetes">Kubernetes</a> and <a href="#operators">Operators</a>.</li>
+      <li><b>Network services and APIs</b>, where its small binaries and fast start-up suit containers.</li>
+      <li><b>Command-line tools</b>, shipped as one file with no runtime to install.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The ideas that matter</h3>
+    <ul>
+      <li><b>Small on purpose:</b> few keywords, one formatting style (<code>gofmt</code>), one obvious way to do most things.</li>
+      <li><b>Errors are values:</b> functions return an <code>error</code>; you check <code>if err != nil</code>. Wrap with <code>%w</code> and test with <code>errors.Is</code>.</li>
+      <li><b>Goroutines and channels:</b> cheap concurrent functions, coordinated with channels, <code>sync.WaitGroup</code> and mutexes.</li>
+      <li><b>Interfaces are implicit:</b> a type satisfies an interface just by having its methods.</li>
+      <li><b>Composition, not inheritance:</b> embed one struct in another.</li>
+      <li><b>A strong standard library:</b> HTTP servers, JSON and testing need no framework.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A small program, and its test</h3>
+    <p><code>go run .</code> runs it; <code>go test -race ./...</code> runs the table-driven test with the race detector on. Both pass as written.</p>
+    <pre><code class="language-go">package main
+
+import (
+	&quot;errors&quot;
+	&quot;fmt&quot;
+	&quot;sync&quot;
+)
+
+type Order struct {
+	ID    string
+	Pence int
+}
+
+var ErrInvalid = errors.New(&quot;invalid order&quot;)
+
+// Validate returns an error value instead of throwing: the caller must decide.
+func Validate(o Order) error {
+	if o.Pence &lt;= 0 {
+		return fmt.Errorf(&quot;order %s: %w&quot;, o.ID, ErrInvalid)
+	}
+	return nil
+}
+
+// Total validates orders concurrently, one goroutine each, and sums the valid ones.
+func Total(orders []Order) (int, []error) {
+	var (
+		wg   sync.WaitGroup
+		mu   sync.Mutex
+		sum  int
+		errs []error
+	)
+	for _, o := range orders {
+		wg.Add(1)
+		go func(o Order) {
+			defer wg.Done()
+			err := Validate(o)
+			mu.Lock()
+			defer mu.Unlock()
+			if err != nil {
+				errs = append(errs, err)
+				return
+			}
+			sum += o.Pence
+		}(o)
+	}
+	wg.Wait()
+	return sum, errs
+}
+
+func main() {
+	sum, errs := Total([]Order{{&quot;a1&quot;, 1250}, {&quot;a2&quot;, 0}, {&quot;a3&quot;, 499}})
+	fmt.Println(&quot;total pence:&quot;, sum)
+	for _, e := range errs {
+		fmt.Println(&quot;error:&quot;, e, &quot;| invalid?&quot;, errors.Is(e, ErrInvalid))
+	}
+}</code></pre>
+    <pre><code class="language-go">package main
+
+import (
+	&quot;errors&quot;
+	&quot;testing&quot;
+)
+
+func TestValidate(t *testing.T) {
+	cases := []struct {
+		name    string
+		order   Order
+		wantErr bool
+	}{
+		{&quot;positive amount&quot;, Order{&quot;a1&quot;, 100}, false},
+		{&quot;zero amount&quot;, Order{&quot;a2&quot;, 0}, true},
+		{&quot;negative amount&quot;, Order{&quot;a3&quot;, -5}, true},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			err := Validate(c.order)
+			if (err != nil) != c.wantErr || (err != nil &amp;&amp; !errors.Is(err, ErrInvalid)) {
+				t.Fatalf(&quot;Validate(%v) = %v, wantErr %v&quot;, c.order, err, c.wantErr)
+			}
+		})
+	}
+}</code></pre>
+  </article>
+
+  <article class="card"><h3>Build and tools</h3>
+    <ul>
+      <li><b>Modules:</b> <code>go mod init</code>, dependencies pinned in <code>go.mod</code> and <code>go.sum</code>.</li>
+      <li><b>Built in:</b> <code>go build</code>, <code>go test</code> (with <code>-race</code> and <code>-cover</code>), <code>go vet</code>, <code>gofmt</code>, and benchmarks and fuzzing in the test tool.</li>
+      <li><b>Containers:</b> a static binary fits a tiny base image. See <a href="#docker">Docker</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Common mistakes</h3>
+    <ul>
+      <li><b>Ignoring an error</b> with <code>_</code>: the failure is silent until it is expensive.</li>
+      <li><b>Leaking goroutines:</b> one blocked forever on a channel nobody reads. Pass a <code>context.Context</code> and stop on cancel.</li>
+      <li><b>Data races:</b> shared state touched from goroutines without a lock or channel. Run tests with <code>-race</code>.</li>
+      <li><b>A nil map write</b> panics: make the map first.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write and run a small Go program</li><li>Handle errors as values</li><li>Write a table-driven test</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an HTTP service with the standard library</li><li>Use goroutines, channels and context safely</li><li>Run tests with the race detector and coverage</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design packages and interfaces for a large codebase</li><li>Profile and tune with pprof</li><li>Read and debug cloud tools written in Go</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set Go standards across teams</li><li>Build operators or platform tooling in Go</li><li>Teach Go's concurrency model and review for it</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Errors and wrapping</li><li>Goroutines, channels and context</li><li>Interfaces and composition</li><li>Modules and versioning</li><li>Profiling with pprof</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://go.dev/tour/" target="_blank" rel="noopener">A Tour of Go</a><span class="lnote"> Interactive introduction</span></li><li><a href="https://go.dev/doc/effective_go" target="_blank" rel="noopener">Effective Go</a><span class="lnote"> How to write idiomatic Go</span></li><li><a href="https://github.com/golang/go" target="_blank" rel="noopener">The Go source</a><span class="lnote"> The language, compiler and standard library</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BGo%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-rust" data-name="Rust">
+  <div class="panel-head"><h2>Rust: memory safety without a garbage collector</h2><p>Rust is a language for reliable and efficient software. Its ownership model and type system catch memory and thread-safety bugs at compile time, without a garbage collector, so it suits critical services, embedded devices and code that other languages call into.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Where you meet it</h3>
+    <ul>
+      <li><b>Performance-critical services and infrastructure:</b> proxies, databases, storage engines.</li>
+      <li><b>Fast tools for other languages:</b> Python's Polars and the ruff linter are written in Rust. See <a href="#datalibs">Data Libraries</a>.</li>
+      <li><b>Systems and embedded code</b>, and WebAssembly in the browser.</li>
+      <li><b>Security-sensitive code</b>, where memory-safety bugs are the usual way in. See <a href="#security">Security</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The ideas that matter</h3>
+    <ul>
+      <li><b>Ownership:</b> each value has one owner; when the owner goes out of scope, the value is freed. No garbage collector, no manual <code>free</code>.</li>
+      <li><b>Borrowing:</b> lend a value as <code>&amp;T</code> (many readers) or <code>&amp;mut T</code> (one writer), never both at once. The borrow checker enforces it.</li>
+      <li><b>No null, no exceptions:</b> <code>Option&lt;T&gt;</code> for maybe-a-value, <code>Result&lt;T, E&gt;</code> for success-or-error, and <code>?</code> to pass an error up.</li>
+      <li><b>Enums and <code>match</code>:</b> the compiler checks every case is handled.</li>
+      <li><b>Traits:</b> shared behaviour, like interfaces, resolved at compile time.</li>
+      <li><b>Fearless concurrency:</b> the same rules stop data races from compiling.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A small program, and its tests</h3>
+    <p><code>cargo run</code> runs it; <code>cargo test</code> runs the two tests; <code>cargo clippy</code> reports no warnings. Note that <code>orders</code> is still usable after <code>total(&amp;orders)</code>, because <code>total</code> only borrowed it.</p>
+    <pre><code class="language-rust">use std::fmt;
+
+#[derive(Debug, Clone, PartialEq)]
+struct Order {
+    id: String,
+    pence: u32,
+}
+
+#[derive(Debug, PartialEq)]
+enum OrderError {
+    Empty(String),
+    TooLarge { id: String, pence: u32 },
+}
+
+impl fmt::Display for OrderError {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        match self {
+            OrderError::Empty(id) =&gt; write!(f, &quot;order {id} has no amount&quot;),
+            OrderError::TooLarge { id, pence } =&gt; write!(f, &quot;order {id} is too large: {pence}&quot;),
+        }
+    }
+}
+
+// Borrows the order (&amp;Order): validating does not take ownership of it.
+fn validate(o: &amp;Order) -&gt; Result&lt;u32, OrderError&gt; {
+    match o.pence {
+        0 =&gt; Err(OrderError::Empty(o.id.clone())),
+        p if p &gt; 1_000_000 =&gt; Err(OrderError::TooLarge { id: o.id.clone(), pence: p }),
+        p =&gt; Ok(p),
+    }
+}
+
+// The ? operator returns the first error to the caller instead of panicking.
+fn total(orders: &amp;[Order]) -&gt; Result&lt;u32, OrderError&gt; {
+    let mut sum = 0;
+    for o in orders {
+        sum += validate(o)?;
+    }
+    Ok(sum)
+}
+
+fn main() {
+    let orders = vec![
+        Order { id: &quot;a1&quot;.into(), pence: 1250 },
+        Order { id: &quot;a3&quot;.into(), pence: 499 },
+    ];
+    match total(&amp;orders) {
+        Ok(sum) =&gt; println!(&quot;total pence: {sum}&quot;),
+        Err(e) =&gt; println!(&quot;error: {e}&quot;),
+    }
+    // orders is still usable here: total only borrowed it.
+    let valid: Vec&lt;&amp;Order&gt; = orders.iter().filter(|o| validate(o).is_ok()).collect();
+    println!(&quot;valid orders: {}&quot;, valid.len());
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_order_is_an_error_not_a_panic() {
+        let o = Order { id: &quot;a2&quot;.into(), pence: 0 };
+        assert_eq!(validate(&amp;o), Err(OrderError::Empty(&quot;a2&quot;.into())));
+    }
+
+    #[test]
+    fn total_stops_at_the_first_error() {
+        let orders = vec![
+            Order { id: &quot;a1&quot;.into(), pence: 100 },
+            Order { id: &quot;a2&quot;.into(), pence: 0 },
+        ];
+        assert!(total(&amp;orders).is_err());
+    }
+}</code></pre>
+  </article>
+
+  <article class="card"><h3>Build and tools</h3>
+    <ul>
+      <li><b>Cargo:</b> build, test, dependencies (crates from crates.io) and benchmarks in one tool.</li>
+      <li><b>rustfmt</b> formats, <b>Clippy</b> lints, <b>rust-analyzer</b> powers the editor.</li>
+      <li><b>The compiler's messages</b> are unusually helpful: read them in full, they often contain the fix.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Common mistakes</h3>
+    <ul>
+      <li><b>Fighting the borrow checker</b> with <code>.clone()</code> everywhere: it compiles, but hides the design question of who owns what.</li>
+      <li><b><code>unwrap()</code> in production code:</b> it panics on an error. Return a <code>Result</code> or handle it.</li>
+      <li><b>Reaching for <code>unsafe</code></b> to get past a compile error. It switches off the guarantees you chose Rust for.</li>
+      <li><b>Expecting to be fast at it in a week.</b> The learning curve is real; it pays back in fewer production bugs.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain ownership and borrowing</li><li>Use Result, Option and match</li><li>Build and test with Cargo</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write a CLI or service in Rust</li><li>Use traits, iterators and error types well</li><li>Keep Clippy clean and the code formatted</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design with lifetimes and generics</li><li>Write async Rust and choose a runtime</li><li>Wrap unsafe or foreign code behind safe interfaces</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead Rust adoption where safety and speed matter</li><li>Write libraries other languages call</li><li>Teach Rust and review for soundness</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Ownership, borrowing and lifetimes</li><li>Traits and generics</li><li>Error handling with Result</li><li>Async Rust</li><li>Unsafe Rust and FFI</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">The Rust Programming Language (the book)</a><span class="lnote"> The official book</span></li><li><a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">The book's source</a><span class="lnote"> Read and contribute on GitHub</span></li><li><a href="https://github.com/rust-lang/rustlings" target="_blank" rel="noopener">Rustlings</a><span class="lnote"> Small exercises to learn by doing</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BRust%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -6166,6 +6516,94 @@ bq show -j &lt;job_id&gt;</code></pre></div>
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Query with named columns and partition filters</li><li>Dry-run and read bytes processed</li><li>Load data from GCS</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design partitioned and clustered tables</li><li>Write MERGE, scripting and parameterised queries</li><li>Use INFORMATION_SCHEMA to find cost and usage</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Optimise slot time and cost across a project</li><li>Choose pricing models and reservations</li><li>Design security: datasets, authorised views, row and column policies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the warehouse platform and its cost governance</li><li>Integrate BigQuery with streaming, ML and the wider lakehouse</li><li>Advise on architecture across many teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Storage Write API and streaming</li><li>Editions, reservations and autoscaling</li><li>Row-level security and policy tags</li><li>BigLake and external tables</li><li>BigQuery ML and vector search</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/bigquery/docs" target="_blank" rel="noopener">BigQuery documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-overview" target="_blank" rel="noopener">Query performance best practices</a><span class="lnote"> Reduce bytes and slot time</span></li><li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators" target="_blank" rel="noopener">Functions and operators</a><span class="lnote"> Every GoogleSQL function</span></li><li><a href="https://cloud.google.com/bigquery/docs/partitioned-tables" target="_blank" rel="noopener">Partitioned tables</a><span class="lnote"> Types, limits and pruning</span></li><li><a href="https://cloud.google.com/bigquery/docs/information-schema-intro" target="_blank" rel="noopener">INFORMATION_SCHEMA</a><span class="lnote"> Metadata and job history views</span></li><li><a href="https://cloud.google.com/bigquery/pricing" target="_blank" rel="noopener">BigQuery pricing</a><span class="lnote"> On-demand and capacity pricing</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBigQuery%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-awsdata" data-name="Data on AWS">
+  <div class="panel-head"><h2>Data engineering on AWS</h2><p>The same lifecycle as <a href="#gcpdata">Data on GCP</a>, on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas in <a href="#data">Data Engineering</a> do not. <a href="#cloudcompare">GCP vs AWS vs Azure</a> maps the services side by side.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Service map by lifecycle stage</h3>
+    <table>
+      <tr><th>Stage</th><th>AWS service</th><th>What it is for</th></tr>
+      <tr><td>Land and store</td><td>S3</td><td>Object storage: the data lake's files, raw and curated</td></tr>
+      <tr><td>Stream in</td><td>Kinesis Data Streams; Amazon MSK (managed Kafka)</td><td>Events and change streams</td></tr>
+      <tr><td>Change data capture</td><td>Database Migration Service (DMS)</td><td>Copy and replicate from operational databases</td></tr>
+      <tr><td>Process (ETL)</td><td>Glue (Spark jobs, crawlers); EMR and EMR Serverless; Managed Service for Apache Flink</td><td>Batch and streaming transformation</td></tr>
+      <tr><td>Open tables</td><td>S3 Tables (Apache Iceberg)</td><td>Tables on S3 with schema, snapshots and time travel</td></tr>
+      <tr><td>Query</td><td>Athena (SQL on S3); Redshift (warehouse, provisioned or serverless)</td><td>Analysis and serving</td></tr>
+      <tr><td>Orchestrate</td><td>MWAA (managed Airflow); Step Functions</td><td>Schedules and dependencies. See <a href="#dags">Airflow DAGs</a></td></tr>
+      <tr><td>Catalog and govern</td><td>Glue Data Catalog; Lake Formation</td><td>Table metadata, and fine-grained access to it</td></tr>
+      <tr><td>Visualise</td><td>QuickSight</td><td>Dashboards</td></tr>
+    </table>
+  </article>
+
+  <article class="card"><h3>A reference architecture</h3>
+    <ol>
+      <li>Files and events land in an S3 <b>raw</b> prefix, never edited.</li>
+      <li>A Glue crawler or job registers the schema in the <b>Glue Data Catalog</b>.</li>
+      <li>Glue or EMR jobs write cleaned, partitioned Parquet or Iceberg tables to a <b>curated</b> prefix.</li>
+      <li>Athena queries the curated tables directly; Redshift serves heavy, repeated BI workloads.</li>
+      <li>dbt models the curated layer into products (dbt has Athena and Redshift adapters). See <a href="#dbt">dbt</a>.</li>
+      <li>Lake Formation grants each team only the tables and columns it needs.</li>
+    </ol>
+  </article>
+
+  <article class="card"><h3>Choosing between similar services</h3>
+    <ul>
+      <li><b>Athena or Redshift?</b> Athena for ad-hoc SQL on files, paid by data scanned. Redshift for a warehouse with steady, heavy queries and many users.</li>
+      <li><b>Glue or EMR?</b> Glue for serverless Spark jobs without managing clusters. EMR when you need control of the cluster, other engines, or long-running jobs.</li>
+      <li><b>Kinesis or MSK?</b> Kinesis for AWS-native streams with little to run. MSK when you want Kafka's API, tools and portability. See <a href="#kafka">Kafka</a>.</li>
+      <li><b>MWAA or Step Functions?</b> Airflow for data pipelines with many dependencies; Step Functions for event-driven workflows across AWS services.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Handy commands</h3>
+    <p>The AWS CLI calls the same APIs the console does. Names in angle brackets are yours to fill in.</p>
+    <pre><code class="language-bash"># copy a file into the lake's raw prefix
+aws s3 cp orders.csv s3://&lt;bucket&gt;/raw/orders/dt=2026-11-14/
+
+# register its schema, then run a Glue job
+aws glue start-crawler --name &lt;crawler&gt;
+aws glue start-job-run --job-name &lt;job&gt; --arguments '{"--run_date":"2026-11-14"}'
+
+# query it with Athena, then fetch the results
+aws athena start-query-execution --work-group primary \
+  --result-configuration OutputLocation=s3://&lt;bucket&gt;/athena-results/ \
+  --query-string "SELECT status, count(*) FROM shop.orders GROUP BY status"
+aws athena get-query-results --query-execution-id &lt;id-from-above&gt;
+
+# run SQL on Redshift Serverless without a JDBC driver
+aws redshift-data execute-statement --workgroup-name &lt;wg&gt; --database dev \
+  --sql "SELECT count(*) FROM orders"
+
+# put one event on a Kinesis stream
+aws kinesis put-record --stream-name orders --partition-key a1 --data &lt;data&gt;</code></pre>
+    <p class="note">Each operation and parameter was checked against the AWS SDK's service definitions (botocore).</p>
+  </article>
+
+  <article class="card"><h3>IAM for data, in practice</h3>
+    <ul>
+      <li><b>Roles, not keys:</b> jobs run as IAM roles; people sign in through single sign-on. No long-lived access keys in code.</li>
+      <li><b>Two layers:</b> IAM decides who may call a service; Lake Formation decides which databases, tables, columns and rows they may read.</li>
+      <li><b>Separate raw from curated</b> with different prefixes or buckets and different grants.</li>
+      <li><b>Block public access</b> on every data bucket, and encrypt with KMS keys you control.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Cost controls</h3>
+    <ul>
+      <li><b>Athena bills by data scanned:</b> Parquet or Iceberg, partitions and selecting only the columns you need cut it sharply. Workgroups can cap a query's scan.</li>
+      <li><b>S3 lifecycle rules</b> move old raw data to cheaper storage classes.</li>
+      <li><b>Pause or size</b> Redshift and EMR to the workload; serverless options bill only while they run.</li>
+      <li><b>Budgets and tags</b> per team and pipeline, so a cost has an owner.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Name the AWS service for each data stage</li><li>Land files in S3 and query them with Athena</li><li>Explain IAM roles for data jobs</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a pipeline: S3 raw, Glue, curated Parquet or Iceberg, Athena</li><li>Use Lake Formation to grant table access</li><li>Model with dbt on Athena or Redshift</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between Athena and Redshift, Glue and EMR, Kinesis and MSK</li><li>Design a governed data lake with a catalog</li><li>Plan cost, regions and data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's AWS data architecture</li><li>Lead migrations between clouds or from on-premises</li><li>Set data platform standards across teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>S3 Tables and Apache Iceberg</li><li>Glue jobs and crawlers</li><li>Lake Formation permissions</li><li>Redshift Serverless</li><li>Kinesis and MSK streaming</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.aws.amazon.com/glue/" target="_blank" rel="noopener">AWS Glue documentation</a><span class="lnote"> ETL and the Data Catalog</span></li><li><a href="https://docs.aws.amazon.com/athena/" target="_blank" rel="noopener">Amazon Athena documentation</a><span class="lnote"> SQL on S3</span></li><li><a href="https://docs.aws.amazon.com/redshift/" target="_blank" rel="noopener">Amazon Redshift documentation</a><span class="lnote"> The data warehouse</span></li><li><a href="https://docs.aws.amazon.com/lake-formation/" target="_blank" rel="noopener">AWS Lake Formation documentation</a><span class="lnote"> Fine-grained data access</span></li><li><a href="https://github.com/aws/aws-sdk-pandas" target="_blank" rel="noopener">AWS SDK for pandas</a><span class="lnote"> Open-source pandas integration for S3, Athena, Glue and Redshift</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BData%20on%20AWS%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -12951,7 +13389,7 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","linux","networking","web","docker","sql","database","homelab","java","python","apis","graphql","kafka","payments","spring","quarkus","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","gcpdata","bigquery","architecture","microservices","eventsourcing","sysdesign","caching","cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh","devops","observability","opstools","sre","harness","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","behaviours","mathematics","science","philosophy","goodhuman","body","quantum","web3","solid","why","history","opensource","culvert"];
+  const tabs = ["start","aiworry","linux","networking","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","gcpdata","bigquery","awsdata","architecture","microservices","eventsourcing","sysdesign","caching","cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh","devops","observability","opstools","sre","harness","llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp","behaviours","mathematics","science","philosophy","goodhuman","body","quantum","web3","solid","why","history","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");

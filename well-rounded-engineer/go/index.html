@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Go · Well Rounded Engineer</title>
+<meta name="description" content="Go is an open-source language for building simple, reliable and efficient software. It compiles to a single binary, starts fast, and has concurrency built…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="go">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/" aria-current="page">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Cloud &amp; platform</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <span class="navgrp">Delivery &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="go" data-name="Go">
+  <div class="panel-head"><h1>Go: simple, fast to build, made for services</h1><p>Go is an open-source language for building simple, reliable and efficient software. It compiles to a single binary, starts fast, and has concurrency built in. Much of the cloud's own tooling is written in it, including Docker, Kubernetes and Terraform.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Where you meet it</h3>
+    <ul>
+      <li><b>Cloud and platform tools:</b> Docker, Kubernetes, Terraform, Prometheus and many operators are written in Go. Reading Go helps you debug the tools you run. See <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a> and <a href="/well-rounded-engineer/operators/">Operators</a>.</li>
+      <li><b>Network services and APIs</b>, where its small binaries and fast start-up suit containers.</li>
+      <li><b>Command-line tools</b>, shipped as one file with no runtime to install.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The ideas that matter</h3>
+    <ul>
+      <li><b>Small on purpose:</b> few keywords, one formatting style (<code>gofmt</code>), one obvious way to do most things.</li>
+      <li><b>Errors are values:</b> functions return an <code>error</code>; you check <code>if err != nil</code>. Wrap with <code>%w</code> and test with <code>errors.Is</code>.</li>
+      <li><b>Goroutines and channels:</b> cheap concurrent functions, coordinated with channels, <code>sync.WaitGroup</code> and mutexes.</li>
+      <li><b>Interfaces are implicit:</b> a type satisfies an interface just by having its methods.</li>
+      <li><b>Composition, not inheritance:</b> embed one struct in another.</li>
+      <li><b>A strong standard library:</b> HTTP servers, JSON and testing need no framework.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A small program, and its test</h3>
+    <p><code>go run .</code> runs it; <code>go test -race ./...</code> runs the table-driven test with the race detector on. Both pass as written.</p>
+    <pre><code class="language-go">package main
+
+import (
+	&quot;errors&quot;
+	&quot;fmt&quot;
+	&quot;sync&quot;
+)
+
+type Order struct {
+	ID    string
+	Pence int
+}
+
+var ErrInvalid = errors.New(&quot;invalid order&quot;)
+
+// Validate returns an error value instead of throwing: the caller must decide.
+func Validate(o Order) error {
+	if o.Pence &lt;= 0 {
+		return fmt.Errorf(&quot;order %s: %w&quot;, o.ID, ErrInvalid)
+	}
+	return nil
+}
+
+// Total validates orders concurrently, one goroutine each, and sums the valid ones.
+func Total(orders []Order) (int, []error) {
+	var (
+		wg   sync.WaitGroup
+		mu   sync.Mutex
+		sum  int
+		errs []error
+	)
+	for _, o := range orders {
+		wg.Add(1)
+		go func(o Order) {
+			defer wg.Done()
+			err := Validate(o)
+			mu.Lock()
+			defer mu.Unlock()
+			if err != nil {
+				errs = append(errs, err)
+				return
+			}
+			sum += o.Pence
+		}(o)
+	}
+	wg.Wait()
+	return sum, errs
+}
+
+func main() {
+	sum, errs := Total([]Order{{&quot;a1&quot;, 1250}, {&quot;a2&quot;, 0}, {&quot;a3&quot;, 499}})
+	fmt.Println(&quot;total pence:&quot;, sum)
+	for _, e := range errs {
+		fmt.Println(&quot;error:&quot;, e, &quot;| invalid?&quot;, errors.Is(e, ErrInvalid))
+	}
+}</code></pre>
+    <pre><code class="language-go">package main
+
+import (
+	&quot;errors&quot;
+	&quot;testing&quot;
+)
+
+func TestValidate(t *testing.T) {
+	cases := []struct {
+		name    string
+		order   Order
+		wantErr bool
+	}{
+		{&quot;positive amount&quot;, Order{&quot;a1&quot;, 100}, false},
+		{&quot;zero amount&quot;, Order{&quot;a2&quot;, 0}, true},
+		{&quot;negative amount&quot;, Order{&quot;a3&quot;, -5}, true},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			err := Validate(c.order)
+			if (err != nil) != c.wantErr || (err != nil &amp;&amp; !errors.Is(err, ErrInvalid)) {
+				t.Fatalf(&quot;Validate(%v) = %v, wantErr %v&quot;, c.order, err, c.wantErr)
+			}
+		})
+	}
+}</code></pre>
+  </article>
+
+  <article class="card"><h3>Build and tools</h3>
+    <ul>
+      <li><b>Modules:</b> <code>go mod init</code>, dependencies pinned in <code>go.mod</code> and <code>go.sum</code>.</li>
+      <li><b>Built in:</b> <code>go build</code>, <code>go test</code> (with <code>-race</code> and <code>-cover</code>), <code>go vet</code>, <code>gofmt</code>, and benchmarks and fuzzing in the test tool.</li>
+      <li><b>Containers:</b> a static binary fits a tiny base image. See <a href="/well-rounded-engineer/docker/">Docker</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Common mistakes</h3>
+    <ul>
+      <li><b>Ignoring an error</b> with <code>_</code>: the failure is silent until it is expensive.</li>
+      <li><b>Leaking goroutines:</b> one blocked forever on a channel nobody reads. Pass a <code>context.Context</code> and stop on cancel.</li>
+      <li><b>Data races:</b> shared state touched from goroutines without a lock or channel. Run tests with <code>-race</code>.</li>
+      <li><b>A nil map write</b> panics: make the map first.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write and run a small Go program</li><li>Handle errors as values</li><li>Write a table-driven test</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an HTTP service with the standard library</li><li>Use goroutines, channels and context safely</li><li>Run tests with the race detector and coverage</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design packages and interfaces for a large codebase</li><li>Profile and tune with pprof</li><li>Read and debug cloud tools written in Go</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set Go standards across teams</li><li>Build operators or platform tooling in Go</li><li>Teach Go's concurrency model and review for it</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Errors and wrapping</li><li>Goroutines, channels and context</li><li>Interfaces and composition</li><li>Modules and versioning</li><li>Profiling with pprof</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://go.dev/tour/" target="_blank" rel="noopener">A Tour of Go</a><span class="lnote"> Interactive introduction</span></li><li><a href="https://go.dev/doc/effective_go" target="_blank" rel="noopener">Effective Go</a><span class="lnote"> How to write idiomatic Go</span></li><li><a href="https://github.com/golang/go" target="_blank" rel="noopener">The Go source</a><span class="lnote"> The language, compiler and standard library</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BGo%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/python/">← Python</a><a class="pn-next" href="/well-rounded-engineer/rust/">Rust →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
