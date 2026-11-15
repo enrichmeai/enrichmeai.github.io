@@ -83,6 +83,8 @@ td:first-child{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:
 .gmap-n{display:inline-block;min-width:22px;text-align:center;border-radius:4px;background:var(--accent-soft);color:var(--accent);font:700 12px var(--f-body);padding:1px 5px;margin-right:4px}
 .gmap-pages{font-size:14px;color:var(--muted)}
 .gmap-run a,.runcode a{font-weight:700;overflow-wrap:anywhere}
+.quote{margin:4px 0 10px;padding:8px 14px;border-left:3px solid var(--accent);font-style:italic}
+.quote-by{display:block;margin-top:6px;font-style:normal;font-size:14px;color:var(--muted)}
 .sources{margin:12px 0 0;font-size:14px;color:var(--muted);overflow-wrap:anywhere}
 .runcode{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line)}
 details{border:1px solid var(--line);border-radius:6px;margin:8px 0;background:var(--surface)}
@@ -505,6 +507,11 @@ details>.inner{padding:4px 10px 8px}
   <article class="card wide"><h3>Understanding before opinion</h3>
     <p>Every day brings millions of posts about AI, and everyone has an opinion. We have come to find more satisfaction in expressing a view than in understanding the thing itself, and we miss the experience of learning it.</p>
     <p>That is why this guide is a quiet, static site: no feed, no comments, no tracking. Come, find a section, read it in peace, try the code, and save it as a PDF if you like. Understanding first; the opinion can wait.</p>
+  </article>
+
+  <article class="card wide"><h3>Believe in every person</h3>
+    <blockquote class="quote">"When you are inspired by some great purpose, some extraordinary project, all your thoughts break their bonds: Your mind transcends limitations, your consciousness expands in every direction, and you find yourself in a new, great and wonderful world. Dormant forces, faculties and talents become alive, and you discover yourself to be a greater person by far than you ever dreamed yourself to be."<br><span class="quote-by">A passage often attributed to Patanjali</span></blockquote>
+    <p>Whoever wrote it, it is true of people we work with every day. Given a purpose worth caring about and someone who believes in them, people grow beyond what they or anyone expected: the tester who becomes the best engineer on the team, the mainframe veteran who leads the move to the cloud. Belief is something we can give every person, and it costs nothing. Change goes better when we start from what people can become, not only from what they know today.</p>
   </article>
 
   <article class="card wide"><h3>Harness it, and keep control</h3>

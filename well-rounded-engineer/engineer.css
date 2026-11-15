@@ -126,3 +126,5 @@ a.product-label:hover { text-decoration: none; color: var(--color-accent-800); }
 .eg .gmap-run a, .eg .runcode a { font-weight: 600; overflow-wrap: anywhere; }
 .eg .runcode { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--color-divider); }
 .eg .sources { margin: 12px 0 0; font-size: 14px; color: var(--color-neutral-700); overflow-wrap: anywhere; }
+.eg .quote { margin: 4px 0 10px; padding: 8px 14px; border-left: 3px solid var(--color-accent-800); font-style: italic; }
+.eg .quote-by { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--color-neutral-700); }
