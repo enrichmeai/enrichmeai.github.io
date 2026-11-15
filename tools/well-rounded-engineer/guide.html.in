@@ -14023,6 +14023,16 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
     </ul>
   </article>
 
+  <article class="card wide"><h3>One runnable JAR: from app servers to "java -jar"</h3>
+    <p>For years a Java web application was a WAR file deployed into a separate application server. Then frameworks started shipping the server inside the application: one file you start with <code>java -jar</code>.</p>
+    <ul>
+      <li><b>Dropwizard</b> (first published to Maven Central in December 2011) bundled an embedded Jetty server with Jersey, Jackson, Logback and Metrics, and its getting-started guide builds the whole application as a "fat JAR". As I remember it, that was the first time many of us ran a service this way, before Spring Boot (1.0 in April 2014) made the idea mainstream.</li>
+      <li><b>How the fat JAR is built:</b> the Maven Shade Plugin unpacks every dependency into one archive. Its <code>ServicesResourceTransformer</code> merges the <code>META-INF/services</code> files so libraries such as Jersey and Jackson do not overwrite each other's, and its <code>ManifestResourceTransformer</code> sets the <code>Main-Class</code>, so <code>java -jar app.jar server config.yml</code> just works.</li>
+      <li><b>Why it mattered:</b> one file to build, copy and run made services simple to deploy, and fitted containers perfectly a few years later. See <a href="#docker">Docker</a> and <a href="#spring">Spring Boot</a>.</li>
+    </ul>
+    <p class="sources"><b>Checked against:</b> <a href="https://repo1.maven.org/maven2/com/yammer/dropwizard/dropwizard-core/" target="_blank" rel="noopener">Maven Central: dropwizard-core, first release dated 22 December 2011</a>; <a href="https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/" target="_blank" rel="noopener">Maven Central: spring-boot, first release dated 1 April 2014</a>; <a href="https://github.com/dropwizard/dropwizard" target="_blank" rel="noopener">Dropwizard README and getting-started guide</a>; the transformer classes inside the maven-shade-plugin artefact.</p>
+  </article>
+
   <article class="card"><h3>Microservices, cloud, and seeing what happens</h3>
     <ul>
       <li><b>Microservices</b> split systems into small services that each own their data. They brought back every distributed-systems problem at once, now spread across many teams.</li>
