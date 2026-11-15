@@ -10,6 +10,7 @@ groups=[("",["start","aiworry"]),
  ("Foundations",["linux","networking","web","docker","sql","database","homelab"]),
  ("Languages",["java","kotlin","python","go","rust"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
+ ("User interfaces",["apps","uihistory"]),
  ("Quality",["testing","performance"]),
  ("Security",["security","cyber","oauth"]),
  ("Data",["data","datalibs","dbt","dags"]),
@@ -22,7 +23,7 @@ groups=[("",["start","aiworry"]),
  ("Frontiers",["quantum","robotics","bitcoin","web3","solid"]),
  ("About this guide",["why","history"]),
  ("EnrichMeAI open source",["opensource","culvert"])]
-NARRATIVE=("start","why","aiworry","history","behaviours","homelab","opensource")
+NARRATIVE=("uihistory","start","why","aiworry","history","behaviours","homelab","opensource")
 # what each group is for, and where its running code lives (only folders that exist and run)
 GH="https://github.com/enrichmeai/"
 SITE="enrichmeai.github.io"
@@ -31,6 +32,7 @@ blurb={
  "Foundations":"How computers, networks and the web work, and the data underneath. Everything else stands on this.",
  "Languages":"Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.",
  "Building services":"APIs, messaging and the frameworks that turn code into services.",
+ "User interfaces":"How people see and touch software, on phones, desktops and the web, and how that changed.",
  "Quality":"Proving it works, and that it stays fast under load.",
  "Security":"Building it safely, and thinking like a defender.",
  "Data":"Moving, shaping and trusting data, from a file to a warehouse, on any platform.",
@@ -54,7 +56,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(apps="Apps: Native or Cross-platform",uihistory="UI History",k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -110,6 +112,7 @@ scale='''  <article class="card wide" id="levels-scale"><h3>The four levels used
 if 'id="levels-scale"' not in s:
     i=s.index('  <article class="card wide"><h3>How much of each tab you need</h3>'); s=s[:i]+scale+s[i:]
 newrows={
+ "apps":("Apps: Native or Cross-platform","Explain native, shared-logic, cross-platform and web options.","Choose an app architecture for a product and team, and plan how it evolves."),
  "k8sdr":("Kubernetes DR &amp; Best Practices","Use replicas, probes, PDBs and zone spreading; know your RPO and RTO.","Backup and restore with etcd snapshots and Velero, DR strategies, restore drills."),
  "bitcoin":("Bitcoin &amp; Blockchain","Explain hashes, linked blocks, proof of work and keys.","Consensus trade-offs, key custody, and when a blockchain is the wrong tool."),
  "robotics":("Robotics","Explain sense-think-act and tune a PID loop in simulation.","Kinematics, SLAM and planning on ROS 2, with safety designed in."),

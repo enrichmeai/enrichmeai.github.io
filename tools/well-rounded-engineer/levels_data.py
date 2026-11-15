@@ -929,3 +929,24 @@ D["web"].setdefault("sources",[]).extend([
  ("RFC 9110 (HTTP semantics)","https://www.rfc-editor.org/rfc/rfc9110"),("RFC 9111 (HTTP caching)","https://www.rfc-editor.org/rfc/rfc9111"),
  ("RFC 8246 (immutable)","https://www.rfc-editor.org/rfc/rfc8246"),("RFC 6797 (HSTS)","https://www.rfc-editor.org/rfc/rfc6797"),
  ("web.dev: Web Vitals","https://web.dev/articles/vitals"),("WCAG 2.2 (contrast)","https://www.w3.org/TR/WCAG22/")])
+
+D["apps"]=dict(
+ F=["Explain native, cross-platform and web app options","Build and run a sample app on one platform","Know what an app store review involves"],
+ P=["Ship a feature on one mobile platform, with tests","Share business logic across platforms","Build an installable, offline-capable web app"],
+ S=["Choose an app architecture for a product and team","Design offline, sync and push notifications","Plan releases, versions and backwards compatibility"],
+ E=["Own mobile and desktop strategy across products","Lead a move between app technologies","Set performance, accessibility and security standards for apps"],
+ topics=["SwiftUI","Jetpack Compose","Kotlin Multiplatform","Flutter","React Native","Progressive web apps"],
+ links=[("Jetpack Compose","https://developer.android.com/compose","Android's modern UI toolkit"),
+        ("SwiftUI","https://developer.apple.com/swiftui/","Apple's declarative UI framework"),
+        ("Kotlin Multiplatform","https://kotlinlang.org/docs/multiplatform.html","Share code across platforms"),
+        ("Flutter documentation","https://docs.flutter.dev/","Multiplatform apps from a single codebase"),
+        ("React Native","https://reactnative.dev/","React for native apps"),
+        ("MDN: Progressive web apps","https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps","Installable, offline-capable web apps")],
+ sources=[("Jetpack Compose","https://developer.android.com/compose"),("SwiftUI","https://developer.apple.com/swiftui/"),
+          ("Flutter docs","https://docs.flutter.dev/"),("React Native","https://reactnative.dev/"),
+          ("MDN: Progressive web apps","https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"),
+          ("Kotlin (Wikipedia): Google's preferred language, 7 May 2019","https://en.wikipedia.org/wiki/Kotlin"),
+          ("Kotlin Multiplatform (Wikipedia): stable, November 2023","https://en.wikipedia.org/wiki/Kotlin_Multiplatform")])
+D["kotlin"].setdefault("sources",[]).extend([("Kotlin (Wikipedia)","https://en.wikipedia.org/wiki/Kotlin"),("Scala (Wikipedia)","https://en.wikipedia.org/wiki/Scala_(programming_language)"),
+ ("Java (Wikipedia)","https://en.wikipedia.org/wiki/Java_(programming_language)"),("New in Scala 3","https://docs.scala-lang.org/scala3/new-in-scala3.html")])
+D["spring"].setdefault("sources",[]).extend([("JEP 444: Virtual Threads","https://openjdk.org/jeps/444")])

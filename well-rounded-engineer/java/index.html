@@ -50,6 +50,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -152,7 +155,7 @@
   </article>
 
   <article class="card wide"><h3>Threads in Java, release by release</h3>
-    <table>
+    <div class="tbl"><table>
       <tr><th>Release</th><th>What arrived</th><th>What it meant</th></tr>
       <tr><td>1.0</td><td><code>Thread</code>, <code>Runnable</code>, <code>synchronized</code>, <code>wait</code>/<code>notify</code></td><td>Threads built into the language from the start. Early JVMs used "green threads", scheduled by the JVM itself rather than the operating system; they were abandoned for native threads in later releases.</td></tr>
       <tr><td>5</td><td><code>java.util.concurrent</code> (JSR 166): <code>ExecutorService</code>, thread pools, <code>Future</code>, locks, atomics, concurrent collections</td><td>Stop creating threads by hand; submit tasks to a pool.</td></tr>
@@ -163,7 +166,7 @@
       <tr><td>21 onwards</td><td>Structured concurrency, previewing since 21 (JEP 453; fifth preview in 25, JEP 505)</td><td>Treat a group of related tasks as one unit: they finish, fail and cancel together.</td></tr>
       <tr><td>24</td><td>Virtual threads no longer pin on <code>synchronized</code> (JEP 491)</td><td>Old <code>synchronized</code> code stops blocking the carrier thread.</td></tr>
       <tr><td>25</td><td>Scoped values, final (JEP 506)</td><td>Share immutable data with child tasks; a safer replacement for many uses of <code>ThreadLocal</code>.</td></tr>
-    </table>
+    </table></div>
     <p class="note">The full circle: the first JVMs scheduled threads themselves, Java then handed them to the operating system for twenty-five years, and virtual threads bring JVM scheduling back, this time on top of native threads. Release numbers come from each class's "Since" in the Java API documentation and from the JEPs.</p>
   </article>
 

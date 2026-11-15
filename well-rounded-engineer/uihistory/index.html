@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI History · Well Rounded Engineer</title>
+<meta name="description" content="From text screens to declarative UIs: each step made it easier to describe what people should see, and moved more work from the programmer to the framework.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="uihistory">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/" aria-current="page">UI History</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/robotics/">Robotics</a>
+      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="uihistory" data-name="UI History">
+  <div class="panel-head"><h1>A short history of user interfaces</h1><p>From text screens to declarative UIs: each step made it easier to describe what people should see, and moved more work from the programmer to the framework.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>Timeline</h3>
+    <div class="tbl"><table>
+      <tr><th>When</th><th>What</th><th>Why it mattered</th></tr>
+      <tr><td>Before the 1980s</td><td>Text terminals and command lines</td><td>Type a command, read the answer. Still the fastest interface for many engineering tasks. See <a href="/well-rounded-engineer/linux/">Linux</a>.</td></tr>
+      <tr><td>1973</td><td>Xerox Alto</td><td>An early computer with a graphical interface and a mouse.</td></tr>
+      <tr><td>1984</td><td>Apple Macintosh</td><td>Brought the graphical interface to a mass-market personal computer.</td></tr>
+      <tr><td>1985</td><td>Windows 1.0 (November 1985)</td><td>Microsoft's graphical environment on top of DOS.</td></tr>
+      <tr><td>1993</td><td>Mosaic web browser</td><td>Made the web graphical and popular; pages were documents, not applications.</td></tr>
+      <tr><td>1995 onwards</td><td>Java applets</td><td>Programs inside the browser. Browsers dropped the plug-in support they needed in the 2010s.</td></tr>
+      <tr><td>1996 to 2020</td><td>Flash</td><td>Rich animation and video in the browser through a plug-in; its player was retired at the end of 2020.</td></tr>
+      <tr><td>1999, named 2005</td><td>XMLHttpRequest, then "Ajax"</td><td>Pages could fetch data without reloading. The term Ajax was coined in February 2005.</td></tr>
+      <tr><td>2006</td><td>jQuery</td><td>Smoothed over browser differences and made page scripting approachable.</td></tr>
+      <tr><td>2007 and 2008</td><td>The first iPhone, then Android</td><td>Touch-first phones, app stores, and native mobile development.</td></tr>
+      <tr><td>2010 to 2014</td><td>AngularJS (2010), React (2013), Vue (2014)</td><td>Single-page applications: the browser builds the UI from data and calls APIs.</td></tr>
+      <tr><td>2015</td><td>React Native; "progressive web app" coined</td><td>Web skills reach native apps; web apps learn to install and work offline.</td></tr>
+      <tr><td>2018 to 2021</td><td>Flutter 1.0 (2018), SwiftUI (2019), Jetpack Compose (2021)</td><td>Declarative UI comes to mobile: describe the screen, let the framework update it.</td></tr>
+    </table></div>
+  </article>
+
+  <article class="card wide"><h3>What stays the same</h3>
+    <p>Every generation repeats the same lessons: keep the interface responsive while work happens in the background, separate what is shown from the data behind it, make it usable by everyone (see <a href="/well-rounded-engineer/web/">Web Fundamentals</a> for accessibility), and test it the way people use it. The tools change; those do not.</p>
+    <p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Xerox_Alto" target="_blank" rel="noopener">Xerox Alto</a>; <a href="https://en.wikipedia.org/wiki/Macintosh_128K" target="_blank" rel="noopener">Macintosh 128K</a>; <a href="https://en.wikipedia.org/wiki/Windows_1.0" target="_blank" rel="noopener">Windows 1.0</a>; <a href="https://en.wikipedia.org/wiki/Mosaic_(web_browser)" target="_blank" rel="noopener">Mosaic</a>; <a href="https://en.wikipedia.org/wiki/Java_applet" target="_blank" rel="noopener">Java applet</a>; <a href="https://en.wikipedia.org/wiki/Adobe_Flash" target="_blank" rel="noopener">Adobe Flash</a>; <a href="https://en.wikipedia.org/wiki/Ajax_(programming)" target="_blank" rel="noopener">Ajax</a>; <a href="https://en.wikipedia.org/wiki/JQuery" target="_blank" rel="noopener">jQuery</a>; <a href="https://en.wikipedia.org/wiki/IPhone_(1st_generation)" target="_blank" rel="noopener">iPhone</a>; <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank" rel="noopener">Android</a>; <a href="https://en.wikipedia.org/wiki/AngularJS" target="_blank" rel="noopener">AngularJS</a>; <a href="https://en.wikipedia.org/wiki/React_(software)" target="_blank" rel="noopener">React</a>; <a href="https://en.wikipedia.org/wiki/Vue.js" target="_blank" rel="noopener">Vue.js</a>; <a href="https://en.wikipedia.org/wiki/React_Native" target="_blank" rel="noopener">React Native</a>; <a href="https://en.wikipedia.org/wiki/Progressive_web_app" target="_blank" rel="noopener">Progressive web app</a>; <a href="https://en.wikipedia.org/wiki/Flutter_(software)" target="_blank" rel="noopener">Flutter</a>; <a href="https://en.wikipedia.org/wiki/SwiftUI" target="_blank" rel="noopener">SwiftUI</a>; <a href="https://en.wikipedia.org/wiki/Jetpack_Compose" target="_blank" rel="noopener">Jetpack Compose</a>.</p>
+  </article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/apps/">← Apps: Native or Cross-platform</a><a class="pn-next" href="/well-rounded-engineer/testing/">Testing →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

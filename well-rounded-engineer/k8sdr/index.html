@@ -50,6 +50,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -130,14 +133,14 @@
 
   <article class="card wide"><h3>Know what you are protecting</h3>
     <p>Two numbers decide everything else. <b>RPO</b> (recovery point objective): how much data you can afford to lose, measured in time. <b>RTO</b> (recovery time objective): how long you can afford to be down. Agree them with the business before choosing a design, because a shorter RTO or RPO always costs more.</p>
-    <table>
+    <div class="tbl"><table>
       <tr><th>State</th><th>Where it lives</th><th>How it comes back</th></tr>
       <tr><td>Cluster objects (Deployments, Services, config)</td><td>The cluster's backing store, usually etcd</td><td>Re-apply from Git (GitOps), or restore an etcd snapshot or a Velero backup</td></tr>
       <tr><td>Application manifests and Helm values</td><td>Your Git repository</td><td>Re-apply. If Git is the source of truth, the cluster is replaceable. See <a href="/well-rounded-engineer/helm/">Helm Charts</a></td></tr>
       <tr><td>Persistent data</td><td>Volumes, and databases inside or outside the cluster</td><td>Volume snapshots, database backups with point-in-time recovery</td></tr>
       <tr><td>Secrets</td><td>Kubernetes Secrets, or an external secret store</td><td>From the external store; never only inside the cluster you are trying to recover</td></tr>
       <tr><td>Everything around it</td><td>DNS, certificates, IAM, container images, load balancers</td><td>Infrastructure as code. See <a href="/well-rounded-engineer/terraform/">Terraform</a></td></tr>
-    </table>
+    </table></div>
   </article>
 
   <article class="card"><h3>Best practices that prevent most outages</h3>
