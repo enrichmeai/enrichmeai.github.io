@@ -54,6 +54,8 @@
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
       <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
+      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
       <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
       <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
@@ -209,6 +211,42 @@
       <li><b>Without distributed transactions,</b> a long piece of work becomes a journey of steps. If it fails halfway, you undo the completed steps in reverse order, which only works if you recorded every step you took.</li>
       <li><b>This idea is old.</b> It was described as the "saga" in a 1987 database paper by Hector Garcia-Molina and Kenneth Salem, long before microservices made the word popular again. See <a href="/well-rounded-engineer/architecture/">Architecture</a>.</li>
     </ul>
+  </article>
+
+  <article class="card wide"><h3>One runnable JAR: from app servers to "java -jar"</h3>
+    <p>For years a Java web application was a WAR file deployed into a separate application server. Then frameworks started shipping the server inside the application: one file you start with <code>java -jar</code>.</p>
+    <ul>
+      <li><b>Dropwizard</b> (first published to Maven Central in December 2011) bundled an embedded Jetty server with Jersey, Jackson, Logback and Metrics, and its getting-started guide builds the whole application as a "fat JAR". As I remember it, that was the first time many of us ran a service this way, before Spring Boot (1.0 in April 2014) made the idea mainstream.</li>
+      <li><b>How the fat JAR is built:</b> the Maven Shade Plugin unpacks every dependency into one archive. Its <code>ServicesResourceTransformer</code> merges the <code>META-INF/services</code> files so libraries such as Jersey and Jackson do not overwrite each other's, and its <code>ManifestResourceTransformer</code> sets the <code>Main-Class</code>, so <code>java -jar app.jar server config.yml</code> just works.</li>
+      <li><b>Why it mattered:</b> one file to build, copy and run made services simple to deploy, and fitted containers perfectly a few years later. See <a href="/well-rounded-engineer/docker/">Docker</a> and <a href="/well-rounded-engineer/spring/">Spring Boot</a>.</li>
+    </ul>
+    <p class="sources"><b>Checked against:</b> <a href="https://repo1.maven.org/maven2/com/yammer/dropwizard/dropwizard-core/" target="_blank" rel="noopener">Maven Central: dropwizard-core, first release dated 22 December 2011</a>; <a href="https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/" target="_blank" rel="noopener">Maven Central: spring-boot, first release dated 1 April 2014</a>; <a href="https://github.com/dropwizard/dropwizard" target="_blank" rel="noopener">Dropwizard README and getting-started guide</a>; the transformer classes inside the maven-shade-plugin artefact.</p>
+  </article>
+
+  <article class="card wide"><h3>Why Spring lasted, and how it helped Java</h3>
+    <p>Rod Johnson released the first version of Spring with his book <i>Expert One-on-One J2EE Design and Development</i> in October 2002, as a lighter way to build enterprise Java than Enterprise JavaBeans; it was released under the Apache licence in June 2003. Many of the tools in the table below faded. Spring did not, and the reasons are worth learning:</p>
+    <ul>
+      <li><b>It solved the real pain.</b> Plain Java objects, dependency injection, and transactions set up by configuration rather than by the EJB container. Ordinary code became easy to write and to test.</li>
+      <li><b>It kept changing with the platform.</b> Annotations instead of XML, Spring Boot's runnable JAR and sensible defaults (1.0 in April 2014), then a sixth major version of the framework (November 2022) that moved to a Java 17 baseline and the <code>jakarta</code> namespace. It adopted new Java features rather than fighting them. See <a href="/well-rounded-engineer/spring/">Spring Boot</a>.</li>
+      <li><b>It integrated rather than replaced.</b> It worked with the libraries people already used (Hibernate, messaging, web frameworks) instead of asking them to throw everything away.</li>
+      <li><b>It stayed open and backward-compatible enough</b> that a team could upgrade step by step over the years, without rewrites.</li>
+    </ul>
+    <p><b>How that helped Java:</b> when enterprise Java was heavy, Spring made it productive again, and when cloud and containers arrived, Spring Boot made Java a natural fit for small runnable services. Keeping millions of developers productive on the JVM gave Java time to modernise itself: faster releases, records, virtual threads. (The reasons above are this guide's analysis; the dates are sourced.)</p>
+    <p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Spring_Framework" target="_blank" rel="noopener">Spring Framework</a>; <a href="https://en.wikipedia.org/wiki/Spring_Boot" target="_blank" rel="noopener">Spring Boot</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>Replaced by modern tools</h3>
+    <p>Many tools from those years did not fail; the problems they solved moved somewhere else. A few we used every day:</p>
+    <div class="tbl"><table>
+      <tr><th>Then</th><th>What it did</th><th>Now, mostly</th><th>Why it moved on</th></tr>
+      <tr><td><b>OSGi</b> (OSGi Alliance founded 1999)</td><td>Dynamic modules inside one JVM: bundles with declared dependencies, loaded and replaced while running, plus a service registry. Eclipse is built on it.</td><td>Separate services in containers; the Java Platform Module System (Java 9, 2017) for module boundaries</td><td>Isolation moved between processes instead of inside one; bundle manifests and class loading were hard to live with. The OSGi work moved to the Eclipse Foundation at the end of 2020.</td></tr>
+      <tr><td><b>Google Guice</b></td><td>Lightweight dependency injection</td><td>Injection built into the main frameworks, such as Spring Boot</td><td>Frameworks now do injection plus configuration, servers and data access. Guice is stable rather than gone: its last two releases came out together in May 2023, the second moving it to the jakarta namespace.</td></tr>
+      <tr><td><b>EAR and RAR files</b></td><td>An EAR bundled modules for an application server; a RAR held a resource adapter connecting the server to enterprise systems (Jakarta Connectors)</td><td>One runnable JAR or container image per service; client libraries, REST and messaging for integration</td><td>No application server, nowhere to deploy them. They remain where WebSphere-style servers remain. WAR files are still used with servlet containers.</td></tr>
+      <tr><td><b>PuTTY and its connection managers</b> (PuTTY from 1999)</td><td>SSH from Windows, with saved sessions; add-ons gave it tabs</td><td>OpenSSH built into Windows 10 since version 1803; Windows Terminal (announced 2019), which has tabs</td><td>Windows ships <code>ssh</code> itself. PuTTY is still maintained by Simon Tatham; it is simply no longer the only way.</td></tr>
+      <tr><td><b>Logs on a shared network drive</b></td><td>Every server wrote files to a mapped drive; you searched them by hand</td><td>Logs, metrics and traces sent to a central platform: a cloud logging service or an open-source stack, often through OpenTelemetry</td><td>Hundreds of short-lived containers cannot share a drive, and you need search, alerts and one view across services. Syslog started the idea of sending logs elsewhere in the 1980s. See <a href="/well-rounded-engineer/observability/">Observability</a>.</td></tr>
+    </table></div>
+    <p class="note">The lesson: learn the problem a tool solves, not just the tool. The problem stays when the tool is replaced.</p>
+    <p class="sources"><b>Checked against</b> (Wikipedia unless stated): <a href="https://en.wikipedia.org/wiki/OSGi" target="_blank" rel="noopener">OSGi</a>; <a href="https://en.wikipedia.org/wiki/Java_Platform_Module_System" target="_blank" rel="noopener">Java Platform Module System</a>; <a href="https://repo1.maven.org/maven2/com/google/inject/guice/" target="_blank" rel="noopener">Maven Central: Guice releases</a>; <a href="https://en.wikipedia.org/wiki/EAR_(file_format)" target="_blank" rel="noopener">EAR</a>; <a href="https://en.wikipedia.org/wiki/Java_EE_Connector_Architecture" target="_blank" rel="noopener">Jakarta Connectors</a>; <a href="https://en.wikipedia.org/wiki/PuTTY" target="_blank" rel="noopener">PuTTY</a>; <a href="https://en.wikipedia.org/wiki/OpenSSH" target="_blank" rel="noopener">OpenSSH</a>; <a href="https://en.wikipedia.org/wiki/Windows_Terminal" target="_blank" rel="noopener">Windows Terminal</a>; <a href="https://en.wikipedia.org/wiki/Syslog" target="_blank" rel="noopener">Syslog</a>; <a href="https://en.wikipedia.org/wiki/Cloud_Native_Computing_Foundation" target="_blank" rel="noopener">CNCF (OpenTelemetry)</a>.</p>
   </article>
 
   <article class="card"><h3>Microservices, cloud, and seeing what happens</h3>
