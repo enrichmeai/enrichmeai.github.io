@@ -167,7 +167,7 @@ kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
 
 # or the OpenTelemetry demo (traces, metrics, logs across many services)
 git clone https://github.com/open-telemetry/opentelemetry-demo
-cd opentelemetry-demo &amp;&amp; docker compose up -d</code></pre></div>
+cd opentelemetry-demo &amp;&amp; make start   # a bare docker compose up starts no observability backends</code></pre></div>
     <p><b>Then:</b> write one PromQL alert for an error ratio, make it fire on purpose, and find the failing span in a trace.</p>
     <p class="note"><b>Done when:</b> an alert you wrote fires for a failure you caused, and you traced it to the line of code. Tabs: <a href="/well-rounded-engineer/observability/">Observability</a>, <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>.</p>
   </article>
@@ -186,7 +186,7 @@ istioctl analyze</code></pre></div>
   <article class="card"><h3>Lab 4: GitOps and Helm</h3>
     <p><b>Repo:</b> <code>argoproj/argocd-example-apps</code>, with Argo CD installed on your cluster.</p>
 <div class="snip"><pre><code>kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl port-forward -n argocd svc/argocd-server 8443:443</code></pre></div>
     <p><b>Then:</b> fork the example repo, point an Argo CD application at its Helm example, change a value in Git and watch it roll out; change something by hand in the cluster and watch Argo CD report the drift.</p>
     <p class="note"><b>Done when:</b> every change reaches the cluster only through a Git commit. Tabs: <a href="/well-rounded-engineer/helm/">Helm Charts</a>, <a href="/well-rounded-engineer/devops/">DevOps</a>.</p>
@@ -268,6 +268,8 @@ stripe trigger payment_intent.succeeded</code></pre></div>
       <li><b>Write it up:</b> a short post or README per lab. Teaching what you learned is the final test that you learned it.</li>
     </ul>
   </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/kubernetes-sigs/kind/main/site/content/docs/user/quick-start.md" target="_blank" rel="noopener">kind quick start</a>; <a href="https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/README.md" target="_blank" rel="noopener">Online Boutique README (11 microservices)</a>; <a href="https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/README.md" target="_blank" rel="noopener">kube-prometheus-stack README (Helm repo still published)</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/content/en/docs/demo/docker-deployment.md" target="_blank" rel="noopener">OpenTelemetry demo Docker deployment</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/setup/getting-started/index.md" target="_blank" rel="noopener">Istio getting started (injection label, bookinfo path)</a>; <a href="https://raw.githubusercontent.com/argoproj/argo-cd/master/docs/getting_started.md" target="_blank" rel="noopener">Argo CD getting started</a>; <a href="https://raw.githubusercontent.com/dbt-labs/jaffle_shop_duckdb/duckdb/README.md" target="_blank" rel="noopener">jaffle_shop_duckdb README (Python &gt;= 3.13, uv sync)</a>; <a href="https://pypi.org/pypi/culvert/json" target="_blank" rel="noopener">culvert on PyPI (gcp extra, emulators)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/trunk/docker/jvm/Dockerfile" target="_blank" rel="noopener">Kafka Docker image Dockerfile (/opt/kafka)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md" target="_blank" rel="noopener">MCP Python SDK README (mcp[cli])</a>; <a href="https://raw.githubusercontent.com/pgvector/pgvector/master/README.md" target="_blank" rel="noopener">pgvector README</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-cli/master/README.md" target="_blank" rel="noopener">Stripe CLI README (login, listen, trigger)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p></article>
 
   </div>
 </section>
