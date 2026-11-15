@@ -983,3 +983,17 @@ D["hardware"]=dict(
   ("MIDI","MIDI"),("AdLib","AdLib"),("Sound Blaster","Sound_Blaster"),("Intel High Definition Audio","Intel_High_Definition_Audio"),
   ("3dfx Interactive","3dfx_Interactive"),("Graphics processing unit","Graphics_processing_unit"),("CUDA","CUDA"),
   ("AlexNet","AlexNet"),("Tensor Processing Unit","Tensor_Processing_Unit"),("Volta (microarchitecture)","Volta_(microarchitecture)")]])
+
+D["internet"]=dict(
+ F=["Explain that the internet is many networks connected together","Explain what DNS, a CDN and a cloud region are","List your service's outside dependencies"],
+ P=["Trace a request's path with traceroute and DNS lookups","Explain BGP and why a bad route can take a company offline","Configure a CDN and DNS for a service"],
+ S=["Design for the failure of a DNS provider, CDN or region","Plan multi-region and multi-provider set-ups","Run outage drills for shared dependencies"],
+ E=["Own internet-facing architecture and its resilience","Negotiate peering and provider strategy","Lead response to large external outages"],
+ topics=["Autonomous systems and BGP","Internet exchange points","Submarine cables","DNS root servers and anycast","Content delivery networks"],
+ links=[("Border Gateway Protocol (Wikipedia)","https://en.wikipedia.org/wiki/Border_Gateway_Protocol","How networks share routes"),
+        ("Internet exchange point (Wikipedia)","https://en.wikipedia.org/wiki/Internet_exchange_point","Where networks meet"),
+        ("Root name server (Wikipedia)","https://en.wikipedia.org/wiki/Root_name_server","The top of DNS")],
+ sources=[(n,"https://en.wikipedia.org/wiki/"+u) for n,u in [("Autonomous system","Autonomous_system_(Internet)"),("Border Gateway Protocol","Border_Gateway_Protocol"),
+  ("Internet exchange point","Internet_exchange_point"),("Submarine communications cable","Submarine_communications_cable"),("Root name server","Root_name_server"),
+  ("Content delivery network","Content_delivery_network"),("Akamai Technologies","Akamai_Technologies"),("Cloudflare (November 2025 outage)","Cloudflare"),
+  ("2021 Facebook outage","2021_Facebook_outage"),("Timeline of AWS (20 October 2025 outage)","Timeline_of_Amazon_Web_Services")]])

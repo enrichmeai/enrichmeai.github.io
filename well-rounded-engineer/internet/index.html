@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Internet Is Tied Together · Well Rounded Engineer</title>
+<meta name="description" content="The internet is not one network. It is tens of thousands of networks agreeing to carry each other&#x27;s traffic, held together by a few shared systems. When…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="internet">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
+      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/internet/" aria-current="page">How the Internet Is Tied Together</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/robotics/">Robotics</a>
+      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="internet" data-name="How the Internet Is Tied Together">
+  <div class="panel-head"><h1>How the internet is tied together</h1><p>The internet is not one network. It is tens of thousands of networks agreeing to carry each other's traffic, held together by a few shared systems. When one of those systems fails, much of the web goes down at once. Read <a href="/well-rounded-engineer/networking/">Networking</a> first.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The pieces</h3>
+    <div class="tbl"><table>
+      <tr><th>Piece</th><th>What it does</th></tr>
+      <tr><td><b>Autonomous systems</b></td><td>Each internet provider, cloud or large company runs its own network, an autonomous system, with its own block of addresses.</td></tr>
+      <tr><td><b>BGP</b> (Border Gateway Protocol)</td><td>How autonomous systems tell each other which addresses they can reach. It is the internet's map, and every network trusts the others to describe it honestly.</td></tr>
+      <tr><td><b>Internet exchange points</b></td><td>Buildings full of switches where many networks connect directly and exchange traffic, instead of sending it the long way round.</td></tr>
+      <tr><td><b>Submarine cables</b></td><td>Fibre-optic cables on the sea bed carry the great majority of data between continents.</td></tr>
+      <tr><td><b>DNS and the root servers</b></td><td>DNS turns names into addresses. At its top are thirteen well-known root server addresses, served by many copies around the world.</td></tr>
+      <tr><td><b>Content delivery networks</b></td><td>Akamai, Cloudflare and others keep copies of websites close to users and absorb attacks, so a large share of the web passes through them.</td></tr>
+      <tr><td><b>Cloud regions</b></td><td>Huge data centres run by a few providers, where much of today's software and data live. See <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>.</td></tr>
+    </table></div>
+  </article>
+
+  <article class="card"><h3>When a shared piece fails</h3>
+    <ul>
+      <li><b>4 October 2021, BGP:</b> Facebook withdrew the routes to its own name servers in a burst of BGP updates, and its services were unavailable worldwide for six to seven hours.</li>
+      <li><b>20 October 2025, a cloud region:</b> services in AWS's Northern Virginia region (us-east-1) failed, taking down sites such as Roblox, Fortnite, Snapchat and Duolingo.</li>
+      <li><b>18 November 2025, a CDN:</b> a Cloudflare outage took down major platforms, including X and ChatGPT.</li>
+    </ul>
+    <p class="note">Each one is a single shared dependency that many companies chose independently. See <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR</a> and <a href="/well-rounded-engineer/sre/">SRE</a> on designing for it.</p>
+  </article>
+
+  <article class="card"><h3>What engineers can do</h3>
+    <ul>
+      <li><b>Know your dependencies:</b> DNS provider, CDN, cloud region, identity provider, payment gateway. Write them down.</li>
+      <li><b>Avoid one region for everything</b> that must stay up; test failing over before you need it.</li>
+      <li><b>Lower DNS TTLs before planned changes,</b> and keep a way to switch providers.</li>
+      <li><b>Show an honest status</b> when a dependency is down, rather than a confusing error. See <a href="/well-rounded-engineer/observability/">Observability</a>.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain that the internet is many networks connected together</li><li>Explain what DNS, a CDN and a cloud region are</li><li>List your service's outside dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Trace a request's path with traceroute and DNS lookups</li><li>Explain BGP and why a bad route can take a company offline</li><li>Configure a CDN and DNS for a service</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for the failure of a DNS provider, CDN or region</li><li>Plan multi-region and multi-provider set-ups</li><li>Run outage drills for shared dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own internet-facing architecture and its resilience</li><li>Negotiate peering and provider strategy</li><li>Lead response to large external outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Autonomous systems and BGP</li><li>Internet exchange points</li><li>Submarine cables</li><li>DNS root servers and anycast</li><li>Content delivery networks</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol" target="_blank" rel="noopener">Border Gateway Protocol (Wikipedia)</a><span class="lnote"> How networks share routes</span></li><li><a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank" rel="noopener">Internet exchange point (Wikipedia)</a><span class="lnote"> Where networks meet</span></li><li><a href="https://en.wikipedia.org/wiki/Root_name_server" target="_blank" rel="noopener">Root name server (Wikipedia)</a><span class="lnote"> The top of DNS</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)" target="_blank" rel="noopener">Autonomous system</a>; <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol" target="_blank" rel="noopener">Border Gateway Protocol</a>; <a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank" rel="noopener">Internet exchange point</a>; <a href="https://en.wikipedia.org/wiki/Submarine_communications_cable" target="_blank" rel="noopener">Submarine communications cable</a>; <a href="https://en.wikipedia.org/wiki/Root_name_server" target="_blank" rel="noopener">Root name server</a>; <a href="https://en.wikipedia.org/wiki/Content_delivery_network" target="_blank" rel="noopener">Content delivery network</a>; <a href="https://en.wikipedia.org/wiki/Akamai_Technologies" target="_blank" rel="noopener">Akamai Technologies</a>; <a href="https://en.wikipedia.org/wiki/Cloudflare" target="_blank" rel="noopener">Cloudflare (November 2025 outage)</a>; <a href="https://en.wikipedia.org/wiki/2021_Facebook_outage" target="_blank" rel="noopener">2021 Facebook outage</a>; <a href="https://en.wikipedia.org/wiki/Timeline_of_Amazon_Web_Services" target="_blank" rel="noopener">Timeline of AWS (20 October 2025 outage)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BHow%20the%20Internet%20Is%20Tied%20Together%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/networking/">← Networking</a><a class="pn-next" href="/well-rounded-engineer/web/">Web Fundamentals →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
