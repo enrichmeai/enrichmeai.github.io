@@ -457,10 +457,13 @@ details>.inner{padding:4px 10px 8px}
   </article>
 
   <article class="card wide"><h3>Every role is changing, not only engineering</h3>
-    <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says.</p>
+    <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, software engineers, solution architects, enterprise architects, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says.</p>
     <p>What helps most is not one course or one tool. It is the <b>will to adapt</b>: understanding what is changing, trying it, and changing how we work. It will be hard, and some days it will feel slow. Learning one small thing every day still adds up: a command, a concept, a page of this guide, a question asked out loud.</p>
     <ul>
       <li><b>Analysts, journey managers and product owners:</b> learn enough of how AI works to write requirements it can meet, and to spot where it should not be trusted. Your knowledge of customers and rules is what checks its answers.</li>
+      <li><b>Software engineers:</b> AI can write more of the code, so the job moves towards design, review, testing and running it in production. Keep the foundations sharp enough to judge what it produced. See <a href="#testing">Testing</a> and <a href="#claudetools">Claude Code &amp; Cowork</a>.</li>
+      <li><b>Solution architects:</b> AI becomes another component to design around: where it sits, what data it may see, how it fails, what it costs, and where a person must stay in the loop. See <a href="#architecture">Architecture</a> and <a href="#agentharness">Agent Harness</a>.</li>
+      <li><b>Enterprise architects:</b> set the guard rails across the organisation: which models and tools are approved, how data is governed, how agents are given access, and how the estate changes without a big-bang rewrite. See <a href="#blueprints">Frameworks vs AI</a>.</li>
       <li><b>Data engineers and analysts:</b> AI is only as good as the data it reads. Quality, lineage and access control matter more, not less. See <a href="#data">Data Engineering</a>.</li>
       <li><b>Engineers coming from mainframes and older platforms:</b> what you know about reliability, batch, transactions and running systems for decades is exactly what new platforms often lack. Bring it with you; learn the new tools on top of it.</li>
     </ul>
