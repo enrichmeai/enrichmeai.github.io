@@ -7,7 +7,7 @@ from levels_data import D
 p=os.path.join(HERE, 'guide.html.in'); s=open(p).read()
 
 groups=[("",["start","aiworry"]),
- ("Foundations",["electronics","linux","networking","web","docker","sql","database","homelab"]),
+ ("Foundations",["electronics","hardware","linux","networking","web","docker","sql","database","homelab"]),
  ("Languages",["java","kotlin","python","go","rust"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
  ("User interfaces",["apps","uihistory"]),
@@ -56,7 +56,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(electronics="Electronics &amp; Chips",reading="Reading List",apps="Apps: Native or Cross-platform",uihistory="UI History",k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(hardware="How Computers Are Built",electronics="Electronics &amp; Chips",reading="Reading List",apps="Apps: Native or Cross-platform",uihistory="UI History",k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -112,6 +112,7 @@ scale='''  <article class="card wide" id="levels-scale"><h3>The four levels used
 if 'id="levels-scale"' not in s:
     i=s.index('  <article class="card wide"><h3>How much of each tab you need</h3>'); s=s[:i]+scale+s[i:]
 newrows={
+ "hardware":("How Computers Are Built","Explain RISC vs CISC, firmware and drivers, and why GPUs suit AI.","Choose hardware for a workload; reason about cores, memory, storage and accelerators."),
  "electronics":("Electronics &amp; Chips","Explain transistors, logic gates and what an instruction set is.","Digital design with an HDL and FPGAs; open hardware such as RISC-V; design for repair."),
  "apps":("Apps: Native or Cross-platform","Explain native, shared-logic, cross-platform and web options.","Choose an app architecture for a product and team, and plan how it evolves."),
  "k8sdr":("Kubernetes DR &amp; Best Practices","Use replicas, probes, PDBs and zone spreading; know your RPO and RTO.","Backup and restore with etcd snapshots and Velero, DR strategies, restore drills."),

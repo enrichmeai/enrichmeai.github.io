@@ -965,3 +965,21 @@ D["electronics"]=dict(
           ("Hardware description language","https://en.wikipedia.org/wiki/Hardware_description_language"),("RISC-V","https://en.wikipedia.org/wiki/RISC-V"),
           ("SkyWater Technology (SKY130 PDK)","https://en.wikipedia.org/wiki/SkyWater_Technology"),("TSMC (foundry share)","https://en.wikipedia.org/wiki/TSMC"),
           ("Electronic waste","https://en.wikipedia.org/wiki/Electronic_waste"),("Right to repair","https://en.wikipedia.org/wiki/Right_to_repair")])
+
+D["hardware"]=dict(
+ F=["Explain what an instruction set is, and RISC versus CISC","Explain firmware and device drivers","Explain why GPUs suit graphics and AI"],
+ P=["Program a microcontroller to read a sensor and drive an output","Read a laptop or server spec sheet and know what each part does","Run a workload on a GPU and compare it with the CPU"],
+ S=["Choose hardware for a workload: cores, memory, storage, accelerators","Profile where time goes between CPU, memory, disk and GPU","Plan for ARM and x86 in the same estate"],
+ E=["Set hardware strategy for a platform or data centre","Co-design software with accelerators","Lead a move between processor architectures"],
+ topics=["Instruction set architectures","Firmware and boot","Device drivers","Systems on a chip","GPU programming"],
+ links=[("Reduced instruction set computer (Wikipedia)","https://en.wikipedia.org/wiki/Reduced_instruction_set_computer","RISC explained, with its history"),
+        ("Graphics processing unit (Wikipedia)","https://en.wikipedia.org/wiki/Graphics_processing_unit","How GPUs work and how they developed"),
+        ("CUDA (Wikipedia)","https://en.wikipedia.org/wiki/CUDA","General-purpose computing on GPUs")],
+ sources=[(n,"https://en.wikipedia.org/wiki/"+u) for n,u in [
+  ("Reduced instruction set computer","Reduced_instruction_set_computer"),("Complex instruction set computer","Complex_instruction_set_computer"),
+  ("Intel 4004","Intel_4004"),("Intel 8086","Intel_8086"),("ARM architecture family","ARM_architecture_family"),("x86-64","X86-64"),
+  ("Multi-core processor","Multi-core_processor"),("Apple M1","Apple_M1"),("System on a chip","System_on_a_chip"),
+  ("Firmware","Firmware"),("Microcontroller","Microcontroller"),("Device driver","Device_driver"),("NVM Express","NVM_Express"),
+  ("MIDI","MIDI"),("AdLib","AdLib"),("Sound Blaster","Sound_Blaster"),("Intel High Definition Audio","Intel_High_Definition_Audio"),
+  ("3dfx Interactive","3dfx_Interactive"),("Graphics processing unit","Graphics_processing_unit"),("CUDA","CUDA"),
+  ("AlexNet","AlexNet"),("Tensor Processing Unit","Tensor_Processing_Unit"),("Volta (microarchitecture)","Volta_(microarchitecture)")]])

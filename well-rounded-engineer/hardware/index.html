@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Computers Are Built · Well Rounded Engineer</title>
+<meta name="description" content="From the first microprocessor to the laptop on your desk: instruction sets, how software talks to devices, sound and media, and how graphics chips built…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="hardware">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+  </div>
+</header>
+
+<div class="eg-bar">
+  <div class="container">
+    <nav aria-label="Guide sections">
+      <a href="/well-rounded-engineer/">Start here</a>
+      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
+      <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
+      <a href="/well-rounded-engineer/hardware/" aria-current="page">How Computers Are Built</a>
+      <a href="/well-rounded-engineer/linux/">Linux</a>
+      <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
+      <a href="/well-rounded-engineer/docker/">Docker</a>
+      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
+      <a href="/well-rounded-engineer/database/">Database Design</a>
+      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
+      <span class="navgrp">Languages</span>
+      <a href="/well-rounded-engineer/java/">Java</a>
+      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
+      <a href="/well-rounded-engineer/python/">Python</a>
+      <a href="/well-rounded-engineer/go/">Go</a>
+      <a href="/well-rounded-engineer/rust/">Rust</a>
+      <span class="navgrp">Building services</span>
+      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
+      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
+      <a href="/well-rounded-engineer/kafka/">Kafka</a>
+      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
+      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
+      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
+      <span class="navgrp">Quality</span>
+      <a href="/well-rounded-engineer/testing/">Testing</a>
+      <a href="/well-rounded-engineer/performance/">Performance</a>
+      <span class="navgrp">Security</span>
+      <a href="/well-rounded-engineer/security/">Security</a>
+      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
+      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
+      <span class="navgrp">Data</span>
+      <a href="/well-rounded-engineer/data/">Data Engineering</a>
+      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
+      <a href="/well-rounded-engineer/dbt/">dbt</a>
+      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
+      <span class="navgrp">Architecture &amp; design</span>
+      <a href="/well-rounded-engineer/architecture/">Architecture</a>
+      <a href="/well-rounded-engineer/microservices/">Microservices</a>
+      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
+      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
+      <a href="/well-rounded-engineer/caching/">Caching</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
+      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
+      <a href="/well-rounded-engineer/operators/">Operators</a>
+      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <a href="/well-rounded-engineer/observability/">Observability</a>
+      <a href="/well-rounded-engineer/sre/">SRE</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
+      <span class="navgrp">AI</span>
+      <a href="/well-rounded-engineer/llm/">LLMs</a>
+      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
+      <a href="/well-rounded-engineer/rag/">RAG</a>
+      <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
+      <span class="navgrp">Thinking &amp; character</span>
+      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
+      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
+      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
+      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
+      <span class="navgrp">Frontiers</span>
+      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
+      <a href="/well-rounded-engineer/robotics/">Robotics</a>
+      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
+      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
+      <a href="/well-rounded-engineer/solid/">Solid</a>
+      <span class="navgrp">About this guide</span>
+      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
+      <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
+      <span class="navgrp">EnrichMeAI open source</span>
+      <a href="/well-rounded-engineer/opensource/">Our open source</a>
+      <a href="/well-rounded-engineer/culvert/">Culvert</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
+  </div>
+</div>
+
+<main id="main" class="container eg">
+<section class="panel" id="hardware" data-name="How Computers Are Built">
+  <div class="panel-head"><h1>How computers are built</h1><p>From the first microprocessor to the laptop on your desk: instruction sets, how software talks to devices, sound and media, and how graphics chips built for games became the engines of AI. Start with <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>RISC and CISC</h3>
+    <ul>
+      <li><b>An instruction set</b> is the list of operations a processor understands: the contract between hardware and software.</li>
+      <li><b>CISC (complex instruction set computer):</b> instructions can do several things at once, such as load from memory, calculate and store, with many addressing modes. x86, in most PCs and servers, is the best-known CISC family.</li>
+      <li><b>RISC (reduced instruction set computer):</b> fewer, simpler instructions that each do one thing, so the chip can run them quickly and efficiently. The ideas came from projects such as IBM's 801 in the late 1970s and work at Berkeley and Stanford. ARM (originally Acorn RISC Machine, 1985) and RISC-V are RISC.</li>
+      <li><b>Today the line is blurred:</b> modern x86 chips translate complex instructions into simpler internal steps, and RISC chips have grown richer. The practical difference now is mostly power efficiency, licensing and the software ecosystem.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Programming devices</h3>
+    <ul>
+      <li><b>Microcontrollers</b> are small computers on one chip: processor, memory and inputs and outputs. They run washing machines, cars, sensors and robots.</li>
+      <li><b>Firmware</b> is the software built into a device, usually stored in flash memory. You "flash" new firmware to update it.</li>
+      <li><b>Device drivers</b> let the operating system control hardware: a driver turns "play this sound" or "print this page" into the device's own commands.</li>
+      <li><b>Try it:</b> program a microcontroller board to blink a light, read a sensor and drive a motor. It teaches timing, memory limits and the hardware underneath every abstraction. See <a href="/well-rounded-engineer/robotics/">Robotics</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A short CPU history</h3>
+    <div class="tbl"><table>
+      <tr><th>When</th><th>What</th><th>Why it mattered</th></tr>
+      <tr><td>1971</td><td>Intel 4004</td><td>Often called the first microprocessor: a whole processor on one chip.</td></tr>
+      <tr><td>1978</td><td>Intel 8086</td><td>The start of x86, still the instruction set of most PCs and servers.</td></tr>
+      <tr><td>1985</td><td>ARM (Acorn RISC Machine)</td><td>A RISC design that later came to power most phones and tablets.</td></tr>
+      <tr><td>2003</td><td>AMD64 (x86-64), first in AMD's Opteron</td><td>64-bit x86: far more memory, while running older 32-bit software.</td></tr>
+      <tr><td>Mid-2000s</td><td>Multi-core processors in ordinary PCs</td><td>Clock speeds stopped climbing fast, so chips added cores instead; software had to learn to do work in parallel. See <a href="/well-rounded-engineer/java/">Java</a> threads.</td></tr>
+      <tr><td>2020</td><td>Apple M1</td><td>An ARM system on a chip in mainstream laptops: CPU, GPU and more on one chip with shared memory.</td></tr>
+    </table></div>
+  </article>
+
+  <article class="card"><h3>How a modern laptop is built</h3>
+    <ul>
+      <li><b>System on a chip (SoC):</b> CPU cores, a graphics processor, AI and media engines and security functions on one chip, often with memory packaged right beside it and shared between them.</li>
+      <li><b>Storage:</b> a solid-state drive on the PCI Express bus, spoken to with the NVMe protocol: no moving parts, far faster than a spinning disk.</li>
+      <li><b>Power and heat:</b> the battery and cooling decide how hard the chip can work and for how long; thin laptops trade peak speed for quiet and battery life.</li>
+      <li><b>Firmware first:</b> when you press the power button, firmware checks the hardware and starts the operating system.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Media and sound cards</h3>
+    <ul>
+      <li><b>MIDI</b> (standardised 1983) lets instruments and computers exchange notes and controls rather than recorded sound.</li>
+      <li><b>Sound cards</b> gave early PCs real audio: AdLib (founded 1987) and then Creative's Sound Blaster (1989), which became the de facto standard for PC audio until Windows 95 and audio built into the motherboard took over.</li>
+      <li><b>Integrated audio:</b> today sound is part of the motherboard or chip, following Intel's AC'97 and High Definition Audio (2004) specifications.</li>
+      <li><b>The pattern repeats:</b> a separate card proves a need, then the function moves onto the main chip. Graphics went the same way in laptops.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>From gaming graphics to AI</h3>
+    <ol>
+      <li><b>1995 to 1999, 3D for games:</b> 3dfx's Voodoo Graphics chip (to manufacturing in November 1995) brought fast 3D to PC gaming. In 1999 Nvidia marketed the GeForce 256 as "the world's first GPU", popularising the term.</li>
+      <li><b>Why GPUs are different:</b> drawing a frame means doing the same small calculation on millions of pixels at once, so GPUs have thousands of simple cores built for parallel arithmetic, where a CPU has a few complex ones.</li>
+      <li><b>2007, CUDA:</b> Nvidia's CUDA let ordinary programs use the GPU for general-purpose computing, opening it to science and engineering.</li>
+      <li><b>2012, AlexNet:</b> a neural network for image recognition, trained on two Nvidia GTX 580 gaming GPUs, entered the ImageNet challenge and showed that GPUs made deep learning practical.</li>
+      <li><b>2015 to 2017, chips for AI:</b> Google introduced its Tensor Processing Unit (TPU), a chip designed only for neural networks, and Nvidia's Volta GPUs (first product announced May 2017) added Tensor Cores for deep learning.</li>
+    </ol>
+    <p class="note">Neural networks are mostly large matrix multiplications, exactly the parallel arithmetic that games had already paid to make fast and cheap. See <a href="/well-rounded-engineer/llm/">LLMs</a> and <a href="/well-rounded-engineer/mathematics/">Mathematics</a>.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain what an instruction set is, and RISC versus CISC</li><li>Explain firmware and device drivers</li><li>Explain why GPUs suit graphics and AI</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Program a microcontroller to read a sensor and drive an output</li><li>Read a laptop or server spec sheet and know what each part does</li><li>Run a workload on a GPU and compare it with the CPU</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose hardware for a workload: cores, memory, storage, accelerators</li><li>Profile where time goes between CPU, memory, disk and GPU</li><li>Plan for ARM and x86 in the same estate</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set hardware strategy for a platform or data centre</li><li>Co-design software with accelerators</li><li>Lead a move between processor architectures</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Instruction set architectures</li><li>Firmware and boot</li><li>Device drivers</li><li>Systems on a chip</li><li>GPU programming</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Reduced_instruction_set_computer" target="_blank" rel="noopener">Reduced instruction set computer (Wikipedia)</a><span class="lnote"> RISC explained, with its history</span></li><li><a href="https://en.wikipedia.org/wiki/Graphics_processing_unit" target="_blank" rel="noopener">Graphics processing unit (Wikipedia)</a><span class="lnote"> How GPUs work and how they developed</span></li><li><a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA (Wikipedia)</a><span class="lnote"> General-purpose computing on GPUs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Reduced_instruction_set_computer" target="_blank" rel="noopener">Reduced instruction set computer</a>; <a href="https://en.wikipedia.org/wiki/Complex_instruction_set_computer" target="_blank" rel="noopener">Complex instruction set computer</a>; <a href="https://en.wikipedia.org/wiki/Intel_4004" target="_blank" rel="noopener">Intel 4004</a>; <a href="https://en.wikipedia.org/wiki/Intel_8086" target="_blank" rel="noopener">Intel 8086</a>; <a href="https://en.wikipedia.org/wiki/ARM_architecture_family" target="_blank" rel="noopener">ARM architecture family</a>; <a href="https://en.wikipedia.org/wiki/X86-64" target="_blank" rel="noopener">x86-64</a>; <a href="https://en.wikipedia.org/wiki/Multi-core_processor" target="_blank" rel="noopener">Multi-core processor</a>; <a href="https://en.wikipedia.org/wiki/Apple_M1" target="_blank" rel="noopener">Apple M1</a>; <a href="https://en.wikipedia.org/wiki/System_on_a_chip" target="_blank" rel="noopener">System on a chip</a>; <a href="https://en.wikipedia.org/wiki/Firmware" target="_blank" rel="noopener">Firmware</a>; <a href="https://en.wikipedia.org/wiki/Microcontroller" target="_blank" rel="noopener">Microcontroller</a>; <a href="https://en.wikipedia.org/wiki/Device_driver" target="_blank" rel="noopener">Device driver</a>; <a href="https://en.wikipedia.org/wiki/NVM_Express" target="_blank" rel="noopener">NVM Express</a>; <a href="https://en.wikipedia.org/wiki/MIDI" target="_blank" rel="noopener">MIDI</a>; <a href="https://en.wikipedia.org/wiki/AdLib" target="_blank" rel="noopener">AdLib</a>; <a href="https://en.wikipedia.org/wiki/Sound_Blaster" target="_blank" rel="noopener">Sound Blaster</a>; <a href="https://en.wikipedia.org/wiki/Intel_High_Definition_Audio" target="_blank" rel="noopener">Intel High Definition Audio</a>; <a href="https://en.wikipedia.org/wiki/3dfx_Interactive" target="_blank" rel="noopener">3dfx Interactive</a>; <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit" target="_blank" rel="noopener">Graphics processing unit</a>; <a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA</a>; <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener">AlexNet</a>; <a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit" target="_blank" rel="noopener">Tensor Processing Unit</a>; <a href="https://en.wikipedia.org/wiki/Volta_(microarchitecture)" target="_blank" rel="noopener">Volta (microarchitecture)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BHow%20Computers%20Are%20Built%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/electronics/">← Electronics &amp; Chips</a><a class="pn-next" href="/well-rounded-engineer/linux/">Linux →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
