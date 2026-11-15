@@ -890,3 +890,26 @@ D["k8sdr"]=dict(
         ("Disruptions and PodDisruptionBudgets","https://kubernetes.io/docs/concepts/workloads/pods/disruptions/","Voluntary and involuntary disruptions"),
         ("Velero: disaster recovery","https://velero.io/docs/main/disaster-case/","The DR flow with schedules and restores"),
         ("Disaster recovery options in the cloud","https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html","The four strategies, from AWS's whitepaper")])
+
+# Sources each page's claims were checked against (rendered as "Checked against:")
+D["linux"]["sources"]=[
+ ("find(1)","https://man7.org/linux/man-pages/man1/find.1.html"),("sort(1)","https://man7.org/linux/man-pages/man1/sort.1.html"),
+ ("xargs(1)","https://man7.org/linux/man-pages/man1/xargs.1.html"),("du(1)","https://man7.org/linux/man-pages/man1/du.1.html"),
+ ("chmod(1)","https://man7.org/linux/man-pages/man1/chmod.1.html"),("sed(1)","https://man7.org/linux/man-pages/man1/sed.1.html"),
+ ("less(1)","https://man7.org/linux/man-pages/man1/less.1.html"),("timeout(1)","https://man7.org/linux/man-pages/man1/timeout.1.html"),
+ ("systemctl(1)","https://man7.org/linux/man-pages/man1/systemctl.1.html"),("journalctl(1)","https://man7.org/linux/man-pages/man1/journalctl.1.html"),
+ ("systemd.service(5)","https://man7.org/linux/man-pages/man5/systemd.service.5.html"),("ssh(1)","https://man7.org/linux/man-pages/man1/ssh.1.html"),
+ ("ssh-keygen(1)","https://man7.org/linux/man-pages/man1/ssh-keygen.1.html"),("tmux(1)","https://man7.org/linux/man-pages/man1/tmux.1.html"),
+ ("RFC 5737 (documentation addresses)","https://www.rfc-editor.org/rfc/rfc5737"),
+ ("exit codes 126, 127, 137 and 143, run in bash","https://man7.org/linux/man-pages/man1/bash.1.html")]
+D["networking"]["sources"]=[
+ ("RFC 1918 (private ranges)","https://www.rfc-editor.org/rfc/rfc1918"),("RFC 6598 (shared address space)","https://www.rfc-editor.org/rfc/rfc6598"),
+ ("RFC 1912 (CNAME with other data)","https://www.rfc-editor.org/rfc/rfc1912"),("RFC 7766 (DNS over TCP)","https://www.rfc-editor.org/rfc/rfc7766"),
+ ("RFC 2782 (SRV)","https://www.rfc-editor.org/rfc/rfc2782"),("RFC 8659 (CAA)","https://www.rfc-editor.org/rfc/rfc8659"),
+ ("RFC 9110 (HTTP semantics)","https://www.rfc-editor.org/rfc/rfc9110"),("RFC 6585 (429)","https://www.rfc-editor.org/rfc/rfc6585"),
+ ("RFC 9114 (HTTP/3)","https://www.rfc-editor.org/rfc/rfc9114"),("RFC 6066 (SNI)","https://www.rfc-editor.org/rfc/rfc6066"),
+ ("Kubernetes ports and protocols","https://kubernetes.io/docs/reference/networking/ports-and-protocols/"),
+ ("Google Cloud subnets","https://docs.cloud.google.com/vpc/docs/subnets"),("VPC firewall rules","https://docs.cloud.google.com/firewall/docs/firewalls"),
+ ("Cloud Run container contract","https://docs.cloud.google.com/run/docs/container-contract"),("Cloud NAT overview","https://docs.cloud.google.com/nat/docs/overview"),
+ ("ss(8)","https://man7.org/linux/man-pages/man8/ss.8.html"),("tcpdump(1)","https://man7.org/linux/man-pages/man1/tcpdump.1.html"),
+ ("gcloud commands, checked with gcloud --help","https://docs.cloud.google.com/sdk/gcloud/reference")]

@@ -125,3 +125,4 @@ a.product-label:hover { text-decoration: none; color: var(--color-accent-800); }
 .eg .gmap-pages { font-size: 14.5px; color: var(--color-neutral-700); }
 .eg .gmap-run a, .eg .runcode a { font-weight: 600; overflow-wrap: anywhere; }
 .eg .runcode { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--color-divider); }
+.eg .sources { margin: 12px 0 0; font-size: 14px; color: var(--color-neutral-700); overflow-wrap: anywhere; }
