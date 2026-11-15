@@ -913,3 +913,19 @@ D["networking"]["sources"]=[
  ("Cloud Run container contract","https://docs.cloud.google.com/run/docs/container-contract"),("Cloud NAT overview","https://docs.cloud.google.com/nat/docs/overview"),
  ("ss(8)","https://man7.org/linux/man-pages/man8/ss.8.html"),("tcpdump(1)","https://man7.org/linux/man-pages/man1/tcpdump.1.html"),
  ("gcloud commands, checked with gcloud --help","https://docs.cloud.google.com/sdk/gcloud/reference")]
+D["testing"].setdefault("sources",[]).extend([("The Practical Test Pyramid (martinfowler.com)","https://martinfowler.com/articles/practical-test-pyramid.html")])
+D["java"].setdefault("sources",[]).extend([
+ ("Thread (since 1.0)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Thread.html"),
+ ("ExecutorService (since 1.5)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ExecutorService.html"),
+ ("ForkJoinPool (since 1.7)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ForkJoinPool.html"),
+ ("CompletableFuture (since 1.8)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/CompletableFuture.html"),
+ ("Flow (since 9)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Flow.html"),
+ ("JEP 425","https://openjdk.org/jeps/425"),("JEP 444","https://openjdk.org/jeps/444"),("JEP 453","https://openjdk.org/jeps/453"),
+ ("JEP 491","https://openjdk.org/jeps/491"),("JEP 505","https://openjdk.org/jeps/505"),("JEP 506","https://openjdk.org/jeps/506"),
+ ("Green threads (Wikipedia)","https://en.wikipedia.org/wiki/Green_thread")])
+D["web"].setdefault("sources",[]).extend([
+ ("MDN: CORS","https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS"),("MDN: Set-Cookie","https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie"),
+ ("MDN: URI fragment","https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment"),("MDN: script element","https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script"),
+ ("RFC 9110 (HTTP semantics)","https://www.rfc-editor.org/rfc/rfc9110"),("RFC 9111 (HTTP caching)","https://www.rfc-editor.org/rfc/rfc9111"),
+ ("RFC 8246 (immutable)","https://www.rfc-editor.org/rfc/rfc8246"),("RFC 6797 (HSTS)","https://www.rfc-editor.org/rfc/rfc6797"),
+ ("web.dev: Web Vitals","https://web.dev/articles/vitals"),("WCAG 2.2 (contrast)","https://www.w3.org/TR/WCAG22/")])
