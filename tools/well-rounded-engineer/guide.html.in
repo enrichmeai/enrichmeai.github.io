@@ -129,6 +129,8 @@ details>.inner{padding:4px 10px 8px}
       <a href="#spring" data-tab="spring">Spring Boot</a>
       <a href="#quarkus" data-tab="quarkus">Quarkus</a>
       <span class="navgrp">User interfaces</span>
+      <a href="#designux" data-tab="designux">Design Thinking &amp; UX</a>
+      <a href="#accessibility" data-tab="accessibility">Accessibility</a>
       <a href="#apps" data-tab="apps">Apps: Native or Cross-platform</a>
       <a href="#uihistory" data-tab="uihistory">UI History</a>
       <span class="navgrp">Quality</span>
@@ -214,7 +216,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> User interfaces</h4><p>How people see and touch software, on phones, desktops and the web, and how that changed.</p><p class="gmap-pages"><a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
   <article class="card wide" id="promise"><h3>Our promise: checked knowledge, no fuss</h3>
@@ -4625,6 +4627,105 @@ quarkus.kubernetes.env.secrets=db-credentials
 </section>
 
 <!-- ================= TESTING ================= -->
+<section class="panel" id="p-designux" data-name="Design Thinking &amp; UX">
+  <div class="panel-head"><h2>Design thinking and user experience</h2><p>Building the right thing before building it right: understand the people, frame the problem, try ideas cheaply, and test with real users. It applies to an API, an internal tool or a data product as much as to an app.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Design thinking</h3>
+    <ul>
+      <li><b>Start with empathy:</b> understand the people you are designing for, their goals, context and frustrations, before you decide what to build.</li>
+      <li><b>Frame the problem</b> in their words. A well-framed problem is half solved; a badly framed one gets a polished answer to the wrong question.</li>
+      <li><b>Generate many ideas,</b> then sketch and prototype the promising ones as cheaply as possible.</li>
+      <li><b>Test and iterate:</b> put the prototype in front of real people, learn, and change it. Repeat.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>The Double Diamond</h3>
+    <p>A design process model popularised by the British Design Council in 2005, in four phases:</p>
+    <ol>
+      <li><b>Discover:</b> go wide; research the problem and the people.</li>
+      <li><b>Define:</b> narrow down to the real problem.</li>
+      <li><b>Develop:</b> go wide again; explore possible solutions.</li>
+      <li><b>Deliver:</b> narrow down; test, choose and ship.</li>
+    </ol>
+    <p class="note">Two diamonds: diverge then converge on the problem, then on the solution.</p>
+  </article>
+
+  <article class="card"><h3>UX practices engineers can use</h3>
+    <ul>
+      <li><b>Talk to users</b> before building, and watch them use what you built. What people do often differs from what they say.</li>
+      <li><b>Usability testing with a few people</b> finds most big problems: Jakob Nielsen's advice is to test with no more than five users and run as many small tests as you can afford.</li>
+      <li><b>Heuristic evaluation:</b> review a design against a short list of usability principles, a method developed by Rolf Molich and Jakob Nielsen.</li>
+      <li><b>Personas and journeys</b> keep real people in mind: who they are, what they are trying to do, and where it goes wrong.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Good UX is good engineering</h3>
+    <ul>
+      <li><b>Clear errors:</b> say what went wrong and how to fix it, in plain words. See <a href="#apis">APIs</a> for good error responses.</li>
+      <li><b>Fast feels good:</b> speed is part of the experience. See <a href="#performance">Performance</a> and Core Web Vitals on <a href="#web">Web Fundamentals</a>.</li>
+      <li><b>Consistency:</b> the same thing looks and behaves the same everywhere.</li>
+      <li><b>Accessible by default:</b> design for everyone from the start. See <a href="#accessibility">Accessibility</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Design_thinking" target="_blank" rel="noopener">Design thinking</a>; <a href="https://en.wikipedia.org/wiki/Double_Diamond_(design_process_model)" target="_blank" rel="noopener">Double Diamond</a>; <a href="https://en.wikipedia.org/wiki/Usability_testing" target="_blank" rel="noopener">Usability testing</a>; <a href="https://en.wikipedia.org/wiki/Heuristic_evaluation" target="_blank" rel="noopener">Heuristic evaluation</a>; <a href="https://en.wikipedia.org/wiki/Persona_(user_experience)" target="_blank" rel="noopener">Persona (user experience)</a>.</p></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-accessibility" data-name="Accessibility">
+  <div class="panel-head"><h2>Accessibility: software for everyone</h2><p>People use software with screen readers, keyboards, voice, magnification and captions, permanently or for a while after an injury. Accessible design helps all of them, and usually makes the product better for everyone else too.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>WCAG 2.2 in one card</h3>
+    <p>The Web Content Accessibility Guidelines (WCAG) are the W3C standard for accessible web content; WCAG 2.2 became a W3C Recommendation on 5 October 2023. They are organised under four principles, often remembered as <b>POUR</b>:</p>
+    <div class="tbl"><table>
+      <tr><th>Principle</th><th>Means</th><th>Examples</th></tr>
+      <tr><td><b>Perceivable</b></td><td>People can see or hear the content, one way or another</td><td>Text alternatives for images, captions for video, enough contrast</td></tr>
+      <tr><td><b>Operable</b></td><td>People can use it, whatever their input</td><td>Everything works by keyboard, no keyboard traps, targets big enough to hit</td></tr>
+      <tr><td><b>Understandable</b></td><td>People can follow it</td><td>The page language is declared, labels and errors are clear, behaviour is predictable</td></tr>
+      <tr><td><b>Robust</b></td><td>It works with assistive technology</td><td>Every control exposes a name, role and value</td></tr>
+    </table></div>
+    <p class="note">Each success criterion has a level, A, AA or AAA; AA is the common target. Two AA examples: normal text needs a contrast ratio of at least 4.5:1, and in 2.2 pointer targets should be at least 24 by 24 CSS pixels, with some exceptions.</p>
+  </article>
+
+  <article class="card"><h3>Start with semantic HTML</h3>
+    <pre><code class="language-html">&lt;!-- a real button: focusable, works with Enter and Space, announced as a button --&gt;
+&lt;button type="button"&gt;Save order&lt;/button&gt;
+
+&lt;!-- every input has a label --&gt;
+&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input id="email" type="email" autocomplete="email"&gt;
+
+&lt;!-- meaningful image: describe it; decorative image: empty alt --&gt;
+&lt;img src="chart.png" alt="Orders rose 20% in March"&gt;
+&lt;img src="divider.png" alt=""&gt;</code></pre>
+    <p class="note">Native HTML elements come with keyboard support and the right role for free. Reach for ARIA only when no native element does the job.</p>
+  </article>
+
+  <article class="card"><h3>Test it</h3>
+    <ul>
+      <li><b>Unplug the mouse:</b> can you reach and use everything with Tab, Enter, Space and the arrow keys, and always see where the focus is?</li>
+      <li><b>Use a screen reader</b> on your own pages for ten minutes; it changes how you write markup.</li>
+      <li><b>Zoom to 200%</b> and use a phone-width screen: does anything break or hide?</li>
+      <li><b>Automated checks</b> (axe, Lighthouse) catch a share of issues; they cannot judge whether alt text or labels make sense. Do both. See <a href="#testing">Testing</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>It is also the law</h3>
+    <ul>
+      <li><b>European Union:</b> under the European Accessibility Act, as of 28 June 2025, newly marketed products and services it covers must be accessible.</li>
+      <li><b>Many countries</b> have similar laws for public-sector and commercial services. Check the rules where your users are.</li>
+      <li><b>Beyond the law:</b> captions help people in noisy places, contrast helps in sunlight, keyboard support helps power users. Accessibility is quality.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 (W3C)</a>; <a href="https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines" target="_blank" rel="noopener">Web Content Accessibility Guidelines (Wikipedia)</a>; <a href="https://en.wikipedia.org/wiki/WAI-ARIA" target="_blank" rel="noopener">WAI-ARIA (Wikipedia)</a>; <a href="https://en.wikipedia.org/wiki/European_Accessibility_Act" target="_blank" rel="noopener">European Accessibility Act (Wikipedia)</a>; <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility" target="_blank" rel="noopener">MDN: Accessibility</a>.</p></article>
+
+  </div>
+</section>
+
 <section class="panel" id="p-apps" data-name="Apps: Native or Cross-platform">
   <div class="panel-head"><h2>Apps: native or cross-platform?</h2><p>Where app development is going, and the honest trade-offs between building once per platform and sharing code. See <a href="#uihistory">UI history</a> for how we got here.</p></div>
   <div class="grid">
@@ -14144,7 +14245,7 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","apps","uihistory","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","architecture","microservices","eventsourcing","sysdesign","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata","llm","ai","rag","mcp","agentharness","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","architecture","microservices","eventsourcing","sysdesign","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata","llm","ai","rag","mcp","agentharness","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
