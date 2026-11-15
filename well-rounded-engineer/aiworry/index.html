@@ -31,8 +31,10 @@
       <a href="/well-rounded-engineer/aiworry/" aria-current="page">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
       <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
+      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
+      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
       <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
       <a href="/well-rounded-engineer/docker/">Docker</a>
       <a href="/well-rounded-engineer/sql/">SQL Skills</a>
@@ -107,6 +109,7 @@
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
+      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
       <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
       <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
       <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
@@ -138,6 +141,19 @@
     <p>Software is going the same way. Fewer people will type routine code by hand, but people are still needed to manage the work, and managing it well takes a good understanding of what is being built. The people who stay most useful are the ones who understand what the machines are doing, and can take over when they stop.</p>
   </article>
 
+  <article class="card wide"><h3>We have been here before: CAD and CAM</h3>
+    <p>Engineering design went through this once already. Drawings used to be made by hand at drawing boards, by teams of draughtsmen. Then computers took over the drawing and the machining:</p>
+    <ul>
+      <li><b>1940s and 1950s:</b> the first numerically controlled machine tools follow points fed into them, instead of a person guiding every cut.</li>
+      <li><b>1963:</b> Ivan Sutherland writes Sketchpad for his PhD thesis, an early program for drawing on a computer screen.</li>
+      <li><b>1982:</b> AutoCAD is released for desktop computers, and computer-aided design (CAD) spreads to ordinary offices.</li>
+      <li><b>Computer-aided manufacturing (CAM)</b> then turns those designs into instructions for the machines that cut and shape the parts.</li>
+    </ul>
+    <p>The drawing board disappeared, and many drafting jobs changed or went. But engineering did not end: it grew. The people who did well learned the new tools and kept the judgement the tools could not supply: whether a part would be strong enough, whether it could be made, whether it was safe. CAD made drawing faster; it never decided what was worth drawing.</p>
+    <p>AI is the same kind of shift for writing code and documents, faster and wider. The lesson carries over: learn the tool, keep the understanding, and own the decisions.</p>
+    <p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Computer_numerical_control" target="_blank" rel="noopener">Computer numerical control</a>; <a href="https://en.wikipedia.org/wiki/Sketchpad" target="_blank" rel="noopener">Sketchpad</a>; <a href="https://en.wikipedia.org/wiki/AutoCAD" target="_blank" rel="noopener">AutoCAD</a>; <a href="https://en.wikipedia.org/wiki/Computer-aided_design" target="_blank" rel="noopener">Computer-aided design</a>; <a href="https://en.wikipedia.org/wiki/Computer-aided_manufacturing" target="_blank" rel="noopener">Computer-aided manufacturing</a>.</p>
+  </article>
+
   <article class="card"><h3>The risk of a team that can only prompt</h3>
     <p>Picture a team whose only skill is asking an AI to do the work. Everything is automated. Then something fails, and the only thing they know how to do is ask the AI to fix it. If the AI is wrong, unavailable, or part of what failed, nobody in the room can help.</p>
     <p>We have seen what large automated failures look like. On 19 July 2024 a faulty update to a widely used security product crashed about 8.5 million Windows computers, by Microsoft's estimate, and many had to be repaired by hand, one machine at a time. People with hands-on skills were the way out.</p>
@@ -154,19 +170,22 @@
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
   </article>
 
-  <article class="card"><h3>More with fewer, or more with the same</h3>
+  <article class="card wide"><h3>More with fewer, or more with the same</h3>
     <p>Come back to the bulldozer. Companies may expect the same work from fewer engineers, or more work from the same number. We can already see some reduction across the industry, and there will be disruption, though no one can say yet how much.</p>
     <p>The people who come through it best will be the ones who can direct the machine and still understand the ground it is moving.</p>
   </article>
 
-  <article class="card"><h3>Four ways people use AI</h3>
+  <article class="card wide"><h3>Seven ways people use AI</h3>
     <ul>
       <li><b>To automate without learning.</b> Fast today, fragile tomorrow: when it breaks, nothing was learned.</li>
       <li><b>To learn.</b> Ask it to explain, then check the explanation against the docs.</li>
-      <li><b>As a tester.</b> Ask it to find the cases you missed and to try to break your code.</li>
+      <li><b>As a tester and reviewer.</b> Ask it to find the cases you missed, try to break your code, and review your writing, designs and pull requests.</li>
       <li><b>As a tutor and mentor.</b> Ask it to quiz you, review your reasoning, and say what to read next.</li>
+      <li><b>To explore and research.</b> Summarise a long document, compare options, brainstorm, draft something new; then check what comes back against the real sources.</li>
+      <li><b>As a builder.</b> Use it to build what you design and understand: frameworks, tools, products, reusable blueprints for your team. You set the architecture and the standards; AI speeds up the making. See <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>.</li>
+      <li><b>To automate, with oversight.</b> Let it, or an agent, run routine work you understand. Watch what it does, keep the logs, and keep the off switch. See "Keep a hand on the controls" above and <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>.</li>
     </ul>
-    <p>Only the first one makes you weaker.</p>
+    <p>Only the first makes you weaker; the rest make you stronger, as long as you stay the one who understands.</p>
   </article>
 
   <article class="card wide"><h3>You may not read every line, but you must understand it and test it</h3>
@@ -210,11 +229,12 @@
   </article>
 
   <article class="card wide"><h3>A journey, not a fight</h3>
-    <p>When change feels threatening, the body reacts as if to danger: the fight-or-flight response. It helps in a real emergency and hurts in a long change, because a mind in that state reacts instead of thinking. The change AI brings will take years, not days, so treat it as a journey rather than a fight.</p>
+    <p>When change feels threatening, the body reacts as if to danger: the fight-or-flight response. It helps in a real emergency and hurts in a long change, because a mind in that state reacts instead of thinking. The change AI brings will take years, not days, so treat it as a journey rather than a fight. It is a journey, and we are in competition with no one: not our colleagues, not the machines.</p>
     <ul>
       <li><b>Step back from the headlines.</b> Ask what is actually changing in your own work this month, not what the loudest voice predicts.</li>
-      <li><b>Take small steps.</b> One thing learned each day compounds; <i>Atomic Habits</i> calls it getting about 1% better each day. See the <a href="/well-rounded-engineer/reading/">Reading list</a>.</li>
+      <li><b>Learn something new every day.</b> One thing learned each day compounds; <i>Atomic Habits</i> calls it getting about 1% better each day. See the <a href="/well-rounded-engineer/reading/">Reading list</a>.</li>
       <li><b>Look after the basics.</b> Sleep, movement and time away from screens keep you calm enough to think. See <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>.</li>
+      <li><b>Keep doing the work.</b> Good things happen to people who are ready and keep going, day after day, long after the headlines move on.</li>
       <li><b>Think above the ordinary.</b> When everyone is anxious, the person who stays calm, learns steadily and helps others becomes the one people turn to.</li>
     </ul>
   </article>

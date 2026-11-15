@@ -106,8 +106,10 @@ details>.inner{padding:4px 10px 8px}
       <a href="#aiworry" data-tab="aiworry">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
       <a href="#electronics" data-tab="electronics">Electronics &amp; Chips</a>
+      <a href="#hardware" data-tab="hardware">How Computers Are Built</a>
       <a href="#linux" data-tab="linux">Linux</a>
       <a href="#networking" data-tab="networking">Networking</a>
+      <a href="#internet" data-tab="internet">How the Internet Is Tied Together</a>
       <a href="#web" data-tab="web">Web Fundamentals</a>
       <a href="#docker" data-tab="docker">Docker</a>
       <a href="#sql" data-tab="sql">SQL Skills</a>
@@ -182,6 +184,7 @@ details>.inner{padding:4px 10px 8px}
       <a href="#behaviours" data-tab="behaviours">Behaviours</a>
       <a href="#mathematics" data-tab="mathematics">Mathematics</a>
       <a href="#science" data-tab="science">Science &amp; Method</a>
+      <a href="#everydayscience" data-tab="everydayscience">Everyday Science</a>
       <a href="#philosophy" data-tab="philosophy">Philosophy</a>
       <a href="#goodhuman" data-tab="goodhuman">Being a Good Human</a>
       <a href="#body" data-tab="body">Body, Mind &amp; Nature</a>
@@ -211,7 +214,18 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> User interfaces</h4><p>How people see and touch software, on phones, desktops and the web, and how that changed.</p><p class="gmap-pages"><a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> User interfaces</h4><p>How people see and touch software, on phones, desktops and the web, and how that changed.</p><p class="gmap-pages"><a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+  </article>
+
+  <article class="card wide" id="promise"><h3>Our promise: checked knowledge, no fuss</h3>
+    <ul>
+      <li><b>Every fact is checked</b> against an official document, a standard or a well-sourced reference, and each page lists what it was checked against.</li>
+      <li><b>Every code example was run</b> before it went on the page.</li>
+      <li><b>What is memory or opinion says so</b> ("as I remember it"), and what is planned is called planned.</li>
+      <li><b>No ads, no tracking, no sign-up.</b> Read in peace, and save any page as a PDF.</li>
+      <li><b>When something is wrong, it gets fixed:</b> every page ends with a link to report it in the open.</li>
+    </ul>
+    <p class="note">No guide can promise to be perfect. This one promises to show its sources and correct its mistakes.</p>
   </article>
 
 
@@ -301,8 +315,10 @@ details>.inner{padding:4px 10px 8px}
       <thead><tr><th>Area</th><th>Know enough to…</th><th>Go deep means…</th></tr></thead>
       <tbody>
       <tr><td><a href="#electronics">Electronics &amp; Chips</a></td><td>Explain transistors, logic gates and what an instruction set is.</td><td>Digital design with an HDL and FPGAs; open hardware such as RISC-V; design for repair.</td></tr>
+      <tr><td><a href="#hardware">How Computers Are Built</a></td><td>Explain RISC vs CISC, firmware and drivers, and why GPUs suit AI.</td><td>Choose hardware for a workload; reason about cores, memory, storage and accelerators.</td></tr>
       <tr><td><a href="#linux">Linux</a></td><td>Find a file, read a log, check disk and memory, kill a stuck process, write a safe bash script.</td><td>systemd, permissions and users, performance tools, kernel limits, shell scripting at scale.</td></tr>
       <tr><td><a href="#networking">Networking</a></td><td>Tell a DNS failure from a refused connection from a timeout.</td><td>VPC design, CIDR planning, NAT and private access, load balancers, TLS.</td></tr>
+      <tr><td><a href="#internet">How the Internet Is Tied Together</a></td><td>Explain autonomous systems, BGP, exchange points, CDNs and DNS roots.</td><td>Design around shared internet dependencies: DNS, CDN and region failures.</td></tr>
       <tr><td><a href="#web">Web Fundamentals</a></td><td>Explain a page load end to end; read headers in DevTools; know cookies and CORS.</td><td>Caching, rendering models, web security headers, performance and accessibility.</td></tr>
       <tr><td><a href="#docker">Docker</a></td><td>Build, run and debug a container; read a Dockerfile.</td><td>Small, secure, reproducible images; multi-stage and multi-platform builds; layer caching.</td></tr>
       <tr><td><a href="#sql">SQL Skills</a></td><td>Write correct joins and aggregates, handle NULLs, use window functions and QUALIFY.</td><td>Gaps and islands, recursive queries, reading BigQuery execution graphs, cutting cost.</td></tr>
@@ -430,6 +446,19 @@ details>.inner{padding:4px 10px 8px}
     <p>Software is going the same way. Fewer people will type routine code by hand, but people are still needed to manage the work, and managing it well takes a good understanding of what is being built. The people who stay most useful are the ones who understand what the machines are doing, and can take over when they stop.</p>
   </article>
 
+  <article class="card wide"><h3>We have been here before: CAD and CAM</h3>
+    <p>Engineering design went through this once already. Drawings used to be made by hand at drawing boards, by teams of draughtsmen. Then computers took over the drawing and the machining:</p>
+    <ul>
+      <li><b>1940s and 1950s:</b> the first numerically controlled machine tools follow points fed into them, instead of a person guiding every cut.</li>
+      <li><b>1963:</b> Ivan Sutherland writes Sketchpad for his PhD thesis, an early program for drawing on a computer screen.</li>
+      <li><b>1982:</b> AutoCAD is released for desktop computers, and computer-aided design (CAD) spreads to ordinary offices.</li>
+      <li><b>Computer-aided manufacturing (CAM)</b> then turns those designs into instructions for the machines that cut and shape the parts.</li>
+    </ul>
+    <p>The drawing board disappeared, and many drafting jobs changed or went. But engineering did not end: it grew. The people who did well learned the new tools and kept the judgement the tools could not supply: whether a part would be strong enough, whether it could be made, whether it was safe. CAD made drawing faster; it never decided what was worth drawing.</p>
+    <p>AI is the same kind of shift for writing code and documents, faster and wider. The lesson carries over: learn the tool, keep the understanding, and own the decisions.</p>
+    <p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Computer_numerical_control" target="_blank" rel="noopener">Computer numerical control</a>; <a href="https://en.wikipedia.org/wiki/Sketchpad" target="_blank" rel="noopener">Sketchpad</a>; <a href="https://en.wikipedia.org/wiki/AutoCAD" target="_blank" rel="noopener">AutoCAD</a>; <a href="https://en.wikipedia.org/wiki/Computer-aided_design" target="_blank" rel="noopener">Computer-aided design</a>; <a href="https://en.wikipedia.org/wiki/Computer-aided_manufacturing" target="_blank" rel="noopener">Computer-aided manufacturing</a>.</p>
+  </article>
+
   <article class="card"><h3>The risk of a team that can only prompt</h3>
     <p>Picture a team whose only skill is asking an AI to do the work. Everything is automated. Then something fails, and the only thing they know how to do is ask the AI to fix it. If the AI is wrong, unavailable, or part of what failed, nobody in the room can help.</p>
     <p>We have seen what large automated failures look like. On 19 July 2024 a faulty update to a widely used security product crashed about 8.5 million Windows computers, by Microsoft's estimate, and many had to be repaired by hand, one machine at a time. People with hands-on skills were the way out.</p>
@@ -446,19 +475,22 @@ details>.inner{padding:4px 10px 8px}
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
   </article>
 
-  <article class="card"><h3>More with fewer, or more with the same</h3>
+  <article class="card wide"><h3>More with fewer, or more with the same</h3>
     <p>Come back to the bulldozer. Companies may expect the same work from fewer engineers, or more work from the same number. We can already see some reduction across the industry, and there will be disruption, though no one can say yet how much.</p>
     <p>The people who come through it best will be the ones who can direct the machine and still understand the ground it is moving.</p>
   </article>
 
-  <article class="card"><h3>Four ways people use AI</h3>
+  <article class="card wide"><h3>Seven ways people use AI</h3>
     <ul>
       <li><b>To automate without learning.</b> Fast today, fragile tomorrow: when it breaks, nothing was learned.</li>
       <li><b>To learn.</b> Ask it to explain, then check the explanation against the docs.</li>
-      <li><b>As a tester.</b> Ask it to find the cases you missed and to try to break your code.</li>
+      <li><b>As a tester and reviewer.</b> Ask it to find the cases you missed, try to break your code, and review your writing, designs and pull requests.</li>
       <li><b>As a tutor and mentor.</b> Ask it to quiz you, review your reasoning, and say what to read next.</li>
+      <li><b>To explore and research.</b> Summarise a long document, compare options, brainstorm, draft something new; then check what comes back against the real sources.</li>
+      <li><b>As a builder.</b> Use it to build what you design and understand: frameworks, tools, products, reusable blueprints for your team. You set the architecture and the standards; AI speeds up the making. See <a href="#blueprints">Frameworks vs AI</a>.</li>
+      <li><b>To automate, with oversight.</b> Let it, or an agent, run routine work you understand. Watch what it does, keep the logs, and keep the off switch. See "Keep a hand on the controls" above and <a href="#agentharness">Agent Harness</a>.</li>
     </ul>
-    <p>Only the first one makes you weaker.</p>
+    <p>Only the first makes you weaker; the rest make you stronger, as long as you stay the one who understands.</p>
   </article>
 
   <article class="card wide"><h3>You may not read every line, but you must understand it and test it</h3>
@@ -502,11 +534,12 @@ details>.inner{padding:4px 10px 8px}
   </article>
 
   <article class="card wide"><h3>A journey, not a fight</h3>
-    <p>When change feels threatening, the body reacts as if to danger: the fight-or-flight response. It helps in a real emergency and hurts in a long change, because a mind in that state reacts instead of thinking. The change AI brings will take years, not days, so treat it as a journey rather than a fight.</p>
+    <p>When change feels threatening, the body reacts as if to danger: the fight-or-flight response. It helps in a real emergency and hurts in a long change, because a mind in that state reacts instead of thinking. The change AI brings will take years, not days, so treat it as a journey rather than a fight. It is a journey, and we are in competition with no one: not our colleagues, not the machines.</p>
     <ul>
       <li><b>Step back from the headlines.</b> Ask what is actually changing in your own work this month, not what the loudest voice predicts.</li>
-      <li><b>Take small steps.</b> One thing learned each day compounds; <i>Atomic Habits</i> calls it getting about 1% better each day. See the <a href="#reading">Reading list</a>.</li>
+      <li><b>Learn something new every day.</b> One thing learned each day compounds; <i>Atomic Habits</i> calls it getting about 1% better each day. See the <a href="#reading">Reading list</a>.</li>
       <li><b>Look after the basics.</b> Sleep, movement and time away from screens keep you calm enough to think. See <a href="#body">Body, Mind &amp; Nature</a>.</li>
+      <li><b>Keep doing the work.</b> Good things happen to people who are ready and keep going, day after day, long after the headlines move on.</li>
       <li><b>Think above the ordinary.</b> When everyone is anxious, the person who stays calm, learns steadily and helps others becomes the one people turn to.</li>
     </ul>
   </article>
@@ -584,6 +617,76 @@ details>.inner{padding:4px 10px 8px}
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain voltage, current and how a transistor switches</li><li>Explain logic gates and how they add numbers</li><li>Explain what an instruction set is</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a microcontroller project with sensors and motors</li><li>Write and simulate a small design in Verilog or VHDL</li><li>Run a design on an FPGA board</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a simple processor or peripheral on an FPGA</li><li>Read datasheets and choose components for a product</li><li>Design hardware for repair and long life</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead hardware and software co-design</li><li>Take a design towards silicon with an open process kit</li><li>Shape open hardware and sustainability practice</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Digital logic</li><li>Verilog and VHDL</li><li>FPGAs</li><li>RISC-V</li><li>Semiconductor manufacturing</li><li>E-waste and repair</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener">RISC-V (Wikipedia)</a><span class="lnote"> The open standard instruction set</span></li><li><a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener">Field-programmable gate array (Wikipedia)</a><span class="lnote"> Reprogrammable chips for learning digital design</span></li><li><a href="https://en.wikipedia.org/wiki/Semiconductor_device_fabrication" target="_blank" rel="noopener">Semiconductor device fabrication (Wikipedia)</a><span class="lnote"> How chips are made</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Transistor" target="_blank" rel="noopener">Transistor</a>; <a href="https://en.wikipedia.org/wiki/Integrated_circuit" target="_blank" rel="noopener">Integrated circuit</a>; <a href="https://en.wikipedia.org/wiki/Moore%27s_law" target="_blank" rel="noopener">Moore's law</a>; <a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener">Field-programmable gate array</a>; <a href="https://en.wikipedia.org/wiki/Hardware_description_language" target="_blank" rel="noopener">Hardware description language</a>; <a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener">RISC-V</a>; <a href="https://en.wikipedia.org/wiki/SkyWater_Technology" target="_blank" rel="noopener">SkyWater Technology (SKY130 PDK)</a>; <a href="https://en.wikipedia.org/wiki/TSMC" target="_blank" rel="noopener">TSMC (foundry share)</a>; <a href="https://en.wikipedia.org/wiki/Electronic_waste" target="_blank" rel="noopener">Electronic waste</a>; <a href="https://en.wikipedia.org/wiki/Right_to_repair" target="_blank" rel="noopener">Right to repair</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BElectronics%20%26%20Chips%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-hardware" data-name="How Computers Are Built">
+  <div class="panel-head"><h2>How computers are built</h2><p>From the first microprocessor to the laptop on your desk: instruction sets, how software talks to devices, sound and media, and how graphics chips built for games became the engines of AI. Start with <a href="#electronics">Electronics &amp; Chips</a>.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>RISC and CISC</h3>
+    <ul>
+      <li><b>An instruction set</b> is the list of operations a processor understands: the contract between hardware and software.</li>
+      <li><b>CISC (complex instruction set computer):</b> instructions can do several things at once, such as load from memory, calculate and store, with many addressing modes. x86, in most PCs and servers, is the best-known CISC family.</li>
+      <li><b>RISC (reduced instruction set computer):</b> fewer, simpler instructions that each do one thing, so the chip can run them quickly and efficiently. The ideas came from projects such as IBM's 801 in the late 1970s and work at Berkeley and Stanford. ARM (originally Acorn RISC Machine, 1985) and RISC-V are RISC.</li>
+      <li><b>Today the line is blurred:</b> modern x86 chips translate complex instructions into simpler internal steps, and RISC chips have grown richer. The practical difference now is mostly power efficiency, licensing and the software ecosystem.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Programming devices</h3>
+    <ul>
+      <li><b>Microcontrollers</b> are small computers on one chip: processor, memory and inputs and outputs. They run washing machines, cars, sensors and robots.</li>
+      <li><b>Firmware</b> is the software built into a device, usually stored in flash memory. You "flash" new firmware to update it.</li>
+      <li><b>Device drivers</b> let the operating system control hardware: a driver turns "play this sound" or "print this page" into the device's own commands.</li>
+      <li><b>Try it:</b> program a microcontroller board to blink a light, read a sensor and drive a motor. It teaches timing, memory limits and the hardware underneath every abstraction. See <a href="#robotics">Robotics</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A short CPU history</h3>
+    <div class="tbl"><table>
+      <tr><th>When</th><th>What</th><th>Why it mattered</th></tr>
+      <tr><td>1971</td><td>Intel 4004</td><td>Often called the first microprocessor: a whole processor on one chip.</td></tr>
+      <tr><td>1978</td><td>Intel 8086</td><td>The start of x86, still the instruction set of most PCs and servers.</td></tr>
+      <tr><td>1985</td><td>ARM (Acorn RISC Machine)</td><td>A RISC design that later came to power most phones and tablets.</td></tr>
+      <tr><td>2003</td><td>AMD64 (x86-64), first in AMD's Opteron</td><td>64-bit x86: far more memory, while running older 32-bit software.</td></tr>
+      <tr><td>Mid-2000s</td><td>Multi-core processors in ordinary PCs</td><td>Clock speeds stopped climbing fast, so chips added cores instead; software had to learn to do work in parallel. See <a href="#java">Java</a> threads.</td></tr>
+      <tr><td>2020</td><td>Apple M1</td><td>An ARM system on a chip in mainstream laptops: CPU, GPU and more on one chip with shared memory.</td></tr>
+    </table></div>
+  </article>
+
+  <article class="card"><h3>How a modern laptop is built</h3>
+    <ul>
+      <li><b>System on a chip (SoC):</b> CPU cores, a graphics processor, AI and media engines and security functions on one chip, often with memory packaged right beside it and shared between them.</li>
+      <li><b>Storage:</b> a solid-state drive on the PCI Express bus, spoken to with the NVMe protocol: no moving parts, far faster than a spinning disk.</li>
+      <li><b>Power and heat:</b> the battery and cooling decide how hard the chip can work and for how long; thin laptops trade peak speed for quiet and battery life.</li>
+      <li><b>Firmware first:</b> when you press the power button, firmware checks the hardware and starts the operating system.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Media and sound cards</h3>
+    <ul>
+      <li><b>MIDI</b> (standardised 1983) lets instruments and computers exchange notes and controls rather than recorded sound.</li>
+      <li><b>Sound cards</b> gave early PCs real audio: AdLib (founded 1987) and then Creative's Sound Blaster (1989), which became the de facto standard for PC audio until Windows 95 and audio built into the motherboard took over.</li>
+      <li><b>Integrated audio:</b> today sound is part of the motherboard or chip, following Intel's AC'97 and High Definition Audio (2004) specifications.</li>
+      <li><b>The pattern repeats:</b> a separate card proves a need, then the function moves onto the main chip. Graphics went the same way in laptops.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>From gaming graphics to AI</h3>
+    <ol>
+      <li><b>1995 to 1999, 3D for games:</b> 3dfx's Voodoo Graphics chip (to manufacturing in November 1995) brought fast 3D to PC gaming. In 1999 Nvidia marketed the GeForce 256 as "the world's first GPU", popularising the term.</li>
+      <li><b>Why GPUs are different:</b> drawing a frame means doing the same small calculation on millions of pixels at once, so GPUs have thousands of simple cores built for parallel arithmetic, where a CPU has a few complex ones.</li>
+      <li><b>2007, CUDA:</b> Nvidia's CUDA let ordinary programs use the GPU for general-purpose computing, opening it to science and engineering.</li>
+      <li><b>2012, AlexNet:</b> a neural network for image recognition, trained on two Nvidia GTX 580 gaming GPUs, entered the ImageNet challenge and showed that GPUs made deep learning practical.</li>
+      <li><b>2015 to 2017, chips for AI:</b> Google introduced its Tensor Processing Unit (TPU), a chip designed only for neural networks, and Nvidia's Volta GPUs (first product announced May 2017) added Tensor Cores for deep learning.</li>
+    </ol>
+    <p class="note">Neural networks are mostly large matrix multiplications, exactly the parallel arithmetic that games had already paid to make fast and cheap. See <a href="#llm">LLMs</a> and <a href="#mathematics">Mathematics</a>.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain what an instruction set is, and RISC versus CISC</li><li>Explain firmware and device drivers</li><li>Explain why GPUs suit graphics and AI</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Program a microcontroller to read a sensor and drive an output</li><li>Read a laptop or server spec sheet and know what each part does</li><li>Run a workload on a GPU and compare it with the CPU</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose hardware for a workload: cores, memory, storage, accelerators</li><li>Profile where time goes between CPU, memory, disk and GPU</li><li>Plan for ARM and x86 in the same estate</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set hardware strategy for a platform or data centre</li><li>Co-design software with accelerators</li><li>Lead a move between processor architectures</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Instruction set architectures</li><li>Firmware and boot</li><li>Device drivers</li><li>Systems on a chip</li><li>GPU programming</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Reduced_instruction_set_computer" target="_blank" rel="noopener">Reduced instruction set computer (Wikipedia)</a><span class="lnote"> RISC explained, with its history</span></li><li><a href="https://en.wikipedia.org/wiki/Graphics_processing_unit" target="_blank" rel="noopener">Graphics processing unit (Wikipedia)</a><span class="lnote"> How GPUs work and how they developed</span></li><li><a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA (Wikipedia)</a><span class="lnote"> General-purpose computing on GPUs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Reduced_instruction_set_computer" target="_blank" rel="noopener">Reduced instruction set computer</a>; <a href="https://en.wikipedia.org/wiki/Complex_instruction_set_computer" target="_blank" rel="noopener">Complex instruction set computer</a>; <a href="https://en.wikipedia.org/wiki/Intel_4004" target="_blank" rel="noopener">Intel 4004</a>; <a href="https://en.wikipedia.org/wiki/Intel_8086" target="_blank" rel="noopener">Intel 8086</a>; <a href="https://en.wikipedia.org/wiki/ARM_architecture_family" target="_blank" rel="noopener">ARM architecture family</a>; <a href="https://en.wikipedia.org/wiki/X86-64" target="_blank" rel="noopener">x86-64</a>; <a href="https://en.wikipedia.org/wiki/Multi-core_processor" target="_blank" rel="noopener">Multi-core processor</a>; <a href="https://en.wikipedia.org/wiki/Apple_M1" target="_blank" rel="noopener">Apple M1</a>; <a href="https://en.wikipedia.org/wiki/System_on_a_chip" target="_blank" rel="noopener">System on a chip</a>; <a href="https://en.wikipedia.org/wiki/Firmware" target="_blank" rel="noopener">Firmware</a>; <a href="https://en.wikipedia.org/wiki/Microcontroller" target="_blank" rel="noopener">Microcontroller</a>; <a href="https://en.wikipedia.org/wiki/Device_driver" target="_blank" rel="noopener">Device driver</a>; <a href="https://en.wikipedia.org/wiki/NVM_Express" target="_blank" rel="noopener">NVM Express</a>; <a href="https://en.wikipedia.org/wiki/MIDI" target="_blank" rel="noopener">MIDI</a>; <a href="https://en.wikipedia.org/wiki/AdLib" target="_blank" rel="noopener">AdLib</a>; <a href="https://en.wikipedia.org/wiki/Sound_Blaster" target="_blank" rel="noopener">Sound Blaster</a>; <a href="https://en.wikipedia.org/wiki/Intel_High_Definition_Audio" target="_blank" rel="noopener">Intel High Definition Audio</a>; <a href="https://en.wikipedia.org/wiki/3dfx_Interactive" target="_blank" rel="noopener">3dfx Interactive</a>; <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit" target="_blank" rel="noopener">Graphics processing unit</a>; <a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA</a>; <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener">AlexNet</a>; <a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit" target="_blank" rel="noopener">Tensor Processing Unit</a>; <a href="https://en.wikipedia.org/wiki/Volta_(microarchitecture)" target="_blank" rel="noopener">Volta (microarchitecture)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BHow%20Computers%20Are%20Built%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -939,6 +1042,48 @@ gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></
 </section>
 
 <!-- ================= WEB FUNDAMENTALS ================= -->
+<section class="panel" id="p-internet" data-name="How the Internet Is Tied Together">
+  <div class="panel-head"><h2>How the internet is tied together</h2><p>The internet is not one network. It is tens of thousands of networks agreeing to carry each other's traffic, held together by a few shared systems. When one of those systems fails, much of the web goes down at once. Read <a href="#networking">Networking</a> first.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The pieces</h3>
+    <div class="tbl"><table>
+      <tr><th>Piece</th><th>What it does</th></tr>
+      <tr><td><b>Autonomous systems</b></td><td>Each internet provider, cloud or large company runs its own network, an autonomous system, with its own block of addresses.</td></tr>
+      <tr><td><b>BGP</b> (Border Gateway Protocol)</td><td>How autonomous systems tell each other which addresses they can reach. It is the internet's map, and every network trusts the others to describe it honestly.</td></tr>
+      <tr><td><b>Internet exchange points</b></td><td>Buildings full of switches where many networks connect directly and exchange traffic, instead of sending it the long way round.</td></tr>
+      <tr><td><b>Submarine cables</b></td><td>Fibre-optic cables on the sea bed carry the great majority of data between continents.</td></tr>
+      <tr><td><b>DNS and the root servers</b></td><td>DNS turns names into addresses. At its top are thirteen well-known root server addresses, served by many copies around the world.</td></tr>
+      <tr><td><b>Content delivery networks</b></td><td>Akamai, Cloudflare and others keep copies of websites close to users and absorb attacks, so a large share of the web passes through them.</td></tr>
+      <tr><td><b>Cloud regions</b></td><td>Huge data centres run by a few providers, where much of today's software and data live. See <a href="#cloudinside">How the cloud is built</a>.</td></tr>
+    </table></div>
+  </article>
+
+  <article class="card"><h3>When a shared piece fails</h3>
+    <ul>
+      <li><b>4 October 2021, BGP:</b> Facebook withdrew the routes to its own name servers in a burst of BGP updates, and its services were unavailable worldwide for six to seven hours.</li>
+      <li><b>20 October 2025, a cloud region:</b> services in AWS's Northern Virginia region (us-east-1) failed, taking down sites such as Roblox, Fortnite, Snapchat and Duolingo.</li>
+      <li><b>18 November 2025, a CDN:</b> a Cloudflare outage took down major platforms, including X and ChatGPT.</li>
+    </ul>
+    <p class="note">Each one is a single shared dependency that many companies chose independently. See <a href="#k8sdr">Kubernetes DR</a> and <a href="#sre">SRE</a> on designing for it.</p>
+  </article>
+
+  <article class="card"><h3>What engineers can do</h3>
+    <ul>
+      <li><b>Know your dependencies:</b> DNS provider, CDN, cloud region, identity provider, payment gateway. Write them down.</li>
+      <li><b>Avoid one region for everything</b> that must stay up; test failing over before you need it.</li>
+      <li><b>Lower DNS TTLs before planned changes,</b> and keep a way to switch providers.</li>
+      <li><b>Show an honest status</b> when a dependency is down, rather than a confusing error. See <a href="#observability">Observability</a>.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain that the internet is many networks connected together</li><li>Explain what DNS, a CDN and a cloud region are</li><li>List your service's outside dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Trace a request's path with traceroute and DNS lookups</li><li>Explain BGP and why a bad route can take a company offline</li><li>Configure a CDN and DNS for a service</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for the failure of a DNS provider, CDN or region</li><li>Plan multi-region and multi-provider set-ups</li><li>Run outage drills for shared dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own internet-facing architecture and its resilience</li><li>Negotiate peering and provider strategy</li><li>Lead response to large external outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Autonomous systems and BGP</li><li>Internet exchange points</li><li>Submarine cables</li><li>DNS root servers and anycast</li><li>Content delivery networks</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol" target="_blank" rel="noopener">Border Gateway Protocol (Wikipedia)</a><span class="lnote"> How networks share routes</span></li><li><a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank" rel="noopener">Internet exchange point (Wikipedia)</a><span class="lnote"> Where networks meet</span></li><li><a href="https://en.wikipedia.org/wiki/Root_name_server" target="_blank" rel="noopener">Root name server (Wikipedia)</a><span class="lnote"> The top of DNS</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)" target="_blank" rel="noopener">Autonomous system</a>; <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol" target="_blank" rel="noopener">Border Gateway Protocol</a>; <a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank" rel="noopener">Internet exchange point</a>; <a href="https://en.wikipedia.org/wiki/Submarine_communications_cable" target="_blank" rel="noopener">Submarine communications cable</a>; <a href="https://en.wikipedia.org/wiki/Root_name_server" target="_blank" rel="noopener">Root name server</a>; <a href="https://en.wikipedia.org/wiki/Content_delivery_network" target="_blank" rel="noopener">Content delivery network</a>; <a href="https://en.wikipedia.org/wiki/Akamai_Technologies" target="_blank" rel="noopener">Akamai Technologies</a>; <a href="https://en.wikipedia.org/wiki/Cloudflare" target="_blank" rel="noopener">Cloudflare (November 2025 outage)</a>; <a href="https://en.wikipedia.org/wiki/2021_Facebook_outage" target="_blank" rel="noopener">2021 Facebook outage</a>; <a href="https://en.wikipedia.org/wiki/Timeline_of_Amazon_Web_Services" target="_blank" rel="noopener">Timeline of AWS (20 October 2025 outage)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BHow%20the%20Internet%20Is%20Tied%20Together%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
 <section class="panel" id="p-web" data-name="Web Fundamentals">
   <div class="panel-head"><h2>Web fundamentals</h2><p>How the web works from a typed URL to a rendered page: URLs, HTTP, cookies and sessions, origins and CORS, caching, rendering models, web security, performance and accessibility. Lower layers are on <a href="#networking">Networking</a>; API design is on <a href="#apis">APIs &amp; Integration</a>.</p></div>
   <div class="grid">
@@ -12662,6 +12807,41 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
     </ul>
   </article>
 
+    <article class="card wide"><h3>From counting to algebra, the Feynman way</h3>
+    <p>In Chapter 22 of <i>The Feynman Lectures on Physics</i> (Volume I, "Algebra"), Richard Feynman builds mathematics up from counting, so that each new idea grows out of the one before. The path, in short:</p>
+    <ol>
+      <li><b>Counting</b> gives the whole numbers; <b>addition</b> is counting on.</li>
+      <li><b>Multiplication</b> is repeated addition; <b>raising to a power</b> is repeated multiplication.</li>
+      <li><b>Undo each operation</b> and new kinds of number appear: subtraction needs negative numbers, division needs fractions, and roots need irrational and then imaginary numbers.</li>
+      <li><b>The inverse of a power</b> is a logarithm.</li>
+      <li><b>Put it all together</b> and you reach Euler's formula, e<sup>iθ</sup> = cos θ + i sin θ, which Feynman called "our jewel" and "the most remarkable formula in mathematics".</li>
+    </ol>
+    <p>Nothing has to be taken on faith: every step is a question ("what undoes this?") and its answer. That is the best way to learn anything, mathematics or software. Run the steps yourself:</p>
+    <pre><code class="language-python">&quot;&quot;&quot;From counting to Euler&#x27;s formula, one step at a time.&quot;&quot;&quot;
+import cmath, math
+
+# 1. Counting gives the whole numbers. Addition is counting on.
+print(&quot;3 + 4 =&quot;, 3 + 4)
+# 2. Multiplication is repeated addition; powers are repeated multiplication.
+print(&quot;3 * 4 =&quot;, 4 + 4 + 4, &quot;| 2 ** 10 =&quot;, 2 ** 10)
+# 3. Undo each operation and new kinds of number appear:
+print(&quot;3 - 5 =&quot;, 3 - 5, &quot;  (subtraction needs negative numbers)&quot;)
+print(&quot;3 / 4 =&quot;, 3 / 4, &quot; (division needs fractions)&quot;)
+print(&quot;sqrt(2) =&quot;, math.sqrt(2), &quot; (roots need irrational numbers)&quot;)
+print(&quot;sqrt(-1) =&quot;, cmath.sqrt(-1), &quot;  (roots of negatives need imaginary numbers)&quot;)
+# 4. The inverse of a power is a logarithm.
+print(&quot;log2(1024) =&quot;, math.log2(1024))
+# 5. Put it together: e to an imaginary power goes round a circle.
+theta = math.pi / 3
+print(&quot;e^(i*pi/3) =&quot;, cmath.exp(1j * theta), &quot;= cos + i*sin:&quot;, complex(math.cos(theta), math.sin(theta)))
+print(&quot;e^(i*pi) + 1 =&quot;, cmath.exp(1j * math.pi) + 1, &quot; (zero, to rounding)&quot;)</code></pre>
+    <p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/The_Feynman_Lectures_on_Physics" target="_blank" rel="noopener">The Feynman Lectures on Physics (Wikipedia; Volume I, chapter 22 is "Algebra")</a>; <a href="https://en.wikipedia.org/wiki/Euler%27s_formula" target="_blank" rel="noopener">Euler's formula (Wikipedia, citing Volume I p. 22-10)</a>. The lectures are free to read at <a href="https://www.feynmanlectures.caltech.edu/I_22.html" target="_blank" rel="noopener">Caltech's Feynman Lectures site</a>.</p>
+  </article>
+
+<!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMathematics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMathematics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
@@ -12774,6 +12954,48 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Reproduce a bug before fixing it</li><li>Change one thing at a time and measure before and after</li><li>Write down hypotheses and results while debugging</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Debug systematically with falsifiable hypotheses and bisection</li><li>Run fair benchmarks with baselines and error bars</li><li>Spot common biases in your own reasoning</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design controlled experiments and A/B tests correctly</li><li>Read papers critically and apply their results with care</li><li>Teach the method through how you run investigations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Build a culture of evidence and experiment across the organisation</li><li>Lead research-style work with rigour and reproducibility</li><li>Judge competing claims across fields</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Falsifiability (Karl Popper)</li><li>Experimental design and controls</li><li>Cognitive biases</li><li>Memory hierarchy and computer architecture</li><li>How to read a paper</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank" rel="noopener">You and Your Research (Richard Hamming)</a><span class="lnote"> A classic talk on doing important work</span></li><li><a href="https://press.stripe.com/the-art-of-doing-science-and-engineering" target="_blank" rel="noopener">The Art of Doing Science and Engineering (Hamming)</a><span class="lnote"> Book on thinking as a scientist-engineer</span></li><li><a href="https://calteches.library.caltech.edu/51/2/CargoCult.htm" target="_blank" rel="noopener">Cargo Cult Science (Richard Feynman)</a><span class="lnote"> On scientific integrity</span></li><li><a href="http://ccr.sigcomm.org/online/files/p83-keshavA.pdf" target="_blank" rel="noopener">How to Read a Paper (S. Keshav)</a><span class="lnote"> The three-pass method</span></li><li><a href="https://csapp.cs.cmu.edu/" target="_blank" rel="noopener">Computer Systems: A Programmer's Perspective</a><span class="lnote"> How computers really work, for programmers</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BScience%20%26%20Method%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
+<section class="panel" id="p-everydayscience" data-name="Everyday Science">
+  <div class="panel-head"><h2>Everyday science: things we should all know</h2><p>Basic science for everyone, not only engineers: the reasons behind things we see every day. A grounded person knows why the sky is blue as well as how to use a phone. See <a href="#science">Science &amp; Method</a> for how we know.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>Sky, light and weather</h3>
+    <ul>
+      <li><b>Why the sky is blue:</b> air scatters blue light much more than red or green, so blue reaches our eyes from every direction of the sky.</li>
+      <li><b>Rainbows:</b> sunlight is bent (refracted), reflected inside water droplets and split into its colours (dispersion).</li>
+      <li><b>Lightning and thunder:</b> light arrives almost at once; sound travels at about 343 metres a second in air at 20 °C. Count the seconds between flash and thunder and divide by three for kilometres (by five for miles).</li>
+      <li><b>The speed of light</b> is exactly 299,792,458 metres a second, the fastest anything can travel.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Earth, Moon and seasons</h3>
+    <ul>
+      <li><b>Seasons</b> come from the tilt of Earth's axis, not its distance from the Sun: as Earth orbits, each hemisphere leans towards the Sun for part of the year.</li>
+      <li><b>Tides</b> are the rise and fall of the sea caused mainly by the gravity of the Moon and the Sun.</li>
+      <li><b>Moon phases:</b> we see different parts of the Moon's sunlit half as it orbits us, from crescent to full and back.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Water and heat</h3>
+    <ul>
+      <li><b>Ice floats</b> because water expands by about 9% when it freezes, so ice is less dense than liquid water. Lakes freeze from the top, which lets life survive underneath.</li>
+      <li><b>Boiling point drops with pressure:</b> under lower pressure, such as high in the mountains, water boils at a lower temperature, so food takes longer to cook.</li>
+      <li><b>The greenhouse effect:</b> heat-trapping gases in the atmosphere stop Earth losing heat to space, raising its surface temperature. Some keeps the planet habitable; adding more warms it.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Life</h3>
+    <ul>
+      <li><b>Photosynthesis:</b> plants, algae and some bacteria turn the energy in sunlight into chemical energy, the base of almost every food chain.</li>
+      <li><b>Your body changes with use:</b> muscles, bones and the brain all respond to how you use them. See <a href="#body">Body, Mind &amp; Nature</a>.</li>
+    </ul>
+    <p class="note">This page will grow into deeper physics, chemistry, biology and mathematics, as planned on <a href="#why">Why this guide exists</a>.</p>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Diffuse_sky_radiation" target="_blank" rel="noopener">Diffuse sky radiation</a>; <a href="https://en.wikipedia.org/wiki/Rainbow" target="_blank" rel="noopener">Rainbow</a>; <a href="https://en.wikipedia.org/wiki/Thunder" target="_blank" rel="noopener">Thunder</a>; <a href="https://en.wikipedia.org/wiki/Speed_of_sound" target="_blank" rel="noopener">Speed of sound</a>; <a href="https://en.wikipedia.org/wiki/Speed_of_light" target="_blank" rel="noopener">Speed of light</a>; <a href="https://en.wikipedia.org/wiki/Season" target="_blank" rel="noopener">Season</a>; <a href="https://en.wikipedia.org/wiki/Tide" target="_blank" rel="noopener">Tide</a>; <a href="https://en.wikipedia.org/wiki/Lunar_phase" target="_blank" rel="noopener">Lunar phase</a>; <a href="https://en.wikipedia.org/wiki/Ice" target="_blank" rel="noopener">Ice</a>; <a href="https://en.wikipedia.org/wiki/Boiling_point" target="_blank" rel="noopener">Boiling point</a>; <a href="https://en.wikipedia.org/wiki/Greenhouse_effect" target="_blank" rel="noopener">Greenhouse effect</a>; <a href="https://en.wikipedia.org/wiki/Photosynthesis" target="_blank" rel="noopener">Photosynthesis</a>.</p></article>
 
   </div>
 </section>
@@ -13087,6 +13309,19 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
       <li><b>Work in blocks,</b> then take a real break: stand up, look away from the screen, step outside.</li>
       <li><b>One thing at a time.</b> Switching between tasks feels productive and usually is not.</li>
     </ul>
+  </article>
+
+  <article class="card wide"><h3>Building good habits</h3>
+    <p>Most of what lasts, in health, learning and work, comes from small things done every day rather than big efforts now and then. Several books on the <a href="#reading">Reading list</a> are about exactly this.</p>
+    <ul>
+      <li><b>Start small:</b> <i>Atomic Habits</i> (James Clear) builds a habit by making it small and easy, and aims to get about 1% better each day.</li>
+      <li><b>Stack habits:</b> attach a new habit to one you already have ("after I pour my coffee, I read one page").</li>
+      <li><b>Pair the hard with the pleasant:</b> "temptation bundling", giving yourself a small reward for doing the habit.</li>
+      <li><b>Protect the start of the day:</b> <i>The 5 AM Club</i> (Robin Sharma) is about owning the morning before the world asks for it.</li>
+      <li><b>Build on the basics:</b> <i>The 4 Pillar Plan</i> (Dr Rangan Chatterjee) makes the case for small, consistent changes for everyday health.</li>
+      <li><b>Mind the story you tell yourself:</b> <i>Psycho-Cybernetics</i> and <i>As a Man Thinketh</i> are about how self-image and thought shape what we do. See "Believe in yourself" on <a href="#aiworry">Worried about AI?</a>.</li>
+    </ul>
+    <p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Atomic_Habits" target="_blank" rel="noopener">Atomic Habits (Wikipedia)</a>.</p>
   </article>
 
   <article class="card"><h3>Look after the body you work in</h3>
@@ -13909,7 +14144,7 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","electronics","linux","networking","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","apps","uihistory","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","architecture","microservices","eventsourcing","sysdesign","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata","llm","ai","rag","mcp","agentharness","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","mathematics","science","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","apps","uihistory","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","architecture","microservices","eventsourcing","sysdesign","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata","llm","ai","rag","mcp","agentharness","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
