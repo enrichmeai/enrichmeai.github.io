@@ -30,6 +30,7 @@
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
       <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
@@ -50,6 +51,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -62,41 +66,43 @@
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="/well-rounded-engineer/architecture/">Architecture</a>
       <a href="/well-rounded-engineer/microservices/">Microservices</a>
       <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
       <a href="/well-rounded-engineer/sysdesign/">System Design</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Cloud &amp; platform</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
       <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
       <a href="/well-rounded-engineer/helm/">Helm Charts</a>
       <a href="/well-rounded-engineer/operators/">Operators</a>
       <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <span class="navgrp">Delivery &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
       <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <a href="/well-rounded-engineer/sre/">SRE</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">AI</span>
       <a href="/well-rounded-engineer/llm/">LLMs</a>
       <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
@@ -113,6 +119,7 @@
       <span class="navgrp">About this guide</span>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
       <span class="navgrp">EnrichMeAI open source</span>
       <a href="/well-rounded-engineer/opensource/">Our open source</a>
       <a href="/well-rounded-engineer/culvert/">Culvert</a>
@@ -144,6 +151,19 @@
       <li><b>Coroutines:</b> asynchronous code written like sequential code (the <code>kotlinx.coroutines</code> library).</li>
       <li><b>Java interop:</b> call Java and be called from it; watch nullability at the boundary, where Java types arrive as "platform types" the compiler cannot check.</li>
     </ul>
+  </article>
+
+  <article class="card wide"><h3>Java, Kotlin or Scala?</h3>
+    <p>All three run on the JVM and can use the same libraries. They differ in what they optimise for.</p>
+    <div class="tbl"><table>
+      <tr><th></th><th>Java</th><th>Kotlin</th><th>Scala</th></tr>
+      <tr><td>First released</td><td>1995</td><td>2011 (1.0 in February 2016)</td><td>2004 (Scala 3 in May 2021)</td></tr>
+      <tr><td>Created by</td><td>Sun Microsystems</td><td>JetBrains</td><td>Martin Odersky</td></tr>
+      <tr><td>Style</td><td>Object-oriented, steadily adding records, pattern matching and virtual threads</td><td>Concise object-oriented with functional features; null safety in the type system</td><td>A deep blend of object-oriented and functional programming, with a powerful type system</td></tr>
+      <tr><td>Where you meet it</td><td>Most enterprise back ends, Spring and Quarkus services</td><td>Android, and Spring or Ktor services beside Java</td><td>Data processing (Apache Spark is written in Scala) and functional back ends</td></tr>
+      <tr><td>Learning curve</td><td>Gentle; the most material and people</td><td>Gentle for Java developers</td><td>Steeper; very expressive, which can also make code harder to read</td></tr>
+    </table></div>
+    <p class="note">A practical rule: learn Java first, because everything on the JVM assumes it. Add Kotlin for Android or a more concise service codebase, and Scala when you work with Spark or a team that writes functional code.</p>
   </article>
 
   <article class="card wide"><h3>A small program, and its test</h3>
@@ -200,7 +220,7 @@ class OrdersTest {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read Kotlin code beside Java</li><li>Use null safety, data classes and when</li><li>Write and run a test with kotlin.test</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a service in Kotlin with Spring Boot or Ktor</li><li>Handle Java interop and platform types safely</li><li>Use coroutines for asynchronous work</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design structured concurrency and cancellation</li><li>Mix Kotlin and Java in one codebase cleanly</li><li>Set style and lint rules for a team</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead a Java-to-Kotlin migration</li><li>Share code across platforms with Kotlin Multiplatform</li><li>Teach idiomatic Kotlin and review for it</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Null safety and platform types</li><li>Sealed types and exhaustive when</li><li>Coroutines and structured concurrency</li><li>Gradle Kotlin DSL</li><li>Kotlin Multiplatform</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener">Kotlin documentation</a><span class="lnote"> The official docs, from JetBrains</span></li><li><a href="https://kotlinlang.org/docs/coroutines-overview.html" target="_blank" rel="noopener">Coroutines overview</a><span class="lnote"> Asynchronous code in Kotlin</span></li><li><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">kotlinx.coroutines</a><span class="lnote"> The coroutines library's source and guide</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKotlin%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Null safety and platform types</li><li>Sealed types and exhaustive when</li><li>Coroutines and structured concurrency</li><li>Gradle Kotlin DSL</li><li>Kotlin Multiplatform</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener">Kotlin documentation</a><span class="lnote"> The official docs, from JetBrains</span></li><li><a href="https://kotlinlang.org/docs/coroutines-overview.html" target="_blank" rel="noopener">Coroutines overview</a><span class="lnote"> Asynchronous code in Kotlin</span></li><li><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">kotlinx.coroutines</a><span class="lnote"> The coroutines library's source and guide</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Kotlin" target="_blank" rel="noopener">Kotlin (Wikipedia)</a>; <a href="https://en.wikipedia.org/wiki/Scala_(programming_language)" target="_blank" rel="noopener">Scala (Wikipedia)</a>; <a href="https://en.wikipedia.org/wiki/Java_(programming_language)" target="_blank" rel="noopener">Java (Wikipedia)</a>; <a href="https://docs.scala-lang.org/scala3/new-in-scala3.html" target="_blank" rel="noopener">New in Scala 3</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKotlin%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>

@@ -30,6 +30,7 @@
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
       <a href="/well-rounded-engineer/linux/" aria-current="page">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
       <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
@@ -50,6 +51,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -62,41 +66,43 @@
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="/well-rounded-engineer/architecture/">Architecture</a>
       <a href="/well-rounded-engineer/microservices/">Microservices</a>
       <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
       <a href="/well-rounded-engineer/sysdesign/">System Design</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Cloud &amp; platform</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
       <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
       <a href="/well-rounded-engineer/helm/">Helm Charts</a>
       <a href="/well-rounded-engineer/operators/">Operators</a>
       <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <span class="navgrp">Delivery &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
       <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <a href="/well-rounded-engineer/sre/">SRE</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">AI</span>
       <a href="/well-rounded-engineer/llm/">LLMs</a>
       <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
@@ -113,6 +119,7 @@
       <span class="navgrp">About this guide</span>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
       <span class="navgrp">EnrichMeAI open source</span>
       <a href="/well-rounded-engineer/opensource/">Our open source</a>
       <a href="/well-rounded-engineer/culvert/">Culvert</a>
@@ -215,13 +222,13 @@ ulimit -n                 # max open files for this shell</code></pre></div>
 <div class="snip"><pre><code>ls -l f        # -rwxr-x--- 1 app app ...  owner / group / others
 chmod 640 f    # rw- r-- ---   (r=4 w=2 x=1)
 chmod u+x run.sh
-chmod -R g+rX dir/            # X: execute only on dirs
+chmod -R g+rX dir/            # X: execute on dirs, and on files already executable
 chown app:app f; chown -R 1001:1001 /data
 id; whoami; groups
 sudo -u app ./run.sh
 sudo useradd -r -s /usr/sbin/nologin app     # service account, no login
 umask                          # default permission mask</code></pre></div>
-    <p class="note">Private keys must not be readable by group or others (<code>600</code> or <code>400</code>), or SSH refuses them. A directory needs <code>x</code> to be entered and <code>r</code> to be listed.</p>
+    <p class="note">Private keys must not be accessible by others (use <code>600</code> or <code>400</code>): ssh ignores a private key file that others can read. A directory needs <code>x</code> to be entered and <code>r</code> to be listed.</p>
   </article>
 
   <article class="card"><h3>systemd &amp; logs</h3>
@@ -287,7 +294,7 @@ scp f user@host:/tmp/; rsync -avz --progress dir/ host:/srv/dir/
 
 # ~/.ssh/config
 Host bastion
-  HostName 34.1.2.3
+  HostName 203.0.113.10
   User jo
   IdentityFile ~/.ssh/id_ed25519
 Host *.internal
@@ -316,11 +323,11 @@ history | grep deploy; !!; Ctrl-r (search)</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Navigate, read and search files and logs</li><li>Run, stop and inspect processes</li><li>Understand permissions well enough to fix 'permission denied'</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write safe bash scripts with set -euo pipefail, traps and quoting</li><li>Diagnose disk, memory and CPU problems with df, free, top, dmesg</li><li>Manage services with systemd and read journalctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Tune a host or container for a workload (file limits, memory, I/O)</li><li>Debug with strace, lsof and tcpdump</li><li>Decide when a script should become a real program</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Understand kernel mechanisms behind containers (namespaces, cgroups)</li><li>Set the team's base images and hardening standards</li><li>Lead performance investigations end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>cgroups and namespaces: what a container really is</li><li>strace, perf and eBPF tools for tracing</li><li>File descriptors, signals and process lifecycle</li><li>Shell portability: bash vs POSIX sh</li><li>Log rotation and journald retention</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://linuxcommand.org/tlcl.php" target="_blank" rel="noopener">The Linux Command Line (free book)</a><span class="lnote"> A full beginner-to-practitioner course</span></li><li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener">Linux man pages</a><span class="lnote"> Authoritative reference for every command and syscall</span></li><li><a href="https://www.gnu.org/software/bash/manual/" target="_blank" rel="noopener">GNU Bash manual</a><span class="lnote"> Expansion, quoting and builtins in detail</span></li><li><a href="https://www.shellcheck.net/" target="_blank" rel="noopener">ShellCheck</a><span class="lnote"> Lints shell scripts and explains each warning</span></li><li><a href="https://systemd.io/" target="_blank" rel="noopener">systemd documentation</a><span class="lnote"> Units, timers, journald</span></li><li><a href="https://wizardzines.com/" target="_blank" rel="noopener">Wizard Zines (Julia Evans)</a><span class="lnote"> Short illustrated guides to Linux, networking and debugging</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/linux" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/linux</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BLinux%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>cgroups and namespaces: what a container really is</li><li>strace, perf and eBPF tools for tracing</li><li>File descriptors, signals and process lifecycle</li><li>Shell portability: bash vs POSIX sh</li><li>Log rotation and journald retention</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://linuxcommand.org/tlcl.php" target="_blank" rel="noopener">The Linux Command Line (free book)</a><span class="lnote"> A full beginner-to-practitioner course</span></li><li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener">Linux man pages</a><span class="lnote"> Authoritative reference for every command and syscall</span></li><li><a href="https://www.gnu.org/software/bash/manual/" target="_blank" rel="noopener">GNU Bash manual</a><span class="lnote"> Expansion, quoting and builtins in detail</span></li><li><a href="https://www.shellcheck.net/" target="_blank" rel="noopener">ShellCheck</a><span class="lnote"> Lints shell scripts and explains each warning</span></li><li><a href="https://systemd.io/" target="_blank" rel="noopener">systemd documentation</a><span class="lnote"> Units, timers, journald</span></li><li><a href="https://wizardzines.com/" target="_blank" rel="noopener">Wizard Zines (Julia Evans)</a><span class="lnote"> Short illustrated guides to Linux, networking and debugging</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://man7.org/linux/man-pages/man1/find.1.html" target="_blank" rel="noopener">find(1)</a>; <a href="https://man7.org/linux/man-pages/man1/sort.1.html" target="_blank" rel="noopener">sort(1)</a>; <a href="https://man7.org/linux/man-pages/man1/xargs.1.html" target="_blank" rel="noopener">xargs(1)</a>; <a href="https://man7.org/linux/man-pages/man1/du.1.html" target="_blank" rel="noopener">du(1)</a>; <a href="https://man7.org/linux/man-pages/man1/chmod.1.html" target="_blank" rel="noopener">chmod(1)</a>; <a href="https://man7.org/linux/man-pages/man1/sed.1.html" target="_blank" rel="noopener">sed(1)</a>; <a href="https://man7.org/linux/man-pages/man1/less.1.html" target="_blank" rel="noopener">less(1)</a>; <a href="https://man7.org/linux/man-pages/man1/timeout.1.html" target="_blank" rel="noopener">timeout(1)</a>; <a href="https://man7.org/linux/man-pages/man1/systemctl.1.html" target="_blank" rel="noopener">systemctl(1)</a>; <a href="https://man7.org/linux/man-pages/man1/journalctl.1.html" target="_blank" rel="noopener">journalctl(1)</a>; <a href="https://man7.org/linux/man-pages/man5/systemd.service.5.html" target="_blank" rel="noopener">systemd.service(5)</a>; <a href="https://man7.org/linux/man-pages/man1/ssh.1.html" target="_blank" rel="noopener">ssh(1)</a>; <a href="https://man7.org/linux/man-pages/man1/ssh-keygen.1.html" target="_blank" rel="noopener">ssh-keygen(1)</a>; <a href="https://man7.org/linux/man-pages/man1/tmux.1.html" target="_blank" rel="noopener">tmux(1)</a>; <a href="https://www.rfc-editor.org/rfc/rfc5737" target="_blank" rel="noopener">RFC 5737 (documentation addresses)</a>; <a href="https://man7.org/linux/man-pages/man1/bash.1.html" target="_blank" rel="noopener">exit codes 126, 127, 137 and 143, run in bash</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/linux" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/linux</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BLinux%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
-<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/aiworry/">← Worried about AI?</a><a class="pn-next" href="/well-rounded-engineer/networking/">Networking →</a></nav>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/electronics/">← Electronics &amp; Chips</a><a class="pn-next" href="/well-rounded-engineer/networking/">Networking →</a></nav>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>

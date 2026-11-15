@@ -30,6 +30,7 @@
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/" aria-current="page">Networking</a>
       <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
@@ -50,6 +51,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -62,41 +66,43 @@
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="/well-rounded-engineer/architecture/">Architecture</a>
       <a href="/well-rounded-engineer/microservices/">Microservices</a>
       <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
       <a href="/well-rounded-engineer/sysdesign/">System Design</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Cloud &amp; platform</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
       <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
       <a href="/well-rounded-engineer/helm/">Helm Charts</a>
       <a href="/well-rounded-engineer/operators/">Operators</a>
       <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <span class="navgrp">Delivery &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
       <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <a href="/well-rounded-engineer/sre/">SRE</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">AI</span>
       <a href="/well-rounded-engineer/llm/">LLMs</a>
       <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
@@ -113,6 +119,7 @@
       <span class="navgrp">About this guide</span>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
       <span class="navgrp">EnrichMeAI open source</span>
       <a href="/well-rounded-engineer/opensource/">Our open source</a>
       <a href="/well-rounded-engineer/culvert/">Culvert</a>
@@ -152,7 +159,7 @@
     <ul>
       <li>Addresses in a block = 2<sup>(32 − prefix)</sup>. Each step down the prefix doubles it.</li>
       <li>Private ranges (RFC 1918): <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>. Shared/CGNAT: <code>100.64.0.0/10</code>.</li>
-      <li>GCP reserves 4 addresses in every subnet (network, gateway, second-to-last, broadcast).</li>
+      <li>Google Cloud reserves four addresses in each subnet's primary range (the first two and the last two); secondary ranges can use every address.</li>
       <li>Ranges that will ever be peered or connected by VPN must not overlap. Plan them up front.</li>
       <li><code>0.0.0.0/0</code> means "anywhere". <code>127.0.0.1</code> is this machine only.</li>
     </ul>
@@ -219,7 +226,7 @@ ss -tulpn                        # what is listening locally
 ip addr; ip route                # my addresses and routes
 cat /etc/resolv.conf             # which resolver am I using
 getent hosts db.internal         # resolve the way apps do
-sudo tcpdump -i any -nn port 5432 -c 20   # see packets</code></pre></div>
+sudo tcpdump -i any -n port 5432 -c 20    # see packets</code></pre></div>
   </article>
 
   <article class="card"><h3>"Cannot connect": read the error</h3>
@@ -267,7 +274,7 @@ gcloud compute ssh vm-1 --tunnel-through-iap      # no public IP needed</code></
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain IP, port, DNS, TCP vs UDP and HTTP status classes</li><li>Use curl, dig and nc to test reachability</li><li>Tell a DNS failure from a refusal from a timeout</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Size subnets with CIDR; read firewall rules and routes</li><li>Debug TLS and certificate errors</li><li>Configure private access, NAT and egress for cloud workloads</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a VPC: ranges, subnets, private service access, load balancers</li><li>Choose L4 vs L7 load balancing and set health checks</li><li>Trace a latency problem across the network path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design hybrid and multi-region connectivity</li><li>Set network security policy for an organisation</li><li>Lead incident response for network-level outages</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>TCP handshake, congestion control and keep-alive</li><li>TLS 1.3 handshake and certificate chains</li><li>HTTP/2 and HTTP/3 (QUIC)</li><li>Anycast, global load balancing and CDNs</li><li>VPC Service Controls and Private Service Connect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://hpbn.co/" target="_blank" rel="noopener">High Performance Browser Networking (free book)</a><span class="lnote"> TCP, TLS, HTTP/2 explained for engineers</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN: HTTP</a><span class="lnote"> Methods, headers, caching, CORS</span></li><li><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">Cloudflare Learning Center</a><span class="lnote"> Clear explainers on DNS, TLS, CDN, DDoS</span></li><li><a href="https://cloud.google.com/vpc/docs/overview" target="_blank" rel="noopener">Google Cloud VPC overview</a><span class="lnote"> Networks, subnets, firewall, routes on GCP</span></li><li><a href="https://cloud.google.com/load-balancing/docs/load-balancing-overview" target="_blank" rel="noopener">Cloud Load Balancing overview</a><span class="lnote"> Which load balancer for which job</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/networking" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/networking</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BNetworking%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>TCP handshake, congestion control and keep-alive</li><li>TLS 1.3 handshake and certificate chains</li><li>HTTP/2 and HTTP/3 (QUIC)</li><li>Anycast, global load balancing and CDNs</li><li>VPC Service Controls and Private Service Connect</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://hpbn.co/" target="_blank" rel="noopener">High Performance Browser Networking (free book)</a><span class="lnote"> TCP, TLS, HTTP/2 explained for engineers</span></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN: HTTP</a><span class="lnote"> Methods, headers, caching, CORS</span></li><li><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">Cloudflare Learning Center</a><span class="lnote"> Clear explainers on DNS, TLS, CDN, DDoS</span></li><li><a href="https://cloud.google.com/vpc/docs/overview" target="_blank" rel="noopener">Google Cloud VPC overview</a><span class="lnote"> Networks, subnets, firewall, routes on GCP</span></li><li><a href="https://cloud.google.com/load-balancing/docs/load-balancing-overview" target="_blank" rel="noopener">Cloud Load Balancing overview</a><span class="lnote"> Which load balancer for which job</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank" rel="noopener">RFC 1918 (private ranges)</a>; <a href="https://www.rfc-editor.org/rfc/rfc6598" target="_blank" rel="noopener">RFC 6598 (shared address space)</a>; <a href="https://www.rfc-editor.org/rfc/rfc1912" target="_blank" rel="noopener">RFC 1912 (CNAME with other data)</a>; <a href="https://www.rfc-editor.org/rfc/rfc7766" target="_blank" rel="noopener">RFC 7766 (DNS over TCP)</a>; <a href="https://www.rfc-editor.org/rfc/rfc2782" target="_blank" rel="noopener">RFC 2782 (SRV)</a>; <a href="https://www.rfc-editor.org/rfc/rfc8659" target="_blank" rel="noopener">RFC 8659 (CAA)</a>; <a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110 (HTTP semantics)</a>; <a href="https://www.rfc-editor.org/rfc/rfc6585" target="_blank" rel="noopener">RFC 6585 (429)</a>; <a href="https://www.rfc-editor.org/rfc/rfc9114" target="_blank" rel="noopener">RFC 9114 (HTTP/3)</a>; <a href="https://www.rfc-editor.org/rfc/rfc6066" target="_blank" rel="noopener">RFC 6066 (SNI)</a>; <a href="https://kubernetes.io/docs/reference/networking/ports-and-protocols/" target="_blank" rel="noopener">Kubernetes ports and protocols</a>; <a href="https://docs.cloud.google.com/vpc/docs/subnets" target="_blank" rel="noopener">Google Cloud subnets</a>; <a href="https://docs.cloud.google.com/firewall/docs/firewalls" target="_blank" rel="noopener">VPC firewall rules</a>; <a href="https://docs.cloud.google.com/run/docs/container-contract" target="_blank" rel="noopener">Cloud Run container contract</a>; <a href="https://docs.cloud.google.com/nat/docs/overview" target="_blank" rel="noopener">Cloud NAT overview</a>; <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank" rel="noopener">ss(8)</a>; <a href="https://man7.org/linux/man-pages/man1/tcpdump.1.html" target="_blank" rel="noopener">tcpdump(1)</a>; <a href="https://docs.cloud.google.com/sdk/gcloud/reference" target="_blank" rel="noopener">gcloud commands, checked with gcloud --help</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/networking" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/networking</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BNetworking%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>

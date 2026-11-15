@@ -30,6 +30,7 @@
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/aiworry/" aria-current="page">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
       <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
@@ -50,6 +51,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -62,41 +66,43 @@
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="/well-rounded-engineer/architecture/">Architecture</a>
       <a href="/well-rounded-engineer/microservices/">Microservices</a>
       <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
       <a href="/well-rounded-engineer/sysdesign/">System Design</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Cloud &amp; platform</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
       <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
       <a href="/well-rounded-engineer/helm/">Helm Charts</a>
       <a href="/well-rounded-engineer/operators/">Operators</a>
       <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <span class="navgrp">Delivery &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
       <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <a href="/well-rounded-engineer/sre/">SRE</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">AI</span>
       <a href="/well-rounded-engineer/llm/">LLMs</a>
       <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
@@ -113,6 +119,7 @@
       <span class="navgrp">About this guide</span>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
       <span class="navgrp">EnrichMeAI open source</span>
       <a href="/well-rounded-engineer/opensource/">Our open source</a>
       <a href="/well-rounded-engineer/culvert/">Culvert</a>
@@ -127,8 +134,8 @@
   <div class="grid">
 
   <article class="card wide"><h3>The tills are a good picture</h3>
-    <p>When I was younger, a supermarket had a long row of tills, each with a person behind it. Today most shops have a few staffed tills and a bank of self-service ones. Fewer people do the scanning. But the shop still needs people: someone approves an age check, clears a jammed scanner, helps the customer who is stuck, and knows what to do when the system goes down.</p>
-    <p>Software is going the same way. Fewer people will type routine code by hand. The people who stay most useful are the ones who understand what the machines are doing, and can take over when they stop.</p>
+    <p>Supermarkets once had a long row of tills, each with a person behind it. Over the years most have moved to a few staffed tills and a bank of self-service ones. Fewer people do the scanning. But the shop still needs people: someone approves an age check, clears a jammed scanner, helps the customer who is stuck, and knows what to do when the system goes down.</p>
+    <p>Software is going the same way. Fewer people will type routine code by hand, but people are still needed to manage the work, and managing it well takes a good understanding of what is being built. The people who stay most useful are the ones who understand what the machines are doing, and can take over when they stop.</p>
   </article>
 
   <article class="card"><h3>The risk of a team that can only prompt</h3>
@@ -137,12 +144,12 @@
   </article>
 
   <article class="card"><h3>Keep a hand on the controls</h3>
-    <p>The Boeing 737 MAX accidents of October 2018 and March 2019 are the lesson I keep coming back to. Official investigations found that a new automated flight-control feature, MCAS, contributed to both crashes, and references to it had been removed from the pilots' flight manual. When it misbehaved, the crews did not have what they needed to take back control.</p>
-    <p>I am not against agents that heal themselves. They are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
+    <p>The Boeing 737 MAX accidents of October 2018 and March 2019 carry a lesson worth remembering. Official investigations found that a new automated flight-control feature, MCAS, contributed to both crashes, and references to it had been removed from the pilots' flight manual. When it misbehaved, the crews did not have what they needed to take back control.</p>
+    <p>Agents that heal themselves are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
   </article>
 
   <article class="card wide"><h3>We will use it more than we meant to</h3>
-    <p>I am not an expert in where this goes, and nobody knows for sure. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
+    <p>Nobody knows for sure where this goes. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
     <p>It is good for someone who has the idea and knows the specification but could never find the hundreds of hours to build it. For people with that experience, it is a genuinely useful tool, and solo builders who want to make a product should start: doing something beats waiting. It is bad when it becomes a habit of prompting and never going back to check. A mind that stops checking slowly stops being able to.</p>
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
   </article>
@@ -167,10 +174,13 @@
   </article>
 
   <article class="card wide"><h3>Every role is changing, not only engineering</h3>
-    <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says.</p>
+    <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, software engineers, solution architects, enterprise architects, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says. Many people are worried simply because they do not yet know what is changing. There will be work, in some capacity, for people who are ready to use AI in the right way.</p>
     <p>What helps most is not one course or one tool. It is the <b>will to adapt</b>: understanding what is changing, trying it, and changing how we work. It will be hard, and some days it will feel slow. Learning one small thing every day still adds up: a command, a concept, a page of this guide, a question asked out loud.</p>
     <ul>
       <li><b>Analysts, journey managers and product owners:</b> learn enough of how AI works to write requirements it can meet, and to spot where it should not be trusted. Your knowledge of customers and rules is what checks its answers.</li>
+      <li><b>Software engineers:</b> AI can write more of the code, so the job moves towards design, review, testing and running it in production. Keep the foundations sharp enough to judge what it produced. See <a href="/well-rounded-engineer/testing/">Testing</a> and <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>.</li>
+      <li><b>Solution architects:</b> AI becomes another component to design around: where it sits, what data it may see, how it fails, what it costs, and where a person must stay in the loop. See <a href="/well-rounded-engineer/architecture/">Architecture</a> and <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>.</li>
+      <li><b>Enterprise architects:</b> set the guard rails across the organisation: which models and tools are approved, how data is governed, how agents are given access, and how the estate changes without a big-bang rewrite. See <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>.</li>
       <li><b>Data engineers and analysts:</b> AI is only as good as the data it reads. Quality, lineage and access control matter more, not less. See <a href="/well-rounded-engineer/data/">Data Engineering</a>.</li>
       <li><b>Engineers coming from mainframes and older platforms:</b> what you know about reliability, batch, transactions and running systems for decades is exactly what new platforms often lack. Bring it with you; learn the new tools on top of it.</li>
     </ul>
@@ -194,9 +204,36 @@
     </ul>
   </article>
 
+  <article class="card wide"><h3>Keep your own memory</h3>
+    <p>As AI does more of the work, what you have learned (how your systems behave, why decisions were made, what worked and what did not) becomes more valuable, not less. Keep it in a form you own, so it stays useful to you over the years and goes with you from job to job.</p>
+    <p>That is what we are building with <a href="/headworks/">Headworks</a>, Penstock and Cistern running together: a self-hosted AI agent that runs on your own machine with a model you pick. Its memory is plain files you own and can read, change or delete, and it reads only the data you choose to share, with a receipt for every read. What you build up stays yours, and you decide what to share with others. See <a href="/well-rounded-engineer/opensource/">Our open source</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>A journey, not a fight</h3>
+    <p>When change feels threatening, the body reacts as if to danger: the fight-or-flight response. It helps in a real emergency and hurts in a long change, because a mind in that state reacts instead of thinking. The change AI brings will take years, not days, so treat it as a journey rather than a fight.</p>
+    <ul>
+      <li><b>Step back from the headlines.</b> Ask what is actually changing in your own work this month, not what the loudest voice predicts.</li>
+      <li><b>Take small steps.</b> One thing learned each day compounds; <i>Atomic Habits</i> calls it getting about 1% better each day. See the <a href="/well-rounded-engineer/reading/">Reading list</a>.</li>
+      <li><b>Look after the basics.</b> Sleep, movement and time away from screens keep you calm enough to think. See <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>.</li>
+      <li><b>Think above the ordinary.</b> When everyone is anxious, the person who stays calm, learns steadily and helps others becomes the one people turn to.</li>
+    </ul>
+  </article>
+
   <article class="card wide"><h3>Understanding before opinion</h3>
     <p>Every day brings millions of posts about AI, and everyone has an opinion. We have come to find more satisfaction in expressing a view than in understanding the thing itself, and we miss the experience of learning it.</p>
     <p>That is why this guide is a quiet, static site: no feed, no comments, no tracking. Come, find a section, read it in peace, try the code, and save it as a PDF if you like. Understanding first; the opinion can wait.</p>
+  </article>
+
+  <article class="card wide"><h3>Believe in yourself</h3>
+    <blockquote class="quote">"When you are inspired by some great purpose, some extraordinary project, all your thoughts break their bonds: Your mind transcends limitations, your consciousness expands in every direction, and you find yourself in a new, great and wonderful world. Dormant forces, faculties and talents become alive, and you discover yourself to be a greater person by far than you ever dreamed yourself to be."<br><span class="quote-by">A passage often attributed to Patanjali</span></blockquote>
+    <p>Whoever wrote it, the idea is true: the limits we feel are often limits in how we see ourselves. In times of change, belief in yourself is what lets you start learning something new instead of waiting to be told you can.</p>
+    <ul>
+      <li><b>Belief is built, not found.</b> The psychologist Albert Bandura called it self-efficacy: your belief that you can succeed at a particular task. He found the most effective way to build it is mastery experiences, small successes of your own.</li>
+      <li><b>So start small and finish.</b> Run one command, fix one bug, read one chapter. Each thing you complete is evidence you can do the next.</li>
+      <li><b>Watch your self-image.</b> "I am not technical" or "I am too old to learn this" become true only if you act on them. <i>Psycho-Cybernetics</i> and <i>As a Man Thinketh</i> on the <a href="/well-rounded-engineer/reading/">Reading list</a> are about exactly this.</li>
+      <li><b>Find a purpose bigger than the worry.</b> As the passage says, a purpose you care about wakes up abilities you did not know you had.</li>
+    </ul>
+    <p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Self-efficacy" target="_blank" rel="noopener">Self-efficacy (Wikipedia)</a>.</p>
   </article>
 
   <article class="card wide"><h3>Harness it, and keep control</h3>
@@ -205,7 +242,7 @@
 
   </div>
 </section>
-<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/">← Start here</a><a class="pn-next" href="/well-rounded-engineer/linux/">Linux →</a></nav>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/">← Start here</a><a class="pn-next" href="/well-rounded-engineer/electronics/">Electronics &amp; Chips →</a></nav>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>

@@ -7,36 +7,40 @@ from levels_data import D
 p=os.path.join(HERE, 'guide.html.in'); s=open(p).read()
 
 groups=[("",["start","aiworry"]),
- ("Foundations",["linux","networking","web","docker","sql","database","homelab"]),
+ ("Foundations",["electronics","linux","networking","web","docker","sql","database","homelab"]),
  ("Languages",["java","kotlin","python","go","rust"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
+ ("User interfaces",["apps","uihistory"]),
  ("Quality",["testing","performance"]),
  ("Security",["security","cyber","oauth"]),
- ("Data",["data","datalibs","dbt","dags","gcpdata","bigquery","awsdata"]),
+ ("Data",["data","datalibs","dbt","dags"]),
  ("Architecture &amp; design",["architecture","microservices","eventsourcing","sysdesign","caching"]),
- ("Cloud &amp; platform",["cloudinside","cloudcompare","cloudrun","apigee","terraform","kubernetes","helm","operators","servicemesh"]),
- ("Delivery &amp; operations",["devops","observability","opstools","sre","harness"]),
- ("AI",["llm","ai","blueprints","claudetools","copilot","agentharness","agentsgcp","rag","mcp"]),
+ ("Platform &amp; operations",["devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre"]),
+ ("Cloud providers",["cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata"]),
+ ("AI",["llm","ai","rag","mcp","agentharness","blueprints"]),
+ ("Tools",["claudetools","copilot","agentsgcp","harness","opstools"]),
  ("Thinking &amp; character",["behaviours","mathematics","science","philosophy","goodhuman","body"]),
  ("Frontiers",["quantum","robotics","bitcoin","web3","solid"]),
- ("About this guide",["why","history"]),
+ ("About this guide",["why","history","reading"]),
  ("EnrichMeAI open source",["opensource","culvert"])]
-NARRATIVE=("start","why","aiworry","history","behaviours","homelab","opensource")
+NARRATIVE=("reading","uihistory","start","why","aiworry","history","behaviours","homelab","opensource")
 # what each group is for, and where its running code lives (only folders that exist and run)
 GH="https://github.com/enrichmeai/"
 SITE="enrichmeai.github.io"
 from urllib.parse import quote
 blurb={
- "Foundations":"How computers, networks and the web work, and the data underneath. Everything else stands on this.",
+ "Foundations":"How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.",
  "Languages":"Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.",
  "Building services":"APIs, messaging and the frameworks that turn code into services.",
+ "User interfaces":"How people see and touch software, on phones, desktops and the web, and how that changed.",
  "Quality":"Proving it works, and that it stays fast under load.",
  "Security":"Building it safely, and thinking like a defender.",
- "Data":"Moving, shaping and trusting data, from a file to a warehouse.",
+ "Data":"Moving, shaping and trusting data, from a file to a warehouse, on any platform.",
  "Architecture &amp; design":"Choosing boundaries and trade-offs you can explain.",
- "Cloud &amp; platform":"What the cloud is made of, and the tools that run software on it.",
- "Delivery &amp; operations":"Shipping safely, seeing what is happening, and keeping it up.",
+ "Cloud providers":"What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.",
+ "Platform &amp; operations":"Shipping safely, running containers, seeing what is happening, and keeping it up.",
  "AI":"Using AI with judgement: how it works, where it helps, and the guard rails.",
+ "Tools":"Specific products and services, kept apart so the concepts above stay neutral.",
  "Thinking &amp; character":"How to think clearly and live well. The part no tool replaces.",
  "Frontiers":"Ideas to understand now that may matter more later.",
 }
@@ -52,7 +56,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(electronics="Electronics &amp; Chips",reading="Reading List",apps="Apps: Native or Cross-platform",uihistory="UI History",k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -77,12 +81,13 @@ def cards(t):
     ln=''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{ti}</a><span class="lnote"> {no}</span></li>' for ti,u,no in d["links"])
     repo=code[t][0] if t in code else SITE
     ask=f'<a href="{GH}{repo}/issues/new?title={quote("["+html.unescape(labels[t])+"] ")}" target="_blank" rel="noopener">open an issue on GitHub</a>'
+    src=(('<p class="sources"><b>Checked against:</b> '+'; '.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n,u in d["sources"])+'.</p>') if d.get("sources") else '')
     run=(f'<p class="runcode"><b>Run the code:</b> <a href="{coderef(t)}" target="_blank" rel="noopener">{code[t][0]}/{code[t][1]}</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? {ask}.</p>' if t in code
          else f'<p class="runcode">A question, or found a mistake? {ask}. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p>')
     return (f'\n  <!-- levels -->\n  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels">{lv}</div>'
             f'<p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>\n'
             f'  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul>{tp}</ul></div>'
-            f'<div><h4>Official docs and good reading</h4><ul class="links">{ln}</ul></div></div>{run}</article>\n')
+            f'<div><h4>Official docs and good reading</h4><ul class="links">{ln}</ul></div></div>{src}{run}</article>\n')
 for t in order:
     if t in NARRATIVE: continue
     b=blocks[t]
@@ -107,6 +112,9 @@ scale='''  <article class="card wide" id="levels-scale"><h3>The four levels used
 if 'id="levels-scale"' not in s:
     i=s.index('  <article class="card wide"><h3>How much of each tab you need</h3>'); s=s[:i]+scale+s[i:]
 newrows={
+ "electronics":("Electronics &amp; Chips","Explain transistors, logic gates and what an instruction set is.","Digital design with an HDL and FPGAs; open hardware such as RISC-V; design for repair."),
+ "apps":("Apps: Native or Cross-platform","Explain native, shared-logic, cross-platform and web options.","Choose an app architecture for a product and team, and plan how it evolves."),
+ "k8sdr":("Kubernetes DR &amp; Best Practices","Use replicas, probes, PDBs and zone spreading; know your RPO and RTO.","Backup and restore with etcd snapshots and Velero, DR strategies, restore drills."),
  "bitcoin":("Bitcoin &amp; Blockchain","Explain hashes, linked blocks, proof of work and keys.","Consensus trade-offs, key custody, and when a blockchain is the wrong tool."),
  "robotics":("Robotics","Explain sense-think-act and tune a PID loop in simulation.","Kinematics, SLAM and planning on ROS 2, with safety designed in."),
  "kotlin":("Kotlin","Read and write Kotlin beside Java; use null safety and data classes.","Coroutines, Java interop at scale, multiplatform and Android or server architecture."),
@@ -174,7 +182,7 @@ def gcard(g,ts):
 cs=[]
 for n,(g,ts) in enumerate([x for x in groups if x[0] in blurb],1):
     cs.append(gcard(g,ts))
-gmap=('  <article class="card wide" id="guide-map"><h3>The map: twelve groups, in the order to learn them</h3>\n'
+gmap=('  <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>\n'
       '    <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>\n'
       '    <div class="gmap">'+''.join(cs)+'</div>\n  </article>\n\n')
 s=re.sub(r'  <article class="card wide" id="guide-map">.*?</article>\n\n','',s,flags=re.S)

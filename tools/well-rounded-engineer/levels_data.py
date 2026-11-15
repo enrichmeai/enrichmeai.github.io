@@ -879,3 +879,89 @@ D["robotics"]=dict(
  links=[("Robot Operating System (Wikipedia)","https://en.wikipedia.org/wiki/Robot_Operating_System","What ROS is and how it is organised"),
         ("ROS 2 source","https://github.com/ros2/ros2","The ROS 2 repositories and installation"),
         ("PID controller (Wikipedia)","https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller","The maths behind the example")])
+
+D["k8sdr"]=dict(
+ F=["Run workloads as Deployments with several replicas","Add readiness and liveness probes","Explain RPO and RTO"],
+ P=["Add PodDisruptionBudgets and zone spreading","Schedule Velero or managed backups and restore one","Keep all manifests in Git so a cluster is replaceable"],
+ S=["Choose a DR strategy against agreed RPO and RTO","Design multi-zone and multi-region clusters","Run restore drills and game days"],
+ E=["Own platform resilience across clusters and regions","Set backup, restore and DR standards","Lead recovery during a major incident"],
+ topics=["etcd snapshots","Velero backup and restore","Volume snapshots","Topology spread constraints","Disaster recovery strategies"],
+ links=[("Operating etcd clusters for Kubernetes","https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/","Snapshots and restore, from the Kubernetes docs"),
+        ("Disruptions and PodDisruptionBudgets","https://kubernetes.io/docs/concepts/workloads/pods/disruptions/","Voluntary and involuntary disruptions"),
+        ("Velero: disaster recovery","https://velero.io/docs/main/disaster-case/","The DR flow with schedules and restores"),
+        ("Disaster recovery options in the cloud","https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html","The four strategies, from AWS's whitepaper")])
+
+# Sources each page's claims were checked against (rendered as "Checked against:")
+D["linux"]["sources"]=[
+ ("find(1)","https://man7.org/linux/man-pages/man1/find.1.html"),("sort(1)","https://man7.org/linux/man-pages/man1/sort.1.html"),
+ ("xargs(1)","https://man7.org/linux/man-pages/man1/xargs.1.html"),("du(1)","https://man7.org/linux/man-pages/man1/du.1.html"),
+ ("chmod(1)","https://man7.org/linux/man-pages/man1/chmod.1.html"),("sed(1)","https://man7.org/linux/man-pages/man1/sed.1.html"),
+ ("less(1)","https://man7.org/linux/man-pages/man1/less.1.html"),("timeout(1)","https://man7.org/linux/man-pages/man1/timeout.1.html"),
+ ("systemctl(1)","https://man7.org/linux/man-pages/man1/systemctl.1.html"),("journalctl(1)","https://man7.org/linux/man-pages/man1/journalctl.1.html"),
+ ("systemd.service(5)","https://man7.org/linux/man-pages/man5/systemd.service.5.html"),("ssh(1)","https://man7.org/linux/man-pages/man1/ssh.1.html"),
+ ("ssh-keygen(1)","https://man7.org/linux/man-pages/man1/ssh-keygen.1.html"),("tmux(1)","https://man7.org/linux/man-pages/man1/tmux.1.html"),
+ ("RFC 5737 (documentation addresses)","https://www.rfc-editor.org/rfc/rfc5737"),
+ ("exit codes 126, 127, 137 and 143, run in bash","https://man7.org/linux/man-pages/man1/bash.1.html")]
+D["networking"]["sources"]=[
+ ("RFC 1918 (private ranges)","https://www.rfc-editor.org/rfc/rfc1918"),("RFC 6598 (shared address space)","https://www.rfc-editor.org/rfc/rfc6598"),
+ ("RFC 1912 (CNAME with other data)","https://www.rfc-editor.org/rfc/rfc1912"),("RFC 7766 (DNS over TCP)","https://www.rfc-editor.org/rfc/rfc7766"),
+ ("RFC 2782 (SRV)","https://www.rfc-editor.org/rfc/rfc2782"),("RFC 8659 (CAA)","https://www.rfc-editor.org/rfc/rfc8659"),
+ ("RFC 9110 (HTTP semantics)","https://www.rfc-editor.org/rfc/rfc9110"),("RFC 6585 (429)","https://www.rfc-editor.org/rfc/rfc6585"),
+ ("RFC 9114 (HTTP/3)","https://www.rfc-editor.org/rfc/rfc9114"),("RFC 6066 (SNI)","https://www.rfc-editor.org/rfc/rfc6066"),
+ ("Kubernetes ports and protocols","https://kubernetes.io/docs/reference/networking/ports-and-protocols/"),
+ ("Google Cloud subnets","https://docs.cloud.google.com/vpc/docs/subnets"),("VPC firewall rules","https://docs.cloud.google.com/firewall/docs/firewalls"),
+ ("Cloud Run container contract","https://docs.cloud.google.com/run/docs/container-contract"),("Cloud NAT overview","https://docs.cloud.google.com/nat/docs/overview"),
+ ("ss(8)","https://man7.org/linux/man-pages/man8/ss.8.html"),("tcpdump(1)","https://man7.org/linux/man-pages/man1/tcpdump.1.html"),
+ ("gcloud commands, checked with gcloud --help","https://docs.cloud.google.com/sdk/gcloud/reference")]
+D["testing"].setdefault("sources",[]).extend([("The Practical Test Pyramid (martinfowler.com)","https://martinfowler.com/articles/practical-test-pyramid.html")])
+D["java"].setdefault("sources",[]).extend([
+ ("Thread (since 1.0)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Thread.html"),
+ ("ExecutorService (since 1.5)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ExecutorService.html"),
+ ("ForkJoinPool (since 1.7)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ForkJoinPool.html"),
+ ("CompletableFuture (since 1.8)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/CompletableFuture.html"),
+ ("Flow (since 9)","https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Flow.html"),
+ ("JEP 425","https://openjdk.org/jeps/425"),("JEP 444","https://openjdk.org/jeps/444"),("JEP 453","https://openjdk.org/jeps/453"),
+ ("JEP 491","https://openjdk.org/jeps/491"),("JEP 505","https://openjdk.org/jeps/505"),("JEP 506","https://openjdk.org/jeps/506"),
+ ("Green threads (Wikipedia)","https://en.wikipedia.org/wiki/Green_thread")])
+D["web"].setdefault("sources",[]).extend([
+ ("MDN: CORS","https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS"),("MDN: Set-Cookie","https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie"),
+ ("MDN: URI fragment","https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment"),("MDN: script element","https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script"),
+ ("RFC 9110 (HTTP semantics)","https://www.rfc-editor.org/rfc/rfc9110"),("RFC 9111 (HTTP caching)","https://www.rfc-editor.org/rfc/rfc9111"),
+ ("RFC 8246 (immutable)","https://www.rfc-editor.org/rfc/rfc8246"),("RFC 6797 (HSTS)","https://www.rfc-editor.org/rfc/rfc6797"),
+ ("web.dev: Web Vitals","https://web.dev/articles/vitals"),("WCAG 2.2 (contrast)","https://www.w3.org/TR/WCAG22/")])
+
+D["apps"]=dict(
+ F=["Explain native, cross-platform and web app options","Build and run a sample app on one platform","Know what an app store review involves"],
+ P=["Ship a feature on one mobile platform, with tests","Share business logic across platforms","Build an installable, offline-capable web app"],
+ S=["Choose an app architecture for a product and team","Design offline, sync and push notifications","Plan releases, versions and backwards compatibility"],
+ E=["Own mobile and desktop strategy across products","Lead a move between app technologies","Set performance, accessibility and security standards for apps"],
+ topics=["SwiftUI","Jetpack Compose","Kotlin Multiplatform","Flutter","React Native","Progressive web apps"],
+ links=[("Jetpack Compose","https://developer.android.com/compose","Android's modern UI toolkit"),
+        ("SwiftUI","https://developer.apple.com/swiftui/","Apple's declarative UI framework"),
+        ("Kotlin Multiplatform","https://kotlinlang.org/docs/multiplatform.html","Share code across platforms"),
+        ("Flutter documentation","https://docs.flutter.dev/","Multiplatform apps from a single codebase"),
+        ("React Native","https://reactnative.dev/","React for native apps"),
+        ("MDN: Progressive web apps","https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps","Installable, offline-capable web apps")],
+ sources=[("Jetpack Compose","https://developer.android.com/compose"),("SwiftUI","https://developer.apple.com/swiftui/"),
+          ("Flutter docs","https://docs.flutter.dev/"),("React Native","https://reactnative.dev/"),
+          ("MDN: Progressive web apps","https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"),
+          ("Kotlin (Wikipedia): Google's preferred language, 7 May 2019","https://en.wikipedia.org/wiki/Kotlin"),
+          ("Kotlin Multiplatform (Wikipedia): stable, November 2023","https://en.wikipedia.org/wiki/Kotlin_Multiplatform")])
+D["kotlin"].setdefault("sources",[]).extend([("Kotlin (Wikipedia)","https://en.wikipedia.org/wiki/Kotlin"),("Scala (Wikipedia)","https://en.wikipedia.org/wiki/Scala_(programming_language)"),
+ ("Java (Wikipedia)","https://en.wikipedia.org/wiki/Java_(programming_language)"),("New in Scala 3","https://docs.scala-lang.org/scala3/new-in-scala3.html")])
+D["spring"].setdefault("sources",[]).extend([("JEP 444: Virtual Threads","https://openjdk.org/jeps/444")])
+
+D["electronics"]=dict(
+ F=["Explain voltage, current and how a transistor switches","Explain logic gates and how they add numbers","Explain what an instruction set is"],
+ P=["Build a microcontroller project with sensors and motors","Write and simulate a small design in Verilog or VHDL","Run a design on an FPGA board"],
+ S=["Design a simple processor or peripheral on an FPGA","Read datasheets and choose components for a product","Design hardware for repair and long life"],
+ E=["Lead hardware and software co-design","Take a design towards silicon with an open process kit","Shape open hardware and sustainability practice"],
+ topics=["Digital logic","Verilog and VHDL","FPGAs","RISC-V","Semiconductor manufacturing","E-waste and repair"],
+ links=[("RISC-V (Wikipedia)","https://en.wikipedia.org/wiki/RISC-V","The open standard instruction set"),
+        ("Field-programmable gate array (Wikipedia)","https://en.wikipedia.org/wiki/Field-programmable_gate_array","Reprogrammable chips for learning digital design"),
+        ("Semiconductor device fabrication (Wikipedia)","https://en.wikipedia.org/wiki/Semiconductor_device_fabrication","How chips are made")],
+ sources=[("Transistor","https://en.wikipedia.org/wiki/Transistor"),("Integrated circuit","https://en.wikipedia.org/wiki/Integrated_circuit"),
+          ("Moore's law","https://en.wikipedia.org/wiki/Moore%27s_law"),("Field-programmable gate array","https://en.wikipedia.org/wiki/Field-programmable_gate_array"),
+          ("Hardware description language","https://en.wikipedia.org/wiki/Hardware_description_language"),("RISC-V","https://en.wikipedia.org/wiki/RISC-V"),
+          ("SkyWater Technology (SKY130 PDK)","https://en.wikipedia.org/wiki/SkyWater_Technology"),("TSMC (foundry share)","https://en.wikipedia.org/wiki/TSMC"),
+          ("Electronic waste","https://en.wikipedia.org/wiki/Electronic_waste"),("Right to repair","https://en.wikipedia.org/wiki/Right_to_repair")])

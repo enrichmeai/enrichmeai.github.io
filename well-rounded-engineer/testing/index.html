@@ -30,6 +30,7 @@
       <a href="/well-rounded-engineer/">Start here</a>
       <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
       <span class="navgrp">Foundations</span>
+      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
       <a href="/well-rounded-engineer/linux/">Linux</a>
       <a href="/well-rounded-engineer/networking/">Networking</a>
       <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
@@ -50,6 +51,9 @@
       <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
+      <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
+      <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
       <a href="/well-rounded-engineer/testing/" aria-current="page">Testing</a>
       <a href="/well-rounded-engineer/performance/">Performance</a>
@@ -62,41 +66,43 @@
       <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
       <a href="/well-rounded-engineer/dbt/">dbt</a>
       <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">Architecture &amp; design</span>
       <a href="/well-rounded-engineer/architecture/">Architecture</a>
       <a href="/well-rounded-engineer/microservices/">Microservices</a>
       <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
       <a href="/well-rounded-engineer/sysdesign/">System Design</a>
       <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Cloud &amp; platform</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
+      <span class="navgrp">Platform &amp; operations</span>
+      <a href="/well-rounded-engineer/devops/">DevOps</a>
       <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
+      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
       <a href="/well-rounded-engineer/helm/">Helm Charts</a>
       <a href="/well-rounded-engineer/operators/">Operators</a>
       <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <span class="navgrp">Delivery &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
+      <a href="/well-rounded-engineer/terraform/">Terraform</a>
       <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <a href="/well-rounded-engineer/sre/">SRE</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <span class="navgrp">Cloud providers</span>
+      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
+      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
+      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
+      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
+      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
+      <a href="/well-rounded-engineer/apigee/">Apigee</a>
+      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
       <span class="navgrp">AI</span>
       <a href="/well-rounded-engineer/llm/">LLMs</a>
       <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
       <a href="/well-rounded-engineer/rag/">RAG</a>
       <a href="/well-rounded-engineer/mcp/">MCP</a>
+      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
+      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
+      <span class="navgrp">Tools</span>
+      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
+      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
+      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
+      <a href="/well-rounded-engineer/harness/">Harness</a>
+      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
@@ -113,6 +119,7 @@
       <span class="navgrp">About this guide</span>
       <a href="/well-rounded-engineer/why/">Why this guide exists</a>
       <a href="/well-rounded-engineer/history/">A brief history</a>
+      <a href="/well-rounded-engineer/reading/">Reading List</a>
       <span class="navgrp">EnrichMeAI open source</span>
       <a href="/well-rounded-engineer/opensource/">Our open source</a>
       <a href="/well-rounded-engineer/culvert/">Culvert</a>
@@ -138,6 +145,23 @@
       <tr><td>Non-functional</td><td>Load, latency, resilience, security</td><td>minutes–hours</td><td>k6, Gatling, Locust, chaos tests, ZAP</td></tr>
       </tbody></table></div>
     <p class="note">Most tests should be fast unit and integration tests; a few end-to-end tests cover the critical journeys. A suite nobody runs because it is slow protects nothing.</p>
+  </article>
+
+  <article class="card wide"><h3>The test pyramid</h3>
+    <p>Mike Cohn introduced the test pyramid in his book <i>Succeeding with Agile</i>. It is a picture of how many tests to write at each level:</p>
+    <pre><code>        /\        few end-to-end tests: slow, brittle, prove the critical journeys
+       /  \
+      /----\      some integration and service tests: real database, real HTTP
+     /      \
+    /--------\    many unit tests: fast, isolated, run on every change
+   /__________\</code></pre>
+    <ul>
+      <li><b>Write lots of small, fast unit tests,</b> some coarser-grained tests, and very few that drive the whole system end to end.</li>
+      <li><b>The higher the level, the slower and more fragile the test,</b> and the harder it is to tell from a failure what broke.</li>
+      <li><b>The anti-pattern is the "ice-cream cone":</b> mostly manual and end-to-end tests with few unit tests. The suite gets slow, flaky and expensive, and people stop trusting it.</li>
+      <li><b>Treat it as a guide, not a law.</b> The names of the middle layers vary between teams; the shape is what matters. Contract tests (see below) keep services honest without many end-to-end tests.</li>
+    </ul>
+    <p class="note">Source: Martin Fowler's site, <a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid</a>.</p>
   </article>
 
   <article class="card"><h3>What makes a good test</h3>
@@ -374,11 +398,11 @@ export default function () {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Write unit tests with clear arrange-act-assert</li><li>Run the suite locally and read CI failures</li><li>Reproduce a bug with a failing test before fixing it</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Use Testcontainers and WireMock for integration tests</li><li>Test edge cases, errors and dependency failures</li><li>Keep tests fast, independent and deterministic</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a test strategy across unit, integration, contract and end to end</li><li>Add property-based, load and mutation testing where they pay off</li><li>Eliminate flaky tests and slow suites</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set testing standards and quality gates for the organisation</li><li>Build test infrastructure: environments, data, emulators</li><li>Measure test effectiveness, not just coverage</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/testing" target="_blank" rel="noopener">well-rounded-engineer-code/testing</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BTesting%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Contract testing with Pact</li><li>Mutation testing with PIT or mutmut</li><li>Test data management and synthetic data</li><li>Testing in production: canaries and feature flags</li><li>Chaos engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (Martin Fowler)</a><span class="lnote"> How to balance test levels</span></li><li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">JUnit user guide</a><span class="lnote"> Java testing</span></li><li><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">pytest documentation</a><span class="lnote"> Python testing</span></li><li><a href="https://testcontainers.com/" target="_blank" rel="noopener">Testcontainers</a><span class="lnote"> Real dependencies in Docker for tests</span></li><li><a href="https://wiremock.org/docs/" target="_blank" rel="noopener">WireMock</a><span class="lnote"> HTTP stubs and recording</span></li><li><a href="https://hypothesis.readthedocs.io/" target="_blank" rel="noopener">Hypothesis</a><span class="lnote"> Property-based testing in Python</span></li><li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener">Grafana k6</a><span class="lnote"> Load testing</span></li><li><a href="https://pitest.org/" target="_blank" rel="noopener">PIT mutation testing</a><span class="lnote"> Measure test strength in Java</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid (martinfowler.com)</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/testing" target="_blank" rel="noopener">well-rounded-engineer-code/testing</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BTesting%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
-<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/quarkus/">← Quarkus</a><a class="pn-next" href="/well-rounded-engineer/performance/">Performance →</a></nav>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/uihistory/">← UI History</a><a class="pn-next" href="/well-rounded-engineer/performance/">Performance →</a></nav>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
