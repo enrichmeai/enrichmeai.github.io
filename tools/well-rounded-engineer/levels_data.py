@@ -950,3 +950,18 @@ D["apps"]=dict(
 D["kotlin"].setdefault("sources",[]).extend([("Kotlin (Wikipedia)","https://en.wikipedia.org/wiki/Kotlin"),("Scala (Wikipedia)","https://en.wikipedia.org/wiki/Scala_(programming_language)"),
  ("Java (Wikipedia)","https://en.wikipedia.org/wiki/Java_(programming_language)"),("New in Scala 3","https://docs.scala-lang.org/scala3/new-in-scala3.html")])
 D["spring"].setdefault("sources",[]).extend([("JEP 444: Virtual Threads","https://openjdk.org/jeps/444")])
+
+D["electronics"]=dict(
+ F=["Explain voltage, current and how a transistor switches","Explain logic gates and how they add numbers","Explain what an instruction set is"],
+ P=["Build a microcontroller project with sensors and motors","Write and simulate a small design in Verilog or VHDL","Run a design on an FPGA board"],
+ S=["Design a simple processor or peripheral on an FPGA","Read datasheets and choose components for a product","Design hardware for repair and long life"],
+ E=["Lead hardware and software co-design","Take a design towards silicon with an open process kit","Shape open hardware and sustainability practice"],
+ topics=["Digital logic","Verilog and VHDL","FPGAs","RISC-V","Semiconductor manufacturing","E-waste and repair"],
+ links=[("RISC-V (Wikipedia)","https://en.wikipedia.org/wiki/RISC-V","The open standard instruction set"),
+        ("Field-programmable gate array (Wikipedia)","https://en.wikipedia.org/wiki/Field-programmable_gate_array","Reprogrammable chips for learning digital design"),
+        ("Semiconductor device fabrication (Wikipedia)","https://en.wikipedia.org/wiki/Semiconductor_device_fabrication","How chips are made")],
+ sources=[("Transistor","https://en.wikipedia.org/wiki/Transistor"),("Integrated circuit","https://en.wikipedia.org/wiki/Integrated_circuit"),
+          ("Moore's law","https://en.wikipedia.org/wiki/Moore%27s_law"),("Field-programmable gate array","https://en.wikipedia.org/wiki/Field-programmable_gate_array"),
+          ("Hardware description language","https://en.wikipedia.org/wiki/Hardware_description_language"),("RISC-V","https://en.wikipedia.org/wiki/RISC-V"),
+          ("SkyWater Technology (SKY130 PDK)","https://en.wikipedia.org/wiki/SkyWater_Technology"),("TSMC (foundry share)","https://en.wikipedia.org/wiki/TSMC"),
+          ("Electronic waste","https://en.wikipedia.org/wiki/Electronic_waste"),("Right to repair","https://en.wikipedia.org/wiki/Right_to_repair")])
