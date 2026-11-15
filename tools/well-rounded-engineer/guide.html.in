@@ -466,7 +466,7 @@ details>.inner{padding:4px 10px 8px}
   </article>
 
   <article class="card wide"><h3>Every role is changing, not only engineering</h3>
-    <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, software engineers, solution architects, enterprise architects, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says.</p>
+    <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, software engineers, solution architects, enterprise architects, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says. Many people are worried simply because they do not yet know what is changing. There will be work, in some capacity, for people who are ready to use AI in the right way.</p>
     <p>What helps most is not one course or one tool. It is the <b>will to adapt</b>: understanding what is changing, trying it, and changing how we work. It will be hard, and some days it will feel slow. Learning one small thing every day still adds up: a command, a concept, a page of this guide, a question asked out loud.</p>
     <ul>
       <li><b>Analysts, journey managers and product owners:</b> learn enough of how AI works to write requirements it can meet, and to spot where it should not be trusted. Your knowledge of customers and rules is what checks its answers.</li>
@@ -494,6 +494,11 @@ details>.inner{padding:4px 10px 8px}
       <li><b>Build the off switch.</b> Every agent gets a kill switch, a manual fallback and limits on what it may touch. See <a href="#agentharness">Agent Harness</a> and <a href="#agentsgcp">Agents on GCP</a>.</li>
       <li><b>Practise the bad day.</b> Rehearse an outage with the automation turned off, so taking over is a habit, not a hope.</li>
     </ul>
+  </article>
+
+  <article class="card wide"><h3>Keep your own memory</h3>
+    <p>As AI does more of the work, what you have learned (how your systems behave, why decisions were made, what worked and what did not) becomes more valuable, not less. Keep it in a form you own, so it stays useful to you over the years and goes with you from job to job.</p>
+    <p>That is what we are building with <a href="/headworks/">Headworks</a>, Penstock and Cistern running together: a self-hosted AI agent that runs on your own machine with a model you pick. Its memory is plain files you own and can read, change or delete, and it reads only the data you choose to share, with a receipt for every read. What you build up stays yours, and you decide what to share with others. See <a href="#opensource">Our open source</a>.</p>
   </article>
 
   <article class="card wide"><h3>A journey, not a fight</h3>
@@ -13586,6 +13591,11 @@ const name = getStringNoLocale(me, "http://xmlns.com/foaf/0.1/name");</code></pr
   <article class="card"><h3>What worries me now</h3>
     <p>I do not want to generalise, but I see a newer version of the same pattern. Some new engineers go straight to AI without learning the fundamentals, or even the frameworks. They can get an answer, but they cannot always tell whether it is right, or fix it when it breaks.</p>
     <p>At the same time, much of the simple knowledge people once found on a website, and followed through themselves, is now asked of an AI, one question at a time. Every one of those questions costs tokens, energy and data-centre capacity, often for something a page could answer with a click.</p>
+  </article>
+
+  <article class="card wide"><h3>Where this guide is going</h3>
+    <p>What this site can give people is a base knowledge of everything: enough to understand how the pieces fit, so they can then go deeper wherever they choose. If many people share that base, more of them can move into fields the world needs and is short of: building semiconductors, doing good science, and being knowledgeable and grounded in general. That makes for a better world.</p>
+    <p>I work in IT, so the guide starts with technology, alongside the personal side: health, money and good books. It is meant to grow. <b>Planned, not yet written:</b> deeper sections on physics, chemistry, biology and mathematics, and on understanding your own body: why it responds as it does, simple exercise anyone can do, and ageing. There are many experts in each of these; the aim here is to state the established facts plainly and link to their research.</p>
   </article>
 
   <article class="card wide"><h3>Why this guide is free</h3>
