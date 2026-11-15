@@ -475,20 +475,22 @@ details>.inner{padding:4px 10px 8px}
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
   </article>
 
-  <article class="card"><h3>More with fewer, or more with the same</h3>
+  <article class="card wide"><h3>More with fewer, or more with the same</h3>
     <p>Come back to the bulldozer. Companies may expect the same work from fewer engineers, or more work from the same number. We can already see some reduction across the industry, and there will be disruption, though no one can say yet how much.</p>
     <p>The people who come through it best will be the ones who can direct the machine and still understand the ground it is moving.</p>
   </article>
 
-  <article class="card"><h3>Five ways people use AI</h3>
+  <article class="card wide"><h3>Seven ways people use AI</h3>
     <ul>
       <li><b>To automate without learning.</b> Fast today, fragile tomorrow: when it breaks, nothing was learned.</li>
       <li><b>To learn.</b> Ask it to explain, then check the explanation against the docs.</li>
-      <li><b>As a tester.</b> Ask it to find the cases you missed and to try to break your code.</li>
+      <li><b>As a tester and reviewer.</b> Ask it to find the cases you missed, try to break your code, and review your writing, designs and pull requests.</li>
       <li><b>As a tutor and mentor.</b> Ask it to quiz you, review your reasoning, and say what to read next.</li>
+      <li><b>To explore and research.</b> Summarise a long document, compare options, brainstorm, draft something new; then check what comes back against the real sources.</li>
       <li><b>As a builder.</b> Use it to build what you design and understand: frameworks, tools, products, reusable blueprints for your team. You set the architecture and the standards; AI speeds up the making. See <a href="#blueprints">Frameworks vs AI</a>.</li>
+      <li><b>To automate, with oversight.</b> Let it, or an agent, run routine work you understand. Watch what it does, keep the logs, and keep the off switch. See "Keep a hand on the controls" above and <a href="#agentharness">Agent Harness</a>.</li>
     </ul>
-    <p>Only the first one makes you weaker. The last one multiplies what you already know.</p>
+    <p>Only the first makes you weaker; the rest make you stronger, as long as you stay the one who understands.</p>
   </article>
 
   <article class="card wide"><h3>You may not read every line, but you must understand it and test it</h3>
