@@ -81,7 +81,7 @@ def cards(t):
     ln=''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{ti}</a><span class="lnote"> {no}</span></li>' for ti,u,no in d["links"])
     repo=code[t][0] if t in code else SITE
     ask=f'<a href="{GH}{repo}/issues/new?title={quote("["+html.unescape(labels[t])+"] ")}" target="_blank" rel="noopener">open an issue on GitHub</a>'
-    src=(('<p class="sources"><b>Checked against:</b> '+'; '.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n,u in d["sources"])+'.</p>') if d.get("sources") else '')
+    src=(('<p class="sources"><b>Checked against:</b> '+'; '.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n,u in d["sources"])+'.'+(' A few claims could not be confirmed at their official source from here and are being re-checked.' if d.get("pending") else '')+'</p>') if d.get("sources") else '')
     run=(f'<p class="runcode"><b>Run the code:</b> <a href="{coderef(t)}" target="_blank" rel="noopener">{code[t][0]}/{code[t][1]}</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? {ask}.</p>' if t in code
          else f'<p class="runcode">A question, or found a mistake? {ask}. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p>')
     return (f'\n  <!-- levels -->\n  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels">{lv}</div>'
