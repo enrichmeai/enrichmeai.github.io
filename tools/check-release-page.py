@@ -169,7 +169,8 @@ def capabilities(repo: Path, cfg: dict) -> list[str]:
 
 
 def fetch(url: str, attempts: int = 5) -> str | None:
-    """GET a registry URL. 404 means "not published"; 429/5xx are retried with backoff."""
+    """GET a registry URL. None on a 404 (maven_release() does not take one 404 at its word);
+    429/5xx are retried with backoff."""
     for i in range(attempts):
         try:
             headers = {"User-Agent": "enrichmeai-site-release-check"}
@@ -188,6 +189,45 @@ def fetch(url: str, attempts: int = 5) -> str | None:
     return None
 
 
+class InconsistentAnswers(ValueError):
+    """A registry gave answers that cannot be reconciled into one fact: the check did not run."""
+
+
+MAVEN_RELEASE = re.compile(r"<release>([^<]+)</release>")
+
+
+def maven_release(url: str, readings: int = 4, wait: float = 0.5) -> str | None:
+    """The <release> in a Maven Central maven-metadata.xml, or None when it is not published.
+
+    Maven Central's CDN sometimes answers 404 for a file that exists (measured 2026-11-14: 200,
+    404, 200 for one URL in three calls), so one 404 is not "not published". After a first 404 the
+    URL is read `readings - 1` more times, with backoff:
+      * every reading 404                    → not published (the answers agree);
+      * the 200s all name the same release   → released: a missing file is never served as 200,
+                                               so the 404s were the CDN;
+      * the 200s disagree, or name no release → InconsistentAnswers, never a confident fact.
+    A file the CDN 404s on all four readings is still reported unpublished: at the ~10% 404 rate
+    measured, about 1 in 10,000 per library. Raise `readings` if the CDN gets worse.
+    """
+    first = fetch(url)
+    if first is not None:
+        m = MAVEN_RELEASE.search(first)
+        return m.group(1) if m else None
+    bodies = []
+    for i in range(readings - 1):
+        time.sleep(wait * 2 ** i)
+        body = fetch(url)
+        if body is not None:
+            bodies.append(body)
+    if not bodies:
+        return None
+    seen = {(m.group(1) if (m := MAVEN_RELEASE.search(b)) else None) for b in bodies}
+    if len(seen) != 1 or None in seen:
+        answers = ", ".join(sorted(str(v) for v in seen))
+        raise InconsistentAnswers(f"{url} answered 404 and then disagreeing releases ({answers})")
+    return seen.pop()
+
+
 def gather(project: str, repo: Path | None) -> dict:
     cfg = PROJECTS[project]
     if cfg.get("kind") == "github":
@@ -198,9 +238,8 @@ def gather(project: str, repo: Path | None) -> dict:
         return {"release": tag.lstrip("v")}
     facts: dict = {"maven": {}}
     for a in reactor_libraries(repo, cfg):
-        meta = fetch(f"https://repo1.maven.org/maven2/{cfg['group'].replace('.', '/')}/{a}/maven-metadata.xml")
-        m = re.search(r"<release>([^<]+)</release>", meta or "")
-        facts["maven"][a] = m.group(1) if m else None
+        facts["maven"][a] = maven_release(
+            f"https://repo1.maven.org/maven2/{cfg['group'].replace('.', '/')}/{a}/maven-metadata.xml")
     pypi_info: dict = {}
     if "pypi" in cfg:
         pypi_info = json.loads(fetch(f"https://pypi.org/pypi/{cfg['pypi']}/json") or "{}").get("info", {})

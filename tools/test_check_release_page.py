@@ -3,7 +3,10 @@
 Run: python3 -m unittest tools/test_check_release_page.py
 """
 import importlib.util
+import io
 import unittest
+import urllib.error
+from unittest import mock
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location("crp", Path(__file__).with_name("check-release-page.py"))
@@ -241,6 +244,79 @@ class OtherPages(unittest.TestCase):
         stale = HOME_PAGE.replace('maven-version">0.3.0-alpha2', 'maven-version">0.3.0-alpha1')
         e = crp.check(stale, {"maven": {"test-core": "0.3.0-alpha2"}}, "enrich-test-api", primary=False)
         self.assertTrue(any("maven-version" in x and "0.3.0-alpha1" in x for x in e), e)
+
+
+def metadata(release):
+    return f"<metadata><versioning><release>{release}</release></versioning></metadata>"
+
+
+class MavenCentralAnswers(unittest.TestCase):
+    """Maven Central's CDN sometimes answers 404 for a file that exists (measured 2026-11-14:
+    200, 404, 200 for one URL in three calls). A single 404 must not become "not published"."""
+
+    LIBS = ["lib-a"]
+
+    def gather(self, answers):
+        # answers: {artifact: [200 body | 404, ...]} served in order, one per request for that URL.
+        queues = {a: list(seq) for a, seq in answers.items()}
+        calls = {a: 0 for a in answers}
+
+        def urlopen(req, timeout=None):
+            url = req.full_url
+            a = url.rstrip("/").split("/")[-2]
+            calls[a] += 1
+            answer = queues[a].pop(0) if len(queues[a]) > 1 else queues[a][0]
+            if answer == 404:
+                raise urllib.error.HTTPError(url, 404, "Not Found", {}, None)
+            return io.BytesIO(answer.encode())
+
+        cfg = {"group": "com.example", "reactor": "pom.xml"}
+        with mock.patch.dict(crp.PROJECTS, {"test-maven": cfg}), \
+                mock.patch.object(crp, "reactor_libraries", return_value=list(answers)), \
+                mock.patch.object(crp.urllib.request, "urlopen", side_effect=urlopen), \
+                mock.patch.object(crp.time, "sleep"):
+            return crp.gather("test-maven", Path(".")), calls
+
+    def test_a_first_200_is_believed_at_once(self):
+        facts, calls = self.gather({"lib-a": [metadata("0.2.0")]})
+        self.assertEqual(facts["maven"], {"lib-a": "0.2.0"})
+        self.assertEqual(calls["lib-a"], 1)
+
+    def test_a_404_then_200_is_released(self):
+        facts, _ = self.gather({"lib-a": [404, metadata("0.2.0")]})
+        self.assertEqual(facts["maven"], {"lib-a": "0.2.0"})
+
+    def test_a_404_among_200s_is_released(self):
+        facts, _ = self.gather({"lib-a": [404, metadata("0.2.0"), 404, metadata("0.2.0")]})
+        self.assertEqual(facts["maven"], {"lib-a": "0.2.0"})
+
+    def test_a_consistent_404_is_unreleased(self):
+        facts, calls = self.gather({"lib-a": [404]})
+        self.assertEqual(facts["maven"], {"lib-a": None})
+        self.assertGreater(calls["lib-a"], 1, "a single 404 was believed")
+
+    def test_answers_that_disagree_make_gather_raise(self):
+        # Two 200s naming different releases: no one answer can be reported.
+        with self.assertRaises(crp.InconsistentAnswers):
+            self.gather({"lib-a": [404, metadata("0.2.0"), metadata("0.1.0"), 404]})
+
+    def test_a_404_then_a_200_without_a_release_raises(self):
+        # A truncated or malformed body after a 404 is not evidence of "not published".
+        with self.assertRaises(crp.InconsistentAnswers):
+            self.gather({"lib-a": [404, "<metadata></metadata>"]})
+
+    def test_inconsistent_answers_are_a_check_that_did_not_run(self):
+        # main() turns the error into exit 2, "the check did NOT run", not a pass or a fail.
+        real_gather = crp.gather
+
+        def gather(project, repo):
+            with mock.patch.object(crp, "gather", real_gather):
+                return self.gather({"lib-a": [404, metadata("0.2.0"), metadata("0.1.0")]})[0]
+        argv = ["check-release-page.py", "culvert", "--repo", "."]
+        with mock.patch.object(crp, "gather", side_effect=gather), mock.patch.object(crp.sys, "argv", argv), \
+                mock.patch("sys.stderr", new_callable=io.StringIO) as err:
+            self.assertEqual(crp.main(), 2)
+        self.assertIn("did NOT run", err.getvalue())
 
 
 class RealPages(unittest.TestCase):
