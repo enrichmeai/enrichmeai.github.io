@@ -30,6 +30,12 @@ other = [
  ('version: 1.2.0 }', None, '1.2.0'),
  ('openapi: 3.1.0', None, '3.1.0'),
  ('?ref=v1.4.0"', None, 'v1.4.0'),
+ ('&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;', None, '4.0.0'),
+ ('&lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;', None, '1.0.0-SNAPSHOT'),
+ ('&lt;version&gt;5.11.0&lt;/version&gt;', None, '5.11.0'),
+ ('junit = "5.11.0"', None, '5.11.0'),
+ ('"express": "^5.1.0"', None, '5.1.0'),
+ ('"lodash": "~4.17.21"', None, '4.17.21'),
 ]
 for ctx, count, v in other:
     n = body.count(ctx)

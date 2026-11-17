@@ -848,6 +848,37 @@ D["rust"]=dict(
         ("The book's source","https://github.com/rust-lang/book","Read and contribute on GitHub"),
         ("Rustlings","https://github.com/rust-lang/rustlings","Small exercises to learn by doing")])
 
+D["buildtools"]=dict(
+ F=["Run a Maven, Gradle and npm build from the wrapper or lockfile","Name the lifecycle phases or tasks a build runs","Add a dependency and read the dependency tree"],
+ P=["Pin versions with a BOM, a version catalog or a lockfile","Explain why a transitive version won and override it","Make CI builds reproducible and cached"],
+ S=["Design a multi-module or monorepo build","Use the Gradle build and configuration caches","Set an install-script and dependency-source policy"],
+ E=["Set build standards across an organisation","Lead migrations between build tools","Secure the build supply chain end to end"],
+ topics=["The Maven lifecycle and plugins","Gradle tasks, caches and version catalogs","Lockfiles and npm ci","pnpm's store and strict node_modules","Bundlers: webpack and Vite"],
+ links=[("Introduction to the Maven build lifecycle","https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html","Phases and bindings"),
+        ("Gradle User Manual","https://docs.gradle.org/current/userguide/userguide.html","Wrapper, Daemon, caches, catalogs"),
+        ("npm Docs","https://docs.npmjs.com/","package.json, lockfiles, scripts"),
+        ("pnpm: Motivation","https://pnpm.io/motivation","The store and the non-flat node_modules"),
+        ("Vite guide","https://vite.dev/guide/","Dev server and production build")],
+ sources=[("Maven: build lifecycle (source)","https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-the-lifecycle.md"),
+          ("Maven: dependency mechanism (source)","https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-dependency-mechanism.md"),
+          ("Maven Wrapper (source)","https://github.com/apache/maven-site/blob/master/content/markdown/tools/mavenwrapper.md"),
+          ("Gradle user guide: build lifecycle, Wrapper, Daemon, build cache, configuration cache, version catalogs (source)","https://github.com/gradle/gradle/tree/master/platforms/documentation/docs/src/docs/userguide"),
+          ("Android: configure your build","https://developer.android.com/build"),
+          ("npm ci","https://github.com/npm/cli/blob/latest/docs/lib/content/commands/npm-ci.md"),
+          ("package-lock.json","https://github.com/npm/cli/blob/latest/docs/lib/content/configuring-npm/package-lock-json.md"),
+          ("npm scripts","https://github.com/npm/cli/blob/latest/docs/lib/content/using-npm/scripts.md"),
+          ("npm CHANGELOG (npm 12 breaking changes)","https://github.com/npm/cli/blob/latest/CHANGELOG.md"),
+          ("npm config definitions (ignore-scripts, allow-git, allow-remote, allow-scripts)","https://github.com/npm/cli/blob/latest/workspaces/config/lib/definitions/definitions.js"),
+          ("node-semver: caret and tilde ranges","https://github.com/npm/node-semver"),
+          ("pnpm: Motivation (source)","https://github.com/pnpm/pnpm.io/blob/main/docs/motivation.md"),
+          ("pnpm install (source)","https://github.com/pnpm/pnpm.io/blob/main/docs/cli/install.md"),
+          ("Yarn: Plug'n'Play","https://yarnpkg.com/features/pnp"),
+          ("yarn install","https://yarnpkg.com/cli/install"),
+          ("Corepack README (bundled Node.js versions)","https://github.com/nodejs/node/blob/main/deps/corepack/README.md"),
+          ("Vite guide (source)","https://github.com/vitejs/vite/blob/main/docs/guide/index.md"),
+          ("Spring Boot Maven plugin: spring-boot-dependencies","https://docs.spring.io/spring-boot/maven-plugin/using.html"),
+          ("Wikipedia: Make, Apache Ant, Apache Maven, Gradle, npm, webpack, Bazel, Yarn, pnpm, Vite","https://en.wikipedia.org/wiki/Build_automation")])
+
 D["awsdata"]=dict(
  F=["Name the AWS service for each data stage","Land files in S3 and query them with Athena","Explain IAM roles for data jobs"],
  P=["Build a pipeline: S3 raw, Glue, curated Parquet or Iceberg, Athena","Use Lake Formation to grant table access","Model with dbt on Athena or Redshift"],
