@@ -844,7 +844,7 @@ D["javascript"]=dict(
  S=["Design state and reactivity without leaning on a framework","Keep the main thread free; use Web Workers","Adopt TypeScript and write typed APIs"],
  E=["Choose and migrate frameworks on evidence","Set JavaScript and TypeScript standards across teams","Follow and evaluate TC39 proposals"],
  topics=["Closures and scope","The event loop and promises","Modules","Immutability and copying methods","Web Components","TypeScript"],
- links=[("MDN JavaScript Guide","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide","The best free guide to the language"),
+ links=[("MDN JavaScript Guide","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide","A thorough, free guide to the language"),
         ("TC39 finished proposals","https://github.com/tc39/proposals/blob/main/finished-proposals.md","What each edition added"),
         ("The ECMAScript specification (latest draft)","https://tc39.es/ecma262/","The standard itself"),
         ("Baseline on web.dev","https://web.dev/baseline","Which features are safe to use everywhere")],
@@ -858,7 +858,12 @@ D["javascript"]=dict(
           ("MDN: Modules","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/modules/index.md"),
           ("MDN: Inheritance and the prototype chain","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/inheritance_and_the_prototype_chain/index.md"),
           ("MDN: Using promises","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/using_promises/index.md"),
-          ("MDN: Web Components","https://github.com/mdn/content/blob/main/files/en-us/web/api/web_components/index.md")])
+          ("MDN: Web Components","https://github.com/mdn/content/blob/main/files/en-us/web/api/web_components/index.md"),
+          ("MDN: Number (IEEE 754 double precision)","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/global_objects/number/index.md"),
+          ("MDN: Equality (==) converts types","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/operators/equality/index.md"),
+          ("MDN: Nullish coalescing (??) and ||","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/operators/nullish_coalescing/index.md"),
+          ("MDN: Array.prototype.sort (in place)","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/global_objects/array/sort/index.md"),
+          ("MDN: Web Workers API","https://github.com/mdn/content/blob/main/files/en-us/web/api/web_workers_api/index.md")])
 
 D["rust"]=dict(
  F=["Explain ownership and borrowing","Use Result, Option and match","Build and test with Cargo"],
