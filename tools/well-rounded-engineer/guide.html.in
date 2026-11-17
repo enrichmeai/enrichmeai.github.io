@@ -12822,6 +12822,7 @@ BREAKING CHANGE: clients must call /judgments</code></pre></div>
   <article class="card"><h3>Continuous proactiveness: not every day is the same</h3>
     <ul>
       <li><b>Not every day is 9 to 5.</b> An incident at night, a launch, a customer stuck on a deadline: some days need more, and a good engineer shows up for them.</li>
+      <li><b>Don&rsquo;t be complacent.</b> Keep perspective: a hard day at a keyboard is not as hard as a shift in a coal mine. Most of this work is safe, warm and well paid. That is a reason to give it full effort, not to coast.</li>
       <li><b>Proactive means you see it before you are told:</b> the alert that is noisy, the doc that is wrong, the dependency about to expire, the colleague who is stuck.</li>
       <li><b>But the long-run pace is sustainable.</b> XP's "no overtime" rule is about the normal week: a team that runs every week on heroics stops noticing its own mistakes. A hard day is followed by recovery, not by another hard day.</li>
       <li><b>Make the hard days rarer:</b> after every late night, ask what would have prevented it, and fix that (a test, an alert, a runbook).</li>
