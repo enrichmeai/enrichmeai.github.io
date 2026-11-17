@@ -1013,6 +1013,24 @@ D["azuredata"]=dict(
           ("Azure CLI help: role","https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/role/_help.py"),
           ("Azure CLI extension help: datafactory","https://github.com/Azure/azure-cli-extensions/blob/main/src/datafactory/azext_datafactory/generated/_help.py")])
 
+D["atob"]=dict(
+ F=["Tell business, solution and enterprise architecture apart","Say whether a piece of work is strategic, tactical or temporary","Draw today's system (A) and the target (B)"],
+ P=["Plan transition states between A and B, each one deployable","Use strangler fig, parallel change or branch by abstraction for a real change","Write down the source of truth for each piece of data at each state"],
+ S=["Design transitional architecture and plan its removal","Take on tactical debt deliberately, with an owner and an exit date","Lead a legacy displacement without a big bang"],
+ E=["Set how an organisation plans and funds transitions, not only targets","Govern a portfolio of strategic, tactical and temporary work","Teach teams to engineer the route, not only the destination"],
+ topics=["Baseline, transition and target states","Transitional architecture","Technical debt, prudent and deliberate","Patterns of legacy displacement","Feature toggles, dark launching and canary releases"],
+ links=[("Patterns of Legacy Displacement (Cartwright, Horn, Lewis)","https://martinfowler.com/articles/patterns-legacy-displacement/","The whole catalogue"),
+        ("Transitional Architecture","https://martinfowler.com/articles/patterns-legacy-displacement/transitional-architecture.html","Building what you will remove"),
+        ("Technical Debt Quadrant","https://martinfowler.com/bliki/TechnicalDebtQuadrant.html","Prudent, reckless, deliberate, inadvertent")],
+ sources=[("Wikipedia: Solution architecture","https://en.wikipedia.org/wiki/Solution_architecture"),("Wikipedia: Business architecture","https://en.wikipedia.org/wiki/Business_architecture"),
+          ("Wikipedia: Enterprise architecture","https://en.wikipedia.org/wiki/Enterprise_architecture"),("Wikipedia: Technical debt","https://en.wikipedia.org/wiki/Technical_debt"),
+          ("Cartwright, Horn, Lewis: Transitional Architecture","https://martinfowler.com/articles/patterns-legacy-displacement/transitional-architecture.html"),("Cartwright, Horn, Lewis: Patterns of Legacy Displacement","https://martinfowler.com/articles/patterns-legacy-displacement/"),
+          ("Fowler: Strangler Fig","https://martinfowler.com/bliki/StranglerFigApplication.html"),("Sato: Parallel Change","https://martinfowler.com/bliki/ParallelChange.html"),("Fowler: Branch By Abstraction","https://martinfowler.com/bliki/BranchByAbstraction.html"),
+          ("Hodgson: Feature Toggles","https://martinfowler.com/articles/feature-toggles.html"),("Cartwright, Horn, Lewis: Legacy Mimic","https://martinfowler.com/articles/patterns-legacy-displacement/legacy-mimic.html"),
+          ("Cartwright, Horn, Lewis: Event Interception","https://martinfowler.com/articles/patterns-legacy-displacement/event-interception.html"),("Fowler: Dark Launching","https://martinfowler.com/bliki/DarkLaunching.html"),
+          ("Sato: Canary Release","https://martinfowler.com/bliki/CanaryRelease.html"),("Fowler: Technical Debt","https://martinfowler.com/bliki/TechnicalDebt.html"),("Fowler: Technical Debt Quadrant","https://martinfowler.com/bliki/TechnicalDebtQuadrant.html"),
+          ("Fowler: Sacrificial Architecture","https://martinfowler.com/bliki/SacrificialArchitecture.html")])
+
 D["bitcoin"]=dict(
  F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
  P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
