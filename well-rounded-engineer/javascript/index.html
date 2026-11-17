@@ -144,7 +144,7 @@
   <article class="card wide"><h3>Which version should I learn?</h3>
     <p><b>Short answer: none in particular. Learn modern JavaScript, meaning everything from ECMAScript 2015 onward, and use what your target browsers or Node.js support.</b></p>
     <ul>
-      <li><b>ECMAScript 2015 (also called ES6) is the line that matters</b> (<i>our view</i>). It added <code>let</code> and <code>const</code>, arrow functions, classes, modules (<code>import</code>/<code>export</code>), promises, iterators and <code>for…of</code>, template literals and destructuring. Much older code you meet was written without these.</li>
+      <li><b>ECMAScript 2015 (also called ES6) is the line that matters</b> (<i>our view</i>; it is where most of today&rsquo;s syntax begins). It added <code>let</code> and <code>const</code>, arrow functions, classes, modules (<code>import</code>/<code>export</code>), promises, iterators and <code>for…of</code>, template literals and destructuring. Much older code you meet was written without these.</li>
       <li><b>Since then there has been one edition a year,</b> named by year: ES2016, ES2017, up to ES2026. Each one is small: the proposals that reached Stage 4 before that year&rsquo;s spec was branched, in March.</li>
       <li><b>To reach Stage 4, a feature needs, among other things, two compatible implementations that pass the Test262 conformance tests and real experience with shipping implementations,</b> so by the time it is in an edition it is already running in at least two JavaScript engines.</li>
       <li><b>Do not ask "which ES version". Ask "is this feature available where my code runs?"</b> For browsers, MDN marks each feature with <b>Baseline</b>: <i>widely available</i> means it has worked for at least 2.5 years in Chrome, Edge, Firefox and Safari on desktop, and in Chrome, Firefox and Safari on mobile.</li>
@@ -260,7 +260,24 @@ console.log(user, first, user?.length ?? 0);</code></pre></div>
       <li>TypeScript</li>
       <li><b>Then</b> one framework, the one your team or your target job uses</li>
     </ol>
-    <p class="note"><i>Opinion:</i> the framework you learn second takes a fraction of the time of the first, because you now see the patterns rather than the syntax. See <a href="/well-rounded-engineer/uihistory/">UI History</a> for how the frameworks came and went.</p>
+    <p class="note"><i>Our view:</i> the framework you learn second takes a fraction of the time of the first, because you now see the patterns rather than the syntax. <i>The other view:</i> many people learn a framework first because jobs ask for it, and pick up the language as they go; that works too, as long as you go back and fill in the patterns above. See <a href="/well-rounded-engineer/uihistory/">UI History</a> for how the frameworks came and went.</p>
+  </article>
+
+  <article class="card wide"><h3>Choosing a framework: start from the requirement</h3>
+    <p>Comparisons of frameworks usually turn into preference. Instead, write down what your product and your team need, and ask each candidate the same questions. Check every answer in the framework&rsquo;s own documentation, at the version you would use.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>If you need</th><th>Ask each candidate</th></tr></thead>
+      <tbody>
+      <tr><td>Fast first load and search-engine indexing (public sites, shops)</td><td>Does it render on the server or generate static pages, and how much JavaScript does a page ship?</td></tr>
+      <tr><td>A rich app behind a login (dashboards, tools)</td><td>How does it manage state, forms and data loading at scale?</td></tr>
+      <tr><td>Mostly static content with a few interactive parts</td><td>Could plain HTML, a little JavaScript, or Web Components do it with no framework at all?</td></tr>
+      <tr><td>Mobile apps from the same code</td><td>Is there a supported way to build native or cross-platform apps? (See <a href="/well-rounded-engineer/apps/">Apps</a>.)</td></tr>
+      <tr><td>A product that must live for many years</td><td>What is its release and support policy, who funds it, and how hard were its past major upgrades?</td></tr>
+      <tr><td>Hiring and a team that can keep it running</td><td>Do your current team and your local job market know it?</td></tr>
+      <tr><td>Accessibility from the start</td><td>Do its components and docs follow WCAG patterns? (See <a href="/well-rounded-engineer/accessibility/">Accessibility</a>.)</td></tr>
+      <tr><td>An existing codebase</td><td>Can it be added page by page, or does it need a rewrite?</td></tr>
+      </tbody></table></div>
+    <p class="note">Two rules of thumb (<i>our view</i>): the requirement you cannot change later (hosting, long-term support, team skills) outweighs the one you can; and a choice you can explain in one sentence of requirements is better than one you explain by popularity.</p>
   </article>
 
   <article class="card"><h3>Common traps</h3>
