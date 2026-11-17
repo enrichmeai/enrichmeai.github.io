@@ -10,7 +10,7 @@ groups=[("",["start","aiworry"]),
  ("Foundations",["electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab"]),
  ("Languages",["java","kotlin","python","go","rust"]),
  ("Building services",["apis","graphql","kafka","payments","spring","quarkus"]),
- ("User interfaces",["apps","uihistory"]),
+ ("User interfaces",["designux","accessibility","apps","uihistory"]),
  ("Quality",["testing","performance"]),
  ("Security",["security","cyber","oauth"]),
  ("Data",["data","datalibs","dbt","dags"]),
@@ -19,11 +19,11 @@ groups=[("",["start","aiworry"]),
  ("Cloud providers",["cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata"]),
  ("AI",["llm","ai","rag","mcp","agentharness","blueprints"]),
  ("Tools",["claudetools","copilot","agentsgcp","harness","opstools"]),
- ("Thinking &amp; character",["behaviours","mathematics","science","everydayscience","philosophy","goodhuman","body"]),
+ ("Thinking &amp; character",["behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body"]),
  ("Frontiers",["quantum","robotics","bitcoin","web3","solid"]),
  ("About this guide",["why","history","reading"]),
  ("EnrichMeAI open source",["opensource","culvert"])]
-NARRATIVE=("everydayscience","reading","uihistory","start","why","aiworry","history","behaviours","homelab","opensource")
+NARRATIVE=("ways","designux","accessibility","everydayscience","reading","uihistory","start","why","aiworry","history","behaviours","homelab","opensource")
 # what each group is for, and where its running code lives (only folders that exist and run)
 GH="https://github.com/enrichmeai/"
 SITE="enrichmeai.github.io"
@@ -32,7 +32,7 @@ blurb={
  "Foundations":"How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.",
  "Languages":"Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.",
  "Building services":"APIs, messaging and the frameworks that turn code into services.",
- "User interfaces":"How people see and touch software, on phones, desktops and the web, and how that changed.",
+ "User interfaces":"Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.",
  "Quality":"Proving it works, and that it stays fast under load.",
  "Security":"Building it safely, and thinking like a defender.",
  "Data":"Moving, shaping and trusting data, from a file to a warehouse, on any platform.",
@@ -56,7 +56,7 @@ def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
 order=[t for _,ts in groups for t in ts]
 labels=dict(re.findall(r'<a href="#([a-z0-9]+)" data-tab="\1">([^<]+)</a>',s))
-labels.update(internet="How the Internet Is Tied Together",everydayscience="Everyday Science",hardware="How Computers Are Built",electronics="Electronics &amp; Chips",reading="Reading List",apps="Apps: Native or Cross-platform",uihistory="UI History",k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
+labels.update(ways="Ways of Working",designux="Design Thinking &amp; UX",accessibility="Accessibility",internet="How the Internet Is Tied Together",everydayscience="Everyday Science",hardware="How Computers Are Built",electronics="Electronics &amp; Chips",reading="Reading List",apps="Apps: Native or Cross-platform",uihistory="UI History",k8sdr="Kubernetes DR &amp; Best Practices",bitcoin="Bitcoin &amp; Blockchain",robotics="Robotics",kotlin="Kotlin",go="Go",rust="Rust",awsdata="Data on AWS",opensource="Our open source",aiworry="Worried about AI?",cyber="Cybersecurity",quantum="Quantum Computing",cloudinside="How the cloud is built",agentsgcp="Agents on GCP",history="A brief history",why="Why this guide exists",body="Body, Mind &amp; Nature",mathematics="Mathematics",science="Science &amp; Method",philosophy="Philosophy",goodhuman="Being a Good Human",homelab="Home Lab",behaviours="Behaviours",servicemesh="Service Mesh &amp; Istio",helm="Helm Charts",operators="Operators",claudetools="Claude Code &amp; Cowork",copilot="GitHub Copilot",agentharness="Agent Harness",web3="Web 3.0",solid="Solid",datalibs="Data Libraries",culvert="Culvert",cloudcompare="GCP vs AWS vs Azure",opstools="Ops Tooling",blueprints="Frameworks vs AI",payments="Payment Gateways",performance="Performance",caching="Caching",observability="Observability",sre="SRE",ai="AI for Engineers",llm="LLMs",rag="RAG",mcp="MCP",microservices="Microservices",eventsourcing="Event Sourcing",web="Web Fundamentals",graphql="GraphQL",gcpdata="Data on GCP",apis="APIs &amp; Integration",kafka="Kafka",apigee="Apigee",oauth="OAuth &amp; OIDC",harness="Harness")
 missing=set(order)-set(labels); assert not missing, missing
 
 nav=['    <nav aria-label="Sections">']
@@ -81,7 +81,7 @@ def cards(t):
     ln=''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{ti}</a><span class="lnote"> {no}</span></li>' for ti,u,no in d["links"])
     repo=code[t][0] if t in code else SITE
     ask=f'<a href="{GH}{repo}/issues/new?title={quote("["+html.unescape(labels[t])+"] ")}" target="_blank" rel="noopener">open an issue on GitHub</a>'
-    src=(('<p class="sources"><b>Checked against:</b> '+'; '.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n,u in d["sources"])+'.</p>') if d.get("sources") else '')
+    src=(('<p class="sources"><b>Checked against:</b> '+'; '.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n,u in d["sources"])+'.'+(' A few claims could not be confirmed at their official source from here and are being re-checked.' if d.get("pending") else '')+'</p>') if d.get("sources") else '')
     run=(f'<p class="runcode"><b>Run the code:</b> <a href="{coderef(t)}" target="_blank" rel="noopener">{code[t][0]}/{code[t][1]}</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? {ask}.</p>' if t in code
          else f'<p class="runcode">A question, or found a mistake? {ask}. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p>')
     return (f'\n  <!-- levels -->\n  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels">{lv}</div>'

@@ -54,6 +54,8 @@
       <a href="/well-rounded-engineer/spring/">Spring Boot</a>
       <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
       <span class="navgrp">User interfaces</span>
+      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
+      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
       <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
       <a href="/well-rounded-engineer/uihistory/">UI History</a>
       <span class="navgrp">Quality</span>
@@ -107,6 +109,7 @@
       <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
       <span class="navgrp">Thinking &amp; character</span>
       <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
+      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
       <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
       <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
       <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
@@ -299,7 +302,7 @@ QUALIFY ROW_NUMBER() OVER (
   PARTITION BY store_id
   ORDER BY order_date DESC, order_id      -- tie-breaker
 ) &lt;= 3;</code></pre></div>
-    <p class="note">Use <code>RANK</code> instead of <code>ROW_NUMBER</code> if ties should all be included. If BigQuery complains that <code>QUALIFY</code> needs a <code>WHERE</code>, <code>GROUP BY</code> or <code>HAVING</code> clause, add <code>WHERE TRUE</code>.</p>
+    <p class="note">Use <code>RANK</code> instead of <code>ROW_NUMBER</code> if ties should all be included.</p>
   </article>
 
   <article class="card"><h3>Pattern: deduplicate</h3>
@@ -314,7 +317,7 @@ SELECT * FROM `p.raw.orders`
 QUALIFY ROW_NUMBER() OVER (PARTITION BY order_ref ORDER BY _landed_at DESC) = 1;
 
 -- exact duplicate rows only
-SELECT DISTINCT * EXCEPT (_run_id) FROM t;   -- DISTINCT * fails on ARRAY columns</code></pre></div>
+SELECT DISTINCT * EXCEPT (_run_id) FROM t;   -- leave out the column that differs on every load</code></pre></div>
   </article>
 
   <article class="card"><h3>Pattern: date spine and missing days</h3>
@@ -399,7 +402,7 @@ SELECT * FROM (
 )
 PIVOT (COUNT(order_id) FOR order_year IN (2023 AS y2023, 2024 AS y2024, 2025 AS y2025));
 
--- the portable way, works in any SQL
+-- conditional counts without PIVOT (COUNTIF is BigQuery; elsewhere use COUNT(CASE WHEN … THEN 1 END) or FILTER)
 SELECT store_id,
   COUNTIF(order_year = 2023) AS y2023,
   COUNTIF(order_year = 2024) AS y2024,
@@ -463,8 +466,8 @@ SELECT COUNT(*) FROM `p.util.store_year`('1_05', 2024);</code></pre></div>
       <tr><td>Filter on clustered columns</td><td>Skips blocks inside partitions; benefit shows in "bytes processed" after the run.</td></tr>
       <tr><td>Dry-run before running</td><td>Shows bytes to be scanned for free. Set a maximum bytes billed on risky jobs.</td></tr>
       <tr><td>Aggregate early, join late</td><td>Shuffling fewer rows between stages is the main cost in slot time.</td></tr>
-      <tr><td>Avoid <code>ORDER BY</code> without <code>LIMIT</code> on huge results</td><td>A global sort runs on one worker at the end.</td></tr>
-      <tr><td>Use <code>APPROX_COUNT_DISTINCT</code> for exploration</td><td>Exact distinct counts on billions of rows are expensive; the approximate version has a small, documented error and is far cheaper.</td></tr>
+      <tr><td>Avoid <code>ORDER BY</code> without <code>LIMIT</code> on huge results</td><td>Sorting a very large result can fail with &quot;Resources exceeded&quot;; put <code>ORDER BY</code> in the outermost query and add a <code>LIMIT</code>.</td></tr>
+      <tr><td>Use <code>APPROX_COUNT_DISTINCT</code> for exploration</td><td>Exact distinct counts on billions of rows are expensive; the approximate version returns a statistical estimate and uses fewer resources.</td></tr>
       <tr><td>Materialise reused intermediate results</td><td>A CTE referenced several times may be computed several times. Write it to a table (or temp table in a script) when it is big.</td></tr>
       <tr><td>Read the execution graph</td><td>In the console's Execution details: look for a stage with skewed time (one huge key), large shuffle, or spill to disk.</td></tr>
       <tr><td>Avoid self-joins for running totals</td><td>A window function does in one pass what a self-join does quadratically.</td></tr>
@@ -647,7 +650,7 @@ WHEN NOT MATCHED THEN INSERT ROW;</code></pre></div>
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>SELECT, WHERE, GROUP BY, ORDER BY and simple joins</li><li>Know how NULL behaves in comparisons and aggregates</li><li>Dry-run before running in BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Window functions, QUALIFY, CTEs, semi- and anti-joins</li><li>Check grain and fan-out before trusting a number</li><li>Write readable, tested SQL in dbt</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Patterns: gaps and islands, spines, SCD joins, recursion</li><li>Read execution plans and cut cost and slot time</li><li>Review others' SQL for correctness and cost</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design query patterns and models for a whole platform</li><li>Teach SQL; set standards and linting</li><li>Know engine internals well enough to predict plans</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Logical vs physical query plans</li><li>Approximate aggregation (HyperLogLog, quantiles)</li><li>Pipe syntax and modern SQL features</li><li>SQL style guides and SQLFluff linting</li><li>Testing SQL with dbt unit tests</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">BigQuery query syntax</a><span class="lnote"> The full GoogleSQL SELECT reference</span></li><li><a href="https://modern-sql.com/" target="_blank" rel="noopener">Modern SQL</a><span class="lnote"> Window functions, recursion and newer standard features across engines</span></li><li><a href="https://use-the-index-luke.com/" target="_blank" rel="noopener">Use The Index, Luke</a><span class="lnote"> How queries and indexes really interact</span></li><li><a href="https://www.postgresql.org/docs/current/tutorial-window.html" target="_blank" rel="noopener">PostgreSQL tutorial: window functions</a><span class="lnote"> A clear introduction to windows</span></li><li><a href="https://docs.sqlfluff.com/" target="_blank" rel="noopener">SQLFluff</a><span class="lnote"> Linter and formatter for SQL, including dbt and BigQuery</span></li></ul></div></div><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-data/tree/main/sql" target="_blank" rel="noopener">well-rounded-engineer-data/sql</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-data/issues/new?title=%5BSQL%20Skills%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Logical vs physical query plans</li><li>Approximate aggregation (HyperLogLog, quantiles)</li><li>Pipe syntax and modern SQL features</li><li>SQL style guides and SQLFluff linting</li><li>Testing SQL with dbt unit tests</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">BigQuery query syntax</a><span class="lnote"> The full GoogleSQL SELECT reference</span></li><li><a href="https://modern-sql.com/" target="_blank" rel="noopener">Modern SQL</a><span class="lnote"> Window functions, recursion and newer standard features across engines</span></li><li><a href="https://use-the-index-luke.com/" target="_blank" rel="noopener">Use The Index, Luke</a><span class="lnote"> How queries and indexes really interact</span></li><li><a href="https://www.postgresql.org/docs/current/tutorial-window.html" target="_blank" rel="noopener">PostgreSQL tutorial: window functions</a><span class="lnote"> A clear introduction to windows</span></li><li><a href="https://docs.sqlfluff.com/" target="_blank" rel="noopener">SQLFluff</a><span class="lnote"> Linter and formatter for SQL, including dbt and BigQuery</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">GoogleSQL query syntax (QUALIFY order, SELECT DISTINCT, set operators)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions" target="_blank" rel="noopener">GoogleSQL aggregate functions (ANY_VALUE HAVING, COUNTIF, NULL handling)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/operators" target="_blank" rel="noopener">GoogleSQL operators (IS NOT DISTINCT FROM, division result types)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/window-function-calls" target="_blank" rel="noopener">GoogleSQL window function calls (RANGE needs numeric key, UNIX_DATE tip)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions" target="_blank" rel="noopener">GoogleSQL date functions (default time zone UTC)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax" target="_blank" rel="noopener">GoogleSQL DML (MERGE must match at most one source row)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/best-practices-performance-compute" target="_blank" rel="noopener">BigQuery compute best practices (CTE evaluated multiple times, ORDER BY)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/best-practices-costs" target="_blank" rel="noopener">BigQuery cost best practices (dry run)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/clustered-tables" target="_blank" rel="noopener">Clustered tables (no accurate estimate before run)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/sandbox" target="_blank" rel="noopener">BigQuery sandbox (no billing account)</a>; <a href="https://www.postgresql.org/docs/current/sql-expressions.html" target="_blank" rel="noopener">PostgreSQL aggregate functions (no COUNTIF; FILTER clause)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions" target="_blank" rel="noopener">BigQuery: approximate aggregate functions</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-data/tree/main/sql" target="_blank" rel="noopener">well-rounded-engineer-data/sql</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-data/issues/new?title=%5BSQL%20Skills%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
