@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLID & Design Patterns · Well Rounded Engineer</title>
+<meta name="description" content="Architecture decides how systems fit together; these decide how one codebase stays easy to change. SOLID is five principles for classes and modules.…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="patterns" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 96 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp" open><summary>Architecture &amp; design<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/" aria-current="page">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Architecture &amp; design</span> / <span aria-current="page">SOLID &amp; Design Patterns</span></p>
+<section class="panel" id="patterns" data-name="SOLID &amp; Design Patterns">
+  <div class="panel-head"><h1>SOLID principles and design patterns</h1><p>Architecture decides how systems fit together; these decide how one codebase stays easy to change. SOLID is five principles for classes and modules. Design patterns are named, reusable answers to problems that keep coming back. Both give a team a shared vocabulary, and both can be overdone. Not to be confused with <a href="/well-rounded-engineer/solid/">Solid</a>, the personal data pods.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-five-principles"><h3>The five principles</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Principle</th><th>What it says</th><th>The smell it fixes (<i>analysis</i>)</th><th>Overdone, it becomes (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td><b>S</b></td><td>Single responsibility</td><td>A class should have only one reason to change</td><td>One class that prices, saves and emails; every change risks the other two</td><td>Dozens of one-method classes that are hard to follow</td></tr>
+      <tr><td><b>O</b></td><td>Open&ndash;closed</td><td>Software entities should be open for extension but closed for modification: behaviour can be extended without editing their source</td><td>A growing <code>if</code>/<code>switch</code> that every new case edits</td><td>Extension points for variations that never come</td></tr>
+      <tr><td><b>L</b></td><td>Liskov substitution</td><td>A property provable about objects of a type should hold for objects of any of its subtypes</td><td>A subclass that throws, or quietly changes behaviour, where the parent worked</td><td>Rarely overdone; the usual fix is less inheritance</td></tr>
+      <tr><td><b>I</b></td><td>Interface segregation</td><td>No code should be forced to depend on methods it does not use</td><td>A huge interface that every implementer half-fills with stubs</td><td>Interfaces so small that a simple idea is spread across many</td></tr>
+      <tr><td><b>D</b></td><td>Dependency inversion</td><td>High-level modules should not depend on low-level ones; both depend on abstractions, and abstractions do not depend on details</td><td>Business logic that cannot be tested without a real database</td><td>An interface for every class, each with one implementation forever</td></tr>
+      </tbody></table></div>
+    <p class="note">Where they come from: Robert C. Martin introduced the principles in his 2000 paper <i>Design Principles and Design Patterns</i>; Michael Feathers coined the acronym SOLID around 2004. The open&ndash;closed principle is Bertrand Meyer&rsquo;s, and the substitution principle is Barbara Liskov&rsquo;s, from 1987, formalised with Jeannette Wing in 1994 (see <a href="/well-rounded-engineer/history/">A brief history</a>).</p>
+  </article>
+
+  <article class="card wide" id="c-four-of-them-in-one-small-example"><h3>Four of them in one small example</h3>
+<pre><code>// Before: one class prices, applies every rule and saves.
+// A new discount means editing this method again.
+class OrderService {
+  long totalPence(Order o) {
+    long t = o.subtotalPence();
+    if (o.customer().isStaff()) t = t * 80 / 100;
+    if (o.coupon() != null)     t = t - o.coupon().valuePence();
+    repository.save(o);
+    return t;
+  }
+}
+
+// After: a new rule is a new class, not an edit (O).
+interface Discount {                          // one method; nothing to stub (I)
+  long apply(Order o, long totalPence);
+}
+record StaffDiscount() implements Discount {
+  public long apply(Order o, long t) { return o.customer().isStaff() ? t * 80 / 100 : t; }
+}
+record CouponDiscount() implements Discount {
+  public long apply(Order o, long t) { return o.coupon() == null ? t : Math.max(0, t - o.coupon().valuePence()); }
+}
+
+class Pricing {                               // pricing only; saving lives elsewhere (S)
+  private final List&lt;Discount&gt; discounts;    // depends on an abstraction, not on concrete rules (D)
+  Pricing(List&lt;Discount&gt; discounts) { this.discounts = discounts; }
+
+  long totalPence(Order o) {
+    long t = o.subtotalPence();
+    for (Discount d : discounts) t = d.apply(o, t);
+    return t;
+  }
+}</code></pre>
+    <p class="note">Money is kept in integer pence, as on <a href="/well-rounded-engineer/payments/">Payment Gateways</a>. <code>Pricing</code> no longer saves, so it can be tested with no database (S), and with a list of fake discounts (O, D). The order the discounts run in is now the order of the list, and it changes the answer: staff then coupon turns 1000 into 700, coupon then staff into 720. The &ldquo;before&rdquo; version fixed that order in code; now it is a decision to make, and test, on purpose.</p>
+  </article>
+
+  <article class="card" id="c-liskov-the-classic-trap"><h3>Liskov, the classic trap</h3>
+    <p><i>A classic textbook example.</i> A square is a rectangle in geometry, so it is tempting to make <code>Square extends Rectangle</code>. But code that sets a rectangle&rsquo;s width and then its height expects the area to be width &times; height. A square that keeps its sides equal breaks that expectation, so it cannot stand in for a rectangle: the subtype fails the property the caller relied on.</p>
+    <p class="note"><i>Analysis:</i> the usual way out is fewer inheritance links, not cleverer ones: make both immutable values, or give them a shared interface with no setters.</p>
+  </article>
+
+  <article class="card" id="c-two-rules-from-the-gang-of-four"><h3>Two rules from the Gang of Four</h3>
+    <ul>
+      <li><b>&ldquo;Program to an interface, not an implementation.&rdquo;</b></li>
+      <li><b>&ldquo;Favor object composition over class inheritance.&rdquo;</b></li>
+    </ul>
+    <p>Both are from <i>Design Patterns</i> (Gamma, Helm, Johnson and Vlissides). Dependency injection is a common way to meet them: an object receives what it depends on rather than creating it, often from a framework container. Martin Fowler&rsquo;s article of January 2004 described it, and settled on the name after discussion with other advocates of inversion of control.</p>
+  </article>
+
+  <article class="card wide" id="c-patterns-by-the-problem-they-solve"><h3>Patterns by the problem they solve</h3>
+    <p><i>Design Patterns</i> describes 23 patterns in three groups: creational, structural and behavioural. Below is a selection of the 23. The last column is <i>analysis</i>.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>If your problem is&hellip;</th><th>Pattern (group)</th><th>In modern Java or Kotlin</th></tr></thead>
+      <tbody>
+      <tr><td>Choosing an algorithm at runtime</td><td>Strategy (behavioural)</td><td>Often just a functional interface and a lambda</td></tr>
+      <tr><td>Telling many objects when one changes</td><td>Observer (behavioural)</td><td>Listeners, events and reactive streams (see <a href="/well-rounded-engineer/javascript/">JavaScript</a> for the same idea in the browser)</td></tr>
+      <tr><td>A fixed sequence of steps where some steps vary</td><td>Template method (behavioural)</td><td>An abstract class with hooks, or a method that takes the varying steps as functions</td></tr>
+      <tr><td>Requests as objects you can queue, log or undo</td><td>Command (behavioural)</td><td>A record per command, handled in one place</td></tr>
+      <tr><td>Behaviour that depends on the object&rsquo;s state</td><td>State (behavioural)</td><td>A sealed type per state and a <code>switch</code> over it</td></tr>
+      <tr><td>Walking a collection without exposing its structure</td><td>Iterator (behavioural)</td><td>Built in: <code>Iterable</code> and the for-each loop</td></tr>
+      <tr><td>Adding behaviour around an object without subclassing</td><td>Decorator (structural)</td><td>Java&rsquo;s I/O streams are built this way</td></tr>
+      <tr><td>Making an interface you cannot change fit the one you need</td><td>Adapter (structural)</td><td>A small wrapper class at the edge of your code</td></tr>
+      <tr><td>Offering one simple entry point to a complicated subsystem</td><td>Facade (structural)</td><td>A service class in front of several clients</td></tr>
+      <tr><td>Standing in for another object (access checks, remote calls, added behaviour)</td><td>Proxy (structural)</td><td>Generated by frameworks more often than written by hand</td></tr>
+      <tr><td>Treating a tree of parts the same way as a single part</td><td>Composite (structural)</td><td>Menus, file trees, expression trees</td></tr>
+      <tr><td>Building an object with many optional parts</td><td>Builder (creational)</td><td>Kotlin&rsquo;s named and default arguments, or a builder for Java</td></tr>
+      <tr><td>Letting a subclass or caller decide which class to create</td><td>Factory method (creational)</td><td>A static factory method, or a function that returns an implementation</td></tr>
+      <tr><td>Exactly one instance of something</td><td>Singleton (creational)</td><td>Some consider it an anti-pattern: global state that hides dependencies and makes unit testing harder. One instance managed by a dependency-injection container avoids both</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-when-principles-and-patterns-hurt"><h3>When principles and patterns hurt</h3>
+    <ul>
+      <li><b>Presumptive features:</b> Fowler&rsquo;s word for code built for a feature that is not needed yet. YAGNI, &ldquo;you aren&rsquo;t gonna need it&rdquo;, is the counter.</li>
+      <li><b>Kent Beck&rsquo;s rules of simple design,</b> as Fowler states them, in priority order: passes the tests, reveals intention, no duplication, fewest elements.</li>
+      <li><b>Anti-patterns:</b> common but counterproductive solutions; Andrew Koenig coined the term in 1995, inspired by <i>Design Patterns</i>.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> learn the principles and the common patterns well enough to name them in a review, then use one when its problem is in front of you, not to make code look professional. Refactor into a pattern when the second or third variation arrives.</p>
+    <p><i>The other view:</i> in a large codebase shared by many teams, agreeing on patterns early keeps code consistent and saves later rewrites. And in functional styles, many patterns become plain functions and modules, so some argue SOLID matters less outside object-oriented code.</p>
+  </article>
+
+  <article class="card wide" id="c-test-yourself"><h3>Test yourself</h3>
+    <details><summary>A class formats invoices and also sends them by email. Which principle does that strain?</summary><p>Single responsibility: it has two reasons to change, the invoice layout and the way it is delivered.</p></details>
+    <details><summary>Every new payment method means editing the same <code>switch</code>. Which principle, and which pattern helps?</summary><p>Open&ndash;closed; the Strategy pattern, with one implementation per payment method.</p></details>
+    <details><summary>A <code>ReadOnlyList</code> extends <code>List</code> and throws on <code>add</code>. What is wrong?</summary><p>It breaks Liskov substitution: code written for <code>List</code> that calls <code>add</code> fails when handed the subtype.</p></details>
+    <details><summary>Your business logic news up a database client directly. Which principle would let you test it without the database?</summary><p>Dependency inversion: depend on an interface, and pass in a real client in production and a fake in tests.</p></details>
+    <details><summary>Which pattern are Java&rsquo;s I/O streams built on?</summary><p>Decorator: each stream wraps another and adds behaviour, such as buffering.</p></details>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Name the five SOLID principles and the smell each one fixes</li><li>Recognise Strategy, Observer, Decorator, Adapter and Builder in code you read</li><li>Explain why a subclass must keep its parent's promises</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Refactor a growing switch into a strategy or a sealed type</li><li>Inject dependencies so logic is testable without infrastructure</li><li>Name a pattern in a code review, and say why it fits</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide when a pattern earns its place and when it is speculative</li><li>Design module boundaries with dependency inversion</li><li>Keep an inheritance hierarchy honest, or replace it with composition</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set design standards a whole organisation can review against</li><li>Teach patterns as answers to problems, not as goals</li><li>Judge which principles change shape in functional code</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Single responsibility and open-closed</li><li>Liskov substitution and interface segregation</li><li>Dependency inversion and injection</li><li>The Gang of Four patterns</li><li>YAGNI and simple design</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/injection.html" target="_blank" rel="noopener">Fowler: Inversion of Control Containers and the Dependency Injection pattern</a><span class="lnote"> Where the name comes from</span></li><li><a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener">Fowler: Yagni</a><span class="lnote"> Presumptive features</span></li><li><a href="https://martinfowler.com/bliki/BeckDesignRules.html" target="_blank" rel="noopener">Fowler: Beck Design Rules</a><span class="lnote"> Four rules of simple design</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">Wikipedia: SOLID</a>; <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle" target="_blank" rel="noopener">Wikipedia: Single-responsibility principle</a>; <a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle" target="_blank" rel="noopener">Wikipedia: Open–closed principle</a>; <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle" target="_blank" rel="noopener">Wikipedia: Liskov substitution principle</a>; <a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank" rel="noopener">Wikipedia: Interface segregation principle</a>; <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="noopener">Wikipedia: Dependency inversion principle</a>; <a href="https://en.wikipedia.org/wiki/Design_Patterns" target="_blank" rel="noopener">Wikipedia: Design Patterns</a>; <a href="https://en.wikipedia.org/wiki/Strategy_pattern" target="_blank" rel="noopener">Wikipedia: Strategy pattern</a>; <a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank" rel="noopener">Wikipedia: Observer pattern</a>; <a href="https://en.wikipedia.org/wiki/Decorator_pattern" target="_blank" rel="noopener">Wikipedia: Decorator pattern</a>; <a href="https://en.wikipedia.org/wiki/Singleton_pattern" target="_blank" rel="noopener">Wikipedia: Singleton pattern</a>; <a href="https://en.wikipedia.org/wiki/Template_method_pattern" target="_blank" rel="noopener">Wikipedia: Template method pattern</a>; <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank" rel="noopener">Wikipedia: Proxy pattern</a>; <a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Wikipedia: Dependency injection</a>; <a href="https://en.wikipedia.org/wiki/Anti-pattern" target="_blank" rel="noopener">Wikipedia: Anti-pattern</a>; <a href="https://martinfowler.com/articles/injection.html" target="_blank" rel="noopener">Fowler: Inversion of Control Containers and the Dependency Injection pattern (2004)</a>; <a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener">Fowler: Yagni</a>; <a href="https://martinfowler.com/bliki/BeckDesignRules.html" target="_blank" rel="noopener">Fowler: Beck Design Rules</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BSOLID%20%26%20Design%20Patterns%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/dags/">← Airflow DAGs</a><a class="pn-next" href="/well-rounded-engineer/architecture/">Architecture →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-five-principles">The five principles</a><a href="#c-four-of-them-in-one-small-example">Four of them in one small example</a><a href="#c-liskov-the-classic-trap">Liskov, the classic trap</a><a href="#c-two-rules-from-the-gang-of-four">Two rules from the Gang of Four</a><a href="#c-patterns-by-the-problem-they-solve">Patterns by the problem they solve</a><a href="#c-when-principles-and-patterns-hurt">When principles and patterns hurt</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-test-yourself">Test yourself</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
