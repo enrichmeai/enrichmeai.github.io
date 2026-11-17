@@ -1031,6 +1031,23 @@ D["atob"]=dict(
           ("Sato: Canary Release","https://martinfowler.com/bliki/CanaryRelease.html"),("Fowler: Technical Debt","https://martinfowler.com/bliki/TechnicalDebt.html"),("Fowler: Technical Debt Quadrant","https://martinfowler.com/bliki/TechnicalDebtQuadrant.html"),
           ("Fowler: Sacrificial Architecture","https://martinfowler.com/bliki/SacrificialArchitecture.html")])
 
+D["realtime"]=dict(
+ F=["Tell hard, firm and soft real time from near real time","Open an EventSource or a WebSocket and handle its messages","Explain why a browser cannot read a Kafka topic directly"],
+ P=["Build a gateway that consumes Kafka and pushes to browsers","Resume after a reconnect with Last-Event-ID or a refetch","Authenticate and scope long-lived connections"],
+ S=["Choose polling, SSE, WebSockets, GraphQL subscriptions or a managed service by requirement","Design fan-out across gateway instances","Set and measure a delivery target, such as p99 within two seconds"],
+ E=["Set real-time standards across an organisation's products","Run connection-holding services at scale","Decide build or buy for real-time infrastructure"],
+ topics=["Real-time and near-real-time deadlines","Server-sent events and EventSource","WebSockets and backpressure","GraphQL subscriptions over WebSocket or SSE","Kafka consumer groups and fan-out"],
+ links=[("MDN: Using server-sent events","https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events","The event stream format and EventSource"),
+        ("MDN: The WebSocket API","https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API","Two-way connections in the browser"),
+        ("graphql-sse","https://github.com/enisdenjo/graphql-sse","GraphQL over server-sent events")],
+ sources=[("Wikipedia: Real-time computing (hard, firm, soft; near real-time)","https://en.wikipedia.org/wiki/Real-time_computing"),("Wikipedia: Push technology (long polling)","https://en.wikipedia.org/wiki/Push_technology"),
+          ("Wikipedia: Apache Kafka","https://en.wikipedia.org/wiki/Apache_Kafka"),("MDN: Using server-sent events","https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events"),("MDN: EventSource","https://developer.mozilla.org/en-US/docs/Web/API/EventSource"),
+          ("WHATWG HTML: Server-sent events","https://html.spec.whatwg.org/multipage/server-sent-events.html"),("MDN: The WebSocket API","https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"),("RFC 6455: The WebSocket Protocol","https://www.rfc-editor.org/rfc/rfc6455"),
+          ("RFC 6202: Long polling and streaming","https://www.rfc-editor.org/rfc/rfc6202"),("MDN: WebTransport API","https://developer.mozilla.org/en-US/docs/Web/API/WebTransport_API"),("MDN: Push API","https://developer.mozilla.org/en-US/docs/Web/API/Push_API"),
+          ("GraphQL specification: Execution","https://github.com/graphql/graphql-spec"),("graphql-ws protocol","https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md"),("graphql-sse protocol","https://github.com/enisdenjo/graphql-sse/blob/master/PROTOCOL.md"),
+          ("AWS AppSync: real-time data","https://docs.aws.amazon.com/appsync/latest/devguide/aws-appsync-real-time-data.html"),("API Gateway WebSocket APIs","https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html"),
+          ("Azure Web PubSub","https://learn.microsoft.com/en-us/azure/azure-web-pubsub/overview"),("ASP.NET Core SignalR","https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction")])
+
 D["bitcoin"]=dict(
  F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
  P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
