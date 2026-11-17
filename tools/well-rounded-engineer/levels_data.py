@@ -883,6 +883,29 @@ D["banking"]=dict(
           ("OpenJDK JEP 333: ZGC, and JEP 439: Generational ZGC","https://openjdk.org/jeps/439"),("Wikipedia: Nagle's algorithm (TCP_NODELAY)","https://en.wikipedia.org/wiki/Nagle%27s_algorithm"),
           ("Wikipedia: Data Plane Development Kit","https://en.wikipedia.org/wiki/Data_Plane_Development_Kit"),("wrk2 README (coordinated omission)","https://github.com/giltene/wrk2")])
 
+D["retailcloud"]=dict(
+ F=["Name the systems a retailer connects and what each one owns","Explain why a till must keep selling offline","Explain the difference between an event and an API call"],
+ P=["Build store-and-forward with idempotent receivers","Map a retail flow onto AWS, Azure or Google Cloud services","Connect a data centre to a cloud over a private link"],
+ S=["Decide what runs in the store, the data centre and the cloud, by requirement","Design one view of stock across channels","Price data transfer before splitting a system across clouds"],
+ E=["Set a hybrid and multi-cloud strategy with named reasons","Lead the integration of an acquired company on another cloud","Keep an exit plan from a provider tested, not just written"],
+ topics=["Point of sale and store systems","EDI with suppliers","Events, APIs and the outbox","Hybrid cloud and on-premises offerings","Multi-cloud and its costs","Switching charges under the EU Data Act"],
+ links=[("What is AWS Outposts?","https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html","AWS infrastructure on your premises"),
+        ("Azure Arc overview","https://learn.microsoft.com/en-us/azure/azure-arc/overview","Manage resources outside Azure"),
+        ("Google Distributed Cloud connected overview","https://cloud.google.com/distributed-cloud/edge/latest/docs/overview","When to use it, and its limits")],
+ sources=[("Wikipedia: Point of sale","https://en.wikipedia.org/wiki/Point_of_sale"),("Wikipedia: Electronic data interchange","https://en.wikipedia.org/wiki/Electronic_data_interchange"),
+          ("Wikipedia: Cloud computing (hybrid cloud, cloud bursting)","https://en.wikipedia.org/wiki/Cloud_computing"),("Wikipedia: Multicloud","https://en.wikipedia.org/wiki/Multicloud"),
+          ("Wikipedia: Data Act (European Union)","https://en.wikipedia.org/wiki/Data_Act_(European_Union)"),
+          ("Amazon EventBridge: what is it","https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html"),("Azure Service Bus overview","https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview"),
+          ("Pub/Sub overview","https://cloud.google.com/pubsub/docs/overview"),("AWS Direct Connect","https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html"),
+          ("Azure ExpressRoute","https://learn.microsoft.com/en-us/azure/expressroute/expressroute-introduction"),("Cloud Interconnect overview","https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview"),
+          ("Cross-Cloud Interconnect overview","https://cloud.google.com/network-connectivity/docs/interconnect/concepts/cci-overview"),
+          ("What is AWS Outposts?","https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"),("What is Azure Local?","https://learn.microsoft.com/en-us/azure/azure-local/overview"),
+          ("Google Distributed Cloud connected overview","https://cloud.google.com/distributed-cloud/edge/latest/docs/overview"),("Azure Arc overview","https://learn.microsoft.com/en-us/azure/azure-arc/overview"),
+          ("GKE Multi-Cloud","https://cloud.google.com/kubernetes-engine/multi-cloud/docs"),("Azure API Management self-hosted gateway","https://learn.microsoft.com/en-us/azure/api-management/self-hosted-gateway-overview"),
+          ("What is Apigee hybrid?","https://cloud.google.com/apigee/docs/hybrid/latest/what-is-hybrid"),("What is AWS IoT Greengrass?","https://docs.aws.amazon.com/greengrass/v2/developerguide/what-is-iot-greengrass.html"),
+          ("What is Amazon Personalize?","https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html"),("Google AI Commerce Search overview","https://docs.cloud.google.com/gemini-enterprise-cx/ai-commerce-search/overview"),
+          ("Google Cloud network pricing","https://cloud.google.com/vpc/network-pricing")])
+
 D["rust"]=dict(
  F=["Explain ownership and borrowing","Use Result, Option and match","Build and test with Cargo"],
  P=["Write a CLI or service in Rust","Use traits, iterators and error types well","Keep Clippy clean and the code formatted"],
