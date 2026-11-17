@@ -13392,6 +13392,27 @@ BREAKING CHANGE: clients must call /judgments</code></pre></div>
     </ul>
   </article>
 
+  <article class="card wide"><h3>Why building a product still takes grinding, even with AI</h3>
+    <p><i>Our view, with the evidence it rests on and the other view at the end.</i> AI tools and skills make the typing faster. A product is more than the typing: it is the problem understood, the edge cases found, the claims checked, the users listened to, and the same thing fixed and improved again and again. That repeated, unglamorous work is the grind, and it has not gone away.</p>
+    <ul>
+      <li><b>The hard part is the problem, not the code.</b> Fred Brooks argued in &ldquo;No Silver Bullet&rdquo; (1986) that no single technology or technique promises even a tenfold improvement within a decade, because much of software&rsquo;s difficulty is <i>essential complexity</i>: if users need a program to do 30 different things, it must do those 30 things. Tools remove <i>accidental</i> complexity. AI is a very strong tool for that, and the essential part still needs people to work through it.</li>
+      <li><b>The last 10% takes the other 90%.</b> The ninety-ninety rule, attributed to Tom Cargill of Bell Labs: &ldquo;The first 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10 percent of the code accounts for the other 90 percent.&rdquo; A demo is the first 90%. A product people rely on is the rest.</li>
+      <li><b>Feeling fast is not being fast.</b> In a randomised controlled trial published by METR in July 2025, experienced open-source developers took 19% <i>longer</i> on their tasks when using AI tools, while believing beforehand that AI would make them 24% faster and still believing afterwards that it had made them 20% faster. One study, of one group, at one point in time; but it shows why you measure instead of trusting the feeling.</li>
+      <li><b>What the grind looked like, building this guide</b> (first-hand): checking a claim about npm against npm&rsquo;s own changelog showed that dependency install scripts are now blocked by default, which memory would have got wrong; an encyclopaedia put async/await in the wrong edition of JavaScript until TC39&rsquo;s own list corrected it; and an independent review of each page found real mistakes before it went live. None of that was typing. All of it was grinding.</li>
+    </ul>
+    <h4>What the grind actually is</h4>
+    <div class="tbl"><table>
+      <thead><tr><th>Grind</th><th>What AI helps with</th><th>What still needs you</th></tr></thead>
+      <tbody>
+      <tr><td>Understanding the problem</td><td>Summarising research, drafting questions</td><td>Talking to users, deciding what matters</td></tr>
+      <tr><td>Edge cases and failures</td><td>Suggesting cases, writing tests</td><td>Knowing which failures your users would actually hit</td></tr>
+      <tr><td>Checking claims</td><td>Finding sources fast</td><td>Opening the source, and refusing to publish what you could not check</td></tr>
+      <tr><td>The last 10%</td><td>Drafting the fixes</td><td>Caring enough to finish: install, upgrade, docs, support</td></tr>
+      <tr><td>Doing it again</td><td>Remembering the steps, if you wrote them down</td><td>Showing up the next day, and the day after</td></tr>
+      </tbody></table></div>
+    <p class="note"><i>The other view:</i> &ldquo;work smarter, not harder&rdquo;, and some teams do ship far faster with AI. Both can be true. Grinding without direction is just tiredness, and the earlier cards on this page still hold: a sustainable pace, and a hard day followed by recovery. The point is not more hours; it is that the hours spent understanding, checking and finishing cannot be skipped.</p>
+  </article>
+
   <article class="card wide"><h3>When Agile slows a company down</h3>
     <p><i>This card is opinion and observation from working in many teams, not a measured study.</i> Agile was meant to make teams faster. In many companies it has done the opposite, and the pattern is usually the same: the ceremonies were kept and the values were dropped.</p>
     <div class="tbl"><table>
@@ -13406,7 +13427,7 @@ BREAKING CHANGE: clients must call /judgments</code></pre></div>
     <p><b>The way back</b> is small: ship something real more often, put the people who build next to the people who use it, cut any meeting whose output nobody uses, and measure delivery (how often you release, how long a change takes to reach users) rather than story points.</p>
   </article>
 
-  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://www.conventionalcommits.org/en/v1.0.0/" target="_blank" rel="noopener">Conventional Commits specification</a>; <a href="https://semver.org/" target="_blank" rel="noopener">Semantic Versioning</a>; <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional" target="_blank" rel="noopener">commitlint config-conventional</a>; <a href="https://agilemanifesto.org/" target="_blank" rel="noopener">Manifesto for Agile Software Development</a>; <a href="https://en.wikipedia.org/wiki/Extreme_programming" target="_blank" rel="noopener">Wikipedia: Extreme programming</a>; <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank" rel="noopener">Wikipedia: Scrum</a>; <a href="https://en.wikipedia.org/wiki/User_story" target="_blank" rel="noopener">Wikipedia: User story</a>; <a href="https://en.wikipedia.org/wiki/INVEST_(mnemonic)" target="_blank" rel="noopener">Wikipedia: INVEST</a>. The last card is the author's opinion.</p></article>
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://www.conventionalcommits.org/en/v1.0.0/" target="_blank" rel="noopener">Conventional Commits specification</a>; <a href="https://semver.org/" target="_blank" rel="noopener">Semantic Versioning</a>; <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional" target="_blank" rel="noopener">commitlint config-conventional</a>; <a href="https://agilemanifesto.org/" target="_blank" rel="noopener">Manifesto for Agile Software Development</a>; <a href="https://en.wikipedia.org/wiki/Extreme_programming" target="_blank" rel="noopener">Wikipedia: Extreme programming</a>; <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank" rel="noopener">Wikipedia: Scrum</a>; <a href="https://en.wikipedia.org/wiki/User_story" target="_blank" rel="noopener">Wikipedia: User story</a>; <a href="https://en.wikipedia.org/wiki/INVEST_(mnemonic)" target="_blank" rel="noopener">Wikipedia: INVEST</a>; <a href="https://en.wikipedia.org/wiki/No_Silver_Bullet" target="_blank" rel="noopener">Wikipedia: No Silver Bullet</a>; <a href="https://en.wikipedia.org/wiki/Ninety%E2%80%93ninety_rule" target="_blank" rel="noopener">Wikipedia: Ninety-ninety rule</a>; <a href="https://en.wikipedia.org/wiki/METR" target="_blank" rel="noopener">Wikipedia: METR</a> and <a href="https://arxiv.org/abs/2507.09089" target="_blank" rel="noopener">the study on arXiv</a> (the arXiv page could not be reached from here; the figures are as Wikipedia reports them). The last card is the author's opinion.</p></article>
 
   </div>
 </section>
