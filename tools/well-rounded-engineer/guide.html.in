@@ -3345,7 +3345,17 @@ tasks.test { useJUnitPlatform() }
       <tr><td>Model</td><td>Fixed lifecycle of phases</td><td>Graph of tasks</td></tr>
       <tr><td>Versions in one place</td><td><code>dependencyManagement</code> and BOMs</td><td>Version catalogs and platforms</td></tr>
       </tbody></table></div>
-    <p class="note"><i>Opinion:</i> pick Maven when you want every project to look the same and the build to stay boring; pick Gradle when the build is large or unusual enough that skipping work and writing logic pays for the extra power. A team that knows one well beats a team half-using either.</p>
+    <h4>Choose by requirement</h4>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards</th></tr></thead>
+      <tbody>
+      <tr><td>You build an Android app</td><td>Gradle: Android builds use it, through the Android Gradle plugin</td></tr>
+      <tr><td>A large multi-module build where build time hurts</td><td>Gradle: up-to-date checks, the Daemon and the build and configuration caches skip work</td></tr>
+      <tr><td>You want every project to look the same, with little custom logic</td><td>Maven: a fixed lifecycle and conventions, configured rather than programmed</td></tr>
+      <tr><td>The build needs real custom logic</td><td>Gradle: the build is code; in Maven the logic goes into a plugin</td></tr>
+      <tr><td>Your team, CI templates and company plugins already use one</td><td>Stay with it unless a row above is a real, measured problem: switching has a cost</td></tr>
+      </tbody></table></div>
+    <p class="note"><i>Other views:</i> some engineers find Gradle builds harder to read because the scripts are code; others find Maven&rsquo;s XML verbose. Both are preferences. The rows above are requirements.</p>
   </article>
 
   <article class="card"><h3>npm: the default for Node.js</h3>
@@ -3379,6 +3389,20 @@ tasks.test { useJUnitPlatform() }
       <li><b>pnpm's <code>node_modules</code> is not flat:</b> only your direct dependencies sit at the top, as symlinks. Code cannot quietly import a package it never declared. Tools that dislike symlinks can use <code>nodeLinker: hoisted</code>.</li>
       <li><b>Corepack</b> lets a project use the Yarn or pnpm version named in the <code>packageManager</code> field of <code>package.json</code>, without installing it globally. It shipped with Node.js until version 25. From 25 on, install Corepack separately.</li>
     </ul>
+  </article>
+
+  <article class="card"><h3>npm, Yarn or pnpm: choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards</th></tr></thead>
+      <tbody>
+      <tr><td>Nothing extra to install, the most tutorials and examples</td><td>npm: it comes with the Node.js installer</td></tr>
+      <tr><td>Many projects on one machine or CI runner; disk and install time matter</td><td>pnpm: one content-addressable store, hard-linked into each project</td></tr>
+      <tr><td>Code must not import packages it never declared</td><td>pnpm (non-flat <code>node_modules</code>) or Yarn Plug&rsquo;n&rsquo;Play</td></tr>
+      <tr><td>No <code>node_modules</code> folder at all</td><td>Yarn Plug&rsquo;n&rsquo;Play</td></tr>
+      <tr><td>A tool in your chain breaks on symlinks</td><td>npm, or pnpm with <code>nodeLinker: hoisted</code></td></tr>
+      <tr><td>Strict control over install scripts by default</td><td>npm 12 or later blocks dependency install scripts unless allowed; check the others&rsquo; current settings for your version</td></tr>
+      <tr><td>The project already uses one</td><td>Keep it, and pin it with <code>packageManager</code> in <code>package.json</code></td></tr>
+      </tbody></table></div>
   </article>
 
   <article class="card"><h3>Bundlers: the other half of a JavaScript build</h3>
