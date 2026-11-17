@@ -605,7 +605,7 @@ details>.inner{padding:4px 10px 8px}
   <article class="card"><h3>How chips are designed</h3>
     <ul>
       <li><b>Hardware description languages</b> such as Verilog and VHDL describe circuits as code, which is then tested in simulation like software.</li>
-      <li><b>FPGAs</b> are chips that can be reprogrammed after manufacture: the best way to try your own digital designs on real hardware without making a chip.</li>
+      <li><b>FPGAs</b> are chips that can be reprogrammed after manufacture, so you can try your own digital designs on real hardware without making a chip.</li>
       <li><b>Instruction sets</b> define what a processor understands. <b>RISC-V</b> is a free and open standard instruction set, started at the University of California, Berkeley: anyone can design a RISC-V processor without paying royalties.</li>
       <li><b>Open manufacturing kits</b> exist too: SkyWater's 130 nm process design kit (SKY130) is available under the Apache License, so a chip design can be taken to real silicon with open tools.</li>
     </ul>
@@ -3778,7 +3778,7 @@ message Order {
       <li><b>Remote procedure call:</b> one system calls another's API (REST, gRPC). Simple; couples availability.</li>
       <li><b>Messaging:</b> systems exchange messages through a broker. Decoupled in time; more moving parts.</li>
     </ol>
-    <p class="note">From <i>Enterprise Integration Patterns</i> (Hohpe and Woolf), still the best catalogue of messaging patterns.</p>
+    <p class="note">From <i>Enterprise Integration Patterns</i> (Hohpe and Woolf), a catalogue of messaging patterns.</p>
   </article>
 
   <!-- levels -->
@@ -5261,7 +5261,7 @@ quarkus.kubernetes.env.secrets=db-credentials
   <article class="card wide"><h3>Timeline</h3>
     <div class="tbl"><table>
       <tr><th>When</th><th>What</th><th>Why it mattered</th></tr>
-      <tr><td>Before the 1980s</td><td>Text terminals and command lines</td><td>Type a command, read the answer. Still the fastest interface for many engineering tasks. See <a href="#linux">Linux</a>.</td></tr>
+      <tr><td>Before the 1980s</td><td>Text terminals and command lines</td><td>Type a command, read the answer. Still used for many engineering tasks. See <a href="#linux">Linux</a>.</td></tr>
       <tr><td>1973</td><td>Xerox Alto</td><td>An early computer with a graphical interface and a mouse.</td></tr>
       <tr><td>1984</td><td>Apple Macintosh</td><td>Brought the graphical interface to a mass-market personal computer.</td></tr>
       <tr><td>1985</td><td>Windows 1.0 (November 1985)</td><td>Microsoft's graphical environment on top of DOS.</td></tr>
@@ -5339,7 +5339,7 @@ quarkus.kubernetes.env.secrets=db-credentials
       <li><b>Refactor:</b> clean up with the tests as a safety net.</li>
     </ol>
     <p>For a bug: first write a test that reproduces it and fails, then fix. The test stays, so the bug cannot return.</p>
-    <p class="note">This is also the best way to brief an AI assistant: give it the failing test as the definition of done.</p>
+    <p class="note"><i>Our view:</i> this is also a good way to brief an AI assistant: give it the failing test as the definition of done. <i>The other view:</i> for exploratory work, where the behaviour is not yet known, some prefer to let the assistant sketch first and write the tests once the shape is clear.</p>
   </article>
 
   <article class="card"><h3>Java: JUnit + AssertJ + Mockito</h3>
@@ -6065,7 +6065,7 @@ securityContext:
       <li><b>Practise legally:</b> deliberately vulnerable training apps, capture-the-flag events and your own <a href="#homelab">home lab</a>.</li>
       <li><b>Report what you find responsibly:</b> through the organisation's security contact or vulnerability disclosure programme, and give them time to fix it.</li>
     </ul>
-    <p class="note">Security is a team sport. The best defence is ordinary engineers who patch, review, log, ask "what if this is stolen?", and report mistakes quickly.</p>
+    <p class="note">Security is a team sport. <i>Our view:</i> much of the defence is ordinary engineers who patch, review, log, ask "what if this is stolen?", and report mistakes quickly.</p>
   </article>
 
   <!-- levels -->
@@ -6298,7 +6298,7 @@ quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
       <tr><td>Lakehouse (Iceberg / Delta on object storage)</td><td>Warehouse-style tables over lake files, readable by several engines</td></tr>
       <tr><td>Vector index</td><td>Similarity search for AI retrieval</td></tr>
       </tbody></table></div>
-    <p class="note">File formats: CSV and JSON are easy but untyped and slow to scan. Parquet and ORC are columnar, compressed and typed, best for analytics. Avro suits row-by-row streams with schema evolution.</p>
+    <p class="note">File formats: CSV and JSON are easy but untyped and slow to scan. Parquet and ORC are columnar, compressed and typed, which suits analytics. Avro suits row-by-row streams with schema evolution.</p>
   </article>
 
   <article class="card wide"><h3>Layers: each one has one job</h3>
@@ -7182,7 +7182,7 @@ COMMIT;</code></pre></div>
       <tbody>
       <tr><td>Layered (n-tier)</td><td>Controller → service → repository → database</td><td>Default for a service. Keep controllers thin and rules in services.</td></tr>
       <tr><td>Hexagonal (ports &amp; adapters)</td><td>Domain logic in the centre; databases, APIs and queues are adapters behind interfaces</td><td>Logic you want to test without infrastructure, or swap providers.</td></tr>
-      <tr><td>Modular monolith</td><td>One deployable with enforced module boundaries</td><td>Most teams' best starting point. Split later along boundaries that proved real.</td></tr>
+      <tr><td>Modular monolith</td><td>One deployable with enforced module boundaries</td><td><i>Our view:</i> a sensible starting point for many teams; split later along boundaries that proved real. <i>The other view:</i> a team that already meets the readiness checklist on <a href="#microservices">Microservices</a> (automated deploys, central logs and tracing, stable boundaries) can start with separate services and skip the later split.</td></tr>
       <tr><td>Microservices</td><td>Independently deployed services owning their data</td><td>Many teams, different scaling needs. Costs: network failures, distributed data, ops overhead.</td></tr>
       <tr><td>API gateway</td><td>Single entry point: routing, auth, rate limits</td><td>Many backends behind one public surface.</td></tr>
       <tr><td>Backend for frontend (BFF)</td><td>A thin API per client type (web, mobile)</td><td>Clients with very different data needs.</td></tr>
@@ -8011,7 +8011,7 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
 
   <article class="card"><h3>Invalidation</h3>
     <ul>
-      <li><b>TTL:</b> entries expire after a set time. Bounds staleness; simplest and most robust. Every cache entry should have one.</li>
+      <li><b>TTL:</b> entries expire after a set time. Bounds staleness even when an invalidation is missed. Every cache entry should have one.</li>
       <li><b>Delete on write:</b> after updating the source, delete the cache key (not update it), so the next read reloads fresh data.</li>
       <li><b>Versioned keys:</b> include a version in the key (<code>order:v3:123</code>, or a data version number); bump it to invalidate everything at once.</li>
       <li><b>Event-driven:</b> consume change events (CDC, domain events) and evict affected keys.</li>
@@ -11792,7 +11792,7 @@ FROM VECTOR_SEARCH(
   <article class="card"><h3>Working with AI coding assistants</h3>
     <ul>
       <li><b>Give context:</b> the repo's conventions, the failing test, the exact error. Vague asks get vague code.</li>
-      <li><b>Tests first:</b> a test that fails before the change is the best spec and the best check.</li>
+      <li><b>Tests first:</b> a test that fails before the change is both the spec and the check.</li>
       <li><b>Verify against docs:</b> an assistant can invent a flag, method or version. Check the official docs for anything external.</li>
       <li><b>Review every line</b> as you would a colleague's PR: error paths, edge cases, security.</li>
       <li><b>Keep secrets out</b> of prompts and pasted logs.</li>
@@ -11845,7 +11845,7 @@ FROM VECTOR_SEARCH(
   <article class="card"><h3>Ingestion and parsing</h3>
     <ul>
       <li><b>Keep a stable document ID, source, version and date</b> on everything, so each answer can name exactly what it used.</li>
-      <li><b>Parse structure, not just text:</b> headings, paragraphs and numbered sections are the best chunk boundaries. Tables need special handling.</li>
+      <li><b>Parse structure, not just text:</b> headings, paragraphs and numbered sections make natural chunk boundaries. Tables need special handling.</li>
       <li><b>Scanned PDFs need OCR</b> (Document AI, Tesseract); measure its error rate on your documents.</li>
       <li><b>Clean:</b> strip headers, footers, page numbers and boilerplate that pollute retrieval.</li>
       <li><b>Run ingestion as an idempotent, incremental pipeline</b> with run records: documents in = chunks indexed + rejected.</li>
@@ -12133,7 +12133,7 @@ def run_query(sql: str) -&gt; dict:
 
   <article class="card"><h3>Designing good MCP tools</h3>
     <ul>
-      <li><b>Few, task-shaped tools</b> ("pipeline status for a date") beat many thin wrappers over every API call.</li>
+      <li><b>Few, task-shaped tools</b> ("pipeline status for a date"): <i>our view</i> is that they serve a model better than many thin wrappers over every API call. <i>The other view:</i> thin wrappers are quicker to build and let the model combine calls itself.</li>
       <li><b>Clear names and descriptions</b>: the model chooses tools from them.</li>
       <li><b>Typed, validated inputs</b> with enums and formats where possible.</li>
       <li><b>Compact outputs:</b> summarise and paginate; huge results waste context.</li>
@@ -13867,7 +13867,7 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
       <li><b>The inverse of a power</b> is a logarithm.</li>
       <li><b>Put it all together</b> and you reach Euler's formula, e<sup>iθ</sup> = cos θ + i sin θ, which Feynman called "our jewel" and "the most remarkable formula in mathematics".</li>
     </ol>
-    <p>Nothing has to be taken on faith: every step is a question ("what undoes this?") and its answer. That is the best way to learn anything, mathematics or software. Run the steps yourself:</p>
+    <p>Nothing has to be taken on faith: every step is a question ("what undoes this?") and its answer. <i>Our view:</i> that is a good way to learn anything, mathematics or software; <i>the other view:</i> some people learn better from worked examples first. Run the steps yourself:</p>
     <pre><code class="language-python">&quot;&quot;&quot;From counting to Euler&#x27;s formula, one step at a time.&quot;&quot;&quot;
 import cmath, math
 
@@ -14060,7 +14060,7 @@ print(&quot;e^(i*pi) + 1 =&quot;, cmath.exp(1j * math.pi) + 1, &quot; (zero, to 
   <article class="card"><h3>Epistemology: how do you know?</h3>
     <ul>
       <li><b>Knowledge needs justification:</b> a belief that turns out true by luck is not knowledge. "The tests passed" is justified only if you saw them run.</li>
-      <li><b>Sources differ in reliability:</b> the running system beats the config, the config beats the docs, the docs beat memory, memory beats rumour.</li>
+      <li><b>Sources differ in reliability</b> (<i>our rule of thumb</i>): the running system beats the config, the config beats the docs, the docs beat memory, memory beats rumour. <i>The other view:</i> the order can flip, as when a stale config file is less reliable than a current doc, so check which source is fresher.</li>
       <li><b>Absence of evidence</b> is evidence of absence only if you looked properly. Say how thoroughly you looked.</li>
       <li><b>Calibration:</b> match your confidence to your evidence, and say how sure you are.</li>
       <li><b>Testimony,</b> including an AI's answer or a colleague's summary, is a reason to check, not a replacement for checking.</li>
