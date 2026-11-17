@@ -6238,7 +6238,7 @@ securityContext:
 
 <!-- ================= KEYS, CERTIFICATES AND SSH ================= -->
 <section class="panel" id="p-pki" data-name="Keys, Certificates &amp; SSH">
-  <div class="panel-head"><h2>Keys, certificates and SSH</h2><p>HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the pair, how a certificate ties a public key to a name, what a certificate signing request (CSR) and a certificate authority (CA) do, and how SSH keys and Git signing work. Every command on this page was run as shown, and the error messages are the real ones. HTTP and the TLS handshake are on <a href="#networking">Networking</a>; SSH tunnels and jump hosts are on <a href="#linux">Linux</a>.</p></div>
+  <div class="panel-head"><h2>Keys, certificates and SSH</h2><p>HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the pair, how a certificate ties a public key to a name, what a certificate signing request (CSR) and a certificate authority (CA) do, and how SSH keys and Git signing work. The OpenSSL, ssh-keygen and Git commands on this page were run (OpenSSL 3.0.13, OpenSSH 9.6, Git 2.43), and the error messages are the real ones. <code>ssh -T git@github.com</code> is GitHub&rsquo;s own documented test and was not run here. HTTP and the TLS handshake are on <a href="#networking">Networking</a>; SSH tunnels and jump hosts are on <a href="#linux">Linux</a>.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>One idea underneath: a key pair</h3>
@@ -6269,13 +6269,13 @@ securityContext:
 
   <article class="card"><h3>The chain of trust</h3>
     <p>Your operating system or browser ships a store of trusted <b>root</b> certificates. Roots sign <b>intermediate</b> CAs, and intermediates sign the <b>leaf</b> certificate on your server. A client validates the chain from the leaf up to a root it already trusts.</p>
-    <p class="note"><i>Analysis:</i> the server must send its leaf and the intermediates; the client already has the root. A missing intermediate is a common cause of &ldquo;works in my browser, fails in my code&rdquo;, because browsers sometimes fetch it themselves and libraries do not.</p>
+    <p class="note"><i>Analysis:</i> the server must send its leaf and the intermediates; the client already has the root. A missing intermediate is a common cause of &ldquo;works in my browser, fails in my code&rdquo;, because some clients fetch a missing intermediate themselves and many libraries do not.</p>
   </article>
 
   <article class="card wide"><h3>A certificate signing request (CSR), step by step</h3>
     <p>A CSR is the message you send a CA to apply for a certificate. RFC 2986 defines it in three parts: the request information (your name, your public key and any attributes), a signature algorithm, and a signature over the request information made with your private key. That signature proves you hold the private key, which never goes to the CA.</p>
 <pre><code># 1. Make a private key and a CSR, with the names the certificate must cover
-openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes \
+openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -noenc \
   -keyout server.key -out server.csr \
   -subj "/CN=shop.internal" \
   -addext "subjectAltName=DNS:shop.internal,DNS:api.shop.internal"
@@ -6293,7 +6293,7 @@ openssl pkey -in server.key -pubout       | openssl sha256   # the two hashes mu
 
   <article class="card wide"><h3>Your own CA, for a lab or internal services</h3>
 <pre><code># a root CA (keep ca.key offline in real use)
-openssl req -x509 -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes \
+openssl req -x509 -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -noenc \
   -keyout ca.key -out ca.crt -days 365 -subj "/CN=Lab Root CA"
 
 # the CA signs the CSR from the card above, keeping its SAN
@@ -6302,7 +6302,7 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
 
 # validate the chain, as a client would
 openssl verify -CAfile ca.crt server.crt     # server.crt: OK</code></pre>
-    <p class="note">These commands were run with OpenSSL 3.0. A private CA is trusted only by machines you configure to trust it; for anything the public reaches, use a public CA.</p>
+    <p class="note">These commands were run with OpenSSL 3.0.13. <code>-copy_extensions</code> on <code>openssl x509 -req</code> is documented in the 3.x manual; on an older OpenSSL, put the SAN in an <code>-extfile</code> instead. A private CA is trusted only by machines you configure to trust it; for anything the public reaches, use a public CA.</p>
   </article>
 
   <article class="card"><h3>Getting certificates automatically: ACME</h3>
@@ -6339,7 +6339,7 @@ ssh-keygen -lf ~/.ssh/id_ed25519.pub
 # first connection: compare the fingerprint shown with the one the service publishes
 ssh -T git@github.com</code></pre>
     <ul>
-      <li><b>Your public key</b> goes on the server, in <code>~/.ssh/authorized_keys</code> (the default file sshd checks), or into GitHub&rsquo;s settings. The private key stays on your machine.</li>
+      <li><b>Your public key</b> goes on the server, in <code>~/.ssh/authorized_keys</code> (a default file sshd checks; the <code>AuthorizedKeysFile</code> setting controls which), or into GitHub&rsquo;s settings. The private key stays on your machine.</li>
       <li><b>ssh-agent</b> holds your private keys for the session, so a passphrase-protected key is unlocked once rather than for every connection.</li>
       <li><b><code>~/.ssh/known_hosts</code></b> records the host key of every server you have connected to. If a host&rsquo;s key ever changes, ssh warns and disables password authentication, to prevent server spoofing or man-in-the-middle attacks.</li>
       <li><b>When that warning appears</b> (<i>analysis</i>): find out why the key changed (a rebuilt server, a new load balancer) before you remove the old entry with <code>ssh-keygen -R host</code>. Deleting the line to make the warning go away defeats the check.</li>
