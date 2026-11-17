@@ -66,7 +66,7 @@
   <article class="card" id="c-ingestion-and-parsing"><h3>Ingestion and parsing</h3>
     <ul>
       <li><b>Keep a stable document ID, source, version and date</b> on everything, so each answer can name exactly what it used.</li>
-      <li><b>Parse structure, not just text:</b> headings, paragraphs and numbered sections are the best chunk boundaries. Tables need special handling.</li>
+      <li><b>Parse structure, not just text:</b> headings, paragraphs and numbered sections make natural chunk boundaries. Tables need special handling.</li>
       <li><b>Scanned PDFs need OCR</b> (Document AI, Tesseract); measure its error rate on your documents.</li>
       <li><b>Clean:</b> strip headers, footers, page numbers and boilerplate that pollute retrieval.</li>
       <li><b>Run ingestion as an idempotent, incremental pipeline</b> with run records: documents in = chunks indexed + rejected.</li>

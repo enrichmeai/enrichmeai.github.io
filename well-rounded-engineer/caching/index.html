@@ -80,7 +80,7 @@
 
   <article class="card" id="c-invalidation"><h3>Invalidation</h3>
     <ul>
-      <li><b>TTL:</b> entries expire after a set time. Bounds staleness; simplest and most robust. Every cache entry should have one.</li>
+      <li><b>TTL:</b> entries expire after a set time. Bounds staleness even when an invalidation is missed. Every cache entry should have one.</li>
       <li><b>Delete on write:</b> after updating the source, delete the cache key (not update it), so the next read reloads fresh data.</li>
       <li><b>Versioned keys:</b> include a version in the key (<code>order:v3:123</code>, or a data version number); bump it to invalidate everything at once.</li>
       <li><b>Event-driven:</b> consume change events (CDC, domain events) and evict affected keys.</li>

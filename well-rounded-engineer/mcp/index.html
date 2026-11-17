@@ -175,7 +175,7 @@ def run_query(sql: str) -&gt; dict:
 
   <article class="card" id="c-designing-good-mcp-tools"><h3>Designing good MCP tools</h3>
     <ul>
-      <li><b>Few, task-shaped tools</b> ("pipeline status for a date") beat many thin wrappers over every API call.</li>
+      <li><b>Few, task-shaped tools</b> ("pipeline status for a date"): <i>our view</i> is that they serve a model better than many thin wrappers over every API call. <i>The other view:</i> thin wrappers are quicker to build and let the model combine calls itself.</li>
       <li><b>Clear names and descriptions</b>: the model chooses tools from them.</li>
       <li><b>Typed, validated inputs</b> with enums and formats where possible.</li>
       <li><b>Compact outputs:</b> summarise and paginate; huge results waste context.</li>

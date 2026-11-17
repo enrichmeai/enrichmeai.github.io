@@ -147,7 +147,7 @@ COMMIT;</code></pre></div>
       <tbody>
       <tr><td>Layered (n-tier)</td><td>Controller → service → repository → database</td><td>Default for a service. Keep controllers thin and rules in services.</td></tr>
       <tr><td>Hexagonal (ports &amp; adapters)</td><td>Domain logic in the centre; databases, APIs and queues are adapters behind interfaces</td><td>Logic you want to test without infrastructure, or swap providers.</td></tr>
-      <tr><td>Modular monolith</td><td>One deployable with enforced module boundaries</td><td>Most teams' best starting point. Split later along boundaries that proved real.</td></tr>
+      <tr><td>Modular monolith</td><td>One deployable with enforced module boundaries</td><td><i>Our view:</i> a sensible starting point for many teams; split later along boundaries that proved real. <i>The other view:</i> a team that already meets the readiness checklist on <a href="/well-rounded-engineer/microservices/">Microservices</a> (automated deploys, central logs and tracing, stable boundaries) can start with separate services and skip the later split.</td></tr>
       <tr><td>Microservices</td><td>Independently deployed services owning their data</td><td>Many teams, different scaling needs. Costs: network failures, distributed data, ops overhead.</td></tr>
       <tr><td>API gateway</td><td>Single entry point: routing, auth, rate limits</td><td>Many backends behind one public surface.</td></tr>
       <tr><td>Backend for frontend (BFF)</td><td>A thin API per client type (web, mobile)</td><td>Clients with very different data needs.</td></tr>
