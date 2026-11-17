@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="eventsourcing">
+<body data-tab="eventsourcing" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/" aria-current="page">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp" open><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/" aria-current="page">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Architecture &amp; design</span> / <span aria-current="page">Event Sourcing</span></p>
 <section class="panel" id="eventsourcing" data-name="Event Sourcing">
   <div class="panel-head"><h1>Event sourcing and CQRS</h1><p>Storing every change as an immutable event and deriving current state from them. How the event store, aggregates and projections work, how to evolve events, and when the extra complexity is worth it.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>The idea</h3>
+  <article class="card wide" id="c-the-idea"><h3>The idea</h3>
     <p>Most systems store <b>current state</b> and overwrite it: a subscription row says <code>plan = 'pro'</code>. Event sourcing stores the <b>sequence of facts</b> instead: <code>SubscriptionStarted(basic)</code>, <code>PlanUpgraded(pro)</code>, <code>PaymentFailed</code>, <code>PaymentSucceeded</code>. Current state is computed by replaying (folding) those events. The events are the source of truth; every other view is derived from them and can be rebuilt.</p>
     <div class="tbl"><table>
       <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
@@ -158,7 +68,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>When it is worth it</h3>
+  <article class="card" id="c-when-it-is-worth-it"><h3>When it is worth it</h3>
     <p><b>Good fits</b></p>
     <ul>
       <li>History is the product: audit trails, finance, legal records, compliance.</li>
@@ -175,7 +85,7 @@
     <p class="note">Apply it to the one part of the system that needs it, not the whole system.</p>
   </article>
 
-  <article class="card"><h3>The flow</h3>
+  <article class="card" id="c-the-flow"><h3>The flow</h3>
     <ol>
       <li>A <b>command</b> arrives: <code>UpgradePlan(subscription-42, pro)</code>.</li>
       <li>Load the aggregate's events (from the latest snapshot) and <b>fold</b> them into current state.</li>
@@ -186,7 +96,7 @@
     </ol>
   </article>
 
-  <article class="card"><h3>An aggregate in Java</h3>
+  <article class="card" id="c-an-aggregate-in-java"><h3>An aggregate in Java</h3>
 <div class="snip"><pre><code>sealed interface SubEvent permits Started, PlanUpgraded, Cancelled {}
 record Started(String id, String plan, Instant at)      implements SubEvent {}
 record PlanUpgraded(String id, String plan, Instant at) implements SubEvent {}
@@ -219,7 +129,7 @@ record Subscription(String id, String plan, Status status, int version) {
     <p class="note">Separate <i>decide</i> (rules, may reject) from <i>apply</i> (pure state change). Apply must never fail for a stored event: it already happened.</p>
   </article>
 
-  <article class="card"><h3>An event store in Postgres</h3>
+  <article class="card" id="c-an-event-store-in-postgres"><h3>An event store in Postgres</h3>
 <div class="snip"><pre><code>CREATE TABLE events (
   global_position bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   stream_id   text        NOT NULL,
@@ -242,7 +152,7 @@ VALUES ('subscription-42', 4, 'PlanUpgraded', '{"plan":"pro"}');
     <p class="note">Caution: identity values are assigned at insert, not commit, so with concurrent writers a projection reading by <code>global_position</code> can miss a row committed late. Dedicated event stores (KurrentDB, formerly EventStoreDB) or a transactional outbox with careful checkpointing handle this.</p>
   </article>
 
-  <article class="card"><h3>Projections and read models</h3>
+  <article class="card" id="c-projections-and-read-models"><h3>Projections and read models</h3>
 <div class="snip"><pre><code>// a projection keeps a checkpoint and is idempotent
 void handle(StoredEvent e) {
   tx.run(() -&gt; {
@@ -261,7 +171,7 @@ void handle(StoredEvent e) {
     </ul>
   </article>
 
-  <article class="card"><h3>Evolving events</h3>
+  <article class="card" id="c-evolving-events"><h3>Evolving events</h3>
     <ul>
       <li><b>Events are immutable and permanent.</b> You cannot fix old ones in place; plan their shape carefully.</li>
       <li><b>Additive changes</b> (new optional fields with defaults) are safe.</li>
@@ -272,7 +182,7 @@ void handle(StoredEvent e) {
     </ul>
   </article>
 
-  <article class="card"><h3>Snapshots, size and deletion</h3>
+  <article class="card" id="c-snapshots-size-and-deletion"><h3>Snapshots, size and deletion</h3>
     <ul>
       <li><b>Snapshots</b> every N events (or when replay gets slow) store state plus version; load the snapshot, then only later events.</li>
       <li><b>Keep streams short-lived</b> where the domain allows (one stream per billing period, not per customer forever).</li>
@@ -281,7 +191,7 @@ void handle(StoredEvent e) {
     </ul>
   </article>
 
-  <article class="card"><h3>Testing: given, when, then</h3>
+  <article class="card" id="c-testing-given-when-then"><h3>Testing: given, when, then</h3>
 <div class="snip"><pre><code>@Test
 void upgradeEmitsEventWhenActive() {
   var given = List.&lt;SubEvent&gt;of(new Started("s1", "basic", T0));
@@ -298,7 +208,7 @@ void cannotUpgradeCancelled() {
     <p class="note">Aggregates tested this way need no database or mocks: given past events, when a command, then expected events or a rejection.</p>
   </article>
 
-  <article class="card"><h3>The lightweight version: an append-only ledger</h3>
+  <article class="card" id="c-the-lightweight-version-an-append-only-ledger"><h3>The lightweight version: an append-only ledger</h3>
     <p>Many systems get most of the benefit without full event sourcing: an append-only table with one row per state change, and current state from a "latest event" view. Never UPDATE, never DELETE.</p>
 <div class="snip"><pre><code>-- BigQuery: current state of each pipeline stage from its event log
 CREATE OR REPLACE VIEW `p.ops.v_job_run_latest` AS
@@ -308,7 +218,7 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
     <p class="note">You get history, auditability and "what happened on date X" with ordinary SQL. Add aggregates, projections and replay only if the domain needs them.</p>
   </article>
 
-  <article class="card"><h3>Tools</h3>
+  <article class="card" id="c-tools"><h3>Tools</h3>
     <ul>
       <li><b>KurrentDB (formerly EventStoreDB):</b> a database built for event streams, subscriptions and projections.</li>
       <li><b>Axon Framework / Axon Server</b> (Java): aggregates, sagas, projections and an event store.</li>
@@ -317,7 +227,7 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
     </ul>
   </article>
 
-  <article class="card"><h3>Common mistakes</h3>
+  <article class="card" id="c-common-mistakes"><h3>Common mistakes</h3>
     <ul>
       <li>Event sourcing the whole system instead of the part that needs history.</li>
       <li>Events that mirror table changes (<code>CustomerUpdated</code> with every field) instead of business facts.</li>
@@ -329,8 +239,8 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain events, streams, aggregates, projections and CQRS</li><li>Read an event stream and follow how state was built</li><li>Tell an append-only ledger from full event sourcing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement an aggregate with decide/apply and given-when-then tests</li><li>Build idempotent projections with checkpoints</li><li>Append with optimistic concurrency</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide where event sourcing fits in a system and where it does not</li><li>Design event schemas, versioning and upcasting</li><li>Plan snapshots, replay, rebuilds and personal-data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead event-sourced architectures across domains and teams</li><li>Choose and operate event stores at scale</li><li>Set standards for event modelling and governance</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Event storming workshops</li><li>Upcasting and event versioning</li><li>Process managers and sagas over events</li><li>Crypto-shredding for personal data</li><li>Projection rebuild strategies</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Event Sourcing (Martin Fowler)</a><span class="lnote"> The classic explanation</span></li><li><a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">CQRS (Martin Fowler)</a><span class="lnote"> When separate read and write models help</span></li><li><a href="https://microservices.io/patterns/data/event-sourcing.html" target="_blank" rel="noopener">Event sourcing pattern (microservices.io)</a><span class="lnote"> In a microservices context</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing" target="_blank" rel="noopener">Event Sourcing pattern (Azure Architecture Center)</a><span class="lnote"> Issues and considerations</span></li><li><a href="https://leanpub.com/esversioning" target="_blank" rel="noopener">Versioning in an Event Sourced System (Greg Young)</a><span class="lnote"> Free book on evolving events</span></li><li><a href="https://docs.kurrent.io/" target="_blank" rel="noopener">KurrentDB documentation</a><span class="lnote"> Event store (formerly EventStoreDB)</span></li><li><a href="https://docs.axoniq.io/" target="_blank" rel="noopener">Axon documentation</a><span class="lnote"> Java framework for event sourcing and CQRS</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Fowler: Event Sourcing</a>; <a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">Fowler: CQRS</a>; <a href="https://www.postgresql.org/docs/current/sql-createtable.html" target="_blank" rel="noopener">PostgreSQL: CREATE TABLE (identity columns)</a>; <a href="https://www.postgresql.org/docs/current/functions-sequence.html" target="_blank" rel="noopener">PostgreSQL: sequence functions (nextval not rolled back)</a>; <a href="https://raw.githubusercontent.com/kurrent-io/KurrentDB/master/README.md" target="_blank" rel="noopener">KurrentDB README (EventStoreDB renamed)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">BigQuery query syntax (QUALIFY)</a>; <a href="https://kafka.apache.org/uses/" target="_blank" rel="noopener">Apache Kafka: uses (event sourcing)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BEvent%20Sourcing%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain events, streams, aggregates, projections and CQRS</li><li>Read an event stream and follow how state was built</li><li>Tell an append-only ledger from full event sourcing</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement an aggregate with decide/apply and given-when-then tests</li><li>Build idempotent projections with checkpoints</li><li>Append with optimistic concurrency</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide where event sourcing fits in a system and where it does not</li><li>Design event schemas, versioning and upcasting</li><li>Plan snapshots, replay, rebuilds and personal-data handling</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead event-sourced architectures across domains and teams</li><li>Choose and operate event stores at scale</li><li>Set standards for event modelling and governance</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Event storming workshops</li><li>Upcasting and event versioning</li><li>Process managers and sagas over events</li><li>Crypto-shredding for personal data</li><li>Projection rebuild strategies</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Event Sourcing (Martin Fowler)</a><span class="lnote"> The classic explanation</span></li><li><a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">CQRS (Martin Fowler)</a><span class="lnote"> When separate read and write models help</span></li><li><a href="https://microservices.io/patterns/data/event-sourcing.html" target="_blank" rel="noopener">Event sourcing pattern (microservices.io)</a><span class="lnote"> In a microservices context</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing" target="_blank" rel="noopener">Event Sourcing pattern (Azure Architecture Center)</a><span class="lnote"> Issues and considerations</span></li><li><a href="https://leanpub.com/esversioning" target="_blank" rel="noopener">Versioning in an Event Sourced System (Greg Young)</a><span class="lnote"> Free book on evolving events</span></li><li><a href="https://docs.kurrent.io/" target="_blank" rel="noopener">KurrentDB documentation</a><span class="lnote"> Event store (formerly EventStoreDB)</span></li><li><a href="https://docs.axoniq.io/" target="_blank" rel="noopener">Axon documentation</a><span class="lnote"> Java framework for event sourcing and CQRS</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Fowler: Event Sourcing</a>; <a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">Fowler: CQRS</a>; <a href="https://www.postgresql.org/docs/current/sql-createtable.html" target="_blank" rel="noopener">PostgreSQL: CREATE TABLE (identity columns)</a>; <a href="https://www.postgresql.org/docs/current/functions-sequence.html" target="_blank" rel="noopener">PostgreSQL: sequence functions (nextval not rolled back)</a>; <a href="https://raw.githubusercontent.com/kurrent-io/KurrentDB/master/README.md" target="_blank" rel="noopener">KurrentDB README (EventStoreDB renamed)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">BigQuery query syntax (QUALIFY)</a>; <a href="https://kafka.apache.org/uses/" target="_blank" rel="noopener">Apache Kafka: uses (event sourcing)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BEvent%20Sourcing%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -338,6 +248,8 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-idea">The idea</a><a href="#c-when-it-is-worth-it">When it is worth it</a><a href="#c-the-flow">The flow</a><a href="#c-an-aggregate-in-java">An aggregate in Java</a><a href="#c-an-event-store-in-postgres">An event store in Postgres</a><a href="#c-projections-and-read-models">Projections and read models</a><a href="#c-evolving-events">Evolving events</a><a href="#c-snapshots-size-and-deletion">Snapshots, size and deletion</a><a href="#c-testing-given-when-then">Testing: given, when, then</a><a href="#c-the-lightweight-version-an-append-only-ledger">The lightweight version: an append-only ledger</a><a href="#c-tools">Tools</a><a href="#c-common-mistakes">Common mistakes</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="servicemesh">
+<body data-tab="servicemesh" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/" aria-current="page">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp" open><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/" aria-current="page">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Platform &amp; operations</span> / <span aria-current="page">Service Mesh &amp; Istio</span></p>
 <section class="panel" id="servicemesh" data-name="Service Mesh &amp; Istio">
   <div class="panel-head"><h1>Service mesh and Istio</h1><p>A service mesh moves service-to-service concerns (encryption, identity, retries, traffic splitting, telemetry, access policy) out of application code and into the platform. What a mesh does, when it is worth it, how Istio works in sidecar and ambient modes, the resources you will write, and how to debug it. Background on <a href="/well-rounded-engineer/microservices/">Microservices</a> and <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>What a mesh gives you</h3>
+  <article class="card wide" id="c-what-a-mesh-gives-you"><h3>What a mesh gives you</h3>
     <div class="tbl"><table>
       <thead><tr><th>Capability</th><th>What it means</th><th>Without a mesh</th></tr></thead>
       <tbody>
@@ -156,7 +66,7 @@
     <p class="note">North-south traffic (clients into the platform) is the gateway's job; east-west traffic (services to each other) is the mesh's. Business logic belongs in neither.</p>
   </article>
 
-  <article class="card"><h3>When it is worth it</h3>
+  <article class="card" id="c-when-it-is-worth-it"><h3>When it is worth it</h3>
     <p><b>Good reasons</b></p>
     <ul>
       <li>Many services on Kubernetes, often in several languages.</li>
@@ -172,7 +82,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Istio architecture</h3>
+  <article class="card" id="c-istio-architecture"><h3>Istio architecture</h3>
     <ul>
       <li><b>Control plane, <code>istiod</code>:</b> turns your configuration into proxy configuration, issues workload certificates, and pushes both to the data plane.</li>
       <li><b>Data plane, sidecar mode:</b> an Envoy proxy injected into every pod intercepts its inbound and outbound traffic. Full L7 features per pod, at the cost of a proxy per pod.</li>
@@ -182,7 +92,7 @@
     <p class="note">On Google Cloud, Cloud Service Mesh offers a managed, Istio-based mesh for GKE and other environments.</p>
   </article>
 
-  <article class="card"><h3>Install and enrol workloads</h3>
+  <article class="card" id="c-install-and-enrol-workloads"><h3>Install and enrol workloads</h3>
 <div class="snip"><pre><code># sidecar mode
 istioctl install --set profile=default -y
 kubectl label namespace shop istio-injection=enabled
@@ -197,7 +107,7 @@ istioctl analyze -n shop                      # check configuration for problems
     <p class="note">In production, install and upgrade Istio through Helm charts or your platform's managed offering, from Git, with canary upgrades of the control plane (revisions).</p>
   </article>
 
-  <article class="card wide"><h3>The resources you will write</h3>
+  <article class="card wide" id="c-the-resources-you-will-write"><h3>The resources you will write</h3>
     <div class="tbl"><table>
       <thead><tr><th>Resource</th><th>Purpose</th></tr></thead>
       <tbody>
@@ -213,7 +123,7 @@ istioctl analyze -n shop                      # check configuration for problems
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Security: mTLS and authorisation</h3>
+  <article class="card" id="c-security-mtls-and-authorisation"><h3>Security: mTLS and authorisation</h3>
 <div class="snip"><pre><code># mesh-wide strict mTLS (after a PERMISSIVE migration period)
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
@@ -246,7 +156,7 @@ spec:
     <p class="note">Once any ALLOW policy selects a workload, everything not allowed is denied. Roll out in a test namespace first. The service still checks object-level permissions: the mesh knows which service is calling, not whether this user owns this case.</p>
   </article>
 
-  <article class="card"><h3>Traffic: canary, retries, timeouts</h3>
+  <article class="card" id="c-traffic-canary-retries-timeouts"><h3>Traffic: canary, retries, timeouts</h3>
 <div class="snip"><pre><code>apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata: { name: shop-api, namespace: shop }
@@ -287,7 +197,7 @@ spec:
     <p class="note">Put retries in one place, mesh or application, not both: retries multiplied at every layer turn a slowdown into a retry storm. Retry only idempotent requests.</p>
   </article>
 
-  <article class="card"><h3>Egress control</h3>
+  <article class="card" id="c-egress-control"><h3>Egress control</h3>
 <div class="snip"><pre><code># with outbound traffic policy REGISTRY_ONLY, only registered hosts are reachable
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
@@ -300,7 +210,7 @@ spec:
     <p class="note">Route egress through an egress gateway when you need a fixed exit point, central logging, or to combine with Cloud NAT and firewall rules.</p>
   </article>
 
-  <article class="card"><h3>Observability with a mesh</h3>
+  <article class="card" id="c-observability-with-a-mesh"><h3>Observability with a mesh</h3>
     <ul>
       <li><b>Metrics</b> for every request, such as <code>istio_requests_total</code> and request duration histograms, labelled by source, destination and response code.</li>
       <li><b>Kiali</b> draws the live service graph with health and traffic.</li>
@@ -312,7 +222,7 @@ sum by (destination_service) (rate(istio_requests_total{response_code=~"5.."}[5m
   / sum by (destination_service) (rate(istio_requests_total[5m]))</code></pre></div>
   </article>
 
-  <article class="card"><h3>Debugging</h3>
+  <article class="card" id="c-debugging"><h3>Debugging</h3>
 <div class="snip"><pre><code>istioctl analyze -A                                # config problems across namespaces
 istioctl proxy-status                              # is every proxy in sync with istiod?
 istioctl proxy-config routes   deploy/shop-api -n shop
@@ -332,7 +242,7 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</co
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Meshes compared</h3>
+  <article class="card" id="c-meshes-compared"><h3>Meshes compared</h3>
     <div class="tbl"><table>
       <thead><tr><th>Mesh</th><th>Notes</th></tr></thead>
       <tbody>
@@ -344,7 +254,7 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</co
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Adopting a mesh safely</h3>
+  <article class="card" id="c-adopting-a-mesh-safely"><h3>Adopting a mesh safely</h3>
     <ol>
       <li>Install in a non-production cluster; enrol one namespace.</li>
       <li>Start with PERMISSIVE mTLS and observe traffic in Kiali and metrics.</li>
@@ -357,8 +267,8 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</co
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain mTLS, workload identity and east-west vs north-south traffic</li><li>Read VirtualService, DestinationRule and AuthorizationPolicy resources</li><li>Find a pod's sidecar logs and proxy status</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Enrol namespaces and roll out STRICT mTLS safely</li><li>Write authorisation policies and canary routes</li><li>Debug 503s and RBAC denials with istioctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide whether a mesh is worth it, and sidecar vs ambient</li><li>Design zero-trust service-to-service security</li><li>Run mesh upgrades with revisions; keep config in GitOps</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the mesh platform across clusters and environments</li><li>Design multi-cluster and multi-network meshes</li><li>Set network security strategy combining mesh, gateway and cloud controls</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Istio ambient mode (ztunnel and waypoints)</li><li>Kubernetes Gateway API</li><li>Envoy proxy internals</li><li>Multi-cluster Istio</li><li>SPIFFE workload identity</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://istio.io/latest/docs/" target="_blank" rel="noopener">Istio documentation</a><span class="lnote"> Concepts, tasks, reference</span></li><li><a href="https://istio.io/latest/docs/concepts/traffic-management/" target="_blank" rel="noopener">Istio traffic management</a><span class="lnote"> Routing, resilience, gateways</span></li><li><a href="https://istio.io/latest/docs/concepts/security/" target="_blank" rel="noopener">Istio security</a><span class="lnote"> mTLS, identity, authorisation</span></li><li><a href="https://istio.io/latest/docs/ambient/" target="_blank" rel="noopener">Istio ambient mode</a><span class="lnote"> Sidecar-less data plane</span></li><li><a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener">Kubernetes Gateway API</a><span class="lnote"> Standard routing API</span></li><li><a href="https://kiali.io/docs/" target="_blank" rel="noopener">Kiali</a><span class="lnote"> Service graph and mesh console</span></li><li><a href="https://cloud.google.com/service-mesh/docs" target="_blank" rel="noopener">Cloud Service Mesh</a><span class="lnote"> Google's managed mesh</span></li><li><a href="https://linkerd.io/" target="_blank" rel="noopener">Linkerd</a><span class="lnote"> A lighter-weight alternative</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ambient/usage/waypoint/index.md" target="_blank" rel="noopener">Istio waypoint (--enroll-namespace)</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ambient/usage/add-workloads/index.md" target="_blank" rel="noopener">Istio ambient: add workloads (no restart)</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ambient/install/istioctl/index.md" target="_blank" rel="noopener">Istio ambient install with istioctl</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/reference/config/security/authorization-policy/index.html" target="_blank" rel="noopener">Istio AuthorizationPolicy reference</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ops/common-problems/network-issues/index.md" target="_blank" rel="noopener">Istio network problems (response flags)</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/reference/commands/istioctl/index.html" target="_blank" rel="noopener">istioctl reference</a>; <a href="https://raw.githubusercontent.com/envoyproxy/envoy/main/docs/root/configuration/advanced/substitution_formatter.rst" target="_blank" rel="noopener">Envoy response flags</a>; <a href="https://raw.githubusercontent.com/linkerd/linkerd2-proxy/main/README.md" target="_blank" rel="noopener">linkerd2-proxy README (Rust)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BService%20Mesh%20%26%20Istio%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain mTLS, workload identity and east-west vs north-south traffic</li><li>Read VirtualService, DestinationRule and AuthorizationPolicy resources</li><li>Find a pod's sidecar logs and proxy status</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Enrol namespaces and roll out STRICT mTLS safely</li><li>Write authorisation policies and canary routes</li><li>Debug 503s and RBAC denials with istioctl</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Decide whether a mesh is worth it, and sidecar vs ambient</li><li>Design zero-trust service-to-service security</li><li>Run mesh upgrades with revisions; keep config in GitOps</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the mesh platform across clusters and environments</li><li>Design multi-cluster and multi-network meshes</li><li>Set network security strategy combining mesh, gateway and cloud controls</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Istio ambient mode (ztunnel and waypoints)</li><li>Kubernetes Gateway API</li><li>Envoy proxy internals</li><li>Multi-cluster Istio</li><li>SPIFFE workload identity</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://istio.io/latest/docs/" target="_blank" rel="noopener">Istio documentation</a><span class="lnote"> Concepts, tasks, reference</span></li><li><a href="https://istio.io/latest/docs/concepts/traffic-management/" target="_blank" rel="noopener">Istio traffic management</a><span class="lnote"> Routing, resilience, gateways</span></li><li><a href="https://istio.io/latest/docs/concepts/security/" target="_blank" rel="noopener">Istio security</a><span class="lnote"> mTLS, identity, authorisation</span></li><li><a href="https://istio.io/latest/docs/ambient/" target="_blank" rel="noopener">Istio ambient mode</a><span class="lnote"> Sidecar-less data plane</span></li><li><a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener">Kubernetes Gateway API</a><span class="lnote"> Standard routing API</span></li><li><a href="https://kiali.io/docs/" target="_blank" rel="noopener">Kiali</a><span class="lnote"> Service graph and mesh console</span></li><li><a href="https://cloud.google.com/service-mesh/docs" target="_blank" rel="noopener">Cloud Service Mesh</a><span class="lnote"> Google's managed mesh</span></li><li><a href="https://linkerd.io/" target="_blank" rel="noopener">Linkerd</a><span class="lnote"> A lighter-weight alternative</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ambient/usage/waypoint/index.md" target="_blank" rel="noopener">Istio waypoint (--enroll-namespace)</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ambient/usage/add-workloads/index.md" target="_blank" rel="noopener">Istio ambient: add workloads (no restart)</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ambient/install/istioctl/index.md" target="_blank" rel="noopener">Istio ambient install with istioctl</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/reference/config/security/authorization-policy/index.html" target="_blank" rel="noopener">Istio AuthorizationPolicy reference</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/ops/common-problems/network-issues/index.md" target="_blank" rel="noopener">Istio network problems (response flags)</a>; <a href="https://raw.githubusercontent.com/istio/istio.io/master/content/en/docs/reference/commands/istioctl/index.html" target="_blank" rel="noopener">istioctl reference</a>; <a href="https://raw.githubusercontent.com/envoyproxy/envoy/main/docs/root/configuration/advanced/substitution_formatter.rst" target="_blank" rel="noopener">Envoy response flags</a>; <a href="https://raw.githubusercontent.com/linkerd/linkerd2-proxy/main/README.md" target="_blank" rel="noopener">linkerd2-proxy README (Rust)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BService%20Mesh%20%26%20Istio%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -366,6 +276,8 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</co
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-what-a-mesh-gives-you">What a mesh gives you</a><a href="#c-when-it-is-worth-it">When it is worth it</a><a href="#c-istio-architecture">Istio architecture</a><a href="#c-install-and-enrol-workloads">Install and enrol workloads</a><a href="#c-the-resources-you-will-write">The resources you will write</a><a href="#c-security-mtls-and-authorisation">Security: mTLS and authorisation</a><a href="#c-traffic-canary-retries-timeouts">Traffic: canary, retries, timeouts</a><a href="#c-egress-control">Egress control</a><a href="#c-observability-with-a-mesh">Observability with a mesh</a><a href="#c-debugging">Debugging</a><a href="#c-meshes-compared">Meshes compared</a><a href="#c-adopting-a-mesh-safely">Adopting a mesh safely</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

@@ -14,140 +14,50 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="electronics">
+<body data-tab="electronics" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/" aria-current="page">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp" open><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/" aria-current="page">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Foundations</span> / <span aria-current="page">Electronics &amp; Chips</span></p>
 <section class="panel" id="electronics" data-name="Electronics &amp; Chips">
   <div class="panel-head"><h1>Electronics and chips: the bottom of the stack</h1><p>Every line of code runs on transistors. Understanding how a chip is built, and how one could be designed, keeps the foundations open to everyone rather than to a few companies.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Why this belongs in a software guide</h3>
+  <article class="card wide" id="c-why-this-belongs-in-a-software-guide"><h3>Why this belongs in a software guide</h3>
     <p>A new generation of engineers needs the whole foundation, not only the top layers. Today a small number of companies design and make most of the world's advanced chips: TSMC alone accounts for roughly 70% of the global foundry market. When knowledge sits in so few places, everyone else depends on them for every device, data centre and AI model.</p>
     <p>Learning electronics does not mean everyone builds a fab. It means more people understand what their software runs on, can repair and reuse hardware instead of throwing it away, and can take part in open hardware. That is how the foundations stay shared, and how technology becomes more sustainable.</p>
   </article>
 
-  <article class="card"><h3>From switch to chip</h3>
+  <article class="card" id="c-from-switch-to-chip"><h3>From switch to chip</h3>
     <ul>
       <li><b>The transistor</b> is an electrically controlled switch. The first, a point-contact transistor, was invented in 1947 at Bell Labs by John Bardeen, Walter Brattain and William Shockley, who shared the 1956 Nobel Prize in Physics.</li>
       <li><b>Logic gates</b> (AND, OR, NOT) are built from transistors; everything a computer does is built from gates.</li>
@@ -156,7 +66,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>How chips are designed</h3>
+  <article class="card" id="c-how-chips-are-designed"><h3>How chips are designed</h3>
     <ul>
       <li><b>Hardware description languages</b> such as Verilog and VHDL describe circuits as code, which is then tested in simulation like software.</li>
       <li><b>FPGAs</b> are chips that can be reprogrammed after manufacture: the best way to try your own digital designs on real hardware without making a chip.</li>
@@ -165,7 +75,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Sustainability</h3>
+  <article class="card" id="c-sustainability"><h3>Sustainability</h3>
     <ul>
       <li><b>E-waste is one of the fastest-growing waste streams:</b> about 62 million tonnes in 2022, of which only 22.3% was formally collected and recycled; it is projected to reach 82 million tonnes by 2030.</li>
       <li><b>Repair before replace.</b> The right-to-repair movement argues that people should be able to fix what they own. Engineers who understand electronics can design for repair and keep devices in use longer.</li>
@@ -173,7 +83,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Where to start</h3>
+  <article class="card" id="c-where-to-start"><h3>Where to start</h3>
     <ol>
       <li>Learn basic circuits: voltage, current, resistance, and how a transistor switches.</li>
       <li>Build logic gates and a small adder in a free simulator, then in Verilog.</li>
@@ -184,8 +94,8 @@
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain voltage, current and how a transistor switches</li><li>Explain logic gates and how they add numbers</li><li>Explain what an instruction set is</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a microcontroller project with sensors and motors</li><li>Write and simulate a small design in Verilog or VHDL</li><li>Run a design on an FPGA board</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a simple processor or peripheral on an FPGA</li><li>Read datasheets and choose components for a product</li><li>Design hardware for repair and long life</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead hardware and software co-design</li><li>Take a design towards silicon with an open process kit</li><li>Shape open hardware and sustainability practice</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Digital logic</li><li>Verilog and VHDL</li><li>FPGAs</li><li>RISC-V</li><li>Semiconductor manufacturing</li><li>E-waste and repair</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener">RISC-V (Wikipedia)</a><span class="lnote"> The open standard instruction set</span></li><li><a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener">Field-programmable gate array (Wikipedia)</a><span class="lnote"> Reprogrammable chips for learning digital design</span></li><li><a href="https://en.wikipedia.org/wiki/Semiconductor_device_fabrication" target="_blank" rel="noopener">Semiconductor device fabrication (Wikipedia)</a><span class="lnote"> How chips are made</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Transistor" target="_blank" rel="noopener">Transistor</a>; <a href="https://en.wikipedia.org/wiki/Integrated_circuit" target="_blank" rel="noopener">Integrated circuit</a>; <a href="https://en.wikipedia.org/wiki/Moore%27s_law" target="_blank" rel="noopener">Moore's law</a>; <a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener">Field-programmable gate array</a>; <a href="https://en.wikipedia.org/wiki/Hardware_description_language" target="_blank" rel="noopener">Hardware description language</a>; <a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener">RISC-V</a>; <a href="https://en.wikipedia.org/wiki/SkyWater_Technology" target="_blank" rel="noopener">SkyWater Technology (SKY130 PDK)</a>; <a href="https://en.wikipedia.org/wiki/TSMC" target="_blank" rel="noopener">TSMC (foundry share)</a>; <a href="https://en.wikipedia.org/wiki/Electronic_waste" target="_blank" rel="noopener">Electronic waste</a>; <a href="https://en.wikipedia.org/wiki/Right_to_repair" target="_blank" rel="noopener">Right to repair</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BElectronics%20%26%20Chips%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain voltage, current and how a transistor switches</li><li>Explain logic gates and how they add numbers</li><li>Explain what an instruction set is</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a microcontroller project with sensors and motors</li><li>Write and simulate a small design in Verilog or VHDL</li><li>Run a design on an FPGA board</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a simple processor or peripheral on an FPGA</li><li>Read datasheets and choose components for a product</li><li>Design hardware for repair and long life</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead hardware and software co-design</li><li>Take a design towards silicon with an open process kit</li><li>Shape open hardware and sustainability practice</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Digital logic</li><li>Verilog and VHDL</li><li>FPGAs</li><li>RISC-V</li><li>Semiconductor manufacturing</li><li>E-waste and repair</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener">RISC-V (Wikipedia)</a><span class="lnote"> The open standard instruction set</span></li><li><a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener">Field-programmable gate array (Wikipedia)</a><span class="lnote"> Reprogrammable chips for learning digital design</span></li><li><a href="https://en.wikipedia.org/wiki/Semiconductor_device_fabrication" target="_blank" rel="noopener">Semiconductor device fabrication (Wikipedia)</a><span class="lnote"> How chips are made</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Transistor" target="_blank" rel="noopener">Transistor</a>; <a href="https://en.wikipedia.org/wiki/Integrated_circuit" target="_blank" rel="noopener">Integrated circuit</a>; <a href="https://en.wikipedia.org/wiki/Moore%27s_law" target="_blank" rel="noopener">Moore's law</a>; <a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array" target="_blank" rel="noopener">Field-programmable gate array</a>; <a href="https://en.wikipedia.org/wiki/Hardware_description_language" target="_blank" rel="noopener">Hardware description language</a>; <a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener">RISC-V</a>; <a href="https://en.wikipedia.org/wiki/SkyWater_Technology" target="_blank" rel="noopener">SkyWater Technology (SKY130 PDK)</a>; <a href="https://en.wikipedia.org/wiki/TSMC" target="_blank" rel="noopener">TSMC (foundry share)</a>; <a href="https://en.wikipedia.org/wiki/Electronic_waste" target="_blank" rel="noopener">Electronic waste</a>; <a href="https://en.wikipedia.org/wiki/Right_to_repair" target="_blank" rel="noopener">Right to repair</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BElectronics%20%26%20Chips%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -193,6 +103,8 @@
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-why-this-belongs-in-a-software-guide">Why this belongs in a software guide</a><a href="#c-from-switch-to-chip">From switch to chip</a><a href="#c-how-chips-are-designed">How chips are designed</a><a href="#c-sustainability">Sustainability</a><a href="#c-where-to-start">Where to start</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

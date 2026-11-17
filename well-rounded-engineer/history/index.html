@@ -14,139 +14,49 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="history">
+<body data-tab="history" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/" aria-current="page">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp" open><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/" aria-current="page">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>About this guide</span> / <span aria-current="page">A brief history</span></p>
 <section class="panel" id="history" data-name="A brief history">
   <div class="panel-head"><h1>A brief history of software systems</h1><p>How we got here, in plain words: each era solved the last one's pain and rediscovered the same hard problems. Knowing the story makes today's tools easier to understand, and easier to judge.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>The thread through it all</h3>
+  <article class="card wide" id="c-the-thread-through-it-all"><h3>The thread through it all</h3>
     <p>Every era wrestled with the same four questions: <b>how do two programs agree on a contract, where does state live, what happens when something fails, and how do we see what went wrong?</b> The answers moved from heavy and agreed in advance, to light and flexible, and back again whenever the light way hurt. The questions never went away.</p>
   </article>
 
-  <article class="card wide"><h3>Why learning how it evolved matters</h3>
+  <article class="card wide" id="c-why-learning-how-it-evolved-matters"><h3>Why learning how it evolved matters</h3>
     <p><i>Our view, with the ideas it rests on, and the other view at the end.</i> Tools change every few years; the problems they solve change far more slowly. Knowing how we got here is how you tell a new idea from an old one with a new name, and how you choose and fix things without guessing.</p>
     <ul>
       <li><b>You recognise the pattern when it comes back.</b> The same four questions run through every era on this page (contracts, state, failure, seeing what went wrong), and the answers swing between &ldquo;agreed in advance&rdquo; and &ldquo;light and flexible&rdquo;. When a new tool arrives, you can ask which swing it is, and what the last one learned.</li>
@@ -161,7 +71,7 @@
     <p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Second-system_effect" target="_blank" rel="noopener">Wikipedia: Second-system effect</a>; <a href="https://en.wikipedia.org/wiki/George_Santayana" target="_blank" rel="noopener">Wikipedia: George Santayana</a>; <a href="https://en.wikipedia.org/wiki/Lindy_effect" target="_blank" rel="noopener">Wikipedia: Lindy effect</a>; <a href="https://en.wikipedia.org/wiki/G._K._Chesterton" target="_blank" rel="noopener">Wikipedia: G. K. Chesterton (Chesterton&rsquo;s fence)</a>.</p>
   </article>
 
-  <article class="card"><h3>Distributed objects: everything agreed in advance</h3>
+  <article class="card" id="c-distributed-objects-everything-agreed-in-advance"><h3>Distributed objects: everything agreed in advance</h3>
     <ul>
       <li><b>CORBA</b>, from the Object Management Group, let programs in different languages call each other's objects across a network. You wrote the contract in an interface definition language and generated client stubs and server skeletons before anything could talk.</li>
       <li><b>Java RMI</b> did the same between Java programs, more simply, and Java could load the classes it needed over the network.</li>
@@ -170,7 +80,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Enterprise JavaBeans: the beans we lived with</h3>
+  <article class="card" id="c-enterprise-javabeans-the-beans-we-lived-with"><h3>Enterprise JavaBeans: the beans we lived with</h3>
     <ul>
       <li><b>Session beans</b> held business logic. <b>Stateless</b> ones served any caller and were pooled, so they suited reads and simple operations. <b>Stateful</b> ones kept a conversation with one client across calls.</li>
       <li><b>Stateful session beans and database locks</b> were how some booking and ticketing systems held a seat while a customer finished: the bean kept the conversation, the database kept the lock.</li>
@@ -180,7 +90,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Models, UML and generated screens</h3>
+  <article class="card" id="c-models-uml-and-generated-screens"><h3>Models, UML and generated screens</h3>
     <ul>
       <li><b>UML</b>, which appeared in 1997, gave teams one language for drawing systems: class diagrams, sequence diagrams, use cases. Grady Booch, James Rumbaugh and Ivar Jacobson brought their methods together into it.</li>
       <li><b>Model-driven architecture</b>, from the Object Management Group, went further: draw the model, then generate the code from it. It worked well for some layers and poorly for the rest.</li>
@@ -189,7 +99,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>The early web: stateless by design</h3>
+  <article class="card" id="c-the-early-web-stateless-by-design"><h3>The early web: stateless by design</h3>
     <ul>
       <li><b>HTTP forgets you between requests.</b> To remember who you were, pages carried state in <b>hidden form fields</b>, in the URL (URL rewriting) and, increasingly, in cookies.</li>
       <li><b>HTML was standardised</b> in the mid-1990s, but browsers still differed: code checked whether it ran in Internet Explorer or Netscape, and what we now call Ajax worked first through Microsoft's XMLHTTP object.</li>
@@ -198,7 +108,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Pages made on the server</h3>
+  <article class="card" id="c-pages-made-on-the-server"><h3>Pages made on the server</h3>
     <ul>
       <li><b>CGI scripts</b> started a new process for every request.</li>
       <li><b>PHP</b> began in 1994 as Rasmus Lerdorf's "Personal Home Page" tools and grew into a language for building web pages on the server.</li>
@@ -207,7 +117,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Runtimes get fast, and get company</h3>
+  <article class="card" id="c-runtimes-get-fast-and-get-company"><h3>Runtimes get fast, and get company</h3>
     <ul>
       <li><b>Java began by interpreting bytecode,</b> which was slow. Just-in-time (JIT) compilers, which compile the busiest code to machine code while the program runs, made it fast, and the JVM's HotSpot became the standard approach.</li>
       <li><b>Microsoft's C# and .NET</b> arrived in the early 2000s with many of the same ideas: a managed runtime, garbage collection and code compiled just in time.</li>
@@ -215,7 +125,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Integration: buses, services and lighter ways</h3>
+  <article class="card" id="c-integration-buses-services-and-lighter-ways"><h3>Integration: buses, services and lighter ways</h3>
     <ul>
       <li><b>SOAP web services</b> brought back contracts agreed in advance, written in WSDL, with generated clients, much as CORBA had done.</li>
       <li><b>Enterprise service buses</b> put routing, transformation and orchestration into one large central product.</li>
@@ -224,7 +134,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>REST, long journeys, and sagas</h3>
+  <article class="card" id="c-rest-long-journeys-and-sagas"><h3>REST, long journeys, and sagas</h3>
     <ul>
       <li><b>REST</b>, which Roy Fielding described in his doctoral dissertation, used the web's own design (resources, URLs, standard methods, caching) instead of a custom remote-call layer.</li>
       <li><b>Without distributed transactions,</b> a long piece of work becomes a journey of steps. If it fails halfway, you undo the completed steps in reverse order, which only works if you recorded every step you took.</li>
@@ -232,7 +142,7 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>One runnable JAR: from app servers to "java -jar"</h3>
+  <article class="card wide" id="c-one-runnable-jar-from-app-servers-to-java-jar"><h3>One runnable JAR: from app servers to "java -jar"</h3>
     <p>For years a Java web application was a WAR file deployed into a separate application server. Then frameworks started shipping the server inside the application: one file you start with <code>java -jar</code>.</p>
     <ul>
       <li><b>Dropwizard</b> (first published to Maven Central in December 2011) bundled an embedded Jetty server with Jersey, Jackson, Logback and Metrics, and its getting-started guide builds the whole application as a "fat JAR". As I remember it, that was the first time many of us ran a service this way, before Spring Boot (1.0 in April 2014) made the idea mainstream.</li>
@@ -242,7 +152,7 @@
     <p class="sources"><b>Checked against:</b> <a href="https://repo1.maven.org/maven2/com/yammer/dropwizard/dropwizard-core/" target="_blank" rel="noopener">Maven Central: dropwizard-core, first release dated 22 December 2011</a>; <a href="https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/" target="_blank" rel="noopener">Maven Central: spring-boot, first release dated 1 April 2014</a>; <a href="https://github.com/dropwizard/dropwizard" target="_blank" rel="noopener">Dropwizard README and getting-started guide</a>; the transformer classes inside the maven-shade-plugin artefact.</p>
   </article>
 
-  <article class="card wide"><h3>Why Spring lasted, and how it helped Java</h3>
+  <article class="card wide" id="c-why-spring-lasted-and-how-it-helped-java"><h3>Why Spring lasted, and how it helped Java</h3>
     <p>Rod Johnson released the first version of Spring with his book <i>Expert One-on-One J2EE Design and Development</i> in October 2002, as a lighter way to build enterprise Java than Enterprise JavaBeans; it was released under the Apache licence in June 2003. Many of the tools in the table below faded. Spring did not, and the reasons are worth learning:</p>
     <ul>
       <li><b>It solved the real pain.</b> Plain Java objects, dependency injection, and transactions set up by configuration rather than by the EJB container. Ordinary code became easy to write and to test.</li>
@@ -254,7 +164,7 @@
     <p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Spring_Framework" target="_blank" rel="noopener">Spring Framework</a>; <a href="https://en.wikipedia.org/wiki/Spring_Boot" target="_blank" rel="noopener">Spring Boot</a>.</p>
   </article>
 
-  <article class="card wide"><h3>Replaced by modern tools</h3>
+  <article class="card wide" id="c-replaced-by-modern-tools"><h3>Replaced by modern tools</h3>
     <p>Many tools from those years did not fail; the problems they solved moved somewhere else. A few we used every day:</p>
     <div class="tbl"><table>
       <tr><th>Then</th><th>What it did</th><th>Now, mostly</th><th>Why it moved on</th></tr>
@@ -268,7 +178,7 @@
     <p class="sources"><b>Checked against</b> (Wikipedia unless stated): <a href="https://en.wikipedia.org/wiki/OSGi" target="_blank" rel="noopener">OSGi</a>; <a href="https://en.wikipedia.org/wiki/Java_Platform_Module_System" target="_blank" rel="noopener">Java Platform Module System</a>; <a href="https://repo1.maven.org/maven2/com/google/inject/guice/" target="_blank" rel="noopener">Maven Central: Guice releases</a>; <a href="https://en.wikipedia.org/wiki/EAR_(file_format)" target="_blank" rel="noopener">EAR</a>; <a href="https://en.wikipedia.org/wiki/Java_EE_Connector_Architecture" target="_blank" rel="noopener">Jakarta Connectors</a>; <a href="https://en.wikipedia.org/wiki/PuTTY" target="_blank" rel="noopener">PuTTY</a>; <a href="https://en.wikipedia.org/wiki/OpenSSH" target="_blank" rel="noopener">OpenSSH</a>; <a href="https://en.wikipedia.org/wiki/Windows_Terminal" target="_blank" rel="noopener">Windows Terminal</a>; <a href="https://en.wikipedia.org/wiki/Syslog" target="_blank" rel="noopener">Syslog</a>; <a href="https://en.wikipedia.org/wiki/Cloud_Native_Computing_Foundation" target="_blank" rel="noopener">CNCF (OpenTelemetry)</a>.</p>
   </article>
 
-  <article class="card"><h3>Microservices, cloud, and seeing what happens</h3>
+  <article class="card" id="c-microservices-cloud-and-seeing-what-happens"><h3>Microservices, cloud, and seeing what happens</h3>
     <ul>
       <li><b>Microservices</b> split systems into small services that each own their data. They brought back every distributed-systems problem at once, now spread across many teams.</li>
       <li><b>For years, failures were hard to follow</b> from one service to the next. Observability caught up: logs, metrics and traces, and a shared trace context passed with every call (the W3C <code>traceparent</code> header). See <a href="/well-rounded-engineer/observability/">Observability</a>.</li>
@@ -276,7 +186,7 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>The people behind the ideas</h3>
+  <article class="card wide" id="c-the-people-behind-the-ideas"><h3>The people behind the ideas</h3>
     <p>We remember the famous product launches and forget many of the people whose ideas we use every day. A few worth knowing, and reading:</p>
     <ul>
       <li><b>The "Gang of Four"</b>, Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides, wrote <i>Design Patterns: Elements of Reusable Object-Oriented Software</i>, which gave us a shared vocabulary: factory, observer, strategy, adapter.</li>
@@ -288,7 +198,7 @@
     <p class="note">Before you ask an AI to explain a pattern, read the person who named it. The original is usually clearer, and it tells you why. Start with <a href="https://martinfowler.com/bliki/GangOfFour.html" target="_blank" rel="noopener">Fowler on the Gang of Four</a>, <a href="https://martinfowler.com/bliki/ExtremeProgramming.html" target="_blank" rel="noopener">Extreme Programming</a> and <a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html" target="_blank" rel="noopener">test-driven development</a>.</p>
   </article>
 
-  <article class="card wide"><h3>And now, AI</h3>
+  <article class="card wide" id="c-and-now-ai"><h3>And now, AI</h3>
     <p>AI can generate the code that each of these eras made us write by hand: the stubs, the boilerplate, the glue. But the four questions have not changed: contracts, state, failure, and seeing what went wrong. People who know this history recognise an old problem in a new form, and do not mistake generated code for understanding. See <a href="/well-rounded-engineer/ai/">AI for Engineers</a>.</p>
     <p class="note">Dates here are given where we could check them against the project's own record; elsewhere the page speaks in eras rather than years.</p>
   </article>
@@ -299,6 +209,8 @@
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-thread-through-it-all">The thread through it all</a><a href="#c-why-learning-how-it-evolved-matters">Why learning how it evolved matters</a><a href="#c-distributed-objects-everything-agreed-in-advance">Distributed objects: everything agreed in advance</a><a href="#c-enterprise-javabeans-the-beans-we-lived-with">Enterprise JavaBeans: the beans we lived with</a><a href="#c-models-uml-and-generated-screens">Models, UML and generated screens</a><a href="#c-the-early-web-stateless-by-design">The early web: stateless by design</a><a href="#c-pages-made-on-the-server">Pages made on the server</a><a href="#c-runtimes-get-fast-and-get-company">Runtimes get fast, and get company</a><a href="#c-integration-buses-services-and-lighter-ways">Integration: buses, services and lighter ways</a><a href="#c-rest-long-journeys-and-sagas">REST, long journeys, and sagas</a><a href="#c-one-runnable-jar-from-app-servers-to-java-jar">One runnable JAR: from app servers to "java -jar"</a><a href="#c-why-spring-lasted-and-how-it-helped-java">Why Spring lasted, and how it helped Java</a><a href="#c-replaced-by-modern-tools">Replaced by modern tools</a><a href="#c-microservices-cloud-and-seeing-what-happens">Microservices, cloud, and seeing what happens</a><a href="#c-the-people-behind-the-ideas">The people behind the ideas</a><a href="#c-and-now-ai">And now, AI</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">
