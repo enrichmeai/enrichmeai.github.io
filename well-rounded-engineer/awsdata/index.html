@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Data on AWS · Well Rounded Engineer</title>
-<meta name="description" content="The same lifecycle as Data on GCP , on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas in Data…">
+<meta name="description" content="The same lifecycle as Data on GCP and Data on Azure , on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
   <div class="eg-wrap eg-top-in">
     <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 92 pages, e.g. merge" autocomplete="off"></div>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 93 pages, e.g. merge" autocomplete="off"></div>
     <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
@@ -38,7 +38,7 @@
 <details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
 <details class="side-grp"><summary>Architecture &amp; design<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
 <details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
-<details class="side-grp" open><summary>Cloud providers<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/" aria-current="page">Data on AWS</a></div></details>
+<details class="side-grp" open><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/" aria-current="page">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
 <details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
 <details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
 <details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
@@ -49,7 +49,7 @@
 <main id="main" class="eg">
 <p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Cloud providers</span> / <span aria-current="page">Data on AWS</span></p>
 <section class="panel" id="awsdata" data-name="Data on AWS">
-  <div class="panel-head"><h1>Data engineering on AWS</h1><p>The same lifecycle as <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>, on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas in <a href="/well-rounded-engineer/data/">Data Engineering</a> do not. <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a> maps the services side by side.</p></div>
+  <div class="panel-head"><h1>Data engineering on AWS</h1><p>The same lifecycle as <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a> and <a href="/well-rounded-engineer/azuredata/">Data on Azure</a>, on Amazon Web Services: land, process, store, serve and govern. The service names differ; the ideas in <a href="/well-rounded-engineer/data/">Data Engineering</a> do not. <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a> maps the services side by side.</p></div>
   <div class="grid">
 
   <article class="card wide" id="c-service-map-by-lifecycle-stage"><h3>Service map by lifecycle stage</h3>
@@ -135,7 +135,7 @@ aws kinesis put-record --stream-name orders --partition-key a1 --data &lt;data&g
 
   </div>
 </section>
-<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/apigee/">← Apigee</a><a class="pn-next" href="/well-rounded-engineer/llm/">LLMs →</a></nav>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/apigee/">← Apigee</a><a class="pn-next" href="/well-rounded-engineer/azuredata/">Data on Azure →</a></nav>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
