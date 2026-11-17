@@ -90,15 +90,17 @@
       <li><b>Batch:</b> process a bounded chunk (yesterday, one file, one partition) on a schedule. Simple, cheap, easy to rerun. Latency of minutes to a day.</li>
       <li><b>Streaming:</b> process events continuously as they arrive. Latency of seconds, but harder: ordering, late events, state, exactly-once.</li>
       <li><b>Micro-batch:</b> small batches every few minutes. Often the practical middle.</li>
-      <li><b>Choose by the consumer's need,</b> not by fashion. Most reporting is fine with daily or hourly batch.</li>
+      <li><b>Choose by the consumer&rsquo;s need:</b> if someone must act within seconds, streaming; within minutes, micro-batch; a report read once a day, batch.</li>
     </ul>
+    <p class="note"><i>Our view:</i> most reporting is fine with daily or hourly batch, so start there. <i>The other view:</i> building on a stream from the start avoids a rewrite if a later use case needs seconds.</p>
   </article>
 
   <article class="card" id="c-etl-vs-elt"><h3>ETL vs ELT</h3>
     <ul>
       <li><b>ETL:</b> extract, transform in a separate engine, then load the result. Common when the warehouse was expensive or small.</li>
-      <li><b>ELT:</b> extract, load the raw data into the warehouse, transform there with SQL (dbt). The modern default on BigQuery and similar.</li>
-      <li><b>Why ELT wins today:</b> you keep the raw data, so a bug in a transform is fixed by rerunning it, not by re-ingesting from a source that may have changed or gone.</li>
+      <li><b>ELT:</b> extract, load the raw data into the warehouse, transform there with SQL (dbt). Common on BigQuery and similar warehouses.</li>
+      <li><b>Our view, ELT where you may:</b> you keep the raw data, so a bug in a transform is fixed by rerunning it, not by re-ingesting from a source that may have changed or gone.</li>
+      <li><b>The other view, when ETL fits:</b> where the warehouse is expensive or small, as in the ETL bullet above, transforming first means less raw data is stored and loaded. Some teams also prefer to clean or remove fields, such as personal data, before they reach the warehouse.</li>
       <li><b>Heavy non-SQL work</b> (parsing PDFs, images, large joins outside the warehouse) still goes to an engine built for it, such as Dataflow or Spark.</li>
     </ul>
   </article>

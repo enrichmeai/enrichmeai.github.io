@@ -4550,7 +4550,8 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
       <li><b>Reactive (Spring WebFlux, Project Reactor):</b> a few threads handle many requests by never waiting; work is composed as a pipeline of callbacks. It scales to many concurrent slow calls, but code, stack traces and debugging are harder, and every library on the path must be non-blocking too.</li>
       <li><b>Virtual threads changed the balance.</b> Since Java 21, blocking code can use cheap virtual threads, so the simple thread-per-request style scales to high concurrency. As JEP 444 puts it, virtual threads are not faster threads: they exist to provide scale (higher throughput), not speed (lower latency).</li>
       <li><b>Measured:</b> in our Spring Boot vs Quarkus benchmark, with 1,000 connections to an endpoint that waits 100 ms, blocking Spring served about 1,960 requests a second, the same code with virtual threads about 8,500 to 8,800, and reactive Spring and Quarkus about 9,400 to 9,750.</li>
-      <li><b>So:</b> start blocking, and turn on virtual threads for I/O-heavy services. Choose reactive when you need streaming or back-pressure, or you already have a reactive stack; do not rewrite a working blocking service for throughput alone without measuring it first. See <a href="#performance">Performance</a>.</li>
+      <li><b>Our view:</b> start blocking, and turn on virtual threads for I/O-heavy services. Choose reactive when you need streaming or back-pressure, or you already have a reactive stack; do not rewrite a working blocking service for throughput alone without measuring it first. See <a href="#performance">Performance</a>.</li>
+      <li><b>The other view:</b> some teams choose reactive from the start, because one model covers streaming, back-pressure and many slow calls, and in the benchmark above it served the most requests.</li>
     </ul>
   </article>
 
@@ -6271,15 +6272,17 @@ quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
       <li><b>Batch:</b> process a bounded chunk (yesterday, one file, one partition) on a schedule. Simple, cheap, easy to rerun. Latency of minutes to a day.</li>
       <li><b>Streaming:</b> process events continuously as they arrive. Latency of seconds, but harder: ordering, late events, state, exactly-once.</li>
       <li><b>Micro-batch:</b> small batches every few minutes. Often the practical middle.</li>
-      <li><b>Choose by the consumer's need,</b> not by fashion. Most reporting is fine with daily or hourly batch.</li>
+      <li><b>Choose by the consumer&rsquo;s need:</b> if someone must act within seconds, streaming; within minutes, micro-batch; a report read once a day, batch.</li>
     </ul>
+    <p class="note"><i>Our view:</i> most reporting is fine with daily or hourly batch, so start there. <i>The other view:</i> building on a stream from the start avoids a rewrite if a later use case needs seconds.</p>
   </article>
 
   <article class="card"><h3>ETL vs ELT</h3>
     <ul>
       <li><b>ETL:</b> extract, transform in a separate engine, then load the result. Common when the warehouse was expensive or small.</li>
-      <li><b>ELT:</b> extract, load the raw data into the warehouse, transform there with SQL (dbt). The modern default on BigQuery and similar.</li>
-      <li><b>Why ELT wins today:</b> you keep the raw data, so a bug in a transform is fixed by rerunning it, not by re-ingesting from a source that may have changed or gone.</li>
+      <li><b>ELT:</b> extract, load the raw data into the warehouse, transform there with SQL (dbt). Common on BigQuery and similar warehouses.</li>
+      <li><b>Our view, ELT where you may:</b> you keep the raw data, so a bug in a transform is fixed by rerunning it, not by re-ingesting from a source that may have changed or gone.</li>
+      <li><b>The other view, when ETL fits:</b> where the warehouse is expensive or small, as in the ETL bullet above, transforming first means less raw data is stored and loaded. Some teams also prefer to clean or remove fields, such as personal data, before they reach the warehouse.</li>
       <li><b>Heavy non-SQL work</b> (parsing PDFs, images, large joins outside the warehouse) still goes to an engine built for it, such as Dataflow or Spark.</li>
     </ul>
   </article>
@@ -8945,7 +8948,7 @@ spec:
       <tr><td>Fits</td><td>Stateless services, most applications</td><td>Stateful systems (databases, Kafka), complex platforms</td></tr>
       <tr><td>Cost</td><td>Templates</td><td>A program to build, test, secure and maintain</td></tr>
       </tbody></table></div>
-    <p class="note">Most teams should use well-tested operators (often installed with Helm), not write their own. Write one only when you have real operational knowledge to automate and no existing operator does it.</p>
+    <p class="note"><i>Our view:</i> use well-tested operators (often installed with Helm) rather than writing your own. Write one only when you have real operational knowledge to automate and no existing operator does it. <i>The other view:</i> a team with real operational knowledge to automate may get more from its own operator than from a general one.</p>
   </article>
 
   <article class="card"><h3>Operators worth knowing</h3>
@@ -9283,14 +9286,15 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</co
 
   <article class="card"><h3>Meshes compared</h3>
     <div class="tbl"><table>
-      <thead><tr><th>Mesh</th><th>Notes</th></tr></thead>
+      <thead><tr><th>Mesh</th><th>Notes</th><th>It leans this way if</th></tr></thead>
       <tbody>
-      <tr><td>Istio</td><td>Most features; sidecar or ambient; large community; more to learn and operate</td></tr>
-      <tr><td>Cloud Service Mesh</td><td>Google-managed, Istio-based, integrated with GKE and Cloud Monitoring</td></tr>
-      <tr><td>Linkerd</td><td>Simpler and lightweight, with its own Rust proxy; fewer features</td></tr>
-      <tr><td>Cilium service mesh</td><td>eBPF-based networking with mesh features, often without sidecars</td></tr>
-      <tr><td>Consul</td><td>Spans Kubernetes and VMs, with service discovery</td></tr>
+      <tr><td>Istio</td><td>Most features; sidecar or ambient; large community; more to learn and operate</td><td>You need the widest feature set and can staff its operation</td></tr>
+      <tr><td>Cloud Service Mesh</td><td>Google-managed, Istio-based, integrated with GKE and Cloud Monitoring</td><td>You run on GKE and want Google to manage it</td></tr>
+      <tr><td>Linkerd</td><td>Simpler and lightweight, with its own Rust proxy; fewer features</td><td>Its features cover what you need, and you want less to run</td></tr>
+      <tr><td>Cilium service mesh</td><td>eBPF-based networking with mesh features, often without sidecars</td><td>You already use Cilium for networking, or want mesh features without sidecars</td></tr>
+      <tr><td>Consul</td><td>Spans Kubernetes and VMs, with service discovery</td><td>Your services run on VMs as well as Kubernetes</td></tr>
       </tbody></table></div>
+    <p class="note"><i>Analysis:</i> the last column is read from the Notes column, not from any ranking of the meshes. List the features you actually need before you compare: a team that needs few of them has more choices than one that needs the most.</p>
   </article>
 
   <article class="card"><h3>Adopting a mesh safely</h3>
@@ -11410,7 +11414,7 @@ aws kinesis put-record --stream-name orders --partition-key a1 --data &lt;data&g
       <tr><td>A narrow task at high volume, cheaper or faster</td><td>A smaller model, or fine-tuning one, after measuring</td></tr>
       <tr><td>Consistent style the prompt cannot achieve</td><td>Fine-tuning (LoRA or full)</td></tr>
       </tbody></table></div>
-    <p class="note">Try in that order. Fine-tuning does not add reliable facts; it changes behaviour. Facts belong in retrieval.</p>
+    <p class="note"><i>Our view:</i> try them in that order, the cheapest change first. <i>The other view:</i> for a narrow task at high volume, some teams fine-tune a smaller model early, because each call then costs less. Either way, fine-tuning does not add reliable facts; it changes behaviour. Facts belong in retrieval.</p>
   </article>
 
   <article class="card"><h3>Runtime options</h3>
@@ -12208,7 +12212,7 @@ def run_query(sql: str) -&gt; dict:
       <tr><td>Agent frameworks (e.g. LangGraph)</td><td>Graph of steps and state; framework handles orchestration</td></tr>
       <tr><td>Ready-made agents (Claude Code, Cowork, Copilot)</td><td>Configuration: context files, skills, hooks, connectors</td></tr>
       </tbody></table></div>
-    <p class="note">Configure a ready-made harness before building one. Build your own only when the task, tools or deployment need something they cannot give.</p>
+    <p class="note"><i>Our view:</i> configure a ready-made harness before building one. Build your own only when the task, tools or deployment need something they cannot give. <i>The other view:</i> building the loop yourself avoids depending on one vendor&rsquo;s harness; when the agent is the product, owning the loop can be the point.</p>
   </article>
 
   <article class="card"><h3>Principles for a reliable harness</h3>
@@ -12747,6 +12751,7 @@ This repo is a Spring Boot 3 WebFlux service on Java 21.
       <tr><td>Strengths</td><td>Inline completions, tight GitHub integration (issues, PRs, review)</td><td>Long, multi-step agentic tasks; deep customisation with hooks, skills and subagents</td></tr>
       <tr><td>Configuration</td><td>Instruction and prompt files, policies</td><td>CLAUDE.md, settings, hooks, skills, agents, plugins</td></tr>
       <tr><td>Asynchronous work</td><td>Cloud agent on issues, chat and automations</td><td>Cloud sessions, GitHub Action, headless mode</td></tr>
+      <tr><td>It leans this way if</td><td>Your work lives in the IDE and on github.com, and you want completions as you type</td><td>You hand over whole multi-step tasks and want to shape the agent with hooks, skills and subagents</td></tr>
       </tbody></table></div>
     <p class="note">Many teams use both: completions while typing, an agent for whole tasks. The disciplines are the same: clear briefs, tests as the definition of done, human review, and rules written into the repo.</p>
   </article>

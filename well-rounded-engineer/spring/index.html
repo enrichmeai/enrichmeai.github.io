@@ -75,7 +75,8 @@
       <li><b>Reactive (Spring WebFlux, Project Reactor):</b> a few threads handle many requests by never waiting; work is composed as a pipeline of callbacks. It scales to many concurrent slow calls, but code, stack traces and debugging are harder, and every library on the path must be non-blocking too.</li>
       <li><b>Virtual threads changed the balance.</b> Since Java 21, blocking code can use cheap virtual threads, so the simple thread-per-request style scales to high concurrency. As JEP 444 puts it, virtual threads are not faster threads: they exist to provide scale (higher throughput), not speed (lower latency).</li>
       <li><b>Measured:</b> in our Spring Boot vs Quarkus benchmark, with 1,000 connections to an endpoint that waits 100 ms, blocking Spring served about 1,960 requests a second, the same code with virtual threads about 8,500 to 8,800, and reactive Spring and Quarkus about 9,400 to 9,750.</li>
-      <li><b>So:</b> start blocking, and turn on virtual threads for I/O-heavy services. Choose reactive when you need streaming or back-pressure, or you already have a reactive stack; do not rewrite a working blocking service for throughput alone without measuring it first. See <a href="/well-rounded-engineer/performance/">Performance</a>.</li>
+      <li><b>Our view:</b> start blocking, and turn on virtual threads for I/O-heavy services. Choose reactive when you need streaming or back-pressure, or you already have a reactive stack; do not rewrite a working blocking service for throughput alone without measuring it first. See <a href="/well-rounded-engineer/performance/">Performance</a>.</li>
+      <li><b>The other view:</b> some teams choose reactive from the start, because one model covers streaming, back-pressure and many slow calls, and in the benchmark above it served the most requests.</li>
     </ul>
   </article>
 
