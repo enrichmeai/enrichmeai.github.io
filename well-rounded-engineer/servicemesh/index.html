@@ -244,14 +244,15 @@ kubectl logs &lt;pod&gt; -c istio-proxy -n shop         # sidecar access log</co
 
   <article class="card" id="c-meshes-compared"><h3>Meshes compared</h3>
     <div class="tbl"><table>
-      <thead><tr><th>Mesh</th><th>Notes</th></tr></thead>
+      <thead><tr><th>Mesh</th><th>Notes</th><th>It leans this way if</th></tr></thead>
       <tbody>
-      <tr><td>Istio</td><td>Most features; sidecar or ambient; large community; more to learn and operate</td></tr>
-      <tr><td>Cloud Service Mesh</td><td>Google-managed, Istio-based, integrated with GKE and Cloud Monitoring</td></tr>
-      <tr><td>Linkerd</td><td>Simpler and lightweight, with its own Rust proxy; fewer features</td></tr>
-      <tr><td>Cilium service mesh</td><td>eBPF-based networking with mesh features, often without sidecars</td></tr>
-      <tr><td>Consul</td><td>Spans Kubernetes and VMs, with service discovery</td></tr>
+      <tr><td>Istio</td><td>Most features; sidecar or ambient; large community; more to learn and operate</td><td>You need the widest feature set and can staff its operation</td></tr>
+      <tr><td>Cloud Service Mesh</td><td>Google-managed, Istio-based, integrated with GKE and Cloud Monitoring</td><td>You run on GKE and want Google to manage it</td></tr>
+      <tr><td>Linkerd</td><td>Simpler and lightweight, with its own Rust proxy; fewer features</td><td>Its features cover what you need, and you want less to run</td></tr>
+      <tr><td>Cilium service mesh</td><td>eBPF-based networking with mesh features, often without sidecars</td><td>You already use Cilium for networking, or want mesh features without sidecars</td></tr>
+      <tr><td>Consul</td><td>Spans Kubernetes and VMs, with service discovery</td><td>Your services run on VMs as well as Kubernetes</td></tr>
       </tbody></table></div>
+    <p class="note"><i>Analysis:</i> the last column is read from the Notes column, not from any ranking of the meshes. List the features you actually need before you compare: a team that needs few of them has more choices than one that needs the most.</p>
   </article>
 
   <article class="card" id="c-adopting-a-mesh-safely"><h3>Adopting a mesh safely</h3>
