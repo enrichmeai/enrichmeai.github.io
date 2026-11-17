@@ -121,6 +121,7 @@ details>.inner{padding:4px 10px 8px}
       <a href="#python" data-tab="python">Python</a>
       <a href="#go" data-tab="go">Go</a>
       <a href="#rust" data-tab="rust">Rust</a>
+      <a href="#buildtools" data-tab="buildtools">Build Tools</a>
       <span class="navgrp">Building services</span>
       <a href="#apis" data-tab="apis">APIs &amp; Integration</a>
       <a href="#graphql" data-tab="graphql">GraphQL</a>
@@ -217,7 +218,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#architecture">Architecture</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a></p></div><div class="gmap-card"><h4><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
   <article class="card wide" id="promise"><h3>Our promise: checked knowledge, no fuss</h3>
@@ -331,6 +332,7 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#python">Python</a></td><td>Write a script that reads GCS and queries BigQuery, with a pytest test.</td><td>Packaging, async and threading choices, Beam pipelines, typed and tested libraries.</td></tr>
       <tr><td><a href="#go">Go</a></td><td>Write a small service with errors as values and a table-driven test.</td><td>Concurrency with goroutines and context, profiling, and reading cloud tools' source.</td></tr>
       <tr><td><a href="#rust">Rust</a></td><td>Explain ownership and borrowing; use Result, Option and match.</td><td>Lifetimes, traits and async; safe interfaces around unsafe code; performance work.</td></tr>
+      <tr><td><a href="#buildtools">Build Tools</a></td><td>Run a Maven, Gradle or npm build; read a lockfile and a dependency tree.</td><td>Build caches, version catalogs and BOMs, install-script policy, and CI build speed.</td></tr>
       <tr><td><a href="#apis">APIs &amp; Integration</a></td><td>Explain REST and status codes; read an OpenAPI spec; tell sync from async.</td><td>Choosing API styles, gateway and mesh design, versioning and API governance.</td></tr>
       <tr><td><a href="#graphql">GraphQL</a></td><td>Read a schema and write queries with variables; explain resolvers.</td><td>Batching, federation, schema evolution, GraphQL security.</td></tr>
       <tr><td><a href="#kafka">Kafka</a></td><td>Explain partitions, offsets and consumer groups; read consumer lag.</td><td>Topic and key design, delivery guarantees, Connect and stream processing.</td></tr>
@@ -3227,6 +3229,183 @@ mod tests {
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain ownership and borrowing</li><li>Use Result, Option and match</li><li>Build and test with Cargo</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write a CLI or service in Rust</li><li>Use traits, iterators and error types well</li><li>Keep Clippy clean and the code formatted</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design with lifetimes and generics</li><li>Write async Rust and choose a runtime</li><li>Wrap unsafe or foreign code behind safe interfaces</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead Rust adoption where safety and speed matter</li><li>Write libraries other languages call</li><li>Teach Rust and review for soundness</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Ownership, borrowing and lifetimes</li><li>Traits and generics</li><li>Error handling with Result</li><li>Async Rust</li><li>Unsafe Rust and FFI</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">The Rust Programming Language (the book)</a><span class="lnote"> The official book</span></li><li><a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">The book's source</a><span class="lnote"> Read and contribute on GitHub</span></li><li><a href="https://github.com/rust-lang/rustlings" target="_blank" rel="noopener">Rustlings</a><span class="lnote"> Small exercises to learn by doing</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html" target="_blank" rel="noopener">The Rust book: Unsafe Rust</a>; <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html" target="_blank" rel="noopener">The Rust book: What is ownership?</a>; <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html" target="_blank" rel="noopener">The Rust book: Recoverable errors with Result</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BRust%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
+<!-- ================= BUILD TOOLS ================= -->
+<section class="panel" id="p-buildtools" data-name="Build Tools">
+  <div class="panel-head"><h2>Build tools: Maven, Gradle, npm, Yarn and pnpm</h2><p>A build tool turns source code into something you can run or ship: it fetches dependencies, compiles, runs the tests, packages the result and publishes it. A good build gives the same result on every laptop and every CI runner. This page covers the Java tools (Maven and Gradle) and the Node.js tools (npm, Yarn, pnpm and the bundlers), with each claim checked against the tool's own documentation.</p></div>
+  <div class="grid">
+
+  <article class="card"><h3>What every build tool does</h3>
+    <ul>
+      <li><b>Resolves dependencies:</b> downloads the libraries you name, and the libraries they need (transitive dependencies), from a registry such as Maven Central or the npm registry.</li>
+      <li><b>Runs the steps in order:</b> compile, test, package, publish. You ask for the last step and the tool runs the ones before it.</li>
+      <li><b>Pins versions:</b> a lockfile, a wrapper script or a version catalog, so a build next year uses the same versions as today.</li>
+      <li><b>Avoids repeated work:</b> skips steps whose inputs have not changed.</li>
+      <li><b>Is the same in CI as on your machine.</b> If it only builds on one person's laptop, it does not build.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>A short history</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>When</th><th>Tool</th><th>What it brought</th></tr></thead>
+      <tbody>
+      <tr><td>1976</td><td>Make</td><td>Stuart Feldman at Bell Labs: rules in a Makefile, and a target rebuilt only when a source file is newer</td></tr>
+      <tr><td>2000</td><td>Apache Ant</td><td>James Duncan Davidson, from the Tomcat project: a Java replacement for Make, with XML build files</td></tr>
+      <tr><td>2004</td><td>Apache Maven</td><td>Jason van Zyl (started 2002): conventions instead of scripts, and dependencies downloaded from a repository</td></tr>
+      <tr><td>2008</td><td>Gradle</td><td>Builds on the concepts of Ant and Maven, with a Groovy or Kotlin build language; first stable release in June 2012</td></tr>
+      <tr><td>2010</td><td>npm</td><td>Isaac Z. Schlueter: the package manager for Node.js, included in the Node.js installer</td></tr>
+      <tr><td>2014</td><td>webpack</td><td>Bundles a web app's modules into files a browser loads</td></tr>
+      <tr><td>2015</td><td>Bazel</td><td>Google's open-source port of its internal build tool Blaze (started 2006), for large monorepos</td></tr>
+      <tr><td>2016</td><td>Yarn</td><td>Started by Sebastian McKenzie at Facebook; rewritten in 2020 (codename "Berry")</td></tr>
+      <tr><td>2017</td><td>pnpm</td><td>Zoltan Kochan: one shared store on disk, linked into each project</td></tr>
+      <tr><td>2020</td><td>Vite</td><td>Evan You, creator of Vue.js: a fast dev server plus a production build</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Maven: convention over configuration</h3>
+    <p>A Maven project is described by its <code>pom.xml</code> (Project Object Model). If you follow the standard layout (<code>src/main/java</code>, <code>src/test/java</code>), you configure almost nothing.</p>
+    <ul>
+      <li><b>Three built-in lifecycles:</b> <code>default</code> (build and deploy), <code>clean</code> and <code>site</code>.</li>
+      <li><b>Main phases of the default lifecycle, in order:</b> <code>validate</code>, <code>compile</code>, <code>test</code>, <code>package</code>, <code>verify</code>, <code>install</code> (into your local repository), <code>deploy</code> (to a remote repository). <code>mvn verify</code> runs every phase before <code>verify</code> too, so you only name the last one.</li>
+      <li><b>Plugins do the work:</b> each phase runs plugin goals bound to it, and the bindings depend on the packaging (<code>jar</code>, <code>war</code>, <code>pom</code>).</li>
+      <li><b>Transitive dependencies</b> are included automatically. When two versions of one library meet, Maven picks the <b>nearest definition</b> in the dependency tree, not the newest. That surprises people: check with <code>mvn dependency:tree</code>.</li>
+      <li><b><code>&lt;dependencyManagement&gt;</code></b> pins versions for the whole tree, and the <code>import</code> scope pulls in a published bill of materials (BOM), as Spring Boot and many cloud SDKs provide.</li>
+      <li><b>Scopes:</b> <code>compile</code> (the default), <code>provided</code> (the JDK or the container supplies it at runtime), <code>runtime</code>, <code>test</code> (only for compiling and running tests, and not passed on).</li>
+      <li><b>The Maven Wrapper</b> (<code>mvnw</code>) downloads the Maven version the project declares, so nobody needs the right one installed.</li>
+    </ul>
+<div class="snip"><pre><code>&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;com.example&lt;/groupId&gt;
+  &lt;artifactId&gt;orders&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+
+  &lt;dependencyManagement&gt;           &lt;!-- one place for versions --&gt;
+    &lt;dependencies&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit-bom&lt;/artifactId&gt;
+        &lt;version&gt;5.11.0&lt;/version&gt;
+        &lt;type&gt;pom&lt;/type&gt;
+        &lt;scope&gt;import&lt;/scope&gt;
+      &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+  &lt;/dependencyManagement&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+      &lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;   &lt;!-- no version: the BOM sets it --&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+
+./mvnw verify                  # compile, test, package, verify
+./mvnw dependency:tree         # which version won, and why</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>Gradle: a task graph you can program</h3>
+    <p>A Gradle build is written in Kotlin (<code>build.gradle.kts</code>) or Groovy (<code>build.gradle</code>). Instead of a fixed lifecycle, it builds a graph of tasks and runs the ones your request needs.</p>
+    <ul>
+      <li><b>Three phases every build goes through:</b> initialization (which projects are in the build), configuration (run the build scripts and work out the task graph), execution (run the selected tasks).</li>
+      <li><b>The Gradle Wrapper</b> (<code>gradlew</code>) is the recommended way to run any Gradle build: it runs the declared Gradle version and downloads it if needed. Commit it.</li>
+      <li><b>The Daemon</b> is a long-lived background process that hosts Gradle's engine, so later builds skip the start-up cost.</li>
+      <li><b>Incremental builds:</b> a task whose inputs and outputs have not changed is skipped as up to date.</li>
+      <li><b>The build cache</b> goes further: it reuses task outputs from earlier builds, on this machine or from a shared remote cache, when the inputs match.</li>
+      <li><b>The configuration cache</b> saves the result of the configuration phase and reuses it on the next build.</li>
+      <li><b>Version catalogs</b> keep every dependency version in one file, <code>gradle/libs.versions.toml</code>, referenced as <code>libs.…</code> in the build scripts.</li>
+      <li><b>Android apps are built with Gradle</b>, through the Android Gradle plugin.</li>
+    </ul>
+<div class="snip"><pre><code># gradle/libs.versions.toml
+[versions]
+junit = "5.11.0"
+[libraries]
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+
+// build.gradle.kts
+plugins { java }
+dependencies {
+    testImplementation(platform(libs.junit.bom))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+tasks.test { useJUnitPlatform() }
+
+./gradlew build                # compile, test, assemble
+./gradlew build --build-cache  # reuse outputs from earlier builds</code></pre></div>
+  </article>
+
+  <article class="card"><h3>Maven or Gradle?</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Maven</th><th>Gradle</th></tr></thead>
+      <tbody>
+      <tr><td>Build file</td><td>XML (<code>pom.xml</code>): declarative</td><td>Kotlin or Groovy: code</td></tr>
+      <tr><td>Model</td><td>Fixed lifecycle of phases</td><td>Graph of tasks</td></tr>
+      <tr><td>Versions in one place</td><td><code>dependencyManagement</code> and BOMs</td><td>Version catalogs and platforms</td></tr>
+      </tbody></table></div>
+    <p class="note"><i>Opinion:</i> pick Maven when you want every project to look the same and the build to stay boring; pick Gradle when the build is large or unusual enough that skipping work and writing logic pays for the extra power. A team that knows one well beats a team half-using either.</p>
+  </article>
+
+  <article class="card"><h3>npm: the default for Node.js</h3>
+    <ul>
+      <li><b><code>package.json</code></b> names your dependencies with version ranges and holds your <code>scripts</code>; <code>npm run build</code> runs one. A script named <code>prebuild</code> or <code>postbuild</code> runs before or after it.</li>
+      <li><b><code>package-lock.json</code></b> is generated whenever npm changes <code>node_modules</code>. It records the exact tree, so the next install builds the same one. Commit it.</li>
+      <li><b><code>npm ci</code> is for CI:</b> it needs an existing lockfile, fails if <code>package.json</code> and the lock disagree, and never writes to either. Use <code>npm install</code> to change dependencies, and <code>npm ci</code> to reproduce them.</li>
+      <li><b><code>npx</code></b> runs a package's command without installing it into your project.</li>
+      <li><b>Ranges:</b> a caret allows any change that keeps the left-most non-zero number; a tilde allows only patch-level changes when the minor is given. The lockfile is what stops a range from drifting between installs.</li>
+    </ul>
+<div class="snip"><pre><code>"dependencies": {
+  "express": "^5.1.0",     // 5.x.x, never 6
+  "lodash": "~4.17.21"     // 4.17.x only
+}</code></pre></div>
+  </article>
+
+  <article class="card"><h3>npm 12: install scripts are off by default</h3>
+    <p>Install scripts (<code>preinstall</code>, <code>install</code>, <code>postinstall</code>) run code from a dependency on your machine the moment you install it, so a compromised package can act before you have run a line of your own code. npm 12, released in July 2026, changed the defaults:</p>
+    <ul>
+      <li><b>Dependency lifecycle scripts are blocked</b> unless the root package's <code>allowScripts</code> policy allows them. Run <code>npm install-scripts approve</code> to record approvals, then <code>npm rebuild</code> to run the newly approved scripts.</li>
+      <li><b>Git and tarball-URL dependencies are refused</b> unless you opt in (<code>allow-git</code> and <code>allow-remote</code> now default to <code>none</code>).</li>
+      <li><b><code>npm-shrinkwrap.json</code> is no longer read:</b> rename it to <code>package-lock.json</code>.</li>
+      <li>On an older npm, <code>--ignore-scripts</code> turns install scripts off, though <code>npm test</code> and <code>npm run</code> still run the script you asked for.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Yarn, pnpm and Corepack</h3>
+    <ul>
+      <li><b>Yarn</b> started at Facebook in 2016. Its modern version can install with <b>Plug'n'Play</b>: no <code>node_modules</code> folder at all, but a single <code>.pnp.cjs</code> loader that tells Node where each package is. It can also use a normal <code>node_modules</code> install.</li>
+      <li><b>pnpm</b> keeps one <b>content-addressable store</b> on disk. Each project's files are hard-linked or copy-on-write cloned from it, so a hundred projects using one library do not keep a hundred copies, and a new version adds only the files that changed.</li>
+      <li><b>pnpm's <code>node_modules</code> is not flat:</b> only your direct dependencies sit at the top, as symlinks. Code cannot quietly import a package it never declared. Tools that dislike symlinks can use <code>nodeLinker: hoisted</code>.</li>
+      <li><b>Corepack</b> lets a project use the Yarn or pnpm version named in the <code>packageManager</code> field of <code>package.json</code>, without installing it globally. It shipped with Node.js until version 25. From 25 on, install Corepack separately.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Bundlers: the other half of a JavaScript build</h3>
+    <ul>
+      <li><b>A package manager</b> (npm, Yarn, pnpm) fetches dependencies. <b>A bundler</b> turns your modules into the few files a browser downloads. A front-end build needs both.</li>
+      <li><b>webpack</b> (2014) builds a dependency graph of your modules and supports code splitting with dynamic <code>import()</code>.</li>
+      <li><b>Vite</b> has two parts: a dev server that serves native ES modules with very fast hot module replacement, and a build command that bundles for production with Rolldown.</li>
+      <li><b>TypeScript</b> adds a type-check step: <code>tsc --noEmit</code> in CI catches type errors even when the bundler only strips the types.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Habits that keep builds healthy, in any ecosystem</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Habit</th><th>Java</th><th>Node.js</th></tr></thead>
+      <tbody>
+      <tr><td>Pin the tool itself</td><td>Commit <code>mvnw</code> or <code>gradlew</code></td><td><code>packageManager</code> in <code>package.json</code>, and a pinned Node version in CI</td></tr>
+      <tr><td>Pin every dependency</td><td>BOMs, <code>dependencyManagement</code>, version catalogs</td><td>Commit the lockfile and install with <code>npm ci</code>. Yarn (<code>--immutable</code>) and pnpm refuse to change the lockfile on CI by default</td></tr>
+      <tr><td>See why a version won</td><td><code>mvn dependency:tree</code>, <code>gradle dependencies</code></td><td><code>npm explain &lt;pkg&gt;</code>, <code>npm ls</code></td></tr>
+      <tr><td>Limit what runs at install</td><td>Add plugins and extensions deliberately, from sources you trust</td><td>Allow install scripts only for packages that need them</td></tr>
+      <tr><td>Make CI fast</td><td>Cache <code>~/.m2</code> or <code>~/.gradle</code>; Gradle's build cache</td><td>Cache the package manager's store, not <code>node_modules</code></td></tr>
+      <tr><td>Upgrade on purpose</td><td colspan="2">Small, regular dependency updates (Dependabot or Renovate), each with a green build, beat one big upgrade a year</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run a Maven, Gradle and npm build from the wrapper or lockfile</li><li>Name the lifecycle phases or tasks a build runs</li><li>Add a dependency and read the dependency tree</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Pin versions with a BOM, a version catalog or a lockfile</li><li>Explain why a transitive version won and override it</li><li>Make CI builds reproducible and cached</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a multi-module or monorepo build</li><li>Use the Gradle build and configuration caches</li><li>Set an install-script and dependency-source policy</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set build standards across an organisation</li><li>Lead migrations between build tools</li><li>Secure the build supply chain end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The Maven lifecycle and plugins</li><li>Gradle tasks, caches and version catalogs</li><li>Lockfiles and npm ci</li><li>pnpm's store and strict node_modules</li><li>Bundlers: webpack and Vite</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank" rel="noopener">Introduction to the Maven build lifecycle</a><span class="lnote"> Phases and bindings</span></li><li><a href="https://docs.gradle.org/current/userguide/userguide.html" target="_blank" rel="noopener">Gradle User Manual</a><span class="lnote"> Wrapper, Daemon, caches, catalogs</span></li><li><a href="https://docs.npmjs.com/" target="_blank" rel="noopener">npm Docs</a><span class="lnote"> package.json, lockfiles, scripts</span></li><li><a href="https://pnpm.io/motivation" target="_blank" rel="noopener">pnpm: Motivation</a><span class="lnote"> The store and the non-flat node_modules</span></li><li><a href="https://vite.dev/guide/" target="_blank" rel="noopener">Vite guide</a><span class="lnote"> Dev server and production build</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-the-lifecycle.md" target="_blank" rel="noopener">Maven: build lifecycle (source)</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-dependency-mechanism.md" target="_blank" rel="noopener">Maven: dependency mechanism (source)</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/tools/mavenwrapper.md" target="_blank" rel="noopener">Maven Wrapper (source)</a>; <a href="https://github.com/gradle/gradle/tree/master/platforms/documentation/docs/src/docs/userguide" target="_blank" rel="noopener">Gradle user guide: build lifecycle, Wrapper, Daemon, build cache, configuration cache, version catalogs (source)</a>; <a href="https://developer.android.com/build" target="_blank" rel="noopener">Android: configure your build</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/commands/npm-ci.md" target="_blank" rel="noopener">npm ci</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/configuring-npm/package-lock-json.md" target="_blank" rel="noopener">package-lock.json</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/using-npm/scripts.md" target="_blank" rel="noopener">npm scripts</a>; <a href="https://github.com/npm/cli/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">npm CHANGELOG (npm 12 breaking changes)</a>; <a href="https://github.com/npm/cli/blob/latest/workspaces/config/lib/definitions/definitions.js" target="_blank" rel="noopener">npm config definitions (ignore-scripts, allow-git, allow-remote, allow-scripts)</a>; <a href="https://github.com/npm/node-semver" target="_blank" rel="noopener">node-semver: caret and tilde ranges</a>; <a href="https://github.com/pnpm/pnpm.io/blob/main/docs/motivation.md" target="_blank" rel="noopener">pnpm: Motivation (source)</a>; <a href="https://github.com/pnpm/pnpm.io/blob/main/docs/cli/install.md" target="_blank" rel="noopener">pnpm install (source)</a>; <a href="https://yarnpkg.com/features/pnp" target="_blank" rel="noopener">Yarn: Plug'n'Play</a>; <a href="https://yarnpkg.com/cli/install" target="_blank" rel="noopener">yarn install</a>; <a href="https://github.com/nodejs/node/blob/main/deps/corepack/README.md" target="_blank" rel="noopener">Corepack README (bundled Node.js versions)</a>; <a href="https://github.com/vitejs/vite/blob/main/docs/guide/index.md" target="_blank" rel="noopener">Vite guide (source)</a>; <a href="https://docs.spring.io/spring-boot/maven-plugin/using.html" target="_blank" rel="noopener">Spring Boot Maven plugin: spring-boot-dependencies</a>; <a href="https://en.wikipedia.org/wiki/Build_automation" target="_blank" rel="noopener">Wikipedia: Make, Apache Ant, Apache Maven, Gradle, npm, webpack, Bazel, Yarn, pnpm, Vite</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBuild%20Tools%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -14390,7 +14569,7 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","go","rust","apis","graphql","kafka","payments","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","architecture","microservices","eventsourcing","sysdesign","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata","llm","ai","rag","mcp","agentharness","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","go","rust","buildtools","apis","graphql","kafka","payments","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","cyber","oauth","data","datalibs","dbt","dags","architecture","microservices","eventsourcing","sysdesign","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","gcpdata","bigquery","cloudrun","apigee","awsdata","llm","ai","rag","mcp","agentharness","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
