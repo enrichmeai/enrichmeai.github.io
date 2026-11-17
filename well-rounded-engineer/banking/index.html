@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banking & Low Latency · Well Rounded Engineer</title>
+<meta name="description" content="Banking software is judged first on correctness and availability, and only then on speed; trading systems are judged on speed in microseconds. This page…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="banking" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 90 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/" aria-current="page">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">Banking &amp; Low Latency</span></p>
+<section class="panel" id="banking" data-name="Banking &amp; Low Latency">
+  <div class="panel-head"><h1>Banking systems and low latency</h1><p>Banking software is judged first on correctness and availability, and only then on speed; trading systems are judged on speed in microseconds. This page covers how a bank's systems fit together, what changed when payments became instant, and how low latency is actually achieved and measured. The money-handling rules themselves (double-entry, idempotency, reconciliation) are on <a href="/well-rounded-engineer/payments/">Payment Gateways</a>; percentiles and profiling are on <a href="/well-rounded-engineer/performance/">Performance</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-what-makes-banking-software-different"><h3>What makes banking software different</h3>
+    <p><i>Analysis, built on the sources at the end.</i> A shop that loses an order apologises. A bank that loses or invents money breaks the law. That changes the order of priorities:</p>
+    <ol>
+      <li><b>Correct:</b> money is never created or lost. Every movement is a balanced pair of entries (see <a href="/well-rounded-engineer/payments/">Payment Gateways</a>), and every change can be traced to who made it and why.</li>
+      <li><b>Available:</b> instant payment schemes run 24 hours a day, every day, so there is no longer a quiet night to take systems down.</li>
+      <li><b>Fast enough:</b> fast enough for the scheme&rsquo;s deadline and for the customer, which is usually far from the microseconds a trading system needs.</li>
+    </ol>
+    <p class="note"><i>The other view:</i> some argue that speed is itself a form of correctness for payments, because a payment that misses its scheme deadline fails. Both views agree on the order inside the deadline: correct first.</p>
+  </article>
+
+  <article class="card" id="c-how-a-bank-s-systems-fit-together"><h3>How a bank&rsquo;s systems fit together</h3>
+    <ul>
+      <li><b>Channels:</b> the mobile app, web banking, branches, call centres, and partners through APIs.</li>
+      <li><b>Integration:</b> gateways and messaging that connect channels to the systems of record, with limits, fraud checks and audit on the way.</li>
+      <li><b>Core banking:</b> the system that centralises the bank&rsquo;s record keeping for deposits, loans and accounts, so any branch or channel sees one record.</li>
+      <li><b>Payment schemes:</b> connections to card networks, instant payment schemes and slower batch schemes, each with its own message formats and deadlines.</li>
+      <li><b>Ledger and reporting:</b> the general ledger, regulatory reports, reconciliation.</li>
+      <li><b>Mainframes and COBOL:</b> COBOL is used mainly in business, finance and administrative systems, and is still widely used on mainframes for large-scale batch and transaction processing; most COBOL work today maintains existing applications. Some mainframe models run each instruction twice and compare the results, to catch hardware faults.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-from-overnight-batch-to-instant"><h3>From overnight batch to instant</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Scheme</th><th>How fast</th></tr></thead>
+      <tbody>
+      <tr><td>SEPA credit transfer (euro)</td><td>Settles within one business day</td></tr>
+      <tr><td>SEPA Instant (euro, since November 2017)</td><td>Under ten seconds; at most twenty in exceptional cases; around the clock</td></tr>
+      <tr><td>Faster Payments (UK, since May 2008)</td><td>Typically a few seconds, not guaranteed</td></tr>
+      <tr><td>FedNow (US, since July 2023)</td><td>Instant, 24 hours a day, 365 days a year</td></tr>
+      <tr><td>UPI (India)</td><td>See <a href="/well-rounded-engineer/payments/">Payment Gateways</a></td></tr>
+      </tbody></table></div>
+    <p class="note">What changes when payments are instant (<i>analysis</i>): checks that once ran in the overnight batch, such as limits, fraud and sanctions screening, now run inline within the deadline; and maintenance can no longer wait for a closed weekend.</p>
+  </article>
+
+  <article class="card" id="c-iso-20022-the-language-banks-are-moving-to"><h3>ISO 20022: the language banks are moving to</h3>
+    <ul>
+      <li>An ISO standard for electronic data interchange between financial institutions.</li>
+      <li>It is a repository of message and business-process descriptions, modelled in UML and turned into concrete messages (most often XML).</li>
+      <li><b>Why engineers meet it:</b> payment schemes and correspondent banking are moving their messages to it, so a payments system has to read and produce it, and map it to and from older formats during the move.</li>
+      <li><b>Why it helps</b> (<i>analysis</i>): structured fields for parties, purposes and references, instead of free text, make screening and reconciliation easier to automate.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-low-latency-what-low-means-depends-on-the-job"><h3>Low latency: what &ldquo;low&rdquo; means depends on the job</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If you are building</th><th>What matters</th><th>What &ldquo;fast&rdquo; looks like</th></tr></thead>
+      <tbody>
+      <tr><td>A banking app screen</td><td>The customer&rsquo;s wait, every time, including the slow ones</td><td>Tail latency (p99) across every service in the chain, not the average</td></tr>
+      <tr><td>An instant payment</td><td>Finishing every check inside the scheme&rsquo;s deadline</td><td>A whole journey within seconds (SEPA Instant: under ten), with a known budget per step</td></tr>
+      <tr><td>A market-data or trading system</td><td>Reacting before the competition</td><td>Under a millisecond is often called &ldquo;ultra low latency&rdquo;, and the bar keeps moving</td></tr>
+      </tbody></table></div>
+    <p><b>Physics sets the floor.</b> Light in a vacuum covers a kilometre in about 3.3&nbsp;microseconds; in optical fibre, with a core refractive index around 1.45, it takes about 4.8. So a trading engine 150&nbsp;km from an exchange can never get a round trip under about a millisecond, before any software runs. This is why co-location, running servers in the exchange&rsquo;s own data centre, is one of the defining features of high-frequency trading.</p>
+  </article>
+
+  <article class="card wide" id="c-techniques-and-what-each-one-costs-choose-by-req"><h3>Techniques, and what each one costs: choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is your problem</th><th>Consider</th><th>What it costs you</th></tr></thead>
+      <tbody>
+      <tr><td>You do not know where the time goes</td><td>Measure first: tracing per hop, percentiles, a profiler (see <a href="/well-rounded-engineer/performance/">Performance</a>)</td><td>Time; nothing else on this list is worth doing before it</td></tr>
+      <tr><td>Database round trips dominate</td><td>Keep the working state in memory and the database for durability: LMAX&rsquo;s trading platform runs its business logic in memory with event sourcing, and reported 6 million orders per second on a single thread</td><td>Recovery by replaying events; careful design of snapshots</td></tr>
+      <tr><td>Threads wait on locks and queues</td><td>Single-threaded business logic fed by lock-free ring buffers (LMAX&rsquo;s Disruptor); fewer hand-offs between threads</td><td>A programming model most teams have not used</td></tr>
+      <tr><td>Garbage-collection pauses on the JVM</td><td>A low-pause collector: ZGC pauses application threads only briefly, measured in microseconds; or allocate less on the hot path</td><td>Some throughput and memory overhead</td></tr>
+      <tr><td>Small messages wait in the network stack</td><td>Turn off Nagle&rsquo;s algorithm with <code>TCP_NODELAY</code></td><td>More, smaller packets on the network</td></tr>
+      <tr><td>The kernel&rsquo;s network stack itself is too slow</td><td>Kernel bypass, such as DPDK, which processes packets entirely in user space</td><td>Specialised hardware and skills; you take over what the kernel did</td></tr>
+      <tr><td>Distance dominates</td><td>Move closer: same region, same data centre, or co-location at the exchange</td><td>Money, and less freedom over where you run</td></tr>
+      </tbody></table></div>
+    <p class="note"><i>Our view:</i> most banking systems are slow because of too many network hops and database calls, not because of the garbage collector or the kernel. Work down the table from the top. <i>The other view:</i> in trading, the last rows are the whole game, and teams start there because the first rows were solved long ago.</p>
+  </article>
+
+  <article class="card" id="c-measure-latency-honestly"><h3>Measure latency honestly</h3>
+    <ul>
+      <li><b>Percentiles, not averages:</b> the slow requests are the ones customers remember (see <a href="/well-rounded-engineer/performance/">Performance</a>).</li>
+      <li><b>Coordinated omission:</b> a load generator that waits for each response before sending the next stops sending exactly when the server is slow, so it quietly misses most of the slow periods. Gil Tene&rsquo;s wrk2 sends at a constant rate and records into HdrHistogram to avoid it.</li>
+      <li><b>Measure end to end and per hop:</b> the customer&rsquo;s wait is the sum of every hop in the chain.</li>
+      <li><b>Test with production-like data and load,</b> including the batch jobs and peaks of month end.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-correctness-under-speed"><h3>Correctness under speed</h3>
+    <ul>
+      <li><b>Idempotency everywhere:</b> retries are certain at this scale; a repeated payment message must not move money twice (see <a href="/well-rounded-engineer/payments/">Payment Gateways</a>).</li>
+      <li><b>Exactly-once effects, not exactly-once delivery:</b> messages may arrive twice; the ledger must apply them once.</li>
+      <li><b>Reconcile continuously:</b> compare your ledger with the scheme&rsquo;s and the bank&rsquo;s, every day, and treat a mismatch as an incident.</li>
+      <li><b>Plan for the slow path:</b> when a check cannot finish inside the deadline, decide in advance whether to reject, hold or approve, and record why.</li>
+    </ul>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain how channels, core banking, schemes and the ledger fit together</li><li>Explain why every payment step must be idempotent</li><li>Read p50, p99 and p99.9 and say which one customers feel</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a payment flow that meets an instant scheme's deadline</li><li>Map a message to and from ISO 20022</li><li>Load-test without coordinated omission</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for 24/7 operation with no batch window</li><li>Set and enforce a latency budget per hop</li><li>Choose between in-memory, lock-free and conventional designs by requirement</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead a core banking or scheme migration</li><li>Set resilience and latency standards across a bank</li><li>Design ultra-low-latency trading infrastructure</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Core banking and the general ledger</li><li>Instant payment schemes</li><li>ISO 20022</li><li>Tail latency and latency budgets</li><li>The LMAX architecture and the Disruptor</li><li>Kernel bypass and co-location</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/lmax.html" target="_blank" rel="noopener">The LMAX Architecture (Martin Fowler)</a><span class="lnote"> In-memory, single-threaded, event-sourced trading</span></li><li><a href="https://github.com/giltene/wrk2" target="_blank" rel="noopener">wrk2 README: coordinated omission</a><span class="lnote"> Why most load tests miss the slow periods</span></li><li><a href="https://github.com/HdrHistogram/HdrHistogram" target="_blank" rel="noopener">HdrHistogram</a><span class="lnote"> Recording latency across a wide range</span></li><li><a href="https://openjdk.org/jeps/439" target="_blank" rel="noopener">JEP 439: Generational ZGC</a><span class="lnote"> A low-pause collector for the JVM</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Core_banking" target="_blank" rel="noopener">Wikipedia: Core banking</a>; <a href="https://en.wikipedia.org/wiki/Instant_payment" target="_blank" rel="noopener">Wikipedia: Instant payment</a>; <a href="https://en.wikipedia.org/wiki/Single_Euro_Payments_Area" target="_blank" rel="noopener">Wikipedia: Single Euro Payments Area (SCT Inst)</a>; <a href="https://en.wikipedia.org/wiki/Faster_Payment_System_(United_Kingdom)" target="_blank" rel="noopener">Wikipedia: Faster Payment System (UK)</a>; <a href="https://en.wikipedia.org/wiki/FedNow" target="_blank" rel="noopener">Wikipedia: FedNow</a>; <a href="https://en.wikipedia.org/wiki/ISO_20022" target="_blank" rel="noopener">Wikipedia: ISO 20022</a>; <a href="https://en.wikipedia.org/wiki/Mainframe_computer" target="_blank" rel="noopener">Wikipedia: Mainframe computer</a>; <a href="https://en.wikipedia.org/wiki/COBOL" target="_blank" rel="noopener">Wikipedia: COBOL</a>; <a href="https://en.wikipedia.org/wiki/Low_latency_(capital_markets)" target="_blank" rel="noopener">Wikipedia: Low latency (capital markets)</a>; <a href="https://en.wikipedia.org/wiki/High-frequency_trading" target="_blank" rel="noopener">Wikipedia: High-frequency trading (co-location)</a>; <a href="https://en.wikipedia.org/wiki/Optical_fiber" target="_blank" rel="noopener">Wikipedia: Optical fiber (refractive index)</a>; <a href="https://martinfowler.com/articles/lmax.html" target="_blank" rel="noopener">Martin Fowler: The LMAX Architecture (2011)</a>; <a href="https://openjdk.org/jeps/439" target="_blank" rel="noopener">OpenJDK JEP 333: ZGC, and JEP 439: Generational ZGC</a>; <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener">Wikipedia: Nagle's algorithm (TCP_NODELAY)</a>; <a href="https://en.wikipedia.org/wiki/Data_Plane_Development_Kit" target="_blank" rel="noopener">Wikipedia: Data Plane Development Kit</a>; <a href="https://github.com/giltene/wrk2" target="_blank" rel="noopener">wrk2 README (coordinated omission)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBanking%20%26%20Low%20Latency%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/payments/">← Payment Gateways</a><a class="pn-next" href="/well-rounded-engineer/spring/">Spring Boot →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-what-makes-banking-software-different">What makes banking software different</a><a href="#c-how-a-bank-s-systems-fit-together">How a bank’s systems fit together</a><a href="#c-from-overnight-batch-to-instant">From overnight batch to instant</a><a href="#c-iso-20022-the-language-banks-are-moving-to">ISO 20022: the language banks are moving to</a><a href="#c-low-latency-what-low-means-depends-on-the-job">Low latency: what “low” means depends on the job</a><a href="#c-techniques-and-what-each-one-costs-choose-by-req">Techniques, and what each one costs: choose by requirement</a><a href="#c-measure-latency-honestly">Measure latency honestly</a><a href="#c-correctness-under-speed">Correctness under speed</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

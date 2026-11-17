@@ -865,6 +865,24 @@ D["javascript"]=dict(
           ("MDN: Array.prototype.sort (in place)","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/global_objects/array/sort/index.md"),
           ("MDN: Web Workers API","https://github.com/mdn/content/blob/main/files/en-us/web/api/web_workers_api/index.md")])
 
+D["banking"]=dict(
+ F=["Explain how channels, core banking, schemes and the ledger fit together","Explain why every payment step must be idempotent","Read p50, p99 and p99.9 and say which one customers feel"],
+ P=["Build a payment flow that meets an instant scheme's deadline","Map a message to and from ISO 20022","Load-test without coordinated omission"],
+ S=["Design for 24/7 operation with no batch window","Set and enforce a latency budget per hop","Choose between in-memory, lock-free and conventional designs by requirement"],
+ E=["Lead a core banking or scheme migration","Set resilience and latency standards across a bank","Design ultra-low-latency trading infrastructure"],
+ topics=["Core banking and the general ledger","Instant payment schemes","ISO 20022","Tail latency and latency budgets","The LMAX architecture and the Disruptor","Kernel bypass and co-location"],
+ links=[("The LMAX Architecture (Martin Fowler)","https://martinfowler.com/articles/lmax.html","In-memory, single-threaded, event-sourced trading"),
+        ("wrk2 README: coordinated omission","https://github.com/giltene/wrk2","Why most load tests miss the slow periods"),
+        ("HdrHistogram","https://github.com/HdrHistogram/HdrHistogram","Recording latency across a wide range"),
+        ("JEP 439: Generational ZGC","https://openjdk.org/jeps/439","A low-pause collector for the JVM")],
+ sources=[("Wikipedia: Core banking","https://en.wikipedia.org/wiki/Core_banking"),("Wikipedia: Instant payment","https://en.wikipedia.org/wiki/Instant_payment"),
+          ("Wikipedia: Single Euro Payments Area (SCT Inst)","https://en.wikipedia.org/wiki/Single_Euro_Payments_Area"),("Wikipedia: Faster Payment System (UK)","https://en.wikipedia.org/wiki/Faster_Payment_System_(United_Kingdom)"),
+          ("Wikipedia: FedNow","https://en.wikipedia.org/wiki/FedNow"),("Wikipedia: ISO 20022","https://en.wikipedia.org/wiki/ISO_20022"),("Wikipedia: Mainframe computer","https://en.wikipedia.org/wiki/Mainframe_computer"),("Wikipedia: COBOL","https://en.wikipedia.org/wiki/COBOL"),
+          ("Wikipedia: Low latency (capital markets)","https://en.wikipedia.org/wiki/Low_latency_(capital_markets)"),("Wikipedia: High-frequency trading (co-location)","https://en.wikipedia.org/wiki/High-frequency_trading"),
+          ("Wikipedia: Optical fiber (refractive index)","https://en.wikipedia.org/wiki/Optical_fiber"),("Martin Fowler: The LMAX Architecture (2011)","https://martinfowler.com/articles/lmax.html"),
+          ("OpenJDK JEP 333: ZGC, and JEP 439: Generational ZGC","https://openjdk.org/jeps/439"),("Wikipedia: Nagle's algorithm (TCP_NODELAY)","https://en.wikipedia.org/wiki/Nagle%27s_algorithm"),
+          ("Wikipedia: Data Plane Development Kit","https://en.wikipedia.org/wiki/Data_Plane_Development_Kit"),("wrk2 README (coordinated omission)","https://github.com/giltene/wrk2")])
+
 D["rust"]=dict(
  F=["Explain ownership and borrowing","Use Result, Option and match","Build and test with Cargo"],
  P=["Write a CLI or service in Rust","Use traits, iterators and error types well","Keep Clippy clean and the code formatted"],
