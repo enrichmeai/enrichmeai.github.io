@@ -14,139 +14,49 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="mathematics">
+<body data-tab="mathematics" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/" aria-current="page">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp" open><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/" aria-current="page">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Thinking &amp; character</span> / <span aria-current="page">Mathematics</span></p>
 <section class="panel" id="mathematics" data-name="Mathematics">
   <div class="panel-head"><h1>Mathematics, for life and for engineering</h1><p>It starts with the everyday maths every person should know, for money, risk and reading the news, then the mathematics that keeps showing up in real engineering work: logic and discrete maths, how algorithms scale, probability and statistics, the linear algebra behind embeddings, how computers store numbers, and quick estimation. Not to pass an exam, but to reason precisely and catch what looks right and is not.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Everyday mathematics, for everyone</h3>
+  <article class="card wide" id="c-everyday-mathematics-for-everyone"><h3>Everyday mathematics, for everyone</h3>
     <p>You do not need advanced maths to live well, but a handful of ideas protect your money, your health and your judgement every day. None of this is about being "good at maths"; it is about not being fooled, including by yourself.</p>
   </article>
 
-  <article class="card"><h3>Percentages and money</h3>
+  <article class="card" id="c-percentages-and-money"><h3>Percentages and money</h3>
     <ul>
       <li><b>Up and down are not equal.</b> A price that rises 50% and then falls 50% ends at 75% of where it started (1.5 × 0.5 = 0.75). Down 20% then up 20% leaves you at 96%.</li>
       <li><b>Percent is not percentage points.</b> An interest rate going from 2% to 3% is up one percentage point, but up 50% in percent terms. Watch which one you are being told.</li>
@@ -156,7 +66,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Compound growth, for you and against you</h3>
+  <article class="card" id="c-compound-growth-for-you-and-against-you"><h3>Compound growth, for you and against you</h3>
     <ul>
       <li><b>Compounding means growth on growth.</b> £1,000 at 5% a year becomes about £1,629 after ten years if the interest is reinvested, against £1,500 if it is not.</li>
       <li><b>The rule of 72:</b> divide 72 by the yearly rate to estimate how many years it takes to double. At 6% about 12 years (exactly 11.9); at 3% about 24 (exactly 23.4).</li>
@@ -166,7 +76,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Risk and chance</h3>
+  <article class="card" id="c-risk-and-chance"><h3>Risk and chance</h3>
     <ul>
       <li><b>Relative risk can mislead.</b> "Doubles your risk" may mean going from 1 in 10,000 to 2 in 10,000. Always ask: out of how many?</li>
       <li><b>Base rates matter.</b> Suppose a test is 99% accurate both ways and the condition affects 1 person in 1,000. Of everyone who tests positive, only about 9% actually have it, because the false positives from the 999 healthy people outnumber the true ones.</li>
@@ -175,7 +85,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Reading numbers in the news</h3>
+  <article class="card" id="c-reading-numbers-in-the-news"><h3>Reading numbers in the news</h3>
     <ul>
       <li><b>Average or median?</b> A few very high incomes pull the average up; the median (the middle value) is often a fairer picture of a typical person.</li>
       <li><b>Correlation is not causation.</b> Two things rising together may share a third cause, or be coincidence.</li>
@@ -186,7 +96,7 @@
     <p class="note">The engineering cards below build on the same ideas: medians and percentiles, probability and estimation.</p>
   </article>
 
-  <article class="card wide"><h3>What to know, and where it shows up</h3>
+  <article class="card wide" id="c-what-to-know-and-where-it-shows-up"><h3>What to know, and where it shows up</h3>
     <div class="tbl"><table>
       <thead><tr><th>Area</th><th>Core ideas</th><th>Where you meet it</th></tr></thead>
       <tbody>
@@ -205,7 +115,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Complexity you should feel, not just know</h3>
+  <article class="card" id="c-complexity-you-should-feel-not-just-know"><h3>Complexity you should feel, not just know</h3>
     <div class="tbl"><table>
       <thead><tr><th>Growth</th><th>Example</th><th>n = 1 million</th></tr></thead>
       <tbody>
@@ -219,7 +129,7 @@
     <p class="note">At a million items, the jump from O(n log n) to O(n²) is a factor of about 50,000: a fraction of a second becomes many minutes, and at larger sizes, days. An N+1 query pattern and a nested loop over two big lists are the usual ways it sneaks in.</p>
   </article>
 
-  <article class="card"><h3>Numbers computers get "wrong"</h3>
+  <article class="card" id="c-numbers-computers-get-wrong"><h3>Numbers computers get "wrong"</h3>
 <div class="snip"><pre><code>&gt;&gt;&gt; 0.1 + 0.2
 0.30000000000000004              # binary floating point cannot store 0.1 exactly
 &gt;&gt;&gt; 0.1 + 0.2 == 0.3
@@ -239,7 +149,7 @@ Math.addExact(max, 1)            // throws ArithmeticException instead</code></p
     </ul>
   </article>
 
-  <article class="card"><h3>Statistics that keep you honest</h3>
+  <article class="card" id="c-statistics-that-keep-you-honest"><h3>Statistics that keep you honest</h3>
     <ul>
       <li><b>Median and percentiles beat the mean</b> for skewed data such as latency: one slow request moves the mean, not the median.</li>
       <li><b>Variance matters:</b> two systems with the same average can have very different worst cases.</li>
@@ -251,7 +161,7 @@ Math.addExact(max, 1)            // throws ArithmeticException instead</code></p
     </ul>
   </article>
 
-  <article class="card"><h3>Probability in operations</h3>
+  <article class="card" id="c-probability-in-operations"><h3>Probability in operations</h3>
 <div class="snip"><pre><code># availability of dependencies in series multiplies
 0.999 * 0.999 * 0.999           # ≈ 0.997  (three 99.9% services)
 
@@ -264,7 +174,7 @@ math.sqrt(2 ** 32) * 1.1774     # ≈ 77,000 IDs for a 50% chance of a collision
     <p class="note">The birthday bound is why IDs are 128-bit UUIDs or longer, and why hash collisions are planned for, not assumed away.</p>
   </article>
 
-  <article class="card"><h3>Linear algebra behind embeddings</h3>
+  <article class="card" id="c-linear-algebra-behind-embeddings"><h3>Linear algebra behind embeddings</h3>
     <ul>
       <li>An <b>embedding</b> is a vector: a list of numbers that places a text in a space where similar meanings are close.</li>
       <li><b>Dot product:</b> multiply matching entries and add them up.</li>
@@ -276,7 +186,7 @@ a, b = np.array([0.2, 0.8, 0.1]), np.array([0.25, 0.7, 0.0])
 cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very similar</code></pre></div>
   </article>
 
-  <article class="card"><h3>Estimation: powers of two and orders of magnitude</h3>
+  <article class="card" id="c-estimation-powers-of-two-and-orders-of-magnitude"><h3>Estimation: powers of two and orders of magnitude</h3>
     <div class="tbl"><table>
       <thead><tr><th>Power</th><th>Approx.</th><th>Name</th></tr></thead>
       <tbody>
@@ -292,7 +202,7 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
     </ul>
   </article>
 
-  <article class="card"><h3>How to learn it as an adult engineer</h3>
+  <article class="card" id="c-how-to-learn-it-as-an-adult-engineer"><h3>How to learn it as an adult engineer</h3>
     <ul>
       <li>Learn each topic <b>through a problem you have:</b> statistics through your latency data, graphs through your DAG, linear algebra through your embeddings.</li>
       <li>Work examples <b>by hand on paper</b>, then check them in Python.</li>
@@ -301,7 +211,7 @@ cosine = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))   # ≈ 0.99: very simi
     </ul>
   </article>
 
-    <article class="card wide"><h3>From counting to algebra, the Feynman way</h3>
+    <article class="card wide" id="c-from-counting-to-algebra-the-feynman-way"><h3>From counting to algebra, the Feynman way</h3>
     <p>In Chapter 22 of <i>The Feynman Lectures on Physics</i> (Volume I, "Algebra"), Richard Feynman builds mathematics up from counting, so that each new idea grows out of the one before. The path, in short:</p>
     <ol>
       <li><b>Counting</b> gives the whole numbers; <b>addition</b> is counting on.</li>
@@ -333,12 +243,12 @@ print(&quot;e^(i*pi) + 1 =&quot;, cmath.exp(1j * math.pi) + 1, &quot; (zero, to 
   </article>
 
 <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMathematics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMathematics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMathematics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect-2"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Work out percentages, compound growth and risk in daily life</li><li>Read Big-O and spot a nested loop over large data</li><li>Use median and percentiles rather than averages</li><li>Know why floats are wrong for money</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Reason about complexity when choosing data structures and queries</li><li>Apply basic probability to retries, availability and alerts</li><li>Estimate capacity and cost with orders of magnitude</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design experiments and read their statistics critically</li><li>Use linear algebra and statistics confidently in data and ML work</li><li>Prove or argue correctness of algorithms and migrations</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Bring mathematical rigour to architecture and research decisions</li><li>Teach the maths behind the team's systems</li><li>Spot subtle statistical and numerical errors in others' work</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further-2"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Personal finance: compounding and inflation</li><li>Discrete mathematics for computer science</li><li>Probability and Bayes' rule</li><li>Statistics for experiments (A/B testing)</li><li>Linear algebra for embeddings and ML</li><li>Floating-point arithmetic</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" target="_blank" rel="noopener">Mathematics for Computer Science (MIT OpenCourseWare)</a><span class="lnote"> Free course: logic, proofs, graphs, counting, probability</span></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">Essence of Linear Algebra (3Blue1Brown)</a><span class="lnote"> Visual introduction to vectors and matrices</span></li><li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy: Statistics and probability</a><span class="lnote"> Free self-paced statistics</span></li><li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a><span class="lnote"> Interactive probability and statistics</span></li><li><a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a><span class="lnote"> David Goldberg's classic paper</span></li></ul></div></div><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMathematics%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -346,6 +256,8 @@ print(&quot;e^(i*pi) + 1 =&quot;, cmath.exp(1j * math.pi) + 1, &quot; (zero, to 
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-everyday-mathematics-for-everyone">Everyday mathematics, for everyone</a><a href="#c-percentages-and-money">Percentages and money</a><a href="#c-compound-growth-for-you-and-against-you">Compound growth, for you and against you</a><a href="#c-risk-and-chance">Risk and chance</a><a href="#c-reading-numbers-in-the-news">Reading numbers in the news</a><a href="#c-what-to-know-and-where-it-shows-up">What to know, and where it shows up</a><a href="#c-complexity-you-should-feel-not-just-know">Complexity you should feel, not just know</a><a href="#c-numbers-computers-get-wrong">Numbers computers get "wrong"</a><a href="#c-statistics-that-keep-you-honest">Statistics that keep you honest</a><a href="#c-probability-in-operations">Probability in operations</a><a href="#c-linear-algebra-behind-embeddings">Linear algebra behind embeddings</a><a href="#c-estimation-powers-of-two-and-orders-of-magnitude">Estimation: powers of two and orders of magnitude</a><a href="#c-how-to-learn-it-as-an-adult-engineer">How to learn it as an adult engineer</a><a href="#c-from-counting-to-algebra-the-feynman-way">From counting to algebra, the Feynman way</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a><a href="#c-levels-what-to-expect-2">Levels: what to expect</a><a href="#c-explore-further-2">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

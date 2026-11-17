@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="apis">
+<body data-tab="apis" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/" aria-current="page">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/" aria-current="page">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">APIs &amp; Integration</span></p>
 <section class="panel" id="apis" data-name="APIs &amp; Integration">
   <div class="panel-head"><h1>Systems, APIs and integration</h1><p>The kinds of systems you will meet, how they talk to each other, and what REST, APIs, gateways, gRPC, GraphQL, webhooks and messaging each mean. Then <a href="/well-rounded-engineer/kafka/">Kafka</a>, <a href="/well-rounded-engineer/spring/">Spring Boot</a> and <a href="/well-rounded-engineer/quarkus/">Quarkus</a> for building them.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Kinds of systems</h3>
+  <article class="card wide" id="c-kinds-of-systems"><h3>Kinds of systems</h3>
     <div class="tbl"><table>
       <thead><tr><th>Type</th><th>What it does</th><th>Example</th><th>Built with</th></tr></thead>
       <tbody>
@@ -159,7 +69,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>What an API is</h3>
+  <article class="card" id="c-what-an-api-is"><h3>What an API is</h3>
     <p>An <b>API</b> (application programming interface) is a contract: the operations a system offers, the inputs they take, the outputs and errors they return, and the rules for calling them. The contract is what other teams build against; the implementation behind it can change freely as long as the contract holds.</p>
     <ul>
       <li><b>Public / partner / internal:</b> who may call it, and so how strict versioning, security and documentation must be.</li>
@@ -169,7 +79,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>REST in practice</h3>
+  <article class="card" id="c-rest-in-practice"><h3>REST in practice</h3>
     <ul>
       <li><b>Resources</b> are nouns with URLs: <code>/orders</code>, <code>/orders/{id}</code>, <code>/stores/{code}/orders</code>.</li>
       <li><b>HTTP methods</b> are the verbs: GET reads, POST creates, PUT replaces, PATCH updates part, DELETE removes.</li>
@@ -190,7 +100,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>An OpenAPI contract</h3>
+  <article class="card" id="c-an-openapi-contract"><h3>An OpenAPI contract</h3>
 <div class="snip"><pre><code>openapi: <span data-other-version>3.1.0</span>
 info: { title: Shop API, version: <span data-other-version>1.2.0</span> }
 paths:
@@ -232,7 +142,7 @@ components:
 security: [ { bearer: [] } ]</code></pre></div>
   </article>
 
-  <article class="card wide"><h3>API styles compared</h3>
+  <article class="card wide" id="c-api-styles-compared"><h3>API styles compared</h3>
     <div class="tbl"><table>
       <thead><tr><th>Style</th><th>Shape</th><th>Strengths</th><th>Weaknesses</th><th>Use for</th></tr></thead>
       <tbody>
@@ -247,7 +157,7 @@ security: [ { bearer: [] } ]</code></pre></div>
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>gRPC contract</h3>
+  <article class="card" id="c-grpc-contract"><h3>gRPC contract</h3>
 <div class="snip"><pre><code>syntax = "proto3";
 package shop.v1;
 
@@ -267,7 +177,7 @@ message Order {
     <p class="note">Compatibility rules: add fields with new numbers; never change or reuse a field number; reserve removed ones.</p>
   </article>
 
-  <article class="card wide"><h3>Gateway, load balancer, proxy, mesh: who does what</h3>
+  <article class="card wide" id="c-gateway-load-balancer-proxy-mesh-who-does-what"><h3>Gateway, load balancer, proxy, mesh: who does what</h3>
     <div class="tbl"><table>
       <thead><tr><th>Component</th><th>Job</th><th>Knows about</th><th>GCP examples</th></tr></thead>
       <tbody>
@@ -281,7 +191,7 @@ message Order {
     <p class="note">North-south traffic (clients into your platform) goes through the gateway; east-west traffic (services to each other) is the mesh's job. Keep business logic out of both.</p>
   </article>
 
-  <article class="card"><h3>API versioning and evolution</h3>
+  <article class="card" id="c-api-versioning-and-evolution"><h3>API versioning and evolution</h3>
     <ul>
       <li><b>Additive changes are safe:</b> new endpoints, new optional fields, new enum values clients are told to tolerate.</li>
       <li><b>Breaking changes</b> (removing or renaming fields, changing types or meaning) need a new version.</li>
@@ -292,7 +202,7 @@ message Order {
     </ul>
   </article>
 
-  <article class="card"><h3>Reliable integration</h3>
+  <article class="card" id="c-reliable-integration"><h3>Reliable integration</h3>
     <ul>
       <li><b>Timeouts</b> on every call; <b>retries</b> only for idempotent operations, with backoff and jitter.</li>
       <li><b>Idempotency keys</b> for POSTs that create or charge.</li>
@@ -304,7 +214,7 @@ message Order {
     </ul>
   </article>
 
-  <article class="card"><h3>Integration styles</h3>
+  <article class="card" id="c-integration-styles"><h3>Integration styles</h3>
     <ol>
       <li><b>File transfer:</b> one system writes files, another reads them. Simple and still common for bulk data.</li>
       <li><b>Shared database:</b> several systems read and write the same tables. Avoid: no system owns the schema.</li>
@@ -315,8 +225,8 @@ message Order {
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain REST resources, methods and status codes</li><li>Call an API with curl and read its OpenAPI spec</li><li>Tell sync from async integration</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a REST API with pagination, errors and versioning</li><li>Write and publish an OpenAPI contract</li><li>Add timeouts, retries and idempotency keys</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose REST, gRPC, GraphQL or events for a context</li><li>Design gateway, mesh and BFF responsibilities</li><li>Run API evolution: deprecation and contract tests</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set API standards and governance across the organisation</li><li>Design a partner and public API programme</li><li>Lead integration architecture across many systems</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Problem Details (RFC 9457)</li><li>AsyncAPI for event-driven contracts</li><li>gRPC streaming and deadlines</li><li>GraphQL federation</li><li>API design guides (Google AIP)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://google.aip.dev/" target="_blank" rel="noopener">Google API Improvement Proposals (AIP)</a><span class="lnote"> Google's detailed API design rules</span></li><li><a href="https://spec.openapis.org/oas/latest.html" target="_blank" rel="noopener">OpenAPI Specification</a><span class="lnote"> The contract format for HTTP APIs</span></li><li><a href="https://grpc.io/docs/" target="_blank" rel="noopener">gRPC documentation</a><span class="lnote"> Concepts and language guides</span></li><li><a href="https://graphql.org/learn/" target="_blank" rel="noopener">GraphQL</a><span class="lnote"> Official introduction</span></li><li><a href="https://www.asyncapi.com/docs" target="_blank" rel="noopener">AsyncAPI</a><span class="lnote"> Contracts for event-driven APIs</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener">RFC 9457: Problem Details for HTTP APIs</a><span class="lnote"> Standard error format</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging and integration patterns</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://www.rfc-editor.org/rfc/rfc9110.txt" target="_blank" rel="noopener">RFC 9110 HTTP Semantics (safe/idempotent methods, status codes)</a>; <a href="https://www.rfc-editor.org/rfc/rfc9457.txt" target="_blank" rel="noopener">RFC 9457 Problem Details</a>; <a href="https://www.rfc-editor.org/rfc/rfc5789.txt" target="_blank" rel="noopener">RFC 5789 PATCH (neither safe nor idempotent)</a>; <a href="https://www.rfc-editor.org/rfc/rfc8594.txt" target="_blank" rel="noopener">RFC 8594 Sunset header</a>; <a href="https://www.rfc-editor.org/rfc/rfc9745.txt" target="_blank" rel="noopener">RFC 9745 Deprecation header</a>; <a href="https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/versions/3.1.0.md" target="_blank" rel="noopener">OpenAPI 3.1 specification</a>; <a href="https://raw.githubusercontent.com/protocolbuffers/protocolbuffers.github.io/main/content/programming-guides/proto3.md" target="_blank" rel="noopener">Protocol Buffers proto3 guide (field numbers, reserved)</a>; <a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/IntegrationStylesIntro.html" target="_blank" rel="noopener">Enterprise Integration Patterns: integration styles</a>; <a href="https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/" target="_blank" rel="noopener">IETF draft: the Idempotency-Key HTTP header</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BAPIs%20%26%20Integration%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain REST resources, methods and status codes</li><li>Call an API with curl and read its OpenAPI spec</li><li>Tell sync from async integration</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Design a REST API with pagination, errors and versioning</li><li>Write and publish an OpenAPI contract</li><li>Add timeouts, retries and idempotency keys</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose REST, gRPC, GraphQL or events for a context</li><li>Design gateway, mesh and BFF responsibilities</li><li>Run API evolution: deprecation and contract tests</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set API standards and governance across the organisation</li><li>Design a partner and public API programme</li><li>Lead integration architecture across many systems</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Problem Details (RFC 9457)</li><li>AsyncAPI for event-driven contracts</li><li>gRPC streaming and deadlines</li><li>GraphQL federation</li><li>API design guides (Google AIP)</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://google.aip.dev/" target="_blank" rel="noopener">Google API Improvement Proposals (AIP)</a><span class="lnote"> Google's detailed API design rules</span></li><li><a href="https://spec.openapis.org/oas/latest.html" target="_blank" rel="noopener">OpenAPI Specification</a><span class="lnote"> The contract format for HTTP APIs</span></li><li><a href="https://grpc.io/docs/" target="_blank" rel="noopener">gRPC documentation</a><span class="lnote"> Concepts and language guides</span></li><li><a href="https://graphql.org/learn/" target="_blank" rel="noopener">GraphQL</a><span class="lnote"> Official introduction</span></li><li><a href="https://www.asyncapi.com/docs" target="_blank" rel="noopener">AsyncAPI</a><span class="lnote"> Contracts for event-driven APIs</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener">RFC 9457: Problem Details for HTTP APIs</a><span class="lnote"> Standard error format</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging and integration patterns</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://www.rfc-editor.org/rfc/rfc9110.txt" target="_blank" rel="noopener">RFC 9110 HTTP Semantics (safe/idempotent methods, status codes)</a>; <a href="https://www.rfc-editor.org/rfc/rfc9457.txt" target="_blank" rel="noopener">RFC 9457 Problem Details</a>; <a href="https://www.rfc-editor.org/rfc/rfc5789.txt" target="_blank" rel="noopener">RFC 5789 PATCH (neither safe nor idempotent)</a>; <a href="https://www.rfc-editor.org/rfc/rfc8594.txt" target="_blank" rel="noopener">RFC 8594 Sunset header</a>; <a href="https://www.rfc-editor.org/rfc/rfc9745.txt" target="_blank" rel="noopener">RFC 9745 Deprecation header</a>; <a href="https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/versions/3.1.0.md" target="_blank" rel="noopener">OpenAPI 3.1 specification</a>; <a href="https://raw.githubusercontent.com/protocolbuffers/protocolbuffers.github.io/main/content/programming-guides/proto3.md" target="_blank" rel="noopener">Protocol Buffers proto3 guide (field numbers, reserved)</a>; <a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/IntegrationStylesIntro.html" target="_blank" rel="noopener">Enterprise Integration Patterns: integration styles</a>; <a href="https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/" target="_blank" rel="noopener">IETF draft: the Idempotency-Key HTTP header</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BAPIs%20%26%20Integration%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -324,6 +234,8 @@ message Order {
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-kinds-of-systems">Kinds of systems</a><a href="#c-what-an-api-is">What an API is</a><a href="#c-rest-in-practice">REST in practice</a><a href="#c-an-openapi-contract">An OpenAPI contract</a><a href="#c-api-styles-compared">API styles compared</a><a href="#c-grpc-contract">gRPC contract</a><a href="#c-gateway-load-balancer-proxy-mesh-who-does-what">Gateway, load balancer, proxy, mesh: who does what</a><a href="#c-api-versioning-and-evolution">API versioning and evolution</a><a href="#c-reliable-integration">Reliable integration</a><a href="#c-integration-styles">Integration styles</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

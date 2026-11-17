@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="payments">
+<body data-tab="payments" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/" aria-current="page">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/" aria-current="page">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">Payment Gateways</span></p>
 <section class="panel" id="payments" data-name="Payment Gateways">
   <div class="panel-head"><h1>Payment gateways</h1><p>How online payments work, the parties and flows (cards, UPI, subscriptions), how to integrate a gateway such as Razorpay or Stripe safely, and the engineering that keeps money correct: idempotency, webhooks, state machines, ledgers and reconciliation.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Who is involved</h3>
+  <article class="card wide" id="c-who-is-involved"><h3>Who is involved</h3>
     <div class="tbl"><table>
       <thead><tr><th>Party</th><th>Role</th></tr></thead>
       <tbody>
@@ -157,7 +67,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Card payment lifecycle</h3>
+  <article class="card" id="c-card-payment-lifecycle"><h3>Card payment lifecycle</h3>
     <ol>
       <li><b>Authorise:</b> the issuer checks funds and fraud and places a hold. With 3-D Secure (OTP or app approval) the customer authenticates.</li>
       <li><b>Capture:</b> the merchant confirms the charge (automatically or later, e.g. after shipping). An uncaptured authorisation expires.</li>
@@ -167,7 +77,7 @@
     </ol>
   </article>
 
-  <article class="card"><h3>UPI in brief</h3>
+  <article class="card" id="c-upi-in-brief"><h3>UPI in brief</h3>
     <ul>
       <li><b>Intent / QR flow:</b> your checkout opens the customer's UPI app (or shows a QR); they approve with their UPI PIN.</li>
       <li><b>Collect flow:</b> you send a payment request to a UPI ID; the customer approves in their app. (Being phased down for many use cases; check current NPCI rules.)</li>
@@ -177,7 +87,7 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>Standard integration flow (server-verified)</h3>
+  <article class="card wide" id="c-standard-integration-flow-server-verified"><h3>Standard integration flow (server-verified)</h3>
     <ol>
       <li><b>Create an order on your server</b> with the amount in the smallest unit (paise) and your own receipt ID. Store it as <code>CREATED</code>.</li>
       <li><b>Open the gateway's checkout</b> in the browser or app with that order ID. Card and UPI details go to the gateway, never to your servers.</li>
@@ -189,7 +99,7 @@
     </ol>
   </article>
 
-  <article class="card"><h3>Razorpay: order and verification</h3>
+  <article class="card" id="c-razorpay-order-and-verification"><h3>Razorpay: order and verification</h3>
 <div class="snip"><pre><code># create an order (amount in paise: 50000 = ₹500.00)
 curl -u "$RZP_KEY_ID:$RZP_KEY_SECRET" \
   -X POST https://api.razorpay.com/v1/orders \
@@ -210,7 +120,7 @@ static boolean validCheckout(String orderId, String paymentId, String signature,
 // The same event can arrive more than once: dedupe on the X-Razorpay-Event-Id header.</code></pre></div>
   </article>
 
-  <article class="card"><h3>Stripe: PaymentIntent and webhook</h3>
+  <article class="card" id="c-stripe-paymentintent-and-webhook"><h3>Stripe: PaymentIntent and webhook</h3>
 <div class="snip"><pre><code>import stripe
 stripe.api_key = STRIPE_SECRET_KEY
 
@@ -234,7 +144,7 @@ def stripe_webhook(request):
     return 200</code></pre></div>
   </article>
 
-  <article class="card"><h3>Payment state machine</h3>
+  <article class="card" id="c-payment-state-machine"><h3>Payment state machine</h3>
 <div class="snip"><pre><code>CREATED ──checkout──▶ PENDING ──captured──▶ PAID ──refund──▶ PARTIALLY_REFUNDED / REFUNDED
    │                     │                    │
    │                     ├──failed──▶ FAILED  └──dispute──▶ DISPUTED ──▶ WON / LOST
@@ -246,7 +156,7 @@ def stripe_webhook(request):
     </ul>
   </article>
 
-  <article class="card"><h3>Money-handling rules</h3>
+  <article class="card" id="c-money-handling-rules"><h3>Money-handling rules</h3>
     <ul>
       <li><b>Integers in the smallest unit</b> (paise, cents) or decimal types; never floats.</li>
       <li><b>Store the currency</b> with every amount.</li>
@@ -258,7 +168,7 @@ def stripe_webhook(request):
     </ul>
   </article>
 
-  <article class="card"><h3>Double-entry ledger</h3>
+  <article class="card" id="c-double-entry-ledger"><h3>Double-entry ledger</h3>
 <div class="snip"><pre><code>CREATE TABLE ledger_entry (
   id           bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   txn_id       uuid    NOT NULL,          -- groups the entries of one transaction
@@ -272,7 +182,7 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
     <p class="note">Append only: corrections are new entries, never edits. Balances are sums. This makes every rupee traceable and reconciliation possible.</p>
   </article>
 
-  <article class="card"><h3>Subscriptions and recurring payments</h3>
+  <article class="card" id="c-subscriptions-and-recurring-payments"><h3>Subscriptions and recurring payments</h3>
     <ul>
       <li>Gateways model <b>plans</b> (price, interval) and <b>subscriptions</b> (a customer on a plan) with a mandate or saved token for charging.</li>
       <li><b>India:</b> RBI e-mandate rules govern recurring card and UPI payments: customer registration with authentication, pre-debit notifications, and extra authentication above a limit. Check the current limits and rules; they have changed over time.</li>
@@ -283,7 +193,7 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
     </ul>
   </article>
 
-  <article class="card"><h3>Security and compliance</h3>
+  <article class="card" id="c-security-and-compliance"><h3>Security and compliance</h3>
     <ul>
       <li><b>PCI DSS:</b> use hosted checkout or the gateway's elements so card data never reaches your servers; your compliance scope stays small.</li>
       <li><b>Card tokenisation (India):</b> merchants may not store card numbers; saved cards use network or issuer tokens through the gateway.</li>
@@ -295,7 +205,7 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
     </ul>
   </article>
 
-  <article class="card"><h3>Reconciliation</h3>
+  <article class="card" id="c-reconciliation"><h3>Reconciliation</h3>
     <ol>
       <li>Download settlement and transaction reports from the gateway daily (API or dashboard).</li>
       <li>Match each gateway transaction to your order by order ID and amount.</li>
@@ -306,7 +216,7 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
     <p class="note">Run reconciliation as a scheduled job with run records, like any pipeline.</p>
   </article>
 
-  <article class="card"><h3>Testing payments</h3>
+  <article class="card" id="c-testing-payments"><h3>Testing payments</h3>
     <ul>
       <li>Use the gateway's <b>test mode</b> keys, test cards and test UPI IDs for success, failure, 3-D Secure and pending cases.</li>
       <li>Replay recorded webhook payloads in automated tests; build fixtures from real test-mode events, not guesses.</li>
@@ -316,7 +226,7 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
     </ul>
   </article>
 
-  <article class="card"><h3>Operating payments</h3>
+  <article class="card" id="c-operating-payments"><h3>Operating payments</h3>
     <ul>
       <li><b>Metrics:</b> payment success rate by method and bank, latency, webhook delay, pending count and age, refund rate, dispute rate.</li>
       <li><b>Alerts:</b> success rate drops, webhooks stop arriving, pending payments older than a threshold, reconciliation mismatches.</li>
@@ -326,8 +236,8 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain authorisation, capture, settlement, refunds and chargebacks</li><li>Explain the order → checkout → verify → webhook flow</li><li>Know why card data must never touch your servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Integrate a gateway with server-side verification and signed webhooks</li><li>Make payment calls and webhook handling idempotent</li><li>Model payments as a state machine; test with test-mode fixtures</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design subscriptions, dunning and entitlements</li><li>Build a double-entry ledger and daily reconciliation</li><li>Own payment security, PCI scope and regulatory rules (RBI)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-gateway routing and payment platforms</li><li>Lead payments compliance and audits</li><li>Set money-handling standards across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>3-D Secure and strong customer authentication</li><li>UPI AutoPay and e-mandates</li><li>Card network tokenisation</li><li>Double-entry accounting for engineers</li><li>Fraud detection and chargeback management</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://razorpay.com/docs/" target="_blank" rel="noopener">Razorpay documentation</a><span class="lnote"> Orders, checkout, webhooks, subscriptions</span></li><li><a href="https://docs.stripe.com/" target="_blank" rel="noopener">Stripe documentation</a><span class="lnote"> PaymentIntents, webhooks, billing</span></li><li><a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener">Stripe: idempotent requests</a><span class="lnote"> How idempotency keys work</span></li><li><a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener">PCI Security Standards Council</a><span class="lnote"> PCI DSS requirements</span></li><li><a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank" rel="noopener">NPCI: UPI</a><span class="lnote"> How UPI works</span></li><li><a href="https://www.rbi.org.in/" target="_blank" rel="noopener">Reserve Bank of India</a><span class="lnote"> Circulars on payments, e-mandates, tokenisation</span></li><li><a href="https://www.moderntreasury.com/journal/accounting-for-developers-part-i" target="_blank" rel="noopener">Accounting for developers (Modern Treasury)</a><span class="lnote"> Double-entry ledgers explained</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Payment_gateway?action=raw" target="_blank" rel="noopener">Wikipedia: Payment gateway (authorise, capture, settle)</a>; <a href="https://en.wikipedia.org/wiki/Chargeback?action=raw" target="_blank" rel="noopener">Wikipedia: Chargeback</a>; <a href="https://en.wikipedia.org/wiki/Acquiring_bank?action=raw" target="_blank" rel="noopener">Wikipedia: Acquiring bank</a>; <a href="https://en.wikipedia.org/wiki/Unified_Payments_Interface?action=raw" target="_blank" rel="noopener">Wikipedia: Unified Payments Interface (NPCI, PIN, AutoPay)</a>; <a href="https://en.wikipedia.org/wiki/3-D_Secure?action=raw" target="_blank" rel="noopener">Wikipedia: 3-D Secure</a>; <a href="https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard?action=raw" target="_blank" rel="noopener">Wikipedia: PCI DSS</a>; <a href="https://raw.githubusercontent.com/razorpay/razorpay-python/master/razorpay/utility/utility.py" target="_blank" rel="noopener">razorpay-python utility (order_id|payment_id HMAC-SHA256; webhook HMAC of body)</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-python/master/stripe/_webhook.py" target="_blank" rel="noopener">stripe-python Webhook.construct_event</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-python/master/stripe/__init__.py" target="_blank" rel="noopener">stripe-python top-level SignatureVerificationError</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-python/master/stripe/_request_options.py" target="_blank" rel="noopener">stripe-python request options (idempotency_key)</a>; <a href="https://razorpay.com/docs/webhooks/validate-test/" target="_blank" rel="noopener">Razorpay: validate webhooks (X-Razorpay-Signature, x-razorpay-event-id)</a>; <a href="https://razorpay.com/docs/payments/settlements/faqs/" target="_blank" rel="noopener">Razorpay: settlement FAQs (standard cycle T+2 working days)</a>; <a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11244&Mode=0" target="_blank" rel="noopener">RBI: Storage of Payment System Data</a>; <a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12159&Mode=0" target="_blank" rel="noopener">RBI: Card-on-File Tokenisation</a>; <a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11668&Mode=0" target="_blank" rel="noopener">RBI: e-mandate on cards for recurring transactions</a>; <a href="https://docs.stripe.com/currencies" target="_blank" rel="noopener">Stripe: supported currencies and minor units</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BPayment%20Gateways%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain authorisation, capture, settlement, refunds and chargebacks</li><li>Explain the order → checkout → verify → webhook flow</li><li>Know why card data must never touch your servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Integrate a gateway with server-side verification and signed webhooks</li><li>Make payment calls and webhook handling idempotent</li><li>Model payments as a state machine; test with test-mode fixtures</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design subscriptions, dunning and entitlements</li><li>Build a double-entry ledger and daily reconciliation</li><li>Own payment security, PCI scope and regulatory rules (RBI)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design multi-gateway routing and payment platforms</li><li>Lead payments compliance and audits</li><li>Set money-handling standards across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>3-D Secure and strong customer authentication</li><li>UPI AutoPay and e-mandates</li><li>Card network tokenisation</li><li>Double-entry accounting for engineers</li><li>Fraud detection and chargeback management</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://razorpay.com/docs/" target="_blank" rel="noopener">Razorpay documentation</a><span class="lnote"> Orders, checkout, webhooks, subscriptions</span></li><li><a href="https://docs.stripe.com/" target="_blank" rel="noopener">Stripe documentation</a><span class="lnote"> PaymentIntents, webhooks, billing</span></li><li><a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener">Stripe: idempotent requests</a><span class="lnote"> How idempotency keys work</span></li><li><a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener">PCI Security Standards Council</a><span class="lnote"> PCI DSS requirements</span></li><li><a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank" rel="noopener">NPCI: UPI</a><span class="lnote"> How UPI works</span></li><li><a href="https://www.rbi.org.in/" target="_blank" rel="noopener">Reserve Bank of India</a><span class="lnote"> Circulars on payments, e-mandates, tokenisation</span></li><li><a href="https://www.moderntreasury.com/journal/accounting-for-developers-part-i" target="_blank" rel="noopener">Accounting for developers (Modern Treasury)</a><span class="lnote"> Double-entry ledgers explained</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Payment_gateway?action=raw" target="_blank" rel="noopener">Wikipedia: Payment gateway (authorise, capture, settle)</a>; <a href="https://en.wikipedia.org/wiki/Chargeback?action=raw" target="_blank" rel="noopener">Wikipedia: Chargeback</a>; <a href="https://en.wikipedia.org/wiki/Acquiring_bank?action=raw" target="_blank" rel="noopener">Wikipedia: Acquiring bank</a>; <a href="https://en.wikipedia.org/wiki/Unified_Payments_Interface?action=raw" target="_blank" rel="noopener">Wikipedia: Unified Payments Interface (NPCI, PIN, AutoPay)</a>; <a href="https://en.wikipedia.org/wiki/3-D_Secure?action=raw" target="_blank" rel="noopener">Wikipedia: 3-D Secure</a>; <a href="https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard?action=raw" target="_blank" rel="noopener">Wikipedia: PCI DSS</a>; <a href="https://raw.githubusercontent.com/razorpay/razorpay-python/master/razorpay/utility/utility.py" target="_blank" rel="noopener">razorpay-python utility (order_id|payment_id HMAC-SHA256; webhook HMAC of body)</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-python/master/stripe/_webhook.py" target="_blank" rel="noopener">stripe-python Webhook.construct_event</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-python/master/stripe/__init__.py" target="_blank" rel="noopener">stripe-python top-level SignatureVerificationError</a>; <a href="https://raw.githubusercontent.com/stripe/stripe-python/master/stripe/_request_options.py" target="_blank" rel="noopener">stripe-python request options (idempotency_key)</a>; <a href="https://razorpay.com/docs/webhooks/validate-test/" target="_blank" rel="noopener">Razorpay: validate webhooks (X-Razorpay-Signature, x-razorpay-event-id)</a>; <a href="https://razorpay.com/docs/payments/settlements/faqs/" target="_blank" rel="noopener">Razorpay: settlement FAQs (standard cycle T+2 working days)</a>; <a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11244&Mode=0" target="_blank" rel="noopener">RBI: Storage of Payment System Data</a>; <a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12159&Mode=0" target="_blank" rel="noopener">RBI: Card-on-File Tokenisation</a>; <a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11668&Mode=0" target="_blank" rel="noopener">RBI: e-mandate on cards for recurring transactions</a>; <a href="https://docs.stripe.com/currencies" target="_blank" rel="noopener">Stripe: supported currencies and minor units</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BPayment%20Gateways%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -335,6 +245,8 @@ SELECT txn_id FROM ledger_entry GROUP BY txn_id HAVING SUM(amount_paise) &lt;&gt
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-who-is-involved">Who is involved</a><a href="#c-card-payment-lifecycle">Card payment lifecycle</a><a href="#c-upi-in-brief">UPI in brief</a><a href="#c-standard-integration-flow-server-verified">Standard integration flow (server-verified)</a><a href="#c-razorpay-order-and-verification">Razorpay: order and verification</a><a href="#c-stripe-paymentintent-and-webhook">Stripe: PaymentIntent and webhook</a><a href="#c-payment-state-machine">Payment state machine</a><a href="#c-money-handling-rules">Money-handling rules</a><a href="#c-double-entry-ledger">Double-entry ledger</a><a href="#c-subscriptions-and-recurring-payments">Subscriptions and recurring payments</a><a href="#c-security-and-compliance">Security and compliance</a><a href="#c-reconciliation">Reconciliation</a><a href="#c-testing-payments">Testing payments</a><a href="#c-operating-payments">Operating payments</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

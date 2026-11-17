@@ -9,7 +9,7 @@ Do not hand-edit `well-rounded-engineer/**/index.html` or `search.json`: edit th
 | `build.py` | Rebuilds, inside `guide.html.in`, the section nav and its groups, the "Levels" and "Explore further" cards of every section, and Start here's tables, from the lists at its top and `levels_data.py`. Running it twice changes nothing. |
 | `levels_data.py` | Per-section levels (Foundation to Expert), topics to study and links. |
 | `to_site_pages.py` | Writes `/well-rounded-engineer/`: a page per section, `search.json` for search, and the redirect from old `#tab` links. It refuses a source that names a private repository or states a Culvert version, and marks the example versions in snippets `data-other-version` for the release checker. |
-| `engineer.js` | The pages' script (copy buttons, search, the tab row). Copy it to `well-rounded-engineer/engineer.js` when it changes. The stylesheet lives at `well-rounded-engineer/engineer.css`. |
+| `engineer.js` | The pages' script (copy buttons, search, the Topics button that folds the sidebar on phones). Copy it to `well-rounded-engineer/engineer.js` when it changes. The stylesheet lives at `well-rounded-engineer/engineer.css`. |
 
 ## Change the guide
 

@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="dbt">
+<body data-tab="dbt" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/" aria-current="page">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp" open><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/" aria-current="page">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Data</span> / <span aria-current="page">dbt</span></p>
 <section class="panel" id="dbt" data-name="dbt">
   <div class="panel-head"><h1>dbt on BigQuery</h1><p>dbt-core 1.8+ with dbt-bigquery. Unit tests arrived in 1.8; microbatch and YAML snapshots in 1.9.</p></div>
   <div class="grid">
 
-  <article class="card"><h3>CLI</h3>
+  <article class="card" id="c-cli"><h3>CLI</h3>
 <div class="snip"><pre><code>dbt deps                         # install packages.yml
 dbt debug                        # check profile + connection
 dbt build                        # seed + run + snapshot + test, in DAG order
@@ -160,7 +70,7 @@ dbt run --target prod --vars '{run_date: "2025-01-01"}'
 dbt retry                        # re-run only what failed last time</code></pre></div>
   </article>
 
-  <article class="card"><h3>Node selection</h3>
+  <article class="card" id="c-node-selection"><h3>Node selection</h3>
 <div class="snip"><pre><code>-s my_model          # just it
 -s +my_model         # it and all parents
 -s my_model+         # it and all children
@@ -179,7 +89,7 @@ dbt build -s state:modified+ --defer --state prod-artifacts/
 dbt build -s result:error+ --state target/</code></pre></div>
   </article>
 
-  <article class="card"><h3>profiles.yml (BigQuery)</h3>
+  <article class="card" id="c-profiles-yml-bigquery"><h3>profiles.yml (BigQuery)</h3>
 <div class="snip"><pre><code>my_project:
   target: dev
   outputs:
@@ -202,7 +112,7 @@ dbt build -s result:error+ --state target/</code></pre></div>
       threads: 16</code></pre></div>
   </article>
 
-  <article class="card"><h3>Project layout &amp; dbt_project.yml</h3>
+  <article class="card" id="c-project-layout-dbt-project-yml"><h3>Project layout &amp; dbt_project.yml</h3>
 <div class="snip"><pre><code>models/
   staging/   stg_*.sql   1:1 with sources, rename + cast only (view)
   intermediate/ int_*.sql joins, dedupe (ephemeral or view)
@@ -224,7 +134,7 @@ vars:
   start_year: 2023</code></pre></div>
   </article>
 
-  <article class="card"><h3>Model config for BigQuery</h3>
+  <article class="card" id="c-model-config-for-bigquery"><h3>Model config for BigQuery</h3>
 <div class="snip"><pre><code>{{ config(
     materialized = 'table',
     partition_by = {
@@ -244,7 +154,7 @@ partition_by = {'field': 'order_year', 'data_type': 'int64',
                 'range': {'start': 1995, 'end': 2030, 'interval': 1}}</code></pre></div>
   </article>
 
-  <article class="card"><h3>Incremental: merge</h3>
+  <article class="card" id="c-incremental-merge"><h3>Incremental: merge</h3>
 <div class="snip"><pre><code>{{ config(
     materialized = 'incremental',
     incremental_strategy = 'merge',
@@ -263,7 +173,7 @@ select * from {{ ref('int_orders') }}
     <p class="note"><code>incremental_predicates</code> prunes the target side of the MERGE. Without it BigQuery scans the whole destination on every run.</p>
   </article>
 
-  <article class="card"><h3>Incremental: insert_overwrite</h3>
+  <article class="card" id="c-incremental-insert-overwrite"><h3>Incremental: insert_overwrite</h3>
 <div class="snip"><pre><code>{% set partitions_to_replace = [
   'current_date()',
   'date_sub(current_date(), interval 1 day)'
@@ -283,7 +193,7 @@ select * from {{ ref('stg_events') }}
     <p class="note">Replaces whole partitions, no row matching. Leave out <code>partitions</code> for "dynamic" mode: dbt finds the partitions in the new data, at the cost of an extra query.</p>
   </article>
 
-  <article class="card"><h3>Incremental: microbatch <span class="tag">1.9</span></h3>
+  <article class="card" id="c-incremental-microbatch-1-9"><h3>Incremental: microbatch <span class="tag">1.9</span></h3>
 <div class="snip"><pre><code>{{ config(
     materialized = 'incremental',
     incremental_strategy = 'microbatch',
@@ -301,7 +211,7 @@ select * from {{ ref('stg_orders') }}</code></pre></div>
 dbt retry      # re-runs only failed batches</code></pre></div>
   </article>
 
-  <article class="card"><h3>Sources &amp; freshness</h3>
+  <article class="card" id="c-sources-freshness"><h3>Sources &amp; freshness</h3>
 <div class="snip"><pre><code># models/staging/_sources.yml
 sources:
   - name: raw
@@ -320,7 +230,7 @@ sources:
 select * from {{ source('raw', 'orders') }}</code></pre></div>
   </article>
 
-  <article class="card"><h3>Data tests</h3>
+  <article class="card" id="c-data-tests"><h3>Data tests</h3>
 <div class="snip"><pre><code>models:
   - name: orders
     columns:
@@ -346,7 +256,7 @@ where order_date &gt; current_date()</code></pre></div>
     <p class="note"><code>data_tests:</code> replaced <code>tests:</code> in 1.8; the old key still works. Newer versions (from a 1.10 patch release) nest test arguments under <code>arguments:</code>; the top-level form above is older, still accepted, and the one earlier versions need. Packages: <code>dbt-labs/dbt_utils</code>, <code>metaplane/dbt_expectations</code>.</p>
   </article>
 
-  <article class="card"><h3>Unit tests <span class="tag">1.8</span></h3>
+  <article class="card" id="c-unit-tests-1-8"><h3>Unit tests <span class="tag">1.8</span></h3>
 <div class="snip"><pre><code>unit_tests:
   - name: parses_dd_mm_yyyy
     model: int_orders_normalised
@@ -364,7 +274,7 @@ where order_date &gt; current_date()</code></pre></div>
     <p class="note">Unit tests run SQL logic on fixed inputs before the model is built. Run with <code>dbt test -s test_type:unit</code>; exclude them in prod.</p>
   </article>
 
-  <article class="card"><h3>Jinja &amp; macros</h3>
+  <article class="card" id="c-jinja-macros"><h3>Jinja &amp; macros</h3>
 <div class="snip"><pre><code>{{ ref('model') }}   {{ ref('other_pkg', 'model') }}
 {{ source('raw', 'orders') }}
 {{ this }}                      -- current relation
@@ -388,7 +298,7 @@ where store_id in ({% for c in stores %}'{{ c }}'{% if not loop.last %},{% endif
 {% if target.name == 'dev' %} limit 1000 {% endif %}</code></pre></div>
   </article>
 
-  <article class="card"><h3>Custom generic test</h3>
+  <article class="card" id="c-custom-generic-test"><h3>Custom generic test</h3>
 <div class="snip"><pre><code>-- tests/generic/null_ratio_below.sql
 {% test null_ratio_below(model, column_name, max_ratio=0.01) %}
 select *
@@ -406,7 +316,7 @@ columns:
       - null_ratio_below: {max_ratio: 0.0}</code></pre></div>
   </article>
 
-  <article class="card"><h3>Contracts &amp; snapshots</h3>
+  <article class="card" id="c-contracts-snapshots"><h3>Contracts &amp; snapshots</h3>
 <div class="snip"><pre><code># Model contract: build fails if shape drifts
 models:
   - name: serving_orders
@@ -432,7 +342,7 @@ snapshots:
       hard_deletes: invalidate # ignore | invalidate | new_record</code></pre></div>
   </article>
 
-  <article class="card"><h3>Hooks, grants, operations</h3>
+  <article class="card" id="c-hooks-grants-operations"><h3>Hooks, grants, operations</h3>
 <div class="snip"><pre><code>{{ config(
     post_hook = [
       "alter table {{ this }} set options(description='built {{ run_started_at }}')"
@@ -449,8 +359,8 @@ dbt run-operation drop_dev_datasets --args '{prefix: dbt_jo}'</code></pre></div>
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run, test and select models; read compiled SQL</li><li>Use ref and source; add not_null and unique tests</li><li>Understand views vs tables</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write incremental models with the right strategy</li><li>Write macros, generic tests and unit tests</li><li>Configure partitioning and clustering on BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Structure a multi-project dbt platform</li><li>Set up slim CI with state and defer</li><li>Use contracts, versions and access controls for shared models</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own modelling standards across the organisation</li><li>Design cross-project dependencies and data mesh boundaries</li><li>Contribute packages and tooling</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Model contracts and versions</li><li>Microbatch incremental models</li><li>dbt packages: dbt_utils, dbt_expectations</li><li>Semantic layer and metrics</li><li>Exposures and documentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.getdbt.com/docs/introduction" target="_blank" rel="noopener">dbt documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://docs.getdbt.com/reference/references-overview" target="_blank" rel="noopener">dbt reference</a><span class="lnote"> Every config, command and property</span></li><li><a href="https://docs.getdbt.com/docs/build/incremental-models" target="_blank" rel="noopener">Incremental models</a><span class="lnote"> Strategies and is_incremental()</span></li><li><a href="https://docs.getdbt.com/reference/resource-configs/bigquery-configs" target="_blank" rel="noopener">BigQuery configs</a><span class="lnote"> Partitioning, clustering, labels</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> Project structure and style</span></li><li><a href="https://hub.getdbt.com/" target="_blank" rel="noopener">dbt package hub</a><span class="lnote"> Reusable packages</span></li><li><a href="https://learn.getdbt.com/" target="_blank" rel="noopener">dbt Learn courses</a><span class="lnote"> Free official courses</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/bigquery-configs.md" target="_blank" rel="noopener">dbt BigQuery configs (partition_by, granularity per data_type, insert_overwrite static/dynamic)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/incremental-microbatch.md" target="_blank" rel="noopener">dbt microbatch (batch_size hour|day|month|year, lookback, --event-time-start/end, dbt retry failed batches, upstream event_time filtering)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/severity.md" target="_blank" rel="noopener">dbt severity, error_if, warn_if</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/hard-deletes.md" target="_blank" rel="noopener">dbt hard_deletes (1.9: ignore|invalidate|new_record)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/unit-tests.md" target="_blank" rel="noopener">dbt unit tests (test_type:unit, exclude in prod)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/dbt-jinja-functions/target.md" target="_blank" rel="noopener">dbt target variables (target.project, target.dataset on BigQuery)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/grants.md" target="_blank" rel="noopener">dbt grants (BigQuery roles/bigquery.dataViewer)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/node-selection/graph-operators.md" target="_blank" rel="noopener">dbt graph operators (@ selector)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/incremental-models.md" target="_blank" rel="noopener">dbt incremental models (on_schema_change values)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-properties/data-tests.md" target="_blank" rel="noopener">dbt data_tests property</a>; <a href="https://docs.cloud.google.com/bigquery/docs/clustered-tables" target="_blank" rel="noopener">BigQuery clustered tables (up to four clustering columns)</a>; <a href="https://raw.githubusercontent.com/metaplane/dbt-expectations/main/README.md" target="_blank" rel="noopener">dbt-expectations README (metaplane/dbt_expectations)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/commands/show.md" target="_blank" rel="noopener">dbt show</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/commands/list.md" target="_blank" rel="noopener">dbt list</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/commands/run-operation.md" target="_blank" rel="noopener">dbt run-operation</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/node-selection/defer.md" target="_blank" rel="noopener">dbt defer</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/deprecations.md" target="_blank" rel="noopener">dbt deprecations (test arguments)</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-data/tree/main/dbt" target="_blank" rel="noopener">well-rounded-engineer-data/dbt</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-data/issues/new?title=%5Bdbt%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run, test and select models; read compiled SQL</li><li>Use ref and source; add not_null and unique tests</li><li>Understand views vs tables</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write incremental models with the right strategy</li><li>Write macros, generic tests and unit tests</li><li>Configure partitioning and clustering on BigQuery</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Structure a multi-project dbt platform</li><li>Set up slim CI with state and defer</li><li>Use contracts, versions and access controls for shared models</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own modelling standards across the organisation</li><li>Design cross-project dependencies and data mesh boundaries</li><li>Contribute packages and tooling</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Model contracts and versions</li><li>Microbatch incremental models</li><li>dbt packages: dbt_utils, dbt_expectations</li><li>Semantic layer and metrics</li><li>Exposures and documentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.getdbt.com/docs/introduction" target="_blank" rel="noopener">dbt documentation</a><span class="lnote"> Official docs</span></li><li><a href="https://docs.getdbt.com/reference/references-overview" target="_blank" rel="noopener">dbt reference</a><span class="lnote"> Every config, command and property</span></li><li><a href="https://docs.getdbt.com/docs/build/incremental-models" target="_blank" rel="noopener">Incremental models</a><span class="lnote"> Strategies and is_incremental()</span></li><li><a href="https://docs.getdbt.com/reference/resource-configs/bigquery-configs" target="_blank" rel="noopener">BigQuery configs</a><span class="lnote"> Partitioning, clustering, labels</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> Project structure and style</span></li><li><a href="https://hub.getdbt.com/" target="_blank" rel="noopener">dbt package hub</a><span class="lnote"> Reusable packages</span></li><li><a href="https://learn.getdbt.com/" target="_blank" rel="noopener">dbt Learn courses</a><span class="lnote"> Free official courses</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/bigquery-configs.md" target="_blank" rel="noopener">dbt BigQuery configs (partition_by, granularity per data_type, insert_overwrite static/dynamic)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/incremental-microbatch.md" target="_blank" rel="noopener">dbt microbatch (batch_size hour|day|month|year, lookback, --event-time-start/end, dbt retry failed batches, upstream event_time filtering)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/severity.md" target="_blank" rel="noopener">dbt severity, error_if, warn_if</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/hard-deletes.md" target="_blank" rel="noopener">dbt hard_deletes (1.9: ignore|invalidate|new_record)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/unit-tests.md" target="_blank" rel="noopener">dbt unit tests (test_type:unit, exclude in prod)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/dbt-jinja-functions/target.md" target="_blank" rel="noopener">dbt target variables (target.project, target.dataset on BigQuery)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/grants.md" target="_blank" rel="noopener">dbt grants (BigQuery roles/bigquery.dataViewer)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/node-selection/graph-operators.md" target="_blank" rel="noopener">dbt graph operators (@ selector)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/incremental-models.md" target="_blank" rel="noopener">dbt incremental models (on_schema_change values)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-properties/data-tests.md" target="_blank" rel="noopener">dbt data_tests property</a>; <a href="https://docs.cloud.google.com/bigquery/docs/clustered-tables" target="_blank" rel="noopener">BigQuery clustered tables (up to four clustering columns)</a>; <a href="https://raw.githubusercontent.com/metaplane/dbt-expectations/main/README.md" target="_blank" rel="noopener">dbt-expectations README (metaplane/dbt_expectations)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/commands/show.md" target="_blank" rel="noopener">dbt show</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/commands/list.md" target="_blank" rel="noopener">dbt list</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/commands/run-operation.md" target="_blank" rel="noopener">dbt run-operation</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/node-selection/defer.md" target="_blank" rel="noopener">dbt defer</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/deprecations.md" target="_blank" rel="noopener">dbt deprecations (test arguments)</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-data/tree/main/dbt" target="_blank" rel="noopener">well-rounded-engineer-data/dbt</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-data/issues/new?title=%5Bdbt%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
@@ -458,6 +368,8 @@ dbt run-operation drop_dev_datasets --args '{prefix: dbt_jo}'</code></pre></div>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-cli">CLI</a><a href="#c-node-selection">Node selection</a><a href="#c-profiles-yml-bigquery">profiles.yml (BigQuery)</a><a href="#c-project-layout-dbt-project-yml">Project layout & dbt_project.yml</a><a href="#c-model-config-for-bigquery">Model config for BigQuery</a><a href="#c-incremental-merge">Incremental: merge</a><a href="#c-incremental-insert-overwrite">Incremental: insert_overwrite</a><a href="#c-incremental-microbatch-1-9">Incremental: microbatch 1.9</a><a href="#c-sources-freshness">Sources & freshness</a><a href="#c-data-tests">Data tests</a><a href="#c-unit-tests-1-8">Unit tests 1.8</a><a href="#c-jinja-macros">Jinja & macros</a><a href="#c-custom-generic-test">Custom generic test</a><a href="#c-contracts-snapshots">Contracts & snapshots</a><a href="#c-hooks-grants-operations">Hooks, grants, operations</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

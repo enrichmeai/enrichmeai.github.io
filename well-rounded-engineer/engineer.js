@@ -26,17 +26,20 @@
     s.appendChild(b);
   });
 
-  // keep the current section's link in view in the scrolling tab row
-  // (scroll only the tab row, never the page; again once fonts have loaded and widths have settled)
-  var cur = document.querySelector('.eg-bar nav a[aria-current="page"]');
-  function centre() {
-    if (!cur) return;
-    var nav = cur.parentElement;
-    if (nav.scrollWidth > nav.clientWidth) nav.scrollLeft = cur.offsetLeft - nav.offsetLeft - (nav.clientWidth - cur.offsetWidth) / 2;
+  // phones: the sidebar folds behind the Topics button (CSS shows it open when this script does not run)
+  document.documentElement.classList.add("js");
+  var tb = document.querySelector(".eg-topics-btn");
+  if (tb) {
+    tb.hidden = false;
+    tb.addEventListener("click", function () {
+      var open = document.body.classList.toggle("topics-open");
+      tb.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   }
-  centre();
-  window.addEventListener("load", centre);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(centre);
+  // keep the current page's link in view inside the sidebar (scroll only the sidebar, never the page)
+  var cur = document.querySelector('.eg-side a[aria-current="page"]');
+  var side = document.querySelector(".eg-side");
+  if (cur && side && side.scrollHeight > side.clientHeight) side.scrollTop = cur.offsetTop - side.clientHeight / 2;
 
   var index = null, loading = null;
   function load() {

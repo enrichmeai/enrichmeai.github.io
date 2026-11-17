@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="mcp">
+<body data-tab="mcp" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/" aria-current="page">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp" open><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/" aria-current="page">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>AI</span> / <span aria-current="page">MCP</span></p>
 <section class="panel" id="mcp" data-name="MCP">
   <div class="panel-head"><h1>MCP: Model Context Protocol</h1><p>An open protocol for giving AI applications access to tools and data through a standard interface. What it is, how to build and add an MCP server, how to call one from the API, and how to use MCP safely around a data pipeline.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>What MCP is</h3>
+  <article class="card wide" id="c-what-mcp-is"><h3>What MCP is</h3>
     <p>Without MCP, every AI application needs custom integration code for every tool. With MCP, a tool or data source is wrapped once as an <b>MCP server</b>, and any MCP-capable <b>client</b> (Claude Code, Claude apps, IDEs, your own agent) can use it. Think of it as a standard port between models and systems.</p>
     <div class="tbl"><table>
       <thead><tr><th>Concept</th><th>Meaning</th></tr></thead>
@@ -157,7 +67,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>A server in Python (MCPServer)</h3>
+  <article class="card" id="c-a-server-in-python-mcpserver"><h3>A server in Python (MCPServer)</h3>
 <div class="snip"><pre><code># pip install "mcp[cli]" google-cloud-bigquery      (mcp 2.x)
 from mcp.server import MCPServer
 from google.cloud import bigquery
@@ -186,7 +96,7 @@ if __name__ == "__main__":
     <p class="note">The function name, type hints and docstring become the tool's name, schema and description. Write the docstring for the model: what it does, inputs, and what it returns. A TypeScript SDK exists with the same concepts. In mcp 1.x the same class was <code>FastMCP</code>, imported from <code>mcp.server.fastmcp</code>; that import fails on 2.x.</p>
   </article>
 
-  <article class="card"><h3>Add it to Claude Code and test it</h3>
+  <article class="card" id="c-add-it-to-claude-code-and-test-it"><h3>Add it to Claude Code and test it</h3>
 <div class="snip"><pre><code># local stdio server, shared with the team via .mcp.json in the repo
 claude mcp add --scope project pipeline-status -- python mcp/pipeline_status.py
 
@@ -205,7 +115,7 @@ npx @modelcontextprotocol/inspector python mcp/pipeline_status.py</code></pre></
     </ul>
   </article>
 
-  <article class="card"><h3>Call MCP servers from the API</h3>
+  <article class="card" id="c-call-mcp-servers-from-the-api"><h3>Call MCP servers from the API</h3>
 <div class="snip"><pre><code>resp = client.beta.messages.create(
     model="claude-opus-5-5",
     max_tokens=16000,
@@ -218,7 +128,7 @@ npx @modelcontextprotocol/inspector python mcp/pipeline_status.py</code></pre></
     <p class="note">The MCP connector needs both halves: the server in <code>mcp_servers</code> and a matching <code>mcp_toolset</code> in <code>tools</code>. It reaches remote (HTTP) servers only; check the docs for authentication options and current beta name.</p>
   </article>
 
-  <article class="card wide"><h3>MCP and a data pipeline: four patterns</h3>
+  <article class="card wide" id="c-mcp-and-a-data-pipeline-four-patterns"><h3>MCP and a data pipeline: four patterns</h3>
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>What the MCP server exposes</th><th>Who uses it</th><th>Rule</th></tr></thead>
       <tbody>
@@ -230,7 +140,7 @@ npx @modelcontextprotocol/inspector python mcp/pipeline_status.py</code></pre></
     <p class="note">MCP sits beside the pipeline, not inside its critical path. The pipeline must run, record and alert without any AI involved; MCP makes it easier to ask questions about it.</p>
   </article>
 
-  <article class="card"><h3>A guarded BigQuery query tool</h3>
+  <article class="card" id="c-a-guarded-bigquery-query-tool"><h3>A guarded BigQuery query tool</h3>
 <div class="snip"><pre><code>ALLOWED = {"analytics", "mart", "ops"}
 MAX_BYTES = 5 * 1024**3                       # 5 GiB per query
 
@@ -253,7 +163,7 @@ def run_query(sql: str) -&gt; dict:
     <p class="note">The real protection is the service account: give it only <code>dataViewer</code> on those datasets and <code>jobUser</code>. The string checks are a convenience, not a security boundary.</p>
   </article>
 
-  <article class="card"><h3>Deploying a remote MCP server</h3>
+  <article class="card" id="c-deploying-a-remote-mcp-server"><h3>Deploying a remote MCP server</h3>
     <ul>
       <li>Serve with Streamable HTTP and run it on <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a> with its own service account.</li>
       <li>Require authentication: OAuth for user-facing clients (the MCP authorisation spec builds on OAuth 2.1), or Cloud Run IAM for internal callers.</li>
@@ -263,7 +173,7 @@ def run_query(sql: str) -&gt; dict:
     </ul>
   </article>
 
-  <article class="card"><h3>Designing good MCP tools</h3>
+  <article class="card" id="c-designing-good-mcp-tools"><h3>Designing good MCP tools</h3>
     <ul>
       <li><b>Few, task-shaped tools</b> ("pipeline status for a date") beat many thin wrappers over every API call.</li>
       <li><b>Clear names and descriptions</b>: the model chooses tools from them.</li>
@@ -274,7 +184,7 @@ def run_query(sql: str) -&gt; dict:
     </ul>
   </article>
 
-  <article class="card"><h3>Security</h3>
+  <article class="card" id="c-security"><h3>Security</h3>
     <ul>
       <li>An MCP server runs with its own credentials: give it least privilege, as you would a service.</li>
       <li>Only install servers you trust and have reviewed; a malicious server can return instructions that steer the model (tool poisoning).</li>
@@ -300,14 +210,14 @@ def run_query(sql: str) -&gt; dict:
 
 
 
-  <article class="card"><h3>Ones we build</h3>
+  <article class="card" id="c-ones-we-build"><h3>Ones we build</h3>
     <p><a href="/cistern/">Cistern</a> puts an MCP server in front of a data pod you own, and <a href="/penstock/">Penstock</a> works with Claude Code over MCP. Both are open source (Apache 2.0).</p>
     <p class="note">They are ours, so we are not neutral.</p>
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with the Python SDK and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> MCPServer (formerly FastMCP) and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/docs/specification/2025-11-25/basic/transports.mdx" target="_blank" rel="noopener">MCP spec 2025-11-25: transports (stdio, Streamable HTTP)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/docs/specification/2025-11-25/basic/authorization.mdx" target="_blank" rel="noopener">MCP spec 2025-11-25: authorization (OAuth 2.1, optional)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md" target="_blank" rel="noopener">MCP Python SDK README (MCPServer)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/docs/migration.md" target="_blank" rel="noopener">MCP Python SDK migration guide (FastMCP renamed, run(transport=...))</a>; <a href="https://pypi.org/pypi/mcp/json" target="_blank" rel="noopener">PyPI mcp (current 2.x)</a>; <a href="https://code.claude.com/docs/en/mcp.md" target="_blank" rel="noopener">Claude Code MCP docs</a>; <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md" target="_blank" rel="noopener">MCP connector (Claude API)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/inspector/main/docs/v1-to-v2-migration.md" target="_blank" rel="noopener">MCP Inspector README and v1-to-v2 guide</a>; <a href="https://raw.githubusercontent.com/googleapis/genai-toolbox/main/README.md" target="_blank" rel="noopener">MCP Toolbox README (repo badge names googleapis/mcp-toolbox)</a>; <a href="https://docs.cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob" target="_blank" rel="noopener">BigQuery Python QueryJob reference</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMCP%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain servers, clients, tools, resources and transports</li><li>Add an existing MCP server to Claude Code and use it</li><li>Know the security risks of untrusted servers</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build an MCP server with the Python SDK and test it with the Inspector</li><li>Expose read-only pipeline or warehouse tools with guardrails</li><li>Share servers with a team via project configuration</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design task-shaped tool sets with honest errors and compact outputs</li><li>Deploy remote servers on Cloud Run with OAuth or IAM</li><li>Integrate MCP with data pipelines without putting it on the critical path</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set MCP standards, review and approval process for the organisation</li><li>Build shared MCP platforms over core data and systems</li><li>Contribute to the protocol ecosystem</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MCP specification and transports</li><li>MCP authorisation (OAuth)</li><li>Tool design for agents</li><li>MCP Toolbox for Databases</li><li>Tool poisoning and prompt injection defences</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Specification, concepts and SDKs</span></li><li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">MCP Python SDK</a><span class="lnote"> MCPServer (formerly FastMCP) and server examples</span></li><li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener">MCP TypeScript SDK</a><span class="lnote"> Servers and clients in TypeScript</span></li><li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">MCP Inspector</a><span class="lnote"> Test servers interactively</span></li><li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code: MCP</a><span class="lnote"> Adding servers, scopes and permissions</span></li><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector (Claude API)</a><span class="lnote"> Calling remote MCP servers from the API</span></li><li><a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener">MCP Toolbox for Databases</a><span class="lnote"> Google's MCP server for BigQuery, Postgres and more</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/docs/specification/2025-11-25/basic/transports.mdx" target="_blank" rel="noopener">MCP spec 2025-11-25: transports (stdio, Streamable HTTP)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/docs/specification/2025-11-25/basic/authorization.mdx" target="_blank" rel="noopener">MCP spec 2025-11-25: authorization (OAuth 2.1, optional)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md" target="_blank" rel="noopener">MCP Python SDK README (MCPServer)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/docs/migration.md" target="_blank" rel="noopener">MCP Python SDK migration guide (FastMCP renamed, run(transport=...))</a>; <a href="https://pypi.org/pypi/mcp/json" target="_blank" rel="noopener">PyPI mcp (current 2.x)</a>; <a href="https://code.claude.com/docs/en/mcp.md" target="_blank" rel="noopener">Claude Code MCP docs</a>; <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md" target="_blank" rel="noopener">MCP connector (Claude API)</a>; <a href="https://raw.githubusercontent.com/modelcontextprotocol/inspector/main/docs/v1-to-v2-migration.md" target="_blank" rel="noopener">MCP Inspector README and v1-to-v2 guide</a>; <a href="https://raw.githubusercontent.com/googleapis/genai-toolbox/main/README.md" target="_blank" rel="noopener">MCP Toolbox README (repo badge names googleapis/mcp-toolbox)</a>; <a href="https://docs.cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob" target="_blank" rel="noopener">BigQuery Python QueryJob reference</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BMCP%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -315,6 +225,8 @@ def run_query(sql: str) -&gt; dict:
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-what-mcp-is">What MCP is</a><a href="#c-a-server-in-python-mcpserver">A server in Python (MCPServer)</a><a href="#c-add-it-to-claude-code-and-test-it">Add it to Claude Code and test it</a><a href="#c-call-mcp-servers-from-the-api">Call MCP servers from the API</a><a href="#c-mcp-and-a-data-pipeline-four-patterns">MCP and a data pipeline: four patterns</a><a href="#c-a-guarded-bigquery-query-tool">A guarded BigQuery query tool</a><a href="#c-deploying-a-remote-mcp-server">Deploying a remote MCP server</a><a href="#c-designing-good-mcp-tools">Designing good MCP tools</a><a href="#c-security">Security</a><a href="#c-ones-we-build">Ones we build</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

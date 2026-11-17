@@ -14,140 +14,50 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="data">
+<body data-tab="data" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/" aria-current="page">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp" open><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/" aria-current="page">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Data</span> / <span aria-current="page">Data Engineering</span></p>
 <section class="panel" id="data" data-name="Data Engineering">
   <div class="panel-head"><h1>What data engineering is</h1><p>The concepts behind the tools: what data engineers build, the shape of every pipeline, and the properties that make data trustworthy. Read this before the dbt, DAG and BigQuery tabs.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>In one paragraph</h3>
+  <article class="card wide" id="c-in-one-paragraph"><h3>In one paragraph</h3>
     <p>Data engineering is building and running the systems that move data from where it is produced to where it is used, and making it <b>correct, current, documented and affordable</b> on the way. Source systems (apps, files, APIs, sensors, public datasets) produce data in their own shapes and at their own pace. Analysts, dashboards, machine-learning models, AI features and products need it in a shape they can query and trust. The data engineer owns the path between them: getting it in, keeping a faithful copy, reshaping it, checking it, delivering it, and knowing at any moment whether it is right.</p>
     <p class="note">A pipeline that runs is not the goal. The goal is data that people can rely on without asking the data engineer first.</p>
   </article>
 
-  <article class="card wide"><h3>Who does what</h3>
+  <article class="card wide" id="c-who-does-what"><h3>Who does what</h3>
     <div class="tbl"><table>
       <thead><tr><th>Role</th><th>Focus</th><th>Typical output</th></tr></thead>
       <tbody>
@@ -161,7 +71,7 @@
     <p class="note">In small teams one person covers several rows. The boundaries matter less than knowing who owns each table.</p>
   </article>
 
-  <article class="card wide"><h3>The lifecycle every pipeline follows</h3>
+  <article class="card wide" id="c-the-lifecycle-every-pipeline-follows"><h3>The lifecycle every pipeline follows</h3>
     <div class="tbl"><table>
       <thead><tr><th>Stage</th><th>Question it answers</th><th>On GCP, for example</th><th>Tab</th></tr></thead>
       <tbody>
@@ -175,7 +85,7 @@
     <p class="note">This stage model is adapted from <i>Fundamentals of Data Engineering</i> by Joe Reis and Matt Housley, a good first book on the subject.</p>
   </article>
 
-  <article class="card"><h3>Batch vs streaming</h3>
+  <article class="card" id="c-batch-vs-streaming"><h3>Batch vs streaming</h3>
     <ul>
       <li><b>Batch:</b> process a bounded chunk (yesterday, one file, one partition) on a schedule. Simple, cheap, easy to rerun. Latency of minutes to a day.</li>
       <li><b>Streaming:</b> process events continuously as they arrive. Latency of seconds, but harder: ordering, late events, state, exactly-once.</li>
@@ -184,7 +94,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>ETL vs ELT</h3>
+  <article class="card" id="c-etl-vs-elt"><h3>ETL vs ELT</h3>
     <ul>
       <li><b>ETL:</b> extract, transform in a separate engine, then load the result. Common when the warehouse was expensive or small.</li>
       <li><b>ELT:</b> extract, load the raw data into the warehouse, transform there with SQL (dbt). The modern default on BigQuery and similar.</li>
@@ -193,7 +103,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Where data lives</h3>
+  <article class="card" id="c-where-data-lives"><h3>Where data lives</h3>
     <div class="tbl"><table>
       <thead><tr><th>Store</th><th>Good at</th></tr></thead>
       <tbody>
@@ -206,7 +116,7 @@
     <p class="note">File formats: CSV and JSON are easy but untyped and slow to scan. Parquet and ORC are columnar, compressed and typed, best for analytics. Avro suits row-by-row streams with schema evolution.</p>
   </article>
 
-  <article class="card wide"><h3>Layers: each one has one job</h3>
+  <article class="card wide" id="c-layers-each-one-has-one-job"><h3>Layers: each one has one job</h3>
     <div class="tbl"><table>
       <thead><tr><th>Layer</th><th>Also called</th><th>Rule</th></tr></thead>
       <tbody>
@@ -218,7 +128,7 @@
     <p class="note">Derivation runs one way: each layer reads only the layer below. A product that reads from a downstream serving database creates a cycle and should be refused.</p>
   </article>
 
-  <article class="card"><h3>Modelling basics</h3>
+  <article class="card" id="c-modelling-basics"><h3>Modelling basics</h3>
     <ul>
       <li><b>Grain:</b> what one row means ("one order", "one order line per day"). State it for every table; most bugs are grain confusion.</li>
       <li><b>Keys:</b> a natural key from the source and, where needed, a surrogate key you generate. Never reuse or renumber a key that others store.</li>
@@ -228,7 +138,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Properties of a good pipeline</h3>
+  <article class="card" id="c-properties-of-a-good-pipeline"><h3>Properties of a good pipeline</h3>
     <ul>
       <li><b>Idempotent:</b> running it twice for the same input gives the same result. Overwrite a partition or MERGE on a key; never blindly append.</li>
       <li><b>Incremental:</b> processes only what is new or changed, decided from evidence (a watermark, ETag or ledger), not "we visited it".</li>
@@ -240,7 +150,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Data quality</h3>
+  <article class="card" id="c-data-quality"><h3>Data quality</h3>
     <div class="tbl"><table>
       <thead><tr><th>Dimension</th><th>Example check</th></tr></thead>
       <tbody>
@@ -254,7 +164,7 @@
     <p class="note">The worst quality failure is a silent one: a parse that turns bad dates into NULL, or a monitor that reports 0 when its source was unreachable. Reject or count what you cannot read, and report "unknown" rather than a confident zero.</p>
   </article>
 
-  <article class="card"><h3>Ingestion patterns</h3>
+  <article class="card" id="c-ingestion-patterns"><h3>Ingestion patterns</h3>
     <ul>
       <li><b>Full snapshot:</b> copy everything each time. Simple; fine for small tables.</li>
       <li><b>Incremental by watermark:</b> fetch rows changed since the last <code>updated_at</code> or ID.</li>
@@ -265,7 +175,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Governance &amp; responsibility</h3>
+  <article class="card" id="c-governance-responsibility"><h3>Governance &amp; responsibility</h3>
     <ul>
       <li><b>Ownership:</b> every table has a named owner and a description.</li>
       <li><b>Lineage:</b> you can say which sources feed a column and which products a change will affect.</li>
@@ -277,7 +187,7 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>A worked example, end to end</h3>
+  <article class="card wide" id="c-a-worked-example-end-to-end"><h3>A worked example, end to end</h3>
     <p>An online shop's orders, exported daily by its stores and served to the shop's staff through a reporting API.</p>
     <ol>
       <li><b>Source:</b> two order systems (the website and the store tills) export orders as Parquet and JSON files to object storage, partitioned by year. Files are sometimes re-exported in place.</li>
@@ -292,7 +202,7 @@
     <p class="note">Every tab in this guide appears somewhere in that path. That is why a data engineer needs breadth.</p>
   </article>
 
-  <article class="card"><h3>Questions a data engineer always asks</h3>
+  <article class="card" id="c-questions-a-data-engineer-always-asks"><h3>Questions a data engineer always asks</h3>
     <ul>
       <li>What does one row mean, and what is its key?</li>
       <li>What happens if this runs twice? If it fails halfway?</li>
@@ -304,7 +214,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Glossary</h3>
+  <article class="card" id="c-glossary"><h3>Glossary</h3>
     <ul>
       <li><b>Partition:</b> a slice of a table (by date or year) that queries can skip.</li>
       <li><b>Watermark:</b> the point up to which data is known to be processed.</li>
@@ -321,8 +231,8 @@
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the lifecycle and the layers</li><li>Load a file into a warehouse and query it</li><li>Write a simple, idempotent transformation</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build incremental, tested pipelines end to end</li><li>Choose batch vs streaming and ingestion patterns</li><li>Model data at a stated grain with keys and tests</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a data platform: layers, contracts, orchestration, observability</li><li>Own data quality and reconciliation across sources</li><li>Plan cost, retention and governance</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set data architecture and standards across the organisation</li><li>Lead migrations between platforms without losing trust</li><li>Shape data products and their contracts with consumers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dimensional modelling (Kimball)</li><li>Data contracts and schema evolution</li><li>Open table formats: Iceberg, Delta</li><li>Change data capture</li><li>Data observability and lineage</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/" target="_blank" rel="noopener">Fundamentals of Data Engineering (book)</a><span class="lnote"> Reis &amp; Housley: the lifecycle and its undercurrents</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> Storage, replication, batch and stream processing</span></li><li><a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/" target="_blank" rel="noopener">Kimball dimensional modelling techniques</a><span class="lnote"> Facts, dimensions, SCDs</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> How to structure a transformation project</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures for data on GCP</span></li><li><a href="https://iceberg.apache.org/" target="_blank" rel="noopener">Apache Iceberg</a><span class="lnote"> Open table format for lakehouses</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/incremental-models.md" target="_blank" rel="noopener">dbt incremental models (merge on a unique key, schema-change handling)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/hard-deletes.md" target="_blank" rel="noopener">dbt snapshots hard_deletes (SCD type 2)</a>; <a href="https://docs.cloud.google.com/logging/docs/audit" target="_blank" rel="noopener">Cloud Audit Logs (GCP docs host reachable)</a>; <a href="https://docs.cloud.google.com/datastream/docs/overview" target="_blank" rel="noopener">Datastream overview</a>; <a href="https://docs.cloud.google.com/dataproc/docs/concepts/overview" target="_blank" rel="noopener">Managed Service for Apache Spark (formerly Dataproc)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BData%20Engineering%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain the lifecycle and the layers</li><li>Load a file into a warehouse and query it</li><li>Write a simple, idempotent transformation</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build incremental, tested pipelines end to end</li><li>Choose batch vs streaming and ingestion patterns</li><li>Model data at a stated grain with keys and tests</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a data platform: layers, contracts, orchestration, observability</li><li>Own data quality and reconciliation across sources</li><li>Plan cost, retention and governance</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set data architecture and standards across the organisation</li><li>Lead migrations between platforms without losing trust</li><li>Shape data products and their contracts with consumers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Dimensional modelling (Kimball)</li><li>Data contracts and schema evolution</li><li>Open table formats: Iceberg, Delta</li><li>Change data capture</li><li>Data observability and lineage</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/" target="_blank" rel="noopener">Fundamentals of Data Engineering (book)</a><span class="lnote"> Reis &amp; Housley: the lifecycle and its undercurrents</span></li><li><a href="https://dataintensive.net/" target="_blank" rel="noopener">Designing Data-Intensive Applications</a><span class="lnote"> Storage, replication, batch and stream processing</span></li><li><a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/" target="_blank" rel="noopener">Kimball dimensional modelling techniques</a><span class="lnote"> Facts, dimensions, SCDs</span></li><li><a href="https://docs.getdbt.com/best-practices" target="_blank" rel="noopener">dbt best practices</a><span class="lnote"> How to structure a transformation project</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures for data on GCP</span></li><li><a href="https://iceberg.apache.org/" target="_blank" rel="noopener">Apache Iceberg</a><span class="lnote"> Open table format for lakehouses</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/docs/build/incremental-models.md" target="_blank" rel="noopener">dbt incremental models (merge on a unique key, schema-change handling)</a>; <a href="https://raw.githubusercontent.com/dbt-labs/docs.getdbt.com/current/website/docs/reference/resource-configs/hard-deletes.md" target="_blank" rel="noopener">dbt snapshots hard_deletes (SCD type 2)</a>; <a href="https://docs.cloud.google.com/logging/docs/audit" target="_blank" rel="noopener">Cloud Audit Logs (GCP docs host reachable)</a>; <a href="https://docs.cloud.google.com/datastream/docs/overview" target="_blank" rel="noopener">Datastream overview</a>; <a href="https://docs.cloud.google.com/dataproc/docs/concepts/overview" target="_blank" rel="noopener">Managed Service for Apache Spark (formerly Dataproc)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BData%20Engineering%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -330,6 +240,8 @@
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-in-one-paragraph">In one paragraph</a><a href="#c-who-does-what">Who does what</a><a href="#c-the-lifecycle-every-pipeline-follows">The lifecycle every pipeline follows</a><a href="#c-batch-vs-streaming">Batch vs streaming</a><a href="#c-etl-vs-elt">ETL vs ELT</a><a href="#c-where-data-lives">Where data lives</a><a href="#c-layers-each-one-has-one-job">Layers: each one has one job</a><a href="#c-modelling-basics">Modelling basics</a><a href="#c-properties-of-a-good-pipeline">Properties of a good pipeline</a><a href="#c-data-quality">Data quality</a><a href="#c-ingestion-patterns">Ingestion patterns</a><a href="#c-governance-responsibility">Governance & responsibility</a><a href="#c-a-worked-example-end-to-end">A worked example, end to end</a><a href="#c-questions-a-data-engineer-always-asks">Questions a data engineer always asks</a><a href="#c-glossary">Glossary</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

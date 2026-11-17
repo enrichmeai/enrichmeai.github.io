@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="web3">
+<body data-tab="web3" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/" aria-current="page">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp" open><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/" aria-current="page">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Frontiers</span> / <span aria-current="page">Web 3.0</span></p>
 <section class="panel" id="web3" data-name="Web 3.0">
   <div class="panel-head"><h1>Web 3.0</h1><p>"Web 3.0" means two different things. <b>Web3</b> is the blockchain-based vision: decentralised ledgers, smart contracts, tokens and wallets. The <b>Semantic Web</b> (Tim Berners-Lee's earlier "Web 3.0") is about machine-readable, linked data. Both matter to engineers, for different reasons. The <a href="/well-rounded-engineer/solid/">Solid</a> tab covers Berners-Lee's current project for personal data.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Web 1.0, 2.0, 3.0</h3>
+  <article class="card wide" id="c-web-1-0-2-0-3-0"><h3>Web 1.0, 2.0, 3.0</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Web 1.0</th><th>Web 2.0</th><th>Web3 (blockchain)</th><th>Semantic Web</th></tr></thead>
       <tbody>
@@ -153,7 +63,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Web3 building blocks</h3>
+  <article class="card" id="c-web3-building-blocks"><h3>Web3 building blocks</h3>
     <ul>
       <li><b>Blockchain:</b> a replicated, append-only ledger agreed by consensus (proof of stake on Ethereum), without a central operator.</li>
       <li><b>Wallet and keys:</b> a private key controls an account; whoever holds the key controls the assets. Lost key, lost assets.</li>
@@ -167,7 +77,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>A minimal smart contract</h3>
+  <article class="card" id="c-a-minimal-smart-contract"><h3>A minimal smart contract</h3>
 <div class="snip"><pre><code>// SPDX-License-Identifier: MIT
 pragma solidity ^<span data-other-version>0.8.24</span>;
 
@@ -185,7 +95,7 @@ contract DocumentRegistry {
     <p class="note">Tooling: Foundry or Hardhat to build and test, ethers.js or viem to call contracts, a testnet before mainnet, and an external audit before holding real value. Deployed bugs are public and often permanent.</p>
   </article>
 
-  <article class="card"><h3>Do you need a blockchain?</h3>
+  <article class="card" id="c-do-you-need-a-blockchain"><h3>Do you need a blockchain?</h3>
     <ol>
       <li>Do several parties need to write to shared data?</li>
       <li>Do they not trust each other, or any single operator?</li>
@@ -196,7 +106,7 @@ contract DocumentRegistry {
     <p class="note">Also weigh regulation: rules for crypto assets differ by country and change often (India, for example, taxes crypto transfers and has evolving rules). Personal data on an immutable public chain conflicts with deletion rights.</p>
   </article>
 
-  <article class="card wide"><h3>The Semantic Web and linked data</h3>
+  <article class="card wide" id="c-the-semantic-web-and-linked-data"><h3>The Semantic Web and linked data</h3>
     <ul>
       <li><b>RDF:</b> data as triples (subject, predicate, object), each named by a URI, so data from different sources joins up.</li>
       <li><b>Vocabularies and ontologies:</b> shared meanings (schema.org, Dublin Core, FOAF; OWL for formal ontologies).</li>
@@ -222,8 +132,8 @@ SELECT ?p ?date WHERE {
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Tell Web3 (blockchain) from the Semantic Web</li><li>Explain blockchains, wallets, smart contracts and tokens</li><li>Ask whether a problem really needs a blockchain</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write and test a simple smart contract on a testnet</li><li>Publish structured data with JSON-LD and schema.org</li><li>Query linked data with SPARQL</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Assess security, cost, privacy and regulation of a Web3 design</li><li>Design knowledge graphs and ontologies for a domain</li><li>Model product data with shared vocabularies (schema.org Product, GTIN codes)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set strategy on decentralised and linked-data technologies</li><li>Lead audits and governance for on-chain systems</li><li>Shape open data standards in a sector</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Ethereum and proof of stake</li><li>Smart contract security</li><li>Layer 2 rollups</li><li>RDF, OWL and SHACL</li><li>Knowledge graphs for AI grounding</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ethereum.org/en/developers/" target="_blank" rel="noopener">ethereum.org developers</a><span class="lnote"> Concepts and tutorials</span></li><li><a href="https://docs.soliditylang.org/" target="_blank" rel="noopener">Solidity documentation</a><span class="lnote"> Language reference</span></li><li><a href="https://www.w3.org/2001/sw/wiki/Main_Page" target="_blank" rel="noopener">W3C Semantic Web</a><span class="lnote"> RDF, SPARQL, OWL standards</span></li><li><a href="https://json-ld.org/" target="_blank" rel="noopener">JSON-LD</a><span class="lnote"> Linked data in JSON</span></li><li><a href="https://schema.org/" target="_blank" rel="noopener">schema.org</a><span class="lnote"> Shared vocabulary for structured data</span></li><li><a href="https://www.w3.org/TR/sparql11-query/" target="_blank" rel="noopener">SPARQL 1.1 Query Language</a><span class="lnote"> The specification</span></li><li><a href="https://github.com/schemaorg/schemaorg" target="_blank" rel="noopener">schema.org vocabulary source</a><span class="lnote"> The Product, Offer and other type definitions</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Web3?action=raw" target="_blank" rel="noopener">Wikipedia: Web3 (term coined by Gavin Wood, 2014)</a>; <a href="https://en.wikipedia.org/wiki/Semantic_Web?action=raw" target="_blank" rel="noopener">Wikipedia: Semantic Web ('sometimes known as Web 3.0')</a>; <a href="https://en.wikipedia.org/wiki/Ethereum?action=raw" target="_blank" rel="noopener">Wikipedia: Ethereum (The Merge, proof of stake)</a>; <a href="https://raw.githubusercontent.com/ethereum/ethereum-org-website/dev/public/content/developers/docs/scaling/index.md" target="_blank" rel="noopener">ethereum.org: scaling and rollups</a>; <a href="https://raw.githubusercontent.com/ethereum/ethereum-org-website/dev/public/content/developers/docs/standards/tokens/erc-20/index.md" target="_blank" rel="noopener">ethereum.org: ERC-20</a>; <a href="https://raw.githubusercontent.com/ethereum/ethereum-org-website/dev/public/content/developers/docs/standards/tokens/erc-721/index.md" target="_blank" rel="noopener">ethereum.org: ERC-721</a>; <a href="https://raw.githubusercontent.com/ethereum/solidity/develop/docs/contracts/events.rst" target="_blank" rel="noopener">Solidity docs: events</a>; <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank" rel="noopener">W3C RDF 1.1 Concepts</a>; <a href="https://www.w3.org/TR/sparql11-query/" target="_blank" rel="noopener">W3C SPARQL 1.1 Query</a>; <a href="https://www.w3.org/TR/json-ld11/" target="_blank" rel="noopener">W3C JSON-LD 1.1</a>; <a href="https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/schema.ttl" target="_blank" rel="noopener">schema.org vocabulary (sku, gtin13)</a>; <a href="https://en.wikipedia.org/wiki/WazirX?action=raw" target="_blank" rel="noopener">Wikipedia: WazirX (India's 2022 crypto tax)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BWeb%203.0%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Tell Web3 (blockchain) from the Semantic Web</li><li>Explain blockchains, wallets, smart contracts and tokens</li><li>Ask whether a problem really needs a blockchain</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write and test a simple smart contract on a testnet</li><li>Publish structured data with JSON-LD and schema.org</li><li>Query linked data with SPARQL</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Assess security, cost, privacy and regulation of a Web3 design</li><li>Design knowledge graphs and ontologies for a domain</li><li>Model product data with shared vocabularies (schema.org Product, GTIN codes)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set strategy on decentralised and linked-data technologies</li><li>Lead audits and governance for on-chain systems</li><li>Shape open data standards in a sector</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Ethereum and proof of stake</li><li>Smart contract security</li><li>Layer 2 rollups</li><li>RDF, OWL and SHACL</li><li>Knowledge graphs for AI grounding</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://ethereum.org/en/developers/" target="_blank" rel="noopener">ethereum.org developers</a><span class="lnote"> Concepts and tutorials</span></li><li><a href="https://docs.soliditylang.org/" target="_blank" rel="noopener">Solidity documentation</a><span class="lnote"> Language reference</span></li><li><a href="https://www.w3.org/2001/sw/wiki/Main_Page" target="_blank" rel="noopener">W3C Semantic Web</a><span class="lnote"> RDF, SPARQL, OWL standards</span></li><li><a href="https://json-ld.org/" target="_blank" rel="noopener">JSON-LD</a><span class="lnote"> Linked data in JSON</span></li><li><a href="https://schema.org/" target="_blank" rel="noopener">schema.org</a><span class="lnote"> Shared vocabulary for structured data</span></li><li><a href="https://www.w3.org/TR/sparql11-query/" target="_blank" rel="noopener">SPARQL 1.1 Query Language</a><span class="lnote"> The specification</span></li><li><a href="https://github.com/schemaorg/schemaorg" target="_blank" rel="noopener">schema.org vocabulary source</a><span class="lnote"> The Product, Offer and other type definitions</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Web3?action=raw" target="_blank" rel="noopener">Wikipedia: Web3 (term coined by Gavin Wood, 2014)</a>; <a href="https://en.wikipedia.org/wiki/Semantic_Web?action=raw" target="_blank" rel="noopener">Wikipedia: Semantic Web ('sometimes known as Web 3.0')</a>; <a href="https://en.wikipedia.org/wiki/Ethereum?action=raw" target="_blank" rel="noopener">Wikipedia: Ethereum (The Merge, proof of stake)</a>; <a href="https://raw.githubusercontent.com/ethereum/ethereum-org-website/dev/public/content/developers/docs/scaling/index.md" target="_blank" rel="noopener">ethereum.org: scaling and rollups</a>; <a href="https://raw.githubusercontent.com/ethereum/ethereum-org-website/dev/public/content/developers/docs/standards/tokens/erc-20/index.md" target="_blank" rel="noopener">ethereum.org: ERC-20</a>; <a href="https://raw.githubusercontent.com/ethereum/ethereum-org-website/dev/public/content/developers/docs/standards/tokens/erc-721/index.md" target="_blank" rel="noopener">ethereum.org: ERC-721</a>; <a href="https://raw.githubusercontent.com/ethereum/solidity/develop/docs/contracts/events.rst" target="_blank" rel="noopener">Solidity docs: events</a>; <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank" rel="noopener">W3C RDF 1.1 Concepts</a>; <a href="https://www.w3.org/TR/sparql11-query/" target="_blank" rel="noopener">W3C SPARQL 1.1 Query</a>; <a href="https://www.w3.org/TR/json-ld11/" target="_blank" rel="noopener">W3C JSON-LD 1.1</a>; <a href="https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/schema.ttl" target="_blank" rel="noopener">schema.org vocabulary (sku, gtin13)</a>; <a href="https://en.wikipedia.org/wiki/WazirX?action=raw" target="_blank" rel="noopener">Wikipedia: WazirX (India's 2022 crypto tax)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BWeb%203.0%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -231,6 +141,8 @@ SELECT ?p ?date WHERE {
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-web-1-0-2-0-3-0">Web 1.0, 2.0, 3.0</a><a href="#c-web3-building-blocks">Web3 building blocks</a><a href="#c-a-minimal-smart-contract">A minimal smart contract</a><a href="#c-do-you-need-a-blockchain">Do you need a blockchain?</a><a href="#c-the-semantic-web-and-linked-data">The Semantic Web and linked data</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">
