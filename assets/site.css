@@ -29,6 +29,7 @@
   --color-accent-700: #416180;
   --color-accent-800: #2c455d;
   --color-accent-900: #1d2d3d;
+  --color-white: #ffffff;
 
   --font-heading: "Barlow Condensed", system-ui, sans-serif;
   --font-body: "Barlow", system-ui, sans-serif;
@@ -460,3 +461,82 @@ table.table td:first-child { font-family: var(--font-heading); font-weight: 600;
 /* The accent focus ring clears 3:1 on the light ground but only just on the
    dark band; the light accent step is 9.57:1 there and reads unmistakably. */
 .band :focus-visible { outline-color: var(--color-accent-300); }
+
+/* ══ One family with the Well Rounded Engineer guide (2026-11): a navy header and hero band, white
+   cards on the light ground, rounded buttons, navy code. Layered over the rules above, so no page's
+   HTML (and no release marker or caveat) changes. Colours are tokens only. ══ */
+
+/* Header */
+.site-header { background: var(--color-accent-900); border-bottom: 0; }
+@supports (backdrop-filter: blur(6px)) { .site-header { background: var(--color-accent-900); backdrop-filter: none; } }
+.site-header .container { height: 64px; }
+.site-header .wordmark, .site-header .wordmark:hover { color: var(--color-white); font-size: 21px; }
+.site-header .wordmark .dot { color: var(--color-accent-400); }
+.site-header .product-label { color: var(--color-accent-300); }
+.site-header .site-nav a { color: var(--color-accent-200); }
+.site-header .site-nav a:hover { color: var(--color-white); }
+.site-header .header-text-link { color: var(--color-accent-200); }
+.site-header .header-text-link:hover { color: var(--color-white); }
+.site-header .btn-primary { background: var(--color-white); border-color: var(--color-white); color: var(--color-accent-900); }
+.site-header .btn-primary:hover { background: var(--color-accent-100); color: var(--color-accent-900); }
+.site-header a:focus-visible { outline-color: var(--color-accent-300); }
+
+/* Buttons: rounded, sentence case */
+.btn { border-radius: 10px; text-transform: none; letter-spacing: 0; font-family: var(--font-body); font-size: 16px; min-height: 44px; }
+.btn-primary { background: var(--color-accent-900); border-color: var(--color-accent-900); color: var(--color-white); }
+.btn-primary:hover { background: var(--color-accent-800); color: var(--color-white); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-neutral-400); }
+
+/* Hero: a full-width navy band (box-shadow plus clip-path widens it past the container, with no
+   layout change and no horizontal scroll) */
+.hero, .hero-below { position: relative; background: var(--color-accent-900); box-shadow: 0 0 0 100vmax var(--color-accent-900); clip-path: inset(0 -100vmax); color: var(--color-accent-200); }
+.hero { padding-top: 64px; padding-bottom: 46px; }
+.hero-below { margin-top: 0; }
+.hero h1, .hero .h1 { color: var(--color-white); }
+.hero .accent, .hero-below .accent { color: var(--color-accent-400); }
+.hero .eyebrow { color: var(--color-accent-400); }
+.hero .hero-rail { color: var(--color-accent-200); border-left-color: var(--color-accent-700); }
+.hero-below .lede, .hero-below p, .hero-below li { color: var(--color-accent-200); }
+.hero b, .hero strong, .hero-below b, .hero-below strong { color: var(--color-white); }
+.hero a, .hero-below a { color: var(--color-accent-300); }
+.hero a:focus-visible, .hero-below a:focus-visible { outline-color: var(--color-accent-300); }
+.hero code, .hero-below code { background: var(--color-accent-800); color: var(--color-accent-100); }
+.hero-below .btn-primary { background: var(--color-white); border-color: var(--color-white); color: var(--color-accent-900); }
+.hero-below .btn-primary:hover { background: var(--color-accent-100); }
+.hero-below .btn-secondary { border-color: var(--color-accent-500); color: var(--color-white); }
+.hero-below .btn-secondary:hover { background: var(--color-accent-800); color: var(--color-white); }
+
+/* Frames become cards */
+.blueprint { background: var(--color-white); border: 1px solid var(--color-neutral-200); border-radius: 16px; }
+.blueprint > .corner { display: none; }
+.hero .blueprint, .hero-below .blueprint { background: var(--color-accent-800); border-color: var(--color-accent-800); color: var(--color-accent-100); }
+.hero .blueprint *, .hero-below .blueprint * { border-color: var(--color-accent-700); }
+.hero .caveat span, .hero-below .caveat span, .hero .blueprint p, .hero-below .blueprint p, .hero .blueprint li, .hero-below .blueprint li, .hero-below .spec-sheet dd { color: var(--color-accent-100); }
+.hero-below .spec-sheet dt { color: var(--color-accent-300); }
+.hero .frame-kicker, .hero-below .frame-kicker, .hero-below .spec-row dt, .hero-below dt { color: var(--color-accent-300); }
+.hero-below .tag-live, .hero .tag-live { background: var(--color-accent-200); color: var(--color-accent-900); }
+.hero-below .tag-next, .hero .tag-next { border-color: var(--color-accent-400); color: var(--color-accent-200); }
+
+/* Code frames: navy */
+.code-frame { background: var(--color-accent-900); border-color: var(--color-accent-900); }
+.code-frame .strip { color: var(--color-accent-300); border-bottom-color: var(--color-accent-800); }
+.code-frame pre { color: var(--color-accent-100); }
+.code-frame .cmt { color: var(--color-accent-400); }
+.code-frame .tok { color: var(--color-accent-300); }
+
+/* Columns, stages, tags and the register become cards */
+.rule-column { background: var(--color-white); border: 1px solid var(--color-neutral-200); border-radius: 16px; padding: 22px; }
+.rule-column.is-accent { border-color: var(--color-accent-400); }
+.stage { background: var(--color-white); border-color: var(--color-neutral-200); border-radius: 12px; }
+.stage.is-accent { background: var(--color-accent-100); border-color: var(--color-accent-400); }
+.tag { border-radius: 999px; }
+.reserved { border-radius: 16px; }
+.register-entry { background: var(--color-white); border: 1px solid var(--color-neutral-200); border-radius: 20px; padding: 32px; margin-bottom: 24px; }
+table.table th { background: var(--color-accent-100); color: var(--color-accent-800); padding-left: 10px; }
+table.table td:first-child { padding-left: 10px; }
+.section-rule { border-top-color: var(--color-neutral-300); }
+/* Inline dark text colours written for the light hero stay readable on the navy one */
+.hero [style*="color:var(--color-text)"], .hero-below [style*="color:var(--color-text)"] { color: var(--color-white) !important; }
+.hero [style*="color:var(--color-neutral-700)"], .hero-below [style*="color:var(--color-neutral-700)"],
+.hero [style*="color:var(--color-neutral-800)"], .hero-below [style*="color:var(--color-neutral-800)"] { color: var(--color-accent-200) !important; }
