@@ -1052,3 +1052,13 @@ for _t,_n in ROUND2_PENDING.items():
     if _t in D:
         if _n: D[_t]["pending"]=_n
         else: D[_t].pop("pending",None)
+
+# Monorepo cards on Microservices (2026-11-17)
+D["microservices"].setdefault("sources",[]).extend([
+ ("Wikipedia: Monorepo (advantages, limits, who runs one, scaling tools)","https://en.wikipedia.org/wiki/Monorepo"),
+ ("Wikipedia: Conway's law","https://en.wikipedia.org/wiki/Conway%27s_law"),
+ ("git sparse-checkout","https://git-scm.com/docs/git-sparse-checkout"),
+ ("Git partial clone","https://git-scm.com/docs/partial-clone"),
+ ("GitHub: About code owners","https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"),
+ ("GitHub: Troubleshooting required status checks (skipped but required checks)","https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks"),
+ ("Nx README (runs only what is affected)","https://github.com/nrwl/nx")])
