@@ -49,7 +49,7 @@
 <main id="main" class="eg">
 <p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Security</span> / <span aria-current="page">Keys, Certificates &amp; SSH</span></p>
 <section class="panel" id="pki" data-name="Keys, Certificates &amp; SSH">
-  <div class="panel-head"><h1>Keys, certificates and SSH</h1><p>HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the pair, how a certificate ties a public key to a name, what a certificate signing request (CSR) and a certificate authority (CA) do, and how SSH keys and Git signing work. The OpenSSL, ssh-keygen and Git commands on this page were run (OpenSSL 3.0.13, OpenSSH 9.6, Git 2.43), and the error messages are the real ones. <code>ssh -T git@github.com</code> is GitHub&rsquo;s own documented test and was not run here. HTTP and the TLS handshake are on <a href="/well-rounded-engineer/networking/">Networking</a>; SSH tunnels and jump hosts are on <a href="/well-rounded-engineer/linux/">Linux</a>.</p></div>
+  <div class="panel-head"><h1>Keys, certificates and SSH</h1><p>HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the pair, how a certificate ties a public key to a name, what a certificate signing request (CSR) and a certificate authority (CA) do, and how SSH keys and Git signing work. The OpenSSL, ssh-keygen and Git commands on this page were run (OpenSSL <span data-other-version>3.0.13</span>, OpenSSH 9.6, Git 2.43), and the error messages are the real ones. <code>ssh -T git@github.com</code> is GitHub&rsquo;s own documented test and was not run here. HTTP and the TLS handshake are on <a href="/well-rounded-engineer/networking/">Networking</a>; SSH tunnels and jump hosts are on <a href="/well-rounded-engineer/linux/">Linux</a>.</p></div>
   <div class="grid">
 
   <article class="card wide" id="c-one-idea-underneath-a-key-pair"><h3>One idea underneath: a key pair</h3>
@@ -113,7 +113,7 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
 
 # validate the chain, as a client would
 openssl verify -CAfile ca.crt server.crt     # server.crt: OK</code></pre>
-    <p class="note">These commands were run with OpenSSL 3.0.13. <code>-copy_extensions</code> on <code>openssl x509 -req</code> is documented in the 3.x manual; on an older OpenSSL, put the SAN in an <code>-extfile</code> instead. A private CA is trusted only by machines you configure to trust it; for anything the public reaches, use a public CA.</p>
+    <p class="note">These commands were run with OpenSSL <span data-other-version>3.0.13</span>. <code>-copy_extensions</code> on <code>openssl x509 -req</code> is documented in the 3.x manual; on an older OpenSSL, put the SAN in an <code>-extfile</code> instead. A private CA is trusted only by machines you configure to trust it; for anything the public reaches, use a public CA.</p>
   </article>
 
   <article class="card" id="c-getting-certificates-automatically-acme"><h3>Getting certificates automatically: ACME</h3>
