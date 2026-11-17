@@ -158,6 +158,13 @@ The site's claim is that nothing was announced before it ran. Every page keeps t
 - The caveat blocks ("what it cannot do", honest status) are part of the product and not decoration.
   Removing one needs the product to have changed, with the tag cited.
 - Plain and specific: a number with its source beats an adjective. No superlatives.
+- **Every opinion is one view, and says so (founder, 2026-11-17).** Label it ("our view",
+  "analysis") and give the other way of looking at it next to it. A fact needs a source; a view needs
+  its alternative.
+- **Where there are several options, help people choose by requirement, not preference (founder,
+  2026-11-17).** Give a table of requirements ("if this is true for you") and which way each leans,
+  built from sourced facts. Popularity, taste and familiarity are not rows; "your team already uses
+  one" is, because switching has a cost.
 - New or rewritten wording in the founder's voice (a headline, positioning, a new section) is
   merged by the founder (`merge-gate` § Autonomy).
 
