@@ -1257,3 +1257,13 @@ D["testing"].setdefault("sources",[]).extend([
 D["performance"].setdefault("sources",[]).extend([
  ("Oracle: Java 21 GC tuning, available collectors","https://docs.oracle.com/en/java/javase/21/gctuning/available-collectors.html"),
  ("Oracle: the java command (MaxRAMPercentage)","https://docs.oracle.com/en/java/javase/21/docs/specs/man/java.html")])
+
+D["atob"]["sources"].extend([
+ ("Wikipedia: Parallel running","https://en.wikipedia.org/wiki/Parallel_running"),("Wikipedia: Change data capture","https://en.wikipedia.org/wiki/Change_data_capture"),
+ ("AWS Prescriptive Guidance: Anti-corruption layer pattern","https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/acl.html"),
+ ("AWS Prescriptive Guidance: Branch by abstraction","https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-decomposing-monoliths/branch-by-abstraction.html"),
+ ("AWS Prescriptive Guidance: Transactional outbox (dual writes)","https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html"),
+ ("AWS Prescriptive Guidance: Database-per-service","https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-data-persistence/database-per-service.html"),
+ ("AWS Prescriptive Guidance: Shared-database-per-service","https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-data-persistence/shared-database.html"),
+ ("Azure Architecture Center: Anti-corruption layer","https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer"),
+ ("Debezium README","https://github.com/debezium/debezium")])
