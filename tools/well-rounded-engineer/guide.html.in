@@ -485,8 +485,9 @@ details>.inner{padding:4px 10px 8px}
 
   <article class="card wide"><h3>We will use it more than we meant to</h3>
     <p>Nobody knows for sure where this goes. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
-    <p>It is good for someone who has the idea and knows the specification but could never find the hundreds of hours to build it. For people with that experience, it is a genuinely useful tool, and solo builders who want to make a product should start: doing something beats waiting. It is bad when it becomes a habit of prompting and never going back to check. A mind that stops checking slowly stops being able to.</p>
+    <p><i>My view:</i> it is good for someone who has the idea and knows the specification but could never find the hundreds of hours to build it. For people with that experience, it is a genuinely useful tool, and solo builders who want to make a product should start: doing something beats waiting. It is bad when it becomes a habit of prompting and never going back to check. A mind that stops checking slowly stops being able to.</p>
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
+    <p class="note"><i>The other view:</i> some argue that building with AI before you understand the foundations produces products you cannot maintain or debug, and that learning first is the better start, even if it means waiting.</p>
   </article>
 
   <article class="card wide"><h3>More with fewer, or more with the same</h3>
@@ -13503,6 +13504,7 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
   </article>
 
   <article class="card wide"><h3>Attitude, knowledge, adaptability, persistence</h3>
+    <p><i>My view</i> of what each quality looks like at work:</p>
     <div class="tbl"><table>
       <thead><tr><th>Quality</th><th>Looks like</th><th>Does not look like</th></tr></thead>
       <tbody>
@@ -13512,6 +13514,7 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
       <tr><td>Persistence (never give up)</td><td>Stays with a hard problem until it is solved or clearly handed over; changes approach after each failed attempt; asks for help with evidence; finishes the last 10%</td><td>Repeating the same failing attempt; quietly abandoning work; declaring victory before the check is green</td></tr>
       </tbody></table></div>
     <p class="note">Never giving up is not the same as never stopping. After a few failed attempts at the same thing, step back: write down what you tried and what you saw, change the approach, or bring someone in. The goal is never abandoned; the method is changed.</p>
+    <p class="note"><i>The other view:</i> sometimes the right call is to abandon the goal itself, because the problem turned out not to be worth solving, and persistence then becomes a cost.</p>
   </article>
 
   <article class="card"><h3>"I'll learn it", not just "I don't know"</h3>
@@ -13917,7 +13920,8 @@ print(&quot;e^(i*pi) + 1 =&quot;, cmath.exp(1j * math.pi) + 1, &quot; (zero, to 
   </article>
 
   <article class="card wide"><h3>What science can answer, and what it cannot settle alone</h3>
-    <p>Science is the best method we have for questions about what is true of the world and how it works: questions an observation or an experiment could answer. Keep it for those, and keep a balance. Trying to find every answer in science is the same mistake as trying to find every answer in a religion, or in any single tradition: one tool treated as the whole toolbox.</p>
+    <p><i>My view:</i> science is the best method we have for questions about what is true of the world and how it works: questions an observation or an experiment could answer. Keep it for those, and keep a balance. Trying to find every answer in science is the same mistake as trying to find every answer in a religion, or in any single tradition: one tool treated as the whole toolbox.</p>
+    <p class="note"><i>The other view:</i> some argue that evidence will in time inform, or even settle, more of the questions below about what we ought to do and what matters; others argue that science reaches less far than this card says.</p>
     <ul>
       <li><b>What is, and how it works.</b> Does this index make the query faster? Does this drug lower blood pressure? Observation, measurement and experiment answer these: this is science's home ground.</li>
       <li><b>What we ought to do.</b> Should we collect this data at all? Is this model fair to the people it scores? Ethics, law and judgement answer these, <b>informed</b> by evidence about what the consequences will be.</li>
