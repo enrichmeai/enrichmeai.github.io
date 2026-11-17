@@ -12870,6 +12870,44 @@ gcloud run deploy web --image=…/web:agent-1234 \
     <p class="note">A common split: GitHub Actions builds and tests on every PR; Harness promotes the built artefact through environments.</p>
   </article>
 
+  <article class="card wide" id="jenkins"><h3>Jenkins vs Harness: choose by requirement</h3>
+    <p><b>Jenkins</b> is the open-source automation server that began as Hudson and was renamed in 2011 after a dispute with Oracle; it is MIT-licensed, extended by plugins, and since Jenkins 2 (April 2016) builds are written as pipelines in a Groovy-based language (a <code>Jenkinsfile</code>). <b>Harness</b> is a commercial delivery platform with CI, CD and governance in one product, run as a service or as its Self-Managed Enterprise Edition on your own infrastructure.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards</th><th>Why</th></tr></thead>
+      <tbody>
+      <tr><td>No licence budget, and people who can run servers</td><td>Jenkins</td><td>Free and open source; you pay in operations time instead</td></tr>
+      <tr><td>Years of Jenkinsfiles and plugins that work</td><td>Jenkins, for now</td><td>Migration has a real cost; move when a requirement forces it</td></tr>
+      <tr><td>Fully offline or air-gapped</td><td>Either</td><td>Jenkins runs anywhere you install it; Harness Self-Managed documents an air-gapped install</td></tr>
+      <tr><td>Canary and blue-green releases without writing them yourself</td><td>Harness</td><td>Blue-green, canary and rolling deployments are built in; in Jenkins they are plugins and scripts you maintain</td></tr>
+      <tr><td>Central approvals, policies and audit across many teams</td><td>Harness</td><td>Governance is part of the product rather than assembled from plugins</td></tr>
+      <tr><td>Little appetite for patching servers and plugins</td><td>Harness (as a service), or GitHub Actions</td><td>Someone else runs the platform</td></tr>
+      <tr><td>Code already on GitHub, simple build and deploy</td><td>GitHub Actions</td><td>See &ldquo;Harness vs GitHub Actions&rdquo; above</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide"><h3>Is Jenkins fading? What the numbers say</h3>
+    <p>Jenkins publishes a monthly count of installations that send it anonymous usage statistics:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>January of</th><th>Installations reporting</th></tr></thead>
+      <tbody>
+      <tr><td>2019</td><td>232,746</td></tr>
+      <tr><td>2020</td><td>267,107</td></tr>
+      <tr><td>2021</td><td>279,894</td></tr>
+      <tr><td>2022</td><td>294,451</td></tr>
+      <tr><td>2023</td><td>293,726</td></tr>
+      <tr><td>2024</td><td>289,935</td></tr>
+      <tr><td>2025</td><td>267,475</td></tr>
+      <tr><td>2026</td><td>261,263</td></tr>
+      </tbody></table></div>
+    <ul>
+      <li><b>The peak</b> in the series was March 2023, with 320,774 installations reporting; the latest published month, February 2026, had 248,133, about 23% lower.</li>
+      <li><b>What this count is not:</b> it includes only installations with usage statistics switched on (administrators can turn reporting off), and it counts servers, not how much each one builds. A company that merges ten Jenkins servers into one shows up as a fall.</li>
+      <li><b>Meanwhile, hosted CI is growing:</b> GitHub reports 11.5 billion GitHub Actions minutes in public projects in 2025, up 35% on 2024. That counts public projects only, so it is a signal of direction, not a market share.</li>
+    </ul>
+    <p class="note"><i>Our view, from the numbers above:</i> Jenkins is declining from its 2023 peak, not disappearing: around a quarter of a million installations still report every month. New projects increasingly start on hosted CI; existing Jenkins estates are large and move slowly. <i>The other view:</i> the fall may partly be consolidation and opt-outs rather than teams leaving, and for self-hosted, air-gapped or cost-sensitive work Jenkins remains a reasonable choice.</p>
+    <p class="sources"><b>Checked against:</b> <a href="https://stats.jenkins.io/jenkins-stats/svg/total-jenkins.svg" target="_blank" rel="noopener">Jenkins usage statistics: total installations (monthly)</a>; <a href="https://github.com/jenkinsci/jenkins/blob/master/core/src/main/java/hudson/model/UsageStatistics.java" target="_blank" rel="noopener">Jenkins source: UsageStatistics (reporting can be switched off)</a>; <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/" target="_blank" rel="noopener">GitHub Octoverse 2025</a>; <a href="https://en.wikipedia.org/wiki/Jenkins_(software)" target="_blank" rel="noopener">Wikipedia: Jenkins</a>; <a href="https://developer.harness.io/docs/self-managed-enterprise-edition" target="_blank" rel="noopener">Harness Self-Managed Enterprise Edition</a>; <a href="https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts" target="_blank" rel="noopener">Harness deployment concepts and strategies</a>.</p>
+  </article>
+
   <article class="card wide"><h3>End to end: commit to production on Google Cloud</h3>
     <ol>
       <li><b>Trigger:</b> a push or merged pull request on GitHub starts the pipeline (webhook trigger on <code>main</code>; PR trigger runs CI only).</li>
