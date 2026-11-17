@@ -154,11 +154,11 @@
     <div class="tbl"><table>
       <thead><tr><th>When</th><th>Tool</th><th>What it brought</th></tr></thead>
       <tbody>
-      <tr><td>1976</td><td>Make</td><td>Stuart Feldman at Bell Labs: rebuild only what changed, from rules in a Makefile</td></tr>
+      <tr><td>1976</td><td>Make</td><td>Stuart Feldman at Bell Labs: rules in a Makefile, and a target rebuilt only when a source file is newer</td></tr>
       <tr><td>2000</td><td>Apache Ant</td><td>James Duncan Davidson, from the Tomcat project: a Java replacement for Make, with XML build files</td></tr>
       <tr><td>2004</td><td>Apache Maven</td><td>Jason van Zyl (started 2002): conventions instead of scripts, and dependencies downloaded from a repository</td></tr>
-      <tr><td>2008</td><td>Gradle</td><td>Builds on Ant and Maven with a programmable build language; first stable release in June 2012</td></tr>
-      <tr><td>2010</td><td>npm</td><td>Isaac Z. Schlueter: the package manager for Node.js, now bundled with it</td></tr>
+      <tr><td>2008</td><td>Gradle</td><td>Builds on the concepts of Ant and Maven, with a Groovy or Kotlin build language; first stable release in June 2012</td></tr>
+      <tr><td>2010</td><td>npm</td><td>Isaac Z. Schlueter: the package manager for Node.js, included in the Node.js installer</td></tr>
       <tr><td>2014</td><td>webpack</td><td>Bundles a web app's modules into files a browser loads</td></tr>
       <tr><td>2015</td><td>Bazel</td><td>Google's open-source port of its internal build tool Blaze (started 2006), for large monorepos</td></tr>
       <tr><td>2016</td><td>Yarn</td><td>Started by Sebastian McKenzie at Facebook; rewritten in 2020 (codename "Berry")</td></tr>
@@ -245,9 +245,7 @@ tasks.test { useJUnitPlatform() }
       <tbody>
       <tr><td>Build file</td><td>XML (<code>pom.xml</code>): declarative</td><td>Kotlin or Groovy: code</td></tr>
       <tr><td>Model</td><td>Fixed lifecycle of phases</td><td>Graph of tasks</td></tr>
-      <tr><td>Avoiding work</td><td>Each run starts the build again</td><td>Up-to-date checks, Daemon, build and configuration caches</td></tr>
       <tr><td>Versions in one place</td><td><code>dependencyManagement</code> and BOMs</td><td>Version catalogs and platforms</td></tr>
-      <tr><td>Where you often meet it</td><td>Much of server-side Java</td><td>Android, and many Kotlin projects</td></tr>
       </tbody></table></div>
     <p class="note"><i>Opinion:</i> pick Maven when you want every project to look the same and the build to stay boring; pick Gradle when the build is large or unusual enough that skipping work and writing logic pays for the extra power. A team that knows one well beats a team half-using either.</p>
   </article>
@@ -301,7 +299,7 @@ tasks.test { useJUnitPlatform() }
       <tr><td>Pin the tool itself</td><td>Commit <code>mvnw</code> or <code>gradlew</code></td><td><code>packageManager</code> in <code>package.json</code>, and a pinned Node version in CI</td></tr>
       <tr><td>Pin every dependency</td><td>BOMs, <code>dependencyManagement</code>, version catalogs</td><td>Commit the lockfile and install with <code>npm ci</code>. Yarn (<code>--immutable</code>) and pnpm refuse to change the lockfile on CI by default</td></tr>
       <tr><td>See why a version won</td><td><code>mvn dependency:tree</code>, <code>gradle dependencies</code></td><td><code>npm explain &lt;pkg&gt;</code>, <code>npm ls</code></td></tr>
-      <tr><td>Limit what runs at install</td><td>Review new plugins; they run with full access</td><td>Allow install scripts only for packages that need them</td></tr>
+      <tr><td>Limit what runs at install</td><td>Add plugins and extensions deliberately, from sources you trust</td><td>Allow install scripts only for packages that need them</td></tr>
       <tr><td>Make CI fast</td><td>Cache <code>~/.m2</code> or <code>~/.gradle</code>; Gradle's build cache</td><td>Cache the package manager's store, not <code>node_modules</code></td></tr>
       <tr><td>Upgrade on purpose</td><td colspan="2">Small, regular dependency updates (Dependabot or Renovate), each with a green build, beat one big upgrade a year</td></tr>
       </tbody></table></div>
