@@ -540,3 +540,13 @@ table.table td:first-child { padding-left: 10px; }
 .hero [style*="color:var(--color-text)"], .hero-below [style*="color:var(--color-text)"] { color: var(--color-white) !important; }
 .hero [style*="color:var(--color-neutral-700)"], .hero-below [style*="color:var(--color-neutral-700)"],
 .hero [style*="color:var(--color-neutral-800)"], .hero-below [style*="color:var(--color-neutral-800)"] { color: var(--color-accent-200) !important; }
+
+/* The guide link sits outside .site-nav so it survives the 1040px breakpoint that hides the nav:
+   every page header reaches the Well Rounded Engineer guide, phones included. */
+.header-guide { color: var(--color-accent-200); white-space: nowrap; flex-shrink: 0; font-size: 15px; font-weight: 600; }
+.header-guide:hover { color: var(--color-white); }
+.header-guide .hg-short { display: none; }
+/* Below 1440px the home header (six nav links, GitHub, the button) has no room for the full name, so
+   the link reads "Guide" (its accessible name stays the full one) and the GitHub text link gives way,
+   as it already did between 1041px and 1199px. */
+@media (max-width: 1439px) { .header-guide .hg-long { display: none; } .header-guide .hg-short { display: inline; } .header-text-link { display: none; } }
