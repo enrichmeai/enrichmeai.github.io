@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Specifications · Well Rounded Engineer</title>
+<meta name="description" content="Every protocol, file format and language in this guide is defined by a specification somewhere. Libraries and tutorials are other people’s readings of it.…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="specs" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 92 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp" open><summary>Architecture &amp; design<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/" aria-current="page">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Architecture &amp; design</span> / <span aria-current="page">Specifications</span></p>
+<section class="panel" id="specs" data-name="Specifications">
+  <div class="panel-head"><h1>Specifications: the documents everything is built on</h1><p>Every protocol, file format and language in this guide is defined by a specification somewhere. Libraries and tutorials are other people&rsquo;s readings of it. When two systems disagree, or a library behaves oddly, the specification is where the argument ends. This page gathers the ones engineers meet most often, says who publishes each, and shows how to read them.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-who-writes-specifications-and-how-they-become-fi"><h3>Who writes specifications, and how they become final</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Body</th><th>What it publishes</th><th>How a document becomes final</th></tr></thead>
+      <tbody>
+      <tr><td>IETF and the RFC Editor</td><td>RFCs: the Internet&rsquo;s protocols and formats (HTTP, TLS, JSON, OAuth)</td><td>Not every RFC is a standard: the IETF adopts some as Internet Standards, while many are informational or experimental. The header of each RFC says which (&ldquo;Category: Standards Track&rdquo;, &ldquo;Informational&rdquo;)</td></tr>
+      <tr><td>W3C</td><td>Web standards such as WCAG</td><td>Drafts move through the W3C Process to a W3C Recommendation, the finished standard</td></tr>
+      <tr><td>WHATWG</td><td>The HTML Living Standard and other web platform standards</td><td>A living standard: updated continuously rather than released as numbered versions</td></tr>
+      <tr><td>Ecma TC39</td><td>ECMA-262, the ECMAScript (JavaScript) language</td><td>Proposals move through numbered stages; at Stage 4 a proposal is finished and incorporated into the specification, which is published as a yearly edition</td></tr>
+      <tr><td>ISO and IEC, IEEE</td><td>SQL (ISO/IEC 9075), dates and times (ISO 8601), floating point (IEEE 754), POSIX (IEEE 1003)</td><td>Developed by the standards body&rsquo;s committees and published by the body</td></tr>
+      <tr><td>Open-source foundations</td><td>OpenAPI (OpenAPI Initiative, a Linux Foundation project), CloudEvents (CNCF), OpenTelemetry, OCI image format</td><td>Public repositories, working groups and tagged releases</td></tr>
+      <tr><td>Language communities</td><td>Java (the JLS and JVMS, with JDK Enhancement Proposals, JEPs, for changes), Python (PEPs)</td><td>A proposal document is discussed, accepted and implemented; a PEP is a design document with a concise technical specification and a rationale</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-how-to-read-a-specification"><h3>How to read a specification</h3>
+    <ul>
+      <li><b>Learn the key words.</b> RFC 2119 defines them: <b>MUST</b> (or REQUIRED, SHALL) is an absolute requirement; <b>SHOULD</b> (or RECOMMENDED) means there may be valid reasons to do otherwise, but the full implications must be understood and weighed first; <b>MAY</b> (or OPTIONAL) is truly optional.</li>
+      <li><b>Capitals matter.</b> RFC 8174 clarifies that the words carry that meaning only when they appear in capitals. A lower-case &ldquo;should&rdquo; is ordinary English.</li>
+      <li><b>Normative and informative.</b> Requirements are normative; examples, notes and appendices marked informative explain but do not bind.</li>
+      <li><b>Check the status and what replaced it.</b> An RFC&rsquo;s header lists what it obsoletes and updates: RFC 9110 (HTTP Semantics) obsoletes RFCs 7231, 7232, 7233, 7235 and several others, and portions of RFC 7230. Quote the current one.</li>
+      <li><b>Read the table of contents first,</b> then only the sections your question needs. Few people read a spec front to back the first time.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-why-it-is-worth-the-effort"><h3>Why it is worth the effort</h3>
+    <p><i>Our view:</i> reading the specification for the two or three formats you use every day pays back many times. You stop arguing from blog posts, you can tell a library bug from your own, and you can write a precise bug report: quoting the section of RFC 9110 on 404 Not Found settles a review in one line.</p>
+    <p><i>The other view:</i> specifications are long, formal and written for implementers. For most daily work a good library and its documentation are enough, and time spent on the spec is time not spent shipping. Go to the spec when the library and your expectation disagree.</p>
+  </article>
+
+  <article class="card wide" id="c-the-catalogue-web-http-and-security"><h3>The catalogue: web, HTTP and security</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Specification</th><th>Publisher</th><th>What it defines</th><th>See</th></tr></thead>
+      <tbody>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110: HTTP Semantics</a></td><td>IETF</td><td>The architecture, terminology and parts of HTTP shared by all its versions: methods, status codes, headers, and the http and https URI schemes</td><td><a href="/well-rounded-engineer/web/">Web Fundamentals</a></td></tr>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener">RFC 9457: Problem Details for HTTP APIs</a></td><td>IETF</td><td>A machine-readable error body for HTTP APIs, so each API need not invent its own (it obsoletes RFC 7807)</td><td><a href="/well-rounded-engineer/apis/">APIs</a></td></tr>
+      <tr><td><a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener">HTML Living Standard</a></td><td>WHATWG</td><td>HTML and the browser&rsquo;s handling of it, updated continuously</td><td><a href="/well-rounded-engineer/web/">Web Fundamentals</a></td></tr>
+      <tr><td><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG</a></td><td>W3C</td><td>Web Content Accessibility Guidelines</td><td><a href="/well-rounded-engineer/accessibility/">Accessibility</a></td></tr>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc8446" target="_blank" rel="noopener">RFC 8446: TLS</a></td><td>IETF</td><td>A version of Transport Layer Security, the protocol designed to prevent eavesdropping, tampering and message forgery</td><td><a href="/well-rounded-engineer/security/">Security</a></td></tr>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc6749" target="_blank" rel="noopener">RFC 6749: OAuth 2.0</a> and <a href="https://www.rfc-editor.org/rfc/rfc7636" target="_blank" rel="noopener">RFC 7636: PKCE</a></td><td>IETF</td><td>How an application obtains limited access to an HTTP service on a user&rsquo;s behalf; PKCE defends public clients against stolen authorisation codes</td><td><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></td></tr>
+      <tr><td>OpenID Connect</td><td>OpenID Foundation</td><td>An authentication layer on top of OAuth 2.0, so clients can verify who the user is</td><td><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></td></tr>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc7519" target="_blank" rel="noopener">RFC 7519: JSON Web Token</a></td><td>IETF</td><td>A compact, URL-safe way to carry claims between two parties</td><td><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-the-catalogue-data-formats-text-and-time"><h3>The catalogue: data formats, text and time</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Specification</th><th>Publisher</th><th>What it defines</th><th>See</th></tr></thead>
+      <tbody>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc8259" target="_blank" rel="noopener">RFC 8259: JSON</a></td><td>IETF</td><td>A lightweight, text-based, language-independent data interchange format, derived from ECMAScript</td><td><a href="/well-rounded-engineer/javascript/">JavaScript</a></td></tr>
+      <tr><td><a href="https://json-schema.org/specification" target="_blank" rel="noopener">JSON Schema</a></td><td>JSON Schema project</td><td>A vocabulary to validate and annotate JSON documents</td><td><a href="/well-rounded-engineer/apis/">APIs</a></td></tr>
+      <tr><td><a href="https://www.rfc-editor.org/rfc/rfc4180" target="_blank" rel="noopener">RFC 4180: CSV</a></td><td>IETF (informational)</td><td>A common format for comma-separated values and the text/csv media type. It is informational, not a standard. <i>Our view:</i> that is one reason CSV files differ in practice</td><td><a href="/well-rounded-engineer/data/">Data</a></td></tr>
+      <tr><td>YAML and <a href="https://toml.io/" target="_blank" rel="noopener">TOML</a></td><td>Their own projects</td><td>Configuration formats; TOML aims to be minimal, easy to read and to map unambiguously to a hash table</td><td><a href="/well-rounded-engineer/devops/">DevOps</a></td></tr>
+      <tr><td><a href="https://spec.commonmark.org/" target="_blank" rel="noopener">CommonMark</a></td><td>CommonMark project</td><td>A rationalised Markdown, with over 500 examples that serve as conformance tests</td><td><a href="/well-rounded-engineer/web/">Web Fundamentals</a></td></tr>
+      <tr><td><a href="https://github.com/apache/parquet-format" target="_blank" rel="noopener">Apache Parquet format</a> and Apache Iceberg table spec</td><td>Apache Software Foundation</td><td>A column-oriented data file format; and a table format for large analytic tables that many engines can share</td><td><a href="/well-rounded-engineer/data/">Data</a></td></tr>
+      <tr><td>Unicode and <a href="https://www.rfc-editor.org/rfc/rfc3629" target="_blank" rel="noopener">RFC 3629: UTF-8</a></td><td>Unicode Consortium; IETF</td><td>One character set for most of the world&rsquo;s writing systems, and UTF-8, the encoding that has been the most common on the web since 2008</td><td><a href="/well-rounded-engineer/web/">Web Fundamentals</a></td></tr>
+      <tr><td>ISO 8601 and <a href="https://www.rfc-editor.org/rfc/rfc3339" target="_blank" rel="noopener">RFC 3339</a></td><td>ISO; IETF</td><td>Dates and times in the Gregorian calendar with an optional UTC offset; RFC 3339 is a profile of ISO 8601 for Internet protocols</td><td><a href="/well-rounded-engineer/sql/">SQL</a></td></tr>
+      <tr><td>IEEE 754</td><td>IEEE</td><td>Floating-point arithmetic, the formats behind float and double. <i>Our view:</i> keep money in integer minor units or a decimal type instead</td><td><a href="/well-rounded-engineer/payments/">Payments</a></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-the-catalogue-apis-events-and-platforms"><h3>The catalogue: APIs, events and platforms</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Specification</th><th>Publisher</th><th>What it defines</th><th>See</th></tr></thead>
+      <tbody>
+      <tr><td><a href="https://github.com/OAI/OpenAPI-Specification" target="_blank" rel="noopener">OpenAPI</a></td><td>OpenAPI Initiative (Linux Foundation)</td><td>A language-agnostic interface description for HTTP APIs, readable by people and tools without the source code</td><td><a href="/well-rounded-engineer/apis/">APIs</a></td></tr>
+      <tr><td><a href="https://github.com/asyncapi/spec" target="_blank" rel="noopener">AsyncAPI</a></td><td>AsyncAPI project</td><td>A machine-readable description of message-driven APIs over any protocol, such as AMQP, MQTT, WebSockets or Kafka</td><td><a href="/well-rounded-engineer/kafka/">Kafka</a></td></tr>
+      <tr><td><a href="https://github.com/graphql/graphql-spec" target="_blank" rel="noopener">GraphQL</a></td><td>GraphQL project (GraphQL Foundation)</td><td>A query language for APIs, first created at Facebook</td><td><a href="/well-rounded-engineer/graphql/">GraphQL</a></td></tr>
+      <tr><td>Protocol Buffers and gRPC</td><td>Google (open source)</td><td>Protobuf: a language- and platform-neutral way to serialise structured data, with generated code. gRPC: a remote procedure call framework built on it</td><td><a href="/well-rounded-engineer/apis/">APIs</a></td></tr>
+      <tr><td><a href="https://github.com/cloudevents/spec" target="_blank" rel="noopener">CloudEvents</a></td><td>CNCF</td><td>A common way to describe event data, so producers and consumers across services and platforms can interoperate</td><td><a href="/well-rounded-engineer/architecture/">Architecture</a></td></tr>
+      <tr><td><a href="https://github.com/open-telemetry/opentelemetry-specification" target="_blank" rel="noopener">OpenTelemetry</a></td><td>OpenTelemetry project</td><td>The cross-language requirements and expectations for every OpenTelemetry implementation</td><td><a href="/well-rounded-engineer/observability/">Observability</a></td></tr>
+      <tr><td><a href="https://github.com/opencontainers/image-spec" target="_blank" rel="noopener">OCI Image Format</a></td><td>Open Container Initiative</td><td>The format of container images</td><td><a href="/well-rounded-engineer/docker/">Docker</a></td></tr>
+      <tr><td><a href="https://github.com/modelcontextprotocol/modelcontextprotocol" target="_blank" rel="noopener">Model Context Protocol</a></td><td>MCP project</td><td>An open protocol for giving AI applications access to tools and data; its schema is written in TypeScript and also published as JSON Schema</td><td><a href="/well-rounded-engineer/mcp/">MCP</a></td></tr>
+      <tr><td>POSIX (IEEE 1003)</td><td>Austin Group (IEEE, The Open Group, ISO/IEC)</td><td>A portable operating system interface, including a threading library API, that many Unix and Unix-like systems follow</td><td><a href="/well-rounded-engineer/linux/">Linux</a></td></tr>
+      <tr><td>SQL (ISO/IEC 9075)</td><td>ISO/IEC</td><td>The SQL language. Every database extends and departs from it, so check your engine&rsquo;s own documentation too</td><td><a href="/well-rounded-engineer/sql/">SQL</a></td></tr>
+      <tr><td><a href="https://semver.org/" target="_blank" rel="noopener">Semantic Versioning</a></td><td>semver.org</td><td>MAJOR for incompatible API changes, MINOR for backward-compatible features, PATCH for backward-compatible fixes</td><td><a href="/well-rounded-engineer/buildtools/">Build Tools</a></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-the-catalogue-languages"><h3>The catalogue: languages</h3>
+    <ul>
+      <li><b><a href="https://tc39.es/ecma262/" target="_blank" rel="noopener">ECMA-262</a></b>, the ECMAScript Language Specification, edited in public by TC39; proposals are tracked in its proposals repository (see <a href="/well-rounded-engineer/javascript/">JavaScript</a>).</li>
+      <li><b><a href="https://docs.oracle.com/javase/specs/" target="_blank" rel="noopener">The Java Language and Virtual Machine Specifications</a></b>, one edition per Java SE release; changes to the JDK are proposed as <a href="https://openjdk.org/jeps/1" target="_blank" rel="noopener">JEPs</a> (see <a href="/well-rounded-engineer/java/">Java</a>).</li>
+      <li><b><a href="https://peps.python.org/pep-0001/" target="_blank" rel="noopener">PEPs</a></b>, Python Enhancement Proposals, and the Python Language Reference (see <a href="/well-rounded-engineer/python/">Python</a>).</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-describing-an-interface-choose-by-requirement"><h3>Describing an interface: choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards</th></tr></thead>
+      <tbody>
+      <tr><td>Clients call you with HTTP requests and wait for a response</td><td>OpenAPI</td></tr>
+      <tr><td>Services publish and consume messages on a broker</td><td>AsyncAPI, with CloudEvents for the envelope</td></tr>
+      <tr><td>Clients need to choose the fields they get, across related data</td><td>GraphQL&rsquo;s schema</td></tr>
+      <tr><td>Typed calls between your own services, with streaming and generated clients</td><td>Protocol Buffers with gRPC</td></tr>
+      <tr><td>You only need to validate a JSON document, such as a config file or a message body</td><td>JSON Schema</td></tr>
+      <tr><td>An AI agent must discover and call your tools</td><td>MCP</td></tr>
+      </tbody></table></div>
+    <p class="note"><i>Our view:</i> write the description first and generate code from it, so the document is the contract. <i>The other view:</i> generating the description from code keeps it from drifting from what runs, and suits teams that change the API often.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Read MUST, SHOULD and MAY as RFC 2119 and RFC 8174 define them</li><li>Find the specification behind a format or protocol you use every day</li><li>Tell an RFC that is a standard from one that is informational</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Settle a disagreement by quoting the section of a spec</li><li>Describe an API in OpenAPI, AsyncAPI, GraphQL or Protobuf</li><li>Check which RFCs a document obsoletes before you cite it</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose an interface description by requirement</li><li>Write a specification other teams can build from</li><li>Track proposals that will change your stack (JEPs, PEPs, TC39 stages)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Represent your organisation in a standards body or working group</li><li>Set the interface and versioning standards across an organisation</li><li>Contribute to a specification or its conformance tests</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>RFC 2119 key words</li><li>IETF, W3C, WHATWG, TC39 and ISO</li><li>HTTP, TLS, OAuth and JWT RFCs</li><li>JSON, CSV, Unicode and dates</li><li>OpenAPI, AsyncAPI, GraphQL, Protobuf and CloudEvents</li><li>Language specifications and enhancement proposals</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.rfc-editor.org/rfc/rfc2119" target="_blank" rel="noopener">RFC 2119: key words for requirement levels</a><span class="lnote"> MUST, SHOULD, MAY</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110: HTTP Semantics</a><span class="lnote"> The HTTP every version shares</span></li><li><a href="https://github.com/OAI/OpenAPI-Specification" target="_blank" rel="noopener">The OpenAPI Specification</a><span class="lnote"> Describing HTTP APIs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://www.rfc-editor.org/rfc/rfc2119" target="_blank" rel="noopener">RFC 2119</a>; <a href="https://www.rfc-editor.org/rfc/rfc8174" target="_blank" rel="noopener">RFC 8174</a>; <a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110</a>; <a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener">RFC 9457</a>; <a href="https://www.rfc-editor.org/rfc/rfc8259" target="_blank" rel="noopener">RFC 8259</a>; <a href="https://www.rfc-editor.org/rfc/rfc4180" target="_blank" rel="noopener">RFC 4180</a>; <a href="https://www.rfc-editor.org/rfc/rfc3629" target="_blank" rel="noopener">RFC 3629</a>; <a href="https://www.rfc-editor.org/rfc/rfc3339" target="_blank" rel="noopener">RFC 3339</a>; <a href="https://www.rfc-editor.org/rfc/rfc8446" target="_blank" rel="noopener">RFC 8446</a>; <a href="https://www.rfc-editor.org/rfc/rfc6749" target="_blank" rel="noopener">RFC 6749</a>; <a href="https://www.rfc-editor.org/rfc/rfc7636" target="_blank" rel="noopener">RFC 7636</a>; <a href="https://www.rfc-editor.org/rfc/rfc7519" target="_blank" rel="noopener">RFC 7519</a>; <a href="https://en.wikipedia.org/wiki/Request_for_Comments" target="_blank" rel="noopener">Wikipedia: Request for Comments</a>; <a href="https://www.w3.org/standards/" target="_blank" rel="noopener">W3C standards</a>; <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium" target="_blank" rel="noopener">Wikipedia: World Wide Web Consortium</a>; <a href="https://en.wikipedia.org/wiki/WHATWG" target="_blank" rel="noopener">Wikipedia: WHATWG</a>; <a href="https://github.com/tc39/process-document" target="_blank" rel="noopener">TC39 process document</a>; <a href="https://github.com/tc39/ecma262" target="_blank" rel="noopener">ECMA-262 repository</a>; <a href="https://openjdk.org/jeps/1" target="_blank" rel="noopener">JEP 1</a>; <a href="https://peps.python.org/pep-0001/" target="_blank" rel="noopener">PEP 1</a>; <a href="https://docs.oracle.com/javase/specs/" target="_blank" rel="noopener">Java SE Specifications</a>; <a href="https://github.com/OAI/OpenAPI-Specification" target="_blank" rel="noopener">OpenAPI Specification README</a>; <a href="https://github.com/asyncapi/spec" target="_blank" rel="noopener">AsyncAPI specification</a>; <a href="https://github.com/graphql/graphql-spec" target="_blank" rel="noopener">GraphQL specification</a>; <a href="https://github.com/protocolbuffers/protocolbuffers.github.io" target="_blank" rel="noopener">Protocol Buffers overview</a>; <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank" rel="noopener">Wikipedia: gRPC</a>; <a href="https://github.com/cloudevents/spec" target="_blank" rel="noopener">CloudEvents</a>; <a href="https://github.com/open-telemetry/opentelemetry-specification" target="_blank" rel="noopener">OpenTelemetry specification</a>; <a href="https://github.com/opencontainers/image-spec" target="_blank" rel="noopener">OCI Image Format</a>; <a href="https://github.com/modelcontextprotocol/modelcontextprotocol" target="_blank" rel="noopener">Model Context Protocol repository</a>; <a href="https://json-schema.org/specification" target="_blank" rel="noopener">JSON Schema specification</a>; <a href="https://github.com/commonmark/commonmark-spec" target="_blank" rel="noopener">CommonMark</a>; <a href="https://github.com/toml-lang/toml" target="_blank" rel="noopener">TOML</a>; <a href="https://github.com/apache/parquet-format" target="_blank" rel="noopener">Apache Parquet format</a>; <a href="https://en.wikipedia.org/wiki/Apache_Iceberg" target="_blank" rel="noopener">Wikipedia: Apache Iceberg</a>; <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener">Wikipedia: Unicode (UTF-8 on the web)</a>; <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank" rel="noopener">Wikipedia: ISO 8601</a>; <a href="https://en.wikipedia.org/wiki/IEEE_754" target="_blank" rel="noopener">Wikipedia: IEEE 754</a>; <a href="https://en.wikipedia.org/wiki/POSIX" target="_blank" rel="noopener">Wikipedia: POSIX</a>; <a href="https://en.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">Wikipedia: SQL (ISO/IEC 9075)</a>; <a href="https://en.wikipedia.org/wiki/OpenID" target="_blank" rel="noopener">Wikipedia: OpenID (OpenID Connect)</a>; <a href="https://semver.org/" target="_blank" rel="noopener">Semantic Versioning</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BSpecifications%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/sysdesign/">← System Design</a><a class="pn-next" href="/well-rounded-engineer/caching/">Caching →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-who-writes-specifications-and-how-they-become-fi">Who writes specifications, and how they become final</a><a href="#c-how-to-read-a-specification">How to read a specification</a><a href="#c-why-it-is-worth-the-effort">Why it is worth the effort</a><a href="#c-the-catalogue-web-http-and-security">The catalogue: web, HTTP and security</a><a href="#c-the-catalogue-data-formats-text-and-time">The catalogue: data formats, text and time</a><a href="#c-the-catalogue-apis-events-and-platforms">The catalogue: APIs, events and platforms</a><a href="#c-the-catalogue-languages">The catalogue: languages</a><a href="#c-describing-an-interface-choose-by-requirement">Describing an interface: choose by requirement</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

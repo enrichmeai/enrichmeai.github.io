@@ -883,6 +883,34 @@ D["banking"]=dict(
           ("OpenJDK JEP 333: ZGC, and JEP 439: Generational ZGC","https://openjdk.org/jeps/439"),("Wikipedia: Nagle's algorithm (TCP_NODELAY)","https://en.wikipedia.org/wiki/Nagle%27s_algorithm"),
           ("Wikipedia: Data Plane Development Kit","https://en.wikipedia.org/wiki/Data_Plane_Development_Kit"),("wrk2 README (coordinated omission)","https://github.com/giltene/wrk2")])
 
+D["specs"]=dict(
+ F=["Read MUST, SHOULD and MAY as RFC 2119 and RFC 8174 define them","Find the specification behind a format or protocol you use every day","Tell an RFC that is a standard from one that is informational"],
+ P=["Settle a disagreement by quoting the section of a spec","Describe an API in OpenAPI, AsyncAPI, GraphQL or Protobuf","Check which RFCs a document obsoletes before you cite it"],
+ S=["Choose an interface description by requirement","Write a specification other teams can build from","Track proposals that will change your stack (JEPs, PEPs, TC39 stages)"],
+ E=["Represent your organisation in a standards body or working group","Set the interface and versioning standards across an organisation","Contribute to a specification or its conformance tests"],
+ topics=["RFC 2119 key words","IETF, W3C, WHATWG, TC39 and ISO","HTTP, TLS, OAuth and JWT RFCs","JSON, CSV, Unicode and dates","OpenAPI, AsyncAPI, GraphQL, Protobuf and CloudEvents","Language specifications and enhancement proposals"],
+ links=[("RFC 2119: key words for requirement levels","https://www.rfc-editor.org/rfc/rfc2119","MUST, SHOULD, MAY"),
+        ("RFC 9110: HTTP Semantics","https://www.rfc-editor.org/rfc/rfc9110","The HTTP every version shares"),
+        ("The OpenAPI Specification","https://github.com/OAI/OpenAPI-Specification","Describing HTTP APIs")],
+ sources=[("RFC 2119","https://www.rfc-editor.org/rfc/rfc2119"),("RFC 8174","https://www.rfc-editor.org/rfc/rfc8174"),("RFC 9110","https://www.rfc-editor.org/rfc/rfc9110"),
+          ("RFC 9457","https://www.rfc-editor.org/rfc/rfc9457"),("RFC 8259","https://www.rfc-editor.org/rfc/rfc8259"),("RFC 4180","https://www.rfc-editor.org/rfc/rfc4180"),
+          ("RFC 3629","https://www.rfc-editor.org/rfc/rfc3629"),("RFC 3339","https://www.rfc-editor.org/rfc/rfc3339"),("RFC 8446","https://www.rfc-editor.org/rfc/rfc8446"),
+          ("RFC 6749","https://www.rfc-editor.org/rfc/rfc6749"),("RFC 7636","https://www.rfc-editor.org/rfc/rfc7636"),("RFC 7519","https://www.rfc-editor.org/rfc/rfc7519"),
+          ("Wikipedia: Request for Comments","https://en.wikipedia.org/wiki/Request_for_Comments"),("W3C standards","https://www.w3.org/standards/"),
+          ("Wikipedia: World Wide Web Consortium","https://en.wikipedia.org/wiki/World_Wide_Web_Consortium"),("Wikipedia: WHATWG","https://en.wikipedia.org/wiki/WHATWG"),
+          ("TC39 process document","https://github.com/tc39/process-document"),("ECMA-262 repository","https://github.com/tc39/ecma262"),
+          ("JEP 1","https://openjdk.org/jeps/1"),("PEP 1","https://peps.python.org/pep-0001/"),("Java SE Specifications","https://docs.oracle.com/javase/specs/"),
+          ("OpenAPI Specification README","https://github.com/OAI/OpenAPI-Specification"),("AsyncAPI specification","https://github.com/asyncapi/spec"),
+          ("GraphQL specification","https://github.com/graphql/graphql-spec"),("Protocol Buffers overview","https://github.com/protocolbuffers/protocolbuffers.github.io"),
+          ("Wikipedia: gRPC","https://en.wikipedia.org/wiki/GRPC"),("CloudEvents","https://github.com/cloudevents/spec"),
+          ("OpenTelemetry specification","https://github.com/open-telemetry/opentelemetry-specification"),("OCI Image Format","https://github.com/opencontainers/image-spec"),
+          ("Model Context Protocol repository","https://github.com/modelcontextprotocol/modelcontextprotocol"),("JSON Schema specification","https://json-schema.org/specification"),
+          ("CommonMark","https://github.com/commonmark/commonmark-spec"),("TOML","https://github.com/toml-lang/toml"),("Apache Parquet format","https://github.com/apache/parquet-format"),
+          ("Wikipedia: Apache Iceberg","https://en.wikipedia.org/wiki/Apache_Iceberg"),("Wikipedia: Unicode (UTF-8 on the web)","https://en.wikipedia.org/wiki/Unicode"),
+          ("Wikipedia: ISO 8601","https://en.wikipedia.org/wiki/ISO_8601"),("Wikipedia: IEEE 754","https://en.wikipedia.org/wiki/IEEE_754"),
+          ("Wikipedia: POSIX","https://en.wikipedia.org/wiki/POSIX"),("Wikipedia: SQL (ISO/IEC 9075)","https://en.wikipedia.org/wiki/SQL"),
+          ("Wikipedia: OpenID (OpenID Connect)","https://en.wikipedia.org/wiki/OpenID"),("Semantic Versioning","https://semver.org/")])
+
 D["retailcloud"]=dict(
  F=["Name the systems a retailer connects and what each one owns","Explain why a till must keep selling offline","Explain the difference between an event and an API call"],
  P=["Build store-and-forward with idempotent receivers","Map a retail flow onto AWS, Azure or Google Cloud services","Connect a data centre to a cloud over a private link"],
