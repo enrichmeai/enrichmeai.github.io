@@ -1159,3 +1159,14 @@ D["microservices"].setdefault("sources",[]).extend([
  ("GitHub: Troubleshooting required status checks (skipped but required checks)","https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks"),
  ("Nx README (runs only what is affected)","https://github.com/nrwl/nx"),
  ("Uber Technology Day: Monorepo to Multirepo and Back Again (talk, 2017, cited by Wikipedia)","https://www.youtube.com/watch?v=lV8-1S28ycM")])
+
+D["testing"].setdefault("sources",[]).extend([
+ ("Playwright README","https://github.com/microsoft/playwright"),("Playwright docs: auto-waiting (actionability)","https://playwright.dev/docs/actionability"),
+ ("Playwright docs: locators","https://playwright.dev/docs/locators"),("Playwright docs: assertions","https://playwright.dev/docs/test-assertions"),
+ ("Playwright docs: Trace Viewer","https://playwright.dev/docs/trace-viewer-intro"),("Playwright docs: API testing","https://playwright.dev/docs/api-testing"),
+ ("Newman README","https://github.com/postmanlabs/newman"),("Postman sandbox (pm API)","https://github.com/postmanlabs/postman-sandbox"),("Wikipedia: Postman","https://en.wikipedia.org/wiki/Postman_(software)"),
+ ("REST Assured","https://github.com/rest-assured/rest-assured"),("HTTPX","https://github.com/encode/httpx"),("Bruno README","https://github.com/usebruno/bruno"),
+ ("k6 README","https://github.com/grafana/k6"),("Gatling README","https://github.com/gatling/gatling"),("Locust README","https://github.com/locustio/locust"),("Apache JMeter README","https://github.com/apache/jmeter")])
+D["performance"].setdefault("sources",[]).extend([
+ ("Oracle: Java 21 GC tuning, available collectors","https://docs.oracle.com/en/java/javase/21/gctuning/available-collectors.html"),
+ ("Oracle: the java command (MaxRAMPercentage)","https://docs.oracle.com/en/java/javase/21/docs/specs/man/java.html")])
