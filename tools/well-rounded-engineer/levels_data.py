@@ -1048,6 +1048,32 @@ D["realtime"]=dict(
           ("AWS AppSync: real-time data","https://docs.aws.amazon.com/appsync/latest/devguide/aws-appsync-real-time-data.html"),("API Gateway WebSocket APIs","https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html"),
           ("Azure Web PubSub","https://learn.microsoft.com/en-us/azure/azure-web-pubsub/overview"),("ASP.NET Core SignalR","https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction")])
 
+D["patterns"]=dict(
+ F=["Name the five SOLID principles and the smell each one fixes","Recognise Strategy, Observer, Decorator, Adapter and Builder in code you read","Explain why a subclass must keep its parent's promises"],
+ P=["Refactor a growing switch into a strategy or a sealed type","Inject dependencies so logic is testable without infrastructure","Name a pattern in a code review, and say why it fits"],
+ S=["Decide when a pattern earns its place and when it is speculative","Design module boundaries with dependency inversion","Keep an inheritance hierarchy honest, or replace it with composition"],
+ E=["Set design standards a whole organisation can review against","Teach patterns as answers to problems, not as goals","Judge which principles change shape in functional code"],
+ topics=["Single responsibility and open-closed","Liskov substitution and interface segregation","Dependency inversion and injection","The Gang of Four patterns","YAGNI and simple design"],
+ links=[("Fowler: Inversion of Control Containers and the Dependency Injection pattern","https://martinfowler.com/articles/injection.html","Where the name comes from"),
+        ("Fowler: Yagni","https://martinfowler.com/bliki/Yagni.html","Presumptive features"),
+        ("Fowler: Beck Design Rules","https://martinfowler.com/bliki/BeckDesignRules.html","Four rules of simple design")],
+ sources=[("Wikipedia: SOLID","https://en.wikipedia.org/wiki/SOLID"),
+          ("Wikipedia: Single-responsibility principle","https://en.wikipedia.org/wiki/Single-responsibility_principle"),
+          ("Wikipedia: Open–closed principle","https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle"),
+          ("Wikipedia: Liskov substitution principle","https://en.wikipedia.org/wiki/Liskov_substitution_principle"),
+          ("Wikipedia: Interface segregation principle","https://en.wikipedia.org/wiki/Interface_segregation_principle"),
+          ("Wikipedia: Dependency inversion principle","https://en.wikipedia.org/wiki/Dependency_inversion_principle"),
+          ("Wikipedia: Design Patterns","https://en.wikipedia.org/wiki/Design_Patterns"),
+          ("Wikipedia: Strategy pattern","https://en.wikipedia.org/wiki/Strategy_pattern"),
+          ("Wikipedia: Observer pattern","https://en.wikipedia.org/wiki/Observer_pattern"),
+          ("Wikipedia: Decorator pattern","https://en.wikipedia.org/wiki/Decorator_pattern"),
+          ("Wikipedia: Singleton pattern","https://en.wikipedia.org/wiki/Singleton_pattern"),
+          ("Wikipedia: Template method pattern","https://en.wikipedia.org/wiki/Template_method_pattern"),
+          ("Wikipedia: Proxy pattern","https://en.wikipedia.org/wiki/Proxy_pattern"),
+          ("Wikipedia: Dependency injection","https://en.wikipedia.org/wiki/Dependency_injection"),
+          ("Wikipedia: Anti-pattern","https://en.wikipedia.org/wiki/Anti-pattern"),
+          ("Fowler: Inversion of Control Containers and the Dependency Injection pattern (2004)","https://martinfowler.com/articles/injection.html"),("Fowler: Yagni","https://martinfowler.com/bliki/Yagni.html"),("Fowler: Beck Design Rules","https://martinfowler.com/bliki/BeckDesignRules.html")])
+
 D["bitcoin"]=dict(
  F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
  P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
