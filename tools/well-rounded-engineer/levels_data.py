@@ -987,6 +987,32 @@ D["awsdata"]=dict(
         ("AWS Lake Formation documentation","https://docs.aws.amazon.com/lake-formation/","Fine-grained data access"),
         ("AWS SDK for pandas","https://github.com/aws/aws-sdk-pandas","Open-source pandas integration for S3, Athena, Glue and Redshift")])
 
+D["azuredata"]=dict(
+ F=["Name the Azure service for each data stage","Land files in Data Lake Storage and query them with SQL","Explain managed identities for data jobs"],
+ P=["Build a pipeline: Data Lake Storage raw, Data Factory or Spark, curated Delta or Iceberg, SQL","Grant access with Azure roles and ACLs together","Run and monitor Data Factory pipelines from the CLI"],
+ S=["Choose between Fabric and separate Azure services","Design a governed lake with Purview","Plan cost with access tiers, lifecycle policies and capacity"],
+ E=["Own the organisation's Azure data architecture","Lead migrations between clouds or from on-premises","Set data platform standards across teams"],
+ topics=["Data Lake Storage and the hierarchical namespace","Microsoft Fabric and OneLake","Data Factory and change data capture","Event Hubs and its Kafka endpoint","Azure roles, ACLs and Purview"],
+ links=[("Azure Data Lake Storage introduction","https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction","The lake's storage"),
+        ("What is Microsoft Fabric?","https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview","The analytics platform"),
+        ("Azure Data Factory introduction","https://learn.microsoft.com/en-us/azure/data-factory/introduction","Pipelines and copy"),
+        ("Access control model in Data Lake Storage","https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control-model","Roles, conditions and ACLs together")],
+ sources=[("Data Lake Storage introduction","https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction"),("What is Event Hubs?","https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-about"),
+          ("Event Hubs for Apache Kafka","https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-apache-kafka-overview"),("Data Factory introduction","https://learn.microsoft.com/en-us/azure/data-factory/introduction"),
+          ("Change data capture in Data Factory","https://learn.microsoft.com/en-us/azure/data-factory/concepts-change-data-capture"),("What is Microsoft Fabric?","https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview"),
+          ("OneLake overview","https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview"),("Fabric Data Warehouse","https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing"),
+          ("What is Azure Synapse?","https://learn.microsoft.com/en-us/azure/synapse-analytics/overview-what-is"),("Synapse serverless SQL pool","https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/on-demand-workspace-overview"),
+          ("What is Azure Databricks?","https://learn.microsoft.com/en-us/azure/databricks/introduction/"),("Azure Stream Analytics","https://learn.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction"),
+          ("Apache Airflow jobs in Fabric","https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-concepts"),("Azure Data Explorer","https://learn.microsoft.com/en-us/azure/data-explorer/data-explorer-overview"),
+          ("Microsoft Purview","https://learn.microsoft.com/en-us/purview/purview"),("What is Power BI?","https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-overview"),
+          ("Managed identities","https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"),("Access control model in Data Lake Storage","https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control-model"),
+          ("Blob access tiers","https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview"),("Blob lifecycle management","https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview"),
+          ("Pause and resume a Fabric capacity","https://learn.microsoft.com/en-us/fabric/enterprise/pause-resume"),("Cost Management best practices","https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices"),
+          ("Azure CLI help: storage","https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/_help.py"),
+          ("Azure CLI help: eventhubs","https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/eventhubs/_help.py"),
+          ("Azure CLI help: role","https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/role/_help.py"),
+          ("Azure CLI extension help: datafactory","https://github.com/Azure/azure-cli-extensions/blob/main/src/datafactory/azext_datafactory/generated/_help.py")])
+
 D["bitcoin"]=dict(
  F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
  P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
