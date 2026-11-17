@@ -1061,4 +1061,5 @@ D["microservices"].setdefault("sources",[]).extend([
  ("Git partial clone","https://git-scm.com/docs/partial-clone"),
  ("GitHub: About code owners","https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"),
  ("GitHub: Troubleshooting required status checks (skipped but required checks)","https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks"),
- ("Nx README (runs only what is affected)","https://github.com/nrwl/nx")])
+ ("Nx README (runs only what is affected)","https://github.com/nrwl/nx"),
+ ("Uber Technology Day: Monorepo to Multirepo and Back Again (talk, 2017, cited by Wikipedia)","https://www.youtube.com/watch?v=lV8-1S28ycM")])
