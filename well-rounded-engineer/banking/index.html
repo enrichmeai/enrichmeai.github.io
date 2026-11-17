@@ -69,7 +69,7 @@
       <li><b>Core banking:</b> the system that centralises the bank&rsquo;s record keeping for deposits, loans and accounts, so any branch or channel sees one record.</li>
       <li><b>Payment schemes:</b> connections to card networks, instant payment schemes and slower batch schemes, each with its own message formats and deadlines.</li>
       <li><b>Ledger and reporting:</b> the general ledger, regulatory reports, reconciliation.</li>
-      <li><b>Mainframes and COBOL:</b> COBOL is used mainly in business, finance and administrative systems, and is still widely used on mainframes for large-scale batch and transaction processing; most COBOL work today maintains existing applications. Some mainframe models run each instruction twice and compare the results, to catch hardware faults.</li>
+      <li><b>Mainframes and COBOL:</b> COBOL is used mainly in business, finance and administrative systems, and is still widely used on mainframes for large-scale batch and transaction processing; most COBOL work today maintains existing applications. Some IBM mainframes (z900 to System z10) execute instructions twice and compare the results, to catch hardware faults.</li>
     </ul>
   </article>
 
@@ -103,17 +103,17 @@
       <tr><td>An instant payment</td><td>Finishing every check inside the scheme&rsquo;s deadline</td><td>A whole journey within seconds (SEPA Instant: under ten), with a known budget per step</td></tr>
       <tr><td>A market-data or trading system</td><td>Reacting before the competition</td><td>Under a millisecond is often called &ldquo;ultra low latency&rdquo;, and the bar keeps moving</td></tr>
       </tbody></table></div>
-    <p><b>Physics sets the floor.</b> Light in a vacuum covers a kilometre in about 3.3&nbsp;microseconds; in optical fibre, with a core refractive index around 1.45, it takes about 4.8. So a trading engine 150&nbsp;km from an exchange can never get a round trip under about a millisecond, before any software runs. This is why co-location, running servers in the exchange&rsquo;s own data centre, is one of the defining features of high-frequency trading.</p>
+    <p><b>Physics sets the floor.</b> Light in a vacuum covers a kilometre in about 3&nbsp;microseconds, so a trading engine 150&nbsp;km from an exchange can never get a round trip under 1&nbsp;millisecond, before any software runs. Fibre is slower: its core has a refractive index of about 1.4475, which works out (<i>our calculation</i>) at roughly 4.8&nbsp;microseconds per kilometre, or about 1.4&nbsp;ms for that round trip. This is why co-location, running servers in the exchange&rsquo;s own data centre, is one of the defining features of high-frequency trading.</p>
   </article>
 
   <article class="card wide" id="c-techniques-and-what-each-one-costs-choose-by-req"><h3>Techniques, and what each one costs: choose by requirement</h3>
     <div class="tbl"><table>
-      <thead><tr><th>If this is your problem</th><th>Consider</th><th>What it costs you</th></tr></thead>
+      <thead><tr><th>If this is your problem</th><th>Consider</th><th>What it costs you (<i>analysis</i>)</th></tr></thead>
       <tbody>
       <tr><td>You do not know where the time goes</td><td>Measure first: tracing per hop, percentiles, a profiler (see <a href="/well-rounded-engineer/performance/">Performance</a>)</td><td>Time; nothing else on this list is worth doing before it</td></tr>
-      <tr><td>Database round trips dominate</td><td>Keep the working state in memory and the database for durability: LMAX&rsquo;s trading platform runs its business logic in memory with event sourcing, and reported 6 million orders per second on a single thread</td><td>Recovery by replaying events; careful design of snapshots</td></tr>
+      <tr><td>Database round trips dominate</td><td>Keep the working state in memory and the database for durability: LMAX&rsquo;s trading platform runs its business logic in memory with event sourcing, and its business logic processor was reported to handle 6 million orders per second on a single thread, in its team&rsquo;s own benchmark</td><td>Recovery by replaying events; careful design of snapshots</td></tr>
       <tr><td>Threads wait on locks and queues</td><td>Single-threaded business logic fed by lock-free ring buffers (LMAX&rsquo;s Disruptor); fewer hand-offs between threads</td><td>A programming model most teams have not used</td></tr>
-      <tr><td>Garbage-collection pauses on the JVM</td><td>A low-pause collector: ZGC pauses application threads only briefly, measured in microseconds; or allocate less on the hot path</td><td>Some throughput and memory overhead</td></tr>
+      <tr><td>Garbage-collection pauses on the JVM</td><td>A low-pause collector: with Generational ZGC (JEP 439), pause times are measured in microseconds; or allocate less on the hot path</td><td>Some throughput and memory overhead</td></tr>
       <tr><td>Small messages wait in the network stack</td><td>Turn off Nagle&rsquo;s algorithm with <code>TCP_NODELAY</code></td><td>More, smaller packets on the network</td></tr>
       <tr><td>The kernel&rsquo;s network stack itself is too slow</td><td>Kernel bypass, such as DPDK, which processes packets entirely in user space</td><td>Specialised hardware and skills; you take over what the kernel did</td></tr>
       <tr><td>Distance dominates</td><td>Move closer: same region, same data centre, or co-location at the exchange</td><td>Money, and less freedom over where you run</td></tr>
