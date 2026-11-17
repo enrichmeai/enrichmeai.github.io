@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="ai">
+<body data-tab="ai" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/" aria-current="page">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp" open><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/" aria-current="page">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>AI</span> / <span aria-current="page">AI for Engineers</span></p>
 <section class="panel" id="ai" data-name="AI">
   <div class="panel-head"><h1>AI for engineers</h1><p>How language models behave, how to build features on them that you can test and operate, and how to work with AI assistants without lowering the bar.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Use AI like a bulldozer, not a shovel</h3>
+  <article class="card wide" id="c-use-ai-like-a-bulldozer-not-a-shovel"><h3>Use AI like a bulldozer, not a shovel</h3>
     <p>A shovel moves one scoop at a time while you hold the handle: ask for a line, paste it, ask again. A bulldozer moves the whole job while you choose where it goes, set the boundaries and check the result. The second gets far more done, but only if you prepare the site. And only if you know enough to manage the site: see <a href="/well-rounded-engineer/">Fundamentals first</a> on Start here.</p>
     <div class="tbl"><table>
       <thead><tr><th>Shovel habit</th><th>Bulldozer habit</th></tr></thead>
@@ -157,7 +67,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Preparing the site</h3>
+  <article class="card" id="c-preparing-the-site"><h3>Preparing the site</h3>
     <ul>
       <li><b>Context file in the repo:</b> what the system is, how to build and test it, the rules that are not negotiable, the traps that cost time before.</li>
       <li><b>Fast, exact gates:</b> the commands that prove a change is done, written down so the agent runs them itself.</li>
@@ -168,7 +78,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>A brief that moves earth</h3>
+  <article class="card" id="c-a-brief-that-moves-earth"><h3>A brief that moves earth</h3>
 <div class="snip"><pre><code>(An illustrative brief: the problem and the paths are examples.)
 Goal:     Reject dates that do not parse, instead of storing NULL.
 Why:      One source sends dd-mm-yyyy; the parser turns those into NULL
@@ -184,7 +94,7 @@ Report:   what changed, the test output, anything you could not verify.</code></
     <p class="note">Goal, reason, location, rules, a checkable definition of done, scope, and what to report. The same brief works for a colleague.</p>
   </article>
 
-  <article class="card"><h3>Where you still drive by hand</h3>
+  <article class="card" id="c-where-you-still-drive-by-hand"><h3>Where you still drive by hand</h3>
     <ul>
       <li><b>Irreversible actions:</b> production deploys, data deletion, schema changes on live data, anything sent outside the company.</li>
       <li><b>Unclear requirements:</b> decide what to build first; an agent will fill gaps with plausible guesses.</li>
@@ -195,7 +105,7 @@ Report:   what changed, the test output, anything you could not verify.</code></
     <p class="note">The bulldozer is only as safe as its operator. Speed comes from preparation and checks, not from skipping them.</p>
   </article>
 
-  <article class="card wide"><h3>Why everyone's experience of AI is different</h3>
+  <article class="card wide" id="c-why-everyone-s-experience-of-ai-is-different"><h3>Why everyone's experience of AI is different</h3>
     <p>Ask ten people what AI is like at writing code and you will hear ten different answers, often strongly held, including from people who have never written code. Most of them are honest. They are describing different experiences, not the same one.</p>
     <ul>
       <li><b>What you bring decides what you get.</b> If you cannot read the code, you cannot tell good output from output that only looks good. An experienced engineer spots the bug, writes a precise brief, and knows when to stop and do it by hand. Same tool, very different results.</li>
@@ -209,7 +119,7 @@ Report:   what changed, the test output, anything you could not verify.</code></
     <p><b>So everyone is right about what they experienced, and none of it is the whole truth for everyone else.</b> When you hear a strong view, ask: what did you try it on, for how long, and how did you check the result? Share specifics, not verdicts. And before forming your own view, try it yourself on real work, then check the result properly (see <a href="/well-rounded-engineer/behaviours/">Behaviours</a>: learn by doing, not by opinion). We still need solid foundations and guard rails: learn to drive first (see <a href="/well-rounded-engineer/">Start here</a>: fundamentals first), then drive on a road with barriers.</p>
   </article>
 
-  <article class="card wide"><h3>Blueprints and frameworks, not generated boilerplate</h3>
+  <article class="card wide" id="c-blueprints-and-frameworks-not-generated-boilerpl"><h3>Blueprints and frameworks, not generated boilerplate</h3>
     <p>AI makes boilerplate cost almost nothing to <i>write</i>. It does not make it cheap to <i>own</i>. Every generated copy has to be reviewed, secured, tested, upgraded and debugged, and fifty copies that are each slightly different are fifty places to fix the same bug. A blueprint (a framework, shared library, template, Terraform module or dbt package) makes each decision once, tests it once, and fixes it once for everyone.</p>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Generated boilerplate</th><th>Blueprint or framework</th></tr></thead>
@@ -231,7 +141,7 @@ Report:   what changed, the test output, anything you could not verify.</code></
     <p class="note">Examples in this guide: Spring Boot starters and Quarkus extensions; a Terraform module for every Cloud Run job; dbt macros, generic tests and packages; a shared library such as Culvert for storage and warehouse access; a service template in Backstage or Cookiecutter; and a written build-loop blueprint that is ported between repos instead of re-prompted in each. More on the <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI Boilerplate</a> tab.</p>
   </article>
 
-  <article class="card"><h3>How models behave</h3>
+  <article class="card" id="c-how-models-behave"><h3>How models behave</h3>
     <ul>
       <li><b>Tokens:</b> models read and write tokens (pieces of words). Cost, limits and latency are all counted in tokens.</li>
       <li><b>Context window:</b> everything the model can see in one call: instructions, history, retrieved documents, tool results. It remembers nothing between calls unless you send it again.</li>
@@ -242,7 +152,7 @@ Report:   what changed, the test output, anything you could not verify.</code></
     </ul>
   </article>
 
-  <article class="card"><h3>Calling a model (Anthropic Python SDK)</h3>
+  <article class="card" id="c-calling-a-model-anthropic-python-sdk"><h3>Calling a model (Anthropic Python SDK)</h3>
 <div class="snip"><pre><code># pip install anthropic   — credentials from ANTHROPIC_API_KEY
 import anthropic
 client = anthropic.Anthropic()
@@ -262,7 +172,7 @@ print(resp.usage.input_tokens, resp.usage.output_tokens)   # log every call's co
     <p class="note">Other current IDs: <code>claude-sonnet-5-5</code> (faster, cheaper) and <code>claude-haiku-5-5</code> (cheapest, for bulk work). Long outputs should stream. On Google Cloud's Agent Platform (formerly Vertex AI) use <code>AnthropicVertex(project_id=…, region=…)</code> with the same calls.</p>
   </article>
 
-  <article class="card"><h3>Structured output, not string parsing</h3>
+  <article class="card" id="c-structured-output-not-string-parsing"><h3>Structured output, not string parsing</h3>
 <div class="snip"><pre><code>from pydantic import BaseModel
 
 class ProductMention(BaseModel):
@@ -284,7 +194,7 @@ result: Extraction = resp.parsed_output     # validated against the schema</code
     <p class="note">The schema guarantees shape, not truth. Still check values against your data: does that order exist in your data?</p>
   </article>
 
-  <article class="card"><h3>Tools: let the model call your code</h3>
+  <article class="card" id="c-tools-let-the-model-call-your-code"><h3>Tools: let the model call your code</h3>
 <div class="snip"><pre><code>from anthropic import beta_tool
 
 @beta_tool
@@ -308,7 +218,7 @@ for message in runner:          # the SDK runs the call → tool → call loop
     <p class="note">Give tools the least privilege that works: read-only by default, writes behind human approval. MCP is the open protocol for exposing tools and data to any compatible client.</p>
   </article>
 
-  <article class="card wide"><h3>RAG: retrieval-augmented generation</h3>
+  <article class="card wide" id="c-rag-retrieval-augmented-generation"><h3>RAG: retrieval-augmented generation</h3>
     <div class="tbl"><table>
       <thead><tr><th>Step</th><th>What you build</th><th>Where it goes wrong</th></tr></thead>
       <tbody>
@@ -322,7 +232,7 @@ for message in runner:          # the SDK runs the call → tool → call loop
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Vector search: Postgres &amp; BigQuery</h3>
+  <article class="card" id="c-vector-search-postgres-bigquery"><h3>Vector search: Postgres &amp; BigQuery</h3>
 <div class="snip"><pre><code>-- pgvector
 CREATE EXTENSION IF NOT EXISTS vector;
 CREATE TABLE chunks (id bigserial PRIMARY KEY, doc_id text, body text,
@@ -345,7 +255,7 @@ FROM VECTOR_SEARCH(
   top_k =&gt; 10, distance_type =&gt; 'COSINE');</code></pre></div>
   </article>
 
-  <article class="card"><h3>Evals: how you know it works</h3>
+  <article class="card" id="c-evals-how-you-know-it-works"><h3>Evals: how you know it works</h3>
     <ul>
       <li><b>Build a test set</b> of 50–200 real inputs with expected outputs or grading notes. Include the hard and adversarial cases.</li>
       <li><b>Grade with code first:</b> exact match, schema valid, cited ID exists, number within tolerance.</li>
@@ -356,7 +266,7 @@ FROM VECTOR_SEARCH(
     </ul>
   </article>
 
-  <article class="card"><h3>Security</h3>
+  <article class="card" id="c-security"><h3>Security</h3>
     <ul>
       <li><b>Prompt injection:</b> a web page, PDF or email the model reads can say "ignore your instructions". Treat everything retrieved as untrusted data.</li>
       <li><b>Limit the blast radius:</b> tools get least privilege; destructive actions need human confirmation; the model never holds credentials directly.</li>
@@ -366,7 +276,7 @@ FROM VECTOR_SEARCH(
     </ul>
   </article>
 
-  <article class="card"><h3>Cost &amp; latency</h3>
+  <article class="card" id="c-cost-latency"><h3>Cost &amp; latency</h3>
     <ul>
       <li><b>Estimate first:</b> (input + output tokens) × price × calls per day. Log <code>usage</code> on every call.</li>
       <li><b>Prompt caching:</b> put the stable part (instructions, tool definitions, long reference text) first so repeated calls reuse it at a fraction of the price.</li>
@@ -377,7 +287,7 @@ FROM VECTOR_SEARCH(
     </ul>
   </article>
 
-  <article class="card"><h3>Working with AI coding assistants</h3>
+  <article class="card" id="c-working-with-ai-coding-assistants"><h3>Working with AI coding assistants</h3>
     <ul>
       <li><b>Give context:</b> the repo's conventions, the failing test, the exact error. Vague asks get vague code.</li>
       <li><b>Tests first:</b> a test that fails before the change is the best spec and the best check.</li>
@@ -389,7 +299,7 @@ FROM VECTOR_SEARCH(
     </ul>
   </article>
 
-  <article class="card"><h3>Agents: when and when not</h3>
+  <article class="card" id="c-agents-when-and-when-not"><h3>Agents: when and when not</h3>
     <ul>
       <li><b>Start with one call.</b> Classification, extraction and summaries rarely need more.</li>
       <li><b>Then a workflow:</b> fixed steps in your code, a model call at each. Predictable and testable.</li>
@@ -398,7 +308,7 @@ FROM VECTOR_SEARCH(
     </ul>
   </article>
 
-  <article class="card"><h3>AI on Google Cloud</h3>
+  <article class="card" id="c-ai-on-google-cloud"><h3>AI on Google Cloud</h3>
     <ul>
       <li><b>Gemini Enterprise Agent Platform (formerly Vertex AI):</b> hosted models (Gemini, Claude and others through Model Garden), endpoints, evaluation and pipelines in your GCP project and region.</li>
       <li><b>BigQuery ML:</b> call remote models from SQL (<code>AI.GENERATE_TEXT</code>, <code>AI.GENERATE_EMBEDDING</code>; the older <code>ML.</code> functions still work) and search with <code>VECTOR_SEARCH</code>, without moving data out.</li>
@@ -408,8 +318,8 @@ FROM VECTOR_SEARCH(
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Call a model API and get structured output</li><li>Explain tokens, context, hallucination and prompt injection</li><li>Use an AI assistant with tests and review</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a RAG feature with retrieval, citations and an eval set</li><li>Use tools and handle refusals, errors and cost</li><li>Brief an AI agent with context, rules and a definition of done</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design AI features with evals, guardrails, observability and fallbacks</li><li>Tune cost and latency (caching, batch, model choice)</li><li>Set up repos so AI agents work safely (context files, hooks, gates)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set AI strategy, governance and security across the organisation</li><li>Design agentic systems and their safety boundaries</li><li>Build shared AI platforms, blueprints and evaluation infrastructure</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Evaluation design and model-graded evals</li><li>Retrieval: hybrid search, reranking, chunking</li><li>Agents, tool design and MCP</li><li>Prompt injection defences</li><li>Cost and latency engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://platform.claude.com/docs" target="_blank" rel="noopener">Claude developer docs</a><span class="lnote"> Anthropic API, tools, structured outputs, prompt caching</span></li><li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents (Anthropic)</a><span class="lnote"> When to use workflows vs agents</span></li><li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code docs</a><span class="lnote"> Agentic coding, hooks, subagents</span></li><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Open protocol for tools and data</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs" target="_blank" rel="noopener">Vertex AI generative AI</a><span class="lnote"> Models and tooling on GCP</span></li><li><a href="https://cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener">BigQuery vector search</a><span class="lnote"> Embeddings and VECTOR_SEARCH</span></li><li><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector</a><span class="lnote"> Vector search in Postgres</span></li><li><a href="https://genai.owasp.org/" target="_blank" rel="noopener">OWASP GenAI security</a><span class="lnote"> LLM application risks</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://platform.claude.com/docs/en/about-claude/models/overview.md" target="_blank" rel="noopener">Claude models overview (claude-opus-5-5, claude-sonnet-5-5, claude-haiku-5-5)</a>; <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes" target="_blank" rel="noopener">Agent Platform release notes (Vertex AI rename)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-generate-text" target="_blank" rel="noopener">BigQuery ML.GENERATE_TEXT (AI.GENERATE_TEXT recommended for new queries)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-generate-embedding" target="_blank" rel="noopener">BigQuery ML.GENERATE_EMBEDDING (output column, AI.GENERATE_EMBEDDING note)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/search_functions" target="_blank" rel="noopener">BigQuery VECTOR_SEARCH syntax</a>; <a href="https://raw.githubusercontent.com/pgvector/pgvector/master/README.md" target="_blank" rel="noopener">pgvector README (HNSW filtering, iterative scans in recent releases)</a>; <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md" target="_blank" rel="noopener">MCP connector / Claude API docs</a>; <a href="https://en.wikipedia.org/w/index.php?title=Retrieval-augmented_generation&action=raw" target="_blank" rel="noopener">Wikipedia: Retrieval-augmented generation</a>; <a href="https://docs.cloud.google.com/iam/docs/roles-permissions/aiplatform" target="_blank" rel="noopener">Agent Platform IAM roles (aiplatform.user)</a>; <a href="https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed.md" target="_blank" rel="noopener">Claude models on Google Cloud: endpoints</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BAI%20for%20Engineers%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Call a model API and get structured output</li><li>Explain tokens, context, hallucination and prompt injection</li><li>Use an AI assistant with tests and review</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build a RAG feature with retrieval, citations and an eval set</li><li>Use tools and handle refusals, errors and cost</li><li>Brief an AI agent with context, rules and a definition of done</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design AI features with evals, guardrails, observability and fallbacks</li><li>Tune cost and latency (caching, batch, model choice)</li><li>Set up repos so AI agents work safely (context files, hooks, gates)</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set AI strategy, governance and security across the organisation</li><li>Design agentic systems and their safety boundaries</li><li>Build shared AI platforms, blueprints and evaluation infrastructure</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Evaluation design and model-graded evals</li><li>Retrieval: hybrid search, reranking, chunking</li><li>Agents, tool design and MCP</li><li>Prompt injection defences</li><li>Cost and latency engineering</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://platform.claude.com/docs" target="_blank" rel="noopener">Claude developer docs</a><span class="lnote"> Anthropic API, tools, structured outputs, prompt caching</span></li><li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents (Anthropic)</a><span class="lnote"> When to use workflows vs agents</span></li><li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code docs</a><span class="lnote"> Agentic coding, hooks, subagents</span></li><li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a><span class="lnote"> Open protocol for tools and data</span></li><li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs" target="_blank" rel="noopener">Vertex AI generative AI</a><span class="lnote"> Models and tooling on GCP</span></li><li><a href="https://cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener">BigQuery vector search</a><span class="lnote"> Embeddings and VECTOR_SEARCH</span></li><li><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector</a><span class="lnote"> Vector search in Postgres</span></li><li><a href="https://genai.owasp.org/" target="_blank" rel="noopener">OWASP GenAI security</a><span class="lnote"> LLM application risks</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://platform.claude.com/docs/en/about-claude/models/overview.md" target="_blank" rel="noopener">Claude models overview (claude-opus-5-5, claude-sonnet-5-5, claude-haiku-5-5)</a>; <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes" target="_blank" rel="noopener">Agent Platform release notes (Vertex AI rename)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-generate-text" target="_blank" rel="noopener">BigQuery ML.GENERATE_TEXT (AI.GENERATE_TEXT recommended for new queries)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-generate-embedding" target="_blank" rel="noopener">BigQuery ML.GENERATE_EMBEDDING (output column, AI.GENERATE_EMBEDDING note)</a>; <a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/search_functions" target="_blank" rel="noopener">BigQuery VECTOR_SEARCH syntax</a>; <a href="https://raw.githubusercontent.com/pgvector/pgvector/master/README.md" target="_blank" rel="noopener">pgvector README (HNSW filtering, iterative scans in recent releases)</a>; <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md" target="_blank" rel="noopener">MCP connector / Claude API docs</a>; <a href="https://en.wikipedia.org/w/index.php?title=Retrieval-augmented_generation&action=raw" target="_blank" rel="noopener">Wikipedia: Retrieval-augmented generation</a>; <a href="https://docs.cloud.google.com/iam/docs/roles-permissions/aiplatform" target="_blank" rel="noopener">Agent Platform IAM roles (aiplatform.user)</a>; <a href="https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed.md" target="_blank" rel="noopener">Claude models on Google Cloud: endpoints</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BAI%20for%20Engineers%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -417,6 +327,8 @@ FROM VECTOR_SEARCH(
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-use-ai-like-a-bulldozer-not-a-shovel">Use AI like a bulldozer, not a shovel</a><a href="#c-preparing-the-site">Preparing the site</a><a href="#c-a-brief-that-moves-earth">A brief that moves earth</a><a href="#c-where-you-still-drive-by-hand">Where you still drive by hand</a><a href="#c-why-everyone-s-experience-of-ai-is-different">Why everyone's experience of AI is different</a><a href="#c-blueprints-and-frameworks-not-generated-boilerpl">Blueprints and frameworks, not generated boilerplate</a><a href="#c-how-models-behave">How models behave</a><a href="#c-calling-a-model-anthropic-python-sdk">Calling a model (Anthropic Python SDK)</a><a href="#c-structured-output-not-string-parsing">Structured output, not string parsing</a><a href="#c-tools-let-the-model-call-your-code">Tools: let the model call your code</a><a href="#c-rag-retrieval-augmented-generation">RAG: retrieval-augmented generation</a><a href="#c-vector-search-postgres-bigquery">Vector search: Postgres & BigQuery</a><a href="#c-evals-how-you-know-it-works">Evals: how you know it works</a><a href="#c-security">Security</a><a href="#c-cost-latency">Cost & latency</a><a href="#c-working-with-ai-coding-assistants">Working with AI coding assistants</a><a href="#c-agents-when-and-when-not">Agents: when and when not</a><a href="#c-ai-on-google-cloud">AI on Google Cloud</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

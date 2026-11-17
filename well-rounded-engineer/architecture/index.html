@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="architecture">
+<body data-tab="architecture" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/" aria-current="page">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp" open><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/" aria-current="page">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Architecture &amp; design</span> / <span aria-current="page">Architecture</span></p>
 <section class="panel" id="architecture" data-name="Architecture">
   <div class="panel-head"><h1>Architecture patterns</h1><p>Event-driven systems, choreography vs orchestration, sagas, the outbox, and a full catalogue of architectural, data, cloud and integration patterns, each with when to use it and what it costs. Ends with how to choose a style and record the decision.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Event-driven systems</h3>
+  <article class="card wide" id="c-event-driven-systems"><h3>Event-driven systems</h3>
     <p>Services communicate by publishing <b>events</b> (facts about something that happened: <code>OrderPlaced</code>, <code>OrderPaid</code>) to a broker. Other services subscribe and react. The producer does not know or wait for its consumers.</p>
     <div class="tbl"><table>
       <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
@@ -158,7 +68,7 @@
     <p><b>Gains:</b> loose coupling, independent scaling, new consumers added without touching producers. <b>Costs:</b> eventual consistency, harder debugging (no single call stack), duplicates and reordering to handle, schema changes that ripple to unknown consumers.</p>
   </article>
 
-  <article class="card wide"><h3>Choreography vs orchestration</h3>
+  <article class="card wide" id="c-choreography-vs-orchestration"><h3>Choreography vs orchestration</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Choreography</th><th>Orchestration</th></tr></thead>
       <tbody>
@@ -171,7 +81,7 @@
     <p class="note">Many systems mix them: orchestration inside a bounded process (a data pipeline's stages), choreography between domains (the pipeline publishes "ready"; the search team reacts).</p>
   </article>
 
-  <article class="card wide"><h3>Saga: transactions across services</h3>
+  <article class="card wide" id="c-saga-transactions-across-services"><h3>Saga: transactions across services</h3>
     <p>A distributed transaction across several databases cannot use one ACID commit. A <b>saga</b> splits it into local transactions, each with a <b>compensating action</b> that undoes it if a later step fails.</p>
 <div class="snip"><pre><code>Book a paid subscription:
   1. Billing:  create pending invoice        ↺ compensate: void invoice
@@ -189,7 +99,7 @@ Step 3 fails → run compensations in reverse: refund (2), void invoice (1).</co
     </ul>
   </article>
 
-  <article class="card"><h3>Transactional outbox</h3>
+  <article class="card" id="c-transactional-outbox"><h3>Transactional outbox</h3>
     <p>Problem: you update your database <i>and</i> publish an event. If one succeeds and the other fails, they disagree.</p>
 <div class="snip"><pre><code>BEGIN;
   UPDATE orders SET status = 'PAID' WHERE id = 42;
@@ -205,7 +115,7 @@ UPDATE outbox SET published_at = now() WHERE id = ANY($1);</code></pre></div>
     <p class="note">One local transaction makes the state change and the intent to publish atomic. The relay may publish twice; consumers dedupe by event ID.</p>
   </article>
 
-  <article class="card"><h3>Idempotent consumers</h3>
+  <article class="card" id="c-idempotent-consumers"><h3>Idempotent consumers</h3>
 <div class="snip"><pre><code>-- remember what you processed, in the same transaction as the effect
 CREATE TABLE processed_events (event_id uuid PRIMARY KEY, processed_at timestamptz);
 
@@ -222,7 +132,7 @@ COMMIT;</code></pre></div>
     </ul>
   </article>
 
-  <article class="card"><h3>CQRS &amp; event sourcing</h3>
+  <article class="card" id="c-cqrs-event-sourcing"><h3>CQRS &amp; event sourcing</h3>
     <ul>
       <li><b>CQRS</b> (command query responsibility segregation): writes go to a model shaped for updates; reads come from separate models shaped for queries (a search index, a denormalised table). Reads are eventually consistent.</li>
       <li><b>Event sourcing:</b> store the sequence of events as the source of truth; current state is derived by replaying them. Full audit history and time travel, at the cost of complexity, schema versioning of old events, and snapshots for speed.</li>
@@ -231,7 +141,7 @@ COMMIT;</code></pre></div>
     </ul>
   </article>
 
-  <article class="card wide"><h3>Common architectural patterns</h3>
+  <article class="card wide" id="c-common-architectural-patterns"><h3>Common architectural patterns</h3>
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>What it is</th><th>Use when / watch out</th></tr></thead>
       <tbody>
@@ -251,7 +161,7 @@ COMMIT;</code></pre></div>
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Consistency &amp; trade-offs</h3>
+  <article class="card" id="c-consistency-trade-offs"><h3>Consistency &amp; trade-offs</h3>
     <ul>
       <li><b>CAP:</b> during a network partition a distributed store chooses consistency (refuse some requests) or availability (answer, possibly stale).</li>
       <li><b>PACELC:</b> and when there is no partition, it trades latency against consistency.</li>
@@ -261,7 +171,7 @@ COMMIT;</code></pre></div>
     </ul>
   </article>
 
-  <article class="card"><h3>Design review checklist</h3>
+  <article class="card" id="c-design-review-checklist"><h3>Design review checklist</h3>
     <ul>
       <li>Who owns each piece of data, and who may write it?</li>
       <li>What happens when each dependency is slow, down, or returns garbage?</li>
@@ -281,7 +191,7 @@ COMMIT;</code></pre></div>
 
 
 
-  <article class="card wide"><h3>Pattern catalogue: architectural styles</h3>
+  <article class="card wide" id="c-pattern-catalogue-architectural-styles"><h3>Pattern catalogue: architectural styles</h3>
     <div class="tbl"><table>
       <thead><tr><th>Style</th><th>Shape</th><th>Use when</th><th>Costs</th></tr></thead>
       <tbody>
@@ -301,7 +211,7 @@ COMMIT;</code></pre></div>
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>Pattern catalogue: data architecture</h3>
+  <article class="card wide" id="c-pattern-catalogue-data-architecture"><h3>Pattern catalogue: data architecture</h3>
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>Idea</th><th>Use when</th></tr></thead>
       <tbody>
@@ -317,7 +227,7 @@ COMMIT;</code></pre></div>
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>Pattern catalogue: cloud and integration</h3>
+  <article class="card wide" id="c-pattern-catalogue-cloud-and-integration"><h3>Pattern catalogue: cloud and integration</h3>
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>Idea</th></tr></thead>
       <tbody>
@@ -339,7 +249,7 @@ COMMIT;</code></pre></div>
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Choosing a style</h3>
+  <article class="card" id="c-choosing-a-style"><h3>Choosing a style</h3>
     <ol>
       <li>List the quality attributes that matter most, in order: e.g. correctness and auditability, then cost, then latency.</li>
       <li>Note the constraints: team size and skills, budget, regulations, existing systems.</li>
@@ -349,7 +259,7 @@ COMMIT;</code></pre></div>
     </ol>
   </article>
 
-  <article class="card"><h3>Architecture decision record</h3>
+  <article class="card" id="c-architecture-decision-record"><h3>Architecture decision record</h3>
 <div class="snip"><pre><code># ADR 0042: Serve order search from Postgres, not a search engine
 Status:   Accepted (2026-11-12)
 Context:  20 M orders, ~60 searches/s peak, p95 &lt; 500 ms;
@@ -364,8 +274,8 @@ Links:    load test results, issue #…</code></pre></div>
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain layered and hexagonal architecture</li><li>Tell events from commands; choreography from orchestration</li><li>Recognise retries that need idempotency</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement outbox, idempotent consumers and retries with backoff</li><li>Design a saga with compensations</li><li>Apply circuit breakers, bulkheads and timeouts</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose monolith, modular monolith or services for a context</li><li>Design event-driven systems with contracts and evolution</li><li>Run design reviews and write decision records</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set architecture direction across many teams</li><li>Balance consistency, availability, cost and team structure</li><li>Lead large migrations (strangler fig) safely</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts</li><li>Architecture decision records (ADRs)</li><li>Event schema evolution and registries</li><li>CQRS and event sourcing in practice</li><li>Team topologies and Conway's law</li><li>Architecture characteristics and fitness functions</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io patterns</a><span class="lnote"> Saga, outbox, CQRS and more, with trade-offs</span></li><li><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Martin Fowler: architecture</a><span class="lnote"> Essays on patterns and evolution</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/" target="_blank" rel="noopener">Azure cloud design patterns</a><span class="lnote"> Vendor-neutral pattern catalogue</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging patterns</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures on GCP</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems (Unmesh Joshi)</a><span class="lnote"> Leader election, write-ahead log, quorum and more</span></li><li><a href="https://adr.github.io/" target="_blank" rel="noopener">Architecture decision records</a><span class="lnote"> Templates and tools for ADRs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/CAP_theorem?action=raw" target="_blank" rel="noopener">Wikipedia: CAP theorem</a>; <a href="https://en.wikipedia.org/wiki/PACELC_design_principle?action=raw" target="_blank" rel="noopener">Wikipedia: PACELC</a>; <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing?action=raw" target="_blank" rel="noopener">Wikipedia: Fallacies of distributed computing</a>; <a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">Fowler: CQRS</a>; <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Fowler: Event Sourcing</a>; <a href="https://martinfowler.com/bliki/StranglerFigApplication.html" target="_blank" rel="noopener">Fowler: Strangler Fig</a>; <a href="https://www.postgresql.org/docs/current/functions-uuid.html" target="_blank" rel="noopener">PostgreSQL: gen_random_uuid</a>; <a href="https://www.postgresql.org/docs/current/sql-select.html" target="_blank" rel="noopener">PostgreSQL: SELECT ... FOR UPDATE SKIP LOCKED</a>; <a href="https://www.postgresql.org/docs/current/sql-prepare.html" target="_blank" rel="noopener">PostgreSQL PREPARE (positional parameters)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/patterns" target="_blank" rel="noopener">well-rounded-engineer-code/patterns</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BArchitecture%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain layered and hexagonal architecture</li><li>Tell events from commands; choreography from orchestration</li><li>Recognise retries that need idempotency</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Implement outbox, idempotent consumers and retries with backoff</li><li>Design a saga with compensations</li><li>Apply circuit breakers, bulkheads and timeouts</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose monolith, modular monolith or services for a context</li><li>Design event-driven systems with contracts and evolution</li><li>Run design reviews and write decision records</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set architecture direction across many teams</li><li>Balance consistency, availability, cost and team structure</li><li>Lead large migrations (strangler fig) safely</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Domain-driven design: bounded contexts</li><li>Architecture decision records (ADRs)</li><li>Event schema evolution and registries</li><li>CQRS and event sourcing in practice</li><li>Team topologies and Conway's law</li><li>Architecture characteristics and fitness functions</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://microservices.io/patterns/" target="_blank" rel="noopener">microservices.io patterns</a><span class="lnote"> Saga, outbox, CQRS and more, with trade-offs</span></li><li><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Martin Fowler: architecture</a><span class="lnote"> Essays on patterns and evolution</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/" target="_blank" rel="noopener">Azure cloud design patterns</a><span class="lnote"> Vendor-neutral pattern catalogue</span></li><li><a href="https://www.enterpriseintegrationpatterns.com/" target="_blank" rel="noopener">Enterprise Integration Patterns</a><span class="lnote"> Messaging patterns</span></li><li><a href="https://cloud.google.com/architecture" target="_blank" rel="noopener">Google Cloud Architecture Center</a><span class="lnote"> Reference architectures on GCP</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems (Unmesh Joshi)</a><span class="lnote"> Leader election, write-ahead log, quorum and more</span></li><li><a href="https://adr.github.io/" target="_blank" rel="noopener">Architecture decision records</a><span class="lnote"> Templates and tools for ADRs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/CAP_theorem?action=raw" target="_blank" rel="noopener">Wikipedia: CAP theorem</a>; <a href="https://en.wikipedia.org/wiki/PACELC_design_principle?action=raw" target="_blank" rel="noopener">Wikipedia: PACELC</a>; <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing?action=raw" target="_blank" rel="noopener">Wikipedia: Fallacies of distributed computing</a>; <a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener">Fowler: CQRS</a>; <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener">Fowler: Event Sourcing</a>; <a href="https://martinfowler.com/bliki/StranglerFigApplication.html" target="_blank" rel="noopener">Fowler: Strangler Fig</a>; <a href="https://www.postgresql.org/docs/current/functions-uuid.html" target="_blank" rel="noopener">PostgreSQL: gen_random_uuid</a>; <a href="https://www.postgresql.org/docs/current/sql-select.html" target="_blank" rel="noopener">PostgreSQL: SELECT ... FOR UPDATE SKIP LOCKED</a>; <a href="https://www.postgresql.org/docs/current/sql-prepare.html" target="_blank" rel="noopener">PostgreSQL PREPARE (positional parameters)</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-code/tree/main/patterns" target="_blank" rel="noopener">well-rounded-engineer-code/patterns</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-code/issues/new?title=%5BArchitecture%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
@@ -373,6 +283,8 @@ Links:    load test results, issue #…</code></pre></div>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-event-driven-systems">Event-driven systems</a><a href="#c-choreography-vs-orchestration">Choreography vs orchestration</a><a href="#c-saga-transactions-across-services">Saga: transactions across services</a><a href="#c-transactional-outbox">Transactional outbox</a><a href="#c-idempotent-consumers">Idempotent consumers</a><a href="#c-cqrs-event-sourcing">CQRS & event sourcing</a><a href="#c-common-architectural-patterns">Common architectural patterns</a><a href="#c-consistency-trade-offs">Consistency & trade-offs</a><a href="#c-design-review-checklist">Design review checklist</a><a href="#c-pattern-catalogue-architectural-styles">Pattern catalogue: architectural styles</a><a href="#c-pattern-catalogue-data-architecture">Pattern catalogue: data architecture</a><a href="#c-pattern-catalogue-cloud-and-integration">Pattern catalogue: cloud and integration</a><a href="#c-choosing-a-style">Choosing a style</a><a href="#c-architecture-decision-record">Architecture decision record</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

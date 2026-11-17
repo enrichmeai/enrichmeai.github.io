@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="buildtools">
+<body data-tab="buildtools" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/" aria-current="page">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp" open><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/" aria-current="page">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Languages</span> / <span aria-current="page">Build Tools</span></p>
 <section class="panel" id="buildtools" data-name="Build Tools">
   <div class="panel-head"><h1>Build tools: Maven, Gradle, npm, Yarn and pnpm</h1><p>A build tool turns source code into something you can run or ship: it fetches dependencies, compiles, runs the tests, packages the result and publishes it. A good build gives the same result on every laptop and every CI runner. This page covers the Java tools (Maven and Gradle) and the Node.js tools (npm, Yarn, pnpm and the bundlers), with each claim checked against the tool's own documentation.</p></div>
   <div class="grid">
 
-  <article class="card"><h3>What every build tool does</h3>
+  <article class="card" id="c-what-every-build-tool-does"><h3>What every build tool does</h3>
     <ul>
       <li><b>Resolves dependencies:</b> downloads the libraries you name, and the libraries they need (transitive dependencies), from a registry such as Maven Central or the npm registry.</li>
       <li><b>Runs the steps in order:</b> compile, test, package, publish. You ask for the last step and the tool runs the ones before it.</li>
@@ -152,7 +62,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>A short history</h3>
+  <article class="card" id="c-a-short-history"><h3>A short history</h3>
     <div class="tbl"><table>
       <thead><tr><th>When</th><th>Tool</th><th>What it brought</th></tr></thead>
       <tbody>
@@ -169,7 +79,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>Maven: convention over configuration</h3>
+  <article class="card wide" id="c-maven-convention-over-configuration"><h3>Maven: convention over configuration</h3>
     <p>A Maven project is described by its <code>pom.xml</code> (Project Object Model). If you follow the standard layout (<code>src/main/java</code>, <code>src/test/java</code>), you configure almost nothing.</p>
     <ul>
       <li><b>Three built-in lifecycles:</b> <code>default</code> (build and deploy), <code>clean</code> and <code>site</code>.</li>
@@ -211,7 +121,7 @@
 ./mvnw dependency:tree         # which version won, and why</code></pre></div>
   </article>
 
-  <article class="card wide"><h3>Gradle: a task graph you can program</h3>
+  <article class="card wide" id="c-gradle-a-task-graph-you-can-program"><h3>Gradle: a task graph you can program</h3>
     <p>A Gradle build is written in Kotlin (<code>build.gradle.kts</code>) or Groovy (<code>build.gradle</code>). Instead of a fixed lifecycle, it builds a graph of tasks and runs the ones your request needs.</p>
     <ul>
       <li><b>Three phases every build goes through:</b> initialization (which projects are in the build), configuration (run the build scripts and work out the task graph), execution (run the selected tasks).</li>
@@ -241,7 +151,7 @@ tasks.test { useJUnitPlatform() }
 ./gradlew build --build-cache  # reuse outputs from earlier builds</code></pre></div>
   </article>
 
-  <article class="card"><h3>Maven or Gradle?</h3>
+  <article class="card" id="c-maven-or-gradle"><h3>Maven or Gradle?</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Maven</th><th>Gradle</th></tr></thead>
       <tbody>
@@ -262,7 +172,7 @@ tasks.test { useJUnitPlatform() }
     <p class="note"><i>Other views:</i> some engineers find Gradle builds harder to read because the scripts are code; others find Maven&rsquo;s XML verbose. Both are preferences. The rows above are requirements.</p>
   </article>
 
-  <article class="card"><h3>npm: the default for Node.js</h3>
+  <article class="card" id="c-npm-the-default-for-node-js"><h3>npm: the default for Node.js</h3>
     <ul>
       <li><b><code>package.json</code></b> names your dependencies with version ranges and holds your <code>scripts</code>; <code>npm run build</code> runs one. A script named <code>prebuild</code> or <code>postbuild</code> runs before or after it.</li>
       <li><b><code>package-lock.json</code></b> is generated whenever npm changes <code>node_modules</code>. It records the exact tree, so the next install builds the same one. Commit it.</li>
@@ -276,7 +186,7 @@ tasks.test { useJUnitPlatform() }
 }</code></pre></div>
   </article>
 
-  <article class="card"><h3>npm 12: install scripts are off by default</h3>
+  <article class="card" id="c-npm-12-install-scripts-are-off-by-default"><h3>npm 12: install scripts are off by default</h3>
     <p>Install scripts (<code>preinstall</code>, <code>install</code>, <code>postinstall</code>) run code from a dependency on your machine the moment you install it, so a compromised package can act before you have run a line of your own code. npm 12, released in July 2026, changed the defaults:</p>
     <ul>
       <li><b>Dependency lifecycle scripts are blocked</b> unless the root package's <code>allowScripts</code> policy allows them. Run <code>npm install-scripts approve</code> to record approvals, then <code>npm rebuild</code> to run the newly approved scripts.</li>
@@ -286,7 +196,7 @@ tasks.test { useJUnitPlatform() }
     </ul>
   </article>
 
-  <article class="card"><h3>Yarn, pnpm and Corepack</h3>
+  <article class="card" id="c-yarn-pnpm-and-corepack"><h3>Yarn, pnpm and Corepack</h3>
     <ul>
       <li><b>Yarn</b> started at Facebook in 2016. Its modern version can install with <b>Plug'n'Play</b>: no <code>node_modules</code> folder at all, but a single <code>.pnp.cjs</code> loader that tells Node where each package is. It can also use a normal <code>node_modules</code> install.</li>
       <li><b>pnpm</b> keeps one <b>content-addressable store</b> on disk. Each project's files are hard-linked or copy-on-write cloned from it, so a hundred projects using one library do not keep a hundred copies, and a new version adds only the files that changed.</li>
@@ -295,7 +205,7 @@ tasks.test { useJUnitPlatform() }
     </ul>
   </article>
 
-  <article class="card"><h3>npm, Yarn or pnpm: choose by requirement</h3>
+  <article class="card" id="c-npm-yarn-or-pnpm-choose-by-requirement"><h3>npm, Yarn or pnpm: choose by requirement</h3>
     <div class="tbl"><table>
       <thead><tr><th>If this is true for you</th><th>It leans towards</th></tr></thead>
       <tbody>
@@ -309,7 +219,7 @@ tasks.test { useJUnitPlatform() }
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Bundlers: the other half of a JavaScript build</h3>
+  <article class="card" id="c-bundlers-the-other-half-of-a-javascript-build"><h3>Bundlers: the other half of a JavaScript build</h3>
     <ul>
       <li><b>A package manager</b> (npm, Yarn, pnpm) fetches dependencies. <b>A bundler</b> turns your modules into the few files a browser downloads. A front-end build needs both.</li>
       <li><b>webpack</b> (2014) builds a dependency graph of your modules and supports code splitting with dynamic <code>import()</code>.</li>
@@ -318,7 +228,7 @@ tasks.test { useJUnitPlatform() }
     </ul>
   </article>
 
-  <article class="card wide"><h3>Habits that keep builds healthy, in any ecosystem</h3>
+  <article class="card wide" id="c-habits-that-keep-builds-healthy-in-any-ecosystem"><h3>Habits that keep builds healthy, in any ecosystem</h3>
     <div class="tbl"><table>
       <thead><tr><th>Habit</th><th>Java</th><th>Node.js</th></tr></thead>
       <tbody>
@@ -332,8 +242,8 @@ tasks.test { useJUnitPlatform() }
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run a Maven, Gradle and npm build from the wrapper or lockfile</li><li>Name the lifecycle phases or tasks a build runs</li><li>Add a dependency and read the dependency tree</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Pin versions with a BOM, a version catalog or a lockfile</li><li>Explain why a transitive version won and override it</li><li>Make CI builds reproducible and cached</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a multi-module or monorepo build</li><li>Use the Gradle build and configuration caches</li><li>Set an install-script and dependency-source policy</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set build standards across an organisation</li><li>Lead migrations between build tools</li><li>Secure the build supply chain end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The Maven lifecycle and plugins</li><li>Gradle tasks, caches and version catalogs</li><li>Lockfiles and npm ci</li><li>pnpm's store and strict node_modules</li><li>Bundlers: webpack and Vite</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank" rel="noopener">Introduction to the Maven build lifecycle</a><span class="lnote"> Phases and bindings</span></li><li><a href="https://docs.gradle.org/current/userguide/userguide.html" target="_blank" rel="noopener">Gradle User Manual</a><span class="lnote"> Wrapper, Daemon, caches, catalogs</span></li><li><a href="https://docs.npmjs.com/" target="_blank" rel="noopener">npm Docs</a><span class="lnote"> package.json, lockfiles, scripts</span></li><li><a href="https://pnpm.io/motivation" target="_blank" rel="noopener">pnpm: Motivation</a><span class="lnote"> The store and the non-flat node_modules</span></li><li><a href="https://vite.dev/guide/" target="_blank" rel="noopener">Vite guide</a><span class="lnote"> Dev server and production build</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-the-lifecycle.md" target="_blank" rel="noopener">Maven: build lifecycle (source)</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-dependency-mechanism.md" target="_blank" rel="noopener">Maven: dependency mechanism (source)</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/tools/mavenwrapper.md" target="_blank" rel="noopener">Maven Wrapper (source)</a>; <a href="https://github.com/gradle/gradle/tree/master/platforms/documentation/docs/src/docs/userguide" target="_blank" rel="noopener">Gradle user guide: build lifecycle, Wrapper, Daemon, build cache, configuration cache, version catalogs (source)</a>; <a href="https://developer.android.com/build" target="_blank" rel="noopener">Android: configure your build</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/commands/npm-ci.md" target="_blank" rel="noopener">npm ci</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/configuring-npm/package-lock-json.md" target="_blank" rel="noopener">package-lock.json</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/using-npm/scripts.md" target="_blank" rel="noopener">npm scripts</a>; <a href="https://github.com/npm/cli/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">npm CHANGELOG (npm 12 breaking changes)</a>; <a href="https://github.com/npm/cli/blob/latest/workspaces/config/lib/definitions/definitions.js" target="_blank" rel="noopener">npm config definitions (ignore-scripts, allow-git, allow-remote, allow-scripts)</a>; <a href="https://github.com/npm/node-semver" target="_blank" rel="noopener">node-semver: caret and tilde ranges</a>; <a href="https://github.com/pnpm/pnpm.io/blob/main/docs/motivation.md" target="_blank" rel="noopener">pnpm: Motivation (source)</a>; <a href="https://github.com/pnpm/pnpm.io/blob/main/docs/cli/install.md" target="_blank" rel="noopener">pnpm install (source)</a>; <a href="https://yarnpkg.com/features/pnp" target="_blank" rel="noopener">Yarn: Plug'n'Play</a>; <a href="https://yarnpkg.com/cli/install" target="_blank" rel="noopener">yarn install</a>; <a href="https://github.com/nodejs/node/blob/main/deps/corepack/README.md" target="_blank" rel="noopener">Corepack README (bundled Node.js versions)</a>; <a href="https://github.com/vitejs/vite/blob/main/docs/guide/index.md" target="_blank" rel="noopener">Vite guide (source)</a>; <a href="https://docs.spring.io/spring-boot/maven-plugin/using.html" target="_blank" rel="noopener">Spring Boot Maven plugin: spring-boot-dependencies</a>; <a href="https://en.wikipedia.org/wiki/Build_automation" target="_blank" rel="noopener">Wikipedia: Make, Apache Ant, Apache Maven, Gradle, npm, webpack, Bazel, Yarn, pnpm, Vite</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBuild%20Tools%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Run a Maven, Gradle and npm build from the wrapper or lockfile</li><li>Name the lifecycle phases or tasks a build runs</li><li>Add a dependency and read the dependency tree</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Pin versions with a BOM, a version catalog or a lockfile</li><li>Explain why a transitive version won and override it</li><li>Make CI builds reproducible and cached</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design a multi-module or monorepo build</li><li>Use the Gradle build and configuration caches</li><li>Set an install-script and dependency-source policy</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set build standards across an organisation</li><li>Lead migrations between build tools</li><li>Secure the build supply chain end to end</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>The Maven lifecycle and plugins</li><li>Gradle tasks, caches and version catalogs</li><li>Lockfiles and npm ci</li><li>pnpm's store and strict node_modules</li><li>Bundlers: webpack and Vite</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank" rel="noopener">Introduction to the Maven build lifecycle</a><span class="lnote"> Phases and bindings</span></li><li><a href="https://docs.gradle.org/current/userguide/userguide.html" target="_blank" rel="noopener">Gradle User Manual</a><span class="lnote"> Wrapper, Daemon, caches, catalogs</span></li><li><a href="https://docs.npmjs.com/" target="_blank" rel="noopener">npm Docs</a><span class="lnote"> package.json, lockfiles, scripts</span></li><li><a href="https://pnpm.io/motivation" target="_blank" rel="noopener">pnpm: Motivation</a><span class="lnote"> The store and the non-flat node_modules</span></li><li><a href="https://vite.dev/guide/" target="_blank" rel="noopener">Vite guide</a><span class="lnote"> Dev server and production build</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-the-lifecycle.md" target="_blank" rel="noopener">Maven: build lifecycle (source)</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-dependency-mechanism.md" target="_blank" rel="noopener">Maven: dependency mechanism (source)</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/tools/mavenwrapper.md" target="_blank" rel="noopener">Maven Wrapper (source)</a>; <a href="https://github.com/gradle/gradle/tree/master/platforms/documentation/docs/src/docs/userguide" target="_blank" rel="noopener">Gradle user guide: build lifecycle, Wrapper, Daemon, build cache, configuration cache, version catalogs (source)</a>; <a href="https://developer.android.com/build" target="_blank" rel="noopener">Android: configure your build</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/commands/npm-ci.md" target="_blank" rel="noopener">npm ci</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/configuring-npm/package-lock-json.md" target="_blank" rel="noopener">package-lock.json</a>; <a href="https://github.com/npm/cli/blob/latest/docs/lib/content/using-npm/scripts.md" target="_blank" rel="noopener">npm scripts</a>; <a href="https://github.com/npm/cli/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">npm CHANGELOG (npm 12 breaking changes)</a>; <a href="https://github.com/npm/cli/blob/latest/workspaces/config/lib/definitions/definitions.js" target="_blank" rel="noopener">npm config definitions (ignore-scripts, allow-git, allow-remote, allow-scripts)</a>; <a href="https://github.com/npm/node-semver" target="_blank" rel="noopener">node-semver: caret and tilde ranges</a>; <a href="https://github.com/pnpm/pnpm.io/blob/main/docs/motivation.md" target="_blank" rel="noopener">pnpm: Motivation (source)</a>; <a href="https://github.com/pnpm/pnpm.io/blob/main/docs/cli/install.md" target="_blank" rel="noopener">pnpm install (source)</a>; <a href="https://yarnpkg.com/features/pnp" target="_blank" rel="noopener">Yarn: Plug'n'Play</a>; <a href="https://yarnpkg.com/cli/install" target="_blank" rel="noopener">yarn install</a>; <a href="https://github.com/nodejs/node/blob/main/deps/corepack/README.md" target="_blank" rel="noopener">Corepack README (bundled Node.js versions)</a>; <a href="https://github.com/vitejs/vite/blob/main/docs/guide/index.md" target="_blank" rel="noopener">Vite guide (source)</a>; <a href="https://docs.spring.io/spring-boot/maven-plugin/using.html" target="_blank" rel="noopener">Spring Boot Maven plugin: spring-boot-dependencies</a>; <a href="https://en.wikipedia.org/wiki/Build_automation" target="_blank" rel="noopener">Wikipedia: Make, Apache Ant, Apache Maven, Gradle, npm, webpack, Bazel, Yarn, pnpm, Vite</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BBuild%20Tools%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -341,6 +251,8 @@ tasks.test { useJUnitPlatform() }
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-what-every-build-tool-does">What every build tool does</a><a href="#c-a-short-history">A short history</a><a href="#c-maven-convention-over-configuration">Maven: convention over configuration</a><a href="#c-gradle-a-task-graph-you-can-program">Gradle: a task graph you can program</a><a href="#c-maven-or-gradle">Maven or Gradle?</a><a href="#c-npm-the-default-for-node-js">npm: the default for Node.js</a><a href="#c-npm-12-install-scripts-are-off-by-default">npm 12: install scripts are off by default</a><a href="#c-yarn-pnpm-and-corepack">Yarn, pnpm and Corepack</a><a href="#c-npm-yarn-or-pnpm-choose-by-requirement">npm, Yarn or pnpm: choose by requirement</a><a href="#c-bundlers-the-other-half-of-a-javascript-build">Bundlers: the other half of a JavaScript build</a><a href="#c-habits-that-keep-builds-healthy-in-any-ecosystem">Habits that keep builds healthy, in any ecosystem</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

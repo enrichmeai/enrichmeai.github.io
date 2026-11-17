@@ -64,6 +64,48 @@ def text(h):
     h = re.sub(r'<(script|style)\b.*?</\1>', ' ', h, flags=re.S)
     return re.sub(r'\s+', ' ', _html.unescape(re.sub(r'<[^>]+>', ' ', h))).strip()
 
+# the nav's groups, in order: [(group name or '', [tab, ...])]
+nav_groups, _g = [], ['', []]
+for m in re.finditer(r'<span class="navgrp">([^<]+)</span>|<a href="#([a-z0-9]+)" data-tab="\2">', nav):
+    if m.group(1):
+        if _g[1] or _g[0]: nav_groups.append(tuple(_g))
+        _g = [m.group(1), []]
+    else:
+        _g[1].append(m.group(2))
+nav_groups.append(tuple(_g))
+group_of = {t: g for g, ts in nav_groups for t in ts}
+
+def side_for(cur):
+    # the sidebar: the opening pages, then one collapsible group each; the current group is open
+    out = ['<nav class="eg-side" id="topics" aria-label="Guide sections">']
+    for g, ts in nav_groups:
+        links = ''.join(f'<a href="{url(t)}"' + (' aria-current="page"' if t == cur else '') + f'>{labels[t]}</a>' for t in ts)
+        if not g:
+            out.append(f'<div class="side-top">{links}</div>')
+        else:
+            op = ' open' if cur in ts else ''
+            out.append(f'<details class="side-grp"{op}><summary>{g}<span class="n">{len(ts)}</span></summary><div class="side-links">{links}</div></details>')
+    out.append('</nav>')
+    return '\n'.join(out)
+
+def toc_for(main_html):
+    # "On this page": every card heading, linked by the card's id
+    items = re.findall(r'<article class="card[^"]*" id="([a-z0-9-]+)"><h3>(.*?)</h3>', main_html, re.S)
+    if len(items) < 3: return ''
+    li = ''.join(f'<a href="#{i}">{text(h)}</a>' for i, h in items)
+    return f'<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links">{li}</div></aside>'
+
+def card_ids(html):
+    # give every card without an id one, from its heading, unique on the page
+    used = set(re.findall(r'id="([a-z0-9-]+)"', html))
+    def add(m):
+        base = 'c-' + (re.sub(r'[^a-z0-9]+', '-', text(m.group(2)).lower()).strip('-')[:48] or 'card')
+        i, k = base, 2
+        while i in used: i, k = f'{base}-{k}', k + 1
+        used.add(i)
+        return f'<article class="{m.group(1)}" id="{i}"><h3>{m.group(2)}</h3>'
+    return re.sub(r'<article class="(card[^"]*)"><h3>(.*?)</h3>', add, html, flags=re.S)
+
 def nav_for(cur):
     n = nav.replace('<nav aria-label="Sections">', '<nav aria-label="Guide sections">')
     def a(m):
@@ -72,7 +114,7 @@ def nav_for(cur):
         return f'<a href="{url(t)}"{cur_attr}>'
     return re.sub(r'<a href="#([a-z0-9]+)" data-tab="\1">', a, n)
 
-def page(t, title, desc, main_html, extra_head=''):
+def page(t, title, desc, main_html, extra_head='', hero=''):
     label = 'Well Rounded Engineer'
     crumb = f'<span class="product-label">{label}</span>' if t == 'start' else f'<a class="product-label" href="{BASE}">{label}</a>'
     return f'''<!DOCTYPE html>
@@ -91,28 +133,27 @@ def page(t, title, desc, main_html, extra_head=''):
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 {extra_head}<script src="{BASE}engineer.js" defer></script>
 </head>
-<body data-tab="{t}">
+<body data-tab="{t}" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     {crumb}
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search {len(order)} pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
-
-<div class="eg-bar">
-  <div class="container">
-{nav_for(t)}
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+{hero}
+<div class="eg-wrap eg-layout">
+{side_for(t)}
+<main id="main" class="eg">
 {main_html}
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+{toc_for(main_html)}
+</div>
 
 <footer class="site-footer">
   <div class="container">
@@ -135,11 +176,22 @@ def prev_next(t):
         n = order[i + 1]; parts.append(f'<a class="pn-next" href="{url(n)}">{labels[n]} →</a>')
     return '<nav class="eg-pn" aria-label="Previous and next section">' + ''.join(parts) + '</nav>'
 
-intro = f'''  <div class="eg-intro">
-    <h1>Well Rounded Engineer</h1>
-    <p class="eg-tagline">{SMILE}<span>More human</span></p>
-    <p>A field guide for engineers in the AI era, and for anyone who wants to do good work and live well. AI hands everyone a bulldozer; this is about being the site manager: clear thinking and good character first, fundamentals before shortcuts, then what to know across data, systems, design, cloud, delivery and AI, what each level of experience looks like, and where to learn more by doing.</p>
-  </div>'''
+n_groups = sum(1 for g, _ in nav_groups if g)
+hero_html = f'''<section class="eg-hero" aria-labelledby="hero-h">
+  <div class="eg-wrap eg-hero-in">
+    <div class="hero-main">
+      <p class="hero-eyebrow">A free field guide · <span>More human</span></p>
+      <h1 id="hero-h">Well Rounded Engineer</h1>
+      <p class="hero-lead">A field guide for engineers in the AI era, and for anyone who wants to do good work and live well. AI hands everyone a bulldozer; this is about being the site manager: clear thinking and good character first, fundamentals before shortcuts, and every claim checked against its source.</p>
+      <p class="hero-go"><a class="btn-light" href="#guide-map">Pick a path</a> <a class="btn-line" href="{BASE}aiworry/">Worried about AI?</a></p>
+    </div>
+    <div class="hero-stats">
+      <p><b>{len(order)}</b> pages</p>
+      <p><b>{n_groups}</b> paths</p>
+      <p class="wide">Every page: four levels, what to study next, and its sources</p>
+    </div>
+  </div>
+</section>'''
 
 # old single-page links (/well-rounded-engineer/#kubernetes) still land on the right page
 redirect = ('<script>(function(){var t=location.hash.slice(1),k=' + json.dumps([t for t in order if t != 'start'])
@@ -154,19 +206,24 @@ for t in order:
     desc = text(lead)
     if len(desc) > 158:
         desc = desc[:155].rsplit(' ', 1)[0] + '…'
+    sec = card_ids(sec)
+    hero = ''
     if t == 'start':
         title = 'Well Rounded Engineer · more human, for the AI era'
-        main_html = intro + '\n' + sec + '\n' + prev_next(t)
+        main_html = sec + '\n' + prev_next(t)
         extra = redirect
+        hero = hero_html
     else:
         title = f'{text(labels[t])} · Well Rounded Engineer'
         # the tab's heading is the page's h1
         sec = sec.replace(f'<div class="panel-head"><h2>{h2}</h2>', f'<div class="panel-head"><h1>{h2}</h1>', 1)
-        main_html = sec + '\n' + prev_next(t)
+        g = group_of.get(t, '')
+        crumb = f'<p class="eg-crumb"><a href="{BASE}">Guide</a>' + (f' / <span>{g}</span>' if g else '') + f' / <span aria-current="page">{labels[t]}</span></p>'
+        main_html = crumb + '\n' + sec + '\n' + prev_next(t)
         extra = ''
     out = os.path.join(out_dir, 'index.html') if t == 'start' else os.path.join(out_dir, t, 'index.html')
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    html_out = page(t, title, desc, main_html, extra)
+    html_out = page(t, title, desc, main_html, extra, hero)
     open(out, 'w').write(html_out)
     total += len(html_out)
     cards = [{'h': text(m.group(1)), 'x': text(m.group(0)).lower()}

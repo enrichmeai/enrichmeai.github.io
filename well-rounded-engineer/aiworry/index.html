@@ -14,140 +14,50 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="aiworry">
+<body data-tab="aiworry" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/" aria-current="page">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/" aria-current="page">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span aria-current="page">Worried about AI?</span></p>
 <section class="panel" id="aiworry" data-name="Worried about AI?">
   <div class="panel-head"><h1>Worried about AI?</h1><p>Many people are, and many more do not yet know what is changing. A calm way to prepare: use what AI gives us, and keep the skills that let a person step in when it fails.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>The tills are a good picture</h3>
+  <article class="card wide" id="c-the-tills-are-a-good-picture"><h3>The tills are a good picture</h3>
     <p>Supermarkets once had a long row of tills, each with a person behind it. Over the years most have moved to a few staffed tills and a bank of self-service ones. Fewer people do the scanning. But the shop still needs people: someone approves an age check, clears a jammed scanner, helps the customer who is stuck, and knows what to do when the system goes down.</p>
     <p>Software is going the same way. Fewer people will type routine code by hand, but people are still needed to manage the work, and managing it well takes a good understanding of what is being built. The people who stay most useful are the ones who understand what the machines are doing, and can take over when they stop.</p>
   </article>
 
-  <article class="card wide"><h3>We have been here before: CAD and CAM</h3>
+  <article class="card wide" id="c-we-have-been-here-before-cad-and-cam"><h3>We have been here before: CAD and CAM</h3>
     <p>Engineering design went through this once already. Drawings used to be made by hand at drawing boards, by teams of draughtsmen. Then computers took over the drawing and the machining:</p>
     <ul>
       <li><b>1940s and 1950s:</b> the first numerically controlled machine tools follow points fed into them, instead of a person guiding every cut.</li>
@@ -160,28 +70,28 @@
     <p class="sources"><b>Checked against</b> (Wikipedia): <a href="https://en.wikipedia.org/wiki/Computer_numerical_control" target="_blank" rel="noopener">Computer numerical control</a>; <a href="https://en.wikipedia.org/wiki/Sketchpad" target="_blank" rel="noopener">Sketchpad</a>; <a href="https://en.wikipedia.org/wiki/AutoCAD" target="_blank" rel="noopener">AutoCAD</a>; <a href="https://en.wikipedia.org/wiki/Computer-aided_design" target="_blank" rel="noopener">Computer-aided design</a>; <a href="https://en.wikipedia.org/wiki/Computer-aided_manufacturing" target="_blank" rel="noopener">Computer-aided manufacturing</a>.</p>
   </article>
 
-  <article class="card"><h3>The risk of a team that can only prompt</h3>
+  <article class="card" id="c-the-risk-of-a-team-that-can-only-prompt"><h3>The risk of a team that can only prompt</h3>
     <p>Picture a team whose only skill is asking an AI to do the work. Everything is automated. Then something fails, and the only thing they know how to do is ask the AI to fix it. If the AI is wrong, unavailable, or part of what failed, nobody in the room can help.</p>
     <p>We have seen what large automated failures look like. On 19 July 2024 a faulty update to a widely used security product crashed about 8.5 million Windows computers, by Microsoft's estimate, and many had to be repaired by hand, one machine at a time. People with hands-on skills were the way out.</p>
   </article>
 
-  <article class="card"><h3>Keep a hand on the controls</h3>
+  <article class="card" id="c-keep-a-hand-on-the-controls"><h3>Keep a hand on the controls</h3>
     <p>The Boeing 737 MAX accidents of October 2018 and March 2019 carry a lesson worth remembering. Official investigations found that a new automated flight-control feature, MCAS, contributed to both crashes, and references to it had been removed from the pilots' flight manual. When it misbehaved, the crews did not have what they needed to take back control.</p>
     <p>Agents that heal themselves are useful. But every automated system needs a <b>documented manual override</b>, and people who have <b>practised</b> using it. In an emergency, a person should be able to step in and fix things directly, not only through another agent.</p>
   </article>
 
-  <article class="card wide"><h3>We will use it more than we meant to</h3>
+  <article class="card wide" id="c-we-will-use-it-more-than-we-meant-to"><h3>We will use it more than we meant to</h3>
     <p>Nobody knows for sure where this goes. But rightly or wrongly, most of us will end up using AI more than we intended. That can be good or bad.</p>
     <p>It is good for someone who has the idea and knows the specification but could never find the hundreds of hours to build it. For people with that experience, it is a genuinely useful tool, and solo builders who want to make a product should start: doing something beats waiting. It is bad when it becomes a habit of prompting and never going back to check. A mind that stops checking slowly stops being able to.</p>
     <p>So use the time it gives back well. If AI saves you hours, spend some of them reading the foundation books you never had time for.</p>
   </article>
 
-  <article class="card wide"><h3>More with fewer, or more with the same</h3>
+  <article class="card wide" id="c-more-with-fewer-or-more-with-the-same"><h3>More with fewer, or more with the same</h3>
     <p>Come back to the bulldozer. Companies may expect the same work from fewer engineers, or more work from the same number. We can already see some reduction across the industry, and there will be disruption, though no one can say yet how much.</p>
     <p>The people who come through it best will be the ones who can direct the machine and still understand the ground it is moving.</p>
   </article>
 
-  <article class="card wide"><h3>Seven ways people use AI</h3>
+  <article class="card wide" id="c-seven-ways-people-use-ai"><h3>Seven ways people use AI</h3>
     <ul>
       <li><b>To automate without learning.</b> Fast today, fragile tomorrow: when it breaks, nothing was learned.</li>
       <li><b>To learn.</b> Ask it to explain, then check the explanation against the docs.</li>
@@ -194,11 +104,11 @@
     <p>Only the first makes you weaker; the rest make you stronger, as long as you stay the one who understands.</p>
   </article>
 
-  <article class="card wide"><h3>You may not read every line, but you must understand it and test it</h3>
+  <article class="card wide" id="c-you-may-not-read-every-line-but-you-must-underst"><h3>You may not read every line, but you must understand it and test it</h3>
     <p>With AI writing more of the code, we may not read every line it produces. That can be acceptable, on two conditions: we understand most of it, how it is shaped, what it depends on, and where it can fail; and we can <b>test all of it in the right way</b>, even the lines we did not read. Tests, types, reviews and monitoring become how we know the code works. See <a href="/well-rounded-engineer/testing/">Testing</a> and <a href="/well-rounded-engineer/observability/">Observability</a>.</p>
   </article>
 
-  <article class="card wide"><h3>Every role is changing, not only engineering</h3>
+  <article class="card wide" id="c-every-role-is-changing-not-only-engineering"><h3>Every role is changing, not only engineering</h3>
     <p>In a large company the change reaches everyone: business analysts, journey managers, product owners, software engineers, solution architects, enterprise architects, data engineers, data analysts, testers, and engineers who have spent careers on mainframes and are now learning cloud and AI. None of us is finished learning, whatever the job title says. Many people are worried simply because they do not yet know what is changing. There will be work, in some capacity, for people who are ready to use AI in the right way.</p>
     <p>What helps most is not one course or one tool. It is the <b>will to adapt</b>: understanding what is changing, trying it, and changing how we work. It will be hard, and some days it will feel slow. Learning one small thing every day still adds up: a command, a concept, a page of this guide, a question asked out loud.</p>
     <ul>
@@ -211,7 +121,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Whatever your role</h3>
+  <article class="card" id="c-whatever-your-role"><h3>Whatever your role</h3>
     <ul>
       <li><b>Learn what it is and is not.</b> AI predicts likely text; it can be fluent and wrong. <a href="/well-rounded-engineer/ai/">AI for Engineers</a> and <a href="/well-rounded-engineer/llm/">LLMs</a> are written plainly.</li>
       <li><b>Use it on your own work, and check it.</b> You learn its strengths and its mistakes fastest on things you already know well.</li>
@@ -220,7 +130,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>If you are an engineer</h3>
+  <article class="card" id="c-if-you-are-an-engineer"><h3>If you are an engineer</h3>
     <ul>
       <li><b>Be able to fix it without the agent.</b> Read the logs, follow a request through the system, roll back a release. <a href="/well-rounded-engineer/linux/">Linux</a>, <a href="/well-rounded-engineer/networking/">Networking</a> and <a href="/well-rounded-engineer/observability/">Observability</a> are where that starts.</li>
       <li><b>Write runbooks a person can follow</b> at 3 a.m., and keep them next to the automation they cover. See <a href="/well-rounded-engineer/sre/">SRE</a>.</li>
@@ -229,12 +139,12 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>Keep your own memory</h3>
+  <article class="card wide" id="c-keep-your-own-memory"><h3>Keep your own memory</h3>
     <p>As AI does more of the work, what you have learned (how your systems behave, why decisions were made, what worked and what did not) becomes more valuable, not less. Keep it in a form you own, so it stays useful to you over the years and goes with you from job to job.</p>
     <p>That is what we are building with <a href="/headworks/">Headworks</a>, Penstock and Cistern running together: a self-hosted AI agent that runs on your own machine with a model you pick. Its memory is plain files you own and can read, change or delete, and it reads only the data you choose to share, with a receipt for every read. What you build up stays yours, and you decide what to share with others. See <a href="/well-rounded-engineer/opensource/">Our open source</a>.</p>
   </article>
 
-  <article class="card wide"><h3>A journey, not a fight</h3>
+  <article class="card wide" id="c-a-journey-not-a-fight"><h3>A journey, not a fight</h3>
     <p>When change feels threatening, the body reacts as if to danger: the fight-or-flight response. It helps in a real emergency and hurts in a long change, because a mind in that state reacts instead of thinking. The change AI brings will take years, not days, so treat it as a journey rather than a fight. It is a journey, and we are in competition with no one: not our colleagues, not the machines.</p>
     <ul>
       <li><b>Step back from the headlines.</b> Ask what is actually changing in your own work this month, not what the loudest voice predicts.</li>
@@ -245,12 +155,12 @@
     </ul>
   </article>
 
-  <article class="card wide"><h3>Understanding before opinion</h3>
+  <article class="card wide" id="c-understanding-before-opinion"><h3>Understanding before opinion</h3>
     <p>Every day brings millions of posts about AI, and everyone has an opinion. We have come to find more satisfaction in expressing a view than in understanding the thing itself, and we miss the experience of learning it.</p>
     <p>That is why this guide is a quiet, static site: no feed, no comments, no tracking. Come, find a section, read it in peace, try the code, and save it as a PDF if you like. Understanding first; the opinion can wait.</p>
   </article>
 
-  <article class="card wide"><h3>Believe in yourself</h3>
+  <article class="card wide" id="c-believe-in-yourself"><h3>Believe in yourself</h3>
     <blockquote class="quote">"When you are inspired by some great purpose, some extraordinary project, all your thoughts break their bonds: Your mind transcends limitations, your consciousness expands in every direction, and you find yourself in a new, great and wonderful world. Dormant forces, faculties and talents become alive, and you discover yourself to be a greater person by far than you ever dreamed yourself to be."<br><span class="quote-by">A passage often attributed to Patanjali</span></blockquote>
     <p>Whoever wrote it, the idea is true: the limits we feel are often limits in how we see ourselves. In times of change, belief in yourself is what lets you start learning something new instead of waiting to be told you can.</p>
     <ul>
@@ -262,7 +172,7 @@
     <p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Self-efficacy" target="_blank" rel="noopener">Self-efficacy (Wikipedia)</a>.</p>
   </article>
 
-  <article class="card wide"><h3>Harness it, and keep control</h3>
+  <article class="card wide" id="c-harness-it-and-keep-control"><h3>Harness it, and keep control</h3>
     <p>Like every technology before it, AI is worth using for what it gives us, and worth controlling for what it can break. Use it every day. Keep the foundations, keep the manual override, and keep people who know how to use both.</p>
   </article>
 
@@ -272,6 +182,8 @@
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-tills-are-a-good-picture">The tills are a good picture</a><a href="#c-we-have-been-here-before-cad-and-cam">We have been here before: CAD and CAM</a><a href="#c-the-risk-of-a-team-that-can-only-prompt">The risk of a team that can only prompt</a><a href="#c-keep-a-hand-on-the-controls">Keep a hand on the controls</a><a href="#c-we-will-use-it-more-than-we-meant-to">We will use it more than we meant to</a><a href="#c-more-with-fewer-or-more-with-the-same">More with fewer, or more with the same</a><a href="#c-seven-ways-people-use-ai">Seven ways people use AI</a><a href="#c-you-may-not-read-every-line-but-you-must-underst">You may not read every line, but you must understand it and test it</a><a href="#c-every-role-is-changing-not-only-engineering">Every role is changing, not only engineering</a><a href="#c-whatever-your-role">Whatever your role</a><a href="#c-if-you-are-an-engineer">If you are an engineer</a><a href="#c-keep-your-own-memory">Keep your own memory</a><a href="#c-a-journey-not-a-fight">A journey, not a fight</a><a href="#c-understanding-before-opinion">Understanding before opinion</a><a href="#c-believe-in-yourself">Believe in yourself</a><a href="#c-harness-it-and-keep-control">Harness it, and keep control</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

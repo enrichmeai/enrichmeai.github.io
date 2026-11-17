@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="cloudcompare">
+<body data-tab="cloudcompare" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/" aria-current="page">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp" open><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/" aria-current="page">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Cloud providers</span> / <span aria-current="page">GCP vs AWS vs Azure</span></p>
 <section class="panel" id="cloudcompare" data-name="GCP vs AWS vs Azure">
   <div class="panel-head"><h1>GCP vs AWS vs Azure</h1><p>The same building blocks under three names: a service-by-service map, how the providers differ in structure, identity, networking and pricing, each one's strengths, and how to stay portable. Service names change often; check each provider's own comparison page before deciding.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Account structure and identity</h3>
+  <article class="card wide" id="c-account-structure-and-identity"><h3>Account structure and identity</h3>
     <div class="tbl"><table>
       <thead><tr><th>Concept</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
       <tbody>
@@ -157,7 +67,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>Compute and containers</h3>
+  <article class="card wide" id="c-compute-and-containers"><h3>Compute and containers</h3>
     <div class="tbl"><table>
       <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
       <tbody>
@@ -171,7 +81,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>Storage and databases</h3>
+  <article class="card wide" id="c-storage-and-databases"><h3>Storage and databases</h3>
     <div class="tbl"><table>
       <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
       <tbody>
@@ -188,7 +98,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>Data and analytics</h3>
+  <article class="card wide" id="c-data-and-analytics"><h3>Data and analytics</h3>
     <div class="tbl"><table>
       <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
       <tbody>
@@ -207,7 +117,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card wide"><h3>AI, APIs, networking, security, operations</h3>
+  <article class="card wide" id="c-ai-apis-networking-security-operations"><h3>AI, APIs, networking, security, operations</h3>
     <div class="tbl"><table>
       <thead><tr><th>Need</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
       <tbody>
@@ -231,7 +141,7 @@
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Where each tends to stand out</h3>
+  <article class="card" id="c-where-each-tends-to-stand-out"><h3>Where each tends to stand out</h3>
     <ul>
       <li><b>Google Cloud:</b> data and analytics (BigQuery is serverless with nothing to size), global networking with a global VPC and single-IP global load balancing, Kubernetes (GKE), developer-friendly serverless (Cloud Run), and AI with Gemini Enterprise Agent Platform (formerly Vertex AI). Projects make isolation simple.</li>
       <li><b>AWS:</b> the broadest and deepest service catalogue, the largest ecosystem and talent pool, many regions, and mature options for almost every niche. More configuration choices, and more to learn.</li>
@@ -240,7 +150,7 @@
     <p class="note">All three are capable for almost any workload. The deciding factors are usually existing skills and contracts, specific services you depend on, data location, and price after discounts.</p>
   </article>
 
-  <article class="card"><h3>Differences that bite</h3>
+  <article class="card" id="c-differences-that-bite"><h3>Differences that bite</h3>
     <ul>
       <li><b>IAM thinking:</b> GCP binds roles to principals on resources; AWS writes JSON policies with explicit allow/deny and resource ARNs; Azure assigns roles at a scope in a strict hierarchy.</li>
       <li><b>Networking:</b> a GCP VPC spans regions; AWS and Azure networks are regional and are joined with peering or transit gateways/hubs.</li>
@@ -251,7 +161,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>Regions in India (data residency)</h3>
+  <article class="card" id="c-regions-in-india-data-residency"><h3>Regions in India (data residency)</h3>
     <div class="tbl"><table>
       <thead><tr><th>Provider</th><th>Regions</th></tr></thead>
       <tbody>
@@ -262,7 +172,7 @@
     <p class="note">Not every service or model is available in every region. Check availability per service, and for AI models check which regions actually process the data.</p>
   </article>
 
-  <article class="card"><h3>CLI equivalents</h3>
+  <article class="card" id="c-cli-equivalents"><h3>CLI equivalents</h3>
 <div class="snip"><pre><code># who am I / which project-account-subscription
 gcloud config list            aws sts get-caller-identity     az account show
 
@@ -283,7 +193,7 @@ aws secretsmanager get-secret-value --secret-id s
 az keyvault secret show --vault-name v -n s</code></pre></div>
   </article>
 
-  <article class="card"><h3>Staying portable (where it matters)</h3>
+  <article class="card" id="c-staying-portable-where-it-matters"><h3>Staying portable (where it matters)</h3>
     <ul>
       <li><b>Containers and Kubernetes</b> run the same on GKE, EKS and AKS; Cloud Run-style serverless is less portable but simpler.</li>
       <li><b>Terraform</b> for all infrastructure, with provider-specific modules behind your own interfaces.</li>
@@ -295,7 +205,7 @@ az keyvault secret show --vault-name v -n s</code></pre></div>
     <p class="note">Multi-cloud for its own sake doubles skills, tooling and egress. Use it for a concrete reason: a customer requirement, a unique service, resilience against a provider-wide failure, or negotiation.</p>
   </article>
 
-  <article class="card"><h3>Choosing for a new workload</h3>
+  <article class="card" id="c-choosing-for-a-new-workload"><h3>Choosing for a new workload</h3>
     <ol>
       <li>Where is the data now, and where must it legally live?</li>
       <li>Which managed services would save the most work (warehouse, Kubernetes, AI models)?</li>
@@ -306,7 +216,7 @@ az keyvault secret show --vault-name v -n s</code></pre></div>
     </ol>
   </article>
 
-  <article class="card"><h3>Certifications, side by side</h3>
+  <article class="card" id="c-certifications-side-by-side"><h3>Certifications, side by side</h3>
     <div class="tbl"><table>
       <thead><tr><th>Level</th><th>Google Cloud</th><th>AWS</th><th>Azure</th></tr></thead>
       <tbody>
@@ -319,8 +229,8 @@ az keyvault secret show --vault-name v -n s</code></pre></div>
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Map common services across GCP, AWS and Azure</li><li>Explain projects vs accounts vs subscriptions</li><li>Use each provider's CLI for basic tasks</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Translate a design from one cloud to another, including IAM and networking</li><li>Compare prices for a workload, including egress</li><li>Use Terraform across providers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose a provider for a workload with written trade-offs</li><li>Design portable architectures where it matters, and accept lock-in deliberately</li><li>Plan data residency and region choices</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's cloud strategy, contracts and multi-cloud policy</li><li>Lead migrations between clouds or from on-premises</li><li>Govern cost, security and compliance across providers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Well-Architected frameworks of each provider</li><li>Cloud IAM models compared</li><li>Cross-cloud networking and egress costs</li><li>Open table formats for portability</li><li>FinOps practices</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud: compare AWS and Azure services</a><span class="lnote"> Google's official service mapping</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/" target="_blank" rel="noopener">Azure for AWS professionals</a><span class="lnote"> Microsoft's AWS-to-Azure mapping</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Well-Architected Framework</a><span class="lnote"> Google's design pillars</span></li><li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected</a><span class="lnote"> AWS design pillars</span></li><li><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a><span class="lnote"> Azure design pillars</span></li><li><a href="https://www.finops.org/" target="_blank" rel="noopener">FinOps Foundation</a><span class="lnote"> Managing cloud cost across providers</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://aws.amazon.com/apprunner/" target="_blank" rel="noopener">AWS App Runner (closed to new customers)</a>; <a href="https://docs.cloud.google.com/dataplex/docs/introduction" target="_blank" rel="noopener">Knowledge Catalog, formerly Dataplex</a>; <a href="https://docs.cloud.google.com/dataproc-serverless/docs/overview" target="_blank" rel="noopener">Managed Service for Apache Spark rename</a>; <a href="https://docs.cloud.google.com/biglake/docs/introduction" target="_blank" rel="noopener">Lakehouse, formerly BigLake</a>; <a href="https://docs.cloud.google.com/composer/docs" target="_blank" rel="noopener">Managed Service for Apache Airflow, formerly Cloud Composer</a>; <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes" target="_blank" rel="noopener">Vertex AI name changes</a>; <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-azure-ai-foundry" target="_blank" rel="noopener">Microsoft Foundry</a>; <a href="https://docs.aws.amazon.com/quicksight/latest/user/welcome.html" target="_blank" rel="noopener">AWS Quick (Quick Sight)</a>; <a href="https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview" target="_blank" rel="noopener">Azure Cache for Redis retirement</a>; <a href="https://learn.microsoft.com/en-us/azure/data-factory/concepts-workflow-orchestration-manager" target="_blank" rel="noopener">ADF Workflow Orchestration Manager</a>; <a href="https://learn.microsoft.com/en-us/azure/reliability/regions-list" target="_blank" rel="noopener">Azure regions list</a>; <a href="https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html" target="_blank" rel="noopener">AWS regions</a>; <a href="https://docs.aws.amazon.com/aurora-dsql/latest/userguide/what-is-aurora-dsql.html" target="_blank" rel="noopener">Aurora DSQL</a>; <a href="https://docs.aws.amazon.com/eks/latest/userguide/automode.html" target="_blank" rel="noopener">EKS Auto Mode</a>; <a href="https://learn.microsoft.com/en-us/credentials/certifications/fabric-data-engineer-associate/" target="_blank" rel="noopener">Fabric Data Engineer (DP-700)</a>; <a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview" target="_blank" rel="noopener">Azure Front Door overview</a>; <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank" rel="noopener">AWS CLI reference</a>; <a href="https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank" rel="noopener">Azure CLI reference</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BGCP%20vs%20AWS%20vs%20Azure%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Map common services across GCP, AWS and Azure</li><li>Explain projects vs accounts vs subscriptions</li><li>Use each provider's CLI for basic tasks</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Translate a design from one cloud to another, including IAM and networking</li><li>Compare prices for a workload, including egress</li><li>Use Terraform across providers</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose a provider for a workload with written trade-offs</li><li>Design portable architectures where it matters, and accept lock-in deliberately</li><li>Plan data residency and region choices</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set the organisation's cloud strategy, contracts and multi-cloud policy</li><li>Lead migrations between clouds or from on-premises</li><li>Govern cost, security and compliance across providers</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Well-Architected frameworks of each provider</li><li>Cloud IAM models compared</li><li>Cross-cloud networking and egress costs</li><li>Open table formats for portability</li><li>FinOps practices</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud: compare AWS and Azure services</a><span class="lnote"> Google's official service mapping</span></li><li><a href="https://learn.microsoft.com/en-us/azure/architecture/aws-professional/" target="_blank" rel="noopener">Azure for AWS professionals</a><span class="lnote"> Microsoft's AWS-to-Azure mapping</span></li><li><a href="https://cloud.google.com/architecture/framework" target="_blank" rel="noopener">Google Cloud Well-Architected Framework</a><span class="lnote"> Google's design pillars</span></li><li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected</a><span class="lnote"> AWS design pillars</span></li><li><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a><span class="lnote"> Azure design pillars</span></li><li><a href="https://www.finops.org/" target="_blank" rel="noopener">FinOps Foundation</a><span class="lnote"> Managing cloud cost across providers</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://aws.amazon.com/apprunner/" target="_blank" rel="noopener">AWS App Runner (closed to new customers)</a>; <a href="https://docs.cloud.google.com/dataplex/docs/introduction" target="_blank" rel="noopener">Knowledge Catalog, formerly Dataplex</a>; <a href="https://docs.cloud.google.com/dataproc-serverless/docs/overview" target="_blank" rel="noopener">Managed Service for Apache Spark rename</a>; <a href="https://docs.cloud.google.com/biglake/docs/introduction" target="_blank" rel="noopener">Lakehouse, formerly BigLake</a>; <a href="https://docs.cloud.google.com/composer/docs" target="_blank" rel="noopener">Managed Service for Apache Airflow, formerly Cloud Composer</a>; <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes" target="_blank" rel="noopener">Vertex AI name changes</a>; <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-azure-ai-foundry" target="_blank" rel="noopener">Microsoft Foundry</a>; <a href="https://docs.aws.amazon.com/quicksight/latest/user/welcome.html" target="_blank" rel="noopener">AWS Quick (Quick Sight)</a>; <a href="https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview" target="_blank" rel="noopener">Azure Cache for Redis retirement</a>; <a href="https://learn.microsoft.com/en-us/azure/data-factory/concepts-workflow-orchestration-manager" target="_blank" rel="noopener">ADF Workflow Orchestration Manager</a>; <a href="https://learn.microsoft.com/en-us/azure/reliability/regions-list" target="_blank" rel="noopener">Azure regions list</a>; <a href="https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html" target="_blank" rel="noopener">AWS regions</a>; <a href="https://docs.aws.amazon.com/aurora-dsql/latest/userguide/what-is-aurora-dsql.html" target="_blank" rel="noopener">Aurora DSQL</a>; <a href="https://docs.aws.amazon.com/eks/latest/userguide/automode.html" target="_blank" rel="noopener">EKS Auto Mode</a>; <a href="https://learn.microsoft.com/en-us/credentials/certifications/fabric-data-engineer-associate/" target="_blank" rel="noopener">Fabric Data Engineer (DP-700)</a>; <a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview" target="_blank" rel="noopener">Azure Front Door overview</a>; <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank" rel="noopener">AWS CLI reference</a>; <a href="https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank" rel="noopener">Azure CLI reference</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BGCP%20vs%20AWS%20vs%20Azure%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -328,6 +238,8 @@ az keyvault secret show --vault-name v -n s</code></pre></div>
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-account-structure-and-identity">Account structure and identity</a><a href="#c-compute-and-containers">Compute and containers</a><a href="#c-storage-and-databases">Storage and databases</a><a href="#c-data-and-analytics">Data and analytics</a><a href="#c-ai-apis-networking-security-operations">AI, APIs, networking, security, operations</a><a href="#c-where-each-tends-to-stand-out">Where each tends to stand out</a><a href="#c-differences-that-bite">Differences that bite</a><a href="#c-regions-in-india-data-residency">Regions in India (data residency)</a><a href="#c-cli-equivalents">CLI equivalents</a><a href="#c-staying-portable-where-it-matters">Staying portable (where it matters)</a><a href="#c-choosing-for-a-new-workload">Choosing for a new workload</a><a href="#c-certifications-side-by-side">Certifications, side by side</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

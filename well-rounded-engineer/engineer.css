@@ -1,130 +1,227 @@
-/* Well Rounded Engineer: a tabbed field guide. Scoped under .eg so it never restyles the site header,
-   footer or other pages. Colours come only from the --color-* tokens in /assets/site.css. */
+/* Well Rounded Engineer: a field guide you can navigate. A navy top bar, a sidebar of groups, white
+   cards, dark code. Scoped to the guide's own classes so it never restyles other pages.
+   Colours come only from the --color-* tokens in /assets/site.css. */
 
-.eg-bar {
-  position: relative; z-index: 30;
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-divider);
+/* ---------------------------------------------------------------- top bar */
+.eg-wrap { max-width: 1360px; margin: 0 auto; padding: 0 24px; }
+.eg-top { background: var(--color-accent-900); color: var(--color-white); position: sticky; top: 0; z-index: 40; }
+.eg-top-in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; min-height: 64px; padding-top: 8px; padding-bottom: 8px; }
+.eg-top .wordmark, .eg-top .wordmark:hover { color: var(--color-white); font-size: 21px; }
+.eg-top .wordmark .dot { color: var(--color-accent-400); }
+.eg-top .product-label { font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-300); }
+.eg-top a.product-label:hover { color: var(--color-white); text-decoration: none; }
+.eg-top .search { margin-left: auto; flex: 0 1 360px; }
+.eg-top .search input {
+  width: 100%; min-height: 44px; box-sizing: border-box; font: 16px var(--font-body); color: var(--color-white);
+  background: var(--color-accent-800); border: 1px solid transparent; border-radius: 10px; padding: 0 14px;
 }
-.eg-bar .container { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-top: 10px; padding-bottom: 10px; }
-.eg-bar nav { display: flex; flex-wrap: wrap; gap: 2px; }
-.eg-bar nav a {
-  font-family: var(--font-heading); font-weight: 600; font-size: 14.5px;
-  color: var(--color-neutral-700); padding: 4px 9px; border-radius: 4px; white-space: nowrap;
+.eg-top .search input::placeholder { color: var(--color-accent-300); }
+.eg-topics-btn {
+  min-height: 44px; padding: 0 16px; border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--color-white); color: var(--color-accent-900); font: 600 16px var(--font-body);
 }
-.eg-bar nav a:hover { color: var(--color-text); background: var(--color-surface); text-decoration: none; }
-.eg-bar nav a[aria-current="page"] { color: var(--color-accent-800); background: var(--color-accent-100); }
-.eg-bar .navgrp {
-  font-family: var(--font-heading); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--color-neutral-600); padding: 4px 2px 4px 10px; white-space: nowrap;
-}
-.eg-bar .search { margin-left: auto; flex: 1 1 220px; max-width: 320px; }
-.eg-bar .search input {
-  width: 100%; font: 15px var(--font-body); color: var(--color-text);
-  background: var(--color-neutral-100); border: 1px solid var(--color-divider); border-radius: 4px; padding: 6px 10px;
-}
-.eg-bar nav a:focus-visible, .eg-bar input:focus-visible, .eg button:focus-visible {
-  outline: 2px solid var(--color-accent-700); outline-offset: 2px;
-}
+@media (min-width: 901px) { .eg-topics-btn { display: none; } }
+.eg-top input:focus-visible, .eg-topics-btn:focus-visible, .eg-top a:focus-visible { outline: 2px solid var(--color-accent-300); outline-offset: 2px; }
 
-.eg { padding-top: 24px; padding-bottom: 56px; font-size: 15.5px; line-height: 1.55; }
-.eg .eg-intro { margin: 0 0 22px; max-width: 75ch; color: var(--color-neutral-700); }
-.eg .eg-tagline { font-family: var(--font-heading); font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
-.eg .eg-smile { width: 1.4em; height: 1.4em; flex: none; }
-.eg .eg-intro h1 { max-width: none; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; margin-bottom: 8px; color: var(--color-text); }
-.eg .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 14px; }
-.eg .panel-head h1, .eg .panel-head h2 { font-size: clamp(26px, 3.4vw, 34px); line-height: 1.15; max-width: none; margin: 0; }
-.eg .panel-head p { margin: 0; color: var(--color-neutral-700); max-width: 75ch; }
-.eg .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr)); gap: 14px; align-items: start; }
+/* ---------------------------------------------------------------- home hero */
+.eg-hero { background: var(--color-accent-900); color: var(--color-white); }
+.eg-hero-in { display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: flex-end; padding-top: 40px; padding-bottom: 56px; }
+.eg-hero .hero-main { flex: 999 1 520px; min-width: 0; }
+.eg-hero .hero-eyebrow { margin: 0 0 10px; font-family: var(--font-heading); font-size: 17px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-400); }
+.eg-hero h1 { margin: 0; font-size: clamp(44px, 7vw, 76px); line-height: 1; color: var(--color-white); max-width: none; }
+.eg-hero .hero-lead { margin: 18px 0 0; max-width: 62ch; font-size: 19px; line-height: 1.6; color: var(--color-accent-200); }
+.eg-hero .hero-go { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 0; }
+.eg-hero .btn-light, .eg-hero .btn-line {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 10px; font-weight: 600; text-decoration: none;
+}
+.eg-hero .btn-light { background: var(--color-white); color: var(--color-accent-900); }
+.eg-hero .btn-line { border: 1px solid var(--color-accent-500); color: var(--color-white); }
+.eg-hero .btn-light:hover, .eg-hero .btn-line:hover { text-decoration: none; background: var(--color-accent-100); color: var(--color-accent-900); }
+.eg-hero a:focus-visible { outline: 2px solid var(--color-accent-300); outline-offset: 3px; }
+.eg-hero .hero-stats { flex: 1 1 260px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.eg-hero .hero-stats p { margin: 0; background: var(--color-accent-800); border-radius: 12px; padding: 16px 18px; color: var(--color-accent-300); }
+.eg-hero .hero-stats b { display: block; font-family: var(--font-heading); font-size: 40px; line-height: 1.1; color: var(--color-white); }
+.eg-hero .hero-stats .wide { grid-column: 1 / -1; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-white); }
+
+/* ---------------------------------------------------------------- three columns */
+.eg-layout { display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start; padding-top: 28px; padding-bottom: 64px; }
+.eg-side { flex: 1 1 236px; max-width: 260px; font-size: 15px; position: sticky; top: 80px; max-height: calc(100vh - 96px); overflow-y: auto; }
+.eg-side a { display: flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; color: var(--color-neutral-800); }
+.eg-side a:hover { background: var(--color-surface); color: var(--color-text); text-decoration: none; }
+.eg-side a[aria-current="page"] { background: var(--color-accent-700); color: var(--color-white); font-weight: 600; }
+.eg-side .side-top { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+.eg-side .side-grp { border-radius: 12px; margin: 2px 0; }
+.eg-side .side-grp[open] { background: var(--color-white); border: 1px solid var(--color-neutral-200); padding: 4px; }
+.eg-side summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  min-height: 38px; padding: 0 12px; border-radius: 8px; color: var(--color-neutral-800);
+}
+.eg-side summary::-webkit-details-marker { display: none; }
+.eg-side summary:hover { background: var(--color-surface); }
+.eg-side .side-grp[open] summary { font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); }
+.eg-side summary .n { font-size: 13px; color: var(--color-neutral-700); letter-spacing: 0; }
+.eg-side .side-links { display: flex; flex-direction: column; gap: 2px; }
+.eg-side a:focus-visible, .eg-side summary:focus-visible { outline: 2px solid var(--color-accent-700); outline-offset: 1px; }
+
+.eg { flex: 999 1 560px; min-width: 0; font-size: 16px; line-height: 1.6; }
+.eg-toc { flex: 1 1 200px; max-width: 220px; position: sticky; top: 80px; font-size: 14.5px; max-height: calc(100vh - 96px); overflow-y: auto; }
+.eg-toc .toc-h { margin: 0 0 8px; font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-700); }
+.eg-toc .toc-links { display: flex; flex-direction: column; border-left: 2px solid var(--color-neutral-300); }
+.eg-toc a { padding: 5px 12px; margin-left: -2px; border-left: 2px solid transparent; color: var(--color-neutral-800); line-height: 1.35; }
+.eg-toc a:hover { border-left-color: var(--color-accent-700); color: var(--color-accent-900); text-decoration: none; }
+
+/* ---------------------------------------------------------------- page heading */
+.eg .eg-crumb { margin: 0 0 8px; font-size: 15px; color: var(--color-neutral-700); }
+.eg .eg-crumb a { color: var(--color-accent-700); }
+.eg .panel-head { margin: 0 0 24px; }
+.eg .panel-head h1, .eg .panel-head h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.04; max-width: none; margin: 0; color: var(--color-text); }
+.eg .panel-head p { margin: 14px 0 0; color: var(--color-neutral-800); max-width: 68ch; font-size: 18px; line-height: 1.6; }
+
+/* ---------------------------------------------------------------- cards */
+.eg .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 16px; align-items: start; }
 .eg .card {
-  background: var(--color-neutral-100); border: 1px solid var(--color-divider);
-  border-radius: 6px; padding: 14px 16px; min-width: 0;
+  background: var(--color-white); border: 1px solid var(--color-neutral-200);
+  border-radius: 16px; padding: 22px 24px; min-width: 0; scroll-margin-top: 84px;
 }
 .eg .card.wide { grid-column: 1 / -1; }
-.eg .card h3 { font-size: 18px; line-height: 1.3; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.eg .card p, .eg .card li { margin: 6px 0; max-width: 75ch; }
-.eg .card ul, .eg .card ol { padding-left: 20px; margin: 6px 0; }
+.eg .card h3 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.eg .card h4 { font-size: 19px; margin: 16px 0 6px; }
+.eg .card p, .eg .card li { margin: 8px 0; max-width: 75ch; }
+.eg .card ul, .eg .card ol { padding-left: 22px; margin: 8px 0; }
+.eg .card a { color: var(--color-accent-700); }
+/* the first card on a page is its short answer: navy, like the hero */
+.eg .grid > .card:first-child { background: var(--color-accent-900); border-color: var(--color-accent-900); color: var(--color-accent-200); }
+.eg .grid > .card:first-child h3 { color: var(--color-white); }
+.eg .grid > .card:first-child b, .eg .grid > .card:first-child strong { color: var(--color-white); }
+.eg .grid > .card:first-child a { color: var(--color-accent-300); }
+.eg .grid > .card:first-child code { background: var(--color-accent-800); color: var(--color-accent-100); }
+.eg .grid > .card:first-child .note, .eg .grid > .card:first-child .sources { color: var(--color-accent-300); }
+.eg .grid > .card:first-child th { color: var(--color-accent-300); border-color: var(--color-accent-700); }
+.eg .grid > .card:first-child td { border-color: var(--color-accent-700); }
+.eg .grid > .card:first-child th { background: var(--color-accent-800); color: var(--color-accent-200); }
+.eg .grid > .card:first-child pre { background: var(--color-accent-800); }
+.eg .grid > .card:first-child td:first-child { color: var(--color-white); }
+.eg .grid > .card:first-child details { background: var(--color-accent-800); border-color: var(--color-accent-700); }
+/* tiles inside the navy card (the home page's map) keep dark text on a light tile */
+.eg .grid > .card:first-child .gmap-card { color: var(--color-text); }
+.eg .grid > .card:first-child .gmap-card a { color: var(--color-accent-700); }
+
+/* ---------------------------------------------------------------- code */
 .eg code {
-  font: 13.5px/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  background: var(--color-neutral-200); color: var(--color-text); padding: 1px 4px; border-radius: 3px;
+  font: 14px/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  background: var(--color-neutral-200); color: var(--color-text); padding: 1px 5px; border-radius: 4px;
 }
 .eg p code, .eg li code, .eg td code { overflow-wrap: anywhere; }
-.eg .snip { position: relative; margin: 8px 0; }
+.eg .snip { position: relative; margin: 12px 0; }
 .eg pre {
-  margin: 0; background: var(--color-neutral-200); color: var(--color-text);
-  border: 1px solid var(--color-divider); border-radius: 4px; padding: 10px 12px; overflow-x: auto;
-  font: 13px/1.55 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; tab-size: 2;
+  margin: 0; background: var(--color-accent-900); color: var(--color-accent-100);
+  border-radius: 12px; padding: 16px 18px; overflow-x: auto;
+  font: 14px/1.6 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; tab-size: 2;
 }
-.eg pre code { background: none; padding: 0; font: inherit; overflow-wrap: normal; word-break: normal; }
+.eg pre code { background: none; color: inherit; padding: 0; font: inherit; overflow-wrap: normal; word-break: normal; }
 .eg .copy {
-  position: absolute; top: 6px; right: 6px; font: 600 12px var(--font-body); color: var(--color-neutral-700);
-  background: var(--color-neutral-100); border: 1px solid var(--color-divider); border-radius: 3px; padding: 2px 8px; cursor: pointer;
+  position: absolute; top: 8px; right: 8px; min-height: 32px; font: 600 13px var(--font-body); color: var(--color-accent-100);
+  background: var(--color-accent-800); border: 1px solid var(--color-accent-700); border-radius: 6px; padding: 0 10px; cursor: pointer;
 }
-.eg .copy:hover { color: var(--color-accent-800); }
+.eg .copy:hover { background: var(--color-accent-700); }
+.eg .copy:focus-visible, .eg button:focus-visible, .eg a:focus-visible, .eg summary:focus-visible { outline: 2px solid var(--color-accent-700); outline-offset: 2px; }
+
+/* ---------------------------------------------------------------- tags, tables, notes */
 .eg .tag {
-  font: 600 11px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 4px 6px; border-radius: 3px; background: var(--color-accent-100); color: var(--color-accent-800);
+  font: 600 11.5px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 8px; border-radius: 999px; background: var(--color-accent-100); color: var(--color-accent-800);
   margin-left: 0;   /* site.css .tag adds a left margin meant for other layouts */
 }
 .eg .tag.lts { background: var(--color-accent-200); color: var(--color-accent-900); }
 .eg .tag.prev { background: var(--color-neutral-200); color: var(--color-neutral-800); }
-.eg .tbl { overflow-x: auto; }
-.eg table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
-.eg th, .eg td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--color-divider); vertical-align: top; }
-.eg th { font: 600 12px var(--font-body); letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-neutral-700); }
+.eg .tbl { overflow-x: auto; margin: 10px 0; }
+.eg table { border-collapse: collapse; width: 100%; font-size: 15px; }
+.eg th, .eg td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--color-neutral-200); vertical-align: top; }
+.eg th { font: 600 13px var(--font-body); letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-accent-800); background: var(--color-accent-100); border-bottom: 0; }
+.eg th:first-child { border-radius: 8px 0 0 8px; }
+.eg th:last-child { border-radius: 0 8px 8px 0; }
 .eg td:first-child { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
-.eg .note { margin: 6px 0 0; font-size: 14px; color: var(--color-neutral-700); }
+.eg .note { margin: 10px 0 0; font-size: 15px; color: var(--color-neutral-800); }
 .eg .empty { color: var(--color-neutral-700); padding: 24px 0; }
-.eg .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 10px; margin: 6px 0; }
-.eg .lvl { border: 1px solid var(--color-divider); border-radius: 4px; padding: 8px 10px; background: var(--color-bg); min-width: 0; }
-.eg .lvl h4, .eg .explore h4 { margin: 0 0 4px; font-size: 16px; }
-.eg .lvl ul { margin: 0; padding-left: 16px; }
+.eg .sources { margin: 14px 0 0; font-size: 14px; color: var(--color-neutral-700); overflow-wrap: anywhere; }
+.eg .quote { margin: 6px 0 12px; padding: 10px 16px; border-left: 3px solid var(--color-accent-700); font-style: italic; }
+.eg .quote-by { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--color-neutral-700); }
+.eg .ex { font-weight: 600; color: var(--color-accent-800); font-variant-numeric: tabular-nums; }
+.eg details { border: 1px solid var(--color-neutral-200); border-radius: 10px; margin: 10px 0; background: var(--color-neutral-100); }
+.eg details > summary { cursor: pointer; padding: 10px 12px; font-weight: 600; }
+.eg details[open] > summary { border-bottom: 1px solid var(--color-neutral-200); }
+.eg details > .inner { padding: 6px 12px 10px; }
+
+/* ---------------------------------------------------------------- levels and explore */
+.eg .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; margin: 8px 0; }
+.eg .lvl { border-radius: 12px; padding: 14px 16px; background: var(--color-neutral-100); min-width: 0; }
+.eg .lvl:nth-child(2) { background: var(--color-accent-100); }
+.eg .lvl:nth-child(3) { background: var(--color-accent-200); }
+.eg .lvl:nth-child(4) { background: var(--color-accent-900); color: var(--color-accent-200); }
+.eg .lvl:nth-child(4) h4 { color: var(--color-white); }
+.eg .lvl:nth-child(4) .lvtag { background: var(--color-accent-800); color: var(--color-accent-200); }
+.eg .lvl h4, .eg .explore h4 { margin: 0 0 6px; font-size: 18px; }
+.eg .lvl ul { margin: 0; padding-left: 18px; }
 .eg .lvl p { margin: 0; }
 .eg .lvtag {
-  display: inline-block; min-width: 20px; text-align: center; border-radius: 3px;
-  background: var(--color-accent-100); color: var(--color-accent-800); font: 600 12px var(--font-body); padding: 1px 5px; margin-right: 4px;
+  display: inline-block; min-width: 22px; text-align: center; border-radius: 6px;
+  background: var(--color-white); color: var(--color-accent-800); font: 600 13px var(--font-body); padding: 2px 6px; margin-right: 6px;
 }
-.eg .explore { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
-.eg .explore ul { padding-left: 18px; margin: 4px 0; }
-.eg .links li { margin: 5px 0; }
+.eg .explore { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.eg .explore ul { padding-left: 20px; margin: 4px 0; }
+.eg .links li { margin: 6px 0; }
 .eg .links a { font-weight: 600; }
-.eg .lnote { color: var(--color-neutral-700); font-size: 14px; }
-.eg details { border: 1px solid var(--color-divider); border-radius: 4px; margin: 8px 0; background: var(--color-neutral-100); }
-.eg details > summary { cursor: pointer; padding: 8px 10px; font-weight: 600; }
-.eg details[open] > summary { border-bottom: 1px solid var(--color-divider); }
-.eg details > .inner { padding: 4px 10px 8px; }
-.eg .ex { font-weight: 600; color: var(--color-accent-800); font-variant-numeric: tabular-nums; }
+.eg .lnote { color: var(--color-neutral-700); font-size: 14.5px; }
 
-@media (max-width: 1040px) {
-  .eg-bar { position: sticky; top: 58px; }   /* one scrolling row of tabs stays in reach on small screens */
-  .eg-bar nav { flex-wrap: nowrap; overflow-x: auto; width: 100%; order: 3; }
+/* ---------------------------------------------------------------- previous / next, search results */
+.eg .eg-pn { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; margin: 32px 0 0; }
+.eg .eg-pn a {
+  display: flex; align-items: center; min-height: 64px; padding: 0 18px; border-radius: 12px;
+  background: var(--color-white); border: 1px solid var(--color-neutral-200);
+  font-family: var(--font-heading); font-weight: 600; font-size: 19px; color: var(--color-accent-900);
 }
-@media (max-width: 620px) {
-  .eg-bar .search { max-width: none; margin-left: 0; }
-  /* on a phone a long first-column label must wrap, or it squeezes the other columns to a sliver */
-  .eg td:first-child { white-space: normal; min-width: 7em; }
-}
-
-/* One page per section: the product label links back to the guide's first page, a previous/next
-   pair ends each page, and a search lists matches on the other pages. */
-a.product-label:hover { text-decoration: none; color: var(--color-accent-800); }
-.eg .eg-pn { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin: 28px 0 0; padding-top: 16px; border-top: 1px solid var(--color-divider); font-family: var(--font-heading); font-weight: 600; font-size: 17px; }
-.eg .eg-pn .pn-next { margin-left: auto; }
-.eg .elsewhere { margin: 22px 0 0; }
-.eg .elsewhere h2 { font-size: 20px; margin: 0 0 8px; }
+.eg .eg-pn a:hover { border-color: var(--color-accent-500); text-decoration: none; }
+.eg .eg-pn .pn-next { justify-content: flex-end; text-align: right; }
+.eg .elsewhere { margin: 24px 0 0; }
+.eg .elsewhere h2 { font-size: 22px; margin: 0 0 8px; }
 .eg .elsewhere ul { padding-left: 20px; margin: 0; }
 .eg .elsewhere li { margin: 6px 0; }
 .eg .elsewhere a { font-weight: 600; }
 
-/* Start here: the map of groups, and the "Run the code" line on each page */
-.eg .gmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; margin-top: 8px; }
-.eg .gmap-card { border: 1px solid var(--color-divider); border-radius: 6px; padding: 10px 12px; background: var(--color-bg); min-width: 0; }
-.eg .gmap-card h4 { margin: 0 0 4px; font-size: 17px; }
-.eg .gmap-card p { margin: 4px 0; }
-.eg .gmap-n { display: inline-block; min-width: 22px; text-align: center; border-radius: 3px; background: var(--color-accent-100); color: var(--color-accent-800); font: 600 13px var(--font-body); padding: 1px 5px; margin-right: 4px; }
-.eg .gmap-pages { font-size: 14.5px; color: var(--color-neutral-700); }
+/* ---------------------------------------------------------------- the map of groups (home) */
+.eg .gmap { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; margin-top: 12px; }
+.eg .gmap-card { border: 1px solid var(--color-neutral-200); border-radius: 14px; padding: 16px 18px; background: var(--color-neutral-100); min-width: 0; }
+.eg .gmap-card h4 { margin: 0 0 6px; font-size: 21px; display: flex; align-items: center; gap: 8px; }
+.eg .gmap-ic { display: inline-flex; width: 38px; height: 38px; flex: none; align-items: center; justify-content: center; border-radius: 10px; background: var(--color-accent-100); color: var(--color-accent-700); }
+.eg .gmap-card p { margin: 6px 0; }
+.eg .gmap-n { display: inline-block; min-width: 22px; text-align: center; border-radius: 6px; background: var(--color-white); color: var(--color-accent-800); font: 600 13px var(--font-body); padding: 2px 6px; }
+.eg .gmap-pages { font-size: 15px; color: var(--color-neutral-800); }
 .eg .gmap-run a, .eg .runcode a { font-weight: 600; overflow-wrap: anywhere; }
-.eg .runcode { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--color-divider); }
-.eg .sources { margin: 12px 0 0; font-size: 14px; color: var(--color-neutral-700); overflow-wrap: anywhere; }
-.eg .quote { margin: 4px 0 10px; padding: 8px 14px; border-left: 3px solid var(--color-accent-800); font-style: italic; }
-.eg .quote-by { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--color-neutral-700); }
+.eg .runcode { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--color-neutral-200); }
+
+/* ---------------------------------------------------------------- narrower screens */
+@media (max-width: 1240px) {
+  .eg-toc { display: none; }
+}
+@media (max-width: 900px) {
+  .eg-wrap { padding: 0 16px; }
+  .eg-top .product-label { display: none; }
+  .eg-top .search { order: 3; flex: 1 1 100%; margin-left: 0; }
+  .eg-topics-btn { margin-left: auto; }
+  .eg-layout { gap: 16px; padding-top: 16px; }
+  .eg-side { flex: 1 1 100%; max-width: none; position: static; max-height: none; }
+  /* with JavaScript, the sidebar folds behind the Topics button; without it, it stays open above the page */
+  html.js .eg-side { display: none; }
+  html.js body.topics-open .eg-side { display: block; }
+  .eg { flex: 1 1 100%; }
+  .eg .card { padding: 18px; border-radius: 14px; }
+  .eg .card h3 { font-size: 23px; }
+  .eg .panel-head p { font-size: 17px; }
+}
+@media (max-width: 620px) {
+  .eg .grid { grid-template-columns: minmax(0, 1fr); }
+  /* on a phone a long first-column label must wrap, or it squeezes the other columns to a sliver */
+  .eg td:first-child { white-space: normal; min-width: 7em; }
+  .eg-hero-in { padding-top: 28px; padding-bottom: 36px; }
+  .eg-hero .hero-lead { font-size: 17px; }
+}

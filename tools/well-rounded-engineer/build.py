@@ -176,13 +176,31 @@ first=min(s.index(r) for r in rows.values()); last=max(s.index(r)+len(r) for r i
 s=s[:first]+''.join(rows[t] for t in order if t in rows)+s[last:]
 # the map: one card per group, first thing on Start here (replaces the old "Suggested order" list)
 s=re.sub(r'  <article class="card"><h3>Suggested order for a newcomer</h3>.*?</article>\n\n?','',s,count=1,flags=re.S)
+# one plain stroke icon per group on the map (decorative: aria-hidden)
+ICON={"Foundations":"M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z",
+ "Languages":"M8 7l-5 5 5 5M16 7l5 5-5 5",
+ "Building services":"M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01",
+ "User interfaces":"M3 4h18v16H3zM3 9h18M9 9v11",
+ "Quality":"M4 12l5 5L20 6",
+ "Security":"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z",
+ "Data":"M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3",
+ "Architecture &amp; design":"M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z",
+ "Platform &amp; operations":"M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1",
+ "Cloud providers":"M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z",
+ "AI":"M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6",
+ "Tools":"M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z",
+ "Thinking &amp; character":"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6",
+ "Frontiers":"M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"}
+def icon(g):
+    d=ICON.get(g)
+    return f'<span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{d}"/></svg></span>' if d else ''
 def gcard(g,ts):
     pages=', '.join(f'<a href="#{t}">{labels[t]}</a>' for t in ts)
     repos=[]
     for t in ts:
         if t in code and code[t][0] not in repos: repos.append(code[t][0])
     run=''.join(f'<p class="gmap-run"><a href="{GH}{r}" target="_blank" rel="noopener">Run the code: {r}</a></p>' for r in repos)
-    return f'<div class="gmap-card"><h4><span class="gmap-n">{n}</span> {g}</h4><p>{blurb[g]}</p><p class="gmap-pages">{pages}</p>{run}</div>'
+    return f'<div class="gmap-card"><h4>{icon(g)}<span class="gmap-n">{n}</span> {g}</h4><p>{blurb[g]}</p><p class="gmap-pages">{pages}</p>{run}</div>'
 cs=[]
 for n,(g,ts) in enumerate([x for x in groups if x[0] in blurb],1):
     cs.append(gcard(g,ts))

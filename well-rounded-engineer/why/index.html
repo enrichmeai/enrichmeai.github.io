@@ -14,176 +14,86 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="why">
+<body data-tab="why" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/" aria-current="page">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp" open><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/" aria-current="page">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>About this guide</span> / <span aria-current="page">Why this guide exists</span></p>
 <section class="panel" id="why" data-name="Why this guide exists">
   <div class="panel-head"><h1>Why this guide exists</h1><p>A short story, and a promise: a click is cheaper than a prompt.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>Where I started</h3>
+  <article class="card wide" id="c-where-i-started"><h3>Where I started</h3>
     <p>I started as an electronics engineer, moved into computer hardware, and then into software. I first used computers around 1995, when most machines around me ran DOS and Windows was not yet common. The first languages I learned were BASIC and Fortran; I still remember typing <code>GWBASIC</code> at the DOS prompt to start BASIC. We got hold of a Windows 95 computer later, certainly by 1998, and we booted machines from floppy disks.</p>
     <p>By the time I started working, around 2000, most desks ran Windows 95 or 98. As I remember it, Windows NT was light and good for simply getting work done, but people found it plain next to 95 and 98; Windows 2000 looked much better but needed more memory than NT. Memory was scarce: we worked with 128 MB of RAM, and 256 MB was a luxury. In my first software job, at one of the smallest startups you can imagine, our internet came over a dial-up line.</p>
     <p>Java, as I remember it, was at version 1.1. We could not download the documentation, so we used <code>javap</code> to read a class's methods and worked out the rest. We wrote code in Notepad. Then we found EditPlus, wired it to <code>javac</code> and <code>java</code> so we could compile and run from the editor, and the coloured code alone made us feel we had arrived.</p>
   </article>
 
-  <article class="card"><h3>Learning from the platform up</h3>
+  <article class="card" id="c-learning-from-the-platform-up"><h3>Learning from the platform up</h3>
     <p>We learned core Java, then servlets and applets, and within two years we were building web applications. Struts arrived around then: an Apache project, founded in May 2000 by Craig McClanahan (started, as I remember it, as a holiday project). Hans Bergsten's writing on JSP was how many of us learned, and I remember puzzling over the difference between the servlet context and the page context.</p>
     <p>Browsers were not standard. What we now call Ajax worked through Microsoft's XMLHTTP object in Internet Explorer, so we wrote separate code for Internet Explorer and Netscape. There was no Chrome.</p>
   </article>
 
-  <article class="card"><h3>The EJB years</h3>
+  <article class="card" id="c-the-ejb-years"><h3>The EJB years</h3>
     <p>At one of the biggest retail software companies of the time, we built with Enterprise JavaBeans: stateless session beans to read data, entity beans for the database, and, in booking systems of that era, stateful session beans holding a conversation while the database held the lock on a ticket. XSLT generated our screens from data, and UML and model-driven architecture promised that drawing the model would write the code.</p>
   </article>
 
-  <article class="card"><h3>We generated code long before AI</h3>
+  <article class="card" id="c-we-generated-code-long-before-ai"><h3>We generated code long before AI</h3>
     <p>Code generation is not new. I used database metadata to generate reusable boilerplate code, much as people use AI today, and XSLT templates to turn data into dynamic screens. We generated the JavaScript for tree structures, pagination and web-based tutorials.</p>
     <p>The lesson has stayed with me: generating code is easy; understanding what you generate is the job.</p>
   </article>
 
-  <article class="card"><h3>The framework years</h3>
+  <article class="card" id="c-the-framework-years"><h3>The framework years</h3>
     <p>Enterprise Java was hard. We wrestled with CORBA and its interface definitions, with two-phase commits for transactions that spanned systems, and later with enterprise service buses. Then came Spring, which its own documentation says came into being in 2003 as a response to the complexity of the early J2EE specifications. Rod Johnson had argued for simpler designs in his book <i>Expert One-on-One J2EE Design and Development</i> (Wrox), which is still on my shelf; as I remember it, his ideas about plain Java objects were at Spring's heart, and after VMware took the company over, Spring became the standard choice. For many of us, it started with a single core jar.</p>
     <p>Something changed in those years. Many engineers learned the frameworks without ever looking at a servlet. The frameworks were good, but the foundations underneath them became invisible.</p>
   </article>
 
-  <article class="card"><h3>My bookshelf</h3>
+  <article class="card" id="c-my-bookshelf"><h3>My bookshelf</h3>
     <p>The first technical book I read cover to cover was Hunter and Crawford's <i>Java Servlet Programming</i> (O'Reilly). My first UML tool was MagicDraw.</p>
     <p>At my first startup, from 2000 to 2002, I could not afford <i>Enterprise Java with UML</i> (Arrington and Rayhan, Wiley). When I could, in 2003, I bought it for myself, out of love for it: it explained every layer, why DTOs exist, and when a plain hash map is enough. Seeing why each layer is there is what today's polished frameworks and generated answers rarely show.</p>
     <p>Beside them still: <i>Java Message Service</i> (Monson-Haefel and Chappell), <i>Java Enterprise Best Practices</i>, <i>JavaServer Pages</i> and Rod Johnson's <i>Expert One-on-One J2EE Design and Development</i>, packed away for a house move and going back on a shelf soon.</p>
   </article>
 
-  <article class="card"><h3>What worries me now</h3>
+  <article class="card" id="c-what-worries-me-now"><h3>What worries me now</h3>
     <p>I do not want to generalise, but I see a newer version of the same pattern. Some new engineers go straight to AI without learning the fundamentals, or even the frameworks. They can get an answer, but they cannot always tell whether it is right, or fix it when it breaks.</p>
     <p>At the same time, much of the simple knowledge people once found on a website, and followed through themselves, is now asked of an AI, one question at a time. Every one of those questions costs tokens, energy and data-centre capacity, often for something a page could answer with a click.</p>
   </article>
 
-  <article class="card wide"><h3>Where this guide is going</h3>
+  <article class="card wide" id="c-where-this-guide-is-going"><h3>Where this guide is going</h3>
     <p>What this site can give people is a base knowledge of everything: enough to understand how the pieces fit, so they can then go deeper wherever they choose. If many people share that base, more of them can move into fields the world needs and is short of: building semiconductors, doing good science, and being knowledgeable and grounded in general. That makes for a better world.</p>
     <p>I work in IT, so the guide starts with technology, alongside the personal side: health, money and good books. It is meant to grow. <b>Planned, not yet written:</b> deeper sections on physics, chemistry, biology and mathematics, and on understanding your own body: why it responds as it does, simple exercise anyone can do, and ageing. There are many experts in each of these; the aim here is to state the established facts plainly and link to their research.</p>
   </article>
 
-  <article class="card wide"><h3>Why this guide is free</h3>
+  <article class="card wide" id="c-why-this-guide-is-free"><h3>Why this guide is free</h3>
     <p>I would rather spend my own tokens once, building something useful, than have thousands of people spend theirs asking for the same basics. So this guide is free, and so are the frameworks we build: <a href="/culvert/">Culvert</a>, <a href="/penstock/">Penstock</a>, <a href="/cistern/">Cistern</a> and the others on the <a href="/">home page</a>, all open source.</p>
     <p><b>A click is cheaper than a prompt.</b> For what is already known, read the tab. Use AI where it earns its keep: complex business logic, building frameworks, investigating a hard problem, or when you genuinely need to move fast. AI is here to stay; use it in the right context.</p>
     <p>And keep the foundations. They are what let you tell a good answer from one that only looks good.</p>
@@ -198,6 +108,8 @@
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-where-i-started">Where I started</a><a href="#c-learning-from-the-platform-up">Learning from the platform up</a><a href="#c-the-ejb-years">The EJB years</a><a href="#c-we-generated-code-long-before-ai">We generated code long before AI</a><a href="#c-the-framework-years">The framework years</a><a href="#c-my-bookshelf">My bookshelf</a><a href="#c-what-worries-me-now">What worries me now</a><a href="#c-where-this-guide-is-going">Where this guide is going</a><a href="#c-why-this-guide-is-free">Why this guide is free</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">

@@ -14,135 +14,45 @@
 <link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
 <script src="/well-rounded-engineer/engineer.js" defer></script>
 </head>
-<body data-tab="kafka">
+<body data-tab="kafka" class="eg-page">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 89 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
 </header>
 
-<div class="eg-bar">
-  <div class="container">
-    <nav aria-label="Guide sections">
-      <a href="/well-rounded-engineer/">Start here</a>
-      <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a>
-      <span class="navgrp">Foundations</span>
-      <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a>
-      <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>
-      <a href="/well-rounded-engineer/linux/">Linux</a>
-      <a href="/well-rounded-engineer/networking/">Networking</a>
-      <a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a>
-      <a href="/well-rounded-engineer/web/">Web Fundamentals</a>
-      <a href="/well-rounded-engineer/docker/">Docker</a>
-      <a href="/well-rounded-engineer/sql/">SQL Skills</a>
-      <a href="/well-rounded-engineer/database/">Database Design</a>
-      <a href="/well-rounded-engineer/homelab/">Home Lab</a>
-      <span class="navgrp">Languages</span>
-      <a href="/well-rounded-engineer/java/">Java</a>
-      <a href="/well-rounded-engineer/kotlin/">Kotlin</a>
-      <a href="/well-rounded-engineer/python/">Python</a>
-      <a href="/well-rounded-engineer/javascript/">JavaScript</a>
-      <a href="/well-rounded-engineer/go/">Go</a>
-      <a href="/well-rounded-engineer/rust/">Rust</a>
-      <a href="/well-rounded-engineer/buildtools/">Build Tools</a>
-      <span class="navgrp">Building services</span>
-      <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>
-      <a href="/well-rounded-engineer/graphql/">GraphQL</a>
-      <a href="/well-rounded-engineer/kafka/" aria-current="page">Kafka</a>
-      <a href="/well-rounded-engineer/payments/">Payment Gateways</a>
-      <a href="/well-rounded-engineer/spring/">Spring Boot</a>
-      <a href="/well-rounded-engineer/quarkus/">Quarkus</a>
-      <span class="navgrp">User interfaces</span>
-      <a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a>
-      <a href="/well-rounded-engineer/accessibility/">Accessibility</a>
-      <a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a>
-      <a href="/well-rounded-engineer/uihistory/">UI History</a>
-      <span class="navgrp">Quality</span>
-      <a href="/well-rounded-engineer/testing/">Testing</a>
-      <a href="/well-rounded-engineer/performance/">Performance</a>
-      <span class="navgrp">Security</span>
-      <a href="/well-rounded-engineer/security/">Security</a>
-      <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>
-      <a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a>
-      <span class="navgrp">Data</span>
-      <a href="/well-rounded-engineer/data/">Data Engineering</a>
-      <a href="/well-rounded-engineer/datalibs/">Data Libraries</a>
-      <a href="/well-rounded-engineer/dbt/">dbt</a>
-      <a href="/well-rounded-engineer/dags/">Airflow DAGs</a>
-      <span class="navgrp">Architecture &amp; design</span>
-      <a href="/well-rounded-engineer/architecture/">Architecture</a>
-      <a href="/well-rounded-engineer/microservices/">Microservices</a>
-      <a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a>
-      <a href="/well-rounded-engineer/sysdesign/">System Design</a>
-      <a href="/well-rounded-engineer/caching/">Caching</a>
-      <span class="navgrp">Platform &amp; operations</span>
-      <a href="/well-rounded-engineer/devops/">DevOps</a>
-      <a href="/well-rounded-engineer/kubernetes/">Kubernetes</a>
-      <a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a>
-      <a href="/well-rounded-engineer/helm/">Helm Charts</a>
-      <a href="/well-rounded-engineer/operators/">Operators</a>
-      <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>
-      <a href="/well-rounded-engineer/terraform/">Terraform</a>
-      <a href="/well-rounded-engineer/observability/">Observability</a>
-      <a href="/well-rounded-engineer/sre/">SRE</a>
-      <span class="navgrp">Cloud providers</span>
-      <a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a>
-      <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a>
-      <a href="/well-rounded-engineer/gcpdata/">Data on GCP</a>
-      <a href="/well-rounded-engineer/bigquery/">BigQuery</a>
-      <a href="/well-rounded-engineer/cloudrun/">Cloud Run</a>
-      <a href="/well-rounded-engineer/apigee/">Apigee</a>
-      <a href="/well-rounded-engineer/awsdata/">Data on AWS</a>
-      <span class="navgrp">AI</span>
-      <a href="/well-rounded-engineer/llm/">LLMs</a>
-      <a href="/well-rounded-engineer/ai/">AI for Engineers</a>
-      <a href="/well-rounded-engineer/rag/">RAG</a>
-      <a href="/well-rounded-engineer/mcp/">MCP</a>
-      <a href="/well-rounded-engineer/agentharness/">Agent Harness</a>
-      <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>
-      <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a>
-      <span class="navgrp">Tools</span>
-      <a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a>
-      <a href="/well-rounded-engineer/copilot/">GitHub Copilot</a>
-      <a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a>
-      <a href="/well-rounded-engineer/harness/">Harness</a>
-      <a href="/well-rounded-engineer/opstools/">Ops Tooling</a>
-      <span class="navgrp">Thinking &amp; character</span>
-      <a href="/well-rounded-engineer/behaviours/">Behaviours</a>
-      <a href="/well-rounded-engineer/ways/">Ways of Working</a>
-      <a href="/well-rounded-engineer/mathematics/">Mathematics</a>
-      <a href="/well-rounded-engineer/science/">Science &amp; Method</a>
-      <a href="/well-rounded-engineer/everydayscience/">Everyday Science</a>
-      <a href="/well-rounded-engineer/philosophy/">Philosophy</a>
-      <a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a>
-      <a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a>
-      <span class="navgrp">Frontiers</span>
-      <a href="/well-rounded-engineer/quantum/">Quantum Computing</a>
-      <a href="/well-rounded-engineer/robotics/">Robotics</a>
-      <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>
-      <a href="/well-rounded-engineer/web3/">Web 3.0</a>
-      <a href="/well-rounded-engineer/solid/">Solid</a>
-      <span class="navgrp">About this guide</span>
-      <a href="/well-rounded-engineer/why/">Why this guide exists</a>
-      <a href="/well-rounded-engineer/history/">A brief history</a>
-      <a href="/well-rounded-engineer/reading/">Reading List</a>
-      <span class="navgrp">EnrichMeAI open source</span>
-      <a href="/well-rounded-engineer/opensource/">Our open source</a>
-      <a href="/well-rounded-engineer/culvert/">Culvert</a>
-    </nav>
-    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search the guide, e.g. merge" autocomplete="off"></div>
-  </div>
-</div>
-
-<main id="main" class="container eg">
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/kafka/" aria-current="page">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">Kafka</span></p>
 <section class="panel" id="kafka" data-name="Kafka">
   <div class="panel-head"><h1>Apache Kafka</h1><p>A distributed, durable, replayable log for events. The core model, the settings that decide durability and ordering, clients in Java, Spring, Quarkus and Python, and the ecosystem around it.</p></div>
   <div class="grid">
 
-  <article class="card wide"><h3>The model</h3>
+  <article class="card wide" id="c-the-model"><h3>The model</h3>
     <div class="tbl"><table>
       <thead><tr><th>Concept</th><th>Meaning</th></tr></thead>
       <tbody>
@@ -161,7 +71,7 @@
     <p class="note">Unlike a queue, reading does not remove a record. Many groups can read the same topic independently, and a group can rewind to replay.</p>
   </article>
 
-  <article class="card"><h3>Durability and delivery settings</h3>
+  <article class="card" id="c-durability-and-delivery-settings"><h3>Durability and delivery settings</h3>
     <ul>
       <li><b>Producer <code>acks=all</code></b> with topic <code>min.insync.replicas=2</code> and replication factor 3: a write survives one broker failure.</li>
       <li><b><code>enable.idempotence=true</code></b> (the default in modern clients): retries do not create duplicates within a partition.</li>
@@ -172,7 +82,7 @@
     </ul>
   </article>
 
-  <article class="card"><h3>CLI essentials</h3>
+  <article class="card" id="c-cli-essentials"><h3>CLI essentials</h3>
 <div class="snip"><pre><code>B=localhost:9092
 kafka-topics.sh --bootstrap-server $B --create --topic order.placed \
   --partitions 6 --replication-factor 3 --config retention.ms=604800000
@@ -191,7 +101,7 @@ kafka-consumer-groups.sh --bootstrap-server $B --group indexer \
     <p class="note">Consumer <b>lag</b> (latest offset minus committed offset) is the key health metric: growing lag means consumers cannot keep up.</p>
   </article>
 
-  <article class="card"><h3>Spring for Apache Kafka</h3>
+  <article class="card" id="c-spring-for-apache-kafka"><h3>Spring for Apache Kafka</h3>
 <div class="snip"><pre><code># application.yml
 spring:
   kafka:
@@ -230,7 +140,7 @@ class Indexer {
 }</code></pre></div>
   </article>
 
-  <article class="card"><h3>Quarkus with Kafka</h3>
+  <article class="card" id="c-quarkus-with-kafka"><h3>Quarkus with Kafka</h3>
 <div class="snip"><pre><code># application.properties (quarkus-messaging-kafka)
 kafka.bootstrap.servers=${KAFKA_BOOTSTRAP}
 mp.messaging.incoming.placed.connector=smallrye-kafka
@@ -258,7 +168,7 @@ public class Publisher {
     <p class="note">In dev and test, Dev Services starts a Kafka-compatible broker for you.</p>
   </article>
 
-  <article class="card"><h3>Python (confluent-kafka)</h3>
+  <article class="card" id="c-python-confluent-kafka"><h3>Python (confluent-kafka)</h3>
 <div class="snip"><pre><code>from confluent_kafka import Producer, Consumer
 
 p = Producer({"bootstrap.servers": BOOTSTRAP, "acks": "all",
@@ -278,7 +188,7 @@ while True:
     c.commit(message=msg, asynchronous=False) # commit after processing</code></pre></div>
   </article>
 
-  <article class="card"><h3>The ecosystem</h3>
+  <article class="card" id="c-the-ecosystem"><h3>The ecosystem</h3>
     <ul>
       <li><b>Schema Registry</b> with Avro, Protobuf or JSON Schema: producers and consumers agree on schemas; compatibility rules block breaking changes.</li>
       <li><b>Kafka Connect:</b> ready-made source and sink connectors (databases, GCS, BigQuery) without custom code.</li>
@@ -289,7 +199,7 @@ while True:
     </ul>
   </article>
 
-  <article class="card"><h3>Kafka vs Pub/Sub</h3>
+  <article class="card" id="c-kafka-vs-pub-sub"><h3>Kafka vs Pub/Sub</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Kafka</th><th>Pub/Sub</th></tr></thead>
       <tbody>
@@ -302,7 +212,7 @@ while True:
       </tbody></table></div>
   </article>
 
-  <article class="card"><h3>Designing topics</h3>
+  <article class="card" id="c-designing-topics"><h3>Designing topics</h3>
     <ul>
       <li><b>Name by event, past tense:</b> <code>order.placed</code>, <code>order.paid</code>.</li>
       <li><b>Partitions:</b> enough for peak consumer parallelism with headroom; adding later changes key-to-partition mapping.</li>
@@ -314,8 +224,8 @@ while True:
   </article>
 
   <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain topics, partitions, offsets and consumer groups</li><li>Produce and consume with the CLI</li><li>Read consumer lag</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build producers and consumers in Spring, Quarkus or Python with correct acks and commits</li><li>Make consumers idempotent; use dead-letter topics</li><li>Use a schema registry</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design topics, keys and partition counts for scale and ordering</li><li>Run Kafka Connect and CDC pipelines</li><li>Tune throughput, latency and durability</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Operate Kafka platforms (or choose managed) for the organisation</li><li>Design event-driven architectures across domains</li><li>Lead stream processing with Kafka Streams or Flink</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Exactly-once semantics and transactions</li><li>Consumer rebalancing protocols</li><li>Tiered storage</li><li>KRaft operations</li><li>Kafka Streams state stores</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">Apache Kafka documentation</a><span class="lnote"> Design, configuration, operations</span></li><li><a href="https://docs.spring.io/spring-kafka/reference/" target="_blank" rel="noopener">Spring for Apache Kafka</a><span class="lnote"> Templates, listeners, error handling</span></li><li><a href="https://quarkus.io/guides/kafka" target="_blank" rel="noopener">Quarkus Kafka guide</a><span class="lnote"> Reactive messaging with Kafka</span></li><li><a href="https://docs.confluent.io/kafka-clients/python/current/overview.html" target="_blank" rel="noopener">confluent-kafka-python</a><span class="lnote"> Python client</span></li><li><a href="https://developer.confluent.io/" target="_blank" rel="noopener">Confluent Developer courses</a><span class="lnote"> Free courses on Kafka fundamentals and patterns</span></li><li><a href="https://cloud.google.com/managed-service-for-apache-kafka/docs" target="_blank" rel="noopener">Managed Service for Apache Kafka</a><span class="lnote"> Kafka on Google Cloud</span></li><li><a href="https://debezium.io/documentation/" target="_blank" rel="noopener">Debezium</a><span class="lnote"> Change data capture into Kafka</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/apache/kafka/4.0.0/docs/upgrade.html" target="_blank" rel="noopener">Kafka 4.0 upgrade notes (ZooKeeper removed, KRaft only)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/4.0.0/docs/design.html" target="_blank" rel="noopener">Kafka 4.0 design docs (replication, ISR, compaction)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/4.0.0/clients/src/main/java/org/apache/kafka/clients/producer/ProducerConfig.java" target="_blank" rel="noopener">Kafka ProducerConfig (enable.idempotence defaults to true)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/trunk/tools/src/main/java/org/apache/kafka/tools/consumer/group/ConsumerGroupCommandOptions.java" target="_blank" rel="noopener">kafka-consumer-groups options (--to-datetime format)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/trunk/tools/src/main/java/org/apache/kafka/tools/ConsoleProducer.java" target="_blank" rel="noopener">kafka-console-producer options</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-kafka/main/spring-kafka/src/main/java/org/springframework/kafka/support/serializer/JsonSerializer.java" target="_blank" rel="noopener">Spring Kafka JsonSerializer (deprecated since 4.0)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-kafka/main/spring-kafka/src/main/java/org/springframework/kafka/support/serializer/JacksonJsonSerializer.java" target="_blank" rel="noopener">Spring Kafka JacksonJsonSerializer (since 4.0)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/3.5.x/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/kafka/KafkaProperties.java" target="_blank" rel="noopener">Spring Boot KafkaProperties (String (de)serializer defaults)</a>; <a href="https://raw.githubusercontent.com/quarkusio/quarkus/main/docs/src/main/asciidoc/kafka.adoc" target="_blank" rel="noopener">Quarkus Kafka guide (quarkus-messaging-kafka, merge)</a>; <a href="https://docs.cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/connectors-overview" target="_blank" rel="noopener">Managed Kafka Connect connectors (BigQuery Sink)</a>; <a href="https://docs.cloud.google.com/pubsub/docs/replay-overview" target="_blank" rel="noopener">Pub/Sub replay (seek to time or snapshot)</a>; <a href="https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html" target="_blank" rel="noopener">confluent-kafka Python API reference</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKafka%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain topics, partitions, offsets and consumer groups</li><li>Produce and consume with the CLI</li><li>Read consumer lag</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Build producers and consumers in Spring, Quarkus or Python with correct acks and commits</li><li>Make consumers idempotent; use dead-letter topics</li><li>Use a schema registry</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design topics, keys and partition counts for scale and ordering</li><li>Run Kafka Connect and CDC pipelines</li><li>Tune throughput, latency and durability</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Operate Kafka platforms (or choose managed) for the organisation</li><li>Design event-driven architectures across domains</li><li>Lead stream processing with Kafka Streams or Flink</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Exactly-once semantics and transactions</li><li>Consumer rebalancing protocols</li><li>Tiered storage</li><li>KRaft operations</li><li>Kafka Streams state stores</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">Apache Kafka documentation</a><span class="lnote"> Design, configuration, operations</span></li><li><a href="https://docs.spring.io/spring-kafka/reference/" target="_blank" rel="noopener">Spring for Apache Kafka</a><span class="lnote"> Templates, listeners, error handling</span></li><li><a href="https://quarkus.io/guides/kafka" target="_blank" rel="noopener">Quarkus Kafka guide</a><span class="lnote"> Reactive messaging with Kafka</span></li><li><a href="https://docs.confluent.io/kafka-clients/python/current/overview.html" target="_blank" rel="noopener">confluent-kafka-python</a><span class="lnote"> Python client</span></li><li><a href="https://developer.confluent.io/" target="_blank" rel="noopener">Confluent Developer courses</a><span class="lnote"> Free courses on Kafka fundamentals and patterns</span></li><li><a href="https://cloud.google.com/managed-service-for-apache-kafka/docs" target="_blank" rel="noopener">Managed Service for Apache Kafka</a><span class="lnote"> Kafka on Google Cloud</span></li><li><a href="https://debezium.io/documentation/" target="_blank" rel="noopener">Debezium</a><span class="lnote"> Change data capture into Kafka</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/apache/kafka/4.0.0/docs/upgrade.html" target="_blank" rel="noopener">Kafka 4.0 upgrade notes (ZooKeeper removed, KRaft only)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/4.0.0/docs/design.html" target="_blank" rel="noopener">Kafka 4.0 design docs (replication, ISR, compaction)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/4.0.0/clients/src/main/java/org/apache/kafka/clients/producer/ProducerConfig.java" target="_blank" rel="noopener">Kafka ProducerConfig (enable.idempotence defaults to true)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/trunk/tools/src/main/java/org/apache/kafka/tools/consumer/group/ConsumerGroupCommandOptions.java" target="_blank" rel="noopener">kafka-consumer-groups options (--to-datetime format)</a>; <a href="https://raw.githubusercontent.com/apache/kafka/trunk/tools/src/main/java/org/apache/kafka/tools/ConsoleProducer.java" target="_blank" rel="noopener">kafka-console-producer options</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-kafka/main/spring-kafka/src/main/java/org/springframework/kafka/support/serializer/JsonSerializer.java" target="_blank" rel="noopener">Spring Kafka JsonSerializer (deprecated since 4.0)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-kafka/main/spring-kafka/src/main/java/org/springframework/kafka/support/serializer/JacksonJsonSerializer.java" target="_blank" rel="noopener">Spring Kafka JacksonJsonSerializer (since 4.0)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/3.5.x/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/kafka/KafkaProperties.java" target="_blank" rel="noopener">Spring Boot KafkaProperties (String (de)serializer defaults)</a>; <a href="https://raw.githubusercontent.com/quarkusio/quarkus/main/docs/src/main/asciidoc/kafka.adoc" target="_blank" rel="noopener">Quarkus Kafka guide (quarkus-messaging-kafka, merge)</a>; <a href="https://docs.cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/connectors-overview" target="_blank" rel="noopener">Managed Kafka Connect connectors (BigQuery Sink)</a>; <a href="https://docs.cloud.google.com/pubsub/docs/replay-overview" target="_blank" rel="noopener">Pub/Sub replay (seek to time or snapshot)</a>; <a href="https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html" target="_blank" rel="noopener">confluent-kafka Python API reference</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKafka%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -323,6 +233,8 @@ while True:
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-model">The model</a><a href="#c-durability-and-delivery-settings">Durability and delivery settings</a><a href="#c-cli-essentials">CLI essentials</a><a href="#c-spring-for-apache-kafka">Spring for Apache Kafka</a><a href="#c-quarkus-with-kafka">Quarkus with Kafka</a><a href="#c-python-confluent-kafka">Python (confluent-kafka)</a><a href="#c-the-ecosystem">The ecosystem</a><a href="#c-kafka-vs-pub-sub">Kafka vs Pub/Sub</a><a href="#c-designing-topics">Designing topics</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
 
 <footer class="site-footer">
   <div class="container">
