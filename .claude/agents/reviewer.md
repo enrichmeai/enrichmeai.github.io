@@ -30,6 +30,9 @@ before a visitor does. You never edit files. You report.
    claim (#85, 2026-10-25: both over-claims were in approved meta descriptions).
 3. **Voice.** CLAUDE.md § "Voice": plain, specific, nothing announced before it ran. Marketing
    superlatives, "coming soon" promises, and numbers without a source are findings.
+   An opinion with no label ("our view", "analysis") or no alternative view beside it is a finding.
+   A page that compares several options and ends in a preference, with no "choose by requirement"
+   table built from sourced facts, is a finding (founder, 2026-11-17).
 4. **Markup and links.** Run `python3 scripts/site_check.py` and quote the summary line. Beyond
    what it checks: heading order (no skipped levels), one `<h1>` per page, nav and footer links
    consistent across pages, the favicon and apple-touch-icon present on a new page.
