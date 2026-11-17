@@ -838,6 +838,33 @@ D["go"]=dict(
         ("Effective Go","https://go.dev/doc/effective_go","How to write idiomatic Go"),
         ("The Go source","https://github.com/golang/go","The language, compiler and standard library")])
 
+D["javascript"]=dict(
+ F=["Use let, const, functions, arrays and objects","Explain closures and the event loop","Change a page with the DOM and events, no framework"],
+ P=["Write async code with promises and async/await","Organise code in modules and build it","Check feature support with Baseline"],
+ S=["Design state and reactivity without leaning on a framework","Keep the main thread free; use Web Workers","Adopt TypeScript and write typed APIs"],
+ E=["Choose and migrate frameworks on evidence","Set JavaScript and TypeScript standards across teams","Follow and evaluate TC39 proposals"],
+ topics=["Closures and scope","The event loop and promises","Modules","Immutability and copying methods","Web Components","TypeScript"],
+ links=[("MDN JavaScript Guide","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide","A thorough, free guide to the language"),
+        ("TC39 finished proposals","https://github.com/tc39/proposals/blob/main/finished-proposals.md","What each edition added"),
+        ("The ECMAScript specification (latest draft)","https://tc39.es/ecma262/","The standard itself"),
+        ("Baseline on web.dev","https://web.dev/baseline","Which features are safe to use everywhere")],
+ sources=[("TC39 finished proposals (feature and expected publication year)","https://github.com/tc39/proposals/blob/main/finished-proposals.md"),
+          ("TC39 process document (Stage 4 needs two compatible implementations passing Test262)","https://tc39.es/process-document/"),
+          ("tc39/ecma262 tags (the es2026 edition)","https://github.com/tc39/ecma262/tags"),
+          ("Wikipedia: ECMAScript version history (the ES2015 feature set)","https://en.wikipedia.org/wiki/ECMAScript_version_history"),
+          ("MDN: Baseline compatibility","https://github.com/mdn/content/blob/main/files/en-us/glossary/baseline/compatibility/index.md"),
+          ("MDN: Closures","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/closures/index.md"),
+          ("MDN: JavaScript execution model (job queue, run to completion)","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/execution_model/index.md"),
+          ("MDN: Modules","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/modules/index.md"),
+          ("MDN: Inheritance and the prototype chain","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/inheritance_and_the_prototype_chain/index.md"),
+          ("MDN: Using promises","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/guide/using_promises/index.md"),
+          ("MDN: Web Components","https://github.com/mdn/content/blob/main/files/en-us/web/api/web_components/index.md"),
+          ("MDN: Number (IEEE 754 double precision)","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/global_objects/number/index.md"),
+          ("MDN: Equality (==) converts types","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/operators/equality/index.md"),
+          ("MDN: Nullish coalescing (??) and ||","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/operators/nullish_coalescing/index.md"),
+          ("MDN: Array.prototype.sort (in place)","https://github.com/mdn/content/blob/main/files/en-us/web/javascript/reference/global_objects/array/sort/index.md"),
+          ("MDN: Web Workers API","https://github.com/mdn/content/blob/main/files/en-us/web/api/web_workers_api/index.md")])
+
 D["rust"]=dict(
  F=["Explain ownership and borrowing","Use Result, Option and match","Build and test with Cargo"],
  P=["Write a CLI or service in Rust","Use traits, iterators and error types well","Keep Clippy clean and the code formatted"],
