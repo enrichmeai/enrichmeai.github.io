@@ -75,16 +75,41 @@ for m in re.finditer(r'<span class="navgrp">([^<]+)</span>|<a href="#([a-z0-9]+)
 nav_groups.append(tuple(_g))
 group_of = {t: g for g, ts in nav_groups for t in ts}
 
+# Pages outside the guide that belong in a sidebar group: the open-source projects each have their own
+# page on the site. Each entry is (insert before this tab, or None for the end of the group, label, href).
+# The order follows the home page: Cistern, Penstock, Headworks, Persona, Culvert, enrich-test-api.
+SIDE_EXTRA = {
+    "EnrichMeAI open source": [
+        ("culvert", "Cistern", "/cistern/"),
+        ("culvert", "Penstock", "/penstock/"),
+        ("culvert", "Headworks", "/headworks/"),
+        ("culvert", "Persona", "/persona/"),
+        (None, "enrich-test-api", "/enrich-test-api/"),
+    ],
+}
+
+def side_items(g, ts):
+    # the group's links, in order: its tabs, with the extra pages placed among them
+    extra = SIDE_EXTRA.get(g, [])
+    items = []
+    for t in ts:
+        items += [(None, label, href) for before, label, href in extra if before == t]
+        items.append((t, labels[t], url(t)))
+    items += [(None, label, href) for before, label, href in extra if before is None or before not in ts]
+    return items
+
 def side_for(cur):
     # the sidebar: the opening pages, then one collapsible group each; the current group is open
     out = ['<nav class="eg-side" id="topics" aria-label="Guide sections">']
     for g, ts in nav_groups:
-        links = ''.join(f'<a href="{url(t)}"' + (' aria-current="page"' if t == cur else '') + f'>{labels[t]}</a>' for t in ts)
+        items = side_items(g, ts)
+        links = ''.join(f'<a href="{href}"' + (' aria-current="page"' if t is not None and t == cur else '') + f'>{label}</a>'
+                        for t, label, href in items)
         if not g:
             out.append(f'<div class="side-top">{links}</div>')
         else:
             op = ' open' if cur in ts else ''
-            out.append(f'<details class="side-grp"{op}><summary>{g}<span class="n">{len(ts)}</span></summary><div class="side-links">{links}</div></details>')
+            out.append(f'<details class="side-grp"{op}><summary>{g}<span class="n">{len(items)}</span></summary><div class="side-links">{links}</div></details>')
     out.append('</nav>')
     return '\n'.join(out)
 
