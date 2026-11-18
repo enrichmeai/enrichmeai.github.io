@@ -51,6 +51,8 @@ code={
  "testing":("well-rounded-engineer-code","testing"),"architecture":("well-rounded-engineer-code","patterns"),
  "sql":("well-rounded-engineer-data","sql"),"datalibs":("well-rounded-engineer-data","datalibs"),
  "dbt":("well-rounded-engineer-data","dbt"),"dags":("well-rounded-engineer-data","airflow"),
+ "concurrency":("well-rounded-engineer-fundamentals","concurrency"),"cloudcost":("well-rounded-engineer-fundamentals","cloudcost"),
+ "dsa":("well-rounded-engineer-fundamentals","dsa"),"apihistory":("well-rounded-engineer-code","protobuf"),
 }
 def coderef(t):
     r,f=code[t]; return f'{GH}{r}/tree/main/{f}'
