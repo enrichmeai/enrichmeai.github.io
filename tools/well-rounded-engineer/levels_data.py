@@ -1360,3 +1360,26 @@ D["agentsec"]=dict(
           ("Claude Code: Security","https://code.claude.com/docs/en/security"),
           ("Microsoft Learn: Prompt Shields","https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection"),
           ("Wikipedia: Confused deputy problem","https://en.wikipedia.org/wiki/Confused_deputy_problem")])
+
+D["philosophy"].setdefault("sources",[]).extend([
+ ("Wikipedia: Impermanence","https://en.wikipedia.org/wiki/Impermanence"),
+ ("Wikipedia: Impermanence (Buddhism)","https://en.wikipedia.org/wiki/Impermanence_(Buddhism)"),
+ ("Wikipedia: Duḥkha","https://en.wikipedia.org/wiki/Du%E1%B8%A5kha"),
+ ("Wikipedia: Panta rhei (doctrine)","https://en.wikipedia.org/wiki/Panta_rhei_(doctrine)"),
+ ("Wikipedia: Ecclesiastes","https://en.wikipedia.org/wiki/Ecclesiastes"),
+ ("Wikipedia: Mono no aware","https://en.wikipedia.org/wiki/Mono_no_aware"),
+ ("Wikipedia: Bhagavad Gita","https://en.wikipedia.org/wiki/Bhagavad_Gita"),
+ ("Wikipedia: Hedonic treadmill","https://en.wikipedia.org/wiki/Hedonic_treadmill"),
+ ("Wikipedia: The Prophet (book)","https://en.wikipedia.org/wiki/The_Prophet_(book)"),
+ ("Wikipedia: Equanimity","https://en.wikipedia.org/wiki/Equanimity"),
+ ("Wikipedia: Upekṣā","https://en.wikipedia.org/wiki/Upek%E1%B9%A3%C4%81"),
+ ("Wikipedia: Enchiridion of Epictetus","https://en.wikipedia.org/wiki/Enchiridion_of_Epictetus"),
+ ("Wikipedia: Serenity Prayer","https://en.wikipedia.org/wiki/Serenity_Prayer"),
+ ("Wikipedia: Acceptance and commitment therapy","https://en.wikipedia.org/wiki/Acceptance_and_commitment_therapy"),
+ ("Wikipedia: Amor fati","https://en.wikipedia.org/wiki/Amor_fati"),
+ ("Wikipedia: Subjective well-being","https://en.wikipedia.org/wiki/Subjective_well-being"),
+ ("Wikipedia: Happiness","https://en.wikipedia.org/wiki/Happiness"),
+ ("Wikipedia: Sonja Lyubomirsky","https://en.wikipedia.org/wiki/Sonja_Lyubomirsky"),
+ ("Wikipedia: Viktor Frankl","https://en.wikipedia.org/wiki/Viktor_Frankl"),
+ ("Wikipedia: Toxic positivity","https://en.wikipedia.org/wiki/Toxic_positivity"),
+])
