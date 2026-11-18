@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graph Databases · Well Rounded Engineer</title>
+<meta name="description" content="Some data is mostly about connections: who knows whom, which account paid which, which part goes into which product, which service calls which. A graph…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="graphdb" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 102 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp" open><summary>Foundations<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/" aria-current="page">Graph Databases</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Foundations</span> / <span aria-current="page">Graph Databases</span></p>
+<section class="panel" id="graphdb" data-name="Graph Databases">
+  <div class="panel-head"><h1>Graph databases</h1><p>Some data is mostly about connections: who knows whom, which account paid which, which part goes into which product, which service calls which. A graph database stores those connections as first-class data, so following them is a basic operation rather than a chain of joins. This page covers the two main graph models, how to query them, how they compare with relational databases, and when a graph is worth it. (GraphQL, despite the name, is an API style, not a database: see <a href="/well-rounded-engineer/graphql/">GraphQL</a>.)</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-idea-nodes-and-edges"><h3>The idea: nodes and edges</h3>
+    <ul>
+      <li><b>Nodes</b> are things: people, accounts, products, services. They are roughly the equivalent of a row in a relational database or a document in a document store.</li>
+      <li><b>Edges</b> are the relationships between them, and can be directed (A follows B) or undirected.</li>
+      <li><b>Properties</b> are key&ndash;value details on both, such as a person&rsquo;s name or the date a payment was made.</li>
+    </ul>
+    <p class="note">The mathematics is old: Leonhard Euler&rsquo;s 1736 proof that no walk crosses each of K&ouml;nigsberg&rsquo;s seven bridges exactly once is regarded as the first paper in the history of graph theory.</p>
+  </article>
+
+  <article class="card" id="c-two-models"><h3>Two models</h3>
+    <ul>
+      <li><b>Labelled property graph:</b> nodes and relationships both carry key&ndash;value properties; nodes have labels that group them; relationships are named, directed and have a start and an end node. Neo4j (where Cypher began) and Amazon Neptune (through openCypher) support this model.</li>
+      <li><b>RDF (Resource Description Framework):</b> a W3C standard where everything is a <i>triple</i>, subject&ndash;predicate&ndash;object, such as &ldquo;Ana &ndash; worksFor &ndash; Acme&rdquo;. Databases built for it are called triplestores, and it underlies many knowledge graphs and linked data.</li>
+    </ul>
+    <p class="note">Some products, Amazon Neptune among them, support both models.</p>
+  </article>
+
+  <article class="card" id="c-query-languages"><h3>Query languages</h3>
+    <ul>
+      <li><b>Cypher:</b> created at Neo4j in 2011, largely by Andr&eacute;s Taylor, and opened up through the openCypher project in 2015. It draws patterns like <code>(a)-[:KNOWS]-&gt;(b)</code>.</li>
+      <li><b>GQL:</b> the ISO standard graph query language for property graphs, ISO/IEC 39075, published in April 2024.</li>
+      <li><b>SQL/PGQ:</b> Part 16 of SQL:2023 adds property graph queries to SQL itself, narrowing the gap between relational and graph databases.</li>
+      <li><b>Gremlin:</b> Apache TinkerPop&rsquo;s graph traversal language, described as playing the role for graph databases that JDBC and SQL play for relational ones.</li>
+      <li><b>SPARQL:</b> the W3C query language for RDF; SPARQL 1.0 became a W3C Recommendation in January 2008.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-what-a-query-looks-like"><h3>What a query looks like</h3>
+<pre><code>// GQL / Cypher style: people and the city they live in
+MATCH (p:Person)-[:LIVES_IN]-&gt;(c:City)
+RETURN p.first_name, p.last_name, c.name
+
+// friends of friends: two hops along the same relationship
+MATCH (me:Person {name: 'Ana'})-[:KNOWS]-&gt;(friend)-[:KNOWS]-&gt;(fof)
+RETURN DISTINCT fof.name</code></pre>
+    <p class="note"><i>Analysis:</i> the second query adds one pattern per hop. In SQL, each hop is typically another join on a link table, which is where graph databases are said to read more naturally.</p>
+  </article>
+
+  <article class="card wide" id="c-graph-or-relational"><h3>Graph or relational?</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Graph database</th><th>Relational database</th></tr></thead>
+      <tbody>
+      <tr><td>Following relationships</td><td>Graph databases typically use <i>index-free adjacency</i>: each node holds direct references to its neighbours, so reaching an adjacent node is typically constant time, and query time depends on how much of the graph is queried rather than the size of the graph</td><td>Relationships are joins through indexes; queries with many joins across many tables get complex, and joins can be expensive</td></tr>
+      <tr><td>Operating on many rows at once</td><td>Typically slower at the same operation over large numbers of rows</td><td>Typically faster at the same operation over large numbers of rows</td></tr>
+      <tr><td>Schema</td><td>Flexible: new kinds of node and relationship can be added without redesigning</td><td>A strict schema and normalisation, which preserve data consistency and support ACID transactions</td></tr>
+      <tr><td>Standard language</td><td>GQL since 2024; Cypher, Gremlin and SPARQL are all in use</td><td>SQL, the standard for relational databases, which have been the industry standard since Codd&rsquo;s 1970 relational model</td></tr>
+      </tbody></table></div>
+    <p class="note">Wikipedia&rsquo;s summary adds a caution worth keeping: the graph model alone should not be the reason to replace an existing relational database.</p>
+  </article>
+
+  <article class="card" id="c-where-graphs-are-used"><h3>Where graphs are used</h3>
+    <ul>
+      <li><b>Shortest paths</b> between two nodes, and measures such as a graph&rsquo;s diameter.</li>
+      <li><b>Community detection:</b> clusters of closely connected nodes.</li>
+      <li><b>Knowledge graphs:</b> Google introduced its Knowledge Graph in 2012, to answer searches with &ldquo;things, not strings&rdquo;.</li>
+      <li><b>Graphs for AI retrieval:</b> Microsoft&rsquo;s GraphRAG research project used language models to extract a knowledge graph from text and used it as context for answering questions. Microsoft now describes it as a research project largely in maintenance mode, and warns that indexing can be expensive (see <a href="/well-rounded-engineer/rag/">RAG</a>).</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>Your key queries follow chains of relationships of unknown length (paths, networks, &ldquo;how is A connected to B&rdquo;)</td><td>A graph database</td></tr>
+      <tr><td>Your queries are mostly filters, totals and reports over many rows</td><td>A relational database or a warehouse</td></tr>
+      <tr><td>You already run PostgreSQL or another SQL database and need some graph queries</td><td>Try graph queries in SQL first (recursive queries, or SQL/PGQ where supported): a second database has a cost</td></tr>
+      <tr><td>You need to link data from many sources with shared, published vocabularies</td><td>RDF and SPARQL</td></tr>
+      <tr><td>Your data has many kinds of entity and relationship that keep changing</td><td>A graph model of either kind: new data can be added without planning every future use in advance</td></tr>
+      <tr><td>You need to be able to move between graph products</td><td>A standard language, GQL (ISO/IEC 39075) or openCypher, rather than one vendor&rsquo;s extensions</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> learn to think in graphs even if you never run a graph database: many problems (dependencies, permissions, fraud rings, service maps) are graphs, and drawing them that way clarifies them. Reach for a graph database when relationship queries are the core of the product.</p>
+    <p><i>The other view:</i> one well-run relational database covers most needs, including many graph-shaped queries through recursive SQL and now SQL/PGQ. Adding a specialised database brings another system to operate, back up and secure, and another query language for the team to learn.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain nodes, edges and properties</li><li>Tell a labelled property graph from RDF triples</li><li>Say why GraphQL is not a graph database</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write MATCH queries for one and two hops</li><li>Model a small domain as a graph</li><li>Compare a graph query with the same query in SQL</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose between a graph database, SQL/PGQ and recursive SQL for a case</li><li>Explain index-free adjacency and its trade-offs</li><li>Design a graph for fraud, permissions or dependencies</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Decide whether a graph database earns its place in the estate</li><li>Plan a knowledge graph across sources</li><li>Set standards: GQL, openCypher or vendor extensions</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Graph theory basics</li><li>Property graphs and RDF</li><li>Cypher and GQL</li><li>Gremlin and SPARQL</li><li>Graphs vs relational</li><li>Knowledge graphs</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/opencypher/openCypher" target="_blank" rel="noopener">openCypher</a><span class="lnote"> The open Cypher project</span></li><li><a href="https://tinkerpop.apache.org/" target="_blank" rel="noopener">Apache TinkerPop</a><span class="lnote"> Gremlin and the graph computing framework</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Graph_database" target="_blank" rel="noopener">Wikipedia: Graph database</a>; <a href="https://en.wikipedia.org/wiki/Graph_theory" target="_blank" rel="noopener">Wikipedia: Graph theory</a>; <a href="https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg" target="_blank" rel="noopener">Wikipedia: Seven Bridges of Königsberg</a>; <a href="https://en.wikipedia.org/wiki/Property_graph" target="_blank" rel="noopener">Wikipedia: Property graph</a>; <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" target="_blank" rel="noopener">Wikipedia: Resource Description Framework</a>; <a href="https://en.wikipedia.org/wiki/Triplestore" target="_blank" rel="noopener">Wikipedia: Triplestore</a>; <a href="https://en.wikipedia.org/wiki/Cypher_(query_language)" target="_blank" rel="noopener">Wikipedia: Cypher</a>; <a href="https://en.wikipedia.org/wiki/Graph_Query_Language" target="_blank" rel="noopener">Wikipedia: GQL</a>; <a href="https://en.wikipedia.org/wiki/SQL:2023" target="_blank" rel="noopener">Wikipedia: SQL:2023</a>; <a href="https://en.wikipedia.org/wiki/Gremlin_(query_language)" target="_blank" rel="noopener">Wikipedia: Gremlin</a>; <a href="https://en.wikipedia.org/wiki/SPARQL" target="_blank" rel="noopener">Wikipedia: SPARQL</a>; <a href="https://en.wikipedia.org/wiki/Neo4j" target="_blank" rel="noopener">Wikipedia: Neo4j</a>; <a href="https://en.wikipedia.org/wiki/Amazon_Neptune" target="_blank" rel="noopener">Wikipedia: Amazon Neptune</a>; <a href="https://en.wikipedia.org/wiki/JanusGraph" target="_blank" rel="noopener">Wikipedia: JanusGraph</a>; <a href="https://en.wikipedia.org/wiki/Knowledge_graph" target="_blank" rel="noopener">Wikipedia: Knowledge graph</a>; <a href="https://github.com/microsoft/graphrag/blob/main/README.md" target="_blank" rel="noopener">Microsoft GraphRAG (README)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BGraph%20Databases%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/database/">← Database Design</a><a class="pn-next" href="/well-rounded-engineer/homelab/">Home Lab →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-idea-nodes-and-edges">The idea: nodes and edges</a><a href="#c-two-models">Two models</a><a href="#c-query-languages">Query languages</a><a href="#c-what-a-query-looks-like">What a query looks like</a><a href="#c-graph-or-relational">Graph or relational?</a><a href="#c-where-graphs-are-used">Where graphs are used</a><a href="#c-choose-by-requirement">Choose by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
