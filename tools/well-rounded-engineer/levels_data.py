@@ -1407,6 +1407,7 @@ D["apihistory"]=dict(
           ("Wikipedia: gRPC","https://en.wikipedia.org/wiki/GRPC"),
           ("Wikipedia: Model Context Protocol","https://en.wikipedia.org/wiki/Model_Context_Protocol"),
           ("A2A protocol (README)","https://github.com/a2aproject/A2A/blob/main/README.md"),
+          ("Wikipedia: Agent2Agent","https://en.wikipedia.org/wiki/Agent2Agent"),("Wikipedia: WSDL","https://en.wikipedia.org/wiki/Web_Services_Description_Language"),("Wikipedia: API management","https://en.wikipedia.org/wiki/API_management"),
           ("Azure API Management: AI gateway","https://learn.microsoft.com/en-us/azure/api-management/genai-gateway-capabilities"),
           ("Apigee: MCP overview","https://cloud.google.com/apigee/docs/api-platform/apigee-mcp/apigee-mcp-overview"),
           ("Amazon Bedrock AgentCore Gateway","https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html"),
