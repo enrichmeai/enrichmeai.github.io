@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How APIs Evolved · Well Rounded Engineer</title>
+<meta name="description" content="Every generation of APIs answered the same question, how one program asks another to do something, and each answer was shaped by what the one before got…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="apihistory" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 101 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/" aria-current="page">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">How APIs Evolved</span></p>
+<section class="panel" id="apihistory" data-name="How APIs Evolved">
+  <div class="panel-head"><h1>How APIs evolved: from CORBA to agent gateways</h1><p>Every generation of APIs answered the same question, how one program asks another to do something, and each answer was shaped by what the one before got wrong. This page follows that line from remote procedure calls through CORBA, SOAP, REST, gRPC and GraphQL to the protocols agents use today, and then the gateways that sit in front of each. How to design an API today is on <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-timeline"><h3>The timeline</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>When</th><th>What arrived</th><th>The idea</th></tr></thead>
+      <tbody>
+      <tr><td>1981&ndash;1984</td><td><b>Remote procedure call (RPC)</b></td><td>Bruce Jay Nelson is credited with coining the term in 1981; he and Andrew Birrell published a paper on implementing it in 1984. Calling a function on another machine as if it were local.</td></tr>
+      <tr><td>1991</td><td><b>CORBA</b></td><td>The Object Management Group&rsquo;s standard for objects on different platforms and languages to call each other, with interfaces described in an interface definition language (IDL).</td></tr>
+      <tr><td>1996</td><td><b>DCOM</b></td><td>Microsoft&rsquo;s proprietary equivalent, extending COM across the network (launched in beta for Windows 95 in 1996). Java had its own, Java RMI.</td></tr>
+      <tr><td>1998</td><td><b>XML-RPC, then SOAP</b></td><td>Dave Winer shipped XML-RPC in 1998: remote calls encoded as XML over HTTP. SOAP grew from the same work into a fuller XML messaging protocol, described by WSDL documents.</td></tr>
+      <tr><td>Early 2000s</td><td><b>SOA and the enterprise service bus</b></td><td>Service-oriented architecture, often built on web services and an ESB that routed and transformed messages between them.</td></tr>
+      <tr><td>2000</td><td><b>REST</b></td><td>Roy Fielding&rsquo;s doctoral dissertation described Representational State Transfer, the architectural style of the web: resources, a uniform interface and stateless requests.</td></tr>
+      <tr><td>2001</td><td><b>JSON</b></td><td>Douglas Crockford specified JSON in the early 2000s and sent the first JSON message in April 2001. It became the usual body for web APIs.</td></tr>
+      <tr><td>2010&ndash;2015</td><td><b>Swagger, then OpenAPI</b></td><td>Tony Tam began Swagger in 2010 to describe HTTP APIs; in 2015 the specification became OpenAPI, under the Linux Foundation&rsquo;s OpenAPI Initiative.</td></tr>
+      <tr><td>2015</td><td><b>GraphQL</b></td><td>Facebook started it in 2012 and open-sourced it in 2015: clients ask for exactly the fields they need from a typed schema. It moved to the GraphQL Foundation in 2018.</td></tr>
+      <tr><td>2015&ndash;2016</td><td><b>gRPC</b></td><td>Google had run an internal RPC system, Stubby, since about 2001. In 2015 it decided to build the next version as open source: Protocol Buffers over HTTP/2, with streaming, deadlines and cancellation.</td></tr>
+      <tr><td>2024</td><td><b>Model Context Protocol (MCP)</b></td><td>Introduced by Anthropic in November 2024 to standardise how AI applications connect to tools and data; adopted by other AI vendors in 2025 and donated to the Linux Foundation&rsquo;s Agentic AI Foundation in December 2025.</td></tr>
+      <tr><td>2025</td><td><b>Agent2Agent (A2A)</b></td><td>An open protocol for agents built by different teams on different frameworks to discover each other through &ldquo;Agent Cards&rdquo; and work together, using JSON-RPC over HTTP(S), without exposing their internal memory or tools.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-the-lesson-rpc-and-corba-left"><h3>The lesson RPC and CORBA left</h3>
+    <p>RPC and CORBA aimed for <b>location transparency</b>: a remote call should look like a local one. Critics, notably Waldo and colleagues at Sun in 1994, argued this is a fundamental design flaw, because a remote call can fail in ways a local one cannot, through network problems a local call never meets.</p>
+    <p class="note"><i>Analysis:</i> every later style made the network more visible in some way: HTTP status codes in REST, explicit deadlines in gRPC, and the timeouts and retries on <a href="/well-rounded-engineer/distsys/">Distributed Systems</a>.</p>
+  </article>
+
+  <article class="card" id="c-what-each-style-changed"><h3>What each style changed</h3>
+    <ul>
+      <li><b>SOAP and WSDL</b> brought a formal contract and a standard envelope, at the cost of verbose XML and a large stack of related standards (<i>analysis</i>).</li>
+      <li><b>REST</b> used what the web already had: URLs for resources, HTTP methods, status codes and caching. Its constraints include client and server separation, statelessness, cacheable responses and a uniform interface.</li>
+      <li><b>GraphQL</b> moved the choice of data to the client, with one endpoint and a typed schema.</li>
+      <li><b>gRPC</b> brought back strongly typed RPC, with a binary format and streaming, for calls between services.</li>
+      <li><b>MCP and A2A</b> describe capabilities so that a model or an agent, not just a programmer, can discover and call them.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-the-gateway-in-front-of-it-all"><h3>The gateway in front of it all</h3>
+    <p>As APIs multiplied, a gateway in front of them took on the shared work: routing, authentication, rate limits, quotas, transformation and monitoring (more on <a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a> and <a href="/well-rounded-engineer/apigee/">Apigee</a>). Agents have produced a new kind of gateway with extra jobs:</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>API gateway</th><th>AI and agent gateway</th></tr></thead>
+      <tbody>
+      <tr><td>Traffic it fronts</td><td>Requests from apps and partners to your APIs</td><td>Requests from apps and agents to models, to tools (often over MCP) and to other agents (A2A)</td></tr>
+      <tr><td>What it meters</td><td>Requests per second, per key</td><td>Also tokens and spend per model, team or user</td></tr>
+      <tr><td>What it routes on</td><td>Path, headers, version</td><td>Also model, provider, cost and availability, with failover between providers</td></tr>
+      <tr><td>What it checks</td><td>Identity, schema, quotas</td><td>Also prompts and responses, through guardrails and content filters</td></tr>
+      <tr><td>What it translates</td><td>Protocols and payload formats</td><td>Existing REST or OpenAPI APIs into MCP tools that agents can call</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-agent-gateways-today"><h3>Agent gateways today</h3>
+    <p>Each description below is the project&rsquo;s or vendor&rsquo;s own:</p>
+    <ul>
+      <li><b>Azure API Management</b> has an &ldquo;AI gateway&rdquo; that extends its existing API gateway rather than being a separate product: it imports model endpoints as APIs, manages token usage and quotas, exposes existing REST APIs as MCP servers, and imports A2A agent APIs.</li>
+      <li><b>Apigee</b> can expose APIs as MCP tools to agentic applications, implementing the MCP server specification.</li>
+      <li><b>Amazon Bedrock AgentCore Gateway</b> is described as a fully managed gateway that gives agents one entry point to tools, other agents and models, taking OpenAPI, Smithy and Lambda as tool sources.</li>
+      <li><b>agentgateway</b>, an open-source proxy, describes itself as built on MCP and A2A, with an LLM gateway, an MCP gateway, an A2A gateway, guardrails, authentication and OpenTelemetry tracing.</li>
+      <li><b>Agent Router</b>, formerly Envoy AI Gateway and now an Agentic AI Foundation project, offers one OpenAI-compatible API for models and MCP servers, with credentials, routing, quotas and failover kept in one place.</li>
+      <li><b>Docker&rsquo;s MCP Gateway</b> runs MCP servers in isolated containers and gives AI models one gateway to reach them.</li>
+    </ul>
+    <p class="note"><i>Analysis:</i> the pattern repeats an old one. An agent gateway does for model and tool calls what API gateways did for service calls: one place for identity, limits, cost and audit. Security for agents is on <a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>Public or partner API, many unknown clients, cacheable reads</td><td>REST with an OpenAPI contract</td></tr>
+      <tr><td>Many front ends needing different shapes of the same data</td><td>GraphQL</td></tr>
+      <tr><td>High-volume calls between your own services, streaming, several languages</td><td>gRPC</td></tr>
+      <tr><td>An existing SOAP or CORBA system that works and is not changing</td><td>Keep it, and wrap it behind a gateway or an anti-corruption layer (see <a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a>)</td></tr>
+      <tr><td>AI applications need to call your existing APIs as tools</td><td>Expose them over MCP, through a gateway that already holds your auth and quotas</td></tr>
+      <tr><td>Agents from different teams or vendors must hand work to each other</td><td>A2A</td></tr>
+      <tr><td>Many teams calling several model providers, and spend must be visible</td><td>An AI gateway for token quotas, routing and failover</td></tr>
+      <tr><td>Your team already runs one gateway product</td><td>Check its AI and MCP features before adding another: switching has a cost</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> each new style added to the toolbox more than it replaced the old one. Older styles keep running alongside newer ones, gRPC and REST often sit side by side, and an MCP server can wrap a REST API that already existed. Knowing the history makes it easier to see that an agent gateway is a familiar idea with new things to meter.</p>
+    <p><i>The other view:</i> agent traffic differs enough, with long-running tasks, token costs, and decisions made by a model rather than a programmer, that treating it as &ldquo;just another API&rdquo; misses new risks. On this view, agent protocols and gateways deserve their own design and security thinking from the start.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Place RPC, CORBA, SOAP, REST, gRPC and GraphQL in order, and say what each changed</li><li>Explain why location transparency was criticised</li><li>Say what MCP and A2A are for</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Choose an API style for a case by its requirements</li><li>Wrap a legacy SOAP service behind a gateway</li><li>Expose an existing REST API as MCP tools</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Explain what an AI or agent gateway adds: token quotas, model routing, guardrails</li><li>Plan a move from an older API style without breaking clients</li><li>Design gateway policies for agent traffic</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's API and agent-protocol strategy</li><li>Choose between extending an existing gateway and adding an agent gateway</li><li>Govern models, tools and agents in one place</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Remote procedure calls</li><li>CORBA and SOAP</li><li>REST and OpenAPI</li><li>GraphQL and gRPC</li><li>MCP and A2A</li><li>AI and agent gateways</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/a2aproject/A2A" target="_blank" rel="noopener">A2A protocol</a><span class="lnote"> The specification and SDKs</span></li><li><a href="https://en.wikipedia.org/wiki/Model_Context_Protocol" target="_blank" rel="noopener">Model Context Protocol (Wikipedia)</a><span class="lnote"> History and adoption</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Remote_procedure_call" target="_blank" rel="noopener">Wikipedia: Remote procedure call</a>; <a href="https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture" target="_blank" rel="noopener">Wikipedia: CORBA</a>; <a href="https://en.wikipedia.org/wiki/Distributed_Component_Object_Model" target="_blank" rel="noopener">Wikipedia: DCOM</a>; <a href="https://en.wikipedia.org/wiki/XML-RPC" target="_blank" rel="noopener">Wikipedia: XML-RPC</a>; <a href="https://en.wikipedia.org/wiki/SOAP" target="_blank" rel="noopener">Wikipedia: SOAP</a>; <a href="https://en.wikipedia.org/wiki/Service-oriented_architecture" target="_blank" rel="noopener">Wikipedia: Service-oriented architecture</a>; <a href="https://en.wikipedia.org/wiki/Enterprise_service_bus" target="_blank" rel="noopener">Wikipedia: Enterprise service bus</a>; <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener">Wikipedia: REST</a>; <a href="https://en.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">Wikipedia: JSON</a>; <a href="https://en.wikipedia.org/wiki/OpenAPI_Specification" target="_blank" rel="noopener">Wikipedia: OpenAPI Specification</a>; <a href="https://en.wikipedia.org/wiki/GraphQL" target="_blank" rel="noopener">Wikipedia: GraphQL</a>; <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank" rel="noopener">Wikipedia: gRPC</a>; <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol" target="_blank" rel="noopener">Wikipedia: Model Context Protocol</a>; <a href="https://github.com/a2aproject/A2A/blob/main/README.md" target="_blank" rel="noopener">A2A protocol (README)</a>; <a href="https://learn.microsoft.com/en-us/azure/api-management/genai-gateway-capabilities" target="_blank" rel="noopener">Azure API Management: AI gateway</a>; <a href="https://cloud.google.com/apigee/docs/api-platform/apigee-mcp/apigee-mcp-overview" target="_blank" rel="noopener">Apigee: MCP overview</a>; <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html" target="_blank" rel="noopener">Amazon Bedrock AgentCore Gateway</a>; <a href="https://github.com/agentgateway/agentgateway/blob/main/README.md" target="_blank" rel="noopener">agentgateway (README)</a>; <a href="https://github.com/envoyproxy/ai-gateway/blob/main/README.md" target="_blank" rel="noopener">Agent Router, formerly Envoy AI Gateway (README)</a>; <a href="https://github.com/docker/mcp-gateway/blob/main/README.md" target="_blank" rel="noopener">Docker MCP Gateway (README)</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BHow%20APIs%20Evolved%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/apis/">← APIs &amp; Integration</a><a class="pn-next" href="/well-rounded-engineer/graphql/">GraphQL →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-timeline">The timeline</a><a href="#c-the-lesson-rpc-and-corba-left">The lesson RPC and CORBA left</a><a href="#c-what-each-style-changed">What each style changed</a><a href="#c-the-gateway-in-front-of-it-all">The gateway in front of it all</a><a href="#c-agent-gateways-today">Agent gateways today</a><a href="#c-choose-by-requirement">Choose by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
