@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idea to Production · Well Rounded Engineer</title>
+<meta name="description" content="Taking an idea all the way to something people use in production is the whole job, and AI agents now take part in every step of it. This page walks the…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="idea2prod" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 113 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/" aria-current="page">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span aria-current="page">Idea to Production</span></p>
+<section class="panel" id="idea2prod" data-name="Idea to Production">
+  <div class="panel-head"><h1>From idea to production, with people and agents</h1><p>Taking an idea all the way to something people use in production is the whole job, and AI agents now take part in every step of it. This page walks the path once, stage by stage: what each stage is for, what people own, how agents can help, and which page of this guide goes deeper. It ends with two views on living with the change, and on the foundations that keep you useful through it.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p><i>Our view:</i> the path from idea to production has not changed in shape: find out whether the idea is worth building, build it in small steps, check it, release it safely, run it, and learn. What has changed is how much of the building agents can do. That moves people&rsquo;s value towards the ends of the path, deciding what is worth doing and judging whether it worked, and towards the foundations that let you check an agent&rsquo;s work.</p>
+  </article>
+
+  <article class="card wide" id="c-the-path"><h3>The path</h3>
+    <figure class="fig"><svg viewBox="0 0 640 250" role="img" aria-labelledby="ip-t ip-d"><title id="ip-t">From idea to production, and back</title><desc id="ip-d">Eight stages in two rows joined by arrows. Top row: idea, test the idea, specify, build. Bottom row, right to left: verify, release, operate, learn. An arrow from learn returns to idea, so the path is a loop. A note says people decide at every stage and agents can help at every stage.</desc><defs><marker id="ip-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0,0 L8,4 L0,8 z"/></marker><marker id="ip-aa" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ar acc" d="M0,0 L8,4 L0,8 z"/></marker></defs><rect class="nd in" x="30" y="30" width="120" height="40" rx="6"/><text class="lb" x="90.0" y="55" text-anchor="middle">Idea</text><rect class="nd" x="186" y="30" width="120" height="40" rx="6"/><text class="lb" x="246.0" y="55" text-anchor="middle">Test the idea</text><rect class="nd" x="342" y="30" width="120" height="40" rx="6"/><text class="lb" x="402.0" y="55" text-anchor="middle">Specify</text><rect class="nd" x="498" y="30" width="120" height="40" rx="6"/><text class="lb" x="558.0" y="55" text-anchor="middle">Build</text><rect class="nd in" x="30" y="150" width="120" height="40" rx="6"/><text class="lb" x="90.0" y="175" text-anchor="middle">Learn</text><rect class="nd" x="186" y="150" width="120" height="40" rx="6"/><text class="lb" x="246.0" y="175" text-anchor="middle">Operate</text><rect class="nd" x="342" y="150" width="120" height="40" rx="6"/><text class="lb" x="402.0" y="175" text-anchor="middle">Release</text><rect class="nd" x="498" y="150" width="120" height="40" rx="6"/><text class="lb" x="558.0" y="175" text-anchor="middle">Verify</text><line class="ed" x1="150" y1="50" x2="182" y2="50" marker-end="url(#ip-a)"/><line class="ed" x1="186" y1="170" x2="154" y2="170" marker-end="url(#ip-a)"/><line class="ed" x1="306" y1="50" x2="338" y2="50" marker-end="url(#ip-a)"/><line class="ed" x1="342" y1="170" x2="310" y2="170" marker-end="url(#ip-a)"/><line class="ed" x1="462" y1="50" x2="494" y2="50" marker-end="url(#ip-a)"/><line class="ed" x1="498" y1="170" x2="466" y2="170" marker-end="url(#ip-a)"/><line class="ed" x1="558.0" y1="70" x2="558.0" y2="146" marker-end="url(#ip-a)"/><line class="ed acc" x1="90.0" y1="150" x2="90.0" y2="74" marker-end="url(#ip-aa)"/><text class="lb acc" x="98.0" y="116" text-anchor="start">feedback</text><text class="lb mu" x="320" y="225" text-anchor="middle">People decide at every stage; agents can help at every stage.</text></svg><figcaption>The path drawn as a loop: production is where you learn whether the idea was right, and that feeds the next idea. The stage names are ours (<i>analysis</i>); the practices at each stage are sourced in the table below.</figcaption></figure>
+  </article>
+
+  <article class="card wide" id="c-each-stage-people-agents-and-where-to-read-more"><h3>Each stage: people, agents, and where to read more</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Stage</th><th>What it is for, and a sourced practice</th><th>People own (<i>our view</i>)</th><th>Agents can help (<i>our view</i>)</th><th>Read more</th></tr></thead>
+      <tbody>
+      <tr><td><b>Idea</b></td><td>A problem worth solving, for someone in particular</td><td>Choosing the problem, and who it is for</td><td>Research, summaries, first drafts of options</td><td><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a></td></tr>
+      <tr><td><b>Test the idea</b></td><td>A <b>minimum viable product</b>: a version with just enough features for early customers to use and give feedback on, so you avoid long and possibly unnecessary work</td><td>Deciding what counts as evidence, and whether it is enough</td><td>Building a throwaway prototype quickly</td><td><a href="/well-rounded-engineer/casestudies/">Case Studies</a></td></tr>
+      <tr><td><b>Specify</b></td><td>Write down what &ldquo;done&rdquo; means before building, so others, and agents, can build from it</td><td>The acceptance criteria and the trade-offs</td><td>Turning notes into a draft spec and test cases</td><td><a href="/well-rounded-engineer/specs/">Specifications</a>, <a href="/well-rounded-engineer/ways/">Ways of Working</a></td></tr>
+      <tr><td><b>Build</b></td><td><b>Continuous delivery:</b> produce software in short cycles so it can be released reliably at any time</td><td>The design, and the boundaries agents work within</td><td>Writing code and tests to a clear brief</td><td><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>, <a href="/well-rounded-engineer/sysdesign/">System Design</a></td></tr>
+      <tr><td><b>Verify</b></td><td>Tests at the right level, and review by someone who did not write the change</td><td>Understanding and approving what ships</td><td>Running checks, reviewing, finding missed cases</td><td><a href="/well-rounded-engineer/teststrat/">Test Strategy</a>, <a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a></td></tr>
+      <tr><td><b>Release</b></td><td><b>Feature toggles</b> let unfinished work merge and be switched on in production for some or all users; Google&rsquo;s launch checklist asks about canaries under live traffic and staged rollouts</td><td>When to release, and to whom</td><td>Preparing release notes and rollout steps</td><td><a href="/well-rounded-engineer/devops/">DevOps</a></td></tr>
+      <tr><td><b>Operate</b></td><td>The same checklist asks what happens when a machine, rack or data centre fails, how you monitor, and whether you have backups</td><td>On-call judgement, and talking to users</td><td>Watching signals, drafting incident timelines</td><td><a href="/well-rounded-engineer/sre/">SRE</a>, <a href="/well-rounded-engineer/observability/">Observability</a></td></tr>
+      <tr><td><b>Learn</b></td><td>Measure delivery: DORA uses change lead time, deployment frequency, failed deployment recovery time, change fail rate and deployment rework rate</td><td>Deciding what the evidence means for the next idea</td><td>Gathering the numbers and the feedback</td><td><a href="/well-rounded-engineer/devops/">DevOps</a> (measuring delivery)</td></tr>
+      </tbody></table></div>
+    <p class="note">The practices in the second column are sourced (below); the &ldquo;people own&rdquo; and &ldquo;agents can help&rdquo; columns are our view, and how much you hand to agents is a choice by requirement on <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>.</p>
+  </article>
+
+  <article class="card" id="c-a-checklist-that-has-lasted"><h3>A checklist that has lasted</h3>
+    <p>Google&rsquo;s SRE book prints the company&rsquo;s original Launch Coordination Checklist, from about 2005. Its headings are still a fair list of what production asks of an idea: architecture; machines and data centres; volume, capacity and performance; reliability and failover; monitoring; security; automation and manual tasks; growth; external dependencies; and schedule and rollout. The book says checklists like it are used to reduce failure and ensure consistency, as in aviation and surgery.</p>
+    <p class="note"><i>Analysis:</i> an agent can work through such a list quickly; deciding which answers are good enough for your users is still a person&rsquo;s call.</p>
+  </article>
+
+  <article class="card" id="c-one-ecosystem-not-two-camps"><h3>One ecosystem, not two camps</h3>
+    <p><i>Our view:</i> people and agents work best as one system with clear roles: people set direction, own decisions and stay accountable; agents do well-briefed work quickly and report what they did and how they checked it. The guide&rsquo;s <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a> page has how to brief an agent and how it should report back.</p>
+    <p><i>The other view:</i> some argue roles will keep moving towards agents, so drawing fixed lines now may age badly; on that view the skill that matters most is adapting the division of work as tools change.</p>
+  </article>
+
+  <article class="card wide" id="c-in-harmony-with-what-is-happening"><h3>In harmony with what is happening</h3>
+    <p><i>Our view:</i> the change is real and it is not stopping, and fighting it costs energy that learning would use better. Being in harmony with it does not mean accepting everything: it means seeing clearly what is changing, keeping what still matters, and choosing where to put your effort. The guide&rsquo;s <a href="/well-rounded-engineer/philosophy/">Philosophy</a> page has more on nothing being permanent, and on being at peace with what happens; <a href="/well-rounded-engineer/aiworry/">Worried about AI?</a> has more on the worry itself.</p>
+    <p><i>The other view:</i> some changes deserve resistance, not harmony: when a tool is unsafe, unfair or simply wrong for the job, saying so is part of the work, and acceptance can become passivity.</p>
+  </article>
+
+  <article class="card wide" id="c-upskilling-on-foundations"><h3>Upskilling on foundations</h3>
+    <p><i>Our view:</i> when agents write more of the code, the foundations matter more, not less: you cannot judge an agent&rsquo;s database migration without understanding transactions, or its retry logic without understanding failure. The foundations change slowly; the tools on top of them change every year. That is why this guide starts where it does, and why <a href="/well-rounded-engineer/">Start here</a> argues for being the site manager rather than a &ldquo;vibe coder&rdquo;.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>If you can&rsquo;t yet&hellip;</th><th>Start with</th></tr></thead>
+      <tbody>
+      <tr><td>Explain what happens when two requests change the same data at once</td><td><a href="/well-rounded-engineer/concurrency/">Concurrency</a>, <a href="/well-rounded-engineer/database/">Database Design</a></td></tr>
+      <tr><td>Say why a call to another service can be slow or fail</td><td><a href="/well-rounded-engineer/networking/">Networking</a>, <a href="/well-rounded-engineer/distsys/">Distributed Systems</a></td></tr>
+      <tr><td>Judge whether an agent&rsquo;s tests prove anything</td><td><a href="/well-rounded-engineer/testing/">Testing</a>, <a href="/well-rounded-engineer/teststrat/">Test Strategy</a></td></tr>
+      <tr><td>Choose where data should live</td><td><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a></td></tr>
+      <tr><td>Read what an agent changed and explain it to a colleague</td><td><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a></td></tr>
+      </tbody></table></div>
+    <p class="note"><i>The other view:</i> some argue that, as tools improve, more people will build useful software without deep foundations, and that learning on the job, with an agent explaining as it goes, can replace much up-front study.</p>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Minimum_viable_product" target="_blank" rel="noopener">Wikipedia: Minimum viable product</a>; <a href="https://en.wikipedia.org/wiki/Continuous_delivery" target="_blank" rel="noopener">Wikipedia: Continuous delivery</a>; <a href="https://en.wikipedia.org/wiki/Feature_toggle" target="_blank" rel="noopener">Wikipedia: Feature toggle</a>; <a href="https://sre.google/sre-book/reliable-product-launches/" target="_blank" rel="noopener">Google SRE book: Reliable Product Launches at Scale</a>; <a href="https://sre.google/sre-book/launch-checklist/" target="_blank" rel="noopener">Google SRE book: Launch Coordination Checklist</a>; <a href="https://dora.dev/guides/dora-metrics/" target="_blank" rel="noopener">DORA: software delivery performance metrics</a>.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/aiworry/">← Worried about AI?</a><a class="pn-next" href="/well-rounded-engineer/electronics/">Electronics &amp; Chips →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-the-path">The path</a><a href="#c-each-stage-people-agents-and-where-to-read-more">Each stage: people, agents, and where to read more</a><a href="#c-a-checklist-that-has-lasted">A checklist that has lasted</a><a href="#c-one-ecosystem-not-two-camps">One ecosystem, not two camps</a><a href="#c-in-harmony-with-what-is-happening">In harmony with what is happening</a><a href="#c-upskilling-on-foundations">Upskilling on foundations</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
