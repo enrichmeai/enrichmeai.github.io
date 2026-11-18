@@ -6403,17 +6403,18 @@ git verify-commit HEAD
     <ul>
       <li><b>Data minimisation:</b> collect and copy only what the purpose needs.</li>
       <li><b>Tokenisation:</b> replace a sensitive value with a token that has no meaning of its own and maps back only through the tokenisation system. Services pass the token around; the real value lives in one place.</li>
-      <li><b>Pseudonymisation:</b> transform data so it cannot be tied to a person without additional information, such as a key; the GDPR requires that information to be kept separately. Tokenisation and encryption are both examples.</li>
-      <li><b>Anonymisation:</b> remove what identifies people, so the data no longer describes anyone.</li>
+      <li><b>Pseudonymisation:</b> transform data so it cannot be tied to a person without additional information, such as a key; the GDPR&rsquo;s definition (Article 4(5), as summarised by Wikipedia) requires that information to be kept separately. Tokenisation and encryption are both examples.</li>
+      <li><b>Anonymisation:</b> remove what identifies people, so they can no longer be identified, directly or indirectly. Combining the data with other datasets can sometimes undo it.</li>
     </ul>
   </article>
 
   <article class="card wide"><h3>Erasure meets retention</h3>
-    <p>Erasure applies on certain grounds, and the regulation also sets out when it does not apply. Systems also have their own retention rules: Microsoft documents, for example, that some system-generated logs are kept under its service retention policies and are not removed by a data subject delete request.</p>
+    <p>Erasure is a right to request deletion on certain grounds, and it is limited: it applies only under certain circumstances, and Wikipedia notes it was made more limited than the earlier &ldquo;right to be forgotten&rdquo; proposal. The sources behind this page do not list the exceptions, so read Article 17 itself. Systems also have their own retention rules: Microsoft documents, for example, that some system-generated logs are kept under its service retention policies and are not removed by a data subject delete request.</p>
     <p class="note"><i>Analysis:</i> the common engineering case is a request to delete data that another rule requires you to keep, such as a financial record. The usual pattern is to delete what you may, pseudonymise or anonymise what you must keep, restrict who can read it, and record which rule applied and when the kept data will go. Which rule wins is a legal decision; the system&rsquo;s job is to make either answer possible.</p>
   </article>
 
   <article class="card wide"><h3>Deleting across services</h3>
+    <p><i>Analysis:</i> one way to do it.</p>
     <ol>
       <li><b>Record the request</b> in one place that owns it, with an id and the time it arrived.</li>
       <li><b>Publish one event</b>, such as <code>CustomerErasureRequested</code>, keyed by the customer, so every service that holds their data hears it (see <a href="#kafka">Kafka</a>).</li>
@@ -6426,7 +6427,7 @@ git verify-commit HEAD
 
   <article class="card"><h3>Backups and crypto-shredding</h3>
     <p>Crypto-shredding makes encrypted data unusable by deleting or overwriting its encryption key. It helps where the data itself is hard to reach, such as backups and copies spread across systems, because only the key needs destroying.</p>
-    <p class="note"><i>Analysis:</i> encrypt each person&rsquo;s sensitive fields with a key of their own, and destroying that key erases those fields everywhere at once, backups included. The cost is managing many keys, and losing a key by mistake loses the data.</p>
+    <p class="note"><i>Analysis:</i> encrypt each person&rsquo;s sensitive fields with a key of their own. If no copy of that key survives (key backups, caches) and the encryption holds, destroying it makes those fields unreadable everywhere, backups included. The cost is managing many keys, and losing a key by mistake loses the data.</p>
   </article>
 
   <article class="card"><h3>Keeping data in the right place</h3>
