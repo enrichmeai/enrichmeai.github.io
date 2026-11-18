@@ -1644,3 +1644,18 @@ D["cloudcost"]=dict(
           ("Google Cloud: labels overview","https://cloud.google.com/resource-manager/docs/labels-overview"),
           ("Google Cloud: create budgets","https://cloud.google.com/billing/docs/how-to/budgets"),
           ("FOCUS specification","https://github.com/FinOps-Open-Cost-and-Usage-Spec/FOCUS_Spec")])
+D["faded"]=dict(
+ F=["Say what convention over configuration means","Name what each of Rails, Grails and Flex introduced","Check whether a framework is still releasing"],
+ P=["Read a framework's maintenance policy before upgrading","Upgrade a framework one major version at a time","Recognise a dependency on a runtime one vendor controls"],
+ S=["Decide whether to keep, upgrade or replace an older application","Plan a gradual migration behind the same interface","Weigh staffing risk against rewrite risk"],
+ E=["Set an organisation's policy for ageing stacks","Spot single-vendor runtime risk early","Carry good ideas from older frameworks into new ones"],
+ topics=["Ruby on Rails and convention over configuration","Grails, Groovy and the JVM","Adobe Flex, MXML and the Flash runtime","Flash end of life","Why technologies fade","Keep, upgrade or replace"],
+ links=[("Ruby on Rails repository","https://github.com/rails/rails","Releases and tags"),
+        ("Apache Grails repository","https://github.com/apache/grails-core","Releases and tags")],
+ sources=[("Wikipedia: Ruby on Rails","https://en.wikipedia.org/wiki/Ruby_on_Rails"),
+          ("Wikipedia: Convention over configuration","https://en.wikipedia.org/wiki/Convention_over_configuration"),
+          ("Wikipedia: Grails (framework)","https://en.wikipedia.org/wiki/Grails_(framework)"),
+          ("Wikipedia: Apache Flex","https://en.wikipedia.org/wiki/Apache_Flex"),
+          ("Wikipedia: Adobe Flash","https://en.wikipedia.org/wiki/Adobe_Flash"),
+          ("rails/rails tags on GitHub","https://github.com/rails/rails/tags"),
+          ("apache/grails-core on GitHub","https://github.com/apache/grails-core")])
