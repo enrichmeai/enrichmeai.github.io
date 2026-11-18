@@ -1596,3 +1596,5 @@ D["datastore"]=dict(
           ("Wikipedia: Apache Cassandra","https://en.wikipedia.org/wiki/Apache_Cassandra"),
           ("Wikipedia: Elasticsearch","https://en.wikipedia.org/wiki/Elasticsearch"),
           ("Martin Fowler: Polyglot Persistence","https://martinfowler.com/bliki/PolyglotPersistence.html")])
+
+D["datastore"]["sources"].append(("Wikipedia: Data warehouse","https://en.wikipedia.org/wiki/Data_warehouse"))
