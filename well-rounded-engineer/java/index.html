@@ -84,7 +84,7 @@
       <tr><td>8</td><td><code>CompletableFuture</code>, parallel streams</td><td>Compose asynchronous steps instead of blocking on each <code>Future</code>.</td></tr>
       <tr><td>9</td><td><code>Flow</code> (reactive streams interfaces)</td><td>A standard contract for streams with back-pressure, used by reactive libraries.</td></tr>
       <tr><td>19, 21</td><td>Virtual threads: preview in 19 (JEP 425), final in 21 (JEP 444)</td><td>Cheap threads managed by the JVM: one per blocking task, without a reactive rewrite.</td></tr>
-      <tr><td>21 onwards</td><td>Structured concurrency, previewing since 21 (JEP 453; fifth preview in 25, JEP 505)</td><td>Treat a group of related tasks as one unit: they finish, fail and cancel together.</td></tr>
+      <tr><td>21 onwards</td><td>Structured concurrency, previewing since 21 (JEP 453; fifth preview in 25, JEP 505; seventh preview in 27, JEP 533)</td><td>Treat a group of related tasks as one unit: they finish, fail and cancel together.</td></tr>
       <tr><td>24</td><td>Virtual threads no longer pin on <code>synchronized</code> (JEP 491)</td><td>Old <code>synchronized</code> code stops blocking the carrier thread.</td></tr>
       <tr><td>25</td><td>Scoped values, final (JEP 506)</td><td>Share immutable data with child tasks; a safer replacement for many uses of <code>ThreadLocal</code>.</td></tr>
     </table></div>

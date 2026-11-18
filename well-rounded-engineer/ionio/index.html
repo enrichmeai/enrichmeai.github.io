@@ -73,7 +73,7 @@ while (true) {
     Socket socket = server.accept();               // blocks until a client connects
     pool.submit(() -&gt; handle(socket));             // that thread blocks on every read and write
 }</code></pre>
-    <p>The <b>Servlet</b> API (1.0 in 1997) put a standard interface over this model, and <b>Tomcat</b>, first released at the Apache Software Foundation in 1999, became its best-known container, alongside <b>Jetty</b>. Threads were lighter than processes, and the code was easy to read: read the request, call the database, write the response, top to bottom.</p>
+    <p>The <b>Servlet</b> API (1.0 in 1996&ndash;97) put a standard interface over this model, and <b>Tomcat</b>, first released at the Apache Software Foundation in 1999, became a widely used container, alongside <b>Jetty</b>. Threads were lighter than processes, and the code was easy to read: read the request, call the database, write the response, top to bottom.</p>
     <p class="note"><b>The cost:</b> an idle keep-alive connection still holds a whole thread. In 1999 Dan Kegel named the problem <b>C10K</b>: how do you serve ten thousand clients at once?</p>
   </article>
   <article class="card wide" id="c-3-readiness-and-event-loops-nio"><h3>3. Readiness and event loops: NIO</h3>
@@ -91,7 +91,7 @@ while (true) {
     }
     selector.selectedKeys().clear();
 }</code></pre>
-    <p>Outside Java, <b>nginx</b> (October 2004) was built on this model: a master process and a few worker processes, each handling many connections with an asynchronous, event-driven approach rather than a thread each. It became a common front door of the web, often in front of Java servers.</p>
+    <p>Outside Java, <b>nginx</b> (October 2004) was built on this model: a master process and a few worker processes, each handling many connections with an asynchronous, event-driven approach rather than a thread each. It became a widely used front door for web applications, often in front of Java servers.</p>
     <p class="note"><b>The cost:</b> raw NIO is hard. Partial reads, buffer flipping, back-pressure and threading rules are all yours to get right.</p>
   </article>
   <article class="card wide" id="c-4-frameworks-on-nio"><h3>4. Frameworks on NIO</h3>
