@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From spring.jar to Spring · Well Rounded Engineer</title>
+<meta name="description" content="How Spring grew from code that came with a book in 2002 into Boot, Cloud, Data, Security, WebFlux, Modulith and AI: what each step added, and the pain it…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="springhistory" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 116 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/" aria-current="page">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">From spring.jar to Spring</span></p>
+<section class="panel" id="springhistory" data-name="From spring.jar to Spring">
+  <div class="panel-head"><h1>From spring.jar to Spring</h1><p>How Spring grew from code that came with a book in 2002 into Boot, Cloud, Data, Security, WebFlux, Modulith and AI: what each step added, and the pain it removed.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>Spring began as example code in a book, shipped as one jar, and grew into the most common way to build Java services. <i>Our view:</i> each layer was added to remove a pain the previous one left behind. <i>The other view</i> is in the card &ldquo;Our view, and the other view&rdquo;. How to use Spring today is on <a href="/well-rounded-engineer/spring/">Spring</a>; this page is how it got there.</p>
+  </article>
+
+  <article class="card wide" id="c-twenty-years-in-one-line"><h3>Twenty years in one line</h3>
+    <figure class="fig"><svg viewBox="0 0 640 112" role="img" aria-labelledby="sh-t sh-d"><title id="sh-t">Seven eras of Spring, 2002 to 2022</title><desc id="sh-d">A timeline of seven eras. 2002, the book: J2EE without EJB. 2004, Spring 1.0: one jar and XML beans. 2007, annotations: Autowired and Component. 2009, Spring 3: Java configuration and the jar split into modules. 2014, Spring Boot: no configuration to start. 2017, Spring 5: WebFlux and reactive. 2022, Spring 6: Java 17, Jakarta and native images.</desc><line class="ln" x1="10" y1="30" x2="630" y2="30"/><circle class="dot" cx="54.3" cy="30" r="5"/><text class="lb acc" x="54.3" y="18" text-anchor="middle">2002</text><text class="lb hd" x="54.3" y="56" text-anchor="middle">The book</text><text class="lb mu" x="54.3" y="76" text-anchor="middle">J2EE</text><text class="lb mu" x="54.3" y="92" text-anchor="middle">without EJB</text><circle class="dot" cx="142.9" cy="30" r="5"/><text class="lb acc" x="142.9" y="18" text-anchor="middle">2004</text><text class="lb hd" x="142.9" y="56" text-anchor="middle">Spring 1.0</text><text class="lb mu" x="142.9" y="76" text-anchor="middle">one jar,</text><text class="lb mu" x="142.9" y="92" text-anchor="middle">XML beans</text><circle class="dot" cx="231.4" cy="30" r="5"/><text class="lb acc" x="231.4" y="18" text-anchor="middle">2007</text><text class="lb hd" x="231.4" y="56" text-anchor="middle">Annotations</text><text class="lb mu" x="231.4" y="76" text-anchor="middle">@Autowired,</text><text class="lb mu" x="231.4" y="92" text-anchor="middle">@Component</text><circle class="dot" cx="320.0" cy="30" r="5"/><text class="lb acc" x="320.0" y="18" text-anchor="middle">2009</text><text class="lb hd" x="320.0" y="56" text-anchor="middle">Spring 3</text><text class="lb mu" x="320.0" y="76" text-anchor="middle">Java config,</text><text class="lb mu" x="320.0" y="92" text-anchor="middle">jar split</text><circle class="dot" cx="408.6" cy="30" r="5"/><text class="lb acc" x="408.6" y="18" text-anchor="middle">2014</text><text class="lb hd" x="408.6" y="56" text-anchor="middle">Spring Boot</text><text class="lb mu" x="408.6" y="76" text-anchor="middle">no config</text><text class="lb mu" x="408.6" y="92" text-anchor="middle">to start</text><circle class="dot" cx="497.1" cy="30" r="5"/><text class="lb acc" x="497.1" y="18" text-anchor="middle">2017</text><text class="lb hd" x="497.1" y="56" text-anchor="middle">Spring 5</text><text class="lb mu" x="497.1" y="76" text-anchor="middle">WebFlux,</text><text class="lb mu" x="497.1" y="92" text-anchor="middle">reactive</text><circle class="dot" cx="585.7" cy="30" r="5"/><text class="lb acc" x="585.7" y="18" text-anchor="middle">2022</text><text class="lb hd" x="585.7" y="56" text-anchor="middle">Spring 6</text><text class="lb mu" x="585.7" y="76" text-anchor="middle">Java 17, Jakarta,</text><text class="lb mu" x="585.7" y="92" text-anchor="middle">native</text></svg><figcaption>Seven eras. The years are the release dates in the cards below.</figcaption></figure>
+  </article>
+  <article class="card wide" id="c-1-a-reaction-to-j2ee"><h3>1. A reaction to J2EE</h3>
+    <p class="note"><b>2002&ndash;2003</b></p>
+    <p>In the early 2000s, enterprise Java meant <b>J2EE and EJB 2</b>: an application server, deployment descriptors, home and remote interfaces, and business code you could not test without the container. Rod Johnson&rsquo;s book <b>Expert One-on-One J2EE Design and Development</b> (Wrox, November 2002) argued that most applications did not need all of that. It came with 30,000 lines of framework code showing the alternative: plain Java objects, wired together by a container, with infrastructure kept out of the business code.</p>
+    <p>Readers asked to use that code. Juergen Hoeller and Yann Caroff persuaded Johnson to make it an open-source project, and became co-founders. Caroff suggested the name: <b>Spring</b>, a fresh start after the &ldquo;winter&rdquo; of traditional J2EE. The project went public in June 2003.</p>
+  </article>
+  <article class="card wide" id="c-2-spring-1-0-one-jar-three-ideas"><h3>2. Spring 1.0: one jar, three ideas</h3>
+    <p class="note"><b>March 2004</b></p>
+    <p>Spring 1.0 Final was released on 24 March 2004. It could be used as one file, <b><code>spring.jar</code></b>, dropped into <code>WEB-INF/lib</code>, with finer-grained module jars alongside for those who wanted less. It rested on three ideas that are still its core:</p>
+    <ul>
+      <li><b>Inversion of control and dependency injection.</b> The container creates your objects and hands them their dependencies, so classes stay plain and testable.</li>
+      <li><b>Aspect-oriented programming.</b> Cross-cutting concerns such as transactions and security are applied around your code, not written inside it.</li>
+      <li><b>Templates over raw APIs.</b> <code>JdbcTemplate</code>, Hibernate support and a single transaction abstraction removed the open-try-catch-close boilerplate.</li>
+    </ul>
+    <pre><code>&lt;bean id="caseService" class="com.example.CaseService"&gt;
+    &lt;property name="repository" ref="caseRepository"/&gt;
+&lt;/bean&gt;</code></pre>
+    <p>Spring MVC was in the box too, as a simpler alternative to Struts. Configuration was <b>XML</b>, and large applications grew large XML files.</p>
+  </article>
+  <article class="card wide" id="c-3-annotations"><h3>3. Annotations</h3>
+    <p class="note"><b>Spring 2.0 (October 2006) &middot; 2.5 (November 2007)</b></p>
+    <p>Java 5 brought annotations, and Spring moved the wiring next to the code. Spring 2.0 added XML configuration based on XML Schema (shorter config) and integrated with the AspectJ pointcut language. Spring 2.5 added <code>@Autowired</code>, <code>@Component</code>, <code>@Service</code> and <code>@Controller</code>, with classpath scanning to find them (<code>@Repository</code> dates from 2.0).</p>
+    <pre><code>@Service
+public class CaseService {
+    @Autowired private CaseRepository repository;
+}</code></pre>
+    <p>The family began to grow around the core. <b>Acegi Security</b> became an official Spring project at the end of 2007 and was renamed <b>Spring Security</b> (2.0 shipped in April 2008). <b>Spring Web Services</b> (2007), <b>Spring Batch</b> and <b>Spring Integration</b> (2008) followed. The company behind it changed its name too: Interface21 became <b>SpringSource</b> in 2007.</p>
+  </article>
+  <article class="card wide" id="c-4-spring-3-java-config-and-the-end-of-spring-jar"><h3>4. Spring 3: Java config, and the end of <code>spring.jar</code></h3>
+    <p class="note"><b>December 2009</b></p>
+    <p>Spring 3.0 made Java 5 the baseline. It brought <b><code>@Configuration</code> classes</b> (configuration written in Java, checked by the compiler), the Spring Expression Language, and REST support in MVC.</p>
+    <pre><code>@Configuration
+public class AppConfig {
+    @Bean CaseService caseService(CaseRepository repo) { return new CaseService(repo); }
+}</code></pre>
+    <p>It also <b>stopped providing the all-in-one <code>spring.jar</code></b>. The framework was now a set of modules (<code>spring-core</code>, <code>spring-beans</code>, <code>spring-context</code>, <code>spring-jdbc</code>, <code>spring-webmvc</code> and more), and builds pulled in only what they used. VMware bought SpringSource in August 2009, and <b>Spring Data</b> followed in 2010&ndash;11, bringing the repository idea to JPA, MongoDB, Redis and others.</p>
+    <p class="note"><b>The new pain:</b> each module was simple, but starting a project meant choosing compatible versions of a dozen modules and writing the same setup every time.</p>
+  </article>
+  <article class="card wide" id="c-5-spring-boot-convention-over-configuration"><h3>5. Spring Boot: convention over configuration</h3>
+    <p class="note"><b>Spring 4.0 (December 2013) &middot; Spring Boot 1.0 (April 2014)</b></p>
+    <p>Spring 4.0 added first-class Java 8 support, WebSocket and <code>@RestController</code>. The bigger change was <b>Spring Boot</b>, which answered &ldquo;how do I start?&rdquo; with defaults:</p>
+    <ul>
+      <li><b>Starters:</b> one dependency (<code>spring-boot-starter-web</code>) brings a tested set of libraries and versions.</li>
+      <li><b>Auto-configuration:</b> if a database driver is on the classpath, a <code>DataSource</code> is set up for you, and you override only what you need.</li>
+      <li><b>An embedded server:</b> Tomcat (or Jetty) inside the jar; <code>java -jar app.jar</code> replaced deploying WAR files to an application server.</li>
+      <li><b>Actuator:</b> health, metrics and info endpoints for production.</li>
+    </ul>
+    <pre><code>@SpringBootApplication
+public class App {
+    public static void main(String[] args) { SpringApplication.run(App.class, args); }
+}</code></pre>
+    <p>Boot arrived as microservices and containers took off. <b>Spring Cloud</b> 1.0 (March 2015) paired a configuration server with integrations for Netflix&rsquo;s open-source tools (Eureka, Zuul, Ribbon). The team moved to <b>Pivotal</b> in 2013; Pivotal returned to VMware in 2019, and Broadcom completed its purchase of VMware in November 2023.</p>
+  </article>
+  <article class="card wide" id="c-6-spring-5-reactive"><h3>6. Spring 5: reactive</h3>
+    <p class="note"><b>September 2017 &middot; Boot 2.0 (March 2018)</b></p>
+    <p>Spring 5.0 made Java 8 the baseline and added <b>WebFlux</b>, a second web stack built on Project Reactor, running on Netty or Undertow among others. A few threads that never block serve many connections, with end-to-end backpressure; R2DBC later did the same for databases. It also added first-class <b>Kotlin</b> support and a functional routing model. Spring MVC stayed fully supported, so teams chose per service. The threading story behind this is on <a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a>.</p>
+  </article>
+  <article class="card wide" id="c-7-spring-6-java-17-jakarta-and-native"><h3>7. Spring 6: Java 17, Jakarta and native</h3>
+    <p class="note"><b>Spring 6.0 (November 2022) &middot; Boot 3.0 (eight days later)</b></p>
+    <p>Spring 6 raised the baseline to <b>Java 17</b> and moved from <code>javax.*</code> to <b><code>jakarta.*</code></b>, following Java EE&rsquo;s move to the Eclipse Foundation. It added first-class support for <b>GraalVM native images</b>, through ahead-of-time processing: applications that start much faster and use less memory. Observability was rebuilt on Micrometer.</p>
+    <p>Boot 3.2 (November 2023) added a one-line switch for <b>virtual threads</b>, <code>spring.threads.virtual.enabled=true</code>, plus the simpler <code>RestClient</code> and <code>JdbcClient</code>. <b>Spring Modulith</b> (first release 2022) gave a structure for well-separated modules inside one application, checked by tests, and <b>Spring AI</b> (1.0 in May 2025) brought model clients, prompts and vector stores into the same style. Spring Framework 7 and Boot 4 (November 2025) continue the line, with JSpecify null-safety annotations across the codebase.</p>
+  </article>
+  <article class="card wide" id="c-what-stayed-the-same"><h3>What stayed the same</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Idea</th><th>2004</th><th>Today</th></tr></thead>
+      <tbody>
+      <tr><td><b>Dependency injection</b></td><td>XML <code>&lt;bean&gt;</code> with <code>&lt;property&gt;</code></td><td>Constructor injection, found by scanning or <code>@Bean</code></td></tr>
+      <tr><td><b>Infrastructure around code</b></td><td>AOP proxies for transactions</td><td>The same proxies, plus ahead-of-time generated code for native images</td></tr>
+      <tr><td><b>Templates over raw APIs</b></td><td><code>JdbcTemplate</code>, <code>HibernateTemplate</code></td><td><code>JdbcClient</code>, <code>RestClient</code>, Spring Data repositories</td></tr>
+      <tr><td><b>Getting started</b></td><td>Copy <code>spring.jar</code>, write XML</td><td><code>start.spring.io</code>, one starter, no XML</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> Spring grew by adding a layer each time the previous one made something tedious: XML gave way to annotations, annotations to Java config, hand-picked jars to starters, and application servers to an executable jar. The single jar is gone, but plain Java objects with infrastructure kept out of the way are still the point.</p>
+    <p><i>The other view:</i> each layer also hid more of what happens at start-up, and auto-configuration can make it hard to see why a bean exists; teams that value explicitness may prefer a smaller framework, or plain Java with fewer conventions (see <a href="/well-rounded-engineer/quarkus/">Quarkus</a> for one alternative).</p>
+  </article>
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://spring.io/blog/2006/11/09/spring-framework-the-origins-of-a-project-and-a-name" target="_blank" rel="noopener">Spring Framework: the origins of a project and a name (Rod Johnson, 2006)</a>; <a href="https://spring.io/blog/2004/03/24/spring-framework-1-0-final-released" target="_blank" rel="noopener">Spring Framework 1.0 Final Released</a>; <a href="https://docs.spring.io/spring-framework/docs/1.2.8/changelog.txt" target="_blank" rel="noopener">Spring Framework 1.2 changelog</a>; <a href="https://spring.io/blog/2006/10/03/spring-2-0-final-released" target="_blank" rel="noopener">Spring 2.0 Final Released</a>; <a href="https://docs.spring.io/spring-framework/docs/2.5.x/reference/new-in-2.html" target="_blank" rel="noopener">What&rsquo;s new in Spring 2.0 and 2.5</a>; <a href="https://spring.io/blog/2007/11/19/spring-framework-2-5-released" target="_blank" rel="noopener">Spring Framework 2.5 Released</a>; <a href="https://docs.spring.io/spring-security/site/docs/2.0.x/reference/html/introduction.html" target="_blank" rel="noopener">Spring Security 2.0 reference: introduction</a>; <a href="https://spring.io/blog/2009/12/16/spring-framework-3-0-goes-ga" target="_blank" rel="noopener">Spring Framework 3.0 goes GA</a>; <a href="https://docs.spring.io/spring-framework/docs/3.0.x/reference/new-in-3.html" target="_blank" rel="noopener">What&rsquo;s new in Spring 3.0</a>; <a href="https://spring.io/blog/2013/12/12/announcing-spring-framework-4-0-ga-release" target="_blank" rel="noopener">Spring Framework 4.0 GA</a>; <a href="https://spring.io/blog/2014/04/01/spring-boot-1-0-ga-released" target="_blank" rel="noopener">Spring Boot 1.0 GA Released</a>; <a href="https://spring.io/blog/2015/03/04/spring-cloud-1-0-0-available-now" target="_blank" rel="noopener">Spring Cloud 1.0 release announcement</a>; <a href="https://spring.io/blog/2017/09/28/spring-framework-5-0-goes-ga" target="_blank" rel="noopener">Spring Framework 5.0 goes GA</a>; <a href="https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-5.0-Release-Notes" target="_blank" rel="noopener">Spring Framework 5.0 release notes</a>; <a href="https://spring.io/blog/2018/03/01/spring-boot-2-0-goes-ga" target="_blank" rel="noopener">Spring Boot 2.0 goes GA</a>; <a href="https://spring.io/blog/2022/11/16/spring-framework-6-0-goes-ga" target="_blank" rel="noopener">Spring Framework 6.0 goes GA</a>; <a href="https://spring.io/blog/2022/11/24/spring-boot-3-0-goes-ga" target="_blank" rel="noopener">Spring Boot 3.0 goes GA</a>; <a href="https://spring.io/blog/2023/11/23/spring-boot-3-2-0-available-now" target="_blank" rel="noopener">Spring Boot 3.2 release announcement</a>; <a href="https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-7.0-Release-Notes" target="_blank" rel="noopener">Spring Framework 7.0 release notes</a>; <a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.0-Migration-Guide" target="_blank" rel="noopener">Spring Boot 4.0 migration guide</a>; <a href="https://en.wikipedia.org/wiki/Spring_(company)" target="_blank" rel="noopener">Wikipedia: Spring (company)</a>; <a href="https://en.wikipedia.org/wiki/Pivotal_Software" target="_blank" rel="noopener">Wikipedia: Pivotal Software</a>; <a href="https://en.wikipedia.org/wiki/VMware" target="_blank" rel="noopener">Wikipedia: VMware</a>.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/spring/">← Spring Boot</a><a class="pn-next" href="/well-rounded-engineer/quarkus/">Quarkus →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-twenty-years-in-one-line">Twenty years in one line</a><a href="#c-1-a-reaction-to-j2ee">1. A reaction to J2EE</a><a href="#c-2-spring-1-0-one-jar-three-ideas">2. Spring 1.0: one jar, three ideas</a><a href="#c-3-annotations">3. Annotations</a><a href="#c-4-spring-3-java-config-and-the-end-of-spring-jar">4. Spring 3: Java config, and the end of spring.jar</a><a href="#c-5-spring-boot-convention-over-configuration">5. Spring Boot: convention over configuration</a><a href="#c-6-spring-5-reactive">6. Spring 5: reactive</a><a href="#c-7-spring-6-java-17-jakarta-and-native">7. Spring 6: Java 17, Jakarta and native</a><a href="#c-what-stayed-the-same">What stayed the same</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
