@@ -2233,12 +2233,12 @@ WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</co
       <li><b>Edges</b> are the relationships between them, and can be directed (A follows B) or undirected.</li>
       <li><b>Properties</b> are key&ndash;value details on both, such as a person&rsquo;s name or the date a payment was made.</li>
     </ul>
-    <p class="note">The mathematics is old: Leonhard Euler&rsquo;s 1736 proof that no walk crosses each of K&ouml;nigsberg&rsquo;s seven bridges exactly once is the classic starting point of graph theory.</p>
+    <p class="note">The mathematics is old: Leonhard Euler&rsquo;s 1736 proof that no walk crosses each of K&ouml;nigsberg&rsquo;s seven bridges exactly once is regarded as the first paper in the history of graph theory.</p>
   </article>
 
   <article class="card"><h3>Two models</h3>
     <ul>
-      <li><b>Labelled property graph:</b> nodes and relationships both carry key&ndash;value properties; nodes have labels that group them; relationships are named, directed and have a start and an end node. Neo4j (where Cypher began), Amazon Neptune and JanusGraph (through Apache TinkerPop) work with this model.</li>
+      <li><b>Labelled property graph:</b> nodes and relationships both carry key&ndash;value properties; nodes have labels that group them; relationships are named, directed and have a start and an end node. Neo4j (where Cypher began) and Amazon Neptune (through openCypher) support this model.</li>
       <li><b>RDF (Resource Description Framework):</b> a W3C standard where everything is a <i>triple</i>, subject&ndash;predicate&ndash;object, such as &ldquo;Ana &ndash; worksFor &ndash; Acme&rdquo;. Databases built for it are called triplestores, and it underlies many knowledge graphs and linked data.</li>
     </ul>
     <p class="note">Some products, Amazon Neptune among them, support both models.</p>
@@ -2250,36 +2250,36 @@ WHERE id = $2 AND version = $3;     -- 0 rows → conflict, reload and retry</co
       <li><b>GQL:</b> the ISO standard graph query language for property graphs, ISO/IEC 39075, published in April 2024.</li>
       <li><b>SQL/PGQ:</b> Part 16 of SQL:2023 adds property graph queries to SQL itself, narrowing the gap between relational and graph databases.</li>
       <li><b>Gremlin:</b> Apache TinkerPop&rsquo;s graph traversal language, described as playing the role for graph databases that JDBC and SQL play for relational ones.</li>
-      <li><b>SPARQL:</b> the W3C query language for RDF, a recommendation since 2008.</li>
+      <li><b>SPARQL:</b> the W3C query language for RDF; SPARQL 1.0 became a W3C Recommendation in January 2008.</li>
     </ul>
   </article>
 
   <article class="card wide"><h3>What a query looks like</h3>
-<pre><code>-- GQL / Cypher style: people and the city they live in
+<pre><code>// GQL / Cypher style: people and the city they live in
 MATCH (p:Person)-[:LIVES_IN]-&gt;(c:City)
 RETURN p.first_name, p.last_name, c.name
 
--- friends of friends: two hops along the same relationship
+// friends of friends: two hops along the same relationship
 MATCH (me:Person {name: 'Ana'})-[:KNOWS]-&gt;(friend)-[:KNOWS]-&gt;(fof)
 RETURN DISTINCT fof.name</code></pre>
-    <p class="note"><i>Analysis:</i> the second query adds one pattern per hop. In SQL, each hop is another self-join on a link table, or a recursive query, which is where graph databases are said to read more naturally.</p>
+    <p class="note"><i>Analysis:</i> the second query adds one pattern per hop. In SQL, each hop is typically another join on a link table, which is where graph databases are said to read more naturally.</p>
   </article>
 
   <article class="card wide"><h3>Graph or relational?</h3>
     <div class="tbl"><table>
       <thead><tr><th></th><th>Graph database</th><th>Relational database</th></tr></thead>
       <tbody>
-      <tr><td>Following relationships</td><td>Graph databases typically use <i>index-free adjacency</i>: each node points straight to its neighbours, so a hop costs about the same however big the graph is, and a query&rsquo;s time depends on how much of the graph it touches</td><td>Relationships are joins through indexes, and queries with many joins across many tables get complex and costly</td></tr>
-      <tr><td>Operating on many rows at once</td><td>Not its strength</td><td>Typically faster at the same operation over large numbers of rows</td></tr>
-      <tr><td>Schema</td><td>Flexible: new kinds of node and relationship can be added without redesigning</td><td>A defined, normalised schema that protects consistency</td></tr>
-      <tr><td>Standard language</td><td>GQL since 2024; Cypher, Gremlin and SPARQL are all in use</td><td>SQL, with decades of tooling and skills</td></tr>
+      <tr><td>Following relationships</td><td>Graph databases typically use <i>index-free adjacency</i>: each node holds direct references to its neighbours, so reaching an adjacent node is typically constant time, and query time depends on how much of the graph is queried rather than the size of the graph</td><td>Relationships are joins through indexes; queries with many joins across many tables get complex, and joins can be expensive</td></tr>
+      <tr><td>Operating on many rows at once</td><td>Typically slower at the same operation over large numbers of rows</td><td>Typically faster at the same operation over large numbers of rows</td></tr>
+      <tr><td>Schema</td><td>Flexible: new kinds of node and relationship can be added without redesigning</td><td>A strict schema and normalisation, which preserve data consistency and support ACID transactions</td></tr>
+      <tr><td>Standard language</td><td>GQL since 2024; Cypher, Gremlin and SPARQL are all in use</td><td>SQL, the standard for relational databases, which have been the industry standard since Codd&rsquo;s 1970 relational model</td></tr>
       </tbody></table></div>
     <p class="note">Wikipedia&rsquo;s summary adds a caution worth keeping: the graph model alone should not be the reason to replace an existing relational database.</p>
   </article>
 
   <article class="card"><h3>Where graphs are used</h3>
     <ul>
-      <li><b>Shortest paths and reachability:</b> routes, networks, dependency chains.</li>
+      <li><b>Shortest paths</b> between two nodes, and measures such as a graph&rsquo;s diameter.</li>
       <li><b>Community detection:</b> clusters of closely connected nodes.</li>
       <li><b>Knowledge graphs:</b> Google introduced its Knowledge Graph in 2012, to answer searches with &ldquo;things, not strings&rdquo;.</li>
       <li><b>Graphs for AI retrieval:</b> Microsoft&rsquo;s GraphRAG research project used language models to extract a knowledge graph from text and used it as context for answering questions. Microsoft now describes it as a research project largely in maintenance mode, and warns that indexing can be expensive (see <a href="#rag">RAG</a>).</li>
@@ -2294,8 +2294,8 @@ RETURN DISTINCT fof.name</code></pre>
       <tr><td>Your queries are mostly filters, totals and reports over many rows</td><td>A relational database or a warehouse</td></tr>
       <tr><td>You already run PostgreSQL or another SQL database and need some graph queries</td><td>Try graph queries in SQL first (recursive queries, or SQL/PGQ where supported): a second database has a cost</td></tr>
       <tr><td>You need to link data from many sources with shared, published vocabularies</td><td>RDF and SPARQL</td></tr>
-      <tr><td>Your data has many kinds of entity and relationship that keep changing</td><td>A labelled property graph</td></tr>
-      <tr><td>You want to keep your options open across graph products</td><td>GQL or openCypher, rather than one vendor&rsquo;s extensions</td></tr>
+      <tr><td>Your data has many kinds of entity and relationship that keep changing</td><td>A graph model of either kind: new data can be added without planning every future use in advance</td></tr>
+      <tr><td>You need to be able to move between graph products</td><td>A standard language, GQL (ISO/IEC 39075) or openCypher, rather than one vendor&rsquo;s extensions</td></tr>
       </tbody></table></div>
   </article>
 
