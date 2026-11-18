@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keys, Certificates & SSH · Well Rounded Engineer</title>
+<meta name="description" content="HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="pki" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 97 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp" open><summary>Security<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/" aria-current="page">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Security</span> / <span aria-current="page">Keys, Certificates &amp; SSH</span></p>
+<section class="panel" id="pki" data-name="Keys, Certificates &amp; SSH">
+  <div class="panel-head"><h1>Keys, certificates and SSH</h1><p>HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the pair, how a certificate ties a public key to a name, what a certificate signing request (CSR) and a certificate authority (CA) do, and how SSH keys and Git signing work. The OpenSSL, ssh-keygen and Git commands on this page were run (OpenSSL <span data-other-version>3.0.13</span>, OpenSSH 9.6, Git 2.43), and the error messages are the real ones. <code>ssh -T git@github.com</code> is GitHub&rsquo;s own documented test and was not run here. HTTP and the TLS handshake are on <a href="/well-rounded-engineer/networking/">Networking</a>; SSH tunnels and jump hosts are on <a href="/well-rounded-engineer/linux/">Linux</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-one-idea-underneath-a-key-pair"><h3>One idea underneath: a key pair</h3>
+    <ul>
+      <li><b>Two keys, made together.</b> The public key can be shown to anyone. The private key never leaves its owner: not in email, not in a ticket, not in a repository.</li>
+      <li><b>Encrypt:</b> anyone with the public key can encrypt a message, but only the holder of the private key can decrypt it.</li>
+      <li><b>Sign:</b> the private key signs, and anyone with the public key can check that signature. This is how a server proves who it is, how an SSH key logs you in, and how a commit is marked as yours.</li>
+    </ul>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>Key type it leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>A new SSH key for you or a service</td><td>Ed25519: the type GitHub&rsquo;s own instructions generate</td></tr>
+      <tr><td>A legacy system that does not support Ed25519</td><td>RSA, 4096 bits, as GitHub suggests for that case</td></tr>
+      <tr><td>A TLS certificate for a website or service</td><td>ECDSA (for example P-256) or RSA; check what your clients and CA support</td></tr>
+      <tr><td>You want the key to need a hardware token</td><td>A security-key type such as <code>ed25519-sk</code></td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-what-a-certificate-is"><h3>What a certificate is</h3>
+    <p>A certificate authority (CA) stores, signs and issues digital certificates. A certificate certifies that a public key belongs to the named subject, so others can rely on it. Web certificates use the X.509 format (RFC 5280). The fields you will read most:</p>
+    <ul>
+      <li><b>Subject</b> and <b>Subject Alternative Name (SAN):</b> who it is for. Clients match the hostname against the SAN.</li>
+      <li><b>Issuer:</b> the CA that signed it.</li>
+      <li><b>Validity:</b> not before, not after.</li>
+      <li><b>Public key,</b> and the issuer&rsquo;s <b>signature</b> over all of the above.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-the-chain-of-trust"><h3>The chain of trust</h3>
+    <p>Your operating system or browser ships a store of trusted <b>root</b> certificates. Roots sign <b>intermediate</b> CAs, and intermediates sign the <b>leaf</b> certificate on your server. A client validates the chain from the leaf up to a root it already trusts.</p>
+    <p class="note"><i>Analysis:</i> the server must send its leaf and the intermediates; the client already has the root. A missing intermediate is a common cause of &ldquo;works in my browser, fails in my code&rdquo;, because some clients fetch a missing intermediate themselves and many libraries do not.</p>
+  </article>
+
+  <article class="card wide" id="c-a-certificate-signing-request-csr-step-by-step"><h3>A certificate signing request (CSR), step by step</h3>
+    <p>A CSR is the message you send a CA to apply for a certificate. RFC 2986 defines it in three parts: the request information (your name, your public key and any attributes), a signature algorithm, and a signature over the request information made with your private key. That signature proves you hold the private key, which never goes to the CA.</p>
+<pre><code># 1. Make a private key and a CSR, with the names the certificate must cover
+openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -noenc \
+  -keyout server.key -out server.csr \
+  -subj "/CN=shop.internal" \
+  -addext "subjectAltName=DNS:shop.internal,DNS:api.shop.internal"
+
+# 2. Check it before you send it
+openssl req -in server.csr -noout -verify      # Certificate request self-signature verify OK
+openssl req -in server.csr -noout -text        # read the subject and the SAN
+
+# 3. Send server.csr (never server.key) to the CA; it returns server.crt
+# 4. Read what came back, and check it matches your key
+openssl x509 -in server.crt -noout -subject -issuer -dates -ext subjectAltName
+openssl x509 -in server.crt -noout -pubkey | openssl sha256
+openssl pkey -in server.key -pubout       | openssl sha256   # the two hashes must match</code></pre>
+  </article>
+
+  <article class="card wide" id="c-your-own-ca-for-a-lab-or-internal-services"><h3>Your own CA, for a lab or internal services</h3>
+<pre><code># a root CA (keep ca.key offline in real use)
+openssl req -x509 -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -noenc \
+  -keyout ca.key -out ca.crt -days 365 -subj "/CN=Lab Root CA"
+
+# the CA signs the CSR from the card above, keeping its SAN
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
+  -out server.crt -days 90 -copy_extensions copy
+
+# validate the chain, as a client would
+openssl verify -CAfile ca.crt server.crt     # server.crt: OK</code></pre>
+    <p class="note">These commands were run with OpenSSL <span data-other-version>3.0.13</span>. <code>-copy_extensions</code> on <code>openssl x509 -req</code> is documented in the 3.x manual; on an older OpenSSL, put the SAN in an <code>-extfile</code> instead. A private CA is trusted only by machines you configure to trust it; for anything the public reaches, use a public CA.</p>
+  </article>
+
+  <article class="card" id="c-getting-certificates-automatically-acme"><h3>Getting certificates automatically: ACME</h3>
+    <ul>
+      <li><b>ACME</b> (RFC 8555) is a protocol a CA and an applicant use to automate proving control of a domain and issuing the certificate.</li>
+      <li><b>Let&rsquo;s Encrypt</b> uses it so a server can obtain browser-trusted certificates without human intervention. Its default certificates are valid for 90 days.</li>
+      <li><b>So renewal must be automatic</b> (<i>analysis</i>): a 90-day certificate renewed by hand will expire on someone&rsquo;s holiday.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-both-sides-show-a-certificate-mtls"><h3>Both sides show a certificate: mTLS</h3>
+    <p>In mutual TLS the client also presents a certificate, so each side proves who it is. Service meshes issue and rotate these workload certificates automatically; see <a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-the-errors-you-will-meet-and-what-they-mean"><h3>The errors you will meet, and what they mean</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>The message (from OpenSSL)</th><th>What it usually means</th><th>What to check (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td><code>unable to get local issuer certificate</code></td><td>The client cannot build a chain to a root it trusts</td><td>Is the server sending its intermediate? Does the client trust the root (a private CA must be added to its trust store)?</td></tr>
+      <tr><td><code>hostname mismatch</code></td><td>The name you connected to is not in the certificate</td><td>The SAN list, not just the subject&rsquo;s common name</td></tr>
+      <tr><td><code>certificate has expired</code></td><td>Now is past the &ldquo;not after&rdquo; date</td><td>Renewal automation; and the clock on the client</td></tr>
+      <tr><td>The two public-key hashes above differ</td><td>The certificate was issued for a different private key</td><td>Which key made the CSR</td></tr>
+      </tbody></table></div>
+    <p class="note">Each message was produced for real: a leaf checked without its intermediate, the same certificate checked for a name not in its SAN, and checked at a date after it expires (<code>openssl verify -attime</code>). Supplying the intermediate with <code>-untrusted int.crt</code> turned the first into OK.</p>
+  </article>
+
+  <article class="card wide" id="c-ssh-keys"><h3>SSH keys</h3>
+<pre><code># make a key pair (GitHub's own instruction); set a passphrase when asked
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# its fingerprint: what you compare when someone asks "is this your key?"
+ssh-keygen -lf ~/.ssh/id_ed25519.pub
+
+# first connection: compare the fingerprint shown with the one the service publishes
+ssh -T git@github.com</code></pre>
+    <ul>
+      <li><b>Your public key</b> goes on the server, in <code>~/.ssh/authorized_keys</code> (a default file sshd checks; the <code>AuthorizedKeysFile</code> setting controls which), or into GitHub&rsquo;s settings. The private key stays on your machine.</li>
+      <li><b>ssh-agent</b> holds your private keys for the session, so a passphrase-protected key is unlocked once rather than for every connection.</li>
+      <li><b><code>~/.ssh/known_hosts</code></b> records the host key of every server you have connected to. If a host&rsquo;s key ever changes, ssh warns and disables password authentication, to prevent server spoofing or man-in-the-middle attacks.</li>
+      <li><b>When that warning appears</b> (<i>analysis</i>): find out why the key changed (a rebuilt server, a new load balancer) before you remove the old entry with <code>ssh-keygen -R host</code>. Deleting the line to make the warning go away defeats the check.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-git-signing-commits-with-your-ssh-key"><h3>Git: signing commits with your SSH key</h3>
+<pre><code>git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true          # sign every commit
+
+# to verify locally, list the keys you trust
+echo "you@example.com $(cat ~/.ssh/id_ed25519.pub)" &gt;&gt; ~/.ssh/allowed_signers
+git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+git verify-commit HEAD
+# Good "git" signature for you@example.com with ED25519 key SHA256:...</code></pre>
+    <ul>
+      <li><b>Why sign:</b> anyone can set <code>user.email</code> to any address. A signature that verifies shows the commit came from the holder of that key. GitHub marks commits signed with GPG, SSH or S/MIME as <i>Verified</i> when it can check the signature, so add the key to your account as a signing key too.</li>
+      <li><b>Authentication and signing are separate:</b> the same SSH key can let you push and sign your commits, but GitHub registers it for each purpose separately: to use one key for both, you upload it twice.</li>
+      <li>Everyday Git commands are on <a href="/well-rounded-engineer/devops/">DevOps</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> automate every certificate&rsquo;s renewal, keep private keys where they were made, and sign your commits. Each removes a way to be surprised: an expiry, a leaked key, or a commit that only claims to be yours.</p>
+    <p><i>The other view:</i> some systems cannot automate renewal (older appliances, devices in the field, partners who install certificates by hand), and for them short lifetimes add work and risk. Commit signing adds setup for every engineer and machine; some teams rely on protected branches and reviewed pull requests instead.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain a key pair: what the public key and the private key are each for</li><li>Read a certificate's subject, SAN, issuer and dates</li><li>Make an SSH key and add its public half to a server or GitHub</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Make a CSR with the right SAN and check it before sending</li><li>Fix a missing intermediate, a hostname mismatch and an expired certificate</li><li>Sign Git commits with an SSH key and verify them</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Run a private CA for internal services, and know its limits</li><li>Automate certificate renewal with ACME</li><li>Set up mTLS between services</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's key and certificate policy</li><li>Plan certificate and key rotation without outages</li><li>Design trust for partners and devices that cannot automate</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Public-key cryptography</li><li>X.509 certificates and the chain of trust</li><li>CSRs (PKCS #10) and certificate authorities</li><li>ACME and Let's Encrypt</li><li>SSH keys, ssh-agent and known_hosts</li><li>Signed Git commits</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.rfc-editor.org/rfc/rfc2986" target="_blank" rel="noopener">RFC 2986: PKCS #10 certification requests</a><span class="lnote"> What a CSR contains</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc5280" target="_blank" rel="noopener">RFC 5280: X.509 certificates</a><span class="lnote"> The certificate format and path validation</span></li><li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank" rel="noopener">GitHub: Generating a new SSH key</a><span class="lnote"> Step by step</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank" rel="noopener">Wikipedia: Public-key cryptography</a>; <a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener">Wikipedia: Certificate authority</a>; <a href="https://en.wikipedia.org/wiki/Certificate_signing_request" target="_blank" rel="noopener">Wikipedia: Certificate signing request</a>; <a href="https://en.wikipedia.org/wiki/Chain_of_trust" target="_blank" rel="noopener">Wikipedia: Chain of trust</a>; <a href="https://en.wikipedia.org/wiki/Public_key_certificate" target="_blank" rel="noopener">Wikipedia: Public key certificate</a>; <a href="https://www.rfc-editor.org/rfc/rfc2986" target="_blank" rel="noopener">RFC 2986</a>; <a href="https://www.rfc-editor.org/rfc/rfc5280" target="_blank" rel="noopener">RFC 5280</a>; <a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener">RFC 8555: ACME</a>; <a href="https://github.com/letsencrypt/website/blob/main/content/en/how-it-works.md" target="_blank" rel="noopener">Let's Encrypt: How it works (source)</a>; <a href="https://github.com/letsencrypt/website/blob/main/content/en/docs/faq.md" target="_blank" rel="noopener">Let's Encrypt: FAQ (source)</a>; <a href="https://github.com/openssl/openssl/blob/master/doc/man1/openssl-req.pod.in" target="_blank" rel="noopener">OpenSSL: openssl-req</a>; <a href="https://github.com/openssl/openssl/blob/master/doc/man1/openssl-x509.pod.in" target="_blank" rel="noopener">OpenSSL: openssl-x509</a>; <a href="https://github.com/openssl/openssl/blob/master/doc/man1/openssl-verify.pod.in" target="_blank" rel="noopener">OpenSSL: openssl-verify</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/ssh-keygen.1" target="_blank" rel="noopener">OpenSSH: ssh-keygen(1)</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/ssh.1" target="_blank" rel="noopener">OpenSSH: ssh(1)</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/sshd.8" target="_blank" rel="noopener">OpenSSH: sshd(8)</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/ssh-agent.1" target="_blank" rel="noopener">OpenSSH: ssh-agent(1)</a>; <a href="https://github.com/git/git/blob/master/Documentation/config/gpg.adoc" target="_blank" rel="noopener">Git: gpg configuration</a>; <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank" rel="noopener">GitHub: Generating a new SSH key</a>; <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">GitHub: Adding a new SSH key to your account</a>; <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection" target="_blank" rel="noopener">GitHub: Testing your SSH connection</a>; <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification" target="_blank" rel="noopener">GitHub: About commit signature verification</a>; <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key" target="_blank" rel="noopener">GitHub: Telling Git about your signing key</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKeys%2C%20Certificates%20%26%20SSH%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/security/">← Security</a><a class="pn-next" href="/well-rounded-engineer/cyber/">Cybersecurity →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-one-idea-underneath-a-key-pair">One idea underneath: a key pair</a><a href="#c-what-a-certificate-is">What a certificate is</a><a href="#c-the-chain-of-trust">The chain of trust</a><a href="#c-a-certificate-signing-request-csr-step-by-step">A certificate signing request (CSR), step by step</a><a href="#c-your-own-ca-for-a-lab-or-internal-services">Your own CA, for a lab or internal services</a><a href="#c-getting-certificates-automatically-acme">Getting certificates automatically: ACME</a><a href="#c-both-sides-show-a-certificate-mtls">Both sides show a certificate: mTLS</a><a href="#c-the-errors-you-will-meet-and-what-they-mean">The errors you will meet, and what they mean</a><a href="#c-ssh-keys">SSH keys</a><a href="#c-git-signing-commits-with-your-ssh-key">Git: signing commits with your SSH key</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

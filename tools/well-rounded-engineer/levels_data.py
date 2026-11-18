@@ -1074,6 +1074,28 @@ D["patterns"]=dict(
           ("Wikipedia: Anti-pattern","https://en.wikipedia.org/wiki/Anti-pattern"),
           ("Fowler: Inversion of Control Containers and the Dependency Injection pattern (2004)","https://martinfowler.com/articles/injection.html"),("Fowler: Yagni","https://martinfowler.com/bliki/Yagni.html"),("Fowler: Beck Design Rules","https://martinfowler.com/bliki/BeckDesignRules.html")])
 
+D["pki"]=dict(
+ F=["Explain a key pair: what the public key and the private key are each for","Read a certificate's subject, SAN, issuer and dates","Make an SSH key and add its public half to a server or GitHub"],
+ P=["Make a CSR with the right SAN and check it before sending","Fix a missing intermediate, a hostname mismatch and an expired certificate","Sign Git commits with an SSH key and verify them"],
+ S=["Run a private CA for internal services, and know its limits","Automate certificate renewal with ACME","Set up mTLS between services"],
+ E=["Set an organisation's key and certificate policy","Plan certificate and key rotation without outages","Design trust for partners and devices that cannot automate"],
+ topics=["Public-key cryptography","X.509 certificates and the chain of trust","CSRs (PKCS #10) and certificate authorities","ACME and Let's Encrypt","SSH keys, ssh-agent and known_hosts","Signed Git commits"],
+ links=[("RFC 2986: PKCS #10 certification requests","https://www.rfc-editor.org/rfc/rfc2986","What a CSR contains"),
+        ("RFC 5280: X.509 certificates","https://www.rfc-editor.org/rfc/rfc5280","The certificate format and path validation"),
+        ("GitHub: Generating a new SSH key","https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent","Step by step")],
+ sources=[("Wikipedia: Public-key cryptography","https://en.wikipedia.org/wiki/Public-key_cryptography"),("Wikipedia: Certificate authority","https://en.wikipedia.org/wiki/Certificate_authority"),
+          ("Wikipedia: Certificate signing request","https://en.wikipedia.org/wiki/Certificate_signing_request"),("Wikipedia: Chain of trust","https://en.wikipedia.org/wiki/Chain_of_trust"),
+          ("Wikipedia: Public key certificate","https://en.wikipedia.org/wiki/Public_key_certificate"),("RFC 2986","https://www.rfc-editor.org/rfc/rfc2986"),("RFC 5280","https://www.rfc-editor.org/rfc/rfc5280"),
+          ("RFC 8555: ACME","https://www.rfc-editor.org/rfc/rfc8555"),("Let's Encrypt: How it works (source)","https://github.com/letsencrypt/website/blob/main/content/en/how-it-works.md"),("Let's Encrypt: FAQ (source)","https://github.com/letsencrypt/website/blob/main/content/en/docs/faq.md"),
+          ("OpenSSL: openssl-req","https://github.com/openssl/openssl/blob/master/doc/man1/openssl-req.pod.in"),("OpenSSL: openssl-x509","https://github.com/openssl/openssl/blob/master/doc/man1/openssl-x509.pod.in"),("OpenSSL: openssl-verify","https://github.com/openssl/openssl/blob/master/doc/man1/openssl-verify.pod.in"),
+          ("OpenSSH: ssh-keygen(1)","https://github.com/openssh/openssh-portable/blob/master/ssh-keygen.1"),("OpenSSH: ssh(1)","https://github.com/openssh/openssh-portable/blob/master/ssh.1"),("OpenSSH: sshd(8)","https://github.com/openssh/openssh-portable/blob/master/sshd.8"),("OpenSSH: ssh-agent(1)","https://github.com/openssh/openssh-portable/blob/master/ssh-agent.1"),
+          ("Git: gpg configuration","https://github.com/git/git/blob/master/Documentation/config/gpg.adoc"),
+          ("GitHub: Generating a new SSH key","https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent"),
+          ("GitHub: Adding a new SSH key to your account","https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account"),
+          ("GitHub: Testing your SSH connection","https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection"),
+          ("GitHub: About commit signature verification","https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification"),
+          ("GitHub: Telling Git about your signing key","https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key")])
+
 D["bitcoin"]=dict(
  F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
  P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
