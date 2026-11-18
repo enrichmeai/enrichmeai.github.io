@@ -1622,7 +1622,7 @@ D["review"]=dict(
           ("Wikipedia: Plain language","https://en.wikipedia.org/wiki/Plain_language")])
 D["cloudcost"]=dict(
  F=["Read a cloud bill and name its biggest lines","Tag or label what you create","Switch off what you are not using"],
- P=["Right-size and autoscale a service","Set budgets and alerts, knowing they do not cap spend","Pick a storage class by how often data is read"],
+ P=["Right-size and autoscale a service","Set budgets and alerts, knowing alerts-only budgets do not cap spend","Pick a storage class by how often data is read"],
  S=["Decide on commitments from measured base load","Use spot capacity for interruptible work","Design data placement to limit transfer costs"],
  E=["Build a FinOps practice across engineering and finance","Measure cost per unit of business output","Weigh cost against reliability and security"],
  topics=["FinOps","On demand, commitments and spot capacity","Storage classes and minimum durations","Data transfer charges","Tags, labels and budgets","FOCUS cost data"],
