@@ -1570,3 +1570,31 @@ D["concurrency"]=dict(
           ("Wikipedia: Global interpreter lock","https://en.wikipedia.org/wiki/Global_interpreter_lock"),
           ("Wikipedia: Amdahl's law","https://en.wikipedia.org/wiki/Amdahl%27s_law"),
           ("Python docs: threading","https://docs.python.org/3/library/threading.html")])
+
+D["datastore"]=dict(
+ F=["Name the main families of data store","Say what ACID transactions guarantee","Tell row storage (OLTP) from column storage (OLAP)"],
+ P=["Choose between a table, a JSON column and a document store","Add a search index or cache fed from the main store","Explain why a store suits a workload"],
+ S=["Choose stores for a system by requirement","Keep several stores consistent (outbox, change data capture)","Weigh the cost of each extra store"],
+ E=["Set an organisation's approved data stores and when to add one","Plan migrations between stores","Balance fit against operational risk"],
+ topics=["Relational databases and ACID","Document, key-value and wide-column stores","Search engines and vector indexes","Time series and columnar warehouses","Object storage","Polyglot persistence"],
+ links=[("Polyglot Persistence","https://martinfowler.com/bliki/PolyglotPersistence.html","Martin Fowler, 2011")],
+ sources=[("Wikipedia: Relational database","https://en.wikipedia.org/wiki/Relational_database"),
+          ("Wikipedia: ACID","https://en.wikipedia.org/wiki/ACID"),
+          ("Wikipedia: NoSQL","https://en.wikipedia.org/wiki/NoSQL"),
+          ("Wikipedia: Document-oriented database","https://en.wikipedia.org/wiki/Document-oriented_database"),
+          ("Wikipedia: Key–value database","https://en.wikipedia.org/wiki/Key%E2%80%93value_database"),
+          ("Wikipedia: Wide-column store","https://en.wikipedia.org/wiki/Wide-column_store"),
+          ("Wikipedia: Time series database","https://en.wikipedia.org/wiki/Time_series_database"),
+          ("Wikipedia: Vector database","https://en.wikipedia.org/wiki/Vector_database"),
+          ("Wikipedia: Data orientation (row vs column)","https://en.wikipedia.org/wiki/Data_orientation"),
+          ("Wikipedia: Object storage","https://en.wikipedia.org/wiki/Object_storage"),
+          ("Wikipedia: In-memory database","https://en.wikipedia.org/wiki/In-memory_database"),
+          ("Wikipedia: Multi-model database","https://en.wikipedia.org/wiki/Multi-model_database"),
+          ("Wikipedia: PostgreSQL","https://en.wikipedia.org/wiki/PostgreSQL"),
+          ("Wikipedia: MongoDB","https://en.wikipedia.org/wiki/MongoDB"),
+          ("Wikipedia: Redis","https://en.wikipedia.org/wiki/Redis"),
+          ("Wikipedia: Apache Cassandra","https://en.wikipedia.org/wiki/Apache_Cassandra"),
+          ("Wikipedia: Elasticsearch","https://en.wikipedia.org/wiki/Elasticsearch"),
+          ("Martin Fowler: Polyglot Persistence","https://martinfowler.com/bliki/PolyglotPersistence.html")])
+
+D["datastore"]["sources"].append(("Wikipedia: Data warehouse","https://en.wikipedia.org/wiki/Data_warehouse"))
