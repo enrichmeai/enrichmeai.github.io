@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neural Networks · Well Rounded Engineer</title>
+<meta name="description" content="The models behind image recognition, speech and large language models are neural networks: many simple units, each doing a little arithmetic, connected in…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="neural" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 103 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp" open><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/" aria-current="page">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>AI</span> / <span aria-current="page">Neural Networks</span></p>
+<section class="panel" id="neural" data-name="Neural Networks">
+  <div class="panel-head"><h1>Neural networks</h1><p>The models behind image recognition, speech and large language models are neural networks: many simple units, each doing a little arithmetic, connected in layers and tuned on data. This page explains one unit, how units form layers, how a network learns, the main kinds of network, and how the field got here. How large language models work in particular is on <a href="/well-rounded-engineer/llm/">LLMs</a>; why GPUs suit this work is on <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>A neural network is layers of simple units. Each unit multiplies its inputs by weights, adds them up and applies a small non-linear function. Training shows the network many examples, measures how wrong its answers are, and nudges every weight a little in the direction that makes the error smaller, again and again.</p>
+  </article>
+
+  <article class="card wide" id="c-one-neuron"><h3>One neuron</h3>
+    <p>An artificial neuron takes several inputs, multiplies each by a <b>weight</b>, adds them up with a <b>bias</b>, and passes the total through an <b>activation function</b>. The weights are loosely analogous to the strengths of synapses between biological neurons. Warren McCulloch and Walter Pitts described a simple, non-learning model of this kind in 1943.</p>
+    <figure class="fig"><svg viewBox="0 0 600 240" role="img" aria-labelledby="nn-one-t nn-one-d"><title id="nn-one-t">One artificial neuron</title><desc id="nn-one-d">Inputs x1, x2 and x3 are multiplied by weights w1, w2 and w3 and summed with a bias b in a node marked sigma. The sum z passes through an activation function f to give the output y.</desc><defs><marker id="nn-ar2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0,0 L8,4 L0,8 z"/></marker></defs><circle class="nd in" cx="60" cy="60" r="18"/><text class="lb" x="60" y="65" text-anchor="middle">x<tspan baseline-shift="sub" font-size="10">1</tspan></text><line class="ed" x1="78" y1="60" x2="270" y2="112.5" marker-end="url(#nn-ar2)"/><text class="lb mu" x="170" y="78.25" text-anchor="middle">w<tspan baseline-shift="sub" font-size="10">1</tspan></text><circle class="nd in" cx="60" cy="130" r="18"/><text class="lb" x="60" y="135" text-anchor="middle">x<tspan baseline-shift="sub" font-size="10">2</tspan></text><line class="ed" x1="78" y1="130" x2="270" y2="130.0" marker-end="url(#nn-ar2)"/><text class="lb mu" x="170" y="122.0" text-anchor="middle">w<tspan baseline-shift="sub" font-size="10">2</tspan></text><circle class="nd in" cx="60" cy="200" r="18"/><text class="lb" x="60" y="205" text-anchor="middle">x<tspan baseline-shift="sub" font-size="10">3</tspan></text><line class="ed" x1="78" y1="200" x2="270" y2="147.5" marker-end="url(#nn-ar2)"/><text class="lb mu" x="170" y="165.75" text-anchor="middle">w<tspan baseline-shift="sub" font-size="10">3</tspan></text><circle class="nd" cx="300" cy="130" r="28"/><text class="lb big" x="300" y="138" text-anchor="middle">Σ</text><text class="lb mu" x="300" y="44" text-anchor="middle">bias b</text><line class="ed" x1="300" y1="52" x2="300" y2="100" marker-end="url(#nn-ar2)"/><line class="ed" x1="328" y1="130" x2="380" y2="130" marker-end="url(#nn-ar2)"/><text class="lb mu" x="354" y="120" text-anchor="middle">z</text><rect class="nd" x="382" y="106" width="56" height="48" rx="6"/><text class="lb big" x="410" y="137" text-anchor="middle">f</text><line class="ed" x1="438" y1="130" x2="500" y2="130" marker-end="url(#nn-ar2)"/><circle class="nd out" cx="520" cy="130" r="18"/><text class="lb" x="520" y="135" text-anchor="middle">y</text><text class="lb mu" x="410" y="176" text-anchor="middle">activation</text></svg><figcaption>One neuron: <i>z</i> = <i>w</i><sub>1</sub><i>x</i><sub>1</sub> + <i>w</i><sub>2</sub><i>x</i><sub>2</sub> + <i>w</i><sub>3</sub><i>x</i><sub>3</sub> + <i>b</i>, then <i>y</i> = <i>f</i>(<i>z</i>).</figcaption></figure>
+<pre><code>import math
+
+x = [0.5, 0.8, 0.2]      # inputs
+w = [0.4, 0.6, -0.9]     # weights
+b = 0.1                  # bias
+
+z = sum(xi * wi for xi, wi in zip(x, w)) + b   # weighted sum
+y = 1 / (1 + math.exp(-z))                     # sigmoid activation
+print(f"z = {z:.2f}, y = {y:.3f}")
+# z = 0.60, y = 0.646</code></pre>
+    <p class="note">Run as shown with Python 3; the last line is its real output.</p>
+  </article>
+
+  <article class="card wide" id="c-layers"><h3>Layers</h3>
+    <figure class="fig"><svg viewBox="0 0 600 290" role="img" aria-labelledby="nn-net-t nn-net-d"><title id="nn-net-t">A feedforward neural network</title><desc id="nn-net-d">Three input nodes x1 to x3, each connected to all four hidden nodes h1 to h4, each of which is connected to both output nodes y-hat 1 and y-hat 2. Arrows run left to right.</desc><defs><marker id="nn-ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0,0 L8,4 L0,8 z"/></marker></defs><line class="ed" x1="128" y1="80" x2="280" y2="55" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="80" x2="280" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="80" x2="280" y2="175" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="80" x2="280" y2="235" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="150" x2="280" y2="55" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="150" x2="280" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="150" x2="280" y2="175" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="150" x2="280" y2="235" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="220" x2="280" y2="55" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="220" x2="280" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="220" x2="280" y2="175" marker-end="url(#nn-ar)"/><line class="ed" x1="128" y1="220" x2="280" y2="235" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="55" x2="470" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="55" x2="470" y2="175" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="115" x2="470" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="115" x2="470" y2="175" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="175" x2="470" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="175" x2="470" y2="175" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="235" x2="470" y2="115" marker-end="url(#nn-ar)"/><line class="ed" x1="318" y1="235" x2="470" y2="175" marker-end="url(#nn-ar)"/><circle class="nd in" cx="110" cy="80" r="18"/><text class="lb" x="110" y="85" text-anchor="middle">x<tspan baseline-shift="sub" font-size="10">1</tspan></text><circle class="nd in" cx="110" cy="150" r="18"/><text class="lb" x="110" y="155" text-anchor="middle">x<tspan baseline-shift="sub" font-size="10">2</tspan></text><circle class="nd in" cx="110" cy="220" r="18"/><text class="lb" x="110" y="225" text-anchor="middle">x<tspan baseline-shift="sub" font-size="10">3</tspan></text><circle class="nd" cx="300" cy="55" r="18"/><text class="lb" x="300" y="60" text-anchor="middle">h<tspan baseline-shift="sub" font-size="10">1</tspan></text><circle class="nd" cx="300" cy="115" r="18"/><text class="lb" x="300" y="120" text-anchor="middle">h<tspan baseline-shift="sub" font-size="10">2</tspan></text><circle class="nd" cx="300" cy="175" r="18"/><text class="lb" x="300" y="180" text-anchor="middle">h<tspan baseline-shift="sub" font-size="10">3</tspan></text><circle class="nd" cx="300" cy="235" r="18"/><text class="lb" x="300" y="240" text-anchor="middle">h<tspan baseline-shift="sub" font-size="10">4</tspan></text><circle class="nd out" cx="490" cy="115" r="18"/><text class="lb" x="490" y="120" text-anchor="middle">ŷ<tspan baseline-shift="sub" font-size="10">1</tspan></text><circle class="nd out" cx="490" cy="175" r="18"/><text class="lb" x="490" y="180" text-anchor="middle">ŷ<tspan baseline-shift="sub" font-size="10">2</tspan></text><text class="lb hd" x="110" y="22" text-anchor="middle">Input layer</text><text class="lb hd" x="300" y="22" text-anchor="middle">Hidden layer</text><text class="lb hd" x="490" y="22" text-anchor="middle">Output layer</text><text class="lb mu" x="205" y="282" text-anchor="middle">weights w</text><text class="lb mu" x="395" y="282" text-anchor="middle">weights w</text></svg><figcaption>A feedforward network with one hidden layer. Every arrow carries a weight; every node in the hidden and output layers is a neuron like the one above. A network with many hidden layers is called deep.</figcaption></figure>
+    <ul>
+      <li><b>Input layer:</b> the numbers you feed in, such as pixel values or the features of a transaction.</li>
+      <li><b>Hidden layers:</b> neurons whose outputs feed the next layer. This shape, fully connected layer to layer, is called a multilayer perceptron.</li>
+      <li><b>Output layer:</b> the answer, such as a score per class.</li>
+      <li><b>Why the activation must be non-linear:</b> with a non-linear activation, even a few neurons can solve non-trivial problems; the universal approximation theorems show that suitable networks can, in principle, approximate any continuous function.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-how-a-network-learns"><h3>How a network learns</h3>
+    <ol>
+      <li><b>Predict:</b> run training examples forward through the network.</li>
+      <li><b>Measure the error</b> with a <b>loss function</b>, a single number that training tries to make as small as possible.</li>
+      <li><b>Find which way to move each weight:</b> <b>backpropagation</b> applies the chain rule of calculus efficiently to get the gradient of the loss with respect to every weight. Rumelhart, Hinton and Williams&rsquo; 1986 paper in <i>Nature</i>, &ldquo;Learning representations by back-propagating errors&rdquo;, is the well-known account.</li>
+      <li><b>Take a small step:</b> <b>gradient descent</b> moves each weight a little in the direction opposite to the gradient, the direction of steepest descent. The size of the step is the <b>learning rate</b>.</li>
+      <li><b>Repeat</b> over many batches. <b>Stochastic gradient descent</b> estimates the gradient from a randomly chosen subset of the data each time, instead of the whole data set.</li>
+    </ol>
+    <p class="note">The risk is <b>overfitting</b>: a model that matches its training data too closely and then fails on new data. That is why models are checked on data held back from training.</p>
+  </article>
+
+  <article class="card" id="c-activation-functions"><h3>Activation functions</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Function</th><th>What it does</th></tr></thead>
+      <tbody>
+      <tr><td>Sigmoid</td><td>Squashes any number into the range 0 to 1 (used in the code above)</td></tr>
+      <tr><td>ReLU</td><td>Passes positive values, turns negatives into 0; used in the 2012 AlexNet image model</td></tr>
+      <tr><td>GELU</td><td>A smooth version of ReLU, used in the 2018 BERT language model</td></tr>
+      <tr><td>Softmax</td><td>Turns a list of scores into a probability distribution over the possible outcomes, often on the output layer</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-kinds-of-network"><h3>Kinds of network</h3>
+    <ul>
+      <li><b>Feedforward (multilayer perceptron):</b> data flows one way, layer to layer, as in the diagram.</li>
+      <li><b>Convolutional (CNN):</b> learns small filters, or kernels, that slide across the input; widely used for images.</li>
+      <li><b>Recurrent (RNN):</b> feeds its output back in, for sequences. Plain RNNs suffer from the vanishing gradient problem, which limits long-range memory; the <b>LSTM</b>, by Hochreiter and Schmidhuber, was designed to ease it.</li>
+      <li><b>Transformer:</b> introduced in the 2017 paper &ldquo;Attention Is All You Need&rdquo; by eight researchers at Google, built on the attention mechanism. Many modern large language models are transformers.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-a-short-history"><h3>A short history</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Year</th><th>What happened</th></tr></thead>
+      <tbody>
+      <tr><td>1943</td><td>McCulloch and Pitts describe a non-learning computational model of neurons.</td></tr>
+      <tr><td>1958</td><td>Frank Rosenblatt describes the perceptron, one of the first implemented neural networks.</td></tr>
+      <tr><td>1969</td><td>Minsky and Papert&rsquo;s book <i>Perceptrons</i> shows limits of simple perceptrons, such as computing XOR. Research shifted towards symbolic systems.</td></tr>
+      <tr><td>1986</td><td>Rumelhart, Hinton and Williams publish their backpropagation paper in <i>Nature</i>.</td></tr>
+      <tr><td>2012</td><td>AlexNet, a convolutional network trained on GPUs, stands out in the ImageNet image-recognition challenge.</td></tr>
+      <tr><td>2017</td><td>The transformer is introduced, the basis of many of today&rsquo;s large language models.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>Tabular data with a modest number of rows and a need to explain decisions</td><td>Simpler models first (linear models, decision trees); a neural network only if they fall short</td></tr>
+      <tr><td>Images or other grid-shaped data</td><td>A convolutional network, or a pre-trained model to fine-tune</td></tr>
+      <tr><td>Text, code or other sequences</td><td>A transformer, usually a pre-trained one used through an API or fine-tuned (see <a href="/well-rounded-engineer/llm/">LLMs</a>)</td></tr>
+      <tr><td>Little labelled data</td><td>A pre-trained model adapted to your task, rather than training from scratch</td></tr>
+      <tr><td>Your team already runs one ML framework</td><td>Stay with it unless a requirement forces a change: switching has a cost</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> every engineer who works with AI benefits from understanding one neuron, a loss and a gradient step well enough to explain them. It makes the behaviour of large models, and the limits of what they learned, less mysterious.</p>
+    <p><i>The other view:</i> most engineers use models through an API and never train one. For them, time may be better spent on evaluation, prompting, cost and safety than on the mathematics of training.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain a neuron: weights, bias, activation</li><li>Draw a network's input, hidden and output layers</li><li>Say why the activation must be non-linear</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Compute a neuron's output by hand and in code</li><li>Explain loss, gradient descent and the learning rate</li><li>Recognise overfitting and hold back data to check for it</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Explain backpropagation as the chain rule</li><li>Choose between feedforward, convolutional, recurrent and transformer networks</li><li>Decide between training, fine-tuning and using a pre-trained model</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's approach to building versus buying models</li><li>Judge claims about model capability against how training works</li><li>Plan evaluation for models in production</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Artificial neurons</li><li>Layers and activation functions</li><li>Loss and gradient descent</li><li>Backpropagation</li><li>CNNs, RNNs and transformers</li><li>History of neural networks</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)" target="_blank" rel="noopener">Neural network (Wikipedia)</a><span class="lnote"> A thorough overview with history</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)" target="_blank" rel="noopener">Wikipedia: Neural network (machine learning)</a>; <a href="https://en.wikipedia.org/wiki/Artificial_neuron" target="_blank" rel="noopener">Wikipedia: Artificial neuron</a>; <a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="noopener">Wikipedia: Perceptron</a>; <a href="https://en.wikipedia.org/wiki/Perceptrons_(book)" target="_blank" rel="noopener">Wikipedia: Perceptrons (book)</a>; <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron" target="_blank" rel="noopener">Wikipedia: Multilayer perceptron</a>; <a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem" target="_blank" rel="noopener">Wikipedia: Universal approximation theorem</a>; <a href="https://en.wikipedia.org/wiki/Activation_function" target="_blank" rel="noopener">Wikipedia: Activation function</a>; <a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank" rel="noopener">Wikipedia: Softmax function</a>; <a href="https://en.wikipedia.org/wiki/Loss_function" target="_blank" rel="noopener">Wikipedia: Loss function</a>; <a href="https://en.wikipedia.org/wiki/Backpropagation" target="_blank" rel="noopener">Wikipedia: Backpropagation</a>; <a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="noopener">Wikipedia: Gradient descent</a>; <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent" target="_blank" rel="noopener">Wikipedia: Stochastic gradient descent</a>; <a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank" rel="noopener">Wikipedia: Overfitting</a>; <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" target="_blank" rel="noopener">Wikipedia: Convolutional neural network</a>; <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network" target="_blank" rel="noopener">Wikipedia: Recurrent neural network</a>; <a href="https://en.wikipedia.org/wiki/Long_short-term_memory" target="_blank" rel="noopener">Wikipedia: Long short-term memory</a>; <a href="https://en.wikipedia.org/wiki/Attention_Is_All_You_Need" target="_blank" rel="noopener">Wikipedia: Attention Is All You Need</a>; <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener">Wikipedia: AlexNet</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BNeural%20Networks%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/azuredata/">← Data on Azure</a><a class="pn-next" href="/well-rounded-engineer/llm/">LLMs →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-one-neuron">One neuron</a><a href="#c-layers">Layers</a><a href="#c-how-a-network-learns">How a network learns</a><a href="#c-activation-functions">Activation functions</a><a href="#c-kinds-of-network">Kinds of network</a><a href="#c-a-short-history">A short history</a><a href="#c-choose-by-requirement">Choose by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

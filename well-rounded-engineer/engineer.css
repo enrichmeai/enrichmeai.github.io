@@ -225,3 +225,23 @@
   .eg-hero-in { padding-top: 28px; padding-bottom: 36px; }
   .eg-hero .hero-lead { font-size: 17px; }
 }
+
+/* Diagrams: inline SVG figures (standard notations), drawn only with the site's colour tokens */
+.fig { margin: 10px 0 6px; overflow-x: auto; }
+.fig svg { display: block; width: 100%; height: auto; max-width: 620px; min-width: 460px; }
+.fig figcaption { color: var(--color-neutral-700); font-size: 14px; margin-top: 6px; max-width: 72ch; }
+.fig .nd { fill: var(--color-white); stroke: var(--color-text); stroke-width: 1.5; }
+.fig .nd.in { fill: var(--color-accent-100); }
+.fig .nd.out { fill: var(--color-accent-200); }
+.fig .ed { stroke: var(--color-neutral-600); stroke-width: 1; fill: none; }
+.fig .ar { fill: var(--color-neutral-600); }
+.fig .lb { fill: var(--color-text); font: 14px var(--font-body); }
+.fig .lb.hd { font-weight: 600; font-family: var(--font-heading); }
+.fig .lb.mu { fill: var(--color-neutral-700); font-size: 13px; }
+.fig .lb.big { font-size: 22px; }
+/* a diagram inside the navy short-answer card keeps its contrast */
+.eg .grid > .card:first-child .fig .nd { fill: var(--color-accent-800); stroke: var(--color-accent-200); }
+.eg .grid > .card:first-child .fig .lb { fill: var(--color-accent-100); }
+.eg .grid > .card:first-child .fig .lb.mu, .eg .grid > .card:first-child .fig figcaption { fill: var(--color-accent-300); color: var(--color-accent-300); }
+.eg .grid > .card:first-child .fig .ed { stroke: var(--color-accent-400); }
+.eg .grid > .card:first-child .fig .ar { fill: var(--color-accent-400); }
