@@ -1295,3 +1295,23 @@ D["microservices"].setdefault("sources",[]).extend([
  ("Envoy: Circuit breaking","https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking"),("Envoy: Outlier detection","https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier"),
  ("Istio: Circuit breaking task","https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/"),("Istio API: DestinationRule","https://github.com/istio/api/blob/master/networking/v1alpha3/destination_rule.proto"),
  ("MicroProfile Fault Tolerance","https://github.com/eclipse/microprofile-fault-tolerance")])
+
+D["agentsec"]=dict(
+ F=["Explain direct and indirect prompt injection with an example","Name the three root causes of excessive agency","Treat model output as untrusted input"],
+ P=["Give an agent only the tools and permissions its task needs","Add human approval for high-impact actions","Check an MCP server and its scopes before connecting it"],
+ S=["Design agent actions to run as the user, with authorisation outside the model","Red-team an agent with injected documents and tool outputs","Sandbox agents that write or run code"],
+ E=["Set an organisation's policy for agents, tools and approvals","Map agent risks to OWASP and MITRE ATLAS","Plan detection and response for attacks at machine speed"],
+ topics=["Prompt injection","Excessive agency","OWASP Top 10 for LLM Applications","MCP security","Least privilege and complete mediation","AI-orchestrated attacks","MITRE ATLAS"],
+ links=[("OWASP Top 10 for LLM Applications (repository)","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns","The 2025 entries, with mitigations"),
+        ("MCP security best practices (source)","https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/security_best_practices.mdx","From the protocol's maintainers"),
+        ("MITRE ATLAS","https://atlas.mitre.org/","Adversary techniques against AI systems")],
+ sources=[("OWASP LLM01:2025 Prompt Injection","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM01_PromptInjection.md"),("OWASP LLM05:2025 Improper Output Handling","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM05_ImproperOutputHandling.md"),
+          ("OWASP LLM06:2025 Excessive Agency","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM06_ExcessiveAgency.md"),("OWASP LLM10:2025 Unbounded Consumption","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM10_UnboundedConsumption.md"),
+          ("OWASP 2025 entries (list)","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns"),
+          ("OWASP Agentic Top 10, first public draft","https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/agent_security_initiative/agentic-top-10/Sprint%201-first-public-draft-expanded/README.md"),
+          ("MCP security best practices (source)","https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/security_best_practices.mdx"),
+          ("MITRE ATLAS data (README)","https://github.com/mitre-atlas/atlas-data/blob/main/README.md"),
+          ("Anthropic: Disrupting an AI-orchestrated cyber espionage campaign","https://www.anthropic.com/news/disrupting-AI-espionage"),
+          ("Claude Code: Security","https://code.claude.com/docs/en/security"),
+          ("Microsoft Learn: Prompt Shields","https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection"),
+          ("Wikipedia: Confused deputy problem","https://en.wikipedia.org/wiki/Confused_deputy_problem")])
