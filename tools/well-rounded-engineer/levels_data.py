@@ -1382,4 +1382,5 @@ D["philosophy"].setdefault("sources",[]).extend([
  ("Wikipedia: Sonja Lyubomirsky","https://en.wikipedia.org/wiki/Sonja_Lyubomirsky"),
  ("Wikipedia: Viktor Frankl","https://en.wikipedia.org/wiki/Viktor_Frankl"),
  ("Wikipedia: Toxic positivity","https://en.wikipedia.org/wiki/Toxic_positivity"),
+ ("Wikipedia: Man's Search for Meaning","https://en.wikipedia.org/wiki/Man%27s_Search_for_Meaning"),
 ])
