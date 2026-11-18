@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed Systems · Well Rounded Engineer</title>
+<meta name="description" content="As soon as a program runs on more than one machine, it has to cope with messages that are lost, delayed or arrive twice, machines that pause or fail…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="distsys" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 99 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp" open><summary>Architecture &amp; design<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/" aria-current="page">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Architecture &amp; design</span> / <span aria-current="page">Distributed Systems</span></p>
+<section class="panel" id="distsys" data-name="Distributed Systems">
+  <div class="panel-head"><h1>Distributed systems</h1><p>As soon as a program runs on more than one machine, it has to cope with messages that are lost, delayed or arrive twice, machines that pause or fail partway, and clocks that disagree. This page covers the ideas underneath microservices, Kafka, replicated databases and Kubernetes: what goes wrong, the trade-offs you cannot avoid, how machines agree, and how to test it. The section on simulation testing draws on Unmesh Joshi&rsquo;s article <a href="https://martinfowler.com/articles/deterministic-simulation-testing.html" target="_blank" rel="noopener">Deterministic Simulation Testing</a> and his <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems</a>, Joshi says his Tickloom library draws heavily on FoundationDB and TigerBeetle, and he names Antithesis as a commercial option for systems that cannot be restructured.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-assumptions-that-fail"><h3>The assumptions that fail</h3>
+    <p>The <b>fallacies of distributed computing</b> are false assumptions that programmers new to distributed systems tend to make. L. Peter Deutsch at Sun Microsystems listed seven in 1994, building on earlier work by Bill Joy and Dave Lyon, and James Gosling added the eighth around 1997:</p>
+    <ol>
+      <li>The network is reliable.</li>
+      <li>Latency is zero.</li>
+      <li>Bandwidth is infinite.</li>
+      <li>The network is secure.</li>
+      <li>Topology does not change.</li>
+      <li>There is one administrator.</li>
+      <li>Transport cost is zero.</li>
+      <li>The network is homogeneous.</li>
+    </ol>
+    <p><b>Partial failure</b> is what makes this hard. Unmesh Joshi describes gray failures: a node may misbehave without going down, a network may lose a few packets or slow some messages enough that only some nodes time out, and a process may freeze (a garbage-collection pause, for example) and resume without knowing it was frozen. The cluster is then split in what it believes, with some parts stalled and others carrying on.</p>
+  </article>
+
+  <article class="card" id="c-cap-and-pacelc"><h3>CAP and PACELC</h3>
+    <ul>
+      <li><b>CAP</b> (Brewer&rsquo;s conjecture, 2000; proved by Gilbert and Lynch, 2002): a distributed data store can give at most two of <i>consistency</i> (every read gets the latest write or an error), <i>availability</i> (every request to a working node gets a response, possibly not the latest data) and <i>partition tolerance</i> (it keeps working while messages between nodes are lost or delayed).</li>
+      <li><b>Our reading</b> (<i>analysis</i>): partitions cannot be ruled out on a real network, so the choice is what to do during one: refuse the operation and stay consistent, or answer and risk inconsistency.</li>
+      <li><b>PACELC</b> adds the normal case: <i>else</i>, with no partition, you still trade latency against consistency.</li>
+    </ul>
+    <p class="note">Two traps: CAP&rsquo;s consistency is not the C in ACID, and CAP&rsquo;s availability is not &ldquo;high availability&rdquo; in the everyday sense.</p>
+  </article>
+
+  <article class="card" id="c-consistency-models"><h3>Consistency models</h3>
+    <ul>
+      <li><b>Linearizable</b> (Herlihy and Wing, 1987): operations that overlap in time still appear to take effect instantly, in a single order that respects real time. It is a strong correctness condition, and it lets a programmer reason about the system as if there were one copy of the data.</li>
+      <li><b>Eventual consistency:</b> if no new updates are made, every read eventually returns the last value. Replicas are said to converge. It is a weak guarantee, chosen for availability.</li>
+      <li><b>BASE versus ACID:</b> eventually consistent stores are often described as basically available, soft state, eventually consistent, in contrast to ACID transactions.</li>
+    </ul>
+    <p class="note">Weaker models in between, such as read-your-writes, are on <a href="/well-rounded-engineer/architecture/">Architecture</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-time-and-order"><h3>Time and order</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Tool</th><th>What it gives you</th></tr></thead>
+      <tbody>
+      <tr><td><b>Wall clock</b></td><td>Time of day. Joshi notes it can jump when NTP corrects it and is not guaranteed to be monotonic, so it cannot measure a timeout; and machines&rsquo; clocks are not perfectly synchronised, so it cannot order events across them.</td></tr>
+      <tr><td><b>Monotonic clock</b></td><td>The usual workaround for measuring elapsed time; Joshi points out that a process pause can still distort the measurement.</td></tr>
+      <tr><td><b>Lamport timestamp</b> (Leslie Lamport, 1978)</td><td>A simple logical counter carried on messages, giving a partial order of events: if one event could have caused another, it gets the smaller number.</td></tr>
+      <tr><td><b>Vector clock</b></td><td>One logical counter per process, carried on every message, so you can tell whether two events are causally ordered or concurrent.</td></tr>
+      <tr><td><b>Hybrid logical clock</b></td><td>A version that increases like a counter but stays close to real date and time, so clients can ask for data &ldquo;as of&rdquo; a time.</td></tr>
+      <tr><td><b>Generation clock</b> (also called term or epoch)</td><td>A number that goes up with each new leader, so a leader that paused and came back can be recognised as out of date.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-agreeing-consensus-and-raft"><h3>Agreeing: consensus and Raft</h3>
+    <p>Consensus lets a group of machines agree on the same sequence of changes, so they can act as one replicated state machine. <b>Paxos</b>, by Leslie Lamport, was first submitted in 1989 and published in 1998. <b>Raft</b>, by Diego Ongaro and John Ousterhout, was designed as an alternative that is easier to understand. etcd, which Kubernetes uses, is built on Raft.</p>
+    <ol>
+      <li><b>One leader at a time.</b> Each server is a leader, a follower, or, during an election, a candidate. The leader sends regular heartbeats.</li>
+      <li><b>Elections.</b> A follower that hears nothing for its election timeout (typically 150 to 300 ms) becomes a candidate, starts a new <i>term</i>, votes for itself and asks the others. Each server votes once per term.</li>
+      <li><b>Log replication.</b> The leader appends each change to its log and replicates it to followers. A change counts as committed once a majority have stored it.</li>
+    </ol>
+    <p class="note">Raft in its basic form tolerates crashed servers, not lying ones: every node trusts the elected leader. Kafka&rsquo;s own metadata quorum is described on <a href="/well-rounded-engineer/kafka/">Kafka</a>.</p>
+  </article>
+
+  <article class="card" id="c-quorums-and-split-brain"><h3>Quorums and split brain</h3>
+    <ul>
+      <li><b>Majority quorum:</b> an update counts once a majority of nodes acknowledge it. Five nodes need three, and can lose two.</li>
+      <li><b>Why a majority:</b> two majorities always share a node, so two halves of a broken cluster cannot both make decisions.</li>
+      <li><b>Split brain:</b> two parts of a system each believe they are in charge and change overlapping data independently, usually after a network partition.</li>
+      <li><b>Leases</b> give a node exclusive access for a limited time; it must renew before expiry, so a crashed or paused node loses the access on its own.</li>
+    </ul>
+    <p class="note"><i>Analysis:</i> this is why clusters usually run with an odd number of nodes: a fourth node adds cost without letting you lose a second one. The other view: an even number is sometimes chosen when spreading nodes across zones or racks matters more than the failure count.</p>
+  </article>
+
+  <article class="card" id="c-transactions-across-machines-two-phase-commit"><h3>Transactions across machines: two-phase commit</h3>
+    <p>Two-phase commit has a coordinator ask every participant to prepare (vote), then tell them all to commit or roll back. Its main weakness is that it <b>blocks</b>: a participant that has voted yes must wait for the coordinator&rsquo;s decision, and if the coordinator fails for good, some participants never resolve, and in rare cases a person has to step in.</p>
+    <p class="note"><i>Analysis:</i> this is why services usually prefer sagas, with a compensating step for each local transaction, over a distributed transaction (see <a href="/well-rounded-engineer/architecture/">Architecture</a> and <a href="/well-rounded-engineer/microservices/">Microservices</a>). The other view: a saga gives up isolation between steps and needs compensation logic, so where a database or transaction coordinator already provides two-phase commit and short blocking is acceptable, it can be the simpler option.</p>
+  </article>
+
+  <article class="card" id="c-when-nodes-lie-byzantine-faults"><h3>When nodes lie: Byzantine faults</h3>
+    <p>A Byzantine fault is one where a component shows different symptoms to different observers, so others cannot even agree whether it has failed. The name comes from Lamport, Shostak and Pease&rsquo;s 1982 paper on the Byzantine Generals Problem. Byzantine fault tolerant systems can keep working with fewer than one third of their nodes faulty or malicious.</p>
+    <p class="note"><i>Analysis:</i> inside one organisation, crash fault tolerance (Raft, Paxos) is usually enough. Byzantine fault tolerance matters where participants may be malicious or do not trust each other. Public blockchains are a related case, though Wikipedia notes that their guarantees differ from classical Byzantine fault tolerance (see <a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a>).</p>
+  </article>
+
+  <article class="card wide" id="c-patterns-to-know-by-name"><h3>Patterns to know by name</h3>
+    <p>Unmesh Joshi&rsquo;s catalogue, published as the book <i>Patterns of Distributed Systems</i> in 2023, names recurring building blocks of distributed systems. Six of its patterns, picked here as a start:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Pattern</th><th>The problem it solves</th></tr></thead>
+      <tbody>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/write-ahead-log.html" target="_blank" rel="noopener">Write-ahead log</a></td><td>Keep every agreed change after a crash, by persisting each state change as a command in an append-only log</td></tr>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/heartbeat.html" target="_blank" rel="noopener">Heartbeat</a></td><td>Notice a failed server in time, by having each one send regular &ldquo;I am alive&rdquo; messages</td></tr>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/majority-quorum.html" target="_blank" rel="noopener">Majority quorum</a></td><td>Stop two groups of servers making independent decisions</td></tr>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/generation-clock.html" target="_blank" rel="noopener">Generation clock</a></td><td>Recognise a leader that paused or was cut off and has since been replaced</td></tr>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/lease.html" target="_blank" rel="noopener">Lease</a></td><td>Give exclusive access that expires by itself if its holder crashes or pauses</td></tr>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/hybrid-clock.html" target="_blank" rel="noopener">Hybrid clock</a></td><td>Version data so the versions are ordered and also map to a date and time</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-testing-it-chaos-histories-and-simulation"><h3>Testing it: chaos, histories and simulation</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Approach</th><th>What it asks</th><th>Its limit</th></tr></thead>
+      <tbody>
+      <tr><td><b>Chaos engineering</b> (Netflix&rsquo;s Chaos Monkey, 2011, disables a randomly chosen server during working hours)</td><td>Does the system stay available, and recover, when parts fail?</td><td>Unmesh Joshi&rsquo;s point: staying up does not show the answers are right, since a node can answer every request and still return an old value.</td></tr>
+      <tr><td><b>Client-history checking</b> (Jepsen)</td><td>Record what clients invoked and what came back, then check that history against a consistency model.</td><td>Finding a failure is only the first step; you must also reproduce it. Even with the same fault schedule, thread, message and disk timing differ from run to run on a live cluster.</td></tr>
+      <tr><td><b>Deterministic simulation testing</b> (below)</td><td>Run the real code against a simulated network, disk and clock, with every fault decided by one seed.</td><td>The code has to be built for it, under strict rules.</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-deterministic-simulation-testing"><h3>Deterministic simulation testing</h3>
+    <p>Joshi names four sources of nondeterminism, each of which changes the order in which events reach the software: the <b>system clock</b>, <b>thread scheduling</b>, <b>network timing</b> and <b>disk timing</b>. Simulation testing takes control of all four:</p>
+    <ul>
+      <li><b>Time comes from ticks, not the clock.</b> A timeout counts calls to <code>tick()</code>, so a pause cannot fire it early. Production systems already work this way: etcd&rsquo;s Raft is driven by <code>Node.Tick()</code>, with election and heartbeat timeouts set in ticks, and TigerBeetle fixes a tick at 10 ms.</li>
+      <li><b>One thread runs the protocol</b>, so there is no scheduler to vary the order.</li>
+      <li><b>The network and the disk are interfaces</b> with a simulated version in tests, which can drop, delay or duplicate messages. TigerBeetle&rsquo;s simulator also reorders packets, partitions the network and corrupts reads and writes.</li>
+      <li><b>Every random choice comes from a seeded generator.</b> The same seed gives exactly the same faults in the same order, so a failure found on one run replays every time.</li>
+      <li><b>Time is fast-forwarded:</b> the simulation runs the next tick at once instead of waiting, so a run that would take hours on a live cluster takes seconds, and thousands of runs that would add up to days finish quickly. TigerBeetle says one minute of its simulator&rsquo;s time is equivalent to days of real-world testing.</li>
+      <li><b>Correctness is checked</b> against the recorded client history, as Jepsen does, not just &ldquo;did it stay up&rdquo;.</li>
+    </ul>
+    <p class="note">Where it comes from: Joshi writes that <b>FoundationDB</b> pioneered deterministic simulation testing for distributed databases, using a custom C++ coroutine language and a deterministic scheduler, and that it simulates at the level of byte streams. <b>TigerBeetle</b>, a financial transactions database, uses a single-threaded, tick-driven design, which Joshi found easier to implement in Java. TigerBeetle&rsquo;s own documentation says its simulator, the VOPR, is deterministic from a seed and the Git commit, so any bug it finds can be replayed, and credits FoundationDB and Antithesis as its inspiration. <b>Antithesis</b> is a commercial platform with a deterministic hypervisor, which Joshi suggests when re-architecting the application is not feasible. <a href="https://github.com/unmeshjoshi/tickloom" target="_blank" rel="noopener">Tickloom</a> is Joshi&rsquo;s Java library for teaching the approach.</p>
+  </article>
+
+  <article class="card" id="c-the-rules-simulation-imposes"><h3>The rules simulation imposes</h3>
+    <p>To keep the core deterministic, Joshi&rsquo;s Tickloom code follows six rules. In short (his examples are Java, but the idea applies in any language):</p>
+    <ul>
+      <li>No reading the system clock directly.</li>
+      <li>No unseeded randomness, including for ids.</li>
+      <li>No threads, executors or standard futures in the core.</li>
+      <li>No direct network or disk I/O: everything goes through the interfaces.</li>
+      <li>No iterating over unordered collections such as a <code>HashMap</code>, whose order can differ between runs.</li>
+      <li>No background thread calling back into the deterministic side.</li>
+    </ul>
+    <p class="note">On cost, Joshi argues that a single event loop with asynchronous, batched I/O often performs better for I/O-bound systems, the design Redis, FoundationDB and TigerBeetle use. The trade-off is that handlers must never block, and you scale across cores by running more processes.</p>
+  </article>
+
+  <article class="card wide" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>You build on a managed database or Kafka and do not write the replication yourself</td><td>Learn the guarantees it documents; test your own retries, timeouts and idempotency; use chaos tests for recovery</td></tr>
+      <tr><td>A wrong answer costs more than a refused one (money, stock, bookings)</td><td>A store that chooses consistency during a partition</td></tr>
+      <tr><td>Staying responsive matters more than every read being current (feeds, catalogues)</td><td>Eventual consistency, with the staleness designed for</td></tr>
+      <tr><td>You need a leader, a lock or cluster membership</td><td>An existing consensus system such as etcd, not a home-made one</td></tr>
+      <tr><td>You are writing a consensus protocol, a replication layer or a storage engine</td><td>Deterministic simulation testing, designed in from the start</td></tr>
+      <tr><td>An existing system you cannot restructure</td><td>Client-history checking, or simulation below the application at the hypervisor (commercial platforms such as Antithesis)</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> every engineer who builds services should know the fallacies, CAP and quorums well enough to read a database&rsquo;s guarantees critically, and anyone writing the replication itself should design for simulation testing from the first line, because retrofitting determinism is usually harder (<i>our view</i>; hypervisor-level tools exist for when re-architecting is not feasible).</p>
+    <p><i>The other view:</i> most teams never write a consensus protocol. For them the strict rules of simulation are a cost with little return, and time is better spent on timeouts, idempotency, chaos tests and choosing well-tested infrastructure.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Name the fallacies of distributed computing and give an example of each</li><li>Explain CAP and PACELC, and what each letter means</li><li>Explain why a five-node cluster survives two failures</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Read a database's consistency guarantees and say what they mean for your code</li><li>Design timeouts, retries and idempotency for partial failure</li><li>Explain Lamport timestamps, vector clocks and generation clocks</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Explain how Raft elects a leader and replicates a log</li><li>Choose consistency per use case and design for its staleness</li><li>Plan chaos and client-history tests for a service</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Design a replicated component and its failure handling</li><li>Build deterministic simulation testing into a system from the start</li><li>Set an organisation's standards for distributed correctness</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Fallacies of distributed computing</li><li>CAP and PACELC</li><li>Linearizability and eventual consistency</li><li>Logical clocks</li><li>Consensus: Raft and Paxos</li><li>Quorums, leases and split brain</li><li>Deterministic simulation testing</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://martinfowler.com/articles/deterministic-simulation-testing.html" target="_blank" rel="noopener">Unmesh Joshi: Deterministic Simulation Testing</a><span class="lnote"> The article this page's testing section draws on</span></li><li><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Unmesh Joshi: Patterns of Distributed Systems</a><span class="lnote"> The catalogue of patterns</span></li><li><a href="https://github.com/unmeshjoshi/tickloom" target="_blank" rel="noopener">Tickloom</a><span class="lnote"> A Java library for learning deterministic simulation</span></li><li><a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/internals/vopr.md" target="_blank" rel="noopener">TigerBeetle: Deterministic Simulation Testing</a><span class="lnote"> How the VOPR simulator works</span></li><li><a href="https://raft.github.io/" target="_blank" rel="noopener">The Raft paper and visualisation</a><span class="lnote"> Raft explained by its authors</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://martinfowler.com/articles/deterministic-simulation-testing.html" target="_blank" rel="noopener">Unmesh Joshi: Deterministic Simulation Testing</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Unmesh Joshi: Catalog of Patterns of Distributed Systems</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/write-ahead-log.html" target="_blank" rel="noopener">Write-Ahead Log</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/heartbeat.html" target="_blank" rel="noopener">HeartBeat</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/majority-quorum.html" target="_blank" rel="noopener">Majority Quorum</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/generation-clock.html" target="_blank" rel="noopener">Generation Clock</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/lease.html" target="_blank" rel="noopener">Lease</a>; <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/hybrid-clock.html" target="_blank" rel="noopener">Hybrid Clock</a>; <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/internals/vopr.md" target="_blank" rel="noopener">TigerBeetle: VOPR (source)</a>; <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener">Wikipedia: Fallacies of distributed computing</a>; <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener">Wikipedia: CAP theorem</a>; <a href="https://en.wikipedia.org/wiki/PACELC_design_principle" target="_blank" rel="noopener">Wikipedia: PACELC design principle</a>; <a href="https://en.wikipedia.org/wiki/Linearizability" target="_blank" rel="noopener">Wikipedia: Linearizability</a>; <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener">Wikipedia: Eventual consistency</a>; <a href="https://en.wikipedia.org/wiki/Lamport_timestamp" target="_blank" rel="noopener">Wikipedia: Lamport timestamp</a>; <a href="https://en.wikipedia.org/wiki/Vector_clock" target="_blank" rel="noopener">Wikipedia: Vector clock</a>; <a href="https://en.wikipedia.org/wiki/Raft_(algorithm)" target="_blank" rel="noopener">Wikipedia: Raft</a>; <a href="https://en.wikipedia.org/wiki/Paxos_(computer_science)" target="_blank" rel="noopener">Wikipedia: Paxos</a>; <a href="https://en.wikipedia.org/wiki/Etcd" target="_blank" rel="noopener">Wikipedia: etcd</a>; <a href="https://en.wikipedia.org/wiki/Quorum_(distributed_computing)" target="_blank" rel="noopener">Wikipedia: Quorum (distributed computing)</a>; <a href="https://en.wikipedia.org/wiki/Split-brain_(computing)" target="_blank" rel="noopener">Wikipedia: Split-brain</a>; <a href="https://en.wikipedia.org/wiki/Two-phase_commit_protocol" target="_blank" rel="noopener">Wikipedia: Two-phase commit</a>; <a href="https://en.wikipedia.org/wiki/Byzantine_fault" target="_blank" rel="noopener">Wikipedia: Byzantine fault</a>; <a href="https://en.wikipedia.org/wiki/Chaos_engineering" target="_blank" rel="noopener">Wikipedia: Chaos engineering</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BDistributed%20Systems%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/atob/">← Solution Architecture: A to B</a><a class="pn-next" href="/well-rounded-engineer/microservices/">Microservices →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-assumptions-that-fail">The assumptions that fail</a><a href="#c-cap-and-pacelc">CAP and PACELC</a><a href="#c-consistency-models">Consistency models</a><a href="#c-time-and-order">Time and order</a><a href="#c-agreeing-consensus-and-raft">Agreeing: consensus and Raft</a><a href="#c-quorums-and-split-brain">Quorums and split brain</a><a href="#c-transactions-across-machines-two-phase-commit">Transactions across machines: two-phase commit</a><a href="#c-when-nodes-lie-byzantine-faults">When nodes lie: Byzantine faults</a><a href="#c-patterns-to-know-by-name">Patterns to know by name</a><a href="#c-testing-it-chaos-histories-and-simulation">Testing it: chaos, histories and simulation</a><a href="#c-deterministic-simulation-testing">Deterministic simulation testing</a><a href="#c-the-rules-simulation-imposes">The rules simulation imposes</a><a href="#c-choose-by-requirement">Choose by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
