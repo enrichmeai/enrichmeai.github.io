@@ -15389,6 +15389,34 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
     <p class="note"><i>The other view:</i> sometimes the right call is to abandon the goal itself, because the problem turned out not to be worth solving, and persistence then becomes a cost.</p>
   </article>
 
+  <article class="card wide"><h3>Chore or play</h3>
+    <p><i>Our view:</i> the same task can feel like a chore or like play, and which one it feels like may shape both how much you enjoy it and how good you become at it. This card gathers what others have said about that idea; it is a way of looking at work, not a rule.</p>
+    <ul>
+      <li><b>Mark Twain put it in a story.</b> In <i>The Adventures of Tom Sawyer</i> (1876), Tom is made to whitewash a fence as a punishment, and persuades the neighbourhood children that it is a privilege, until they trade him their treasures for a turn.</li>
+      <li><b>Play</b> is described as a range of intrinsically motivated activities: done for their own sake. The player can still be intently focused, especially when the play has goals, as in a game. Johan Huizinga&rsquo;s <i>Homo Ludens</i> (1938) treated play as a separate sphere of human activity.</li>
+      <li><b>Self-determination theory</b> (Edward Deci and Richard Ryan) names three basic needs behind self-motivated behaviour: <b>autonomy</b>, <b>competence</b> and <b>relatedness</b>.</li>
+      <li><b>Flow</b>, described by Mihaly Csikszentmihalyi, is absorption in a task whose challenge matches your skill, with clear goals, quick feedback and the activity felt as rewarding in itself.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>When rewards change the feeling</h3>
+    <p>The <b>overjustification effect</b>: offering an expected external reward, such as money or prizes, for something people already enjoy can reduce their own motivation to do it, sometimes called &ldquo;crowding out&rdquo;. It has been studied widely by Edward Deci and Mark Lepper, and the effect seems stronger in children than in college students.</p>
+    <p class="note"><i>Analysis:</i> a task can move from play to chore when it is done mainly for the reward, and back when the reason is your own again.</p>
+  </article>
+
+  <article class="card"><h3>Where the idea meets its limits</h3>
+    <ul>
+      <li><b>Deliberate practice</b>, studied by K. Anders Ericsson, is defined as highly structured, cognitively effortful and without immediate rewards, and he wrote that it &ldquo;is not inherently motivating&rdquo;. Getting very good often includes parts that do not feel like play.</li>
+      <li><b>Turning work into a game</b> has critics: researcher Sebastian Deterding described early gamification as not fun and creating an artificial sense of achievement, and poorly designed workplace gamification has been compared to micromanagement.</li>
+      <li><b>Job crafting</b> (Amy Wrzesniewski and Jane Dutton, 2001) describes people reshaping their own tasks to find more meaning at work, with links to well-being and performance.</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Two ways of seeing it</h3>
+    <p><i>One view:</i> how we frame a task, as something we choose and are curious about rather than something imposed, can make the hours lighter and the learning deeper, and people around us can make it easier for each other.</p>
+    <p><i>The other view:</i> some work is simply hard or dull, and calling it play does not change that. On this view, finishing what needs doing, and then resting, matters more than how it feels along the way.</p>
+  </article>
+
   <article class="card"><h3>"I'll learn it", not just "I don't know"</h3>
     <p>When you meet something new, answer with what you will do, honestly.</p>
     <div class="tbl"><table>
@@ -15452,7 +15480,7 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
     </ul>
   </article>
 
-  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Falsifiability?action=raw" target="_blank" rel="noopener">Wikipedia: Falsifiability</a>; <a href="https://en.wikipedia.org/wiki/Psychological_safety?action=raw" target="_blank" rel="noopener">Wikipedia: Psychological safety</a>; <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law?action=raw" target="_blank" rel="noopener">Wikipedia: Goodhart&#x27;s law</a>.</p></article>
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Falsifiability?action=raw" target="_blank" rel="noopener">Wikipedia: Falsifiability</a>; <a href="https://en.wikipedia.org/wiki/Psychological_safety?action=raw" target="_blank" rel="noopener">Wikipedia: Psychological safety</a>; <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law?action=raw" target="_blank" rel="noopener">Wikipedia: Goodhart&#x27;s law</a>; <a href="https://en.wikipedia.org/wiki/Play_(activity)" target="_blank" rel="noopener">Wikipedia: Play (activity)</a>; <a href="https://en.wikipedia.org/wiki/Homo_Ludens" target="_blank" rel="noopener">Wikipedia: Homo Ludens</a>; <a href="https://en.wikipedia.org/wiki/Self-determination_theory" target="_blank" rel="noopener">Wikipedia: Self-determination theory</a>; <a href="https://en.wikipedia.org/wiki/Flow_(psychology)" target="_blank" rel="noopener">Wikipedia: Flow (psychology)</a>; <a href="https://en.wikipedia.org/wiki/Overjustification_effect" target="_blank" rel="noopener">Wikipedia: Overjustification effect</a>; <a href="https://en.wikipedia.org/wiki/Practice_(learning_method)" target="_blank" rel="noopener">Wikipedia: Practice (learning method)</a>; <a href="https://en.wikipedia.org/wiki/Gamification" target="_blank" rel="noopener">Wikipedia: Gamification</a>; <a href="https://en.wikipedia.org/wiki/Job_crafting" target="_blank" rel="noopener">Wikipedia: Job crafting</a>; <a href="https://en.wikipedia.org/wiki/The_Adventures_of_Tom_Sawyer" target="_blank" rel="noopener">Wikipedia: The Adventures of Tom Sawyer</a>.</p></article>
 
   </div>
 </section>
