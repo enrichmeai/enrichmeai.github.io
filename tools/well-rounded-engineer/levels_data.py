@@ -1096,6 +1096,20 @@ D["pki"]=dict(
           ("GitHub: About commit signature verification","https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification"),
           ("GitHub: Telling Git about your signing key","https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key")])
 
+D["privacy"]=dict(
+ F=["List where personal data ends up in a service architecture","Explain tokenisation, pseudonymisation and anonymisation","Name the rights a person has over their data"],
+ P=["Keep a data catalogue of personal fields per service","Build an erasure event that every service handles idempotently","Test deletion end to end in CI"],
+ S=["Design for erasure and legal retention together","Use crypto-shredding for backups and copies","Plan regional deployments for data residency"],
+ E=["Set an organisation's personal-data architecture and standards","Work with legal and the data protection officer on retention rules","Audit and report on data subject requests across systems"],
+ topics=["GDPR rights and principles","Data minimisation and tokenisation","Pseudonymisation and anonymisation","Erasure across services","Crypto-shredding","Data residency and transfers"],
+ links=[("Wikipedia: General Data Protection Regulation","https://en.wikipedia.org/wiki/General_Data_Protection_Regulation","Rights, principles and transfers"),
+        ("Wikipedia: Crypto-shredding","https://en.wikipedia.org/wiki/Crypto-shredding","Erasing by deleting keys"),
+        ("Microsoft Learn: GDPR data subject requests for Azure","https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure","How a cloud provider handles them")],
+ sources=[("Wikipedia: General Data Protection Regulation","https://en.wikipedia.org/wiki/General_Data_Protection_Regulation"),("Wikipedia: Right to be forgotten","https://en.wikipedia.org/wiki/Right_to_be_forgotten"),
+          ("Wikipedia: Tokenization (data security)","https://en.wikipedia.org/wiki/Tokenization_(data_security)"),("Wikipedia: Pseudonymization","https://en.wikipedia.org/wiki/Pseudonymization"),("Wikipedia: Data anonymization","https://en.wikipedia.org/wiki/Data_anonymization"),
+          ("Wikipedia: Data minimization","https://en.wikipedia.org/wiki/Data_minimization"),("Wikipedia: Crypto-shredding","https://en.wikipedia.org/wiki/Crypto-shredding"),("Wikipedia: Data sovereignty (residency and localisation)","https://en.wikipedia.org/wiki/Data_sovereignty"),
+          ("Microsoft Learn: GDPR data subject requests for Azure","https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure")])
+
 D["bitcoin"]=dict(
  F=["Explain hashes and how blocks link","Explain proof of work and why rewriting history is hard","Keep keys safe and recognise common scams"],
  P=["Build a toy chain and validate it","Explain Bitcoin's supply, halving and difficulty rules","Compare proof of work and proof of stake"],
@@ -1315,3 +1329,33 @@ D["agentsec"]=dict(
           ("Claude Code: Security","https://code.claude.com/docs/en/security"),
           ("Microsoft Learn: Prompt Shields","https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection"),
           ("Wikipedia: Confused deputy problem","https://en.wikipedia.org/wiki/Confused_deputy_problem")])
+D["distsys"]=dict(
+ F=["Name the fallacies of distributed computing and give an example of each","Explain CAP and PACELC, and what each letter means","Explain why a five-node cluster survives two failures"],
+ P=["Read a database's consistency guarantees and say what they mean for your code","Design timeouts, retries and idempotency for partial failure","Explain Lamport timestamps, vector clocks and generation clocks"],
+ S=["Explain how Raft elects a leader and replicates a log","Choose consistency per use case and design for its staleness","Plan chaos and client-history tests for a service"],
+ E=["Design a replicated component and its failure handling","Build deterministic simulation testing into a system from the start","Set an organisation's standards for distributed correctness"],
+ topics=["Fallacies of distributed computing","CAP and PACELC","Linearizability and eventual consistency","Logical clocks","Consensus: Raft and Paxos","Quorums, leases and split brain","Deterministic simulation testing"],
+ links=[("Unmesh Joshi: Deterministic Simulation Testing","https://martinfowler.com/articles/deterministic-simulation-testing.html","The article this page's testing section draws on"),
+        ("Unmesh Joshi: Patterns of Distributed Systems","https://martinfowler.com/articles/patterns-of-distributed-systems/","The catalogue of patterns"),
+        ("Tickloom","https://github.com/unmeshjoshi/tickloom","A Java library for learning deterministic simulation"),
+        ("TigerBeetle: Deterministic Simulation Testing","https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/internals/vopr.md","How the VOPR simulator works"),
+        ("The Raft paper and visualisation","https://raft.github.io/","Raft explained by its authors")],
+ sources=[("Unmesh Joshi: Deterministic Simulation Testing","https://martinfowler.com/articles/deterministic-simulation-testing.html"),
+          ("Unmesh Joshi: Catalog of Patterns of Distributed Systems","https://martinfowler.com/articles/patterns-of-distributed-systems/"),
+          ("Write-Ahead Log","https://martinfowler.com/articles/patterns-of-distributed-systems/write-ahead-log.html"),("HeartBeat","https://martinfowler.com/articles/patterns-of-distributed-systems/heartbeat.html"),
+          ("Majority Quorum","https://martinfowler.com/articles/patterns-of-distributed-systems/majority-quorum.html"),("Generation Clock","https://martinfowler.com/articles/patterns-of-distributed-systems/generation-clock.html"),
+          ("Lease","https://martinfowler.com/articles/patterns-of-distributed-systems/lease.html"),("Hybrid Clock","https://martinfowler.com/articles/patterns-of-distributed-systems/hybrid-clock.html"),
+          ("TigerBeetle: VOPR (source)","https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/internals/vopr.md")]+[(n,"https://en.wikipedia.org/wiki/"+w) for n,w in [
+          ("Wikipedia: Fallacies of distributed computing","Fallacies_of_distributed_computing"),("Wikipedia: CAP theorem","CAP_theorem"),("Wikipedia: PACELC design principle","PACELC_design_principle"),
+          ("Wikipedia: Linearizability","Linearizability"),("Wikipedia: Eventual consistency","Eventual_consistency"),("Wikipedia: Lamport timestamp","Lamport_timestamp"),
+          ("Wikipedia: Vector clock","Vector_clock"),("Wikipedia: Raft","Raft_(algorithm)"),("Wikipedia: Paxos","Paxos_(computer_science)"),("Wikipedia: etcd","Etcd"),
+          ("Wikipedia: Quorum (distributed computing)","Quorum_(distributed_computing)"),("Wikipedia: Split-brain","Split-brain_(computing)"),
+          ("Wikipedia: Two-phase commit","Two-phase_commit_protocol"),("Wikipedia: Byzantine fault","Byzantine_fault"),("Wikipedia: Chaos engineering","Chaos_engineering")]])
+D["cyber"].setdefault("sources",[]).extend([
+ ("Cloud Security Alliance (Wikipedia)","https://en.wikipedia.org/wiki/Cloud_Security_Alliance"),
+ ("Microsoft Learn: CSA STAR Certification","https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-certification"),
+ ("Microsoft Learn: CSA STAR Attestation","https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-attestation"),
+ ("Microsoft Learn: CSA STAR self-assessment","https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-self-assessment"),
+ ("Google Cloud: CSA STAR","https://cloud.google.com/security/compliance/csa-star"),
+ ("AWS: CSA compliance","https://aws.amazon.com/compliance/csa/"),
+])
