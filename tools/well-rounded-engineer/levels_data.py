@@ -1515,3 +1515,10 @@ D["teststrat"]=dict(
           ("Google Cloud: Firestore emulator","https://cloud.google.com/firestore/docs/emulator"),
           ("Microsoft Learn: Azurite","https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite"),
           ("LocalStack (README)","https://github.com/localstack/localstack/blob/main/README.md")])
+
+D["apihistory"]["sources"].extend([
+ ("Protocol Buffers: Overview (source)","https://github.com/protocolbuffers/protocolbuffers.github.io/blob/main/content/overview.md"),
+ ("Protocol Buffers: proto3 language guide (source)","https://github.com/protocolbuffers/protocolbuffers.github.io/blob/main/content/programming-guides/proto3.md"),
+ ("Protocol Buffers: Encoding (source)","https://github.com/protocolbuffers/protocolbuffers.github.io/blob/main/content/programming-guides/encoding.md"),
+ ("Wikipedia: Protocol Buffers","https://en.wikipedia.org/wiki/Protocol_Buffers"),
+])
