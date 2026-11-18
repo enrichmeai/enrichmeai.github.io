@@ -1414,3 +1414,27 @@ D["apihistory"]=dict(
           ("agentgateway (README)","https://github.com/agentgateway/agentgateway/blob/main/README.md"),
           ("Agent Router, formerly Envoy AI Gateway (README)","https://github.com/envoyproxy/ai-gateway/blob/main/README.md"),
           ("Docker MCP Gateway (README)","https://github.com/docker/mcp-gateway/blob/main/README.md")])
+
+D["graphdb"]=dict(
+ F=["Explain nodes, edges and properties","Tell a labelled property graph from RDF triples","Say why GraphQL is not a graph database"],
+ P=["Write MATCH queries for one and two hops","Model a small domain as a graph","Compare a graph query with the same query in SQL"],
+ S=["Choose between a graph database, SQL/PGQ and recursive SQL for a case","Explain index-free adjacency and its trade-offs","Design a graph for fraud, permissions or dependencies"],
+ E=["Decide whether a graph database earns its place in the estate","Plan a knowledge graph across sources","Set standards: GQL, openCypher or vendor extensions"],
+ topics=["Graph theory basics","Property graphs and RDF","Cypher and GQL","Gremlin and SPARQL","Graphs vs relational","Knowledge graphs"],
+ links=[("openCypher","https://github.com/opencypher/openCypher","The open Cypher project"),("Apache TinkerPop","https://tinkerpop.apache.org/","Gremlin and the graph computing framework")],
+ sources=[("Wikipedia: Graph database","https://en.wikipedia.org/wiki/Graph_database"),
+          ("Wikipedia: Graph theory","https://en.wikipedia.org/wiki/Graph_theory"),
+          ("Wikipedia: Seven Bridges of Königsberg","https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg"),
+          ("Wikipedia: Property graph","https://en.wikipedia.org/wiki/Property_graph"),
+          ("Wikipedia: Resource Description Framework","https://en.wikipedia.org/wiki/Resource_Description_Framework"),
+          ("Wikipedia: Triplestore","https://en.wikipedia.org/wiki/Triplestore"),
+          ("Wikipedia: Cypher","https://en.wikipedia.org/wiki/Cypher_(query_language)"),
+          ("Wikipedia: GQL","https://en.wikipedia.org/wiki/Graph_Query_Language"),
+          ("Wikipedia: SQL:2023","https://en.wikipedia.org/wiki/SQL:2023"),
+          ("Wikipedia: Gremlin","https://en.wikipedia.org/wiki/Gremlin_(query_language)"),
+          ("Wikipedia: SPARQL","https://en.wikipedia.org/wiki/SPARQL"),
+          ("Wikipedia: Neo4j","https://en.wikipedia.org/wiki/Neo4j"),
+          ("Wikipedia: Amazon Neptune","https://en.wikipedia.org/wiki/Amazon_Neptune"),
+          ("Wikipedia: JanusGraph","https://en.wikipedia.org/wiki/JanusGraph"),
+          ("Wikipedia: Knowledge graph","https://en.wikipedia.org/wiki/Knowledge_graph"),
+          ("Microsoft GraphRAG (README)","https://github.com/microsoft/graphrag/blob/main/README.md")])
