@@ -1522,3 +1522,27 @@ D["apihistory"]["sources"].extend([
  ("Protocol Buffers: Encoding (source)","https://github.com/protocolbuffers/protocolbuffers.github.io/blob/main/content/programming-guides/encoding.md"),
  ("Wikipedia: Protocol Buffers","https://en.wikipedia.org/wiki/Protocol_Buffers"),
 ])
+
+D["fetoolchain"]=dict(
+ F=["Say what TypeScript, JSX, a transpiler and a bundler each do","Run a TypeScript file and a plain ES module","Read a package.json and its build scripts"],
+ P=["Set up TypeScript type-checking in CI","Decide whether an app needs a state library","Upgrade a toolchain dependency safely"],
+ S=["Choose which layers a project needs, by requirement","Remove a layer that no longer earns its place","Plan a web and React Native codebase"],
+ E=["Set an organisation's front-end platform and upgrade policy","Weigh frameworks against a smaller custom stack","Keep build complexity in check across teams"],
+ topics=["TypeScript and JSX","Transpilers: Babel, esbuild, tsc","Bundlers: webpack, esbuild, Vite","React and React Native","State management: Redux, reducer and context","Native ES modules and import maps"],
+ links=[("Redux: When should I use Redux?","https://redux.js.org/faq/general#when-should-i-use-redux","From Redux's own FAQ"),("MDN: JavaScript modules","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules","Modules in the browser, no bundler")],
+ sources=[("Wikipedia: TypeScript","https://en.wikipedia.org/wiki/TypeScript"),
+          ("Wikipedia: Babel","https://en.wikipedia.org/wiki/Babel_(transcompiler)"),
+          ("Wikipedia: JSX","https://en.wikipedia.org/wiki/JSX_(programming)"),
+          ("Wikipedia: Module bundler","https://en.wikipedia.org/wiki/Module_bundler"),
+          ("Wikipedia: Webpack","https://en.wikipedia.org/wiki/Webpack"),
+          ("Wikipedia: esbuild","https://en.wikipedia.org/wiki/Esbuild"),
+          ("Wikipedia: Vite","https://en.wikipedia.org/wiki/Vite"),
+          ("Wikipedia: React","https://en.wikipedia.org/wiki/React_(software)"),
+          ("Wikipedia: React Native","https://en.wikipedia.org/wiki/React_Native"),
+          ("Wikipedia: Redux","https://en.wikipedia.org/wiki/Redux_(software)"),
+          ("Redux docs: When should I use Redux?","https://github.com/reduxjs/redux/blob/master/docs/faq/General.md"),
+          ("Node.js docs: TypeScript (type stripping)","https://github.com/nodejs/node/blob/main/doc/api/typescript.md"),
+          ("TC39 proposal: Type Annotations","https://github.com/tc39/proposal-type-annotations"),
+          ("React docs: Scaling up with reducer and context","https://react.dev/learn/scaling-up-with-reducer-and-context"),
+          ("MDN: JavaScript modules","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"),
+          ("MDN: Import maps","https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap")])
