@@ -1659,3 +1659,19 @@ D["faded"]=dict(
           ("Wikipedia: Adobe Flash","https://en.wikipedia.org/wiki/Adobe_Flash"),
           ("rails/rails tags on GitHub","https://github.com/rails/rails/tags"),
           ("apache/grails-core on GitHub","https://github.com/apache/grails-core")])
+D["casestudies"]=dict(
+ F=["Retell one company's engineering change and what caused it","Say what a single point of failure is, with an example","Find a company's own account of a change"],
+ P=["Explain why Netflix tests failure in production","Explain how GitHub drew boundaries inside one application","Separate what a case study shows from what it suggests"],
+ S=["Judge whether a company's approach fits your organisation's size and needs","Plan a change that keeps one thing stable","Spot survivorship bias in success stories"],
+ E=["Use case studies to argue for or against an architecture change","Write your own organisation's case study honestly","Learn from failures as well as successes"],
+ topics=["Amazon: service-oriented architecture to AWS","Netflix: the 2008 outage and the move to AWS","Chaos engineering and the Simian Army","GitHub: a Rails monolith at scale","Schema domains and database partitioning","Weekly framework upgrades"],
+ links=[("GitHub Engineering blog","https://github.blog/engineering/","GitHub's own engineering posts"),
+        ("Netflix Chaos Monkey","https://github.com/Netflix/chaosmonkey","Netflix's repository")],
+ sources=[("Wikipedia: Amazon Web Services","https://en.wikipedia.org/wiki/Amazon_Web_Services"),
+          ("Wikipedia: Netflix","https://en.wikipedia.org/wiki/Netflix"),
+          ("Wikipedia: Chaos engineering","https://en.wikipedia.org/wiki/Chaos_engineering"),
+          ("Netflix/chaosmonkey README","https://github.com/Netflix/chaosmonkey"),
+          ("Netflix/Hystrix README","https://github.com/Netflix/Hystrix"),
+          ("GitHub blog: Upgrading GitHub from Rails 3.2 to 5.2","https://github.blog/2018-09-28-upgrading-github-from-rails-3-2-to-5-2/"),
+          ("GitHub blog: Partitioning GitHub's relational databases to handle scale","https://github.blog/2021-09-27-partitioning-githubs-relational-databases-scale/"),
+          ("GitHub blog: Building GitHub with Ruby and Rails","https://github.blog/2023-04-06-building-github-with-ruby-and-rails/")])
