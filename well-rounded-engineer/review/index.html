@@ -53,7 +53,7 @@
   <div class="grid">
 
   <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
-    <p><i>Our view:</i> write so that someone who was not in the room can understand what changed and why, months later. Treat code review as a way to keep the code base healthy and to share knowledge, not only to catch bugs. <i>The other view</i> is in the last card.</p>
+    <p><i>Our view:</i> write so that someone who was not in the room can understand what changed and why, months later. Treat code review as a way to keep the code base healthy and to share knowledge, not only to catch bugs. <i>The other view</i> is in the card &ldquo;Our view, and the other view&rdquo;.</p>
   </article>
 
   <article class="card" id="c-writing-that-gets-read"><h3>Writing that gets read</h3>
@@ -85,7 +85,7 @@ Refs: #123</code></pre>
       <tr><td><b>Commit message</b></td><td>Why one change was made, kept with the code for ever</td><td>A short summary line, a blank line, then the detail (Git documentation); optionally a type prefix (Conventional Commits)</td></tr>
       <tr><td><b>Pull request (change) description</b></td><td>What a change does and why, for its reviewers and for later readers of the history</td><td>Google&rsquo;s guide: the first line is a short summary of specifically what the change does, written as an imperative sentence, able to stand alone; the rest explains what is being changed and why</td></tr>
       <tr><td><b>Design proposal</b></td><td>Agreeing an approach before building it</td><td>A Python Enhancement Proposal (PEP), for example, is a design document that should give a concise technical specification of a feature and its rationale</td></tr>
-      <tr><td><b>Architecture decision record</b> (ADR)</td><td>One important decision, with its context and consequences</td><td>Michael Nygard described the form in 2011. An ADR is not edited later: it is amended with new information, or superseded by a new ADR</td></tr>
+      <tr><td><b>Architecture decision record</b> (ADR)</td><td>One important decision, with its context and consequences</td><td>The widely used ADR template comes from a 2011 post by Michael Nygard. An ADR is not edited later: it is amended with new information, or superseded by a new ADR</td></tr>
       <tr><td><b>Documentation</b></td><td>Helping people learn, do, look up or understand</td><td>Diátaxis separates four kinds: tutorials, how-to guides, reference and explanation (the picture below)</td></tr>
       <tr><td><b>Review comment</b></td><td>Improving one change, and the people who make the next one</td><td>The card on review comments, below</td></tr>
       </tbody></table></div>
@@ -103,7 +103,7 @@ Refs: #123</code></pre>
   <article class="card" id="c-the-standard-google-s-guide-sets"><h3>The standard Google&rsquo;s guide sets</h3>
     <p>Google&rsquo;s published code review guide says the primary purpose of review is to make sure the overall health of the code base improves over time. Its senior principle: reviewers should favour approving a change once it definitely improves the overall code health, even if it is not perfect. &ldquo;There is no such thing as &lsquo;perfect&rsquo; code&mdash;there is only <i>better</i> code.&rdquo;</p>
     <p>The guide also sets expectations on size and speed. About 100 lines is usually a reasonable size for a change and 1,000 usually too large, though it gives no hard rule; one business day is the maximum time it should take to respond to a review request.</p>
-    <p class="note">Research cited on Wikipedia puts effective review rates at 200 to 400 lines of code an hour; faster than a few hundred lines an hour may be too fast to find errors in critical software.</p>
+    <p class="note">Research cited on Wikipedia puts optimal review rates at 200 to 400 lines of code an hour; faster than a few hundred lines an hour may be too fast to find errors in critical software.</p>
   </article>
 
   <article class="card wide" id="c-review-comments"><h3>Review comments</h3>
