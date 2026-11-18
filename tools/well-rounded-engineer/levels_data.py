@@ -1494,3 +1494,24 @@ D["dsa"]=dict(
           ("Wikipedia: Dijkstra's algorithm","https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"),
           ("Wikipedia: Dynamic programming","https://en.wikipedia.org/wiki/Dynamic_programming"),
           ("Python docs: bisect","https://docs.python.org/3/library/bisect.html")])
+
+D["teststrat"]=dict(
+ F=["Say which tests run locally and which need a real environment","Explain a contract test","Run a dependency in a container for a test"],
+ P=["Write consumer contract tests and verify them in the provider's CI","Use an emulator and know its listed limitations","Add smoke tests to a deployment"],
+ S=["Design a per-pull-request cloud environment","Plan canary releases with automatic evaluation","Decide test depth per component by risk"],
+ E=["Set an organisation's test strategy across teams and environments","Balance test-environment cost against risk","Make production observability part of quality"],
+ topics=["The test pyramid","Contract and consumer-driven contract tests","Testcontainers and emulators","Short-lived environments","Canarying and QA in production"],
+ links=[("The Practical Test Pyramid","https://martinfowler.com/articles/practical-test-pyramid.html","Ham Vocke's walkthrough with contract tests"),("Canarying releases","https://sre.google/workbook/canarying-releases/","Google's SRE Workbook chapter")],
+ sources=[("Ham Vocke: The Practical Test Pyramid","https://martinfowler.com/articles/practical-test-pyramid.html"),
+          ("Martin Fowler: Contract Test","https://martinfowler.com/bliki/ContractTest.html"),
+          ("Ian Robinson: Consumer-Driven Contracts","https://martinfowler.com/articles/consumerDrivenContracts.html"),
+          ("Toby Clemson: Testing Strategies in a Microservice Architecture","https://martinfowler.com/articles/microservice-testing/"),
+          ("Rouan Wilsenach: QA in Production","https://martinfowler.com/articles/qa-in-production.html"),
+          ("Google SRE Workbook: Canarying releases","https://sre.google/workbook/canarying-releases/"),
+          ("Testcontainers for Java (docs)","https://github.com/testcontainers/testcontainers-java/blob/main/docs/index.md"),
+          ("kind (README)","https://github.com/kubernetes-sigs/kind/blob/main/README.md"),
+          ("Kubernetes: Namespaces","https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"),
+          ("Google Cloud: Pub/Sub emulator","https://cloud.google.com/pubsub/docs/emulator"),
+          ("Google Cloud: Firestore emulator","https://cloud.google.com/firestore/docs/emulator"),
+          ("Microsoft Learn: Azurite","https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite"),
+          ("LocalStack (README)","https://github.com/localstack/localstack/blob/main/README.md")])
