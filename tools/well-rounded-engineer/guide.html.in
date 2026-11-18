@@ -4103,7 +4103,7 @@ message Person {
   int32  id    = 2;
   string email = 3;
 }</code></pre>
-    <p>The numbers are <b>field numbers</b>, and they are what goes on the wire, not the names. Each field is written as a tag, <code>(field_number &lt;&lt; 3) | wire_type</code>, followed by its value. The same record as protobuf and as JSON, measured:</p>
+    <p>The numbers are <b>field numbers</b>, and they are what goes on the wire, not the names. Each field is written as a tag, <code>(field_number &lt;&lt; 3) | wire_type</code>, followed by its value. The same record as protobuf and as JSON (Python&rsquo;s default <code>json.dumps</code> spacing, so compact JSON would be smaller), measured once on this one record:</p>
 <pre><code>import json
 from google.protobuf import descriptor_pb2, descriptor_pool, message_factory
 
@@ -4128,14 +4128,14 @@ print("round trip:   ", Person.FromString(wire).email)
 <pre><code>protobuf bytes: 25 0a 03 41 6e 61 10 d2 09 1a 0f 61 6e 61 40 65 78 61 6d 70 6c 65 2e 63 6f 6d
 JSON bytes:    55
 round trip:    ana@example.com</code></pre>
-    <p class="note">Run as shown with Python 3 and the <code>protobuf</code> package; the second block is its real output. Reading the bytes: <code>0a</code> is field 1 with the length-delimited wire type, then length 3 and &ldquo;Ana&rdquo;; <code>10</code> is field 2 as a varint, <code>d2 09</code> is 1234; <code>1a</code> is field 3. Normally you would generate <code>Person</code> with <code>protoc</code>; the schema is built in code here only so the example runs without it.</p>
+    <p class="note">Run as shown with Python 3 and the <code>protobuf</code> package (output from version <span data-other-version>7.36.1</span>); the second block is its real output. Reading the bytes: <code>0a</code> is (1&lt;&lt;3)|2, field 1 with wire type 2 (length-delimited); <code>03</code> is the length, then <code>41 6e 61</code> is &ldquo;Ana&rdquo;. <code>10</code> is (2&lt;&lt;3)|0, field 2 as a varint; <code>d2 09</code> is 1234, written seven bits at a time with the top bit of the first byte set to say another byte follows. <code>1a</code> is (3&lt;&lt;3)|2, field 3; <code>0f</code> is the length, 15, then the 15 bytes of &ldquo;ana@example.com&rdquo;. Normally you would generate <code>Person</code> with <code>protoc</code>; the schema is built in code here only so the example runs without it.</p>
   </article>
 
   <article class="card"><h3>Changing a protobuf schema safely</h3>
     <ul>
-      <li><b>Never change a field&rsquo;s number</b> once the message is in use: old data and old clients identify fields by number.</li>
-      <li><b>Reserve</b> the numbers (and names) of fields you delete, so nobody reuses them by accident.</li>
-      <li>Adding new fields is how a protobuf schema grows: the docs say it can be extended without invalidating existing data or requiring every program to be updated.</li>
+      <li><b>Never change a field&rsquo;s number</b> once the message is in use: the number identifies the field in the wire format, so changing it is the same as deleting the field and adding a new one.</li>
+      <li><b>Reserve</b> the numbers of fields you delete, and their names if you want <code>protoc</code> to refuse them, so nobody reuses them by accident.</li>
+      <li>Adding new fields is how a protobuf schema grows: the docs say it can be extended &ldquo;without invalidating existing data or requiring code to be updated&rdquo;.</li>
     </ul>
     <p class="note">Field numbers 19,000 to 19,999 are reserved for the protobuf implementation itself. More on contract evolution is on <a href="#apis">APIs &amp; Integration</a>.</p>
   </article>
@@ -4145,11 +4145,12 @@ round trip:    ana@example.com</code></pre>
       <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
       <tbody>
       <tr><td>High-volume calls between your own services, in several languages</td><td>Protobuf, usually with gRPC</td></tr>
-      <tr><td>A public API that browsers, scripts and partners call</td><td>JSON: readable without the schema</td></tr>
+      <tr><td>A public API that browsers or scripts call</td><td>JSON: readable without the schema</td></tr>
       <tr><td>You must read a message without its <code>.proto</code> file</td><td>JSON: protobuf messages do not describe themselves</td></tr>
       <tr><td>Messages larger than a few megabytes, or large numeric arrays</td><td>Something else: the protobuf docs say it is not a good fit</td></tr>
       <tr><td>Rules require a formal standard</td><td>Not protobuf: its docs say it is not a formal standard of any organisation</td></tr>
       </tbody></table></div>
+    <p class="note">The right column is our reading of the protobuf documentation, not a standard. Other teams weigh size and speed more, or readability more; your team already running one format counts too, because switching has a cost.</p>
   </article>
 
   <article class="card wide"><h3>The gateway in front of it all</h3>
