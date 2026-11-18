@@ -6480,7 +6480,7 @@ git verify-commit HEAD
   </article>
 
   <article class="card wide"><h3>Agent-specific risks: OWASP&rsquo;s agentic draft</h3>
-    <p>OWASP&rsquo;s Agentic Security Initiative has a <b>first public draft</b> of a Top 10 for agentic applications in its repository. It is a draft, so the names and order may change, but it shows where the risks go beyond a single model call:</p>
+    <p>OWASP&rsquo;s Agentic Security Initiative has a <b>first public draft</b> of a Top 10 for agentic applications in its repository. It is a draft, so the names and order may change (OWASP&rsquo;s website, which may carry a later version, could not be reached when this page was checked), but it shows where the risks go beyond a single model call:</p>
     <div class="tbl"><table>
       <thead><tr><th>Risk</th><th>In the draft&rsquo;s words, roughly</th></tr></thead>
       <tbody>
@@ -6514,32 +6514,32 @@ git verify-commit HEAD
       <thead><tr><th>Control</th><th>What it means in practice</th></tr></thead>
       <tbody>
       <tr><td><b>Fewer, narrower tools</b></td><td>Offer only the tools the task needs, each with only the functions it needs. Prefer a &ldquo;write this file&rdquo; tool over an open-ended &ldquo;run a shell command&rdquo; one.</td></tr>
-      <tr><td><b>Least privilege</b></td><td>Give tools the smallest rights in downstream systems, such as read access to one table. Keep the application&rsquo;s API tokens in code, not in the prompt.</td></tr>
+      <tr><td><b>Least privilege</b></td><td>Give tools the smallest rights in downstream systems, such as read access to one table. Keep the application&rsquo;s own API tokens in the application, which makes the calls, and out of the model&rsquo;s prompt and context.</td></tr>
       <tr><td><b>Act as the user</b></td><td>Run actions in the context of the user they are for, with that user&rsquo;s permissions, for example through OAuth with the minimum scope.</td></tr>
       <tr><td><b>Complete mediation</b></td><td>Authorise every request in the downstream system, not by asking the model whether an action is allowed.</td></tr>
       <tr><td><b>Human approval</b></td><td>Require a person to approve high-impact actions before they happen.</td></tr>
-      <tr><td><b>Mark untrusted content</b></td><td>Separate and label external content so it has less influence. Detection services can help: Microsoft&rsquo;s Prompt Shields, for example, scan both user prompts and documents for attacks.</td></tr>
+      <tr><td><b>Mark untrusted content</b></td><td>Separate and label external content so it has less influence. Detection services can help: Microsoft&rsquo;s Prompt Shields, for example, scan user prompts and documents for attack patterns. Microsoft notes the models are trained and evaluated mainly on English, so test them with your own attacks.</td></tr>
       <tr><td><b>Treat output as untrusted</b></td><td>Validate and encode what the model produces before it reaches a browser, a shell, a query or another system (OWASP&rsquo;s improper output handling).</td></tr>
       <tr><td><b>Log, limit, test</b></td><td>Log tool calls, rate-limit actions so monitoring can catch problems before the damage grows, and red-team the agent as an untrusted user.</td></tr>
       </tbody></table></div>
-    <p class="note">Tools apply these too. Claude Code&rsquo;s security documentation, for example, lists a permission system that asks before sensitive operations, approval for commands that fetch from the web, a trust prompt for a new folder and its MCP servers, and sandbox network isolation.</p>
+    <p class="note">Tools apply these too. Claude Code&rsquo;s security documentation, for example (Anthropic&rsquo;s description of its own product), lists a permission system that asks before sensitive operations, approval for commands that fetch from the web, a trust dialog for a new folder, a separate approval prompt for MCP servers in a project&rsquo;s <code>.mcp.json</code>, and sandbox network isolation.</p>
   </article>
 
   <article class="card wide"><h3>Agents in an attacker&rsquo;s hands</h3>
-    <p>In November 2025 Anthropic reported disrupting what it assessed as a state-sponsored espionage campaign that used its Claude Code tool, which it called the first documented case of a large-scale cyberattack executed without substantial human intervention. By Anthropic&rsquo;s account:</p>
+    <p>In November 2025 Anthropic reported disrupting an espionage campaign it assessed, with high confidence, to be run by a state-sponsored group using its Claude Code tool. Anthropic said it believes this is the first documented case of a large-scale cyberattack executed without substantial human intervention. By Anthropic&rsquo;s account:</p>
     <ul>
       <li>The attackers jailbroke the model by splitting the attack into small, innocent-looking tasks and telling it that it worked for a security firm doing defensive testing.</li>
       <li>The agent did reconnaissance, wrote exploit code, harvested credentials and extracted data, with tools often reached over MCP. AI did an estimated 80 to 90% of the work, with people stepping in at perhaps four to six decision points per campaign.</li>
       <li>It targeted around thirty organisations and succeeded in a small number.</li>
       <li>It was not flawless: it sometimes hallucinated credentials, or claimed to have found secrets that were in fact public.</li>
     </ul>
-    <p class="note">This is one vendor&rsquo;s account of misuse of its own product, and it says it sees only its own platform. <i>Analysis:</i> the lesson for defenders does not depend on the vendor: attacks can now run at machine speed, so detection and response need to be automated too. Anthropic itself advises security teams to try AI for SOC automation, threat detection, vulnerability assessment and incident response.</p>
+    <p class="note">This is one vendor&rsquo;s account of misuse of its own product, and it says it sees only its own platform. <i>Analysis:</i> the lesson for defenders does not depend on the vendor: attacks can now run at machine speed, so detection and response need to be automated too. Anthropic itself advises security teams to try AI for SOC automation, threat detection, vulnerability assessment and incident response. The other reading: this is one vendor&rsquo;s account that others have not replicated, and the share of the work an AI does may differ for other attackers and tools.</p>
   </article>
 
   <article class="card"><h3>Frameworks to map against</h3>
     <ul>
       <li><b>OWASP Top 10 for LLM Applications</b> and the agentic draft above, for application risks.</li>
-      <li><b>MITRE ATLAS</b> (Adversarial Threat Landscape for AI Systems): a public knowledge base of adversary tactics, techniques and procedures aimed at AI systems, with its data published in a public repository, as ATT&amp;CK&rsquo;s is (see <a href="#cyber">Cybersecurity</a>).</li>
+      <li><b>MITRE ATLAS</b> (Adversarial Threat Landscape for AI Systems): a public knowledge base of adversary tactics, techniques and procedures aimed at AI systems, with its data published in a public repository. ATT&amp;CK, its counterpart for attacks in general, is on <a href="#cyber">Cybersecurity</a>.</li>
       <li><b>The MCP security best practices,</b> for anything that connects agents to tools.</li>
     </ul>
   </article>
@@ -6564,12 +6564,12 @@ git verify-commit HEAD
       <li><b>Review the permission map:</b> every tool, its rights, and who approves what.</li>
       <li><b>Audit:</b> every tool call logged with the user, the agent and the input that led to it.</li>
     </ul>
-    <p class="note">This card is <i>analysis</i>, built on OWASP&rsquo;s advice to test the model as an untrusted user.</p>
+    <p class="note">This card is <i>analysis</i>. Only the injection testing draws on OWASP, which advises testing the model as an untrusted user.</p>
   </article>
 
   <article class="card"><h3>Our view, and the other view</h3>
     <p><i>Our view:</i> design every agent assuming its model will at some point follow an attacker&rsquo;s instructions, because OWASP says no fool-proof prevention is known. What matters is what it can do when that happens: narrow tools, least privilege, approval for high-impact actions, and authorisation outside the model.</p>
-    <p><i>The other view:</i> approvals and narrow tools reduce what agents are useful for, and frequent prompts teach people to click &ldquo;allow&rdquo; without reading, which the agentic draft itself names as a risk. Some teams accept more autonomy inside a strong sandbox, with monitoring and the ability to roll back, in exchange for fewer interruptions.</p>
+    <p><i>The other view:</i> approvals and narrow tools reduce what agents are useful for, and constant prompts can wear down the people answering them. The OWASP agentic draft lists exploiting &ldquo;over-trust or fatigue in human oversight&rdquo; as a risk, and Claude Code&rsquo;s security documentation describes allowlisting frequently used safe commands as a &ldquo;prompt fatigue mitigation&rdquo;. On this view, more autonomy inside a sandbox with network isolation, plus monitoring, is worth the trade: the sandbox then carries more of the safety.</p>
   </article>
 
   <!-- levels -->
