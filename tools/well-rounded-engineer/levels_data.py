@@ -1295,3 +1295,12 @@ D["microservices"].setdefault("sources",[]).extend([
  ("Envoy: Circuit breaking","https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking"),("Envoy: Outlier detection","https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier"),
  ("Istio: Circuit breaking task","https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/"),("Istio API: DestinationRule","https://github.com/istio/api/blob/master/networking/v1alpha3/destination_rule.proto"),
  ("MicroProfile Fault Tolerance","https://github.com/eclipse/microprofile-fault-tolerance")])
+
+D["cyber"].setdefault("sources",[]).extend([
+ ("Cloud Security Alliance (Wikipedia)","https://en.wikipedia.org/wiki/Cloud_Security_Alliance"),
+ ("Microsoft Learn: CSA STAR Certification","https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-certification"),
+ ("Microsoft Learn: CSA STAR Attestation","https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-attestation"),
+ ("Microsoft Learn: CSA STAR self-assessment","https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-self-assessment"),
+ ("Google Cloud: CSA STAR","https://cloud.google.com/security/compliance/csa-star"),
+ ("AWS: CSA compliance","https://aws.amazon.com/compliance/csa/"),
+])
