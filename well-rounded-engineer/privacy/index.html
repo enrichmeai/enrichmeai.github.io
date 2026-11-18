@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Data Across Services · Well Rounded Engineer</title>
+<meta name="description" content="Splitting a system into services also spreads people’s personal data across them: databases, caches, search indexes, event logs, analytics copies and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="privacy" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 98 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp" open><summary>Security<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/" aria-current="page">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Security</span> / <span aria-current="page">Personal Data Across Services</span></p>
+<section class="panel" id="privacy" data-name="Personal Data Across Services">
+  <div class="panel-head"><h1>Personal data across services</h1><p>Splitting a system into services also spreads people&rsquo;s personal data across them: databases, caches, search indexes, event logs, analytics copies and backups. This page is about the engineering that lets you find that data, keep less of it, delete it when you must, keep it in the right region, and prove all of it. It is not legal advice: the obligations below are summarised from secondary sources, so read the regulation itself with your data protection officer.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-what-the-law-asks-of-a-system"><h3>What the law asks of a system</h3>
+    <p>The EU&rsquo;s General Data Protection Regulation (GDPR) gives people rights over their data, including access to it, a portable copy, erasure under certain circumstances, and a challenge to decisions made solely by an algorithm. Its principles include purpose limitation, data minimisation, storage limitation, and integrity and confidentiality. It also governs moving personal data outside the EU and EEA.</p>
+    <p class="note"><i>Analysis:</i> for engineers, each right becomes a capability the system must have: find everything about one person, export it, delete or anonymise it, and explain an automated decision. A design that cannot find all of one person&rsquo;s data cannot honour any of these.</p>
+  </article>
+
+  <article class="card" id="c-where-personal-data-ends-up"><h3>Where personal data ends up</h3>
+    <p><i>Analysis.</i> In a service architecture it is rarely only in the service that owns it:</p>
+    <ul>
+      <li>Each service&rsquo;s own database, and the events it publishes.</li>
+      <li>Caches and search indexes built from those events (see <a href="/well-rounded-engineer/caching/">Caching</a> and <a href="/well-rounded-engineer/rag/">RAG</a>).</li>
+      <li>Analytics and warehouse copies, and exports to partners.</li>
+      <li>Logs and traces that captured a field they should not have.</li>
+      <li>Backups of all of the above.</li>
+    </ul>
+    <p class="note">Keep a data catalogue: which service holds which personal fields, why, and for how long. It is the map every request below depends on.</p>
+  </article>
+
+  <article class="card" id="c-keep-less-of-it-in-fewer-places"><h3>Keep less of it, in fewer places</h3>
+    <ul>
+      <li><b>Data minimisation:</b> collect and copy only what the purpose needs.</li>
+      <li><b>Tokenisation:</b> replace a sensitive value with a token that has no meaning of its own and maps back only through the tokenisation system. Services pass the token around; the real value lives in one place.</li>
+      <li><b>Pseudonymisation:</b> transform data so it cannot be tied to a person without additional information, such as a key; the GDPR&rsquo;s definition (Article 4(5), as summarised by Wikipedia) requires that information to be kept separately. Tokenisation and encryption are both examples.</li>
+      <li><b>Anonymisation:</b> remove what identifies people, so they can no longer be identified, directly or indirectly. Combining the data with other datasets can sometimes undo it.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-erasure-meets-retention"><h3>Erasure meets retention</h3>
+    <p>Erasure is a right to request deletion on certain grounds, and it is limited: it applies only under certain circumstances, and Wikipedia notes it was made more limited than the earlier &ldquo;right to be forgotten&rdquo; proposal. The sources behind this page do not list the exceptions, so read Article 17 itself. Systems also have their own retention rules: Microsoft documents, for example, that some system-generated logs are kept under its service retention policies and are not removed by a data subject delete request.</p>
+    <p class="note"><i>Analysis:</i> the common engineering case is a request to delete data that another rule requires you to keep, such as a financial record. The usual pattern is to delete what you may, pseudonymise or anonymise what you must keep, restrict who can read it, and record which rule applied and when the kept data will go. Which rule wins is a legal decision; the system&rsquo;s job is to make either answer possible.</p>
+  </article>
+
+  <article class="card wide" id="c-deleting-across-services"><h3>Deleting across services</h3>
+    <p><i>Analysis:</i> one way to do it.</p>
+    <ol>
+      <li><b>Record the request</b> in one place that owns it, with an id and the time it arrived.</li>
+      <li><b>Publish one event</b>, such as <code>CustomerErasureRequested</code>, keyed by the customer, so every service that holds their data hears it (see <a href="/well-rounded-engineer/kafka/">Kafka</a>).</li>
+      <li><b>Each service acts and confirms:</b> it deletes or anonymises its data, then publishes its own confirmation. Make each step idempotent, because the event may arrive twice.</li>
+      <li><b>Track until everyone has confirmed,</b> chase the ones that have not, and only then report the request as done.</li>
+      <li><b>Derived copies follow:</b> rebuild or purge caches and search indexes, and stop the person reappearing from a later replay of old events.</li>
+    </ol>
+    <p class="note"><i>Analysis:</i> this is a saga with no compensation step, because deletion cannot be undone (see <a href="/well-rounded-engineer/architecture/">Architecture</a>). The hard parts are the services nobody listed in the data catalogue, and old events that would re-create the data if replayed.</p>
+  </article>
+
+  <article class="card" id="c-backups-and-crypto-shredding"><h3>Backups and crypto-shredding</h3>
+    <p>Crypto-shredding makes encrypted data unusable by deleting or overwriting its encryption key. It helps where the data itself is hard to reach, such as backups and copies spread across systems, because only the key needs destroying.</p>
+    <p class="note"><i>Analysis:</i> encrypt each person&rsquo;s sensitive fields with a key of their own. If no copy of that key survives (key backups, caches) and the encryption holds, destroying it makes those fields unreadable everywhere, backups included. The cost is managing many keys, and losing a key by mistake loses the data.</p>
+  </article>
+
+  <article class="card" id="c-keeping-data-in-the-right-place"><h3>Keeping data in the right place</h3>
+    <ul>
+      <li><b>Data residency</b> is where the data is actually stored; <b>data localisation</b> is a requirement that it be stored within a given region.</li>
+      <li>The GDPR governs transfers of personal data outside the EU and EEA, so where you store and process it is a design decision, not only an operations one.</li>
+      <li><i>Analysis:</i> choose regions per market, route each customer to their region, and check where logs, backups and support tools copy the data too (see <a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a> for regions).</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>Many services need to refer to a person but few need the actual value</td><td>Tokenisation, with the real values in one vault</td></tr>
+      <tr><td>Analysts need the data&rsquo;s shape, not who it describes</td><td>Anonymisation before it reaches the warehouse</td></tr>
+      <tr><td>You must keep a record but stop it pointing at a person</td><td>Pseudonymisation, with the key held separately and access restricted</td></tr>
+      <tr><td>Data sits in backups or systems you cannot edit row by row</td><td>Crypto-shredding with per-person keys</td></tr>
+      <tr><td>Personal data spans many services owned by different teams</td><td>An erasure event, confirmations from each service, and one tracker</td></tr>
+      <tr><td>Customers in several jurisdictions</td><td>Regional deployments, with routing and residency checked for logs and backups too</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-prove-it"><h3>Prove it</h3>
+    <ul>
+      <li><b>Test deletion in CI:</b> create a person, erase them, and assert they are gone from every store you list.</li>
+      <li><b>Audit access:</b> who read which personal data, when, and why, with a correlation id across services.</li>
+      <li><b>Report:</b> how many requests, how long each took, and which services were slowest to confirm.</li>
+    </ul>
+    <p class="note">This card is <i>analysis</i>: these are practices, not legal requirements quoted from the regulation.</p>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> design for erasure from the first service, with a data catalogue, tokens instead of copies, and an erasure event every service must handle. Retrofitting it across dozens of services is harder than building it in.</p>
+    <p><i>The other view:</i> early on, a small team may keep personal data in one service on purpose, so deletion stays a single query, and add tokenisation and events only when the data starts to spread. Building the full machinery before the system needs it has a cost too.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>List where personal data ends up in a service architecture</li><li>Explain tokenisation, pseudonymisation and anonymisation</li><li>Name the rights a person has over their data</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Keep a data catalogue of personal fields per service</li><li>Build an erasure event that every service handles idempotently</li><li>Test deletion end to end in CI</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for erasure and legal retention together</li><li>Use crypto-shredding for backups and copies</li><li>Plan regional deployments for data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's personal-data architecture and standards</li><li>Work with legal and the data protection officer on retention rules</li><li>Audit and report on data subject requests across systems</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>GDPR rights and principles</li><li>Data minimisation and tokenisation</li><li>Pseudonymisation and anonymisation</li><li>Erasure across services</li><li>Crypto-shredding</li><li>Data residency and transfers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">Wikipedia: General Data Protection Regulation</a><span class="lnote"> Rights, principles and transfers</span></li><li><a href="https://en.wikipedia.org/wiki/Crypto-shredding" target="_blank" rel="noopener">Wikipedia: Crypto-shredding</a><span class="lnote"> Erasing by deleting keys</span></li><li><a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure" target="_blank" rel="noopener">Microsoft Learn: GDPR data subject requests for Azure</a><span class="lnote"> How a cloud provider handles them</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">Wikipedia: General Data Protection Regulation</a>; <a href="https://en.wikipedia.org/wiki/Right_to_be_forgotten" target="_blank" rel="noopener">Wikipedia: Right to be forgotten</a>; <a href="https://en.wikipedia.org/wiki/Tokenization_(data_security)" target="_blank" rel="noopener">Wikipedia: Tokenization (data security)</a>; <a href="https://en.wikipedia.org/wiki/Pseudonymization" target="_blank" rel="noopener">Wikipedia: Pseudonymization</a>; <a href="https://en.wikipedia.org/wiki/Data_anonymization" target="_blank" rel="noopener">Wikipedia: Data anonymization</a>; <a href="https://en.wikipedia.org/wiki/Data_minimization" target="_blank" rel="noopener">Wikipedia: Data minimization</a>; <a href="https://en.wikipedia.org/wiki/Crypto-shredding" target="_blank" rel="noopener">Wikipedia: Crypto-shredding</a>; <a href="https://en.wikipedia.org/wiki/Data_sovereignty" target="_blank" rel="noopener">Wikipedia: Data sovereignty (residency and localisation)</a>; <a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure" target="_blank" rel="noopener">Microsoft Learn: GDPR data subject requests for Azure</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BPersonal%20Data%20Across%20Services%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/pki/">← Keys, Certificates &amp; SSH</a><a class="pn-next" href="/well-rounded-engineer/cyber/">Cybersecurity →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-what-the-law-asks-of-a-system">What the law asks of a system</a><a href="#c-where-personal-data-ends-up">Where personal data ends up</a><a href="#c-keep-less-of-it-in-fewer-places">Keep less of it, in fewer places</a><a href="#c-erasure-meets-retention">Erasure meets retention</a><a href="#c-deleting-across-services">Deleting across services</a><a href="#c-backups-and-crypto-shredding">Backups and crypto-shredding</a><a href="#c-keeping-data-in-the-right-place">Keeping data in the right place</a><a href="#c-choose-by-requirement">Choose by requirement</a><a href="#c-prove-it">Prove it</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
