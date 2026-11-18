@@ -1546,3 +1546,27 @@ D["fetoolchain"]=dict(
           ("React docs: Scaling up with reducer and context","https://react.dev/learn/scaling-up-with-reducer-and-context"),
           ("MDN: JavaScript modules","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"),
           ("MDN: Import maps","https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap")])
+
+D["concurrency"]=dict(
+ F=["Tell concurrency from parallelism","Explain a race condition with an example","Use a lock around shared state"],
+ P=["Spot and fix a lost update","Explain the four conditions for deadlock and avoid one","Choose threads, async or processes for a task"],
+ S=["Choose a concurrency model by requirement","Use optimistic concurrency in a database","Estimate parallel speed-up with Amdahl's law"],
+ E=["Set concurrency standards for a platform","Review designs for shared mutable state","Diagnose timing bugs in production"],
+ topics=["Concurrency and parallelism","Race conditions and deadlock","Locks, semaphores and atomics","Memory models","Threads, async, CSP and actors","Amdahl's law"],
+ links=[("Python: threading","https://docs.python.org/3/library/threading.html","Threads, locks and barriers in the standard library")],
+ sources=[("Wikipedia: Concurrent computing","https://en.wikipedia.org/wiki/Concurrent_computing"),
+          ("Wikipedia: Race condition","https://en.wikipedia.org/wiki/Race_condition"),
+          ("Wikipedia: Deadlock","https://en.wikipedia.org/wiki/Deadlock_(computer_science)"),
+          ("Wikipedia: Mutual exclusion","https://en.wikipedia.org/wiki/Mutual_exclusion"),
+          ("Wikipedia: Semaphore","https://en.wikipedia.org/wiki/Semaphore_(programming)"),
+          ("Wikipedia: Compare-and-swap","https://en.wikipedia.org/wiki/Compare-and-swap"),
+          ("Wikipedia: Optimistic concurrency control","https://en.wikipedia.org/wiki/Optimistic_concurrency_control"),
+          ("Wikipedia: Java memory model","https://en.wikipedia.org/wiki/Java_memory_model"),
+          ("Wikipedia: Green thread","https://en.wikipedia.org/wiki/Green_thread"),
+          ("Wikipedia: Async/await","https://en.wikipedia.org/wiki/Async/await"),
+          ("Wikipedia: Event loop","https://en.wikipedia.org/wiki/Event_loop"),
+          ("Wikipedia: Communicating sequential processes","https://en.wikipedia.org/wiki/Communicating_sequential_processes"),
+          ("Wikipedia: Actor model","https://en.wikipedia.org/wiki/Actor_model"),
+          ("Wikipedia: Global interpreter lock","https://en.wikipedia.org/wiki/Global_interpreter_lock"),
+          ("Wikipedia: Amdahl's law","https://en.wikipedia.org/wiki/Amdahl%27s_law"),
+          ("Python docs: threading","https://docs.python.org/3/library/threading.html")])
