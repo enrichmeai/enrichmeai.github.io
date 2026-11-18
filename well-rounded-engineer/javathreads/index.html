@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Java Threads Evolved · Well Rounded Engineer</title>
+<meta name="description" content="Thirty years of answering one question: how does a server wait for thousands of slow things at once without running out of threads? From raw threads to…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="javathreads" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 116 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp" open><summary>Languages<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/" aria-current="page">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Languages</span> / <span aria-current="page">How Java Threads Evolved</span></p>
+<section class="panel" id="javathreads" data-name="How Java Threads Evolved">
+  <div class="panel-head"><h1>How Java threads evolved</h1><p>Thirty years of answering one question: how does a server wait for thousands of slow things at once without running out of threads? From raw threads to pools, fork/join, futures, reactive streams and virtual threads, with a code example and the cost of each step.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>Most server code spends its life waiting: for a database row, an HTTP reply, a file. The CPU is idle while it waits. <i>Our view:</i> every change to how Java handles threads has been about one thing, <b>making that waiting cheap</b>. <i>The other view</i> is in the card &ldquo;Our view, and the other view&rdquo;. The page <a href="/well-rounded-engineer/java/">Java</a> has the same history as a one-table summary; this page tells it step by step, with what each step cost.</p>
+  </article>
+
+  <article class="card wide" id="c-thirty-years-in-one-line"><h3>Thirty years in one line</h3>
+    <figure class="fig"><svg viewBox="0 0 640 112" role="img" aria-labelledby="jt-t jt-d"><title id="jt-t">Six eras of Java threads, 1996 to 2023</title><desc id="jt-d">A timeline of six eras. 1996, raw threads: one Java thread per operating-system thread. 2004, thread pools: reuse a fixed set of threads. 2011, fork/join: split CPU work and steal idle time. 2014, futures: chain work without waiting. 2017, reactive: a few threads that never block. 2023, virtual threads: millions of cheap threads.</desc><line class="ln" x1="10" y1="30" x2="630" y2="30"/><circle class="dot" cx="61.7" cy="30" r="5"/><text class="lb acc" x="61.7" y="18" text-anchor="middle">1996</text><text class="lb hd" x="61.7" y="56" text-anchor="middle">Raw threads</text><text class="lb mu" x="61.7" y="76" text-anchor="middle">one Java thread</text><text class="lb mu" x="61.7" y="92" text-anchor="middle">per OS thread</text><circle class="dot" cx="165.0" cy="30" r="5"/><text class="lb acc" x="165.0" y="18" text-anchor="middle">2004</text><text class="lb hd" x="165.0" y="56" text-anchor="middle">Thread pools</text><text class="lb mu" x="165.0" y="76" text-anchor="middle">reuse a fixed</text><text class="lb mu" x="165.0" y="92" text-anchor="middle">set of threads</text><circle class="dot" cx="268.3" cy="30" r="5"/><text class="lb acc" x="268.3" y="18" text-anchor="middle">2011</text><text class="lb hd" x="268.3" y="56" text-anchor="middle">Fork/join</text><text class="lb mu" x="268.3" y="76" text-anchor="middle">split CPU work,</text><text class="lb mu" x="268.3" y="92" text-anchor="middle">steal idle time</text><circle class="dot" cx="371.7" cy="30" r="5"/><text class="lb acc" x="371.7" y="18" text-anchor="middle">2014</text><text class="lb hd" x="371.7" y="56" text-anchor="middle">Futures</text><text class="lb mu" x="371.7" y="76" text-anchor="middle">chain work</text><text class="lb mu" x="371.7" y="92" text-anchor="middle">without waiting</text><circle class="dot" cx="475.0" cy="30" r="5"/><text class="lb acc" x="475.0" y="18" text-anchor="middle">2017</text><text class="lb hd" x="475.0" y="56" text-anchor="middle">Reactive</text><text class="lb mu" x="475.0" y="76" text-anchor="middle">a few threads,</text><text class="lb mu" x="475.0" y="92" text-anchor="middle">never blocking</text><circle class="dot" cx="578.3" cy="30" r="5"/><text class="lb acc" x="578.3" y="18" text-anchor="middle">2023</text><text class="lb hd" x="578.3" y="56" text-anchor="middle">Virtual threads</text><text class="lb mu" x="578.3" y="76" text-anchor="middle">millions of</text><text class="lb mu" x="578.3" y="92" text-anchor="middle">cheap threads</text></svg><figcaption>Six eras, each answering the same question differently. The years are the Java (or library) releases named in each card below.</figcaption></figure>
+  </article>
+  <article class="card wide" id="c-1-raw-threads"><h3>1. Raw threads</h3>
+    <p class="note"><b>Java 1.0 &middot; 1996</b></p>
+    <p>Java shipped with threads in the platform from the start: <code>Thread</code>, <code>Runnable</code>, the <code>synchronized</code> keyword, and <code>wait</code>/<code>notify</code> on every object. Concurrency was part of the language and its core library, not an add-on.</p>
+    <pre><code>Thread t = new Thread(new Runnable() {
+    public void run() { handle(request); }
+});
+t.start();</code></pre>
+    <p>Early JVMs used <b>green threads</b>, scheduled by the JVM itself. They were abandoned in Java 1.3 for <b>native threads</b>: each Java thread became a real operating-system thread.</p>
+    <p class="note"><b>The cost:</b> an OS thread reserves a large stack (by default 1 MB on 64-bit x86 Linux, 2 MB on ARM64 Linux) and is expensive to create and switch. A server could hold a few thousand threads, not hundreds of thousands.</p>
+  </article>
+  <article class="card wide" id="c-2-thread-pools-and-java-util-concurrent"><h3>2. Thread pools and <code>java.util.concurrent</code></h3>
+    <p class="note"><b>Java 5 &middot; 2004</b></p>
+    <p><code>java.util.concurrent</code> (JSR 166, led by Doug Lea) changed everyday Java. Instead of creating a thread per task, you hand tasks to an <b>executor</b> that reuses a fixed pool. It came with <code>Future</code> and <code>Callable</code>, explicit locks, atomic variables, <code>ConcurrentHashMap</code>, and coordination tools such as <code>CountDownLatch</code>. The same release brought a new Java Memory Model (JSR 133), so these tools had firm guarantees underneath.</p>
+    <pre><code>ExecutorService pool = Executors.newFixedThreadPool(200);
+Future&lt;Case&gt; f = pool.submit(() -&gt; repository.find(id));   // shown in today's syntax
+Case c = f.get();   // blocks this thread until the result is ready</code></pre>
+    <p>This became the classic server model behind Servlets and Spring MVC: <b>one pooled thread per request</b>, blocking while it waits.</p>
+    <p class="note"><b>The cost:</b> the pool size is the ceiling. With 200 threads all waiting on a slow database, request 201 queues, even though the CPU is idle.</p>
+  </article>
+  <article class="card wide" id="c-3-fork-join"><h3>3. Fork/join</h3>
+    <p class="note"><b>Java 7 &middot; 2011</b></p>
+    <p><code>ForkJoinPool</code> tackled a different problem: big CPU-bound jobs. A task splits itself into smaller tasks, and idle threads <b>steal work</b> from busy ones' queues. It made multi-core machines easy to use for computation. It did nothing for waiting on I/O.</p>
+  </article>
+  <article class="card wide" id="c-4-futures-you-can-chain"><h3>4. Futures you can chain</h3>
+    <p class="note"><b>Java 8 &middot; 2014</b></p>
+    <p><code>CompletableFuture</code>, together with lambdas, let you describe what happens <i>after</i> a result arrives instead of blocking a thread to wait for it:</p>
+    <pre><code>CompletableFuture.supplyAsync(() -&gt; fetchCase(id))
+    .thenApply(this::summarise)
+    .thenAccept(this::send);</code></pre>
+    <p>No thread sits idle between the steps. Each step runs when the previous one completes.</p>
+    <p class="note"><b>The cost:</b> error handling, timeouts and debugging get harder. A stack trace no longer shows the story of the request.</p>
+  </article>
+  <article class="card wide" id="c-5-reactive"><h3>5. Reactive</h3>
+    <p class="note"><b>Reactive Streams 1.0, 2015 &middot; Java 9 <code>Flow</code>, 2017 &middot; Spring WebFlux, 2017</b></p>
+    <p>Underneath, non-blocking networking had existed since <b>NIO</b> in Java 1.4 (2002): one thread with a <code>Selector</code> can watch many sockets. Netty built an asynchronous, event-driven framework on it: a handful of threads that never block, serving very many connections.</p>
+    <p>Reactive libraries made that model programmable. An early, widely used one was <b>RxJava</b>, Netflix&rsquo;s JVM implementation of Microsoft&rsquo;s Reactive Extensions, first published around 2013. It introduced many Java developers to <code>Observable</code> and to operators such as <code>map</code>, <code>flatMap</code>, <code>zip</code> and <code>retry</code>. RxJava 2 (October 2016) was rewritten on the <b>Reactive Streams</b> specification (1.0 in spring 2015), which grew out of RxJava 1.x and was started by engineers at Netflix, Pivotal and Lightbend. Project Reactor, the library under Spring WebFlux, follows the same specification. These libraries describe work as streams of events with <b>backpressure</b>, so a slow consumer can tell a fast producer to slow down. Java 9 put the same interfaces into the JDK as <code>java.util.concurrent.Flow</code>. Spring Framework 5.0 (2017) added <b>WebFlux</b>; Spring Boot&rsquo;s WebFlux starter runs it on Netty by default.</p>
+    <pre><code>webClient.get().uri("/cases/{id}", id)
+    .retrieve()
+    .bodyToMono(Case.class)
+    .map(this::summarise)
+    .timeout(Duration.ofSeconds(5));</code></pre>
+    <p class="note"><b>The cost:</b> every layer has to be non-blocking, down to the database driver (hence R2DBC instead of JDBC). One blocking call on an event-loop thread stalls everyone, and the code reads as chains of operators instead of plain steps.</p>
+  </article>
+  <article class="card wide" id="c-6-virtual-threads"><h3>6. Virtual threads</h3>
+    <p class="note"><b>Preview in Java 19 and 20 &middot; final in Java 21 &middot; 2023</b></p>
+    <p>Project Loom asked a different question: what if threads were simply cheap? A <b>virtual thread</b> is managed by the JVM, not the operating system. When it blocks on I/O, the JVM suspends it and frees the underlying OS thread (the &ldquo;carrier&rdquo;) for another virtual thread. You can run <b>millions</b> of them.</p>
+    <pre><code>try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    executor.submit(() -&gt; handle(request));   // plain blocking code, one cheap thread per task
+}
+Thread.ofVirtual().start(() -&gt; handle(request));</code></pre>
+    <p>The plain, blocking style from 2004 is back, and it scales the way reactive code does. Spring Boot 3.2 turned it into a single setting, <code>spring.threads.virtual.enabled=true</code>, on Java 21 or later.</p>
+    <p>The first versions had one notable trap. A virtual thread blocking inside a <code>synchronized</code> block was <b>pinned</b> to its carrier, which could starve the pool. <b>Java 24</b> (JEP 491) removed nearly all of that pinning for <code>synchronized</code>.</p>
+  </article>
+  <article class="card wide" id="c-7-what-is-arriving-now"><h3>7. What is arriving now</h3>
+    <p class="note"><b>Java 25 (2025) to Java 27</b></p>
+    <p><b>Scoped values</b> are final in Java 25 (JEP 506): a safer, cheaper replacement for many uses of <code>ThreadLocal</code> that suits millions of short-lived threads. <b>Structured concurrency</b> has been in preview since Java 21 and was previewed again in each release since: the seventh preview is in Java 27 (JEP 533). It treats a group of subtasks as one unit: start them together, and if one fails, cancel the rest and report one error. It addresses the error-handling problem that futures and reactive code never solved neatly.</p>
+  </article>
+  <article class="card" id="c-was-quarkus-reactive-by-nature"><h3>Was Quarkus reactive by nature?</h3>
+    <p>Underneath, yes. Quarkus (1.0 in November 2019) runs on <b>Vert.x and Netty</b>, an event-loop engine like the one under WebFlux. But today it does not force reactive code on its users. You can write:</p>
+    <ul>
+      <li><b>ordinary blocking code</b>, which Quarkus runs on worker threads, off the event loop;</li>
+      <li><b>reactive code</b> with its Mutiny library;</li>
+      <li>and, on Java 21 or later, <b>virtual-thread endpoints</b>, marked <code>@RunOnVirtualThread</code>.</li>
+    </ul>
+    <p>Spring offers the same three: blocking MVC, reactive WebFlux, and MVC on virtual threads. More on <a href="/well-rounded-engineer/quarkus/">Quarkus</a> and <a href="/well-rounded-engineer/spring/">Spring</a>.</p>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> the thread did not get faster in thirty years. Each step made it cheaper to keep a thread waiting, until it cost almost nothing, so for most request/response services virtual threads with plain blocking code are now the simplest choice that scales.</p>
+    <p><i>The other view:</i> reactive code is more than a workaround for expensive threads. Backpressure, streaming and composing many events are first-class in it, and teams that need those may find a reactive stack the clearer model, with virtual threads adding little.</p>
+  </article>
+
+  <article class="card wide" id="c-which-model-to-use-today"><h3>Which model to use today</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Model</th><th>Good for (<i>analysis</i>)</th><th>Watch out for</th></tr></thead>
+      <tbody>
+      <tr><td><b>Virtual threads</b></td><td>Most request/response services that wait on databases and APIs. Simple code that scales.</td><td>Very long CPU work still needs a bounded pool. Libraries that hold locks or <code>ThreadLocal</code> caches deserve a check.</td></tr>
+      <tr><td><b>Reactive</b> (WebFlux, Mutiny)</td><td>Streaming, server-sent events, backpressure between fast and slow parts, very high connection counts.</td><td>Everything must be non-blocking end to end, and debugging is harder.</td></tr>
+      <tr><td><b>Fixed thread pools</b></td><td>CPU-bound work, and limiting how much load reaches a fragile downstream.</td><td>Pool size becomes the throughput ceiling when tasks mostly wait.</td></tr>
+      <tr><td><b>Your team already runs one model well</b></td><td>Stay with it unless a row above forces a change.</td><td>Switching has a cost.</td></tr>
+      </tbody></table></div>
+    <p class="note">The races, deadlocks and queues underneath all of these are on <a href="/well-rounded-engineer/concurrency/">Concurrency</a>, with runnable examples.</p>
+  </article>
+
+  <article class="card" id="c-further-reading"><h3>Further reading</h3>
+    <p><b>Java 8 Lambdas</b> by Richard Warburton (O&rsquo;Reilly) is a short, practical introduction to the functional style that step 4 relies on: lambdas, streams, collectors and <code>CompletableFuture</code>. The book&rsquo;s exercises and examples are on GitHub at <a href="https://github.com/RichardWarburton/java-8-lambdas-exercises" target="_blank" rel="noopener">RichardWarburton/java-8-lambdas-exercises</a>.</p>
+  </article>
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://openjdk.org/jeps/444" target="_blank" rel="noopener">JEP 444: Virtual Threads</a>; <a href="https://openjdk.org/jeps/491" target="_blank" rel="noopener">JEP 491: Synchronize Virtual Threads without Pinning</a>; <a href="https://openjdk.org/jeps/505" target="_blank" rel="noopener">JEP 505: Structured Concurrency (Fifth Preview)</a>; <a href="https://openjdk.org/jeps/533" target="_blank" rel="noopener">JEP 533: Structured Concurrency (Seventh Preview)</a>; <a href="https://openjdk.org/jeps/506" target="_blank" rel="noopener">JEP 506: Scoped Values</a>; <a href="https://openjdk.org/jeps/266" target="_blank" rel="noopener">JEP 266: More Concurrency Updates (Flow)</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/specs/man/java.html" target="_blank" rel="noopener">The java command (-Xss defaults)</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ForkJoinPool.html" target="_blank" rel="noopener">Java SE 21 API: ForkJoinPool</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" target="_blank" rel="noopener">Java SE 21 API: CompletableFuture</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Flow.html" target="_blank" rel="noopener">Java SE 21 API: Flow</a>; <a href="https://en.wikipedia.org/wiki/Java_version_history" target="_blank" rel="noopener">Wikipedia: Java version history</a>; <a href="https://en.wikipedia.org/wiki/Green_thread" target="_blank" rel="noopener">Wikipedia: Green thread</a>; <a href="https://en.wikipedia.org/wiki/Reactive_Streams" target="_blank" rel="noopener">Wikipedia: Reactive Streams</a>; <a href="https://en.wikipedia.org/wiki/Netty_(software)" target="_blank" rel="noopener">Wikipedia: Netty</a>; <a href="https://en.wikipedia.org/wiki/Quarkus" target="_blank" rel="noopener">Wikipedia: Quarkus</a>; <a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava README</a>; <a href="https://github.com/reactive-streams/reactive-streams-jvm" target="_blank" rel="noopener">Reactive Streams for the JVM</a>; <a href="https://docs.spring.io/spring-framework/reference/web/webflux/new-framework.html" target="_blank" rel="noopener">Spring Framework: WebFlux</a>; <a href="https://spring.io/blog/2023/11/23/spring-boot-3-2-0-available-now" target="_blank" rel="noopener">Spring Boot 3.2 release announcement</a>; <a href="https://github.com/quarkusio/quarkus/blob/main/docs/src/main/asciidoc/virtual-threads.adoc" target="_blank" rel="noopener">Quarkus: virtual threads guide</a>.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/java/">← Java</a><a class="pn-next" href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-thirty-years-in-one-line">Thirty years in one line</a><a href="#c-1-raw-threads">1. Raw threads</a><a href="#c-2-thread-pools-and-java-util-concurrent">2. Thread pools and java.util.concurrent</a><a href="#c-3-fork-join">3. Fork/join</a><a href="#c-4-futures-you-can-chain">4. Futures you can chain</a><a href="#c-5-reactive">5. Reactive</a><a href="#c-6-virtual-threads">6. Virtual threads</a><a href="#c-7-what-is-arriving-now">7. What is arriving now</a><a href="#c-was-quarkus-reactive-by-nature">Was Quarkus reactive by nature?</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-which-model-to-use-today">Which model to use today</a><a href="#c-further-reading">Further reading</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
