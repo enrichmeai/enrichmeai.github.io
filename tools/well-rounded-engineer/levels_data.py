@@ -1598,3 +1598,25 @@ D["datastore"]=dict(
           ("Martin Fowler: Polyglot Persistence","https://martinfowler.com/bliki/PolyglotPersistence.html")])
 
 D["datastore"]["sources"].append(("Wikipedia: Data warehouse","https://en.wikipedia.org/wiki/Data_warehouse"))
+D["review"]=dict(
+ F=["Write a commit message with a short summary line and a reason","Describe a pull request so a reviewer knows what and why","Read review comments as being about the code, not you"],
+ P=["Review others' changes within a day, labelling comments by importance","Keep changes small enough to review well","Write an architecture decision record"],
+ S=["Write a design proposal others can build from","Set a team's review and writing conventions","Place documentation in the right one of four kinds"],
+ E=["Shape how an organisation records decisions","Balance review effort against automated checks","Mentor others through review"],
+ topics=["Bottom line up front and plain language","Commit messages and Conventional Commits","Pull request descriptions","Design proposals and ADRs","Diátaxis: four kinds of documentation","Code review: purpose, standard, size, speed and comments"],
+ links=[("Google Engineering Practices: code review","https://google.github.io/eng-practices/review/","Google's published guide"),
+        ("Diátaxis","https://diataxis.fr/","Daniele Procida")],
+ sources=[("Google eng-practices: The Standard of Code Review","https://github.com/google/eng-practices/blob/master/review/reviewer/standard.md"),
+          ("Google eng-practices: Speed of Code Reviews","https://github.com/google/eng-practices/blob/master/review/reviewer/speed.md"),
+          ("Google eng-practices: How to write code review comments","https://github.com/google/eng-practices/blob/master/review/reviewer/comments.md"),
+          ("Google eng-practices: Small CLs","https://github.com/google/eng-practices/blob/master/review/developer/small-cls.md"),
+          ("Google eng-practices: Writing good CL descriptions","https://github.com/google/eng-practices/blob/master/review/developer/cl-descriptions.md"),
+          ("Git documentation: git-commit, Discussion","https://git-scm.com/docs/git-commit#_discussion"),
+          ("Conventional Commits specification","https://www.conventionalcommits.org/en/v1.0.0/"),
+          ("PEP 1: PEP Purpose and Guidelines","https://peps.python.org/pep-0001/"),
+          ("Architecture decision record (Joel Parker Henderson)","https://github.com/joelparkerhenderson/architecture-decision-record"),
+          ("Diátaxis source (Daniele Procida)","https://github.com/evildmp/diataxis-documentation-framework"),
+          ("Wikipedia: Code review","https://en.wikipedia.org/wiki/Code_review"),
+          ("Wikipedia: Fagan inspection","https://en.wikipedia.org/wiki/Fagan_inspection"),
+          ("Wikipedia: BLUF (communication)","https://en.wikipedia.org/wiki/BLUF_(communication)"),
+          ("Wikipedia: Plain language","https://en.wikipedia.org/wiki/Plain_language")])
