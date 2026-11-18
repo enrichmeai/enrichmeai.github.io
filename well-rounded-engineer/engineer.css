@@ -239,3 +239,23 @@
 .fig .lb.hd { font-weight: 600; font-family: var(--font-heading); }
 .fig .lb.mu { fill: var(--color-neutral-700); font-size: 13px; }
 .fig .lb.big { font-size: 22px; }
+.fig .bd { fill: none; stroke: var(--color-accent-600); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.fig .ed.dash { stroke-dasharray: 5 4; }
+.fig .ed.acc { stroke: var(--color-accent-700); }
+.fig .ar.acc { fill: var(--color-accent-700); }
+.fig .lb.acc { fill: var(--color-accent-700); }
+.fig .nd.warn { fill: var(--color-neutral-200); stroke-dasharray: 4 3; }
+.fig .dot { fill: var(--color-text); }
+.fig .ln { stroke: var(--color-neutral-400); stroke-width: 1.5; stroke-dasharray: 4 4; }
+/* a diagram inside the navy first card keeps its contrast */
+.eg .grid > .card:first-child .fig .nd { fill: var(--color-accent-800); stroke: var(--color-accent-200); }
+.eg .grid > .card:first-child .fig .nd.in { fill: var(--color-accent-700); }
+.eg .grid > .card:first-child .fig .nd.out { fill: var(--color-accent-600); }
+.eg .grid > .card:first-child .fig .lb { fill: var(--color-accent-100); }
+.eg .grid > .card:first-child .fig .lb.mu { fill: var(--color-accent-300); }
+.eg .grid > .card:first-child .fig .lb.acc { fill: var(--color-accent-200); }
+.eg .grid > .card:first-child .fig figcaption { color: var(--color-accent-300); }
+.eg .grid > .card:first-child .fig .ed, .eg .grid > .card:first-child .fig .ln { stroke: var(--color-accent-400); }
+.eg .grid > .card:first-child .fig .ar { fill: var(--color-accent-400); }
+.eg .grid > .card:first-child .fig .ed.acc { stroke: var(--color-accent-200); }
+.eg .grid > .card:first-child .fig .ar.acc { fill: var(--color-accent-200); }
