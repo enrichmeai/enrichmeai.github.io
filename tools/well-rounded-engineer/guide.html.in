@@ -143,14 +143,9 @@ details>.inner{padding:4px 10px 8px}
       <span class="navgrp">Security</span>
       <a href="#security" data-tab="security">Security</a>
       <a href="#pki" data-tab="pki">Keys, Certificates &amp; SSH</a>
-      <a href="#cyber" data-tab="cyber">Cybersecurity</a>
-      <a href="#agentsec" data-tab="agentsec">Agentic AI Security</a>
-      <a href="#oauth" data-tab="oauth">OAuth &amp; OIDC</a>
-      <span class="navgrp">Security</span>
-      <a href="#security" data-tab="security">Security</a>
-      <a href="#pki" data-tab="pki">Keys, Certificates &amp; SSH</a>
       <a href="#privacy" data-tab="privacy">Personal Data Across Services</a>
       <a href="#cyber" data-tab="cyber">Cybersecurity</a>
+      <a href="#agentsec" data-tab="agentsec">Agentic AI Security</a>
       <a href="#oauth" data-tab="oauth">OAuth &amp; OIDC</a>
       <span class="navgrp">Data</span>
       <a href="#data" data-tab="data">Data Engineering</a>
@@ -236,7 +231,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z"/></svg></span><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#javascript">JavaScript</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#realtime">Real-time to the Browser</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#banking">Banking &amp; Low Latency</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3zM3 9h18M9 9v11"/></svg></span><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#cyber">Cybersecurity</a>, <a href="#agentsec">Agentic AI Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">7</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#privacy">Personal Data Across Services</a>, <a href="#cyber">Cybersecurity</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="gmap-n">8</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></span><span class="gmap-n">9</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#patterns">SOLID &amp; Design Patterns</a>, <a href="#architecture">Architecture</a>, <a href="#atob">Solution Architecture: A to B</a>, <a href="#distsys">Distributed Systems</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#specs">Specifications</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span class="gmap-n">10</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"/></svg></span><span class="gmap-n">11</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#retailcloud">Retail &amp; Hybrid Cloud</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a>, <a href="#azuredata">Data on Azure</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></span><span class="gmap-n">12</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#humanagents">Humans &amp; Agents</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/></svg></span><span class="gmap-n">13</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="gmap-n">14</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"/></svg></span><span class="gmap-n">15</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z"/></svg></span><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#docker">Docker</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#javascript">JavaScript</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#graphql">GraphQL</a>, <a href="#realtime">Real-time to the Browser</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#banking">Banking &amp; Low Latency</a>, <a href="#spring">Spring Boot</a>, <a href="#quarkus">Quarkus</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3zM3 9h18M9 9v11"/></svg></span><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#privacy">Personal Data Across Services</a>, <a href="#cyber">Cybersecurity</a>, <a href="#agentsec">Agentic AI Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></span><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#patterns">SOLID &amp; Design Patterns</a>, <a href="#architecture">Architecture</a>, <a href="#atob">Solution Architecture: A to B</a>, <a href="#distsys">Distributed Systems</a>, <a href="#microservices">Microservices</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#specs">Specifications</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"/></svg></span><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#retailcloud">Retail &amp; Hybrid Cloud</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a>, <a href="#azuredata">Data on Azure</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></span><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#humanagents">Humans &amp; Agents</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/></svg></span><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"/></svg></span><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
   <article class="card wide" id="promise"><h3>Our promise: checked knowledge, no fuss</h3>
@@ -365,13 +360,9 @@ details>.inner{padding:4px 10px 8px}
       <tr><td><a href="#performance">Performance</a></td><td>Read latency percentiles; spot N+1 queries and missing indexes.</td><td>Profiling, load testing, capacity planning and cost-performance trade-offs.</td></tr>
       <tr><td><a href="#security">Security</a></td><td>Parameterise queries, check object ownership, keep secrets out of code, review a PR against the checklist.</td><td>Threat modelling, identity and OAuth design, cloud IAM and policies, supply-chain security, incident response.</td></tr>
       <tr><td><a href="#pki">Keys, Certificates &amp; SSH</a></td><td>Explain key pairs, certificates and CAs; make a CSR and an SSH key.</td><td>Read and fix chain, name and expiry errors; automate renewal; sign commits.</td></tr>
-      <tr><td><a href="#cyber">Cybersecurity</a></td><td>Know how attacks unfold (MITRE ATT&amp;CK) and report incidents fast.</td><td>Detection engineering, incident response and red/blue/purple teaming.</td></tr>
-      <tr><td><a href="#agentsec">Agentic AI Security</a></td><td>Explain prompt injection and excessive agency; name the OWASP risks.</td><td>Design agent tools with least privilege, approvals and sandboxing; test with attacks.</td></tr>
-      <tr><td><a href="#oauth">OAuth &amp; OIDC</a></td><td>Protect an API with JWT validation; use the code flow with PKCE through a library.</td><td>Identity architecture, flow choice per client, token lifetimes, advanced specs.</td></tr>
-      <tr><td><a href="#security">Security</a></td><td>Parameterise queries, check object ownership, keep secrets out of code, review a PR against the checklist.</td><td>Threat modelling, identity and OAuth design, cloud IAM and policies, supply-chain security, incident response.</td></tr>
-      <tr><td><a href="#pki">Keys, Certificates &amp; SSH</a></td><td>Explain key pairs, certificates and CAs; make a CSR and an SSH key.</td><td>Read and fix chain, name and expiry errors; automate renewal; sign commits.</td></tr>
       <tr><td><a href="#privacy">Personal Data Across Services</a></td><td>Say where personal data spreads in a system, and what tokenisation and pseudonymisation do.</td><td>Design erasure across services, crypto-shredding, retention conflicts and data residency.</td></tr>
       <tr><td><a href="#cyber">Cybersecurity</a></td><td>Know how attacks unfold (MITRE ATT&amp;CK) and report incidents fast.</td><td>Detection engineering, incident response and red/blue/purple teaming.</td></tr>
+      <tr><td><a href="#agentsec">Agentic AI Security</a></td><td>Explain prompt injection and excessive agency; name the OWASP risks.</td><td>Design agent tools with least privilege, approvals and sandboxing; test with attacks.</td></tr>
       <tr><td><a href="#oauth">OAuth &amp; OIDC</a></td><td>Protect an API with JWT validation; use the code flow with PKCE through a library.</td><td>Identity architecture, flow choice per client, token lifetimes, advanced specs.</td></tr>
       <tr><td><a href="#data">Data Engineering</a></td><td>Explain the lifecycle, the layers, and why pipelines must be idempotent.</td><td>Ingestion patterns, modelling, quality and governance across a whole platform.</td></tr>
       <tr><td><a href="#datalibs">Data Libraries</a></td><td>Process a file with pandas or Polars; read Parquet; match library to data size.</td><td>Engine choice, pushdown and file layout, distributed and streaming processing.</td></tr>
@@ -6390,6 +6381,101 @@ git verify-commit HEAD
   </div>
 </section>
 
+<!-- ================= PERSONAL DATA ACROSS SERVICES ================= -->
+<section class="panel" id="p-privacy" data-name="Personal Data Across Services">
+  <div class="panel-head"><h2>Personal data across services</h2><p>Splitting a system into services also spreads people&rsquo;s personal data across them: databases, caches, search indexes, event logs, analytics copies and backups. This page is about the engineering that lets you find that data, keep less of it, delete it when you must, keep it in the right region, and prove all of it. It is not legal advice: the obligations below are summarised from secondary sources, so read the regulation itself with your data protection officer.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>What the law asks of a system</h3>
+    <p>The EU&rsquo;s General Data Protection Regulation (GDPR) gives people rights over their data, including access to it, a portable copy, erasure under certain circumstances, and a challenge to decisions made solely by an algorithm. Its principles include purpose limitation, data minimisation, storage limitation, and integrity and confidentiality. It also governs moving personal data outside the EU and EEA.</p>
+    <p class="note"><i>Analysis:</i> for engineers, each right becomes a capability the system must have: find everything about one person, export it, delete or anonymise it, and explain an automated decision. A design that cannot find all of one person&rsquo;s data cannot honour any of these.</p>
+  </article>
+
+  <article class="card"><h3>Where personal data ends up</h3>
+    <p><i>Analysis.</i> In a service architecture it is rarely only in the service that owns it:</p>
+    <ul>
+      <li>Each service&rsquo;s own database, and the events it publishes.</li>
+      <li>Caches and search indexes built from those events (see <a href="#caching">Caching</a> and <a href="#rag">RAG</a>).</li>
+      <li>Analytics and warehouse copies, and exports to partners.</li>
+      <li>Logs and traces that captured a field they should not have.</li>
+      <li>Backups of all of the above.</li>
+    </ul>
+    <p class="note">Keep a data catalogue: which service holds which personal fields, why, and for how long. It is the map every request below depends on.</p>
+  </article>
+
+  <article class="card"><h3>Keep less of it, in fewer places</h3>
+    <ul>
+      <li><b>Data minimisation:</b> collect and copy only what the purpose needs.</li>
+      <li><b>Tokenisation:</b> replace a sensitive value with a token that has no meaning of its own and maps back only through the tokenisation system. Services pass the token around; the real value lives in one place.</li>
+      <li><b>Pseudonymisation:</b> transform data so it cannot be tied to a person without additional information, such as a key; the GDPR&rsquo;s definition (Article 4(5), as summarised by Wikipedia) requires that information to be kept separately. Tokenisation and encryption are both examples.</li>
+      <li><b>Anonymisation:</b> remove what identifies people, so they can no longer be identified, directly or indirectly. Combining the data with other datasets can sometimes undo it.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Erasure meets retention</h3>
+    <p>Erasure is a right to request deletion on certain grounds, and it is limited: it applies only under certain circumstances, and Wikipedia notes it was made more limited than the earlier &ldquo;right to be forgotten&rdquo; proposal. The sources behind this page do not list the exceptions, so read Article 17 itself. Systems also have their own retention rules: Microsoft documents, for example, that some system-generated logs are kept under its service retention policies and are not removed by a data subject delete request.</p>
+    <p class="note"><i>Analysis:</i> the common engineering case is a request to delete data that another rule requires you to keep, such as a financial record. The usual pattern is to delete what you may, pseudonymise or anonymise what you must keep, restrict who can read it, and record which rule applied and when the kept data will go. Which rule wins is a legal decision; the system&rsquo;s job is to make either answer possible.</p>
+  </article>
+
+  <article class="card wide"><h3>Deleting across services</h3>
+    <p><i>Analysis:</i> one way to do it.</p>
+    <ol>
+      <li><b>Record the request</b> in one place that owns it, with an id and the time it arrived.</li>
+      <li><b>Publish one event</b>, such as <code>CustomerErasureRequested</code>, keyed by the customer, so every service that holds their data hears it (see <a href="#kafka">Kafka</a>).</li>
+      <li><b>Each service acts and confirms:</b> it deletes or anonymises its data, then publishes its own confirmation. Make each step idempotent, because the event may arrive twice.</li>
+      <li><b>Track until everyone has confirmed,</b> chase the ones that have not, and only then report the request as done.</li>
+      <li><b>Derived copies follow:</b> rebuild or purge caches and search indexes, and stop the person reappearing from a later replay of old events.</li>
+    </ol>
+    <p class="note"><i>Analysis:</i> this is a saga with no compensation step, because deletion cannot be undone (see <a href="#architecture">Architecture</a>). The hard parts are the services nobody listed in the data catalogue, and old events that would re-create the data if replayed.</p>
+  </article>
+
+  <article class="card"><h3>Backups and crypto-shredding</h3>
+    <p>Crypto-shredding makes encrypted data unusable by deleting or overwriting its encryption key. It helps where the data itself is hard to reach, such as backups and copies spread across systems, because only the key needs destroying.</p>
+    <p class="note"><i>Analysis:</i> encrypt each person&rsquo;s sensitive fields with a key of their own. If no copy of that key survives (key backups, caches) and the encryption holds, destroying it makes those fields unreadable everywhere, backups included. The cost is managing many keys, and losing a key by mistake loses the data.</p>
+  </article>
+
+  <article class="card"><h3>Keeping data in the right place</h3>
+    <ul>
+      <li><b>Data residency</b> is where the data is actually stored; <b>data localisation</b> is a requirement that it be stored within a given region.</li>
+      <li>The GDPR governs transfers of personal data outside the EU and EEA, so where you store and process it is a design decision, not only an operations one.</li>
+      <li><i>Analysis:</i> choose regions per market, route each customer to their region, and check where logs, backups and support tools copy the data too (see <a href="#cloudcompare">GCP vs AWS vs Azure</a> for regions).</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>Many services need to refer to a person but few need the actual value</td><td>Tokenisation, with the real values in one vault</td></tr>
+      <tr><td>Analysts need the data&rsquo;s shape, not who it describes</td><td>Anonymisation before it reaches the warehouse</td></tr>
+      <tr><td>You must keep a record but stop it pointing at a person</td><td>Pseudonymisation, with the key held separately and access restricted</td></tr>
+      <tr><td>Data sits in backups or systems you cannot edit row by row</td><td>Crypto-shredding with per-person keys</td></tr>
+      <tr><td>Personal data spans many services owned by different teams</td><td>An erasure event, confirmations from each service, and one tracker</td></tr>
+      <tr><td>Customers in several jurisdictions</td><td>Regional deployments, with routing and residency checked for logs and backups too</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card"><h3>Prove it</h3>
+    <ul>
+      <li><b>Test deletion in CI:</b> create a person, erase them, and assert they are gone from every store you list.</li>
+      <li><b>Audit access:</b> who read which personal data, when, and why, with a correlation id across services.</li>
+      <li><b>Report:</b> how many requests, how long each took, and which services were slowest to confirm.</li>
+    </ul>
+    <p class="note">This card is <i>analysis</i>: these are practices, not legal requirements quoted from the regulation.</p>
+  </article>
+
+  <article class="card"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> design for erasure from the first service, with a data catalogue, tokens instead of copies, and an erasure event every service must handle. Retrofitting it across dozens of services is harder than building it in.</p>
+    <p><i>The other view:</i> early on, a small team may keep personal data in one service on purpose, so deletion stays a single query, and add tokenisation and events only when the data starts to spread. Building the full machinery before the system needs it has a cost too.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>List where personal data ends up in a service architecture</li><li>Explain tokenisation, pseudonymisation and anonymisation</li><li>Name the rights a person has over their data</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Keep a data catalogue of personal fields per service</li><li>Build an erasure event that every service handles idempotently</li><li>Test deletion end to end in CI</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for erasure and legal retention together</li><li>Use crypto-shredding for backups and copies</li><li>Plan regional deployments for data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's personal-data architecture and standards</li><li>Work with legal and the data protection officer on retention rules</li><li>Audit and report on data subject requests across systems</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>GDPR rights and principles</li><li>Data minimisation and tokenisation</li><li>Pseudonymisation and anonymisation</li><li>Erasure across services</li><li>Crypto-shredding</li><li>Data residency and transfers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">Wikipedia: General Data Protection Regulation</a><span class="lnote"> Rights, principles and transfers</span></li><li><a href="https://en.wikipedia.org/wiki/Crypto-shredding" target="_blank" rel="noopener">Wikipedia: Crypto-shredding</a><span class="lnote"> Erasing by deleting keys</span></li><li><a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure" target="_blank" rel="noopener">Microsoft Learn: GDPR data subject requests for Azure</a><span class="lnote"> How a cloud provider handles them</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">Wikipedia: General Data Protection Regulation</a>; <a href="https://en.wikipedia.org/wiki/Right_to_be_forgotten" target="_blank" rel="noopener">Wikipedia: Right to be forgotten</a>; <a href="https://en.wikipedia.org/wiki/Tokenization_(data_security)" target="_blank" rel="noopener">Wikipedia: Tokenization (data security)</a>; <a href="https://en.wikipedia.org/wiki/Pseudonymization" target="_blank" rel="noopener">Wikipedia: Pseudonymization</a>; <a href="https://en.wikipedia.org/wiki/Data_anonymization" target="_blank" rel="noopener">Wikipedia: Data anonymization</a>; <a href="https://en.wikipedia.org/wiki/Data_minimization" target="_blank" rel="noopener">Wikipedia: Data minimization</a>; <a href="https://en.wikipedia.org/wiki/Crypto-shredding" target="_blank" rel="noopener">Wikipedia: Crypto-shredding</a>; <a href="https://en.wikipedia.org/wiki/Data_sovereignty" target="_blank" rel="noopener">Wikipedia: Data sovereignty (residency and localisation)</a>; <a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure" target="_blank" rel="noopener">Microsoft Learn: GDPR data subject requests for Azure</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BPersonal%20Data%20Across%20Services%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+
 <section class="panel" id="p-cyber" data-name="Cybersecurity">
   <div class="panel-head"><h2>Cybersecurity: thinking like a defender</h2><p>The <a href="#security">Security</a> page is about building secure software. This page is about the wider field: how real attacks unfold, how organisations defend, detect and recover, and the people and roles involved. You do not need to become a specialist, but every engineer should understand the game being played against their systems.</p></div>
   <div class="grid">
@@ -6605,778 +6691,6 @@ git verify-commit HEAD
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain direct and indirect prompt injection with an example</li><li>Name the three root causes of excessive agency</li><li>Treat model output as untrusted input</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Give an agent only the tools and permissions its task needs</li><li>Add human approval for high-impact actions</li><li>Check an MCP server and its scopes before connecting it</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design agent actions to run as the user, with authorisation outside the model</li><li>Red-team an agent with injected documents and tool outputs</li><li>Sandbox agents that write or run code</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's policy for agents, tools and approvals</li><li>Map agent risks to OWASP and MITRE ATLAS</li><li>Plan detection and response for attacks at machine speed</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
   <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Prompt injection</li><li>Excessive agency</li><li>OWASP Top 10 for LLM Applications</li><li>MCP security</li><li>Least privilege and complete mediation</li><li>AI-orchestrated attacks</li><li>MITRE ATLAS</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications (repository)</a><span class="lnote"> The 2025 entries, with mitigations</span></li><li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/security_best_practices.mdx" target="_blank" rel="noopener">MCP security best practices (source)</a><span class="lnote"> From the protocol's maintainers</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS</a><span class="lnote"> Adversary techniques against AI systems</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM01_PromptInjection.md" target="_blank" rel="noopener">OWASP LLM01:2025 Prompt Injection</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM05_ImproperOutputHandling.md" target="_blank" rel="noopener">OWASP LLM05:2025 Improper Output Handling</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM06_ExcessiveAgency.md" target="_blank" rel="noopener">OWASP LLM06:2025 Excessive Agency</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM10_UnboundedConsumption.md" target="_blank" rel="noopener">OWASP LLM10:2025 Unbounded Consumption</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns" target="_blank" rel="noopener">OWASP 2025 entries (list)</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/agent_security_initiative/agentic-top-10/Sprint%201-first-public-draft-expanded/README.md" target="_blank" rel="noopener">OWASP Agentic Top 10, first public draft</a>; <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/security_best_practices.mdx" target="_blank" rel="noopener">MCP security best practices (source)</a>; <a href="https://github.com/mitre-atlas/atlas-data/blob/main/README.md" target="_blank" rel="noopener">MITRE ATLAS data (README)</a>; <a href="https://www.anthropic.com/news/disrupting-AI-espionage" target="_blank" rel="noopener">Anthropic: Disrupting an AI-orchestrated cyber espionage campaign</a>; <a href="https://code.claude.com/docs/en/security" target="_blank" rel="noopener">Claude Code: Security</a>; <a href="https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection" target="_blank" rel="noopener">Microsoft Learn: Prompt Shields</a>; <a href="https://en.wikipedia.org/wiki/Confused_deputy_problem" target="_blank" rel="noopener">Wikipedia: Confused deputy problem</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BAgentic%20AI%20Security%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
-
-  </div>
-</section>
-
-<!-- ================= OAUTH ================= -->
-<section class="panel" id="p-oauth" data-name="OAuth &amp; OIDC">
-  <div class="panel-head"><h2>OAuth 2.0 and OpenID Connect</h2><p>How delegated authorisation and login work, which flow to use for which client, how to validate tokens, and the mistakes that cause breaches. Broader security is on <a href="#security">Security</a>.</p></div>
-  <div class="grid">
-
-  <article class="card wide"><h3>The roles and the two standards</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>Role</th><th>Is</th><th>Example</th></tr></thead>
-      <tbody>
-      <tr><td>Resource owner</td><td>The user who owns the data</td><td>A customer</td></tr>
-      <tr><td>Client</td><td>The app that wants access</td><td>The web app, a mobile app, a partner's server</td></tr>
-      <tr><td>Authorisation server</td><td>Authenticates the user and issues tokens</td><td>Google Identity, Okta, Auth0, Keycloak, Entra ID</td></tr>
-      <tr><td>Resource server</td><td>The API that accepts tokens</td><td>The search API, or Apigee in front of it</td></tr>
-      </tbody></table></div>
-    <ul>
-      <li><b>OAuth 2.0</b> is about <b>authorisation</b>: giving a client an <b>access token</b> to call an API on someone's behalf, limited by <b>scopes</b>.</li>
-      <li><b>OpenID Connect (OIDC)</b> adds <b>authentication</b> on top: an <b>ID token</b> (a JWT) that says who the user is. "Sign in with Google" is OIDC.</li>
-      <li><b>Access token</b> goes to APIs. <b>ID token</b> is for the client to learn who logged in; never send it to APIs as an access token. <b>Refresh token</b> gets new access tokens without a new login.</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>Which flow for which client</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>Client</th><th>Flow</th><th>Notes</th></tr></thead>
-      <tbody>
-      <tr><td>Web app with a server</td><td>Authorisation code + PKCE</td><td>Confidential client: the server holds the secret and tokens</td></tr>
-      <tr><td>Single-page app (browser)</td><td>Authorisation code + PKCE, ideally through a backend-for-frontend</td><td>The BFF keeps tokens server-side and gives the browser a secure cookie</td></tr>
-      <tr><td>Mobile / desktop app</td><td>Authorisation code + PKCE via the system browser</td><td>Public client: no secret can be kept safe in the app</td></tr>
-      <tr><td>Service to service</td><td>Client credentials</td><td>No user; the service authenticates as itself</td></tr>
-      <tr><td>TV, CLI, device without a browser</td><td>Device authorisation grant</td><td>User approves on another device with a code</td></tr>
-      <tr><td>Workloads on GCP</td><td>Service account identity (Google-signed tokens)</td><td>No secrets at all; Workload Identity Federation from outside GCP</td></tr>
-      <tr><td><s>Implicit</s>, <s>password</s></td><td>Do not use</td><td>Deprecated by current best practice (RFC 9700, OAuth 2.1 draft)</td></tr>
-      </tbody></table></div>
-  </article>
-
-  <article class="card"><h3>Authorisation code + PKCE, step by step</h3>
-<div class="snip"><pre><code>1. Client makes a random code_verifier and its hash:
-   code_challenge = BASE64URL(SHA256(code_verifier))
-
-2. Browser is sent to the authorisation server:
-   GET /authorize?response_type=code
-       &amp;client_id=shop-web
-       &amp;redirect_uri=https://shop.example.com/callback
-       &amp;scope=openid%20profile%20email%20search.read
-       &amp;state=RANDOM            (CSRF protection)
-       &amp;nonce=RANDOM            (ID-token replay protection)
-       &amp;code_challenge=…&amp;code_challenge_method=S256
-
-3. User logs in and consents; server redirects back:
-   https://shop.example.com/callback?code=AUTH_CODE&amp;state=RANDOM
-   (client checks state matches)
-
-4. Client exchanges the code at the token endpoint
-   (from the server for a web app or BFF; from the device for a mobile or desktop app):
-   POST /token
-   grant_type=authorization_code&amp;code=AUTH_CODE
-   &amp;redirect_uri=…&amp;client_id=shop-web&amp;code_verifier=ORIGINAL
-
-5. Response: access_token, id_token, refresh_token, expires_in
-
-6. Client calls the API:
-   Authorization: Bearer ACCESS_TOKEN</code></pre></div>
-    <p class="note">PKCE proves the party redeeming the code is the one that started the flow, so a stolen code is useless.</p>
-  </article>
-
-  <article class="card"><h3>Client credentials (machine to machine)</h3>
-<div class="snip"><pre><code>curl -s https://auth.example.com/oauth2/token \
-  -u "$CLIENT_ID:$CLIENT_SECRET" \
-  -d grant_type=client_credentials \
-  -d scope=orders.read
-
-# → {"access_token":"…","token_type":"Bearer","expires_in":3600}
-curl -H "Authorization: Bearer $TOKEN" https://api.example.com/v1/orders/123</code></pre></div>
-    <ul>
-      <li>Cache the token until shortly before it expires; do not fetch one per call.</li>
-      <li>Prefer private-key JWT or mTLS client authentication over shared secrets where supported.</li>
-      <li>On GCP, prefer service account identity over client secrets.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Validating an access token (JWT)</h3>
-    <ol>
-      <li>Fetch the issuer's keys from its JWKS URL (from <code>/.well-known/openid-configuration</code>); cache them.</li>
-      <li>Verify the <b>signature</b> with the key matching the token's <code>kid</code>; accept only the expected algorithm (e.g. RS256 or ES256). Never <code>none</code>.</li>
-      <li>Check <code>iss</code> equals your issuer exactly.</li>
-      <li>Check <code>aud</code> contains your API's identifier.</li>
-      <li>Check <code>exp</code> (and <code>nbf</code>) with small clock skew.</li>
-      <li>Check required <b>scopes</b> for the operation.</li>
-      <li>Then check <b>object-level permission</b> in your own code.</li>
-    </ol>
-<div class="snip"><pre><code># Python (PyJWT)
-jwks = jwt.PyJWKClient("https://auth.example.com/.well-known/jwks.json")
-key = jwks.get_signing_key_from_jwt(token)
-claims = jwt.decode(token, key.key, algorithms=["RS256"],
-                    audience="https://api.example.com", issuer="https://auth.example.com/")</code></pre></div>
-<div class="snip"><pre><code># Spring Boot resource server
-spring.security.oauth2.resourceserver.jwt.issuer-uri: https://auth.example.com/
-spring.security.oauth2.resourceserver.jwt.audiences: https://api.example.com
-
-# Quarkus
-quarkus.oidc.auth-server-url=https://auth.example.com/
-quarkus.oidc.token.audience=https://api.example.com</code></pre></div>
-    <p class="note">Opaque (non-JWT) tokens are validated by calling the server's introspection endpoint (RFC 7662).</p>
-  </article>
-
-  <article class="card"><h3>Scopes, claims and roles</h3>
-    <ul>
-      <li><b>Scopes</b> limit what a client may do on the user's behalf (<code>orders.read</code>). They are about the app, not the user's own rights.</li>
-      <li><b>Claims</b> are facts in the token: <code>sub</code> (stable user ID), <code>email</code>, <code>groups</code>, custom claims.</li>
-      <li><b>Roles and permissions</b> are your application's rules. Load them from your source of truth; do not trust a role the client could have influenced.</li>
-      <li>Key users by <code>sub</code> plus issuer, not by email, which can change or be reused.</li>
-      <li>Keep tokens small; large claim sets slow every request.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Tokens in browsers and apps</h3>
-    <ul>
-      <li><b>Best for SPAs:</b> a backend-for-frontend does the OAuth flow and keeps tokens; the browser gets an <code>HttpOnly; Secure; SameSite</code> session cookie.</li>
-      <li><b>Avoid localStorage</b> for tokens: any XSS can read it.</li>
-      <li><b>Short access tokens</b> (minutes) and <b>rotating refresh tokens</b> that are revoked if reused.</li>
-      <li><b>Mobile:</b> store refresh tokens in the platform keychain / keystore; use the system browser, not an embedded web view, for login.</li>
-      <li><b>Logout</b> revokes refresh tokens and ends the provider session if needed.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Common mistakes</h3>
-    <ul>
-      <li>Accepting a token without checking audience: a token for another API works on yours.</li>
-      <li>Using the ID token to call APIs.</li>
-      <li>Loose redirect URIs (wildcards, prefix matching): codes get sent to an attacker.</li>
-      <li>Missing or unchecked <code>state</code>: login CSRF.</li>
-      <li>Implicit flow or tokens in URLs, where they leak through logs and referrers.</li>
-      <li>Long-lived access tokens with no revocation.</li>
-      <li>Trusting scopes alone and skipping object-level checks.</li>
-      <li>Rolling your own authorisation server instead of using a maintained one.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Beyond the basics</h3>
-    <ul>
-      <li><b>Sender-constrained tokens</b> (DPoP or mutual TLS) make a stolen token useless to anyone else.</li>
-      <li><b>Pushed authorisation requests (PAR)</b> send the request parameters server to server first.</li>
-      <li><b>Token exchange</b> (RFC 8693) for a service calling another on the user's behalf.</li>
-      <li><b>OAuth 2.1</b> (draft) consolidates current best practice: PKCE everywhere, no implicit or password grants.</li>
-      <li><b>OAuth for AI agents and MCP servers:</b> agents act with delegated, scoped, revocable tokens, never the user's password.</li>
-    </ul>
-  </article>
-
-  <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain access, ID and refresh tokens and scopes</li><li>Protect an API with a JWT resource server configuration</li><li>Use the authorisation code flow with PKCE through a library</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Validate tokens fully: signature, issuer, audience, expiry, scopes</li><li>Choose the right flow per client type</li><li>Store tokens safely in web and mobile apps</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design identity for a product: providers, BFF, service-to-service, token lifetimes</li><li>Review OAuth implementations for the common mistakes</li><li>Integrate gateways (Apigee) and workload identity</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own identity architecture across the organisation</li><li>Apply advanced specs (DPoP, PAR, token exchange)</li><li>Lead identity incidents and provider migrations</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>RFC 9700 security best current practice</li><li>OpenID Connect discovery and dynamic registration</li><li>Token exchange (RFC 8693)</li><li>Sender-constrained tokens (DPoP, mTLS)</li><li>Workload Identity Federation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://oauth.net/2/" target="_blank" rel="noopener">OAuth 2.0 (oauth.net)</a><span class="lnote"> Overview and links to every OAuth spec</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc6749" target="_blank" rel="noopener">RFC 6749: OAuth 2.0</a><span class="lnote"> The core framework</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc7636" target="_blank" rel="noopener">RFC 7636: PKCE</a><span class="lnote"> Proof Key for Code Exchange</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700" target="_blank" rel="noopener">RFC 9700: OAuth 2.0 Security Best Current Practice</a><span class="lnote"> Current security guidance</span></li><li><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener">OpenID Connect Core</a><span class="lnote"> The OIDC specification</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP OAuth 2.0 cheat sheet</a><span class="lnote"> Practical security checklist</span></li><li><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a><span class="lnote"> Decode and inspect JWTs (never paste production tokens)</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://www.rfc-editor.org/rfc/rfc6749.txt" target="_blank" rel="noopener">RFC 6749 OAuth 2.0</a>; <a href="https://www.rfc-editor.org/rfc/rfc7636.txt" target="_blank" rel="noopener">RFC 7636 PKCE (code_challenge = BASE64URL(SHA256(verifier)))</a>; <a href="https://www.rfc-editor.org/rfc/rfc9700.txt" target="_blank" rel="noopener">RFC 9700 Security BCP (implicit SHOULD NOT, password grant MUST NOT, exact redirect matching)</a>; <a href="https://www.rfc-editor.org/rfc/rfc7662.txt" target="_blank" rel="noopener">RFC 7662 Token Introspection</a>; <a href="https://www.rfc-editor.org/rfc/rfc8693.txt" target="_blank" rel="noopener">RFC 8693 Token Exchange</a>; <a href="https://www.rfc-editor.org/rfc/rfc8628.txt" target="_blank" rel="noopener">RFC 8628 Device Authorization Grant</a>; <a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/" target="_blank" rel="noopener">OAuth 2.1 still an Internet-Draft (draft-ietf-oauth-v2-1-17)</a>; <a href="https://en.wikipedia.org/w/index.php?title=OpenID&action=raw" target="_blank" rel="noopener">Wikipedia: OpenID Connect is an authentication layer on OAuth 2.0</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/main/module/spring-boot-security-oauth2-resource-server/src/main/java/org/springframework/boot/security/oauth2/server/resource/autoconfigure/OAuth2ResourceServerProperties.java" target="_blank" rel="noopener">Spring Boot resource server properties (issuerUri, audiences)</a>; <a href="https://raw.githubusercontent.com/quarkusio/quarkus/main/docs/src/main/asciidoc/security-oidc-bearer-token-authentication.adoc" target="_blank" rel="noopener">Quarkus OIDC bearer token guide (quarkus.oidc.token.audience)</a>; <a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener">OpenID Connect Core</a>. A few claims could not be confirmed at their official source from here and are being re-checked.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BOAuth%20%26%20OIDC%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
-
-  </div>
-</section>
-
-<!-- ================= SECURITY ================= -->
-<section class="panel" id="p-security" data-name="Security">
-  <div class="panel-head"><h2>Security</h2><p>The risks every engineer must recognise, and the habits that prevent most of them: in application code, APIs, data, cloud and the supply chain.</p></div>
-  <div class="grid">
-
-  <article class="card wide"><h3>Principles</h3>
-    <ul>
-      <li><b>Least privilege:</b> every person, service and token gets only the access it needs, for only as long as it needs it.</li>
-      <li><b>Defence in depth:</b> several independent layers (network, identity, application, data), so one failure is not a breach.</li>
-      <li><b>Secure by default:</b> private unless opened, denied unless allowed, encrypted unless there is a reason not to be.</li>
-      <li><b>Never trust input:</b> anything from a user, another service, a file, a web page or a model's output is validated before use.</li>
-      <li><b>No secrets in code, images, logs or chat.</b> They live in a secret manager and are injected at runtime.</li>
-      <li><b>Fail closed:</b> when an auth or permission check cannot run, deny. A gate that opens on error is not a gate.</li>
-      <li><b>Assume breach:</b> log and alert so that a compromise is noticed and contained quickly.</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>OWASP Top 10 (2025 edition)</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>Risk</th><th>Looks like</th><th>Prevent with</th></tr></thead>
-      <tbody>
-      <tr><td>A01 Broken access control</td><td><code>GET /api/orders/123</code> returns another user's order; the server fetches a user-supplied URL that points to an internal service or metadata endpoint (SSRF, now part of this category)</td><td>Check ownership on every request, server side; deny by default; test it. For URLs: allow-list destinations, block internal ranges, separate egress</td></tr>
-      <tr><td>A02 Security misconfiguration</td><td>Public bucket, debug endpoints on, default passwords, open CORS</td><td>Infrastructure as code, reviewed; secure defaults; scanners</td></tr>
-      <tr><td>A03 Software supply chain failures</td><td>An old library with a known CVE; a compromised dependency or build tool</td><td>An SBOM, dependency updates, SCA scanning, components from trusted sources only, protected CI</td></tr>
-      <tr><td>A04 Cryptographic failures</td><td>Plain HTTP, passwords hashed with MD5, keys in the repo</td><td>TLS everywhere, argon2id/bcrypt for passwords, managed keys</td></tr>
-      <tr><td>A05 Injection</td><td>SQL built by string concatenation; shell commands with user input</td><td>Parameterised queries, no shell with input, allow-lists</td></tr>
-      <tr><td>A06 Insecure design</td><td>No rate limit on login; reset tokens that never expire</td><td>Threat model at design time; abuse cases as requirements</td></tr>
-      <tr><td>A07 Authentication failures</td><td>Weak passwords allowed, no MFA, session never expires</td><td>Use a proven identity provider; MFA; short-lived tokens</td></tr>
-      <tr><td>A08 Software or data integrity failures</td><td>Unsigned build artefacts; deserialising untrusted data</td><td>Signed images, pinned dependencies, verified artefacts</td></tr>
-      <tr><td>A09 Security logging &amp; alerting failures</td><td>A breach discovered months later; logs nobody is alerted on</td><td>Audit logs, alerts on suspicious patterns, retained logs</td></tr>
-      <tr><td>A10 Mishandling of exceptional conditions</td><td>An error path that fails open, leaks a stack trace, or leaves a transaction half done</td><td>Handle errors where they happen and in one global handler; fail closed and roll back; rate limits and quotas</td></tr>
-      </tbody></table></div>
-    <p class="note">The 2021 edition numbered these differently and had SSRF as its own A10. OWASP revises the list every few years; check owasp.org for the latest edition. The API Security Top 10 is the companion list for APIs.</p>
-  </article>
-
-  <article class="card"><h3>Injection: always parameterise</h3>
-<div class="snip"><pre><code>// Java JDBC
-// WRONG: "SELECT * FROM orders WHERE order_ref = '" + orderRef + "'"
-PreparedStatement ps = conn.prepareStatement(
-    "SELECT * FROM orders WHERE order_ref = ?");
-ps.setString(1, orderRef);
-
-// Spring JdbcClient
-jdbc.sql("SELECT * FROM orders WHERE order_ref = :order_ref").param("order_ref", orderRef)...
-
-# Python psycopg
-cur.execute("SELECT * FROM orders WHERE order_ref = %s", (order_ref,))   # never f-strings
-
-# BigQuery
-bigquery.QueryJobConfig(query_parameters=[
-    bigquery.ScalarQueryParameter("order_ref", "STRING", order_ref)])      # WHERE order_ref = @order_ref</code></pre></div>
-    <ul>
-      <li>Identifiers (table and column names) cannot be parameters: pick them from an allow-list.</li>
-      <li>Never pass user input to a shell. Use the library call, or an argument list without a shell.</li>
-      <li>Escape output for its context (HTML, JSON, URLs) to prevent XSS. Use the framework's templating, not string building.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Authentication &amp; authorisation</h3>
-    <ul>
-      <li><b>Authentication</b> is who you are; <b>authorisation</b> is what you may do. Most breaches are authorisation bugs.</li>
-      <li><b>Use OIDC / OAuth 2.0</b> with a proven provider rather than building login yourself. For browser apps, the authorisation code flow with PKCE.</li>
-      <li><b>JWTs:</b> verify the signature, issuer, audience and expiry on every request; keep them short-lived; never accept <code>alg: none</code>; never put secrets in them (they are only encoded).</li>
-      <li><b>Refresh tokens</b> rotate on use and are revocable; in browsers keep them in <code>HttpOnly; Secure; SameSite</code> cookies.</li>
-      <li><b>Check permissions on the server for every request</b> and every object: "is this user allowed this order?", not just "is the user logged in?".</li>
-      <li><b>Load roles from the source of truth</b> on each authentication; do not trust roles a client sends.</li>
-      <li><b>Passwords:</b> argon2id or bcrypt, rate-limited login, breached-password checks, MFA for admins.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Spring Security: a stateless API</h3>
-<div class="snip"><pre><code>@Bean
-SecurityFilterChain api(HttpSecurity http) throws Exception {
-  return http
-    .authorizeHttpRequests(a -&gt; a
-        .requestMatchers("/actuator/health/**").permitAll()
-        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-        .anyRequest().authenticated())            // deny by default
-    .oauth2ResourceServer(o -&gt; o.jwt(Customizer.withDefaults()))
-    .sessionManagement(s -&gt; s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-    .csrf(c -&gt; c.disable())   // only safe when auth is a bearer header, not a cookie
-    .build();
-}
-
-// object-level check in the service, not only the URL rule
-if (!caseFile.ownerId().equals(currentUserId)) throw new AccessDeniedException("not yours");</code></pre></div>
-  </article>
-
-  <article class="card"><h3>Web &amp; API hardening</h3>
-    <ul>
-      <li><b>HTTPS only,</b> with HSTS (<code>Strict-Transport-Security</code>).</li>
-      <li><b>Content-Security-Policy</b> to limit where scripts load from; <code>X-Content-Type-Options: nosniff</code>; <code>frame-ancestors</code> against clickjacking.</li>
-      <li><b>CORS:</b> list exact origins; never reflect any origin with credentials allowed.</li>
-      <li><b>CSRF:</b> needed when the browser sends cookies automatically; use tokens or <code>SameSite</code> cookies.</li>
-      <li><b>Rate limits</b> on login, signup, password reset and expensive endpoints.</li>
-      <li><b>Validate request bodies</b> (types, lengths, ranges) and reject unknown fields where it matters.</li>
-      <li><b>Errors:</b> generic messages to the client, details to the logs. No stack traces in responses.</li>
-      <li><b>Uploads:</b> check type and size, store outside the web root, scan if users share them.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Secrets</h3>
-<div class="snip"><pre><code># store
-echo -n "$VALUE" | gcloud secrets create db-password --data-file=-
-# grant one workload access to one secret
-gcloud secrets add-iam-policy-binding db-password \
-  --member=serviceAccount:api@p.iam.gserviceaccount.com \
-  --role=roles/secretmanager.secretAccessor
-# rotate: add a version, roll the workload, then disable and destroy the old one
-gcloud secrets versions add db-password --data-file=new.txt
-gcloud secrets versions destroy 1 --secret=db-password</code></pre></div>
-    <ul>
-      <li>No service account JSON keys: Workload Identity Federation for CI, attached service accounts for workloads.</li>
-      <li>A rotation is not finished until old versions are destroyed.</li>
-      <li>Scan commits for secrets (gitleaks, GitHub secret scanning). A leaked secret is rotated, not just deleted from Git: history and forks keep it.</li>
-      <li>Never print secrets in logs, CI output, error messages or AI prompts.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Cloud security on GCP</h3>
-    <ul>
-      <li><b>IAM:</b> one service account per workload; predefined narrow roles; no Owner or Editor for services; grant to groups, not individuals.</li>
-      <li><b>Organisation policies:</b> block public buckets, service account key creation, and external IPs where not needed.</li>
-      <li><b>Network:</b> private IPs for databases; ingress limited to the load balancer; Cloud Armor in front of public apps.</li>
-      <li><b>Data:</b> encryption at rest is on by default; CMEK when you must control keys; VPC Service Controls around sensitive datasets.</li>
-      <li><b>Audit logs:</b> Admin Activity is always on; enable Data Access logs for sensitive services so reads are attributable.</li>
-      <li><b>Security Command Center</b> surfaces misconfigurations and threats across the project.</li>
-      <li><b>Separate projects</b> for dev and prod; nobody's laptop has standing prod write access.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Threat modelling in 30 minutes</h3>
-    <ol>
-      <li>Draw the data flow: users, services, stores, and the trust boundaries between them.</li>
-      <li>For each boundary, ask STRIDE questions.</li>
-      <li>List the threats, rate likelihood and impact, and pick mitigations.</li>
-      <li>Turn mitigations into tickets and tests.</li>
-    </ol>
-    <div class="tbl"><table>
-      <thead><tr><th>STRIDE</th><th>Question</th></tr></thead>
-      <tbody>
-      <tr><td>Spoofing</td><td>Can someone pretend to be another user or service?</td></tr>
-      <tr><td>Tampering</td><td>Can data be changed in transit or at rest?</td></tr>
-      <tr><td>Repudiation</td><td>Can someone deny an action because nothing recorded it?</td></tr>
-      <tr><td>Information disclosure</td><td>Can data leak to someone not entitled to it?</td></tr>
-      <tr><td>Denial of service</td><td>Can someone exhaust a resource or the budget?</td></tr>
-      <tr><td>Elevation of privilege</td><td>Can someone gain rights they should not have?</td></tr>
-      </tbody></table></div>
-  </article>
-
-  <article class="card"><h3>Data protection &amp; privacy</h3>
-    <ul>
-      <li><b>Know where personal data is:</b> tag columns and datasets; keep an inventory.</li>
-      <li><b>Collect less, keep less:</b> only what the purpose needs, with a retention period.</li>
-      <li><b>Mask or tokenise</b> personal data in non-production environments and analytics.</li>
-      <li><b>Honour legal obligations:</b> deletion requests, legal holds, consent. Apply them on every read path, not only in one table.</li>
-      <li><b>Know the law that applies:</b> for India, the Digital Personal Data Protection Act, 2023; GDPR for EU residents.</li>
-      <li><b>Logs are data too:</b> no personal data or tokens in log lines unless necessary and protected.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Supply chain &amp; CI</h3>
-    <ul>
-      <li>Pin dependencies with lockfiles; review what new dependencies bring.</li>
-      <li>Automated updates (Dependabot, Renovate) gated by tests.</li>
-      <li>Scan: SAST (CodeQL, Semgrep), SCA (Dependabot alerts, OSV), images (Trivy), secrets (gitleaks).</li>
-      <li>Pin third-party GitHub Actions to a commit SHA; give workflows the minimum <code>permissions:</code>.</li>
-      <li>Protect <code>main</code> and deploy tags; require reviews and checks; restrict who can push release tags.</li>
-      <li>Sign images and generate SBOMs so you can prove what is running.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Security testing</h3>
-    <ul>
-      <li><b>Unit and integration tests for access control:</b> user A cannot read user B's object; an expired token is refused; a missing role gets 403.</li>
-      <li><b>SAST</b> reads code for dangerous patterns; <b>DAST</b> (OWASP ZAP) probes the running app.</li>
-      <li><b>Dependency and image scans</b> on every build.</li>
-      <li><b>Fuzzing</b> parsers and file handlers with malformed input.</li>
-      <li><b>Penetration test</b> before launch and after major changes, by someone independent.</li>
-      <li><b>Prove each guard red:</b> try the forbidden action in a test and watch it fail.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Cryptography: use it, do not invent it</h3>
-    <ul>
-      <li><b>Know the three jobs:</b> hashing proves something has not changed and cannot be reversed; encryption hides data and can be reversed with the key; signing proves who produced something.</li>
-      <li><b>Passwords are hashed, never encrypted,</b> with a slow, salted algorithm. The OWASP Password Storage Cheat Sheet recommends Argon2id (at least 19 MiB of memory, 2 iterations, parallelism 1); scrypt if Argon2id is not available; bcrypt (work factor 10 or more, 72-byte password limit) for legacy systems; PBKDF2 with HMAC-SHA-256 and 600,000 or more iterations where FIPS-140 is required. Fast hashes such as SHA-256 alone are not suitable.</li>
-      <li><b>Use a vetted library and its defaults.</b> Never write your own algorithm or protocol.</li>
-      <li><b>Random means a secure generator:</b> <code>SecureRandom</code> in Java, the <code>secrets</code> module in Python, never <code>Math.random</code> or <code>random</code> for tokens.</li>
-      <li><b>Encrypt in transit</b> (TLS 1.2 or 1.3 everywhere, inside the network too) <b>and at rest,</b> and keep keys in a key management service, apart from the data, with rotation.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Containers and Kubernetes</h3>
-    <ul>
-      <li><b>Small images:</b> a minimal or distroless base has fewer packages to patch. Scan images in CI, pin them by digest, and sign them.</li>
-      <li><b>Never bake secrets into an image</b>; mount them at run time from a secret manager.</li>
-      <li><b>Pod Security Standards</b> define three cumulative profiles: Privileged, Baseline and Restricted. Aim for Restricted, and enforce it per namespace with the label <code>pod-security.kubernetes.io/enforce: restricted</code>.</li>
-      <li><b>Least privilege in the cluster:</b> narrow RBAC roles, no service-account token where a pod does not call the API, and NetworkPolicies that deny by default.</li>
-    </ul>
-<div class="snip"><pre><code># container securityContext that meets Restricted
-securityContext:
-  runAsNonRoot: true
-  allowPrivilegeEscalation: false
-  capabilities:
-    drop: ["ALL"]
-  seccompProfile:
-    type: RuntimeDefault
-  readOnlyRootFilesystem: true   # good practice too</code></pre></div>
-  </article>
-
-  <article class="card"><h3>Networks and zero trust</h3>
-    <ul>
-      <li><b>Zero trust:</b> being inside the network earns no trust. Every call is authenticated and authorised, service to service as well as user to service (mTLS and tokens; see <a href="#servicemesh">Service Mesh</a>).</li>
-      <li><b>Deny by default:</b> firewalls and security groups open only the ports and sources a service needs. Control outbound traffic too: a compromised service that cannot reach the internet cannot send your data out.</li>
-      <li><b>Keep databases and internal services off the public internet;</b> use private networking and private endpoints.</li>
-      <li><b>Protect the edge:</b> a WAF and DDoS protection in front of public endpoints, rate limits on APIs (see <a href="#apigee">Apigee</a>).</li>
-      <li><b>Segment:</b> a breach in one area should not open every other one.</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>AI and LLM security</h3>
-    <p>The OWASP GenAI LLM Top 10 (2026 edition, published August 2026) lists the main risks for applications built on language models:</p>
-    <ul>
-      <li><b>LLM01 Prompt Injection.</b> Treat every input, including retrieved documents, web pages and tool results, as possibly carrying instructions. Separate instructions from data; never let content alone trigger an action.</li>
-      <li><b>LLM02 Sensitive Information Disclosure.</b> Do not put data in a prompt that the user may not see; filter outputs; check what your provider keeps.</li>
-      <li><b>LLM03 Excessive Agency.</b> Give tools the least privilege they need, and require a person's approval for actions that change things.</li>
-      <li><b>LLM04 Supply Chain.</b> Vet models, datasets, plugins and MCP servers as you would any dependency.</li>
-      <li><b>LLM05 Data and Model Poisoning.</b> Know where training and retrieval data come from, and who can write to them.</li>
-      <li><b>LLM06 Unbounded Consumption.</b> Rate limits, token budgets and timeouts per user and per job.</li>
-      <li><b>LLM07 Misinformation.</b> Ground answers in sources, cite them, and evaluate; never present a guess as fact.</li>
-      <li><b>LLM08 Hidden Context Exposure.</b> Assume the system prompt and tool schemas can be extracted: never put secrets or security rules only there.</li>
-      <li><b>LLM09 Vector and Embedding Weaknesses.</b> Apply access control in retrieval, so a user can only retrieve what they may read.</li>
-      <li><b>LLM10 Improper Output Handling.</b> Treat model output as untrusted input: validate, escape and parameterise it before it reaches a browser, a shell or a query.</li>
-    </ul>
-    <p class="note">More in <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#mcp">MCP</a> and <a href="#agentharness">Agent Harness</a>.</p>
-  </article>
-
-  <article class="card"><h3>People: the most targeted part of any system</h3>
-    <ul>
-      <li><b>Most attacks start with a person,</b> not a server: a convincing email, message or call.</li>
-      <li><b>Urgency is the warning sign.</b> "Pay this now", "reset my access", "send me the file": check through another channel you already trust before acting. Voices and video can now be faked convincingly.</li>
-      <li><b>Use phishing-resistant sign-in</b> where you can (passkeys or hardware security keys), a password manager with a unique password everywhere, and multi-factor authentication on every account that offers it.</li>
-      <li><b>Keep devices updated and locked,</b> and never leave a logged-in laptop unattended.</li>
-      <li><b>Report mistakes at once, without blame.</b> A clicked link reported in five minutes is a small incident; hidden for a week, it is a big one.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Security logging and detection</h3>
-    <ul>
-      <li><b>Log what an investigator will need:</b> sign-ins that succeed and fail, permission and role changes, admin actions, data exports, and access denied.</li>
-      <li><b>Never log secrets,</b> tokens, passwords or full card numbers, and mask personal data.</li>
-      <li><b>Protect the logs:</b> separate access, append-only or write-once storage, kept long enough to investigate.</li>
-      <li><b>Alert on what matters:</b> many failed sign-ins, access from somewhere new, a sudden large export, a disabled control. See <a href="#observability">Observability</a>.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Backups and ransomware</h3>
-    <ul>
-      <li><b>A common rule of thumb is 3-2-1:</b> three copies of your data, on two different kinds of storage, with one copy off-site.</li>
-      <li><b>Keep one copy immutable or offline,</b> with separate credentials, so an attacker who gets in cannot delete or encrypt the backups too.</li>
-      <li><b>A backup you have not restored is a hope.</b> Test restores on a schedule and time them.</li>
-      <li><b>Agree the targets:</b> how much data you can lose (RPO) and how long you can be down (RTO), then design to meet them.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Compliance frameworks you will meet</h3>
-    <ul>
-      <li><b>ISO/IEC 27001:</b> an information security management system, certified by audit.</li>
-      <li><b>SOC 2:</b> an auditor's report on a service organisation's controls, common with US customers.</li>
-      <li><b>PCI DSS:</b> rules for handling payment card data (see <a href="#payments">Payment Gateways</a>).</li>
-      <li><b>Data protection law:</b> the GDPR in the EU, the UK GDPR, India's Digital Personal Data Protection Act, and others where your users live.</li>
-      <li><b>Compliance is not security.</b> A certificate shows controls existed when audited; good engineering keeps them working every day.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Security checklist for a pull request</h3>
-    <ul>
-      <li>Is every new endpoint authenticated, and does it check ownership of each object?</li>
-      <li>Is all input validated, and every query parameterised?</li>
-      <li>Any new secret? Is it in the secret manager, not in code or config?</li>
-      <li>Any new permission or IAM role? Is it the narrowest that works?</li>
-      <li>Does anything new get logged that should not be (tokens, personal data)?</li>
-      <li>New dependency: maintained, licensed acceptably, no known CVEs?</li>
-      <li>What happens on error: does it fail closed?</li>
-      <li>Is there a test that proves the forbidden case is refused?</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>When something goes wrong</h3>
-    <ol>
-      <li><b>Contain:</b> revoke the leaked key, disable the account, block the IP, take the endpoint down.</li>
-      <li><b>Preserve evidence:</b> keep logs and snapshots before cleaning up.</li>
-      <li><b>Assess:</b> what was accessed, since when, whose data.</li>
-      <li><b>Notify:</b> security lead, then customers and regulators as the law requires and within its deadlines.</li>
-      <li><b>Fix the cause</b> and add a guard (test, policy, alert) so it cannot recur.</li>
-    </ol>
-  </article>
-
-  <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Spot phishing; use a password manager and passkeys</li><li>Parameterise every query; never commit secrets</li><li>Check that users can only reach their own data</li><li>Apply the PR security checklist</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Hash passwords correctly and run containers to the Restricted profile</li><li>Implement OAuth 2.0 / OIDC with a provider and validate tokens properly</li><li>Use least-privilege IAM and a secret manager</li><li>Fix findings from SAST, SCA and image scans</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Threat-model a system and turn threats into tests</li><li>Design authentication, authorisation and audit for a product</li><li>Respond to and contain a security incident</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the security architecture and policies across teams</li><li>Lead compliance (DPDP, GDPR, SOC 2) and external testing</li><li>Build a security culture and secure-by-default platforms</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OWASP ASVS verification levels</li><li>OAuth 2.0 security best current practice</li><li>Supply-chain security with SLSA</li><li>Cloud security posture management</li><li>LLM and AI application security</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a><span class="lnote"> Most critical web application risks</span></li><li><a href="https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/" target="_blank" rel="noopener">OWASP GenAI LLM Top 10 (2026)</a><span class="lnote"> Risks for applications built on language models</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP Password Storage Cheat Sheet</a><span class="lnote"> Argon2id, scrypt, bcrypt and PBKDF2 settings</span></li><li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/" target="_blank" rel="noopener">Kubernetes Pod Security Standards</a><span class="lnote"> Privileged, Baseline and Restricted profiles</span></li><li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise how-tos for each security topic</span></li><li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a><span class="lnote"> Risks specific to APIs</span></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a><span class="lnote"> A checklist of security requirements by level</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener">Spring Security reference</a><span class="lnote"> Authentication and authorisation in Spring</span></li><li><a href="https://cloud.google.com/security/best-practices" target="_blank" rel="noopener">Google Cloud security best practices</a><span class="lnote"> IAM, network and data protection on GCP</span></li><li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA</a><span class="lnote"> Supply-chain levels for software artefacts</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/OWASP/Top10/master/2025/docs/en/index.md" target="_blank" rel="noopener">OWASP Top 10 2025 index (source repo)</a>; <a href="https://raw.githubusercontent.com/OWASP/Top10/master/2025/docs/en/0x00_2025-Introduction.md" target="_blank" rel="noopener">OWASP Top 10 2025 introduction (SSRF rolled into A01, A10 new)</a>; <a href="https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/README.md" target="_blank" rel="noopener">OWASP GenAI LLM Top 10 2026 list</a>; <a href="https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/README.md" target="_blank" rel="noopener">OWASP LLM project README (2026 published August 4, 2026)</a>; <a href="https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Password_Storage_Cheat_Sheet.md" target="_blank" rel="noopener">OWASP Password Storage Cheat Sheet</a>; <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/" target="_blank" rel="noopener">Kubernetes Pod Security Standards</a>; <a href="https://kubernetes.io/docs/concepts/security/pod-security-admission/" target="_blank" rel="noopener">Kubernetes Pod Security Admission (namespace labels)</a>; <a href="https://docs.cloud.google.com/logging/docs/audit" target="_blank" rel="noopener">Cloud Audit Logs (Admin Activity always written)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/main/module/spring-boot-security-oauth2-resource-server/src/main/java/org/springframework/boot/security/oauth2/server/resource/autoconfigure/OAuth2ResourceServerProperties.java" target="_blank" rel="noopener">Spring Boot OAuth2ResourceServerProperties (issuer-uri, audiences)</a>; <a href="https://www.rfc-editor.org/rfc/rfc9700.txt" target="_blank" rel="noopener">RFC 9700 OAuth 2.0 Security BCP</a>; <a href="https://docs.cloud.google.com/sdk/gcloud/reference/secrets/create" target="_blank" rel="noopener">gcloud secrets reference</a>; <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html" target="_blank" rel="noopener">Spring Security: JWT resource server</a>; <a href="https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html" target="_blank" rel="noopener">Spring Security: session management (STATELESS)</a>; <a href="https://docs.spring.io/spring-framework/reference/data-access/jdbc/core.html" target="_blank" rel="noopener">Spring Framework: JdbcClient</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BSecurity%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
-
-  </div>
-</section>
-
-<!-- ================= KEYS, CERTIFICATES AND SSH ================= -->
-<section class="panel" id="p-pki" data-name="Keys, Certificates &amp; SSH">
-  <div class="panel-head"><h2>Keys, certificates and SSH</h2><p>HTTPS, SSH logins, signed Git commits and service-to-service mTLS all rest on one idea: a pair of keys, one public and one private. This page explains the pair, how a certificate ties a public key to a name, what a certificate signing request (CSR) and a certificate authority (CA) do, and how SSH keys and Git signing work. The OpenSSL, ssh-keygen and Git commands on this page were run (OpenSSL <span data-other-version>3.0.13</span>, OpenSSH 9.6, Git 2.43), and the error messages are the real ones. <code>ssh -T git@github.com</code> is GitHub&rsquo;s own documented test and was not run here. HTTP and the TLS handshake are on <a href="#networking">Networking</a>; SSH tunnels and jump hosts are on <a href="#linux">Linux</a>.</p></div>
-  <div class="grid">
-
-  <article class="card wide"><h3>One idea underneath: a key pair</h3>
-    <ul>
-      <li><b>Two keys, made together.</b> The public key can be shown to anyone. The private key never leaves its owner: not in email, not in a ticket, not in a repository.</li>
-      <li><b>Encrypt:</b> anyone with the public key can encrypt a message, but only the holder of the private key can decrypt it.</li>
-      <li><b>Sign:</b> the private key signs, and anyone with the public key can check that signature. This is how a server proves who it is, how an SSH key logs you in, and how a commit is marked as yours.</li>
-    </ul>
-    <div class="tbl"><table>
-      <thead><tr><th>If this is true for you</th><th>Key type it leans towards (<i>analysis</i>)</th></tr></thead>
-      <tbody>
-      <tr><td>A new SSH key for you or a service</td><td>Ed25519: the type GitHub&rsquo;s own instructions generate</td></tr>
-      <tr><td>A legacy system that does not support Ed25519</td><td>RSA, 4096 bits, as GitHub suggests for that case</td></tr>
-      <tr><td>A TLS certificate for a website or service</td><td>ECDSA (for example P-256) or RSA; check what your clients and CA support</td></tr>
-      <tr><td>You want the key to need a hardware token</td><td>A security-key type such as <code>ed25519-sk</code></td></tr>
-      </tbody></table></div>
-  </article>
-
-  <article class="card"><h3>What a certificate is</h3>
-    <p>A certificate authority (CA) stores, signs and issues digital certificates. A certificate certifies that a public key belongs to the named subject, so others can rely on it. Web certificates use the X.509 format (RFC 5280). The fields you will read most:</p>
-    <ul>
-      <li><b>Subject</b> and <b>Subject Alternative Name (SAN):</b> who it is for. Clients match the hostname against the SAN.</li>
-      <li><b>Issuer:</b> the CA that signed it.</li>
-      <li><b>Validity:</b> not before, not after.</li>
-      <li><b>Public key,</b> and the issuer&rsquo;s <b>signature</b> over all of the above.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>The chain of trust</h3>
-    <p>Your operating system or browser ships a store of trusted <b>root</b> certificates. Roots sign <b>intermediate</b> CAs, and intermediates sign the <b>leaf</b> certificate on your server. A client validates the chain from the leaf up to a root it already trusts.</p>
-    <p class="note"><i>Analysis:</i> the server must send its leaf and the intermediates; the client already has the root. A missing intermediate is a common cause of &ldquo;works in my browser, fails in my code&rdquo;, because some clients fetch a missing intermediate themselves and many libraries do not.</p>
-  </article>
-
-  <article class="card wide"><h3>A certificate signing request (CSR), step by step</h3>
-    <p>A CSR is the message you send a CA to apply for a certificate. RFC 2986 defines it in three parts: the request information (your name, your public key and any attributes), a signature algorithm, and a signature over the request information made with your private key. That signature proves you hold the private key, which never goes to the CA.</p>
-<pre><code># 1. Make a private key and a CSR, with the names the certificate must cover
-openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -noenc \
-  -keyout server.key -out server.csr \
-  -subj "/CN=shop.internal" \
-  -addext "subjectAltName=DNS:shop.internal,DNS:api.shop.internal"
-
-# 2. Check it before you send it
-openssl req -in server.csr -noout -verify      # Certificate request self-signature verify OK
-openssl req -in server.csr -noout -text        # read the subject and the SAN
-
-# 3. Send server.csr (never server.key) to the CA; it returns server.crt
-# 4. Read what came back, and check it matches your key
-openssl x509 -in server.crt -noout -subject -issuer -dates -ext subjectAltName
-openssl x509 -in server.crt -noout -pubkey | openssl sha256
-openssl pkey -in server.key -pubout       | openssl sha256   # the two hashes must match</code></pre>
-  </article>
-
-  <article class="card wide"><h3>Your own CA, for a lab or internal services</h3>
-<pre><code># a root CA (keep ca.key offline in real use)
-openssl req -x509 -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -noenc \
-  -keyout ca.key -out ca.crt -days 365 -subj "/CN=Lab Root CA"
-
-# the CA signs the CSR from the card above, keeping its SAN
-openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
-  -out server.crt -days 90 -copy_extensions copy
-
-# validate the chain, as a client would
-openssl verify -CAfile ca.crt server.crt     # server.crt: OK</code></pre>
-    <p class="note">These commands were run with OpenSSL <span data-other-version>3.0.13</span>. <code>-copy_extensions</code> on <code>openssl x509 -req</code> is documented in the 3.x manual; on an older OpenSSL, put the SAN in an <code>-extfile</code> instead. A private CA is trusted only by machines you configure to trust it; for anything the public reaches, use a public CA.</p>
-  </article>
-
-  <article class="card"><h3>Getting certificates automatically: ACME</h3>
-    <ul>
-      <li><b>ACME</b> (RFC 8555) is a protocol a CA and an applicant use to automate proving control of a domain and issuing the certificate.</li>
-      <li><b>Let&rsquo;s Encrypt</b> uses it so a server can obtain browser-trusted certificates without human intervention. Its default certificates are valid for 90 days.</li>
-      <li><b>So renewal must be automatic</b> (<i>analysis</i>): a 90-day certificate renewed by hand will expire on someone&rsquo;s holiday.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Both sides show a certificate: mTLS</h3>
-    <p>In mutual TLS the client also presents a certificate, so each side proves who it is. Service meshes issue and rotate these workload certificates automatically; see <a href="#servicemesh">Service Mesh &amp; Istio</a>.</p>
-  </article>
-
-  <article class="card wide"><h3>The errors you will meet, and what they mean</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>The message (from OpenSSL)</th><th>What it usually means</th><th>What to check (<i>analysis</i>)</th></tr></thead>
-      <tbody>
-      <tr><td><code>unable to get local issuer certificate</code></td><td>The client cannot build a chain to a root it trusts</td><td>Is the server sending its intermediate? Does the client trust the root (a private CA must be added to its trust store)?</td></tr>
-      <tr><td><code>hostname mismatch</code></td><td>The name you connected to is not in the certificate</td><td>The SAN list, not just the subject&rsquo;s common name</td></tr>
-      <tr><td><code>certificate has expired</code></td><td>Now is past the &ldquo;not after&rdquo; date</td><td>Renewal automation; and the clock on the client</td></tr>
-      <tr><td>The two public-key hashes above differ</td><td>The certificate was issued for a different private key</td><td>Which key made the CSR</td></tr>
-      </tbody></table></div>
-    <p class="note">Each message was produced for real: a leaf checked without its intermediate, the same certificate checked for a name not in its SAN, and checked at a date after it expires (<code>openssl verify -attime</code>). Supplying the intermediate with <code>-untrusted int.crt</code> turned the first into OK.</p>
-  </article>
-
-  <article class="card wide"><h3>SSH keys</h3>
-<pre><code># make a key pair (GitHub's own instruction); set a passphrase when asked
-ssh-keygen -t ed25519 -C "your_email@example.com"
-
-# its fingerprint: what you compare when someone asks "is this your key?"
-ssh-keygen -lf ~/.ssh/id_ed25519.pub
-
-# first connection: compare the fingerprint shown with the one the service publishes
-ssh -T git@github.com</code></pre>
-    <ul>
-      <li><b>Your public key</b> goes on the server, in <code>~/.ssh/authorized_keys</code> (a default file sshd checks; the <code>AuthorizedKeysFile</code> setting controls which), or into GitHub&rsquo;s settings. The private key stays on your machine.</li>
-      <li><b>ssh-agent</b> holds your private keys for the session, so a passphrase-protected key is unlocked once rather than for every connection.</li>
-      <li><b><code>~/.ssh/known_hosts</code></b> records the host key of every server you have connected to. If a host&rsquo;s key ever changes, ssh warns and disables password authentication, to prevent server spoofing or man-in-the-middle attacks.</li>
-      <li><b>When that warning appears</b> (<i>analysis</i>): find out why the key changed (a rebuilt server, a new load balancer) before you remove the old entry with <code>ssh-keygen -R host</code>. Deleting the line to make the warning go away defeats the check.</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>Git: signing commits with your SSH key</h3>
-<pre><code>git config --global gpg.format ssh
-git config --global user.signingkey ~/.ssh/id_ed25519.pub
-git config --global commit.gpgsign true          # sign every commit
-
-# to verify locally, list the keys you trust
-echo "you@example.com $(cat ~/.ssh/id_ed25519.pub)" &gt;&gt; ~/.ssh/allowed_signers
-git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
-git verify-commit HEAD
-# Good "git" signature for you@example.com with ED25519 key SHA256:...</code></pre>
-    <ul>
-      <li><b>Why sign:</b> anyone can set <code>user.email</code> to any address. A signature that verifies shows the commit came from the holder of that key. GitHub marks commits signed with GPG, SSH or S/MIME as <i>Verified</i> when it can check the signature, so add the key to your account as a signing key too.</li>
-      <li><b>Authentication and signing are separate:</b> the same SSH key can let you push and sign your commits, but GitHub registers it for each purpose separately: to use one key for both, you upload it twice.</li>
-      <li>Everyday Git commands are on <a href="#devops">DevOps</a>.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Our view, and the other view</h3>
-    <p><i>Our view:</i> automate every certificate&rsquo;s renewal, keep private keys where they were made, and sign your commits. Each removes a way to be surprised: an expiry, a leaked key, or a commit that only claims to be yours.</p>
-    <p><i>The other view:</i> some systems cannot automate renewal (older appliances, devices in the field, partners who install certificates by hand), and for them short lifetimes add work and risk. Commit signing adds setup for every engineer and machine; some teams rely on protected branches and reviewed pull requests instead.</p>
-  </article>
-
-  <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain a key pair: what the public key and the private key are each for</li><li>Read a certificate's subject, SAN, issuer and dates</li><li>Make an SSH key and add its public half to a server or GitHub</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Make a CSR with the right SAN and check it before sending</li><li>Fix a missing intermediate, a hostname mismatch and an expired certificate</li><li>Sign Git commits with an SSH key and verify them</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Run a private CA for internal services, and know its limits</li><li>Automate certificate renewal with ACME</li><li>Set up mTLS between services</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's key and certificate policy</li><li>Plan certificate and key rotation without outages</li><li>Design trust for partners and devices that cannot automate</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Public-key cryptography</li><li>X.509 certificates and the chain of trust</li><li>CSRs (PKCS #10) and certificate authorities</li><li>ACME and Let's Encrypt</li><li>SSH keys, ssh-agent and known_hosts</li><li>Signed Git commits</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://www.rfc-editor.org/rfc/rfc2986" target="_blank" rel="noopener">RFC 2986: PKCS #10 certification requests</a><span class="lnote"> What a CSR contains</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc5280" target="_blank" rel="noopener">RFC 5280: X.509 certificates</a><span class="lnote"> The certificate format and path validation</span></li><li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank" rel="noopener">GitHub: Generating a new SSH key</a><span class="lnote"> Step by step</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank" rel="noopener">Wikipedia: Public-key cryptography</a>; <a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener">Wikipedia: Certificate authority</a>; <a href="https://en.wikipedia.org/wiki/Certificate_signing_request" target="_blank" rel="noopener">Wikipedia: Certificate signing request</a>; <a href="https://en.wikipedia.org/wiki/Chain_of_trust" target="_blank" rel="noopener">Wikipedia: Chain of trust</a>; <a href="https://en.wikipedia.org/wiki/Public_key_certificate" target="_blank" rel="noopener">Wikipedia: Public key certificate</a>; <a href="https://www.rfc-editor.org/rfc/rfc2986" target="_blank" rel="noopener">RFC 2986</a>; <a href="https://www.rfc-editor.org/rfc/rfc5280" target="_blank" rel="noopener">RFC 5280</a>; <a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener">RFC 8555: ACME</a>; <a href="https://github.com/letsencrypt/website/blob/main/content/en/how-it-works.md" target="_blank" rel="noopener">Let's Encrypt: How it works (source)</a>; <a href="https://github.com/letsencrypt/website/blob/main/content/en/docs/faq.md" target="_blank" rel="noopener">Let's Encrypt: FAQ (source)</a>; <a href="https://github.com/openssl/openssl/blob/master/doc/man1/openssl-req.pod.in" target="_blank" rel="noopener">OpenSSL: openssl-req</a>; <a href="https://github.com/openssl/openssl/blob/master/doc/man1/openssl-x509.pod.in" target="_blank" rel="noopener">OpenSSL: openssl-x509</a>; <a href="https://github.com/openssl/openssl/blob/master/doc/man1/openssl-verify.pod.in" target="_blank" rel="noopener">OpenSSL: openssl-verify</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/ssh-keygen.1" target="_blank" rel="noopener">OpenSSH: ssh-keygen(1)</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/ssh.1" target="_blank" rel="noopener">OpenSSH: ssh(1)</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/sshd.8" target="_blank" rel="noopener">OpenSSH: sshd(8)</a>; <a href="https://github.com/openssh/openssh-portable/blob/master/ssh-agent.1" target="_blank" rel="noopener">OpenSSH: ssh-agent(1)</a>; <a href="https://github.com/git/git/blob/master/Documentation/config/gpg.adoc" target="_blank" rel="noopener">Git: gpg configuration</a>; <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank" rel="noopener">GitHub: Generating a new SSH key</a>; <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">GitHub: Adding a new SSH key to your account</a>; <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection" target="_blank" rel="noopener">GitHub: Testing your SSH connection</a>; <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification" target="_blank" rel="noopener">GitHub: About commit signature verification</a>; <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key" target="_blank" rel="noopener">GitHub: Telling Git about your signing key</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BKeys%2C%20Certificates%20%26%20SSH%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
-
-  </div>
-</section>
-
-<!-- ================= PERSONAL DATA ACROSS SERVICES ================= -->
-<section class="panel" id="p-privacy" data-name="Personal Data Across Services">
-  <div class="panel-head"><h2>Personal data across services</h2><p>Splitting a system into services also spreads people&rsquo;s personal data across them: databases, caches, search indexes, event logs, analytics copies and backups. This page is about the engineering that lets you find that data, keep less of it, delete it when you must, keep it in the right region, and prove all of it. It is not legal advice: the obligations below are summarised from secondary sources, so read the regulation itself with your data protection officer.</p></div>
-  <div class="grid">
-
-  <article class="card wide"><h3>What the law asks of a system</h3>
-    <p>The EU&rsquo;s General Data Protection Regulation (GDPR) gives people rights over their data, including access to it, a portable copy, erasure under certain circumstances, and a challenge to decisions made solely by an algorithm. Its principles include purpose limitation, data minimisation, storage limitation, and integrity and confidentiality. It also governs moving personal data outside the EU and EEA.</p>
-    <p class="note"><i>Analysis:</i> for engineers, each right becomes a capability the system must have: find everything about one person, export it, delete or anonymise it, and explain an automated decision. A design that cannot find all of one person&rsquo;s data cannot honour any of these.</p>
-  </article>
-
-  <article class="card"><h3>Where personal data ends up</h3>
-    <p><i>Analysis.</i> In a service architecture it is rarely only in the service that owns it:</p>
-    <ul>
-      <li>Each service&rsquo;s own database, and the events it publishes.</li>
-      <li>Caches and search indexes built from those events (see <a href="#caching">Caching</a> and <a href="#rag">RAG</a>).</li>
-      <li>Analytics and warehouse copies, and exports to partners.</li>
-      <li>Logs and traces that captured a field they should not have.</li>
-      <li>Backups of all of the above.</li>
-    </ul>
-    <p class="note">Keep a data catalogue: which service holds which personal fields, why, and for how long. It is the map every request below depends on.</p>
-  </article>
-
-  <article class="card"><h3>Keep less of it, in fewer places</h3>
-    <ul>
-      <li><b>Data minimisation:</b> collect and copy only what the purpose needs.</li>
-      <li><b>Tokenisation:</b> replace a sensitive value with a token that has no meaning of its own and maps back only through the tokenisation system. Services pass the token around; the real value lives in one place.</li>
-      <li><b>Pseudonymisation:</b> transform data so it cannot be tied to a person without additional information, such as a key; the GDPR&rsquo;s definition (Article 4(5), as summarised by Wikipedia) requires that information to be kept separately. Tokenisation and encryption are both examples.</li>
-      <li><b>Anonymisation:</b> remove what identifies people, so they can no longer be identified, directly or indirectly. Combining the data with other datasets can sometimes undo it.</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>Erasure meets retention</h3>
-    <p>Erasure is a right to request deletion on certain grounds, and it is limited: it applies only under certain circumstances, and Wikipedia notes it was made more limited than the earlier &ldquo;right to be forgotten&rdquo; proposal. The sources behind this page do not list the exceptions, so read Article 17 itself. Systems also have their own retention rules: Microsoft documents, for example, that some system-generated logs are kept under its service retention policies and are not removed by a data subject delete request.</p>
-    <p class="note"><i>Analysis:</i> the common engineering case is a request to delete data that another rule requires you to keep, such as a financial record. The usual pattern is to delete what you may, pseudonymise or anonymise what you must keep, restrict who can read it, and record which rule applied and when the kept data will go. Which rule wins is a legal decision; the system&rsquo;s job is to make either answer possible.</p>
-  </article>
-
-  <article class="card wide"><h3>Deleting across services</h3>
-    <p><i>Analysis:</i> one way to do it.</p>
-    <ol>
-      <li><b>Record the request</b> in one place that owns it, with an id and the time it arrived.</li>
-      <li><b>Publish one event</b>, such as <code>CustomerErasureRequested</code>, keyed by the customer, so every service that holds their data hears it (see <a href="#kafka">Kafka</a>).</li>
-      <li><b>Each service acts and confirms:</b> it deletes or anonymises its data, then publishes its own confirmation. Make each step idempotent, because the event may arrive twice.</li>
-      <li><b>Track until everyone has confirmed,</b> chase the ones that have not, and only then report the request as done.</li>
-      <li><b>Derived copies follow:</b> rebuild or purge caches and search indexes, and stop the person reappearing from a later replay of old events.</li>
-    </ol>
-    <p class="note"><i>Analysis:</i> this is a saga with no compensation step, because deletion cannot be undone (see <a href="#architecture">Architecture</a>). The hard parts are the services nobody listed in the data catalogue, and old events that would re-create the data if replayed.</p>
-  </article>
-
-  <article class="card"><h3>Backups and crypto-shredding</h3>
-    <p>Crypto-shredding makes encrypted data unusable by deleting or overwriting its encryption key. It helps where the data itself is hard to reach, such as backups and copies spread across systems, because only the key needs destroying.</p>
-    <p class="note"><i>Analysis:</i> encrypt each person&rsquo;s sensitive fields with a key of their own. If no copy of that key survives (key backups, caches) and the encryption holds, destroying it makes those fields unreadable everywhere, backups included. The cost is managing many keys, and losing a key by mistake loses the data.</p>
-  </article>
-
-  <article class="card"><h3>Keeping data in the right place</h3>
-    <ul>
-      <li><b>Data residency</b> is where the data is actually stored; <b>data localisation</b> is a requirement that it be stored within a given region.</li>
-      <li>The GDPR governs transfers of personal data outside the EU and EEA, so where you store and process it is a design decision, not only an operations one.</li>
-      <li><i>Analysis:</i> choose regions per market, route each customer to their region, and check where logs, backups and support tools copy the data too (see <a href="#cloudcompare">GCP vs AWS vs Azure</a> for regions).</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>Choose by requirement</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>If this is true for you</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
-      <tbody>
-      <tr><td>Many services need to refer to a person but few need the actual value</td><td>Tokenisation, with the real values in one vault</td></tr>
-      <tr><td>Analysts need the data&rsquo;s shape, not who it describes</td><td>Anonymisation before it reaches the warehouse</td></tr>
-      <tr><td>You must keep a record but stop it pointing at a person</td><td>Pseudonymisation, with the key held separately and access restricted</td></tr>
-      <tr><td>Data sits in backups or systems you cannot edit row by row</td><td>Crypto-shredding with per-person keys</td></tr>
-      <tr><td>Personal data spans many services owned by different teams</td><td>An erasure event, confirmations from each service, and one tracker</td></tr>
-      <tr><td>Customers in several jurisdictions</td><td>Regional deployments, with routing and residency checked for logs and backups too</td></tr>
-      </tbody></table></div>
-  </article>
-
-  <article class="card"><h3>Prove it</h3>
-    <ul>
-      <li><b>Test deletion in CI:</b> create a person, erase them, and assert they are gone from every store you list.</li>
-      <li><b>Audit access:</b> who read which personal data, when, and why, with a correlation id across services.</li>
-      <li><b>Report:</b> how many requests, how long each took, and which services were slowest to confirm.</li>
-    </ul>
-    <p class="note">This card is <i>analysis</i>: these are practices, not legal requirements quoted from the regulation.</p>
-  </article>
-
-  <article class="card"><h3>Our view, and the other view</h3>
-    <p><i>Our view:</i> design for erasure from the first service, with a data catalogue, tokens instead of copies, and an erasure event every service must handle. Retrofitting it across dozens of services is harder than building it in.</p>
-    <p><i>The other view:</i> early on, a small team may keep personal data in one service on purpose, so deletion stays a single query, and add tokenisation and events only when the data starts to spread. Building the full machinery before the system needs it has a cost too.</p>
-  </article>
-
-  <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>List where personal data ends up in a service architecture</li><li>Explain tokenisation, pseudonymisation and anonymisation</li><li>Name the rights a person has over their data</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Keep a data catalogue of personal fields per service</li><li>Build an erasure event that every service handles idempotently</li><li>Test deletion end to end in CI</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design for erasure and legal retention together</li><li>Use crypto-shredding for backups and copies</li><li>Plan regional deployments for data residency</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's personal-data architecture and standards</li><li>Work with legal and the data protection officer on retention rules</li><li>Audit and report on data subject requests across systems</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>GDPR rights and principles</li><li>Data minimisation and tokenisation</li><li>Pseudonymisation and anonymisation</li><li>Erasure across services</li><li>Crypto-shredding</li><li>Data residency and transfers</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">Wikipedia: General Data Protection Regulation</a><span class="lnote"> Rights, principles and transfers</span></li><li><a href="https://en.wikipedia.org/wiki/Crypto-shredding" target="_blank" rel="noopener">Wikipedia: Crypto-shredding</a><span class="lnote"> Erasing by deleting keys</span></li><li><a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure" target="_blank" rel="noopener">Microsoft Learn: GDPR data subject requests for Azure</a><span class="lnote"> How a cloud provider handles them</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">Wikipedia: General Data Protection Regulation</a>; <a href="https://en.wikipedia.org/wiki/Right_to_be_forgotten" target="_blank" rel="noopener">Wikipedia: Right to be forgotten</a>; <a href="https://en.wikipedia.org/wiki/Tokenization_(data_security)" target="_blank" rel="noopener">Wikipedia: Tokenization (data security)</a>; <a href="https://en.wikipedia.org/wiki/Pseudonymization" target="_blank" rel="noopener">Wikipedia: Pseudonymization</a>; <a href="https://en.wikipedia.org/wiki/Data_anonymization" target="_blank" rel="noopener">Wikipedia: Data anonymization</a>; <a href="https://en.wikipedia.org/wiki/Data_minimization" target="_blank" rel="noopener">Wikipedia: Data minimization</a>; <a href="https://en.wikipedia.org/wiki/Crypto-shredding" target="_blank" rel="noopener">Wikipedia: Crypto-shredding</a>; <a href="https://en.wikipedia.org/wiki/Data_sovereignty" target="_blank" rel="noopener">Wikipedia: Data sovereignty (residency and localisation)</a>; <a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr-dsr-azure" target="_blank" rel="noopener">Microsoft Learn: GDPR data subject requests for Azure</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BPersonal%20Data%20Across%20Services%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
-
-  </div>
-</section>
-
-<section class="panel" id="p-cyber" data-name="Cybersecurity">
-  <div class="panel-head"><h2>Cybersecurity: thinking like a defender</h2><p>The <a href="#security">Security</a> page is about building secure software. This page is about the wider field: how real attacks unfold, how organisations defend, detect and recover, and the people and roles involved. You do not need to become a specialist, but every engineer should understand the game being played against their systems.</p></div>
-  <div class="grid">
-
-  <article class="card wide"><h3>How real attacks unfold</h3>
-    <p>MITRE ATT&amp;CK is a public knowledge base of attackers' tactics and techniques, based on real-world observations. Its Enterprise matrix (version 20.1) groups what attackers do into 15 tactics, roughly in the order an intrusion progresses:</p>
-    <p><b>Reconnaissance → Resource Development → Initial Access → Execution → Persistence → Privilege Escalation → Stealth → Defense Impairment → Credential Access → Discovery → Lateral Movement → Collection → Command and Control → Exfiltration → Impact</b></p>
-    <ul>
-      <li><b>Attackers rarely need anything clever.</b> A stolen password, an unpatched server, a misconfigured bucket or a convincing email is usually enough to start.</li>
-      <li><b>Every step is a chance to stop them.</b> Defence is not one wall; it is noticing and blocking at many of these stages.</li>
-      <li><b>Use it practically:</b> for each system you own, ask which techniques would work against it, and whether you would see them.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Defence in depth</h3>
-    <ul>
-      <li><b>Identity first:</b> strong, phishing-resistant sign-in, least privilege, and removing access people no longer need.</li>
-      <li><b>Keep things patched and known:</b> you cannot protect what you do not know you have. Keep an inventory of systems, software and data.</li>
-      <li><b>Segment:</b> a breach in one place should not open everything else.</li>
-      <li><b>Assume breach:</b> design so that one compromised laptop, account or service does limited damage.</li>
-      <li><b>Back up, offline:</b> see "Backups and ransomware" on the <a href="#security">Security</a> page.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>Detect and respond</h3>
-    <ul>
-      <li><b>Collect the right signals:</b> sign-ins, admin actions, process and network activity, cloud audit logs.</li>
-      <li><b>Detection is a craft:</b> write rules for behaviour attackers cannot easily avoid, test them, and tune out noise, so real alerts are not drowned.</li>
-      <li><b>Have an incident plan before you need it:</b> who leads, who decides, how you contain (isolate a machine, revoke a credential), how you communicate, and when you call in help or the authorities.</li>
-      <li><b>Learn without blame</b> afterwards, and fix the root cause, not just the symptom.</li>
-    </ul>
-  </article>
-
-  <article class="card"><h3>The people and roles</h3>
-    <ul>
-      <li><b>Blue team / security operations (SOC):</b> watch, detect and respond.</li>
-      <li><b>Red team and penetration testers:</b> attack, with written permission, to find weaknesses first.</li>
-      <li><b>Purple teaming:</b> both sides together, turning each attack into a detection.</li>
-      <li><b>Application and cloud security engineers:</b> help builders get it right from the start (see <a href="#security">Security</a>).</li>
-      <li><b>Governance, risk and compliance:</b> policies, audits and standards (see "Compliance frameworks" on the Security page).</li>
-      <li><b>Threat intelligence:</b> who is attacking whom, and how.</li>
-    </ul>
-  </article>
-
-  <article class="card wide"><h3>Ethics and the law</h3>
-    <ul>
-      <li><b>Only test systems you own, or have written permission to test.</b> Scanning or probing someone else's systems without permission is illegal in many countries, whatever your intent.</li>
-      <li><b>Practise legally:</b> deliberately vulnerable training apps, capture-the-flag events and your own <a href="#homelab">home lab</a>.</li>
-      <li><b>Report what you find responsibly:</b> through the organisation's security contact or vulnerability disclosure programme, and give them time to fix it.</li>
-    </ul>
-    <p class="note">Security is a team sport. <i>Our view:</i> much of the defence is ordinary engineers who patch, review, log, ask "what if this is stolen?", and report mistakes quickly.</p>
-  </article>
-
-  <article class="card wide"><h3>Judging a cloud provider&rsquo;s security: the Cloud Security Alliance</h3>
-    <p>The Cloud Security Alliance (CSA) is a not-for-profit organisation, formed in 2008, that promotes security best practice for cloud computing. Three of its outputs come up whenever a team chooses or audits a cloud service:</p>
-    <div class="tbl"><table>
-      <thead><tr><th>Name</th><th>What it is</th></tr></thead>
-      <tbody>
-      <tr><td><b>Cloud Controls Matrix (CCM)</b></td><td>A framework of security controls for cloud providers and their customers, grouped into domains. Providers use it to evaluate and document their controls.</td></tr>
-      <tr><td><b>Consensus Assessments Initiative Questionnaire (CAIQ)</b></td><td>Questions built on the CCM that a customer or auditor may ask a provider. A provider answers it to document how it complies with the CSA&rsquo;s best practices. In CCM version 4 the questionnaire and the matrix were combined.</td></tr>
-      <tr><td><b>STAR</b> (Security, Trust, Assurance and Risk) registry</td><td>A free public registry, launched in 2013 with the British Standards Institution, where providers publish their CSA assessments.</td></tr>
-      </tbody></table></div>
-    <ul>
-      <li><b>STAR Level 1, self-assessment:</b> the provider publishes a completed CAIQ or a report documenting its compliance with the CCM. It is free and open to any provider.</li>
-      <li><b>STAR Level 2, third-party assessment:</b> an independent auditor checks the controls. STAR Certification builds on the ISO/IEC 27001 management system standard plus the CCM; STAR Attestation is a SOC 2 Type 2 audit with the CCM&rsquo;s criteria added.</li>
-      <li><b>Continuous monitoring:</b> Google describes STAR as a three-step programme of self-assessment, third-party audit and continuous monitoring. One Microsoft page calls this Level 3; two other Microsoft pages list only two levels.</li>
-    </ul>
-    <p class="note">The matrix, the questionnaire and even the number of levels differ between sources: Microsoft&rsquo;s own pages give 16 or 17 CCM domains, &ldquo;more than 140&rdquo; or &ldquo;more than 250&rdquo; CAIQ questions, and two or three STAR levels, so check which version an assessment used. <i>Analysis:</i> for an engineer, a provider&rsquo;s STAR entry answers part of a supplier review without a new questionnaire, and the CCM is a checklist for your own side of the shared responsibility too. A self-assessment is the provider&rsquo;s own word; a Level 2 report is an auditor&rsquo;s, and its scope (which services and regions) is what we would check first. The other way to look at it: a detailed Level 1 answer on the exact control you care about can tell you more than a broad Level 2 certificate that does not cover your service.</p>
-  </article>
-
-  <!-- levels -->
-  <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain how a typical intrusion unfolds</li><li>Spot phishing and report incidents quickly</li><li>Know that you only test systems you may test</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Map your system's exposure to common attacker techniques</li><li>Log the signals an investigation needs</li><li>Follow the incident plan during an incident</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Write and tune detections; run a tabletop exercise</li><li>Lead containment and recovery in an incident</li><li>Design defence in depth for a product</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's security operations and incident response</li><li>Run red, blue and purple team programmes</li><li>Build a security culture across teams</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>MITRE ATT&CK tactics and techniques</li><li>Detection engineering</li><li>Incident response</li><li>Threat modelling</li><li>Responsible disclosure</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/mitre-attack/attack-stix-data" target="_blank" rel="noopener">MITRE ATT&CK data on GitHub</a><span class="lnote"> The ATT&CK knowledge base as STIX data</span></li><li><a href="https://github.com/OWASP/CheatSheetSeries" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a><span class="lnote"> Concise, practical security guidance</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/index.json" target="_blank" rel="noopener">MITRE ATT&CK STIX index (latest Enterprise = 20.1)</a>; <a href="https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack-20.1.json" target="_blank" rel="noopener">Enterprise ATT&CK 20.1 bundle (matrix tactic_refs: 15 tactics incl. Stealth, Defense Impairment, in the page's order)</a>; <a href="https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/README.md" target="_blank" rel="noopener">MITRE attack-stix-data README</a>; <a href="https://en.wikipedia.org/wiki/Cloud_Security_Alliance" target="_blank" rel="noopener">Cloud Security Alliance (Wikipedia)</a>; <a href="https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-certification" target="_blank" rel="noopener">Microsoft Learn: CSA STAR Certification</a>; <a href="https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-attestation" target="_blank" rel="noopener">Microsoft Learn: CSA STAR Attestation</a>; <a href="https://learn.microsoft.com/en-us/compliance/regulatory/offering-csa-star-self-assessment" target="_blank" rel="noopener">Microsoft Learn: CSA STAR self-assessment</a>; <a href="https://cloud.google.com/security/compliance/csa-star" target="_blank" rel="noopener">Google Cloud: CSA STAR</a>; <a href="https://aws.amazon.com/compliance/csa/" target="_blank" rel="noopener">AWS: CSA compliance</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BCybersecurity%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -17347,9 +16661,8 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","javascript","go","rust","buildtools","apis","graphql","realtime","kafka","payments","banking","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","pki","cyber","agentsec","oauth","security","pki","privacy","cyber","oauth","data","datalibs","dbt","dags","patterns","architecture","atob","distsys","microservices","eventsourcing","sysdesign","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","llm","ai","rag","mcp","agentharness","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
-  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","javascript","go","rust","buildtools","apis","graphql","realtime","kafka","payments","banking","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","pki","cyber","agentsec","oauth","security","pki","privacy","cyber","oauth","data","datalibs","dbt","dags","patterns","architecture","atob","distsys","microservices","eventsourcing","sysdesign","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","llm","ai","rag","mcp","agentharness","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
-  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","javascript","go","rust","buildtools","apis","graphql","realtime","kafka","payments","banking","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","pki","cyber","agentsec","oauth","security","pki","privacy","cyber","oauth","data","datalibs","dbt","dags","patterns","architecture","atob","distsys","microservices","eventsourcing","sysdesign","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","llm","ai","rag","mcp","agentharness","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","javascript","go","rust","buildtools","apis","graphql","realtime","kafka","payments","banking","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","atob","distsys","microservices","eventsourcing","sysdesign","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","llm","ai","rag","mcp","agentharness","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","electronics","hardware","linux","networking","internet","web","docker","sql","database","homelab","java","kotlin","python","javascript","go","rust","buildtools","apis","graphql","realtime","kafka","payments","banking","spring","quarkus","designux","accessibility","apps","uihistory","testing","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","atob","distsys","microservices","eventsourcing","sysdesign","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","llm","ai","rag","mcp","agentharness","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","ways","mathematics","science","everydayscience","philosophy","goodhuman","body","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
