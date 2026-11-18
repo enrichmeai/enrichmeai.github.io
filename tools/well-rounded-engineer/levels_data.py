@@ -1267,3 +1267,9 @@ D["atob"]["sources"].extend([
  ("AWS Prescriptive Guidance: Shared-database-per-service","https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-data-persistence/shared-database.html"),
  ("Azure Architecture Center: Anti-corruption layer","https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer"),
  ("Debezium README","https://github.com/debezium/debezium")])
+D["microservices"].setdefault("sources",[]).extend([
+ ("Hystrix README (maintenance mode)","https://github.com/Netflix/Hystrix"),("Resilience4j README","https://github.com/resilience4j/resilience4j"),
+ ("Fowler: CircuitBreaker","https://martinfowler.com/bliki/CircuitBreaker.html"),("Wikipedia: Circuit breaker design pattern","https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern"),
+ ("Envoy: Circuit breaking","https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking"),("Envoy: Outlier detection","https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier"),
+ ("Istio: Circuit breaking task","https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/"),("Istio API: DestinationRule","https://github.com/istio/api/blob/master/networking/v1alpha3/destination_rule.proto"),
+ ("MicroProfile Fault Tolerance","https://github.com/eclipse/microprofile-fault-tolerance")])
