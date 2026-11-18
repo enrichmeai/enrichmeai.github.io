@@ -15390,9 +15390,9 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
   </article>
 
   <article class="card wide"><h3>Chore or play</h3>
-    <p><i>Our view:</i> the same task can feel like a chore or like play, and which one it feels like may shape both how much you enjoy it and how good you become at it. This card gathers what others have said about that idea; it is a way of looking at work, not a rule.</p>
+    <p><i>Our view:</i> the same task can feel like a chore to one person and like play to another, and that difference may shape how much people enjoy it and, we think, how good they become at it (the next cards include evidence that cuts the other way). This card gathers what others have said about that idea; it is a way of looking at work, not a rule.</p>
     <ul>
-      <li><b>Mark Twain put it in a story.</b> In <i>The Adventures of Tom Sawyer</i> (1876), Tom is made to whitewash a fence as a punishment, and persuades the neighbourhood children that it is a privilege, until they trade him their treasures for a turn.</li>
+      <li><b>Mark Twain wrote a scene about it.</b> In <i>The Adventures of Tom Sawyer</i> (1876), Tom is made to whitewash a fence as a punishment, and persuades the neighbourhood children that it is a privilege, until they trade him their treasures for a turn.</li>
       <li><b>Play</b> is described as a range of intrinsically motivated activities: done for their own sake. The player can still be intently focused, especially when the play has goals, as in a game. Johan Huizinga&rsquo;s <i>Homo Ludens</i> (1938) treated play as a separate sphere of human activity.</li>
       <li><b>Self-determination theory</b> (Edward Deci and Richard Ryan) names three basic needs behind self-motivated behaviour: <b>autonomy</b>, <b>competence</b> and <b>relatedness</b>.</li>
       <li><b>Flow</b>, described by Mihaly Csikszentmihalyi, is absorption in a task whose challenge matches your skill, with clear goals, quick feedback and the activity felt as rewarding in itself.</li>
@@ -15400,20 +15400,20 @@ curl -s -u "$SN_USER:$SN_PASS" -X POST \
   </article>
 
   <article class="card"><h3>When rewards change the feeling</h3>
-    <p>The <b>overjustification effect</b>: offering an expected external reward, such as money or prizes, for something people already enjoy can reduce their own motivation to do it, sometimes called &ldquo;crowding out&rdquo;. It has been studied widely by Edward Deci and Mark Lepper, and the effect seems stronger in children than in college students.</p>
-    <p class="note"><i>Analysis:</i> a task can move from play to chore when it is done mainly for the reward, and back when the reason is your own again.</p>
+    <p>The <b>overjustification effect</b>: offering an expected external reward, such as money or prizes, for something people already enjoy can reduce their own motivation to do it, sometimes called &ldquo;crowding out&rdquo;. Early demonstrations include Edward Deci (1971) and Lepper, Greene and Nisbett (1973). The effect seems stronger in children than in college students, but findings across studies are not entirely consistent.</p>
+    <p class="note"><i>Analysis:</i> one way to read this is that a task can move from play towards chore when it is done mainly for the reward. The research summarised here does not say whether it moves back.</p>
   </article>
 
   <article class="card"><h3>Where the idea meets its limits</h3>
     <ul>
-      <li><b>Deliberate practice</b>, studied by K. Anders Ericsson, is defined as highly structured, cognitively effortful and without immediate rewards, and he wrote that it &ldquo;is not inherently motivating&rdquo;. Getting very good often includes parts that do not feel like play.</li>
+      <li><b>Deliberate practice</b>, studied by K. Anders Ericsson, is described as highly structured, cognitively effortful and without immediate rewards. Ericsson wrote that it &ldquo;is not inherently motivating&rdquo;. Our reading: getting very good often includes parts that do not feel like play.</li>
       <li><b>Turning work into a game</b> has critics: researcher Sebastian Deterding described early gamification as not fun and creating an artificial sense of achievement, and poorly designed workplace gamification has been compared to micromanagement.</li>
-      <li><b>Job crafting</b> (Amy Wrzesniewski and Jane Dutton, 2001) describes people reshaping their own tasks to find more meaning at work, with links to well-being and performance.</li>
+      <li><b>Job crafting</b> (Amy Wrzesniewski and Jane Dutton, 2001) describes people reshaping their own tasks to find more meaning at work; it is said to have the potential to improve quality of life at work and performance.</li>
     </ul>
   </article>
 
   <article class="card"><h3>Two ways of seeing it</h3>
-    <p><i>One view:</i> how we frame a task, as something we choose and are curious about rather than something imposed, can make the hours lighter and the learning deeper, and people around us can make it easier for each other.</p>
+    <p><i>One view:</i> how we frame a task, as something we chose and are curious about rather than something imposed, may change how it feels to do. The ideas above (autonomy in self-determination theory, flow, job crafting) point that way.</p>
     <p><i>The other view:</i> some work is simply hard or dull, and calling it play does not change that. On this view, finishing what needs doing, and then resting, matters more than how it feels along the way.</p>
   </article>
 
