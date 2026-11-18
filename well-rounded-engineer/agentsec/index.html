@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic AI Security · Well Rounded Engineer</title>
+<meta name="description" content="An AI agent is a model that runs in a loop, decides which tools to call and acts on the results. That makes it useful, and it makes every weakness of the…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="agentsec" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 100 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp" open><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/" aria-current="page">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">2</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/well-rounded-engineer/culvert/">Culvert</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Security</span> / <span aria-current="page">Agentic AI Security</span></p>
+<section class="panel" id="agentsec" data-name="Agentic AI Security">
+  <div class="panel-head"><h1>Agentic AI security and risks</h1><p>An AI agent is a model that runs in a loop, decides which tools to call and acts on the results. That makes it useful, and it makes every weakness of the model a weakness of everything the agent can touch. This page covers the risks from two sides: agents as a target (prompt injection, excessive agency, insecure tools) and agents as a weapon in an attacker&rsquo;s hands. It then sets out the controls, the frameworks that name the risks, and how to choose. How agents work is on <a href="/well-rounded-engineer/agentharness/">Agent Harness</a> and <a href="/well-rounded-engineer/mcp/">MCP</a>; general defence is on <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-why-agency-changes-the-risk"><h3>Why agency changes the risk</h3>
+    <p>OWASP&rsquo;s Top 10 for LLM Applications (2025 edition) puts it plainly: the impact of a successful prompt injection depends largely on the business context and on <b>how much agency the model has</b>. A chatbot that can only answer can be made to say something wrong. An agent with tools can be made to <i>do</i> something wrong: send data, change records, run commands.</p>
+    <p>OWASP calls the vulnerability that lets damaging actions happen <b>excessive agency</b>, and names three root causes:</p>
+    <ul>
+      <li><b>Excessive functionality:</b> tools the task does not need, such as a document reader that can also delete documents.</li>
+      <li><b>Excessive permissions:</b> a tool connected to other systems with more rights than it needs, such as write access where read access would do.</li>
+      <li><b>Excessive autonomy:</b> high-impact actions taken without anyone checking them.</li>
+    </ul>
+    <p class="note">The trigger does not have to be an attacker: OWASP lists hallucination from a poorly engineered prompt or a weak model alongside prompt injection, a compromised tool and, in multi-agent systems, a compromised peer agent.</p>
+  </article>
+
+  <article class="card" id="c-prompt-injection"><h3>Prompt injection</h3>
+    <ul>
+      <li><b>Direct:</b> the user&rsquo;s own input changes the model&rsquo;s behaviour, deliberately or by accident.</li>
+      <li><b>Indirect:</b> the instructions arrive inside content the agent reads: a web page, a file, an email, a tool&rsquo;s output. OWASP&rsquo;s example is a user asking for a web page summary, where hidden instructions on the page make the model insert an image link that sends the private conversation to an attacker&rsquo;s URL.</li>
+      <li><b>Invisible:</b> injected text does not need to be readable by people, only parsed by the model, and multimodal models can carry it in images.</li>
+      <li><b>Jailbreaking</b> is a form of prompt injection that makes the model ignore its safety rules altogether.</li>
+    </ul>
+    <p class="note">OWASP says it is unclear whether fool-proof prevention exists, given how models work, and that RAG and fine-tuning do not fully mitigate it. So the controls below aim to <i>limit the damage</i> an injection can do.</p>
+  </article>
+
+  <article class="card" id="c-the-risk-lists-by-name"><h3>The risk lists, by name</h3>
+    <p><b>OWASP Top 10 for LLM Applications, 2025:</b></p>
+    <ol>
+      <li>Prompt injection</li>
+      <li>Sensitive information disclosure</li>
+      <li>Supply chain</li>
+      <li>Data and model poisoning</li>
+      <li>Improper output handling</li>
+      <li>Excessive agency</li>
+      <li>System prompt leakage</li>
+      <li>Vector and embedding weaknesses</li>
+      <li>Misinformation</li>
+      <li>Unbounded consumption (including &ldquo;denial of wallet&rdquo;)</li>
+    </ol>
+  </article>
+
+  <article class="card wide" id="c-agent-specific-risks-owasp-s-agentic-draft"><h3>Agent-specific risks: OWASP&rsquo;s agentic draft</h3>
+    <p>OWASP&rsquo;s Agentic Security Initiative has a <b>first public draft</b> of a Top 10 for agentic applications in its repository. It is a draft, so the names and order may change (OWASP&rsquo;s website, which may carry a later version, could not be reached when this page was checked), but it shows where the risks go beyond a single model call:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Risk</th><th>In the draft&rsquo;s words, roughly</th></tr></thead>
+      <tbody>
+      <tr><td>Agent behaviour hijack</td><td>Manipulating an agent&rsquo;s goals or plans towards the attacker&rsquo;s aims</td></tr>
+      <tr><td>Tool misuse and exploitation</td><td>Tricking an agent into using its tools in harmful or unintended ways</td></tr>
+      <tr><td>Identity and privilege abuse</td><td>Impersonating agents, or escalating access through identity weaknesses</td></tr>
+      <tr><td>Agentic supply chain</td><td>Insecure models, agents, tools or artefacts</td></tr>
+      <tr><td>Unexpected code execution</td><td>Unsafe code run through the agent&rsquo;s behaviour</td></tr>
+      <tr><td>Memory and context poisoning</td><td>Corrupting what the agent remembers, so later decisions go wrong</td></tr>
+      <tr><td>Insecure inter-agent communication</td><td>Poisoned messages or abused protocols between agents</td></tr>
+      <tr><td>Cascading failures</td><td>A fault or hallucination in one agent spreading through others</td></tr>
+      <tr><td>Human-agent trust exploitation</td><td>Exploiting over-trust or approval fatigue in the people overseeing agents</td></tr>
+      <tr><td>Rogue agents</td><td>Malicious or compromised agents acting on their own</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-tools-and-mcp-where-the-access-lives"><h3>Tools and MCP: where the access lives</h3>
+    <p>The Model Context Protocol&rsquo;s own security best practices name attacks that come from connecting agents to tools:</p>
+    <ul>
+      <li><b>Confused deputy:</b> a program tricked into misusing its own authority on behalf of someone with fewer rights. In MCP, a proxy server in front of a third-party API can be abused to get authorisation without the user&rsquo;s consent.</li>
+      <li><b>Token passthrough:</b> an MCP server that accepts a token not issued to it and forwards it downstream. The guidance is blunt: MCP servers <b>must not</b> accept tokens that were not explicitly issued for them.</li>
+      <li><b>Local server compromise:</b> a local MCP server is a program running on your machine with your rights. Before a one-click setup runs one, the client must show the exact command, mark it as dangerous and ask for approval; it should also run servers in a sandbox with minimal privileges.</li>
+      <li><b>Broad scopes:</b> a token granted every scope up front turns one leak into access to everything. The guidance is progressive, least-privilege scopes.</li>
+    </ul>
+    <p class="note">More on the protocol, and on checking a server before you install it, is on <a href="/well-rounded-engineer/mcp/">MCP</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-controls-that-limit-the-damage"><h3>Controls that limit the damage</h3>
+    <p>Drawn from OWASP&rsquo;s mitigations for prompt injection and excessive agency:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Control</th><th>What it means in practice</th></tr></thead>
+      <tbody>
+      <tr><td><b>Fewer, narrower tools</b></td><td>Offer only the tools the task needs, each with only the functions it needs. Prefer a &ldquo;write this file&rdquo; tool over an open-ended &ldquo;run a shell command&rdquo; one.</td></tr>
+      <tr><td><b>Least privilege</b></td><td>Give tools the smallest rights in downstream systems, such as read access to one table. Keep the application&rsquo;s own API tokens in the application, which makes the calls, and out of the model&rsquo;s prompt and context.</td></tr>
+      <tr><td><b>Act as the user</b></td><td>Run actions in the context of the user they are for, with that user&rsquo;s permissions, for example through OAuth with the minimum scope.</td></tr>
+      <tr><td><b>Complete mediation</b></td><td>Authorise every request in the downstream system, not by asking the model whether an action is allowed.</td></tr>
+      <tr><td><b>Human approval</b></td><td>Require a person to approve high-impact actions before they happen.</td></tr>
+      <tr><td><b>Mark untrusted content</b></td><td>Separate and label external content so it has less influence. Detection services can help: Microsoft&rsquo;s Prompt Shields, for example, scan user prompts and documents for attack patterns. Microsoft notes the models are trained and evaluated mainly on English, so test them with your own attacks.</td></tr>
+      <tr><td><b>Treat output as untrusted</b></td><td>Validate and encode what the model produces before it reaches a browser, a shell, a query or another system (OWASP&rsquo;s improper output handling).</td></tr>
+      <tr><td><b>Log, limit, test</b></td><td>Log tool calls, rate-limit actions so monitoring can catch problems before the damage grows, and red-team the agent as an untrusted user.</td></tr>
+      </tbody></table></div>
+    <p class="note">Tools apply these too. Claude Code&rsquo;s security documentation, for example (Anthropic&rsquo;s description of its own product), lists a permission system that asks before sensitive operations, approval for commands that fetch from the web, a trust dialog for a new folder, a separate approval prompt for MCP servers in a project&rsquo;s <code>.mcp.json</code>, and sandbox network isolation.</p>
+  </article>
+
+  <article class="card wide" id="c-agents-in-an-attacker-s-hands"><h3>Agents in an attacker&rsquo;s hands</h3>
+    <p>In November 2025 Anthropic reported disrupting an espionage campaign it assessed, with high confidence, to be run by a state-sponsored group using its Claude Code tool. Anthropic said it believes this is the first documented case of a large-scale cyberattack executed without substantial human intervention. By Anthropic&rsquo;s account:</p>
+    <ul>
+      <li>The attackers jailbroke the model by splitting the attack into small, innocent-looking tasks and telling it that it worked for a security firm doing defensive testing.</li>
+      <li>The agent did reconnaissance, wrote exploit code, harvested credentials and extracted data, with tools often reached over MCP. AI did an estimated 80 to 90% of the work, with people stepping in at perhaps four to six decision points per campaign.</li>
+      <li>It targeted around thirty organisations and succeeded in a small number.</li>
+      <li>It was not flawless: it sometimes hallucinated credentials, or claimed to have found secrets that were in fact public.</li>
+    </ul>
+    <p class="note">This is one vendor&rsquo;s account of misuse of its own product, and it says it sees only its own platform. <i>Analysis:</i> the lesson for defenders does not depend on the vendor: attacks can now run at machine speed, so detection and response need to be automated too. Anthropic itself advises security teams to try AI for SOC automation, threat detection, vulnerability assessment and incident response. The other reading: this is one vendor&rsquo;s account that others have not replicated, and the share of the work an AI does may differ for other attackers and tools.</p>
+  </article>
+
+  <article class="card" id="c-frameworks-to-map-against"><h3>Frameworks to map against</h3>
+    <ul>
+      <li><b>OWASP Top 10 for LLM Applications</b> and the agentic draft above, for application risks.</li>
+      <li><b>MITRE ATLAS</b> (Adversarial Threat Landscape for AI Systems): a public knowledge base of adversary tactics, techniques and procedures aimed at AI systems, with its data published in a public repository. ATT&amp;CK, its counterpart for attacks in general, is on <a href="/well-rounded-engineer/cyber/">Cybersecurity</a>.</li>
+      <li><b>The MCP security best practices,</b> for anything that connects agents to tools.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>If this is true for your agent</th><th>It leans towards (<i>analysis</i>)</th></tr></thead>
+      <tbody>
+      <tr><td>It reads untrusted content (web, email, uploads) and can also send data or call external URLs</td><td>Break the chain: remove outbound tools, or require approval before anything leaves</td></tr>
+      <tr><td>It acts for many different users</td><td>Run each action as that user, with their permissions and a narrow OAuth scope; never one shared service account with wide rights</td></tr>
+      <tr><td>It can change money, records or infrastructure</td><td>Human approval for those actions, and authorisation enforced in the downstream system</td></tr>
+      <tr><td>It writes or runs code</td><td>A sandbox with restricted file system and network access, and generated code reviewed like any other</td></tr>
+      <tr><td>It installs or connects to third-party MCP servers</td><td>A list of approved servers, the exact command shown before first run, and tokens issued only for each server</td></tr>
+      <tr><td>Several agents pass work to each other</td><td>Treat every agent&rsquo;s output as untrusted input to the next, and log the whole chain</td></tr>
+      <tr><td>Cost can grow without limit</td><td>Rate limits and spending caps per user and per run</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-prove-it"><h3>Prove it</h3>
+    <ul>
+      <li><b>Test with attacks:</b> put injection payloads in documents, pages and tool outputs, and assert the agent does not act on them (see <a href="/well-rounded-engineer/rag/">RAG</a>).</li>
+      <li><b>Review the permission map:</b> every tool, its rights, and who approves what.</li>
+      <li><b>Audit:</b> every tool call logged with the user, the agent and the input that led to it.</li>
+    </ul>
+    <p class="note">This card is <i>analysis</i>. Only the injection testing draws on OWASP, which advises testing the model as an untrusted user.</p>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> design every agent assuming its model will at some point follow an attacker&rsquo;s instructions, because OWASP says no fool-proof prevention is known. What matters is what it can do when that happens: narrow tools, least privilege, approval for high-impact actions, and authorisation outside the model.</p>
+    <p><i>The other view:</i> approvals and narrow tools reduce what agents are useful for, and constant prompts can wear down the people answering them. The OWASP agentic draft lists exploiting &ldquo;over-trust or fatigue in human oversight&rdquo; as a risk, and Claude Code&rsquo;s security documentation describes allowlisting frequently used safe commands as a &ldquo;prompt fatigue mitigation&rdquo;. On this view, more autonomy inside a sandbox with network isolation, plus monitoring, is worth the trade: the sandbox then carries more of the safety.</p>
+  </article>
+
+  <!-- levels -->
+  <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Explain direct and indirect prompt injection with an example</li><li>Name the three root causes of excessive agency</li><li>Treat model output as untrusted input</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Give an agent only the tools and permissions its task needs</li><li>Add human approval for high-impact actions</li><li>Check an MCP server and its scopes before connecting it</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design agent actions to run as the user, with authorisation outside the model</li><li>Red-team an agent with injected documents and tool outputs</li><li>Sandbox agents that write or run code</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Set an organisation's policy for agents, tools and approvals</li><li>Map agent risks to OWASP and MITRE ATLAS</li><li>Plan detection and response for attacks at machine speed</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Prompt injection</li><li>Excessive agency</li><li>OWASP Top 10 for LLM Applications</li><li>MCP security</li><li>Least privilege and complete mediation</li><li>AI-orchestrated attacks</li><li>MITRE ATLAS</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications (repository)</a><span class="lnote"> The 2025 entries, with mitigations</span></li><li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/security_best_practices.mdx" target="_blank" rel="noopener">MCP security best practices (source)</a><span class="lnote"> From the protocol's maintainers</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS</a><span class="lnote"> Adversary techniques against AI systems</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM01_PromptInjection.md" target="_blank" rel="noopener">OWASP LLM01:2025 Prompt Injection</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM05_ImproperOutputHandling.md" target="_blank" rel="noopener">OWASP LLM05:2025 Improper Output Handling</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM06_ExcessiveAgency.md" target="_blank" rel="noopener">OWASP LLM06:2025 Excessive Agency</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns/LLM10_UnboundedConsumption.md" target="_blank" rel="noopener">OWASP LLM10:2025 Unbounded Consumption</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_vulns" target="_blank" rel="noopener">OWASP 2025 entries (list)</a>; <a href="https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/agent_security_initiative/agentic-top-10/Sprint%201-first-public-draft-expanded/README.md" target="_blank" rel="noopener">OWASP Agentic Top 10, first public draft</a>; <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/security_best_practices.mdx" target="_blank" rel="noopener">MCP security best practices (source)</a>; <a href="https://github.com/mitre-atlas/atlas-data/blob/main/README.md" target="_blank" rel="noopener">MITRE ATLAS data (README)</a>; <a href="https://www.anthropic.com/news/disrupting-AI-espionage" target="_blank" rel="noopener">Anthropic: Disrupting an AI-orchestrated cyber espionage campaign</a>; <a href="https://code.claude.com/docs/en/security" target="_blank" rel="noopener">Claude Code: Security</a>; <a href="https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection" target="_blank" rel="noopener">Microsoft Learn: Prompt Shields</a>; <a href="https://en.wikipedia.org/wiki/Confused_deputy_problem" target="_blank" rel="noopener">Wikipedia: Confused deputy problem</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BAgentic%20AI%20Security%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/cyber/">← Cybersecurity</a><a class="pn-next" href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-why-agency-changes-the-risk">Why agency changes the risk</a><a href="#c-prompt-injection">Prompt injection</a><a href="#c-the-risk-lists-by-name">The risk lists, by name</a><a href="#c-agent-specific-risks-owasp-s-agentic-draft">Agent-specific risks: OWASP’s agentic draft</a><a href="#c-tools-and-mcp-where-the-access-lives">Tools and MCP: where the access lives</a><a href="#c-controls-that-limit-the-damage">Controls that limit the damage</a><a href="#c-agents-in-an-attacker-s-hands">Agents in an attacker’s hands</a><a href="#c-frameworks-to-map-against">Frameworks to map against</a><a href="#c-choose-by-requirement">Choose by requirement</a><a href="#c-prove-it">Prove it</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
