@@ -1528,7 +1528,7 @@ D["fetoolchain"]=dict(
  P=["Set up TypeScript type-checking in CI","Decide whether an app needs a state library","Upgrade a toolchain dependency safely"],
  S=["Choose which layers a project needs, by requirement","Remove a layer that no longer earns its place","Plan a web and React Native codebase"],
  E=["Set an organisation's front-end platform and upgrade policy","Weigh frameworks against a smaller custom stack","Keep build complexity in check across teams"],
- topics=["TypeScript and JSX","Transpilers: Babel, esbuild, tsc","Bundlers: webpack, Rollup, Vite","React and React Native","State management: Redux, reducer and context","Native ES modules and import maps"],
+ topics=["TypeScript and JSX","Transpilers: Babel, esbuild, tsc","Bundlers: webpack, esbuild, Vite","React and React Native","State management: Redux, reducer and context","Native ES modules and import maps"],
  links=[("Redux: When should I use Redux?","https://redux.js.org/faq/general#when-should-i-use-redux","From Redux's own FAQ"),("MDN: JavaScript modules","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules","Modules in the browser, no bundler")],
  sources=[("Wikipedia: TypeScript","https://en.wikipedia.org/wiki/TypeScript"),
           ("Wikipedia: Babel","https://en.wikipedia.org/wiki/Babel_(transcompiler)"),
