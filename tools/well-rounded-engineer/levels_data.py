@@ -1664,7 +1664,7 @@ D["casestudies"]=dict(
  P=["Explain why Netflix tests failure in production","Explain how GitHub drew boundaries inside one application","Separate what a case study shows from what it suggests"],
  S=["Judge whether a company's approach fits your organisation's size and needs","Plan a change that keeps one thing stable","Spot survivorship bias in success stories"],
  E=["Use case studies to argue for or against an architecture change","Write your own organisation's case study honestly","Learn from failures as well as successes"],
- topics=["Amazon: service-oriented architecture to AWS","Netflix: the 2008 outage and the move to AWS","Chaos engineering and the Simian Army","GitHub: a Rails monolith at scale","Schema domains and database partitioning","Weekly framework upgrades"],
+ topics=["Amazon: service-oriented architecture to AWS","Netflix: the 2008 outage and the move to AWS","Chaos engineering and the Simian Army","GitHub: a Rails monolith at scale","Schema domains and database partitioning","Weekly framework upgrades","Shopify: sharding and Packwerk","Stack Overflow: Dapper, and a change in demand"],
  links=[("GitHub Engineering blog","https://github.blog/engineering/","GitHub's own engineering posts"),
         ("Netflix Chaos Monkey","https://github.com/Netflix/chaosmonkey","Netflix's repository")],
  sources=[("Wikipedia: Amazon Web Services","https://en.wikipedia.org/wiki/Amazon_Web_Services"),
@@ -1674,4 +1674,9 @@ D["casestudies"]=dict(
           ("Netflix/Hystrix README","https://github.com/Netflix/Hystrix"),
           ("GitHub blog: Upgrading GitHub from Rails 3.2 to 5.2","https://github.blog/2018-09-28-upgrading-github-from-rails-3-2-to-5-2/"),
           ("GitHub blog: Partitioning GitHub's relational databases to handle scale","https://github.blog/2021-09-27-partitioning-githubs-relational-databases-scale/"),
-          ("GitHub blog: Building GitHub with Ruby and Rails","https://github.blog/2023-04-06-building-github-with-ruby-and-rails/")])
+          ("GitHub blog: Building GitHub with Ruby and Rails","https://github.blog/2023-04-06-building-github-with-ruby-and-rails/"),
+          ("Wikipedia: Shopify","https://en.wikipedia.org/wiki/Shopify"),
+          ("Shopify/packwerk README","https://github.com/Shopify/packwerk"),
+          ("Wikipedia: Stack Overflow","https://en.wikipedia.org/wiki/Stack_Overflow"),
+          ("Wikipedia: Dapper ORM","https://en.wikipedia.org/wiki/Dapper_ORM"),
+          ("Dapper README","https://github.com/DapperLib/Dapper")])
