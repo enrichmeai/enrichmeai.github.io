@@ -7946,7 +7946,7 @@ Links:    load test results, issue #…</code></pre></div>
 
 <!-- ================= DISTRIBUTED SYSTEMS ================= -->
 <section class="panel" id="p-distsys" data-name="Distributed Systems">
-  <div class="panel-head"><h2>Distributed systems</h2><p>As soon as a program runs on more than one machine, it has to cope with messages that are lost, delayed or arrive twice, machines that pause or fail partway, and clocks that disagree. This page covers the ideas underneath microservices, Kafka, replicated databases and Kubernetes: what goes wrong, the trade-offs you cannot avoid, how machines agree, and how to test it. The section on simulation testing draws on Unmesh Joshi&rsquo;s article <a href="https://martinfowler.com/articles/deterministic-simulation-testing.html" target="_blank" rel="noopener">Deterministic Simulation Testing</a> and his <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems</a>, with credit to the FoundationDB, TigerBeetle and Antithesis work it builds on.</p></div>
+  <div class="panel-head"><h2>Distributed systems</h2><p>As soon as a program runs on more than one machine, it has to cope with messages that are lost, delayed or arrive twice, machines that pause or fail partway, and clocks that disagree. This page covers the ideas underneath microservices, Kafka, replicated databases and Kubernetes: what goes wrong, the trade-offs you cannot avoid, how machines agree, and how to test it. The section on simulation testing draws on Unmesh Joshi&rsquo;s article <a href="https://martinfowler.com/articles/deterministic-simulation-testing.html" target="_blank" rel="noopener">Deterministic Simulation Testing</a> and his <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" target="_blank" rel="noopener">Patterns of Distributed Systems</a>, Joshi says his Tickloom library draws heavily on FoundationDB and TigerBeetle, and he names Antithesis as a commercial option for systems that cannot be restructured.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>The assumptions that fail</h3>
@@ -7961,13 +7961,13 @@ Links:    load test results, issue #…</code></pre></div>
       <li>Transport cost is zero.</li>
       <li>The network is homogeneous.</li>
     </ol>
-    <p><b>Partial failure</b> is what makes this hard. Unmesh Joshi points out that components rarely fail cleanly: a node behaves erratically instead of disconnecting, a network drops a few packets or delays some messages just long enough to time out on one node but not another, and a process pauses (for garbage collection, say) and then carries on as if nothing happened. One part of the system can be stuck while the rest keeps running, with each side holding a different view of the cluster.</p>
+    <p><b>Partial failure</b> is what makes this hard. Unmesh Joshi describes gray failures: a node may misbehave without going down, a network may lose a few packets or slow some messages enough that only some nodes time out, and a process may freeze (a garbage-collection pause, for example) and resume without knowing it was frozen. The cluster is then split in what it believes, with some parts stalled and others carrying on.</p>
   </article>
 
   <article class="card"><h3>CAP and PACELC</h3>
     <ul>
-      <li><b>CAP</b> (Eric Brewer, 2000; Gilbert and Lynch&rsquo;s definitions): a distributed data store can give at most two of <i>consistency</i> (every read gets the latest write or an error), <i>availability</i> (every request to a working node gets a response, possibly not the latest data) and <i>partition tolerance</i> (it keeps working while messages between nodes are lost or delayed).</li>
-      <li><b>In practice</b> a partition is not optional, so the choice is what to do during one: refuse the operation and stay consistent, or answer and risk inconsistency.</li>
+      <li><b>CAP</b> (Brewer&rsquo;s conjecture, 2000; proved by Gilbert and Lynch, 2002): a distributed data store can give at most two of <i>consistency</i> (every read gets the latest write or an error), <i>availability</i> (every request to a working node gets a response, possibly not the latest data) and <i>partition tolerance</i> (it keeps working while messages between nodes are lost or delayed).</li>
+      <li><b>Our reading</b> (<i>analysis</i>): partitions cannot be ruled out on a real network, so the choice is what to do during one: refuse the operation and stay consistent, or answer and risk inconsistency.</li>
       <li><b>PACELC</b> adds the normal case: <i>else</i>, with no partition, you still trade latency against consistency.</li>
     </ul>
     <p class="note">Two traps: CAP&rsquo;s consistency is not the C in ACID, and CAP&rsquo;s availability is not &ldquo;high availability&rdquo; in the everyday sense.</p>
@@ -7975,7 +7975,7 @@ Links:    load test results, issue #…</code></pre></div>
 
   <article class="card"><h3>Consistency models</h3>
     <ul>
-      <li><b>Linearizable</b> (Herlihy and Wing, 1987): operations that overlap in time still appear to happen instantly, one at a time. It is the strongest common model and the easiest to reason about.</li>
+      <li><b>Linearizable</b> (Herlihy and Wing, 1987): operations that overlap in time still appear to take effect instantly, in a single order that respects real time. It is a strong correctness condition, and it lets a programmer reason about the system as if there were one copy of the data.</li>
       <li><b>Eventual consistency:</b> if no new updates are made, every read eventually returns the last value. Replicas are said to converge. It is a weak guarantee, chosen for availability.</li>
       <li><b>BASE versus ACID:</b> eventually consistent stores are often described as basically available, soft state, eventually consistent, in contrast to ACID transactions.</li>
     </ul>
@@ -7986,8 +7986,8 @@ Links:    load test results, issue #…</code></pre></div>
     <div class="tbl"><table>
       <thead><tr><th>Tool</th><th>What it gives you</th></tr></thead>
       <tbody>
-      <tr><td><b>Wall clock</b></td><td>Time of day. It can jump when NTP corrects it, so it cannot measure a timeout or order events across machines.</td></tr>
-      <tr><td><b>Monotonic clock</b></td><td>Elapsed time that never goes backwards on one machine. A process pause still distorts what it measures.</td></tr>
+      <tr><td><b>Wall clock</b></td><td>Time of day. Joshi notes it can jump when NTP corrects it and is not guaranteed to be monotonic, so it cannot measure a timeout; and machines&rsquo; clocks are not perfectly synchronised, so it cannot order events across them.</td></tr>
+      <tr><td><b>Monotonic clock</b></td><td>The usual workaround for measuring elapsed time; Joshi points out that a process pause can still distort the measurement.</td></tr>
       <tr><td><b>Lamport timestamp</b> (Leslie Lamport, 1978)</td><td>A simple logical counter carried on messages, giving a partial order of events: if one event could have caused another, it gets the smaller number.</td></tr>
       <tr><td><b>Vector clock</b></td><td>One logical counter per process, carried on every message, so you can tell whether two events are causally ordered or concurrent.</td></tr>
       <tr><td><b>Hybrid logical clock</b></td><td>A version that increases like a counter but stays close to real date and time, so clients can ask for data &ldquo;as of&rdquo; a time.</td></tr>
@@ -8002,7 +8002,7 @@ Links:    load test results, issue #…</code></pre></div>
       <li><b>Elections.</b> A follower that hears nothing for its election timeout (typically 150 to 300 ms) becomes a candidate, starts a new <i>term</i>, votes for itself and asks the others. Each server votes once per term.</li>
       <li><b>Log replication.</b> The leader appends each change to its log and replicates it to followers. A change counts as committed once a majority have stored it.</li>
     </ol>
-    <p class="note">Raft in its basic form tolerates crashed servers, not lying ones: every node trusts the elected leader. Kafka&rsquo;s KRaft mode replaced ZooKeeper with a built-in quorum of this kind (see <a href="#kafka">Kafka</a>).</p>
+    <p class="note">Raft in its basic form tolerates crashed servers, not lying ones: every node trusts the elected leader. Kafka&rsquo;s own metadata quorum is described on <a href="#kafka">Kafka</a>.</p>
   </article>
 
   <article class="card"><h3>Quorums and split brain</h3>
@@ -8012,25 +8012,25 @@ Links:    load test results, issue #…</code></pre></div>
       <li><b>Split brain:</b> two parts of a system each believe they are in charge and change overlapping data independently, usually after a network partition.</li>
       <li><b>Leases</b> give a node exclusive access for a limited time; it must renew before expiry, so a crashed or paused node loses the access on its own.</li>
     </ul>
-    <p class="note"><i>Analysis:</i> this is why clusters run with an odd number of nodes. A fourth node adds cost without letting you lose a second node.</p>
+    <p class="note"><i>Analysis:</i> this is why clusters usually run with an odd number of nodes: a fourth node adds cost without letting you lose a second one. The other view: an even number is sometimes chosen when spreading nodes across zones or racks matters more than the failure count.</p>
   </article>
 
   <article class="card"><h3>Transactions across machines: two-phase commit</h3>
     <p>Two-phase commit has a coordinator ask every participant to prepare (vote), then tell them all to commit or roll back. Its main weakness is that it <b>blocks</b>: a participant that has voted yes must wait for the coordinator&rsquo;s decision, and if the coordinator fails for good, some participants never resolve, and in rare cases a person has to step in.</p>
-    <p class="note"><i>Analysis:</i> this is why services usually prefer sagas, with a compensating step for each local transaction, over a distributed transaction (see <a href="#architecture">Architecture</a> and <a href="#microservices">Microservices</a>).</p>
+    <p class="note"><i>Analysis:</i> this is why services usually prefer sagas, with a compensating step for each local transaction, over a distributed transaction (see <a href="#architecture">Architecture</a> and <a href="#microservices">Microservices</a>). The other view: a saga gives up isolation between steps and needs compensation logic, so where a database or transaction coordinator already provides two-phase commit and short blocking is acceptable, it can be the simpler option.</p>
   </article>
 
   <article class="card"><h3>When nodes lie: Byzantine faults</h3>
     <p>A Byzantine fault is one where a component shows different symptoms to different observers, so others cannot even agree whether it has failed. The name comes from Lamport, Shostak and Pease&rsquo;s 1982 paper on the Byzantine Generals Problem. Byzantine fault tolerant systems can keep working with fewer than one third of their nodes faulty or malicious.</p>
-    <p class="note"><i>Analysis:</i> inside one organisation, crash fault tolerance (Raft, Paxos) is usually enough. Byzantine fault tolerance matters where participants do not trust each other, as in many blockchains (see <a href="#bitcoin">Bitcoin &amp; Blockchain</a>).</p>
+    <p class="note"><i>Analysis:</i> inside one organisation, crash fault tolerance (Raft, Paxos) is usually enough. Byzantine fault tolerance matters where participants may be malicious or do not trust each other. Public blockchains are a related case, though Wikipedia notes that their guarantees differ from classical Byzantine fault tolerance (see <a href="#bitcoin">Bitcoin &amp; Blockchain</a>).</p>
   </article>
 
   <article class="card wide"><h3>Patterns to know by name</h3>
-    <p>Unmesh Joshi&rsquo;s catalogue, published as the book <i>Patterns of Distributed Systems</i> in 2023, names recurring building blocks of distributed systems. Six to start with:</p>
+    <p>Unmesh Joshi&rsquo;s catalogue, published as the book <i>Patterns of Distributed Systems</i> in 2023, names recurring building blocks of distributed systems. Six of its patterns, picked here as a start:</p>
     <div class="tbl"><table>
       <thead><tr><th>Pattern</th><th>The problem it solves</th></tr></thead>
       <tbody>
-      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/write-ahead-log.html" target="_blank" rel="noopener">Write-ahead log</a></td><td>Keep every agreed change after a crash, by appending each change as a command to a log before applying it</td></tr>
+      <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/write-ahead-log.html" target="_blank" rel="noopener">Write-ahead log</a></td><td>Keep every agreed change after a crash, by persisting each state change as a command in an append-only log</td></tr>
       <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/heartbeat.html" target="_blank" rel="noopener">Heartbeat</a></td><td>Notice a failed server in time, by having each one send regular &ldquo;I am alive&rdquo; messages</td></tr>
       <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/majority-quorum.html" target="_blank" rel="noopener">Majority quorum</a></td><td>Stop two groups of servers making independent decisions</td></tr>
       <tr><td><a href="https://martinfowler.com/articles/patterns-of-distributed-systems/generation-clock.html" target="_blank" rel="noopener">Generation clock</a></td><td>Recognise a leader that paused or was cut off and has since been replaced</td></tr>
@@ -8043,8 +8043,8 @@ Links:    load test results, issue #…</code></pre></div>
     <div class="tbl"><table>
       <thead><tr><th>Approach</th><th>What it asks</th><th>Its limit</th></tr></thead>
       <tbody>
-      <tr><td><b>Chaos engineering</b> (Netflix&rsquo;s Chaos Monkey, 2011, disables a randomly chosen server during working hours)</td><td>Does the system stay available, and recover, when parts fail?</td><td>Unmesh Joshi&rsquo;s point: available is not the same as correct. A system can keep serving traffic while returning stale or wrong data.</td></tr>
-      <tr><td><b>Client-history checking</b> (Jepsen)</td><td>Record what clients invoked and what came back, then check that history against a consistency model.</td><td>Finding a bug is half the work. With random, unseeded faults on a real cluster, the same run rarely happens twice, so the bug is hard to reproduce.</td></tr>
+      <tr><td><b>Chaos engineering</b> (Netflix&rsquo;s Chaos Monkey, 2011, disables a randomly chosen server during working hours)</td><td>Does the system stay available, and recover, when parts fail?</td><td>Unmesh Joshi&rsquo;s point: staying up does not show the answers are right, since a node can answer every request and still return an old value.</td></tr>
+      <tr><td><b>Client-history checking</b> (Jepsen)</td><td>Record what clients invoked and what came back, then check that history against a consistency model.</td><td>Finding a failure is only the first step; you must also reproduce it. Even with the same fault schedule, thread, message and disk timing differ from run to run on a live cluster.</td></tr>
       <tr><td><b>Deterministic simulation testing</b> (below)</td><td>Run the real code against a simulated network, disk and clock, with every fault decided by one seed.</td><td>The code has to be built for it, under strict rules.</td></tr>
       </tbody></table></div>
   </article>
@@ -8054,16 +8054,16 @@ Links:    load test results, issue #…</code></pre></div>
     <ul>
       <li><b>Time comes from ticks, not the clock.</b> A timeout counts calls to <code>tick()</code>, so a pause cannot fire it early. Production systems already work this way: etcd&rsquo;s Raft is driven by <code>Node.Tick()</code>, with election and heartbeat timeouts set in ticks, and TigerBeetle fixes a tick at 10 ms.</li>
       <li><b>One thread runs the protocol</b>, so there is no scheduler to vary the order.</li>
-      <li><b>The network and the disk are interfaces</b> with a simulated version in tests, which can drop, delay, reorder or duplicate messages and fail writes.</li>
+      <li><b>The network and the disk are interfaces</b> with a simulated version in tests, which can drop, delay or duplicate messages. TigerBeetle&rsquo;s simulator also reorders packets, partitions the network and corrupts reads and writes.</li>
       <li><b>Every random choice comes from a seeded generator.</b> The same seed gives exactly the same faults in the same order, so a failure found on one run replays every time.</li>
-      <li><b>Time is fast-forwarded:</b> the simulation runs the next tick at once instead of waiting, so a run that would take days of real time takes minutes. TigerBeetle says one minute of its simulator&rsquo;s time is equivalent to days of real-world testing.</li>
+      <li><b>Time is fast-forwarded:</b> the simulation runs the next tick at once instead of waiting, so a run that would take hours on a live cluster takes seconds, and thousands of runs that would add up to days finish quickly. TigerBeetle says one minute of its simulator&rsquo;s time is equivalent to days of real-world testing.</li>
       <li><b>Correctness is checked</b> against the recorded client history, as Jepsen does, not just &ldquo;did it stay up&rdquo;.</li>
     </ul>
-    <p class="note">Where it comes from: <b>FoundationDB</b> pioneered it for distributed databases, using its own C++ coroutine language and a deterministic scheduler, and simulates at the level of byte streams. <b>TigerBeetle</b>, a financial transactions database, uses a single-threaded, tick-driven design; its simulator, the VOPR, can reproduce any bug from a seed and the Git commit. <b>Antithesis</b> offers a deterministic hypervisor, for when re-architecting the application is not feasible. Joshi&rsquo;s Java library <a href="https://github.com/unmeshjoshi/tickloom" target="_blank" rel="noopener">Tickloom</a> teaches the approach.</p>
+    <p class="note">Where it comes from: Joshi writes that <b>FoundationDB</b> pioneered deterministic simulation testing for distributed databases, using a custom C++ coroutine language and a deterministic scheduler, and that it simulates at the level of byte streams. <b>TigerBeetle</b>, a financial transactions database, uses a single-threaded, tick-driven design, which Joshi found easier to implement in Java. TigerBeetle&rsquo;s own documentation says its simulator, the VOPR, is deterministic from a seed and the Git commit, so any bug it finds can be replayed, and credits FoundationDB and Antithesis as its inspiration. <b>Antithesis</b> is a commercial platform with a deterministic hypervisor, which Joshi suggests when re-architecting the application is not feasible. <a href="https://github.com/unmeshjoshi/tickloom" target="_blank" rel="noopener">Tickloom</a> is Joshi&rsquo;s Java library for teaching the approach.</p>
   </article>
 
   <article class="card"><h3>The rules simulation imposes</h3>
-    <p>To keep the core deterministic, Joshi&rsquo;s article lists strict coding rules. They include:</p>
+    <p>To keep the core deterministic, Joshi&rsquo;s Tickloom code follows six rules. In short (his examples are Java, but the idea applies in any language):</p>
     <ul>
       <li>No reading the system clock directly.</li>
       <li>No unseeded randomness, including for ids.</li>
@@ -8084,12 +8084,12 @@ Links:    load test results, issue #…</code></pre></div>
       <tr><td>Staying responsive matters more than every read being current (feeds, catalogues)</td><td>Eventual consistency, with the staleness designed for</td></tr>
       <tr><td>You need a leader, a lock or cluster membership</td><td>An existing consensus system such as etcd, not a home-made one</td></tr>
       <tr><td>You are writing a consensus protocol, a replication layer or a storage engine</td><td>Deterministic simulation testing, designed in from the start</td></tr>
-      <tr><td>An existing system you cannot restructure</td><td>Client-history checking, or simulation below the application at the hypervisor</td></tr>
+      <tr><td>An existing system you cannot restructure</td><td>Client-history checking, or simulation below the application at the hypervisor (commercial platforms such as Antithesis)</td></tr>
       </tbody></table></div>
   </article>
 
   <article class="card"><h3>Our view, and the other view</h3>
-    <p><i>Our view:</i> every engineer who builds services should know the fallacies, CAP and quorums well enough to read a database&rsquo;s guarantees critically, and anyone writing the replication itself should design for simulation testing from the first line, because retrofitting determinism is far harder.</p>
+    <p><i>Our view:</i> every engineer who builds services should know the fallacies, CAP and quorums well enough to read a database&rsquo;s guarantees critically, and anyone writing the replication itself should design for simulation testing from the first line, because retrofitting determinism is usually harder (<i>our view</i>; hypervisor-level tools exist for when re-architecting is not feasible).</p>
     <p><i>The other view:</i> most teams never write a consensus protocol. For them the strict rules of simulation are a cost with little return, and time is better spent on timeouts, idempotency, chaos tests and choosing well-tested infrastructure.</p>
   </article>
 
