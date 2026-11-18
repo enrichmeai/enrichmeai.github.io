@@ -1440,12 +1440,12 @@ D["graphdb"]=dict(
           ("Microsoft GraphRAG (README)","https://github.com/microsoft/graphrag/blob/main/README.md")])
 
 D["neural"]=dict(
- F=["Explain a neuron: weights, bias, activation","Draw a network's input, hidden and output layers","Say why the activation must be non-linear"],
+ F=["Explain a neuron: weights, bias, activation","Draw a network's input, hidden and output layers","Say what non-linear activations make possible"],
  P=["Compute a neuron's output by hand and in code","Explain loss, gradient descent and the learning rate","Recognise overfitting and hold back data to check for it"],
  S=["Explain backpropagation as the chain rule","Choose between feedforward, convolutional, recurrent and transformer networks","Decide between training, fine-tuning and using a pre-trained model"],
  E=["Set an organisation's approach to building versus buying models","Judge claims about model capability against how training works","Plan evaluation for models in production"],
  topics=["Artificial neurons","Layers and activation functions","Loss and gradient descent","Backpropagation","CNNs, RNNs and transformers","History of neural networks"],
- links=[("Neural network (Wikipedia)","https://en.wikipedia.org/wiki/Neural_network_(machine_learning)","A thorough overview with history")],
+ links=[("Neural network (Wikipedia)","https://en.wikipedia.org/wiki/Neural_network_(machine_learning)","Overview with a history section")],
  sources=[("Wikipedia: Neural network (machine learning)","https://en.wikipedia.org/wiki/Neural_network_(machine_learning)"),
           ("Wikipedia: Artificial neuron","https://en.wikipedia.org/wiki/Artificial_neuron"),
           ("Wikipedia: Perceptron","https://en.wikipedia.org/wiki/Perceptron"),
