@@ -11,6 +11,12 @@
 .eg-top .product-label { font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-300); }
 .eg-top a.product-label:hover { color: var(--color-white); text-decoration: none; }
 .eg-top .search { margin-left: auto; flex: 0 1 360px; }
+.eg-site { display: flex; align-items: center; gap: 16px; margin-left: auto; font-size: 15px; }
+.eg-site a { color: var(--color-accent-200); white-space: nowrap; }
+.eg-site a:hover { color: var(--color-white); text-decoration: none; }
+.eg-site .eg-site-cta { border: 1px solid var(--color-accent-400); border-radius: 8px; padding: 4px 10px; }
+.eg-site + .search { margin-left: 0; flex-basis: 300px; }
+@media (max-width: 1180px) { .eg-site { display: none; } .eg-site + .search { margin-left: auto; flex-basis: 360px; } }
 .eg-top .search input {
   width: 100%; min-height: 44px; box-sizing: border-box; font: 16px var(--font-body); color: var(--color-white);
   background: var(--color-accent-800); border: 1px solid transparent; border-radius: 10px; padding: 0 14px;
