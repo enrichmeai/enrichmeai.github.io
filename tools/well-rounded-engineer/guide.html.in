@@ -10972,6 +10972,78 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY run_date, stage ORDER BY event_ts DESC) 
     </tbody></table></div>
   </article>
 
+  <article class="card wide"><h3>Practice questions, by domain</h3>
+    <p>37 questions to practise with, each set in a situation with numbers or a failure, because that is how these problems arrive at work. Try to answer out loud first, in a few sentences: what you would check, what you would choose, and what it would cost. Then read the linked section. The levels match the rest of the guide: Foundation, Practitioner, Senior.</p>
+    <h4>Scale and load</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>Your API handles 50 requests a second today and marketing expects 20 times that next month. What do you estimate first, and what is likely to break first?</td><td><a href="#c-back-of-the-envelope-numbers">Back-of-the-envelope numbers</a>, <a href="#c-scaling-playbook-cheapest-first">Scaling playbook, cheapest first</a></td></tr>
+      <tr><td>Practitioner</td><td>Two servers sit behind a load balancer and one starts answering in 5 seconds instead of 50 ms, but it still passes its health check. What happens to your users, and how do you stop it?</td><td><a href="#c-load-balancing-sharing-the-traffic">Load balancing: sharing the traffic</a>, <a href="/well-rounded-engineer/networking/#c-nat-proxies-load-balancers">NAT, proxies, load balancers</a></td></tr>
+      <tr><td>Practitioner</td><td>When would you buy a bigger database server instead of adding more servers, and what tells you it is time to stop?</td><td><a href="#c-scale-up-or-scale-out">Scale up or scale out</a></td></tr>
+      <tr><td>Senior</td><td>One customer sends a third of all your traffic. How do you protect everyone else without losing that customer?</td><td><a href="#c-rate-limiting">Rate limiting</a></td></tr>
+    </tbody></table></div>
+    <h4>Data, storage and indexing</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>A query that took 20 ms now takes 4 seconds, and the table has grown from 1 million to 50 million rows. Where do you look first?</td><td><a href="/well-rounded-engineer/database/#c-reading-a-query-plan">Reading a query plan</a>, <a href="/well-rounded-engineer/database/#c-index-rules-of-thumb">Index rules of thumb</a></td></tr>
+      <tr><td>Practitioner</td><td>You need to add a NOT NULL column to a 200-million-row table without downtime. Walk through the steps.</td><td><a href="/well-rounded-engineer/database/#c-safe-schema-changes-on-live-data">Safe schema changes on live data</a></td></tr>
+      <tr><td>Practitioner</td><td>Partitioning or sharding: what is the difference, and which would you try first for a table that keeps growing?</td><td><a href="/well-rounded-engineer/database/#c-partitioning-one-database">Partitioning (one database)</a>, <a href="/well-rounded-engineer/database/#c-sharding-many-databases">Sharding (many databases)</a></td></tr>
+      <tr><td>Senior</td><td>You chose a shard key two years ago and one shard is now ten times busier than the rest. What are your options, and what does each cost?</td><td><a href="/well-rounded-engineer/database/#c-sharding-many-databases">Sharding (many databases)</a>, <a href="#c-distributing-data">Distributing data</a></td></tr>
+    </tbody></table></div>
+    <h4>Consistency and transactions</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>A user changes their address, refreshes the page, and sees the old one. Name the likely cause and two fixes.</td><td><a href="/well-rounded-engineer/distsys/#c-living-with-eventual-consistency-session-guarant">Living with eventual consistency: session guarantees</a>, <a href="/well-rounded-engineer/database/#c-replica-lag-drawn">Replica lag, drawn</a></td></tr>
+      <tr><td>Practitioner</td><td>An order needs a payment, a stock reservation and an email, each in a different service. How do you keep them consistent without one big transaction?</td><td><a href="/well-rounded-engineer/architecture/#c-saga-transactions-across-services">Saga: transactions across services</a>, <a href="/well-rounded-engineer/architecture/#c-transactional-outbox">Transactional outbox</a></td></tr>
+      <tr><td>Practitioner</td><td>During a network partition, should your shopping basket stay available or stay consistent? And your bank balance?</td><td><a href="/well-rounded-engineer/distsys/#c-cap-and-pacelc">CAP and PACELC</a></td></tr>
+      <tr><td>Senior</td><td>Two-phase commit or a saga: list the requirements that would make you choose each.</td><td><a href="/well-rounded-engineer/distsys/#c-transactions-across-machines-two-phase-commit">Transactions across machines: two-phase commit</a>, <a href="/well-rounded-engineer/architecture/#c-saga-transactions-across-services">Saga: transactions across services</a></td></tr>
+    </tbody></table></div>
+    <h4>Reliability, failure and recovery</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>A downstream service starts timing out. Without a timeout on your side, what happens to your service over the next minute?</td><td><a href="#c-designing-for-failure">Designing for failure</a>, <a href="/well-rounded-engineer/microservices/#c-how-a-circuit-breaker-works">How a circuit breaker works</a></td></tr>
+      <tr><td>Practitioner</td><td>Your service retries failed calls three times. The dependency recovers, then falls over again under the retries. Why, and how do you change the retries?</td><td><a href="https://github.com/enrichmeai/well-rounded-engineer-labs/tree/main/distributed-systems/02-retry-storm" target="_blank" rel="noopener">the retry storm drill</a>, <a href="#c-designing-for-failure">Designing for failure</a></td></tr>
+      <tr><td>Practitioner</td><td>A leader node pauses for 30 seconds, a new leader is elected, then the old one wakes up and writes. What stops the damage?</td><td><a href="/well-rounded-engineer/distsys/#c-fencing-stopping-the-old-leader">Fencing: stopping the old leader</a>, <a href="https://github.com/enrichmeai/well-rounded-engineer-labs/tree/main/distributed-systems/03-lock-outlived-owner" target="_blank" rel="noopener">the lock drill</a></td></tr>
+      <tr><td>Senior</td><td>You need to survive the loss of a whole region. What recovery time and data loss can you promise, and what would each option cost?</td><td><a href="/well-rounded-engineer/k8sdr/#c-four-dr-strategies-from-cheap-to-fast">Four DR strategies, from cheap to fast</a>, <a href="#c-availability-in-downtime">Availability in downtime</a></td></tr>
+    </tbody></table></div>
+    <h4>Asynchronous work, events and jobs</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>Why put a queue between the checkout and the email service? What do you gain, and what new problem do you take on?</td><td><a href="/well-rounded-engineer/architecture/#c-event-driven-systems">Event-driven systems</a></td></tr>
+      <tr><td>Practitioner</td><td>A payment message is delivered twice. How do you make sure the customer is charged once?</td><td><a href="/well-rounded-engineer/architecture/#c-idempotent-consumers">Idempotent consumers</a>, <a href="https://github.com/enrichmeai/well-rounded-engineer-labs/tree/main/distributed-systems/01-double-charge" target="_blank" rel="noopener">the double charge drill</a></td></tr>
+      <tr><td>Practitioner</td><td>Events for one customer arrive out of order and the oldest update wins. How do you design the topic and the consumer?</td><td><a href="/well-rounded-engineer/kafka/#c-keys-partitions-and-groups-drawn">Keys, partitions and groups, drawn</a>, <a href="https://github.com/enrichmeai/well-rounded-engineer-labs/tree/main/distributed-systems/05-back-in-time" target="_blank" rel="noopener">the back-in-time drill</a></td></tr>
+      <tr><td>Senior</td><td>What does exactly-once mean in practice, and where does at-least-once delivery plus idempotency get you the same result?</td><td><a href="/well-rounded-engineer/kafka/#c-durability-and-delivery-settings">Durability and delivery settings</a>, <a href="/well-rounded-engineer/architecture/#c-idempotent-consumers">Idempotent consumers</a></td></tr>
+    </tbody></table></div>
+    <h4>Caching and performance</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>Where could you cache the product page: browser, CDN, application, database? What would you put in each?</td><td><a href="/well-rounded-engineer/caching/#c-where-caches-live">Where caches live</a>, <a href="/well-rounded-engineer/caching/#c-http-and-cdn-caching">HTTP and CDN caching</a></td></tr>
+      <tr><td>Practitioner</td><td>A popular cache entry expires and 10,000 requests hit the database at once. What is this called and how do you prevent it?</td><td><a href="/well-rounded-engineer/caching/#c-stampedes-thundering-herd">Stampedes (thundering herd)</a></td></tr>
+      <tr><td>Practitioner</td><td>A price changes but customers still see the old one for five minutes. What are your invalidation options and their trade-offs?</td><td><a href="/well-rounded-engineer/caching/#c-invalidation">Invalidation</a>, <a href="/well-rounded-engineer/caching/#c-write-policies-by-name-through-back-around">Write policies by name: through, back, around</a></td></tr>
+      <tr><td>Senior</td><td>Your p50 latency is 80 ms but p99 is 3 seconds. How do you find out why, and why does p99 matter more than the average?</td><td><a href="/well-rounded-engineer/performance/#c-percentiles-not-averages">Percentiles, not averages</a>, <a href="/well-rounded-engineer/observability/#c-distributed-tracing">Distributed tracing</a></td></tr>
+    </tbody></table></div>
+    <h4>APIs, boundaries and contracts</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>A client retries a POST that creates an order after a timeout. How do you stop it creating two orders?</td><td><a href="/well-rounded-engineer/apis/#c-reliable-integration">Reliable integration</a>, <a href="/well-rounded-engineer/architecture/#c-idempotent-consumers">Idempotent consumers</a></td></tr>
+      <tr><td>Practitioner</td><td>You must change a field's meaning in a public API used by 40 partners. How do you roll it out without breaking them?</td><td><a href="/well-rounded-engineer/apis/#c-api-versioning-and-evolution">API versioning and evolution</a></td></tr>
+      <tr><td>Practitioner</td><td>What belongs in an API gateway, and what belongs in the service behind it?</td><td><a href="/well-rounded-engineer/apis/#c-gateway-load-balancer-proxy-mesh-who-does-what">Gateway, load balancer, proxy, mesh: who does what</a></td></tr>
+      <tr><td>Senior</td><td>Two teams keep breaking each other's integration in production. How do you catch it before deploy without a full end-to-end environment?</td><td><a href="/well-rounded-engineer/teststrat/#c-contracts-instead-of-a-full-stack">Contracts instead of a full stack</a></td></tr>
+    </tbody></table></div>
+    <h4>Security</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>A URL contains /orders/1043. What must the server check before returning it?</td><td><a href="https://github.com/enrichmeai/well-rounded-engineer-labs/tree/main/security/02-order-that-was-not-yours" target="_blank" rel="noopener">the IDOR drill</a>, <a href="/well-rounded-engineer/security/#c-authentication-authorisation">Authentication & authorisation</a></td></tr>
+      <tr><td>Practitioner</td><td>Where should secrets live, and how do you rotate one without downtime?</td><td><a href="/well-rounded-engineer/security/#c-secrets">Secrets</a></td></tr>
+      <tr><td>Senior</td><td>Threat-model a new file-upload feature in 30 minutes. What do you draw, and which threats do you look for first?</td><td><a href="/well-rounded-engineer/security/#c-threat-modelling-in-30-minutes">Threat modelling in 30 minutes</a></td></tr>
+    </tbody></table></div>
+    <h4>Observability and incidents</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Foundation</td><td>A user says checkout is slow. What three signals would you look at, and in what order?</td><td><a href="/well-rounded-engineer/observability/#c-signals-and-what-each-answers">Signals and what each answers</a></td></tr>
+      <tr><td>Practitioner</td><td>Your alert fires at 3 a.m. for a CPU spike that harms nobody. How would you change what you alert on?</td><td><a href="/well-rounded-engineer/sre/#c-alerting-on-slos-burn-rates">Alerting on SLOs: burn rates</a>, <a href="/well-rounded-engineer/observability/#c-alerting">Alerting</a></td></tr>
+      <tr><td>Senior</td><td>You have just recovered from an outage. How do you run the postmortem so that it changes something?</td><td><a href="/well-rounded-engineer/sre/#c-blameless-postmortem-template">Blameless postmortem template</a></td></tr>
+    </tbody></table></div>
+    <h4>Trade-offs, cost and people</h4>
+    <div class="tbl"><table><thead><tr><th>Level</th><th>Question</th><th>Where to find the answer</th></tr></thead><tbody>
+      <tr><td>Practitioner</td><td>A team of six wants to split its monolith into twelve microservices. What questions do you ask before agreeing?</td><td><a href="/well-rounded-engineer/microservices/#c-monolith-modular-monolith-microservices">Monolith, modular monolith, microservices</a>, <a href="/well-rounded-engineer/casestudies/#c-github-one-rails-monolith-kept-and-scaled">GitHub&rsquo;s case</a></td></tr>
+      <tr><td>Senior</td><td>How would you migrate a legacy system to a new design while it keeps serving customers?</td><td><a href="/well-rounded-engineer/microservices/#c-migrating-from-a-monolith">Migrating from a monolith</a>, <a href="#atob">Solution Architecture: A to B</a></td></tr>
+      <tr><td>Senior</td><td>Your cloud bill doubled in a month with the same traffic. Where do you look?</td><td><a href="#cloudcost">Cloud Cost</a>, <a href="#c-data-locality-move-the-work-to-the-data">Data locality: move the work to the data</a></td></tr>
+    </tbody></table></div>
+    <p class="note">A good answer names a trade-off, gives a rough number, and says what you would measure to know you were right. Practise a few each week rather than all at once.</p>
+  </article>
+
   <article class="card"><h3>Design doc template</h3>
 <div class="snip"><pre><code># Title
 ## Context        why now, who asked, links
