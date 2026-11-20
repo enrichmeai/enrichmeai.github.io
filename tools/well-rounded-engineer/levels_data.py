@@ -1694,3 +1694,4 @@ D["casestudies"]=dict(
           ("Wikipedia: Stack Overflow","https://en.wikipedia.org/wiki/Stack_Overflow"),
           ("Wikipedia: Dapper ORM","https://en.wikipedia.org/wiki/Dapper_ORM"),
           ("Dapper README","https://github.com/DapperLib/Dapper")])
+D["body"].setdefault("sources",[]).extend([('Microsoft WorkLab: Research Proves Your Brain Needs Breaks (2021)', 'https://www.microsoft.com/en-us/worklab/work-trend-index/brain-research'), ('Wikipedia: Task switching', 'https://en.wikipedia.org/wiki/Task_switching_(psychology)'), ('Wikipedia: Zoom fatigue', 'https://en.wikipedia.org/wiki/Zoom_fatigue'), ('Wikipedia: Flow (psychology)', 'https://en.wikipedia.org/wiki/Flow_(psychology)'), ('Wikipedia: Ego depletion', 'https://en.wikipedia.org/wiki/Ego_depletion')])
