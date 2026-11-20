@@ -165,6 +165,13 @@ def page(t, title, desc, main_html, extra_head='', hero=''):
   <div class="eg-wrap eg-top-in">
     <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
     {crumb}
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
     <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search {len(order)} pages, e.g. merge" autocomplete="off"></div>
     <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
   </div>
