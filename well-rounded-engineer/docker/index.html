@@ -145,6 +145,77 @@ docker build --target build -t api:build .</code></pre></div>
     <p class="note">Distroless images have no shell, which makes them smaller and safer but harder to debug. Keep a <code>-debug</code> variant or use an ephemeral debug container.</p>
   </article>
 
+  <article class="card wide" id="c-base-images-as-a-template-update-once-like-a-par"><h3>Base images as a template: update once, like a parent POM</h3>
+    <p>In Maven, every project inherits from a parent POM (ultimately the Super POM), so shared settings live in one place and a project picks up a change by moving to a new parent version. Container images can work the same way: one <b>organisation base image</b> holds what every service needs, and every service&rsquo;s Dockerfile starts <code>FROM</code> it.</p>
+    <div class="tbl"><table><thead><tr><th>Maven</th><th>Containers</th></tr></thead><tbody>
+      <tr><td>Parent POM, with shared plugins and settings</td><td>Base image, with the JRE, CA certificates, a non-root user, time zone and shared JVM settings</td></tr>
+      <tr><td>The <code>&lt;parent&gt;</code> version a project points at</td><td>The base image tag (and digest) in <code>FROM</code></td></tr>
+      <tr><td>Releasing a new parent version</td><td>Rebuilding and publishing the base image</td></tr>
+      <tr><td>A bot or a person bumping the parent version in each project</td><td>Dependabot (or a similar bot) opening a pull request to bump the base image in each service</td></tr>
+    </tbody></table></div>
+    <p><b>1. One base image, built in one place.</b></p>
+    <div class="snip"><pre><code># java-runtime/Dockerfile: the organisation's base image, built and published by one pipeline
+FROM eclipse-temurin:21-jre@sha256:&lt;digest&gt;      # pinned; Dependabot proposes updates
+RUN groupadd --system app &amp;&amp; useradd --system --gid app app
+COPY certs/company-root-ca.crt /usr/local/share/ca-certificates/
+RUN update-ca-certificates
+ENV TZ=UTC
+USER app</code></pre></div>
+    <p><b>2. Services take the base image as an argument.</b> Docker allows <code>ARG</code> before the first <code>FROM</code>, and <code>FROM</code> can use that value, so the base image is a default you can override at build time.</p>
+    <div class="snip"><pre><code># orders-service/Dockerfile: every service starts from the base image
+ARG BASE_IMAGE=registry.example.com/platform/java-runtime:21
+FROM ${BASE_IMAGE}
+WORKDIR /application
+COPY target/orders-service.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]</code></pre></div>
+    <div class="snip"><pre><code># normal build: the default base image
+docker build --pull -t orders-service:dev .
+
+# try a new base image without editing the Dockerfile
+docker build --build-arg BASE_IMAGE=registry.example.com/platform/java-runtime:21-rc -t orders-service:test .</code></pre></div>
+    <p><b>3. Let a bot keep every service current.</b> Docker&rsquo;s best-practice guide recommends pinning base images to a digest, because tags are mutable, and using Dependabot&rsquo;s <code>docker</code> ecosystem to raise pull requests that update tags and digests on a schedule: you stay in control, with an audit trail. It also recommends rebuilding images often, with <code>--pull</code>, so security fixes in the base reach your images.</p>
+    <div class="snip"><pre><code># .github/dependabot.yml in each service repository
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"</code></pre></div>
+    <p><i>Our view:</i> a pinned organisation base image, updated by pull requests that run each service&rsquo;s tests, gives the control of a parent POM without surprise changes at build time. <i>The other view:</i> some teams prefer no Dockerfiles at all and let a buildpack builder choose and patch the base (Spring Boot&rsquo;s <code>build-image</code>, below); that centralises the base even further, at the cost of less control over what is inside it.</p>
+  </article>
+
+  <article class="card wide" id="c-images-for-spring-boot-quarkus-and-dataflow-jobs"><h3>Images for Spring Boot, Quarkus and Dataflow jobs</h3>
+    <div class="tbl"><table><thead><tr><th>Kind</th><th>Ways to build the image</th><th>Where the base image is chosen</th></tr></thead><tbody>
+      <tr><td><b>Spring Boot service</b></td><td>A Dockerfile using Spring Boot&rsquo;s layer extraction (below), or <code>mvn spring-boot:build-image</code>, which builds an OCI image with Cloud Native Buildpacks and runs it as a non-root user</td><td>The <code>FROM</code> lines; for buildpacks, the plugin&rsquo;s <code>builder</code> and <code>runImage</code> settings, which can live in the parent POM</td></tr>
+      <tr><td><b>Quarkus service</b></td><td>A container-image extension: Jib (dependencies cached in their own layer, no Docker daemon needed to build), Docker or Podman (using the Dockerfiles Quarkus generates under <code>src/main/docker</code>), OpenShift, or Buildpack</td><td>The generated Dockerfiles, or the extension&rsquo;s configuration; with Jib, a Red Hat UBI OpenJDK runtime image unless you change it</td></tr>
+      <tr><td><b>Dataflow pipeline</b></td><td>A custom SDK container, starting from an Apache Beam SDK image, and a Flex Template image that launches the job (below)</td><td>The Beam SDK image tag, which must match the Java version you launch the pipeline with, and the Google-provided template launcher base image</td></tr>
+    </tbody></table></div>
+    <p><b>Spring Boot, layered.</b> Spring Boot&rsquo;s documentation shows extracting the jar into four layers (dependencies, the loader, snapshot dependencies, your application), so Docker only re-ships the layer that changed.</p>
+    <div class="snip"><pre><code># Spring Boot: split the jar into layers so a code change does not re-ship the dependencies
+FROM bellsoft/liberica-openjre-debian:25-cds AS builder
+WORKDIR /builder
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
+RUN java -Djarmode=tools -jar application.jar extract --layers --destination extracted
+
+FROM bellsoft/liberica-openjre-debian:25-cds
+WORKDIR /application
+COPY --from=builder /builder/extracted/dependencies/ ./
+COPY --from=builder /builder/extracted/spring-boot-loader/ ./
+COPY --from=builder /builder/extracted/snapshot-dependencies/ ./
+COPY --from=builder /builder/extracted/application/ ./
+ENTRYPOINT ["java", "-jar", "application.jar"]</code></pre></div>
+    <p><b>Dataflow.</b> Google recommends that, if a pipeline needs a custom container, the Flex Template uses the same image, so the launcher has the same dependencies as the job. The image copies the template launcher binary from a Google-provided base image and names the main class.</p>
+    <div class="snip"><pre><code># Dataflow Flex Template for a Java pipeline: one image that launches the job
+FROM gcr.io/dataflow-templates-base/IMAGE_NAME:TAG AS template_launcher   # a Google-provided base image
+FROM apache/beam_java11_sdk:BEAM_VERSION    # the pipeline's runtime image; match the Java version you launch with
+COPY --from=template_launcher /opt/google/dataflow/java_template_launcher /opt/google/dataflow/java_template_launcher
+COPY target/my-pipeline-bundled.jar /template/
+ENV FLEX_TEMPLATE_JAVA_MAIN_CLASS="com.example.MyPipeline"
+ENV FLEX_TEMPLATE_JAVA_CLASSPATH="/template/*"</code></pre></div>
+    <p class="note">With the base-image pattern above, the runtime stages of all three can start from images your platform team owns and pins, so one update reaches every service and job through ordinary pull requests.</p>
+  </article>
+
   <article class="card" id="c-instructions-that-trip-people-up"><h3>Instructions that trip people up</h3>
     <ul>
       <li><b><code>ENTRYPOINT</code> vs <code>CMD</code>:</b> ENTRYPOINT is the program; CMD supplies default arguments that <code>docker run image …</code> replaces.</li>
@@ -229,7 +300,7 @@ docker run --rm -it --network container:db nicolaka/netshoot   # debug its netwo
 
   <!-- levels -->
   <article class="card wide" id="c-levels-what-to-expect"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build, run, stop and inspect containers</li><li>Read a Dockerfile and explain each instruction</li><li>Use docker compose for a local stack</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Write small multi-stage Dockerfiles with good layer caching</li><li>Run as non-root; keep secrets out of layers</li><li>Build for linux/amd64; debug exit codes and OOM kills</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Set image standards: base images, scanning, SBOMs, signing</li><li>Optimise image size and startup time for Cloud Run or Kubernetes</li><li>Design local development environments for a team</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the organisation's container supply chain</li><li>Understand the OCI image and runtime specs</li><li>Choose and govern registries, build systems and policies</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="/well-rounded-engineer/">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>BuildKit cache mounts and secrets</li><li>Distroless and minimal base images</li><li>OCI image format and digests</li><li>Rootless containers</li><li>Image signing with cosign and SLSA provenance</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker documentation</a><span class="lnote"> Official docs for engine, build and compose</span></li><li><a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noopener">Dockerfile best practices</a><span class="lnote"> Caching, multi-stage, small images</span></li><li><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose</a><span class="lnote"> Multi-container local stacks</span></li><li><a href="https://github.com/GoogleContainerTools/distroless" target="_blank" rel="noopener">Distroless images</a><span class="lnote"> Minimal runtime images from Google</span></li><li><a href="https://trivy.dev/" target="_blank" rel="noopener">Trivy</a><span class="lnote"> Scan images and dependencies for CVEs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://docs.docker.com/reference/dockerfile/" target="_blank" rel="noopener">Dockerfile reference</a>; <a href="https://docs.docker.com/build/building/secrets/" target="_blank" rel="noopener">Build secrets</a>; <a href="https://docs.docker.com/reference/cli/docker/system/prune/" target="_blank" rel="noopener">docker system prune</a>; <a href="https://docs.docker.com/build/metadata/attestations/sbom/" target="_blank" rel="noopener">SBOM attestations</a>; <a href="https://docs.docker.com/reference/cli/docker/compose/down/" target="_blank" rel="noopener">docker compose down</a>; <a href="https://docs.docker.com/compose/how-tos/startup-order/" target="_blank" rel="noopener">Compose startup order</a>; <a href="https://docs.docker.com/engine/containers/run/" target="_blank" rel="noopener">docker run exit status</a>; <a href="https://raw.githubusercontent.com/GoogleContainerTools/distroless/main/README.md" target="_blank" rel="noopener">Distroless README (java21-debian13, nonroot, debug tags)</a>; <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener">signal(7)</a>; <a href="https://docs.docker.com/reference/cli/docker/buildx/build/" target="_blank" rel="noopener">Docker CLI: docker buildx build (--platform default)</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/docker" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/docker</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BDocker%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
+  <article class="card wide" id="c-explore-further"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>BuildKit cache mounts and secrets</li><li>Distroless and minimal base images</li><li>OCI image format and digests</li><li>Rootless containers</li><li>Image signing with cosign and SLSA provenance</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker documentation</a><span class="lnote"> Official docs for engine, build and compose</span></li><li><a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noopener">Dockerfile best practices</a><span class="lnote"> Caching, multi-stage, small images</span></li><li><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose</a><span class="lnote"> Multi-container local stacks</span></li><li><a href="https://github.com/GoogleContainerTools/distroless" target="_blank" rel="noopener">Distroless images</a><span class="lnote"> Minimal runtime images from Google</span></li><li><a href="https://trivy.dev/" target="_blank" rel="noopener">Trivy</a><span class="lnote"> Scan images and dependencies for CVEs</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://docs.docker.com/reference/dockerfile/" target="_blank" rel="noopener">Dockerfile reference</a>; <a href="https://docs.docker.com/build/building/secrets/" target="_blank" rel="noopener">Build secrets</a>; <a href="https://docs.docker.com/reference/cli/docker/system/prune/" target="_blank" rel="noopener">docker system prune</a>; <a href="https://docs.docker.com/build/metadata/attestations/sbom/" target="_blank" rel="noopener">SBOM attestations</a>; <a href="https://docs.docker.com/reference/cli/docker/compose/down/" target="_blank" rel="noopener">docker compose down</a>; <a href="https://docs.docker.com/compose/how-tos/startup-order/" target="_blank" rel="noopener">Compose startup order</a>; <a href="https://docs.docker.com/engine/containers/run/" target="_blank" rel="noopener">docker run exit status</a>; <a href="https://raw.githubusercontent.com/GoogleContainerTools/distroless/main/README.md" target="_blank" rel="noopener">Distroless README (java21-debian13, nonroot, debug tags)</a>; <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener">signal(7)</a>; <a href="https://docs.docker.com/reference/cli/docker/buildx/build/" target="_blank" rel="noopener">Docker CLI: docker buildx build (--platform default)</a>; <a href="https://docs.docker.com/reference/dockerfile/" target="_blank" rel="noopener">Docker docs: Dockerfile reference, how ARG and FROM interact</a>; <a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noopener">Docker docs: Building best practices (pin base images, Dependabot, rebuild often)</a>; <a href="https://docs.spring.io/spring-boot/reference/packaging/container-images/dockerfiles.html" target="_blank" rel="noopener">Spring Boot docs: Dockerfiles (layered extraction)</a>; <a href="https://docs.spring.io/spring-boot/maven-plugin/build-image.html" target="_blank" rel="noopener">Spring Boot Maven plugin: Packaging OCI images</a>; <a href="https://github.com/quarkusio/quarkus/blob/main/docs/src/main/asciidoc/container-image.adoc" target="_blank" rel="noopener">Quarkus docs: Container images (source on GitHub)</a>; <a href="https://cloud.google.com/dataflow/docs/guides/templates/configuring-flex-templates" target="_blank" rel="noopener">Google Cloud: Configure Flex Templates (custom container images)</a>; <a href="https://cloud.google.com/dataflow/docs/guides/build-container-image" target="_blank" rel="noopener">Google Cloud: Build custom container images for Dataflow</a>; <a href="https://github.com/apache/maven-site/blob/master/content/markdown/guides/introduction/introduction-to-the-pom.md" target="_blank" rel="noopener">Maven: Introduction to the POM, project inheritance (source on GitHub)</a>.</p><p class="runcode"><b>Run the code:</b> <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/tree/main/docker" target="_blank" rel="noopener">well-rounded-engineer-fundamentals/docker</a>, with a README that says how to run it and what it shows. Stuck, or found a mistake? <a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals/issues/new?title=%5BDocker%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>.</p></article>
 
   </div>
 </section>
@@ -237,7 +308,7 @@ docker run --rm -it --network container:db nicolaka/netshoot   # debug its netwo
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
-<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-mental-model">Mental model</a><a href="#c-the-layer-cache-drawn">The layer cache, drawn</a><a href="#c-everyday-commands">Everyday commands</a><a href="#c-a-good-dockerfile">A good Dockerfile</a><a href="#c-multi-stage-builds">Multi-stage builds</a><a href="#c-instructions-that-trip-people-up">Instructions that trip people up</a><a href="#c-docker-compose-for-local-stacks">Docker Compose for local stacks</a><a href="#c-multi-platform-build-secrets">Multi-platform & build secrets</a><a href="#c-debugging-containers">Debugging containers</a><a href="#c-image-security">Image security</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-mental-model">Mental model</a><a href="#c-the-layer-cache-drawn">The layer cache, drawn</a><a href="#c-everyday-commands">Everyday commands</a><a href="#c-a-good-dockerfile">A good Dockerfile</a><a href="#c-multi-stage-builds">Multi-stage builds</a><a href="#c-base-images-as-a-template-update-once-like-a-par">Base images as a template: update once, like a parent POM</a><a href="#c-images-for-spring-boot-quarkus-and-dataflow-jobs">Images for Spring Boot, Quarkus and Dataflow jobs</a><a href="#c-instructions-that-trip-people-up">Instructions that trip people up</a><a href="#c-docker-compose-for-local-stacks">Docker Compose for local stacks</a><a href="#c-multi-platform-build-secrets">Multi-platform & build secrets</a><a href="#c-debugging-containers">Debugging containers</a><a href="#c-image-security">Image security</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
 </div>
 
 <footer class="site-footer">
