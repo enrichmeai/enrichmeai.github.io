@@ -146,7 +146,8 @@
 .eg th { font: 600 13px var(--font-body); letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-accent-800); background: var(--color-accent-100); border-bottom: 0; }
 .eg th:first-child { border-radius: 8px 0 0 8px; }
 .eg th:last-child { border-radius: 0 8px 8px 0; }
-.eg td:first-child { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+/* a short first-column label stays on one line; a long one (a requirement, a choice) wraps instead of pushing the other columns out of view */
+.eg td:first-child { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 7em; }
 .eg .note { margin: 10px 0 0; font-size: 15px; color: var(--color-neutral-800); }
 .eg .empty { color: var(--color-neutral-700); padding: 24px 0; }
 .eg .sources { margin: 14px 0 0; font-size: 14px; color: var(--color-neutral-700); overflow-wrap: anywhere; }
@@ -226,8 +227,6 @@
 }
 @media (max-width: 620px) {
   .eg .grid { grid-template-columns: minmax(0, 1fr); }
-  /* on a phone a long first-column label must wrap, or it squeezes the other columns to a sliver */
-  .eg td:first-child { white-space: normal; min-width: 7em; }
   .eg-hero-in { padding-top: 28px; padding-bottom: 36px; }
   .eg-hero .hero-lead { font-size: 17px; }
 }
