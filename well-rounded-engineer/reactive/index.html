@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reactive & Backpressure · Well Rounded Engineer</title>
-<meta name="description" content="What “reactive” means, why every pipeline with a fast producer and a slow consumer needs back pressure, and how it works in Reactive Streams, Java’s Flow…">
+<meta name="description" content="Sooner or later every system meets a fast producer and a slow consumer. This page explains what “reactive” really means, why that meeting needs back…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -56,10 +56,11 @@
 <main id="main" class="eg">
 <p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">Reactive &amp; Backpressure</span></p>
 <section class="panel" id="reactive" data-name="Reactive &amp; Backpressure">
-  <div class="panel-head"><h1>Reactive and backpressure</h1><p>What &ldquo;reactive&rdquo; means, why every pipeline with a fast producer and a slow consumer needs back pressure, and how it works in Reactive Streams, Java&rsquo;s <code>Flow</code>, RxJava, Reactor, Kotlin, Node.js, Kafka, TCP and HTTP/2. With runnable Java and a way to choose by requirement.</p></div>
+  <div class="panel-head"><h1>Reactive and backpressure</h1><p>Sooner or later every system meets a fast producer and a slow consumer. This page explains what &ldquo;reactive&rdquo; really means, why that meeting needs back pressure, and how it works in Reactive Streams, Java&rsquo;s <code>Flow</code>, RxJava, Reactor, Kotlin, Node.js, Kafka, TCP and HTTP/2. With runnable Java and a way to choose by requirement.</p></div>
   <div class="grid">
 
   <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>Picture a service that reads orders from a queue and writes each one to a database. On a quiet day the database keeps up. Then a sale starts, orders arrive ten times faster, and the question nobody asked at design time suddenly matters: where do the orders that cannot be written yet go? This page is about that question.</p>
     <p><b>Reactive</b>, in the Spring team&rsquo;s words, &ldquo;refers to programming models that are built around reacting to change&rdquo;: network components reacting to I/O events, UI controllers reacting to mouse clicks. Instead of a thread waiting for an answer, code is called when the answer arrives.</p>
     <p><b>Back pressure</b> is borrowed from plumbing, where it is the resistance that pushes back against flow in a pipe. In software it is a way to regulate the flow of data so that components are not overwhelmed: the slow part of a system tells the fast part to ease off.</p>
     <p>The two go together for one reason, which the Spring documentation puts plainly: &ldquo;In synchronous, imperative code, blocking calls serve as a natural form of back pressure that forces the caller to wait. In non-blocking code, it becomes important to control the rate of events so that a fast producer does not overwhelm its destination.&rdquo; Take away the waiting, and you must put the brake back on deliberately.</p>
@@ -79,11 +80,11 @@
       <text class="lb hd" x="20" y="166">If the producer cannot slow down, it must choose:</text>
       <text class="lb" x="20" y="190">buffer (memory grows) &#183; drop (data is lost) &#183; fail (the error is visible)</text>
     </svg><figcaption>Back pressure is the arrow going backwards. Without it, the buffer in the middle has to absorb the difference, and an unbounded buffer is only a slower way to run out of memory.</figcaption></figure>
-    <p>Every pipeline has a slowest step: a database that takes 10 ms per insert, a partner API with a rate limit, a phone on a weak signal. Whatever arrives faster than that step can handle has to go somewhere. Spring&rsquo;s documentation answers the obvious question, &ldquo;what if a publisher cannot slow down?&rdquo;, in one line: &ldquo;it has to decide whether to buffer, drop, or fail.&rdquo; Back pressure is the fourth option, and the best one when the source allows it: ask the producer to slow down.</p>
+    <p>The picture is simple, and once you have seen it you will spot it everywhere. Every pipeline has a slowest step: a database that takes 10 ms per insert, a partner API with a rate limit, a phone on a weak signal. Whatever arrives faster than that step can handle has to go somewhere. Spring&rsquo;s documentation answers the obvious question, &ldquo;what if a publisher cannot slow down?&rdquo;, in one line: &ldquo;it has to decide whether to buffer, drop, or fail.&rdquo; Back pressure is the fourth option, and the best one when the source allows it: ask the producer to slow down.</p>
   </article>
 
   <article class="card wide" id="c-reactive-streams-the-contract"><h3>Reactive Streams: the contract</h3>
-    <p>Reactive Streams began in late 2013 as an initiative between engineers at Netflix, Pivotal and Lightbend, with contributions from Red Hat, Oracle, Twitter and others. Its aim is to govern &ldquo;the exchange of stream data across an asynchronous boundary&rdquo; (to another thread or pool) while making sure the receiving side is not forced to buffer arbitrary amounts of data. Version 1.0 for the JVM was released in April 2015 with the Java API, a written specification, a test kit (TCK) and examples, so that libraries from different teams can be plugged together.</p>
+    <p>Back pressure only works if both sides agree on how to ask for more, and that agreement is what Reactive Streams provides. It began in late 2013 as an initiative between engineers at Netflix, Pivotal and Lightbend, with contributions from Red Hat, Oracle, Twitter and others. Its aim is to govern &ldquo;the exchange of stream data across an asynchronous boundary&rdquo; (to another thread or pool) while making sure the receiving side is not forced to buffer arbitrary amounts of data. Version 1.0 for the JVM was released in April 2015 with the Java API, a written specification, a test kit (TCK) and examples, so that libraries from different teams can be plugged together.</p>
     <div class="tbl"><table><thead><tr><th>Interface</th><th>Methods</th><th>Its job</th></tr></thead><tbody>
       <tr><td><code>Publisher&lt;T&gt;</code></td><td><code>subscribe(Subscriber)</code></td><td>Produces items, but only as many as have been asked for</td></tr>
       <tr><td><code>Subscriber&lt;T&gt;</code></td><td><code>onSubscribe</code>, <code>onNext</code>, <code>onError</code>, <code>onComplete</code></td><td>Receives the subscription, then the items, then one ending signal</td></tr>
@@ -101,7 +102,7 @@
   </article>
 
   <article class="card wide" id="c-run-it-a-slow-subscriber-slows-the-producer"><h3>Run it: a slow subscriber slows the producer</h3>
-    <p>This uses only the JDK (Java 21 or later; save it as <code>SlowSubscriber.java</code> and run <code>java SlowSubscriber.java</code>). The subscriber asks for one item at a time and takes 100 ms over each. The publisher has room for four unread items. <code>SubmissionPublisher.submit</code> &ldquo;blocks until resources are available&rdquo;, so once the buffer is full, the producing loop is held to the consumer&rsquo;s pace.</p>
+    <p>Reading the rules is one thing; watching them work is more convincing. This example uses only the JDK (Java 21 or later; save it as <code>SlowSubscriber.java</code> and run <code>java SlowSubscriber.java</code>). The subscriber asks for one item at a time and takes 100 ms over each. The publisher has room for four unread items. <code>SubmissionPublisher.submit</code> &ldquo;blocks until resources are available&rdquo;, so once the buffer is full, the producing loop is held to the consumer&rsquo;s pace.</p>
     <div class="snip"><pre><code>import java.util.concurrent.Flow;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.SubmissionPublisher;
@@ -147,7 +148,7 @@ produced 7 after waiting 97 ms
   </article>
 
   <article class="card wide" id="c-when-the-producer-cannot-slow-down"><h3>When the producer cannot slow down</h3>
-    <p>Some sources ignore requests: mouse movements, a sensor, a market data feed, a timer. For those, every library offers the same four choices under different names.</p>
+    <p>Asking the producer to slow down is the best answer, but not every producer can listen. Mouse movements, a sensor, a market data feed and a timer all keep coming whether you are ready or not. For those, every library offers the same four choices; only the names differ, so it helps to see them side by side.</p>
     <div class="tbl"><table><thead><tr><th>Choice</th><th>Reactor</th><th>RxJava <code>Flowable</code></th><th>JDK</th><th>Kotlin Flow</th></tr></thead><tbody>
       <tr><td><b>Buffer</b></td><td><code>onBackpressureBuffer</code>, bounded or unbounded, with an overflow strategy</td><td><code>onBackpressureBuffer</code>; <code>BackpressureStrategy.BUFFER</code></td><td><code>SubmissionPublisher</code>&rsquo;s per-subscriber buffer; a queue in a <code>ThreadPoolExecutor</code></td><td><code>buffer(n)</code></td></tr>
       <tr><td><b>Drop new items</b></td><td><code>onBackpressureDrop</code></td><td><code>onBackpressureDrop</code>; <code>DROP</code></td><td><code>offer</code>; <code>DiscardPolicy</code></td><td><code>buffer(onBufferOverflow = DROP_LATEST)</code></td></tr>
@@ -166,13 +167,13 @@ produced 7 after waiting 97 ms
   </article>
 
   <article class="card wide" id="c-push-pull-and-the-hybrid-in-between"><h3>Push, pull, and the hybrid in between</h3>
-    <p>An <code>Iterator</code> is <b>pull</b>: the consumer asks for the next item when it is ready, so it can never be overwhelmed, but it waits whenever the item is not ready yet. A callback or event listener is <b>push</b>: items arrive as soon as they exist, which is fast, but the consumer has no say in the rate.</p>
+    <p>There are really only two ways for data to move between a producer and a consumer, and Reactive Streams cleverly uses both. An <code>Iterator</code> is <b>pull</b>: the consumer asks for the next item when it is ready, so it can never be overwhelmed, but it waits whenever the item is not ready yet. A callback or event listener is <b>push</b>: items arrive as soon as they exist, which is fast, but the consumer has no say in the rate.</p>
     <p>Reactive Streams is both. Reactor&rsquo;s reference guide calls it &ldquo;a push-pull hybrid&rdquo;: the subscriber pulls by requesting n items, and the publisher pushes each one as soon as it exists, up to that limit. Libraries also <b>prefetch</b>, requesting a batch ahead of need to avoid a round trip per item, and operators can change the request on the way up (a <code>buffer(10)</code> that is asked for one batch may ask upstream for ten items).</p>
     <p><b>Kafka</b> sits firmly at the pull end. A consumer calls <code>poll()</code> when it is ready, <code>max.poll.records</code> limits how many records one call returns, and the consumer API&rsquo;s &ldquo;Consumption Flow Control&rdquo; section offers <code>pause()</code> and <code>resume()</code> per partition, for example to let a lagging stream catch up before reading further from one that is ahead. KafkaA slow consumer simply falls behind (its lag grows) without harming the broker.rsquo;s design notes give the reason: in a push system A slow consumer simply falls behind (its lag grows) without harming the broker.ldquo;the consumer tends to be overwhelmed when its rate of consumption falls below the rate of productionA slow consumer simply falls behind (its lag grows) without harming the broker.rdquo;, while with pull A slow consumer simply falls behind (its lag grows) without harming the broker.ldquo;the consumer simply falls behind and catches up when it can.A slow consumer simply falls behind (its lag grows) without harming the broker.rdquo; More on <a href="/well-rounded-engineer/kafka/">Kafka</a>.</p>
   </article>
 
   <article class="card wide" id="c-back-pressure-across-the-network"><h3>Back pressure across the network</h3>
-    <p>Library back pressure stops at the edge of the process. Between machines, the protocols have their own, and they are older than any reactive library.</p>
+    <p>Library back pressure stops at the edge of the process. The good news is that between machines you are not on your own: the network protocols have had their own back pressure for decades, long before any reactive library existed.</p>
     <div class="tbl"><table><thead><tr><th>Layer</th><th>How the receiver says &ldquo;slow down&rdquo;</th></tr></thead><tbody>
       <tr><td><b>TCP</b></td><td>Every segment carries a window: &ldquo;the range of sequence numbers the sender of the window (the data receiver) is currently prepared to accept&rdquo;, related to its free buffer space (RFC 9293). When the receiving application stops reading, the window shrinks towards zero and the sender stops.</td></tr>
       <tr><td><b>HTTP/2</b></td><td>Credit-based flow control with <code>WINDOW_UPDATE</code> frames, per stream and per connection. The initial window is 65,535 octets, and &ldquo;a sender MUST respect flow-control limits imposed by a receiver&rdquo; (RFC 9113). It works hop by hop, not end to end, so a proxy has its own windows on each side.</td></tr>
@@ -184,6 +185,7 @@ produced 7 after waiting 97 ms
   </article>
 
   <article class="card wide" id="c-the-same-idea-in-other-languages"><h3>The same idea in other languages</h3>
+    <p>None of this is special to Java. Once you know the pattern, you will recognise it in every language that handles streams.</p>
     <p><b>Node.js streams.</b> <code>write()</code> returns <code>false</code> when the data buffer has exceeded <code>highWaterMark</code> (commonly 16 kB by default) or the write queue is busy, and a <code>'drain'</code> event fires once it has emptied. The Node.js guide&rsquo;s rule: &ldquo;Never call <code>.write()</code> after it returns false but wait for &lsquo;drain&rsquo; instead.&rdquo; <code>pipe()</code> does this for you.</p>
     <div class="snip"><pre><code>// Node.js: respect write()'s answer, or memory grows without limit
 function copy(source, destination) {
@@ -217,7 +219,7 @@ Mono&lt;Customer&gt; customer = Mono.fromCallable(() -&gt; legacyClient.find(id)
   </article>
 
   <article class="card wide" id="c-blocking-code-has-back-pressure-too"><h3>Blocking code has back pressure too</h3>
-    <p>A blocked thread is the oldest flow control there is: the caller cannot send the next request until the last one returns. The trouble used to be cost: one platform thread per waiting call. Virtual threads (final in Java 21, JEP 444) make waiting cheap again, and JEP 444 says how to limit concurrency once threads are no longer the limit: &ldquo;do not be tempted to pool virtual threads in order to limit concurrency. Instead use constructs specifically designed for that purpose, such as semaphores.&rdquo;</p>
+    <p>It is easy to forget, in all the talk of reactive libraries, that plain blocking code has had back pressure all along. A blocked thread is the oldest flow control there is: the caller cannot send the next request until the last one returns. The trouble used to be cost: one platform thread per waiting call. Virtual threads (final in Java 21, JEP 444) make waiting cheap again, and JEP 444 says how to limit concurrency once threads are no longer the limit: &ldquo;do not be tempted to pool virtual threads in order to limit concurrency. Instead use constructs specifically designed for that purpose, such as semaphores.&rdquo;</p>
     <div class="snip"><pre><code>import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -254,6 +256,7 @@ public class Limit {
   </article>
 
   <article class="card wide" id="c-mistakes-that-defeat-back-pressure"><h3>Mistakes that defeat back pressure</h3>
+    <p>Most back pressure problems are not exotic. They come from a handful of ordinary decisions, each of which looks harmless on the day it is made.</p>
     <div class="tbl"><table><thead><tr><th>Mistake</th><th>What happens</th><th>Instead</th></tr></thead><tbody>
       <tr><td>An unbounded buffer or queue &ldquo;just in case&rdquo;</td><td>The difference in speed piles up in memory until the process dies, often long after the cause</td><td>Bound every queue and decide what happens when it is full</td></tr>
       <tr><td>Requesting <code>Long.MAX_VALUE</code> everywhere</td><td>Rule 3.17 lets the publisher treat it as unbounded: back pressure is switched off</td><td>Request in batches, or let the library&rsquo;s operators manage demand</td></tr>
