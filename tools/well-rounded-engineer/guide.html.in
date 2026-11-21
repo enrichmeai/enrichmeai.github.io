@@ -6419,6 +6419,122 @@ Flux.fromIterable(uris).flatMap(this::fetch, 8);     // concurrency 8</code></pr
     <p class="note">Never call <code>.block()</code> on a request thread. Wrap blocking calls with <code>Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())</code>.</p>
   </article>
 
+  <article class="card wide"><h3>Filters, interceptors and aspects: where the code around your code lives</h3>
+    <p>Some code has nothing to do with what a request is for, yet has to run for almost every one of them: checking who is calling, timing the call, adding a request id to the logs, opening a transaction, compressing the response. Copy it into every controller and it soon drifts apart. Java has grown three places to put this kind of code instead, and once you can see all three side by side, a lot of &ldquo;Spring magic&rdquo; stops being magic.</p>
+
+    <p><b>1. The servlet filter: the oldest gate.</b> Filters arrived in Servlet 2.3, and the interface has hardly changed since. A filter sits in front of a servlet and sees the raw request on the way in and the response on the way out. Its own documentation lists the jobs it was designed for: authentication, logging and auditing, data compression, encryption. Filters form a chain, and each one decides whether to pass the request on by calling <code>chain.doFilter</code>. This one times every request (it compiles against Jakarta Servlet 6, as used by Tomcat 10):</p>
+    <div class="snip"><pre><code>import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import java.io.IOException;
+
+// Runs for every request, before any servlet or controller sees it.
+public class RequestTimingFilter implements Filter {
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        long start = System.nanoTime();
+        try {
+            chain.doFilter(request, response);          // hand over to the next filter, then the servlet
+        } finally {
+            long ms = (System.nanoTime() - start) / 1_000_000;
+            String path = ((HttpServletRequest) request).getRequestURI();
+            System.out.println(path + " took " + ms + " ms");
+        }
+    }
+}</code></pre></div>
+    <p>Spring Security&rsquo;s servlet support is built on filters like this one. Spring registers a single <code>DelegatingFilterProxy</code> with the servlet container, which hands each request to filters that live as Spring beans, so they can use everything else in your application.</p>
+
+    <p><b>2. The handler interceptor: a gate that knows the route.</b> A filter runs before Spring has worked out which controller will handle the request. A Spring MVC <code>HandlerInterceptor</code> runs after that decision, with three hooks: <code>preHandle</code> before the controller (return <code>false</code> and it never runs), <code>postHandle</code> after it, and <code>afterCompletion</code> once the request has finished.</p>
+    <div class="snip"><pre><code>// Spring MVC: runs around the controller method, and knows which handler was chosen
+public class AuditInterceptor implements HandlerInterceptor {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        // return false to stop here: the controller is never called
+        return true;
+    }
+}</code></pre></div>
+    <p>Two things in Spring&rsquo;s own documentation are worth knowing. For <code>@ResponseBody</code> methods the response is already written before <code>postHandle</code> runs, so it is too late to add a header there. And Spring warns that interceptors are &ldquo;not ideally suited as a security layer&rdquo;, because their path matching can disagree with the controllers&rsquo;; it recommends Spring Security or another approach in the servlet filter chain, applied as early as possible.</p>
+
+    <p><b>3. The aspect: code wrapped around methods, not requests.</b> Aspect-oriented programming was developed by Gregor Kiczales and colleagues at Xerox PARC, who then built AspectJ, an extension to Java first released in 2001 and now an Eclipse Foundation project. The idea is to describe a <b>cross-cutting concern</b> once (the <i>advice</i>) and say where it applies (the <i>pointcut</i>), instead of writing it into every method. Spring&rsquo;s <code>@Transactional</code> works this way.</p>
+    <p>Spring AOP keeps it simple on purpose. It is pure Java, needs no special compiler, and supports only one kind of join point: the execution of a method on a Spring bean. It wraps the bean in a <b>proxy</b>, a JDK dynamic proxy when the bean implements an interface and a CGLIB subclass when it does not, and the proxy runs the advice before handing over to the real object. That one design choice explains the most common surprise. Here is a small Spring program, run with Spring 6.2:</p>
+    <div class="snip"><pre><code>import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+public class AopDemo {
+
+    @Aspect
+    static class Timing {
+        @Around("execution(* AopDemo.OrderService.*(..))")     // every public method of OrderService
+        Object time(ProceedingJoinPoint call) throws Throwable {
+            long start = System.nanoTime();
+            try {
+                return call.proceed();
+            } finally {
+                System.out.printf("  [aspect] %s took %d us%n",
+                        call.getSignature().getName(), (System.nanoTime() - start) / 1_000);
+            }
+        }
+    }
+
+    static class OrderService {
+        public void placeOrder() {
+            System.out.println("placing order");
+            checkStock();                                     // a call on 'this': the proxy never sees it
+        }
+        public void checkStock() {
+            System.out.println("checking stock");
+        }
+    }
+
+    @Configuration
+    @EnableAspectJAutoProxy
+    static class Config {
+        @Bean Timing timing() { return new Timing(); }
+        @Bean OrderService orderService() { return new OrderService(); }
+    }
+
+    public static void main(String[] args) {
+        try (var context = new AnnotationConfigApplicationContext(Config.class)) {
+            OrderService orders = context.getBean(OrderService.class);
+            System.out.println("The bean is a " + orders.getClass().getSimpleName());
+            orders.placeOrder();
+            System.out.println("--- calling checkStock from outside:");
+            orders.checkStock();
+        }
+    }
+}</code></pre></div>
+    <p>What it printed:</p>
+    <div class="snip"><pre><code>The bean is a AopDemo$OrderService$$SpringCGLIB$$0
+placing order
+checking stock
+  [aspect] placeOrder took 984 us
+--- calling checkStock from outside:
+checking stock
+  [aspect] checkStock took 115 us</code></pre></div>
+    <p>Look at the first call. <code>placeOrder</code> was timed, but <code>checkStock</code>, called from inside it, was not: the call went to <code>this</code>, the real object, and never passed through the proxy. Spring&rsquo;s documentation says it plainly: self-invocation &ldquo;is not going to result in the advice associated with a method invocation getting a chance to run&rdquo;. It is why a <code>@Transactional</code> method called from another method in the same class runs without a new transaction (<i>analysis</i>, following from the same rule). The fixes Spring suggests are to restructure the code so the call goes through another bean, or to inject a reference to the proxy. AspectJ&rsquo;s compile-time and load-time weaving change the bytecode itself, so they do not have this limit.</p>
+
+    <p><b>The modern versions of the same three ideas.</b> In Spring WebFlux, a <code>WebFilter</code> plays the part of the servlet filter in a reactive application. In Jakarta EE, and so in Quarkus, Jakarta Interceptors give you an <code>@AroundInvoke</code> method that &ldquo;interposes on business methods&rdquo;, much like an aspect. And native images change the trade-off: GraalVM must be told about dynamic proxies, so for a Spring native image the proxies are created at build time and compiled in.</p>
+
+    <div class="tbl"><table><thead><tr><th>If the code you want to add&hellip;</th><th>Put it in</th></tr></thead><tbody>
+      <tr><td>Applies to every HTTP request, before anything else (authentication, CORS, compression, a request id)</td><td>A servlet filter, or a <code>WebFilter</code> in WebFlux; for security, Spring Security&rsquo;s filter chain</td></tr>
+      <tr><td>Needs to know which controller is handling the request</td><td>A <code>HandlerInterceptor</code></td></tr>
+      <tr><td>Applies to business methods however they are called (transactions, caching, metrics on a service)</td><td>An aspect, or an annotation that Spring already implements with one</td></tr>
+      <tr><td>Applies to two or three methods only</td><td>Plain code: call a helper, or wrap the object yourself</td></tr>
+      <tr><td>Has to work on calls inside the same class, or on fields</td><td>AspectJ weaving, not Spring&rsquo;s proxies</td></tr>
+    </tbody></table></div>
+
+    <p><i>Our view:</i> use the least invisible mechanism that does the job. Filters for HTTP, plain code when only a few methods need it, and aspects when the same rule genuinely applies everywhere, written down where the team will find it. Every aspect is code that runs without appearing in the method it changes, and the self-invocation surprise shows how easily that catches people out. <i>The other view:</i> that invisibility is the point. Aspects keep business code about the business, <code>@Transactional</code> is used happily in a great many Spring applications, and one well-named aspect is easier to change than the same five lines copied into fifty methods.</p>
+  </article>
+
   <article class="card"><h3>Errors as ProblemDetail</h3>
 <div class="snip"><pre><code>@RestControllerAdvice
 class ApiErrors {
@@ -6577,7 +6693,7 @@ plugins {
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Build a REST endpoint with validation and a test</li><li>Configure an app with application.yml and profiles</li><li>Use Spring Data or JdbcClient for simple queries</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Handle errors with ProblemDetail; write slice and integration tests</li><li>Use transactions correctly; understand proxies</li><li>Add Actuator, metrics and structured logging</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Choose servlet vs reactive and design for throughput</li><li>Secure APIs with Spring Security and OAuth 2.0</li><li>Tune startup, memory and connection pools for the cloud</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Lead major upgrades (3.x to 4.x) across services</li><li>Build internal starters and platform libraries</li><li>Set architecture and module boundaries (Spring Modulith)</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Auto-configuration and writing your own starter</li><li>Spring Modulith</li><li>Observability with Micrometer and OpenTelemetry</li><li>GraalVM native images and CDS</li><li>Spring Boot 4 migration</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.spring.io/spring-boot/index.html" target="_blank" rel="noopener">Spring Boot reference</a><span class="lnote"> Official reference</span></li><li><a href="https://spring.io/guides" target="_blank" rel="noopener">Spring guides</a><span class="lnote"> Short task-focused tutorials</span></li><li><a href="https://docs.spring.io/spring-framework/reference/" target="_blank" rel="noopener">Spring Framework reference</a><span class="lnote"> Core, web, data access, testing</span></li><li><a href="https://github.com/spring-projects/spring-boot/wiki" target="_blank" rel="noopener">Spring Boot release notes</a><span class="lnote"> What changed in each version</span></li><li><a href="https://googlecloudplatform.github.io/spring-cloud-gcp/" target="_blank" rel="noopener">Spring Cloud GCP</a><span class="lnote"> GCP integrations for Spring</span></li><li><a href="https://testcontainers.com/guides/" target="_blank" rel="noopener">Testcontainers guides</a><span class="lnote"> Integration testing with Spring Boot</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://openjdk.org/jeps/444" target="_blank" rel="noopener">JEP 444: Virtual Threads</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BSpring%20Boot%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>Auto-configuration and writing your own starter</li><li>Spring Modulith</li><li>Observability with Micrometer and OpenTelemetry</li><li>GraalVM native images and CDS</li><li>Spring Boot 4 migration</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://docs.spring.io/spring-boot/index.html" target="_blank" rel="noopener">Spring Boot reference</a><span class="lnote"> Official reference</span></li><li><a href="https://spring.io/guides" target="_blank" rel="noopener">Spring guides</a><span class="lnote"> Short task-focused tutorials</span></li><li><a href="https://docs.spring.io/spring-framework/reference/" target="_blank" rel="noopener">Spring Framework reference</a><span class="lnote"> Core, web, data access, testing</span></li><li><a href="https://github.com/spring-projects/spring-boot/wiki" target="_blank" rel="noopener">Spring Boot release notes</a><span class="lnote"> What changed in each version</span></li><li><a href="https://googlecloudplatform.github.io/spring-cloud-gcp/" target="_blank" rel="noopener">Spring Cloud GCP</a><span class="lnote"> GCP integrations for Spring</span></li><li><a href="https://testcontainers.com/guides/" target="_blank" rel="noopener">Testcontainers guides</a><span class="lnote"> Integration testing with Spring Boot</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://openjdk.org/jeps/444" target="_blank" rel="noopener">JEP 444: Virtual Threads</a>; <a href="https://github.com/jakartaee/servlet/blob/master/api/src/main/java/jakarta/servlet/Filter.java" target="_blank" rel="noopener">Jakarta Servlet: the Filter interface (source)</a>; <a href="https://docs.spring.io/spring-security/reference/servlet/architecture.html" target="_blank" rel="noopener">Spring Security: servlet architecture (DelegatingFilterProxy)</a>; <a href="https://github.com/spring-projects/spring-framework/blob/main/framework-docs/modules/ROOT/pages/web/webmvc/mvc-servlet/handlermapping-interceptor.adoc" target="_blank" rel="noopener">Spring Framework: handler interception (source)</a>; <a href="https://github.com/spring-projects/spring-framework/blob/main/framework-docs/modules/ROOT/pages/core/aop/introduction-spring-defn.adoc" target="_blank" rel="noopener">Spring Framework: Spring AOP capabilities and goals (source)</a>; <a href="https://github.com/spring-projects/spring-framework/blob/main/framework-docs/modules/ROOT/pages/core/aop/proxying.adoc" target="_blank" rel="noopener">Spring Framework: proxying mechanisms and self-invocation (source)</a>; <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming" target="_blank" rel="noopener">Wikipedia: Aspect-oriented programming</a>; <a href="https://en.wikipedia.org/wiki/AspectJ" target="_blank" rel="noopener">Wikipedia: AspectJ</a>; <a href="https://github.com/jakartaee/interceptors/blob/master/api/src/main/java/jakarta/interceptor/AroundInvoke.java" target="_blank" rel="noopener">Jakarta Interceptors: AroundInvoke (source)</a>; <a href="https://docs.spring.io/spring-boot/reference/packaging/native-image/introducing-graalvm-native-images.html" target="_blank" rel="noopener">Spring Boot docs: Introducing GraalVM native images</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BSpring%20Boot%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
@@ -13591,6 +13707,37 @@ histogram_quantile(0.95,
   sum by (le) (rate(http_server_requests_seconds_bucket[5m])))</code></pre></div>
   </article>
 
+  <article class="card wide"><h3>What is happening to JMX?</h3>
+    <p>If you have been around Java for a while, you will remember opening JConsole, pointing it at a running JVM and browsing a tree of <b>MBeans</b>: heap usage, thread counts, a cache&rsquo;s hit rate, even a button that cleared it. That is JMX, the Java Management Extensions, and it is worth knowing what has become of it, because the answer is more interesting than &ldquo;it died&rdquo;.</p>
+
+    <p><b>What it is.</b> JMX 1.0 was defined through the Java Community Process as JSR 3, with remote access added by JSR 160, and it has been part of standard Java since J2SE 5.0. Resources are exposed as MBeans and registered with an <b>MBeanServer</b>; connectors, usually RMI, let a remote tool read and change them. It still ships in every JDK today, in the <code>java.management</code> module, which also provides the interfaces for monitoring the JVM itself.</p>
+
+    <p><b>What changed around it.</b> Monitoring moved to a different shape. Instead of a person connecting a console to one JVM, systems now collect dimensional metrics from hundreds of short-lived containers, scraped over HTTP by Prometheus or pushed through OpenTelemetry, and an RMI port is an awkward thing to open in a container and an unwelcome thing to expose (<i>analysis</i>). You can see the shift in the defaults:</p>
+    <ul>
+      <li><b>Spring Boot</b> does not enable JMX by default; you turn it on with <code>spring.jmx.enabled=true</code>. Its metrics go through Micrometer, a vendor-neutral facade, and Spring Boot describes Micrometer&rsquo;s JMX mapping as &ldquo;primarily a cheap and portable way to view metrics locally&rdquo;.</li>
+      <li><b>Apache Kafka</b> still exposes all its metrics through JMX (its documentation suggests firing up JConsole to browse them), but disables remote JMX by default and says you must enable security if you turn it on in production.</li>
+      <li><b>Quarkus</b>&rsquo;s Kafka guide shows how to switch off JMX MBean registration altogether.</li>
+    </ul>
+
+    <p><b>JMX as a source, with bridges.</b> So JMX has quietly changed role: libraries still publish to it, and something else carries the numbers out.</p>
+    <div class="tbl"><table><thead><tr><th>Bridge</th><th>What it does</th></tr></thead><tbody>
+      <tr><td><b>Prometheus JMX Exporter</b></td><td>A collector that captures JMX MBean values and serves them for Prometheus to scrape</td></tr>
+      <tr><td><b>OpenTelemetry JMX Metric Insight</b></td><td>Part of the OpenTelemetry Java agent: you describe the MBeans you want in a YAML file, and they are reported alongside the agent&rsquo;s other metrics</td></tr>
+      <tr><td><b>Jolokia</b></td><td>An agent that gives remote access to MBeans with JSON over HTTP, instead of the RMI-based JSR 160 connectors</td></tr>
+    </tbody></table></div>
+
+    <p><b>For looking inside a JVM, Flight Recorder took over much of the job.</b> JDK Flight Recorder, added to OpenJDK in JDK 11 (JEP 328), is &ldquo;a low-overhead data collection framework for troubleshooting Java applications and the HotSpot JVM&rdquo;, and JDK 14 added event streaming so its data can feed continuous monitoring (JEP 349). There is a Flight Recorder example on <a href="#performance">Performance</a>.</p>
+
+    <div class="tbl"><table><thead><tr><th>If you need to&hellip;</th><th>Reach for</th></tr></thead><tbody>
+      <tr><td>Look at one JVM on your own machine, now</td><td>JConsole over local JMX; Flight Recorder for a recording</td></tr>
+      <tr><td>Monitor a fleet of services</td><td>Micrometer or OpenTelemetry metrics, scraped or exported to your monitoring system</td></tr>
+      <tr><td>Get numbers out of a library that only speaks JMX (Kafka, Tomcat, a connection pool)</td><td>The Prometheus JMX Exporter or OpenTelemetry&rsquo;s JMX Metric Insight</td></tr>
+      <tr><td>Change a setting at run time</td><td>A secured management endpoint, or JMX with authentication and TLS; never an open remote JMX port</td></tr>
+    </tbody></table></div>
+
+    <p><i>Our view:</i> JMX is not dying; it has moved down a layer. It is still the place inside the JVM where libraries publish their numbers, and that is worth knowing when a dashboard is missing something. But as the interface people use, it has been replaced by metrics pipelines and Flight Recorder, and new code should publish through Micrometer or OpenTelemetry. <i>The other view:</i> for a single long-running server, a team that knows JConsole, and operations that need to change settings live, JMX remains simple, built in and free, and there is no need to replace something that works.</p>
+  </article>
+
   <article class="card"><h3>Dashboards that get used</h3>
     <ul>
       <li><b>One overview per service:</b> traffic, errors, latency percentiles, saturation, last deploy marker.</li>
@@ -13663,7 +13810,7 @@ traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01</code></pre
 
   <!-- levels -->
   <article class="card wide"><h3>Levels: what to expect</h3><div class="levels"><div class="lvl"><h4><span class="lvtag">1</span> Foundation</h4><ul><li>Find a request's or run's logs and errors in Cloud Logging</li><li>Read a service dashboard: traffic, errors, latency</li><li>Write structured logs with IDs and evidence</li></ul></div><div class="lvl"><h4><span class="lvtag">2</span> Practitioner</h4><ul><li>Instrument a service with OpenTelemetry and custom metrics</li><li>Write log queries, log-based metrics and PromQL</li><li>Build dashboards and actionable alerts with runbooks</li></ul></div><div class="lvl"><h4><span class="lvtag">3</span> Senior</h4><ul><li>Design observability for a system: signals, sampling, cardinality, cost</li><li>Trace problems across services, queues and pipelines</li><li>Set dashboard and alert templates for teams</li></ul></div><div class="lvl"><h4><span class="lvtag">4</span> Expert</h4><ul><li>Own the observability platform and its standards</li><li>Lead cost and data-governance strategy for telemetry</li><li>Drive observability-led reliability across the organisation</li></ul></div></div><p class="note">Each level includes the ones before it. See <a href="#start">Start here</a> for what the levels mean.</p></article>
-  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OpenTelemetry Collector pipelines and tail sampling</li><li>High-cardinality observability and wide events</li><li>Continuous profiling</li><li>Exemplars linking metrics to traces</li><li>eBPF-based instrumentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry documentation</a><span class="lnote"> APIs, SDKs, collector, semantic conventions</span></li><li><a href="https://cloud.google.com/logging/docs" target="_blank" rel="noopener">Cloud Logging documentation</a><span class="lnote"> Logs, sinks, log-based metrics</span></li><li><a href="https://cloud.google.com/logging/docs/view/logging-query-language" target="_blank" rel="noopener">Logging query language</a><span class="lnote"> Filter syntax for Logs Explorer and alerts</span></li><li><a href="https://cloud.google.com/monitoring/docs" target="_blank" rel="noopener">Cloud Monitoring documentation</a><span class="lnote"> Metrics, dashboards, alerting, PromQL</span></li><li><a href="https://cloud.google.com/trace/docs" target="_blank" rel="noopener">Cloud Trace documentation</a><span class="lnote"> Distributed tracing on GCP</span></li><li><a href="https://prometheus.io/docs/" target="_blank" rel="noopener">Prometheus documentation</a><span class="lnote"> Metric types and PromQL</span></li><li><a href="https://docs.micrometer.io/micrometer/reference/" target="_blank" rel="noopener">Micrometer documentation</a><span class="lnote"> Metrics and observations for Java</span></li><li><a href="https://www.oreilly.com/library/view/observability-engineering/9781492076438/" target="_blank" rel="noopener">Observability Engineering (book)</a><span class="lnote"> Majors, Fong-Jones and Miranda</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-specification/main/specification/protocol/exporter.md" target="_blank" rel="noopener">OTLP exporter config (ports, protocol)</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-specification/main/specification/configuration/sdk-environment-variables.md" target="_blank" rel="noopener">OTel SDK env vars (samplers)</a>; <a href="https://raw.githubusercontent.com/w3c/trace-context/main/spec/20-http_request_header_format.md" target="_blank" rel="noopener">W3C Trace Context header</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-java-instrumentation/main/README.md" target="_blank" rel="noopener">OTel Java agent README</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-python-contrib/main/opentelemetry-instrumentation/README.rst" target="_blank" rel="noopener">OTel Python instrumentation README</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/main/documentation/spring-boot-docs/src/docs/antora/modules/reference/pages/actuator/tracing.adoc" target="_blank" rel="noopener">Spring Boot tracing (Boot 4 OTLP property)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/main/documentation/spring-boot-docs/src/docs/antora/modules/reference/pages/actuator/observability.adoc" target="_blank" rel="noopener">Spring Boot observability (annotations)</a>; <a href="https://docs.cloud.google.com/logging/docs/audit" target="_blank" rel="noopener">Cloud Audit Logs</a>; <a href="https://docs.cloud.google.com/logging/docs/structured-logging" target="_blank" rel="noopener">Cloud Logging structured logging</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector-contrib/main/exporter/googlecloudexporter/README.md" target="_blank" rel="noopener">OTel Collector googlecloud exporter</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector-contrib/main/exporter/googlemanagedprometheusexporter/README.md" target="_blank" rel="noopener">OTel Collector googlemanagedprometheus exporter</a>; <a href="https://docs.cloud.google.com/sdk/gcloud/reference/logging/metrics/create" target="_blank" rel="noopener">gcloud logging metrics create</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BObservability%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
+  <article class="card wide"><h3>Explore further</h3><div class="explore"><div><h4>Study next</h4><ul><li>OpenTelemetry Collector pipelines and tail sampling</li><li>High-cardinality observability and wide events</li><li>Continuous profiling</li><li>Exemplars linking metrics to traces</li><li>eBPF-based instrumentation</li></ul></div><div><h4>Official docs and good reading</h4><ul class="links"><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry documentation</a><span class="lnote"> APIs, SDKs, collector, semantic conventions</span></li><li><a href="https://cloud.google.com/logging/docs" target="_blank" rel="noopener">Cloud Logging documentation</a><span class="lnote"> Logs, sinks, log-based metrics</span></li><li><a href="https://cloud.google.com/logging/docs/view/logging-query-language" target="_blank" rel="noopener">Logging query language</a><span class="lnote"> Filter syntax for Logs Explorer and alerts</span></li><li><a href="https://cloud.google.com/monitoring/docs" target="_blank" rel="noopener">Cloud Monitoring documentation</a><span class="lnote"> Metrics, dashboards, alerting, PromQL</span></li><li><a href="https://cloud.google.com/trace/docs" target="_blank" rel="noopener">Cloud Trace documentation</a><span class="lnote"> Distributed tracing on GCP</span></li><li><a href="https://prometheus.io/docs/" target="_blank" rel="noopener">Prometheus documentation</a><span class="lnote"> Metric types and PromQL</span></li><li><a href="https://docs.micrometer.io/micrometer/reference/" target="_blank" rel="noopener">Micrometer documentation</a><span class="lnote"> Metrics and observations for Java</span></li><li><a href="https://www.oreilly.com/library/view/observability-engineering/9781492076438/" target="_blank" rel="noopener">Observability Engineering (book)</a><span class="lnote"> Majors, Fong-Jones and Miranda</span></li></ul></div></div><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-specification/main/specification/protocol/exporter.md" target="_blank" rel="noopener">OTLP exporter config (ports, protocol)</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-specification/main/specification/configuration/sdk-environment-variables.md" target="_blank" rel="noopener">OTel SDK env vars (samplers)</a>; <a href="https://raw.githubusercontent.com/w3c/trace-context/main/spec/20-http_request_header_format.md" target="_blank" rel="noopener">W3C Trace Context header</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-java-instrumentation/main/README.md" target="_blank" rel="noopener">OTel Java agent README</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-python-contrib/main/opentelemetry-instrumentation/README.rst" target="_blank" rel="noopener">OTel Python instrumentation README</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/main/documentation/spring-boot-docs/src/docs/antora/modules/reference/pages/actuator/tracing.adoc" target="_blank" rel="noopener">Spring Boot tracing (Boot 4 OTLP property)</a>; <a href="https://raw.githubusercontent.com/spring-projects/spring-boot/main/documentation/spring-boot-docs/src/docs/antora/modules/reference/pages/actuator/observability.adoc" target="_blank" rel="noopener">Spring Boot observability (annotations)</a>; <a href="https://docs.cloud.google.com/logging/docs/audit" target="_blank" rel="noopener">Cloud Audit Logs</a>; <a href="https://docs.cloud.google.com/logging/docs/structured-logging" target="_blank" rel="noopener">Cloud Logging structured logging</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector-contrib/main/exporter/googlecloudexporter/README.md" target="_blank" rel="noopener">OTel Collector googlecloud exporter</a>; <a href="https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector-contrib/main/exporter/googlemanagedprometheusexporter/README.md" target="_blank" rel="noopener">OTel Collector googlemanagedprometheus exporter</a>; <a href="https://docs.cloud.google.com/sdk/gcloud/reference/logging/metrics/create" target="_blank" rel="noopener">gcloud logging metrics create</a>; <a href="https://en.wikipedia.org/wiki/Java_Management_Extensions" target="_blank" rel="noopener">Wikipedia: Java Management Extensions</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.management/module-summary.html" target="_blank" rel="noopener">Java SE 21: the java.management module</a>; <a href="https://github.com/spring-projects/spring-boot/blob/main/documentation/spring-boot-docs/src/docs/antora/modules/reference/pages/actuator/jmx.adoc" target="_blank" rel="noopener">Spring Boot docs: monitoring and management over JMX (source)</a>; <a href="https://github.com/spring-projects/spring-boot/blob/main/documentation/spring-boot-docs/src/docs/antora/modules/reference/pages/actuator/metrics.adoc" target="_blank" rel="noopener">Spring Boot docs: metrics, JMX export (source)</a>; <a href="https://github.com/micrometer-metrics/micrometer" target="_blank" rel="noopener">Micrometer (GitHub)</a>; <a href="https://github.com/apache/kafka/blob/trunk/docs/operations/monitoring.md" target="_blank" rel="noopener">Apache Kafka: monitoring (source)</a>; <a href="https://github.com/prometheus/jmx_exporter" target="_blank" rel="noopener">Prometheus JMX Exporter (GitHub)</a>; <a href="https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics" target="_blank" rel="noopener">OpenTelemetry: JMX Metric Insight (GitHub)</a>; <a href="https://github.com/jolokia/jolokia" target="_blank" rel="noopener">Jolokia (GitHub)</a>; <a href="https://openjdk.org/jeps/328" target="_blank" rel="noopener">OpenJDK: JEP 328, Flight Recorder</a>; <a href="https://openjdk.org/jeps/349" target="_blank" rel="noopener">OpenJDK: JEP 349, JFR Event Streaming</a>.</p><p class="runcode">A question, or found a mistake? <a href="https://github.com/enrichmeai/enrichmeai.github.io/issues/new?title=%5BObservability%5D%20" target="_blank" rel="noopener">open an issue on GitHub</a>. Nothing here is tracked and there are no comments to store: questions live in the open, where the next learner can find the answer.</p></article>
 
   </div>
 </section>
