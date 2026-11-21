@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Binary to GPUs · Well Rounded Engineer</title>
+<meta name="description" content="Chip design sounds like a different world, but it is built from ideas you can hold in your head: two symbols, a handful of simple gates, and patience.…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="chips" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 126 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp" open><summary>Foundations<span class="n">15</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/chips/" aria-current="page">From Binary to GPUs</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/functional/">Functional or Imperative</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/reactive/">Reactive &amp; Backpressure</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/quality/">Quality Attributes</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/ratelimit/">Rate Limiting</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">13</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/perseverance/">Perseverance &amp; Resilience</a><a href="/well-rounded-engineer/newideas/">New Ideas, Familiarity &amp; Habits</a><a href="/well-rounded-engineer/thinkers/">Thinkers Worth Knowing</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/valuation/">How Companies Are Valued</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a><a href="/well-rounded-engineer/longevity/">Biohacking &amp; Longevity</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Foundations</span> / <span aria-current="page">From Binary to GPUs</span></p>
+<section class="panel" id="chips" data-name="From Binary to GPUs">
+  <div class="panel-head"><h1>From binary to GPUs</h1><p>Chip design sounds like a different world, but it is built from ideas you can hold in your head: two symbols, a handful of simple gates, and patience. This page walks up the ladder from binary and hex to logic gates, an adder you can run, a processor, how real chips are designed today, and why GPUs ended up running AI.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>If you have ever written an <code>if</code> statement, you already understand most of what a chip does. A computer is a very large number of tiny switches, arranged so that switches control other switches. Group a few of them and you get a <b>logic gate</b>; group gates and you can add numbers; group adders and memory and you have a processor. No single step is mysterious. What makes chips impressive is the scale, billions of transistors, and the care taken at every layer.</p>
+    <p>This is also why hardware matters more now, not less. Software has become so dependent on what chips can do, from the phone in your pocket to the GPUs that train AI models, that knowing roughly how they work helps you write better software and judge the hype. The basics, from the first transistor to Moore&rsquo;s law, are on <a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a> and <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>; this page goes one level deeper, with something you can run.</p>
+    <figure class="fig"><svg viewBox="0 0 640 250" role="img" aria-labelledby="lad-t lad-d"><title id="lad-t">From transistors to software, one layer at a time</title><desc id="lad-d">Six layers, from top to bottom: software; CPU and GPU; ALU and registers; adders; logic gates; transistors. Each layer is built only from the one below it.</desc><rect class="nd" x="40" y="14" width="190" height="30" rx="5"/><text class="lb hd" x="135" y="34" text-anchor="middle">Software</text><text class="lb mu" x="250" y="34">your program, compiled to instructions</text><rect class="nd" x="40" y="52" width="190" height="30" rx="5"/><text class="lb hd" x="135" y="72" text-anchor="middle">CPU and GPU</text><text class="lb mu" x="250" y="72">fetch, decode, execute, billions of times a second</text><rect class="nd in" x="40" y="90" width="190" height="30" rx="5"/><text class="lb hd" x="135" y="110" text-anchor="middle">ALU and registers</text><text class="lb mu" x="250" y="110">add, compare, remember, on every clock tick</text><rect class="nd in" x="40" y="128" width="190" height="30" rx="5"/><text class="lb hd" x="135" y="148" text-anchor="middle">Adders</text><text class="lb mu" x="250" y="148">full adders chained bit by bit</text><rect class="nd in" x="40" y="166" width="190" height="30" rx="5"/><text class="lb hd" x="135" y="186" text-anchor="middle">Logic gates</text><text class="lb mu" x="250" y="186">NAND alone can build all the others</text><rect class="nd" x="40" y="204" width="190" height="30" rx="5"/><text class="lb hd" x="135" y="224" text-anchor="middle">Transistors</text><text class="lb mu" x="250" y="224">switches turned on and off by voltage</text><line class="ed" x1="20" y1="226" x2="20" y2="22"/><polygon class="ar" points="20,14 15,24 25,24"/><text class="lb mu" x="12" y="246">built from below</text></svg><figcaption>Every layer is made only from the one beneath it. The program below builds the middle three for you, from NAND gates up to an 8-bit adder.</figcaption></figure>
+  </article>
+
+  <article class="card wide" id="c-binary-and-hex-without-the-fear"><h3>Binary and hex, without the fear</h3>
+    <p>A <b>binary number</b> uses only two symbols, 0 and 1, and each digit is called a <b>bit</b>. Thomas Harriot studied the modern system and Gottfried Leibniz is credited with inventing it, though related systems appeared much earlier in several cultures. Why only two symbols? Because a switch has two states, on and off, and that is all a transistor needs to represent.</p>
+    <p>Binary works exactly like the decimal you already know, just with 2 instead of 10. In decimal, the places are ones, tens, hundreds. In binary, they are ones, twos, fours, eights, and so on. So <code>0100 0001</code> is 64 + 1 = 65.</p>
+    <p><b>Hexadecimal</b> is simply a shorthand for binary that people can read. One hex digit stands for four bits (a <i>nibble</i>), so a whole 8-bit byte is exactly two hex digits: <code>0100 0001</code> is <code>41</code>, and <code>0010 1100</code> is <code>2C</code>. That is why hex appears everywhere engineers look at raw data: colours like <code>#5980A6</code>, memory addresses, network packets, hash values.</p>
+    <div class="tbl"><table><thead><tr><th>Decimal</th><th>Binary</th><th>Hex</th></tr></thead><tbody>
+      <tr><td>9</td><td>1001</td><td>9</td></tr>
+      <tr><td>10</td><td>1010</td><td>A</td></tr>
+      <tr><td>15</td><td>1111</td><td>F</td></tr>
+      <tr><td>65</td><td>0100 0001</td><td>41</td></tr>
+      <tr><td>255</td><td>1111 1111</td><td>FF</td></tr>
+    </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-logic-gates-decisions-made-of-switches"><h3>Logic gates: decisions made of switches</h3>
+    <p>A <b>logic gate</b> takes one or two bits in and gives one bit out, following a simple rule. You know these rules already from programming:</p>
+    <div class="tbl"><table><thead><tr><th>Gate</th><th>Output is 1 when&hellip;</th><th>In code</th></tr></thead><tbody>
+      <tr><td><b>AND</b></td><td>both inputs are 1</td><td><code>a and b</code></td></tr>
+      <tr><td><b>OR</b></td><td>at least one input is 1</td><td><code>a or b</code></td></tr>
+      <tr><td><b>NOT</b></td><td>the input is 0</td><td><code>not a</code></td></tr>
+      <tr><td><b>XOR</b></td><td>the inputs differ</td><td><code>a != b</code></td></tr>
+      <tr><td><b>NAND</b></td><td>not both inputs are 1</td><td><code>not (a and b)</code></td></tr>
+    </tbody></table></div>
+    <p>Here is the remarkable part. NAND on its own is <b>functionally complete</b>: any Boolean expression at all can be rebuilt using nothing but NAND gates. NOT(x), for example, is just NAND(x, x). (NOR has the same property; AND and OR together do not, because they cannot make NOT.) So in principle, a whole computer can be built from one kind of gate, repeated.</p>
+  </article>
+
+  <article class="card wide" id="c-run-it-an-adder-built-only-from-nand"><h3>Run it: an adder built only from NAND</h3>
+    <p>Adding two bits is where gates start to do arithmetic. A <b>half adder</b> takes bits A and B and gives a sum (A XOR B) and a carry (A AND B); join two half adders with an OR gate and you get a <b>full adder</b>, which also accepts a carry from the column to its right. Chain eight full adders and you can add two bytes, exactly as you add numbers on paper, column by column, carrying as you go. The program below builds all of it from NAND alone, then checks itself against Python&rsquo;s own <code>+</code>:</p>
+    <div class="snip"><pre><code>"""Build an adder from one kind of gate, NAND, and check it against Python's own +."""
+
+def NAND(a, b): return 0 if (a and b) else 1     # the only gate we are given
+
+def NOT(a):     return NAND(a, a)
+def AND(a, b):  return NOT(NAND(a, b))
+def OR(a, b):   return NAND(NOT(a), NOT(b))
+def XOR(a, b):  return AND(OR(a, b), NAND(a, b))
+
+def full_adder(a, b, carry_in):
+    s1 = XOR(a, b)
+    total = XOR(s1, carry_in)
+    carry_out = OR(AND(a, b), AND(s1, carry_in))
+    return total, carry_out
+
+def add_8bit(x, y):
+    """Ripple-carry adder: eight full adders in a row, like the first stage of an ALU."""
+    carry, result = 0, 0
+    for i in range(8):                               # lowest bit first
+        bit, carry = full_adder((x &gt;&gt; i) &amp; 1, (y &gt;&gt; i) &amp; 1, carry)
+        result |= bit &lt;&lt; i
+    return result, carry
+
+for x, y in [(23, 42), (200, 100), (0b1111_0000, 0x0F)]:
+    total, overflow = add_8bit(x, y)
+    print(f"{x:3} + {y:3} = {total:3}  binary {total:08b}  hex {total:02X}  carry out {overflow}")
+
+assert all(add_8bit(x, y) == ((x + y) &amp; 0xFF, (x + y) &gt;&gt; 8) for x in range(256) for y in range(256))
+print("checked all 65,536 pairs: the NAND-only adder agrees with Python")</code></pre></div>
+    <p>What it printed when we ran it:</p>
+    <div class="snip"><pre><code>23 +  42 =  65  binary 01000001  hex 41  carry out 0
+200 + 100 =  44  binary 00101100  hex 2C  carry out 1
+240 +  15 = 255  binary 11111111  hex FF  carry out 0
+checked all 65,536 pairs: the NAND-only adder agrees with Python</code></pre></div>
+    <p>Look at the second line: 200 + 100 came out as 44, with a carry of 1. Eight bits can only hold 0 to 255, so 300 overflowed; the carry bit is the hardware telling you so. That single bit is the root of every integer overflow bug you will ever meet in software.</p>
+    <p>A real processor&rsquo;s <b>arithmetic logic unit</b> (ALU) is this idea grown up: a combinational circuit that performs arithmetic and bitwise operations on whole binary numbers. Add <b>registers</b> to hold values and a <b>clock</b>, a steady signal that tells every part of the chip when to take its next step, and you have the heart of a CPU.</p>
+  </article>
+
+  <article class="card wide" id="c-how-chips-are-designed-today"><h3>How chips are designed today</h3>
+    <p>Nobody draws billions of transistors by hand. Modern digital design starts as code. Engineers describe the circuit at <b>register-transfer level</b> (RTL), the usual starting point for designers, in a hardware description language such as Verilog or VHDL. Here is the full adder from the program above, written the way a chip designer would:</p>
+    <div class="snip"><pre><code>// a full adder in Verilog: the same circuit as full_adder() in the Python above
+module full_adder (input a, input b, input carry_in,
+                   output sum, output carry_out);
+  assign sum       = a ^ b ^ carry_in;
+  assign carry_out = (a &amp; b) | ((a ^ b) &amp; carry_in);
+endmodule</code></pre></div>
+    <p>From there, the journey to silicon is a series of steps, most of them done by software tools:</p>
+    <figure class="fig"><svg viewBox="0 0 650 130" role="img" aria-labelledby="flow-t flow-d"><title id="flow-t">How a digital chip goes from idea to silicon</title><desc id="flow-d">Seven steps: specify what the chip must do; write it at register-transfer level in Verilog or VHDL; simulate and test it; synthesise the RTL into logic gates; place and route the gates; tape out, sending the final layout; and fabricate it at a foundry.</desc><rect class="nd" x="8" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="50" y="64" text-anchor="middle" style="font-size:12px">Specify</text><text class="lb mu" x="50" y="84" text-anchor="middle" style="font-size:11px">what it must do</text><rect class="nd in" x="100" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="142" y="64" text-anchor="middle" style="font-size:12px">RTL</text><text class="lb mu" x="142" y="84" text-anchor="middle" style="font-size:11px">Verilog or VHDL</text><polygon class="ar" points="99,69 93,65 93,73"/><rect class="nd in" x="192" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="234" y="64" text-anchor="middle" style="font-size:12px">Simulate</text><text class="lb mu" x="234" y="84" text-anchor="middle" style="font-size:11px">test like code</text><polygon class="ar" points="191,69 185,65 185,73"/><rect class="nd in" x="284" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="326" y="64" text-anchor="middle" style="font-size:12px">Synthesise</text><text class="lb mu" x="326" y="84" text-anchor="middle" style="font-size:11px">RTL to gates</text><polygon class="ar" points="283,69 277,65 277,73"/><rect class="nd in" x="376" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="418" y="64" text-anchor="middle" style="font-size:12px">Place, route</text><text class="lb mu" x="418" y="84" text-anchor="middle" style="font-size:11px">lay out gates</text><polygon class="ar" points="375,69 369,65 369,73"/><rect class="nd" x="468" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="510" y="64" text-anchor="middle" style="font-size:12px">Tape-out</text><text class="lb mu" x="510" y="84" text-anchor="middle" style="font-size:11px">send layout</text><polygon class="ar" points="467,69 461,65 461,73"/><rect class="nd" x="560" y="40" width="84" height="58" rx="5"/><text class="lb hd" x="602" y="64" text-anchor="middle" style="font-size:12px">Fabricate</text><text class="lb mu" x="602" y="84" text-anchor="middle" style="font-size:11px">at a foundry</text><polygon class="ar" points="559,69 553,65 553,73"/><text class="lb mu" x="325" y="122" text-anchor="middle">the shaded steps are code and software tools: they feel much like building any other program</text></svg><figcaption>A digital chip&rsquo;s journey. Only the last step needs a factory; everything before it happens on a computer, and much of it can be done with open-source tools.</figcaption></figure>
+    <ul>
+      <li><b>Simulate:</b> run tests against the design before anything is built, just as you test software.</li>
+      <li><b>Synthesise:</b> a synthesis tool turns the RTL into an implementation made of logic gates, called a netlist.</li>
+      <li><b>Place and route:</b> physical design decides where each gate sits on the silicon and how the wires connect them.</li>
+      <li><b>Tape-out:</b> the point at which the final layout for the photomasks is sent to the fabrication plant. The name comes from the days when the data went on magnetic tape.</li>
+    </ul>
+    <p><b>It is closer to normal software than most people think.</b> OpenROAD, an open-source project, describes itself as delivering an automated flow from RTL to the final layout (GDSII) with a 24-hour turnaround. With SkyWater&rsquo;s open 130 nm process kit (SKY130) and projects such as Tiny Tapeout, where many small designs, some drawn in a browser simulator, share one manufactured chip, students and hobbyists can now have their own circuits made in real silicon. Before committing to a chip at all, an FPGA lets you load your design onto reprogrammable hardware and try it on a desk.</p>
+  </article>
+
+  <article class="card wide" id="c-why-gpus-and-why-ai-runs-on-them"><h3>Why GPUs, and why AI runs on them</h3>
+    <p>A CPU has a small number of powerful cores, each able to follow its own complicated path through a program. A GPU makes the opposite trade: thousands of simpler cores that all apply the same instruction to different data at once. NVIDIA introduced the model it calls <b>SIMT</b>, single instruction, multiple threads, with its G80 chip in the Tesla architecture. A single control unit broadcasts one instruction to many processing units, each working on its own data.</p>
+    <p>That shape suits drawing graphics, where the same calculation runs on millions of pixels, and it turned out to suit neural networks too, which are mostly enormous matrix multiplications: the same multiply-and-add, repeated across huge grids of numbers. The history, from 3D gaming to CUDA, AlexNet and AI chips, is on <a href="/well-rounded-engineer/hardware/">How Computers Are Built</a>, and the maths behind it is on <a href="/well-rounded-engineer/mathematics/">Mathematics</a>.</p>
+    <p class="note"><i>Analysis:</i> SIMT also explains a GPU&rsquo;s weakness. Because only the control unit has a program counter, threads that take different branches have to wait for each other, so code full of <code>if</code> statements runs poorly on a GPU. The best GPU code is the same simple work, done to a great deal of data.</p>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> every software engineer should build an adder from gates once, in code, as above. It takes an afternoon, it makes binary, overflow and performance feel physical rather than abstract, and it shows that the most complex machine you use is ordinary ideas, stacked very high.</p>
+    <p><i>The other view:</i> modern chips are far beyond this picture. Timing, power, heat, manufacturing variation and verification take most of a chip team&rsquo;s effort, and the abstractions exist precisely so that most engineers never need to think about them. Knowing the ladder is a foundation, not a qualification.</p>
+  </article>
+
+  <article class="card" id="c-where-to-go-next"><h3>Where to go next</h3>
+    <ul>
+      <li>Write the full adder above in Verilog and simulate it with an open-source simulator</li>
+      <li>Try an FPGA board: the same Verilog, running on real hardware</li>
+      <li>Look at Tiny Tapeout and SKY130 if you want your own design made in silicon</li>
+      <li>Read about two&rsquo;s complement, how the same adder also handles negative numbers</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://en.wikipedia.org/wiki/Binary_number" target="_blank" rel="noopener">Wikipedia: Binary number</a>; <a href="https://en.wikipedia.org/wiki/Hexadecimal" target="_blank" rel="noopener">Wikipedia: Hexadecimal</a>; <a href="https://en.wikipedia.org/wiki/Logic_gate" target="_blank" rel="noopener">Wikipedia: Logic gate</a>; <a href="https://en.wikipedia.org/wiki/NAND_logic" target="_blank" rel="noopener">Wikipedia: NAND logic</a>; <a href="https://en.wikipedia.org/wiki/Functional_completeness" target="_blank" rel="noopener">Wikipedia: Functional completeness</a>; <a href="https://en.wikipedia.org/wiki/Adder_(electronics)" target="_blank" rel="noopener">Wikipedia: Adder</a>; <a href="https://en.wikipedia.org/wiki/Arithmetic_logic_unit" target="_blank" rel="noopener">Wikipedia: Arithmetic logic unit</a>; <a href="https://en.wikipedia.org/wiki/Clock_signal" target="_blank" rel="noopener">Wikipedia: Clock signal</a>; <a href="https://en.wikipedia.org/wiki/Register-transfer_level" target="_blank" rel="noopener">Wikipedia: Register-transfer level</a>; <a href="https://en.wikipedia.org/wiki/Logic_synthesis" target="_blank" rel="noopener">Wikipedia: Logic synthesis</a>; <a href="https://en.wikipedia.org/wiki/Physical_design_(electronics)" target="_blank" rel="noopener">Wikipedia: Physical design</a>; <a href="https://en.wikipedia.org/wiki/Tape-out" target="_blank" rel="noopener">Wikipedia: Tape-out</a>; <a href="https://github.com/The-OpenROAD-Project/OpenROAD" target="_blank" rel="noopener">OpenROAD (GitHub)</a>; <a href="https://github.com/TinyTapeout/tinytapeout-03" target="_blank" rel="noopener">Tiny Tapeout 03 (GitHub)</a>; <a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_threads" target="_blank" rel="noopener">Wikipedia: Single instruction, multiple threads</a>. The program was run with Python 3 and checked against all 65,536 pairs of 8-bit inputs.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/hardware/">← How Computers Are Built</a><a class="pn-next" href="/well-rounded-engineer/linux/">Linux →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-binary-and-hex-without-the-fear">Binary and hex, without the fear</a><a href="#c-logic-gates-decisions-made-of-switches">Logic gates: decisions made of switches</a><a href="#c-run-it-an-adder-built-only-from-nand">Run it: an adder built only from NAND</a><a href="#c-how-chips-are-designed-today">How chips are designed today</a><a href="#c-why-gpus-and-why-ai-runs-on-them">Why GPUs, and why AI runs on them</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-where-to-go-next">Where to go next</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
