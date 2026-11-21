@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reactive & Backpressure · Well Rounded Engineer</title>
+<meta name="description" content="What “reactive” means, why every pipeline with a fast producer and a slow consumer needs back pressure, and how it works in Reactive Streams, Java’s Flow…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="reactive" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 119 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/functional/">Functional or Imperative</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp" open><summary>Building services<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/reactive/" aria-current="page">Reactive &amp; Backpressure</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/quality/">Quality Attributes</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Building services</span> / <span aria-current="page">Reactive &amp; Backpressure</span></p>
+<section class="panel" id="reactive" data-name="Reactive &amp; Backpressure">
+  <div class="panel-head"><h1>Reactive and backpressure</h1><p>What &ldquo;reactive&rdquo; means, why every pipeline with a fast producer and a slow consumer needs back pressure, and how it works in Reactive Streams, Java&rsquo;s <code>Flow</code>, RxJava, Reactor, Kotlin, Node.js, Kafka, TCP and HTTP/2. With runnable Java and a way to choose by requirement.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p><b>Reactive</b>, in the Spring team&rsquo;s words, &ldquo;refers to programming models that are built around reacting to change&rdquo;: network components reacting to I/O events, UI controllers reacting to mouse clicks. Instead of a thread waiting for an answer, code is called when the answer arrives.</p>
+    <p><b>Back pressure</b> is borrowed from plumbing, where it is the resistance that pushes back against flow in a pipe. In software it is a way to regulate the flow of data so that components are not overwhelmed: the slow part of a system tells the fast part to ease off.</p>
+    <p>The two go together for one reason, which the Spring documentation puts plainly: &ldquo;In synchronous, imperative code, blocking calls serve as a natural form of back pressure that forces the caller to wait. In non-blocking code, it becomes important to control the rate of events so that a fast producer does not overwhelm its destination.&rdquo; Take away the waiting, and you must put the brake back on deliberately.</p>
+    <p class="note">This page goes deep on one idea. The history of how Java got here is on <a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a> and <a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a>; Spring&rsquo;s choice between blocking and reactive is on <a href="/well-rounded-engineer/spring/">Spring Boot</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-the-problem-in-one-picture"><h3>The problem in one picture</h3>
+    <figure class="fig"><svg viewBox="0 0 640 210" role="img" aria-labelledby="bp-t bp-d"><title id="bp-t">Back pressure: the consumer tells the producer how much it can take</title><desc id="bp-d">A producer sends items through a bounded buffer to a slower consumer. The consumer sends a request for n more items back to the producer. If the producer cannot slow down, it has three choices: buffer, drop or fail.</desc>
+      <rect class="nd" x="20" y="40" width="150" height="56" rx="6"/><text class="lb hd" x="95" y="64" text-anchor="middle">Producer</text><text class="lb mu" x="95" y="84" text-anchor="middle">fast: 1,000 a second</text>
+      <rect class="nd in" x="245" y="40" width="150" height="56" rx="6"/><text class="lb hd" x="320" y="64" text-anchor="middle">Bounded buffer</text><text class="lb mu" x="320" y="84" text-anchor="middle">room for n items</text>
+      <rect class="nd" x="470" y="40" width="150" height="56" rx="6"/><text class="lb hd" x="545" y="64" text-anchor="middle">Consumer</text><text class="lb mu" x="545" y="84" text-anchor="middle">slow: 100 a second</text>
+      <line class="ed" x1="170" y1="62" x2="238" y2="62"/><polygon class="ar" points="245,62 236,57 236,67"/>
+      <line class="ed" x1="395" y1="62" x2="463" y2="62"/><polygon class="ar" points="470,62 461,57 461,67"/>
+      <text class="lb mu" x="207" y="54" text-anchor="middle">items</text><text class="lb mu" x="432" y="54" text-anchor="middle">items</text>
+      <path class="ed acc dash" d="M545 96 V130 H95 V103"/><polygon class="ar acc" points="95,96 90,105 100,105"/>
+      <text class="lb acc" x="320" y="124" text-anchor="middle">request(n): &#8220;I can take n more&#8221;</text>
+      <text class="lb hd" x="20" y="166">If the producer cannot slow down, it must choose:</text>
+      <text class="lb" x="20" y="190">buffer (memory grows) &#183; drop (data is lost) &#183; fail (the error is visible)</text>
+    </svg><figcaption>Back pressure is the arrow going backwards. Without it, the buffer in the middle has to absorb the difference, and an unbounded buffer is only a slower way to run out of memory.</figcaption></figure>
+    <p>Every pipeline has a slowest step: a database that takes 10 ms per insert, a partner API with a rate limit, a phone on a weak signal. Whatever arrives faster than that step can handle has to go somewhere. Spring&rsquo;s documentation answers the obvious question, &ldquo;what if a publisher cannot slow down?&rdquo;, in one line: &ldquo;it has to decide whether to buffer, drop, or fail.&rdquo; Back pressure is the fourth option, and the best one when the source allows it: ask the producer to slow down.</p>
+  </article>
+
+  <article class="card wide" id="c-reactive-streams-the-contract"><h3>Reactive Streams: the contract</h3>
+    <p>Reactive Streams began in late 2013 as an initiative between engineers at Netflix, Pivotal and Lightbend, with contributions from Red Hat, Oracle, Twitter and others. Its aim is to govern &ldquo;the exchange of stream data across an asynchronous boundary&rdquo; (to another thread or pool) while making sure the receiving side is not forced to buffer arbitrary amounts of data. Version 1.0 for the JVM was released in April 2015 with the Java API, a written specification, a test kit (TCK) and examples, so that libraries from different teams can be plugged together.</p>
+    <div class="tbl"><table><thead><tr><th>Interface</th><th>Methods</th><th>Its job</th></tr></thead><tbody>
+      <tr><td><code>Publisher&lt;T&gt;</code></td><td><code>subscribe(Subscriber)</code></td><td>Produces items, but only as many as have been asked for</td></tr>
+      <tr><td><code>Subscriber&lt;T&gt;</code></td><td><code>onSubscribe</code>, <code>onNext</code>, <code>onError</code>, <code>onComplete</code></td><td>Receives the subscription, then the items, then one ending signal</td></tr>
+      <tr><td><code>Subscription</code></td><td><code>request(long n)</code>, <code>cancel()</code></td><td>The line back to the producer: &ldquo;send me n more&rdquo;, or &ldquo;stop&rdquo;</td></tr>
+      <tr><td><code>Processor&lt;T,R&gt;</code></td><td>both of the above</td><td>A processing stage that is a subscriber on one side and a publisher on the other</td></tr>
+    </tbody></table></div>
+    <p><b>Four rules worth knowing by heart</b> (numbered as in the specification):</p>
+    <ul>
+      <li><b>1.1</b>: the total number of <code>onNext</code> signals a publisher sends &ldquo;MUST be less than or equal to the total number of elements requested&rdquo;. This one rule <i>is</i> back pressure.</li>
+      <li><b>2.1</b>: a subscriber &ldquo;MUST signal demand via <code>Subscription.request(long n)</code> to receive <code>onNext</code> signals&rdquo;. Nothing flows until someone asks.</li>
+      <li><b>3.9</b>: asking for zero or a negative number is an error, signalled with <code>IllegalArgumentException</code>.</li>
+      <li><b>3.17</b>: a demand of <code>Long.MAX_VALUE</code> may be treated as &ldquo;effectively unbounded&rdquo;. Requesting it is how a subscriber says &ldquo;send everything&rdquo;, and so turns back pressure off.</li>
+    </ul>
+    <p><b>Into the JDK.</b> Doug Lea, who leads JSR 166 (the <code>java.util.concurrent</code> work), proposed the interfaces for Java 9, and they arrived through JEP 266 as <code>java.util.concurrent.Flow</code>: the same four interfaces nested in one class, plus <code>SubmissionPublisher</code>, a ready-made publisher. The specification&rsquo;s own README sums up the design: &ldquo;Since back-pressure is mandatory the use of unbounded buffers can be avoided.&rdquo;</p>
+  </article>
+
+  <article class="card wide" id="c-run-it-a-slow-subscriber-slows-the-producer"><h3>Run it: a slow subscriber slows the producer</h3>
+    <p>This uses only the JDK (Java 21 or later; save it as <code>SlowSubscriber.java</code> and run <code>java SlowSubscriber.java</code>). The subscriber asks for one item at a time and takes 100 ms over each. The publisher has room for four unread items. <code>SubmissionPublisher.submit</code> &ldquo;blocks until resources are available&rdquo;, so once the buffer is full, the producing loop is held to the consumer&rsquo;s pace.</p>
+    <div class="snip"><pre><code>import java.util.concurrent.Flow;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.SubmissionPublisher;
+
+public class SlowSubscriber {
+    public static void main(String[] args) throws Exception {
+        // a publisher with room for 4 unread items per subscriber
+        try (var publisher = new SubmissionPublisher&lt;Integer&gt;(ForkJoinPool.commonPool(), 4)) {
+            publisher.subscribe(new Flow.Subscriber&lt;&gt;() {
+                Flow.Subscription subscription;
+                public void onSubscribe(Flow.Subscription s) { subscription = s; s.request(1); } // ask for one
+                public void onNext(Integer item) {
+                    sleep(100);                                  // a slow consumer
+                    System.out.println("consumed " + item);
+                    subscription.request(1);                     // ready for the next one
+                }
+                public void onError(Throwable t) { t.printStackTrace(); }
+                public void onComplete() { System.out.println("done"); }
+            });
+            for (int i = 1; i &lt;= 10; i++) {
+                long start = System.nanoTime();
+                publisher.submit(i);                             // blocks while the buffer is full
+                long waited = (System.nanoTime() - start) / 1_000_000;
+                System.out.println("produced " + i + (waited &gt; 10 ? " after waiting " + waited + " ms" : ""));
+            }
+        }
+        Thread.sleep(1500);
+    }
+    static void sleep(long ms) { try { Thread.sleep(ms); } catch (InterruptedException e) { Thread.currentThread().interrupt(); } }
+}</code></pre></div>
+    <p>What it printed when we ran it:</p>
+    <div class="snip"><pre><code>produced 1
+produced 2
+produced 3
+produced 4
+produced 5
+consumed 1
+produced 6 after waiting 96 ms
+consumed 2
+produced 7 after waiting 97 ms
+...</code></pre></div>
+    <p>Five items go straight in (one being consumed, four in the buffer). From then on, every <code>submit</code> waits about 100 ms: the consumer&rsquo;s speed has travelled back up to the producer. Change <code>s.request(1)</code> to <code>s.request(Long.MAX_VALUE)</code> and the producer is no longer paced by requests; it is held only by the buffer. The other publishing method, <code>offer</code>, &ldquo;may drop items (either immediately or with bounded timeout)&rdquo; instead of blocking, with a handler to decide what to do.</p>
+  </article>
+
+  <article class="card wide" id="c-when-the-producer-cannot-slow-down"><h3>When the producer cannot slow down</h3>
+    <p>Some sources ignore requests: mouse movements, a sensor, a market data feed, a timer. For those, every library offers the same four choices under different names.</p>
+    <div class="tbl"><table><thead><tr><th>Choice</th><th>Reactor</th><th>RxJava <code>Flowable</code></th><th>JDK</th><th>Kotlin Flow</th></tr></thead><tbody>
+      <tr><td><b>Buffer</b></td><td><code>onBackpressureBuffer</code>, bounded or unbounded, with an overflow strategy</td><td><code>onBackpressureBuffer</code>; <code>BackpressureStrategy.BUFFER</code></td><td><code>SubmissionPublisher</code>&rsquo;s per-subscriber buffer; a queue in a <code>ThreadPoolExecutor</code></td><td><code>buffer(n)</code></td></tr>
+      <tr><td><b>Drop new items</b></td><td><code>onBackpressureDrop</code></td><td><code>onBackpressureDrop</code>; <code>DROP</code></td><td><code>offer</code>; <code>DiscardPolicy</code></td><td><code>buffer(onBufferOverflow = DROP_LATEST)</code></td></tr>
+      <tr><td><b>Keep only the latest</b></td><td><code>onBackpressureLatest</code></td><td><code>onBackpressureLatest</code>; <code>LATEST</code></td><td><code>DiscardOldestPolicy</code> (drops the oldest queued task)</td><td><code>conflate()</code></td></tr>
+      <tr><td><b>Fail</b></td><td><code>onBackpressureError</code> (an <code>IllegalStateException</code>)</td><td><code>MissingBackpressureException</code>; <code>ERROR</code></td><td><code>AbortPolicy</code>, the default (<code>RejectedExecutionException</code>)</td><td>none built in; the emitter suspends instead</td></tr>
+      <tr><td><b>Slow the caller</b></td><td><code>request(n)</code> from the subscriber</td><td><code>request(n)</code></td><td><code>submit</code> blocks; <code>CallerRunsPolicy</code></td><td>the default: <code>emit</code> suspends</td></tr>
+    </tbody></table></div>
+    <p><b>Choose by requirement</b>, not by which operator you have seen before:</p>
+    <div class="tbl"><table><thead><tr><th>If this is true for you</th><th>Lean towards</th><th>Because</th></tr></thead><tbody>
+      <tr><td>Every item matters (payments, orders, audit events) and the source can wait</td><td>Slow the caller: request-based demand, a blocking <code>submit</code>, or <code>CallerRunsPolicy</code></td><td>Nothing is lost; the cost is that the producer runs at the consumer&rsquo;s speed</td></tr>
+      <tr><td>Every item matters but bursts are short</td><td>A <b>bounded</b> buffer sized for the burst, failing loudly when it overflows</td><td>Absorbs the spike; the overflow error tells you the burst was bigger than planned</td></tr>
+      <tr><td>Only the current value matters (a price, a position, a progress bar)</td><td>Keep only the latest (<code>onBackpressureLatest</code>, <code>conflate</code>)</td><td>Old values are worthless once a newer one exists</td></tr>
+      <tr><td>Losing some items is acceptable (sampled metrics, telemetry)</td><td>Drop</td><td>Protects the consumer at a known, accepted cost</td></tr>
+      <tr><td>Overload must be seen and handled upstream (a gateway, a queue in front of a fragile system)</td><td>Fail fast: reject with an error the caller can retry later</td><td>A clear &ldquo;not now&rdquo; beats a slow timeout; see load shedding on <a href="/well-rounded-engineer/sre/">SRE</a></td></tr>
+    </tbody></table></div>
+  </article>
+
+  <article class="card wide" id="c-push-pull-and-the-hybrid-in-between"><h3>Push, pull, and the hybrid in between</h3>
+    <p>An <code>Iterator</code> is <b>pull</b>: the consumer asks for the next item when it is ready, so it can never be overwhelmed, but it waits whenever the item is not ready yet. A callback or event listener is <b>push</b>: items arrive as soon as they exist, which is fast, but the consumer has no say in the rate.</p>
+    <p>Reactive Streams is both. Reactor&rsquo;s reference guide calls it &ldquo;a push-pull hybrid&rdquo;: the subscriber pulls by requesting n items, and the publisher pushes each one as soon as it exists, up to that limit. Libraries also <b>prefetch</b>, requesting a batch ahead of need to avoid a round trip per item, and operators can change the request on the way up (a <code>buffer(10)</code> that is asked for one batch may ask upstream for ten items).</p>
+    <p><b>Kafka</b> sits firmly at the pull end. A consumer calls <code>poll()</code> when it is ready, <code>max.poll.records</code> limits how many records one call returns, and the consumer API&rsquo;s &ldquo;Consumption Flow Control&rdquo; section offers <code>pause()</code> and <code>resume()</code> per partition, for example to let a lagging stream catch up before reading further from one that is ahead. KafkaA slow consumer simply falls behind (its lag grows) without harming the broker.rsquo;s design notes give the reason: in a push system A slow consumer simply falls behind (its lag grows) without harming the broker.ldquo;the consumer tends to be overwhelmed when its rate of consumption falls below the rate of productionA slow consumer simply falls behind (its lag grows) without harming the broker.rdquo;, while with pull A slow consumer simply falls behind (its lag grows) without harming the broker.ldquo;the consumer simply falls behind and catches up when it can.A slow consumer simply falls behind (its lag grows) without harming the broker.rdquo; More on <a href="/well-rounded-engineer/kafka/">Kafka</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-back-pressure-across-the-network"><h3>Back pressure across the network</h3>
+    <p>Library back pressure stops at the edge of the process. Between machines, the protocols have their own, and they are older than any reactive library.</p>
+    <div class="tbl"><table><thead><tr><th>Layer</th><th>How the receiver says &ldquo;slow down&rdquo;</th></tr></thead><tbody>
+      <tr><td><b>TCP</b></td><td>Every segment carries a window: &ldquo;the range of sequence numbers the sender of the window (the data receiver) is currently prepared to accept&rdquo;, related to its free buffer space (RFC 9293). When the receiving application stops reading, the window shrinks towards zero and the sender stops.</td></tr>
+      <tr><td><b>HTTP/2</b></td><td>Credit-based flow control with <code>WINDOW_UPDATE</code> frames, per stream and per connection. The initial window is 65,535 octets, and &ldquo;a sender MUST respect flow-control limits imposed by a receiver&rdquo; (RFC 9113). It works hop by hop, not end to end, so a proxy has its own windows on each side.</td></tr>
+      <tr><td><b>gRPC (Java)</b></td><td>Streams can switch to manual flow control: <code>disableAutoRequest()</code>, then <code>request(1)</code> when ready, and check <code>isReady()</code> before sending (the grpc-java <code>manualflowcontrol</code> example).</td></tr>
+      <tr><td><b>RSocket</b></td><td>Carries Reactive Streams across the network: a <code>REQUEST_N</code> frame means &ldquo;Request N more items with Reactive Streams semantics&rdquo;.</td></tr>
+      <tr><td><b>Spring WebFlux</b></td><td>Reads and writes HTTP bodies &ldquo;through non-blocking I/O with Reactive Streams back pressure&rdquo;, on servers such as Reactor Netty.</td></tr>
+    </tbody></table></div>
+    <p><i>Analysis:</i> this is why a slow mobile client does not need special code in a WebFlux endpoint. When the client reads slowly, TCP&rsquo;s window fills, the server cannot write, and demand stops flowing up the reactive chain to the database query. It is also why a WebSocket in the browser is harder: its API has no back pressure (see <a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a>).</p>
+  </article>
+
+  <article class="card wide" id="c-the-same-idea-in-other-languages"><h3>The same idea in other languages</h3>
+    <p><b>Node.js streams.</b> <code>write()</code> returns <code>false</code> when the data buffer has exceeded <code>highWaterMark</code> (commonly 16 kB by default) or the write queue is busy, and a <code>'drain'</code> event fires once it has emptied. The Node.js guide&rsquo;s rule: &ldquo;Never call <code>.write()</code> after it returns false but wait for &lsquo;drain&rsquo; instead.&rdquo; <code>pipe()</code> does this for you.</p>
+    <div class="snip"><pre><code>// Node.js: respect write()'s answer, or memory grows without limit
+function copy(source, destination) {
+  source.on('data', (chunk) =&gt; {
+    if (!destination.write(chunk)) {         // false: the buffer is above highWaterMark
+      source.pause();                        // stop reading...
+      destination.once('drain', () =&gt; source.resume());  // ...until it has emptied
+    }
+  });
+  source.on('end', () =&gt; destination.end());
+}
+// in practice, source.pipe(destination) or stream.pipeline() does this for you</code></pre></div>
+    <p><b>Kotlin Flow.</b> Flows are sequential by default: the producer&rsquo;s <code>emit</code> suspends until the collector has handled the value, which is back pressure with no protocol at all. <code>buffer()</code> lets the producer run ahead in a separate coroutine (by default it suspends again when the buffer overflows), and <code>conflate()</code> means the emitter &ldquo;is never suspended due to a slow collector&rdquo;, which skips to the newest value.</p>
+    <div class="snip"><pre><code>// Kotlin Flow: emit() suspends while the collector is busy, so a flow is paced by default
+prices()
+    .conflate()                 // a slow collector skips to the most recent value
+    .collect { show(it) }
+
+events()
+    .buffer(64)                 // up to 64 waiting; then emit() suspends again
+    .collect { save(it) }</code></pre></div>
+    <p><b>RxJava.</b> Version 2 onwards split its types: <code>Flowable</code> supports Reactive Streams and back pressure; <code>Observable</code> has none and is meant for short sequences and GUI events. <b>Reactor</b>, the library under Spring WebFlux, implements Reactive Streams in all its operators, with <code>Mono</code> (0 or 1 item) and <code>Flux</code> (0 to N).</p>
+    <div class="snip"><pre><code>// Reactor (Spring WebFlux): name what happens when the consumer falls behind
+Flux&lt;Reading&gt; readings = sensor.readings()        // a source that cannot slow down
+    .onBackpressureLatest()                       // keep only the newest reading
+    .publishOn(Schedulers.parallel());
+
+// a blocking call, kept off the event-loop threads
+Mono&lt;Customer&gt; customer = Mono.fromCallable(() -&gt; legacyClient.find(id))
+    .subscribeOn(Schedulers.boundedElastic());</code></pre></div>
+  </article>
+
+  <article class="card wide" id="c-blocking-code-has-back-pressure-too"><h3>Blocking code has back pressure too</h3>
+    <p>A blocked thread is the oldest flow control there is: the caller cannot send the next request until the last one returns. The trouble used to be cost: one platform thread per waiting call. Virtual threads (final in Java 21, JEP 444) make waiting cheap again, and JEP 444 says how to limit concurrency once threads are no longer the limit: &ldquo;do not be tempted to pool virtual threads in order to limit concurrency. Instead use constructs specifically designed for that purpose, such as semaphores.&rdquo;</p>
+    <div class="snip"><pre><code>import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Limit {
+    static final Semaphore permits = new Semaphore(20);   // the service can take 20 calls at once
+    static final AtomicInteger inFlight = new AtomicInteger(), peak = new AtomicInteger();
+
+    public static void main(String[] args) {
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            for (int i = 0; i &lt; 1_000; i++) executor.submit(Limit::callService);
+        }                                                  // waits for all 1,000 tasks
+        System.out.println("peak concurrent calls: " + peak.get());
+    }
+
+    static void callService() {
+        try {
+            permits.acquire();                             // wait here when 20 are already running
+            try {
+                peak.accumulateAndGet(inFlight.incrementAndGet(), Math::max);
+                Thread.sleep(50);                          // stands in for the remote call
+                inFlight.decrementAndGet();
+            } finally {
+                permits.release();
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}</code></pre></div>
+    <p>When we ran it, it printed <code>peak concurrent calls: 20</code> and took about 3 seconds: 1,000 calls of 50 ms, 20 at a time, is 2.5 seconds of waiting plus start-up.</p>
+    <p><b>How big should the limit be?</b> <b>Little&rsquo;s law</b>, proved by John Little in 1961, says the average number of items in a stable system equals the arrival rate times the average time each spends inside: <code>L = &lambda;W</code>. With 20 permits and 50 ms per call, the most this code can sustain is 20 &divide; 0.05 = 400 calls a second. If 600 a second arrive, a queue grows without end, whatever the threading model. Back pressure, a bigger limit or shedding load are the only ways out.</p>
+    <p><b>The thread pool version.</b> A <code>ThreadPoolExecutor</code> with a bounded queue is back pressure for tasks. Its <code>CallerRunsPolicy</code> makes the submitting thread run a rejected task itself, which the JDK documentation calls &ldquo;a simple feedback control mechanism that will slow down the rate that new tasks are submitted&rdquo;. With an unbounded <code>LinkedBlockingQueue</code>, nothing pushes back at all.</p>
+  </article>
+
+  <article class="card wide" id="c-mistakes-that-defeat-back-pressure"><h3>Mistakes that defeat back pressure</h3>
+    <div class="tbl"><table><thead><tr><th>Mistake</th><th>What happens</th><th>Instead</th></tr></thead><tbody>
+      <tr><td>An unbounded buffer or queue &ldquo;just in case&rdquo;</td><td>The difference in speed piles up in memory until the process dies, often long after the cause</td><td>Bound every queue and decide what happens when it is full</td></tr>
+      <tr><td>Requesting <code>Long.MAX_VALUE</code> everywhere</td><td>Rule 3.17 lets the publisher treat it as unbounded: back pressure is switched off</td><td>Request in batches, or let the library&rsquo;s operators manage demand</td></tr>
+      <tr><td>A blocking call on an event-loop thread</td><td>Every request sharing that thread stalls</td><td>Wrap it: Reactor&rsquo;s FAQ uses <code>Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())</code>, which also caps how many threads blocking work can take</td></tr>
+      <tr><td>An RxJava <code>Observable</code> for a large or fast stream</td><td>Nothing pushes back; RxJava&rsquo;s wiki notes that <code>MissingBackpressureException</code> usually surfaces at <code>observeOn</code>, while the cause is a source that ignores requests, such as <code>interval()</code></td><td>Use <code>Flowable</code> with an explicit strategy</td></tr>
+      <tr><td>Treating retries as free</td><td>A slow dependency gets more traffic just when it needs less (see the retry storm on <a href="/well-rounded-engineer/distsys/">Distributed Systems</a>)</td><td>Retry with backoff and a budget, behind a circuit breaker</td></tr>
+    </tbody></table></div>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> learn back pressure as a property of systems, not of one library. Ask of every queue, buffer and stream in a design: what happens when the consumer is ten times slower than the producer? If the answer is &ldquo;memory grows&rdquo;, the design is not finished. For most request-and-response services, plain blocking code on virtual threads with a semaphore and bounded queues gives you that answer with the least new code.</p>
+    <p><i>The other view:</i> reactive libraries make back pressure part of the type, end to end, from the database driver (R2DBC) to the HTTP response, and they compose streams, timeouts and retries in one model. For streaming, server-sent events and many long-lived connections, teams that have learned the model may find it clearer than hand-placed semaphores.</p>
+  </article>
+
+  <article class="card" id="c-choose-by-requirement"><h3>Choose by requirement</h3>
+    <div class="tbl"><table><thead><tr><th>If this is true for you</th><th>Lean towards</th></tr></thead><tbody>
+      <tr><td>Request and response, mostly waiting on a database or other services</td><td>Blocking code on virtual threads, with a semaphore per dependency</td></tr>
+      <tr><td>Streaming results, server-sent events, very many idle connections</td><td>Reactive (WebFlux, Reactor, Mutiny) or Kotlin Flow</td></tr>
+      <tr><td>Messages between services, consumers at their own pace</td><td>A log or queue with pull-based consumers (<a href="/well-rounded-engineer/kafka/">Kafka</a>)</td></tr>
+      <tr><td>Your team already runs a reactive stack in production</td><td>Stay on it: switching has a cost, and its back pressure is already end to end</td></tr>
+      <tr><td>A library that others will plug into</td><td>Expose Reactive Streams or <code>Flow</code> types, so any compliant library can consume it</td></tr>
+    </tbody></table></div>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://raw.githubusercontent.com/reactive-streams/reactive-streams-jvm/master/README.md" target="_blank" rel="noopener">Reactive Streams specification for the JVM (README)</a>; <a href="https://en.wikipedia.org/wiki/Reactive_Streams" target="_blank" rel="noopener">Wikipedia: Reactive Streams</a>; <a href="https://en.wikipedia.org/wiki/Back_pressure" target="_blank" rel="noopener">Wikipedia: Back pressure</a>; <a href="https://openjdk.org/jeps/266" target="_blank" rel="noopener">JEP 266: More Concurrency Updates</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Flow.html" target="_blank" rel="noopener">Java SE 21: Flow</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/SubmissionPublisher.html" target="_blank" rel="noopener">Java SE 21: SubmissionPublisher</a>; <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html" target="_blank" rel="noopener">Java SE 21: ThreadPoolExecutor</a>; <a href="https://openjdk.org/jeps/444" target="_blank" rel="noopener">JEP 444: Virtual Threads</a>; <a href="https://docs.spring.io/spring-framework/reference/web/webflux/new-framework.html" target="_blank" rel="noopener">Spring Framework: WebFlux overview</a>; <a href="https://docs.spring.io/spring-framework/reference/web/webflux/reactive-spring.html" target="_blank" rel="noopener">Spring Framework: reactive core</a>; <a href="https://github.com/reactor/reactor-core/tree/main/docs/modules/ROOT/pages" target="_blank" rel="noopener">Reactor reference guide (source)</a>; <a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava README</a>; <a href="https://github.com/ReactiveX/RxJava/wiki/Backpressure-(2.0)" target="_blank" rel="noopener">RxJava wiki: Backpressure (2.0)</a>; <a href="https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/flow/operators/Context.kt" target="_blank" rel="noopener">kotlinx.coroutines: buffer and conflate</a>; <a href="https://nodejs.org/en/learn/modules/backpressuring-in-streams" target="_blank" rel="noopener">Node.js: Backpressuring in Streams</a>; <a href="https://github.com/apache/kafka/blob/trunk/clients/src/main/java/org/apache/kafka/clients/consumer/KafkaConsumer.java" target="_blank" rel="noopener">Kafka: KafkaConsumer (Consumption Flow Control)</a>; <a href="https://github.com/apache/kafka/blob/trunk/docs/design/design.md" target="_blank" rel="noopener">Kafka design: push versus pull</a>; <a href="https://www.rfc-editor.org/rfc/rfc9293.html" target="_blank" rel="noopener">RFC 9293: TCP</a>; <a href="https://www.rfc-editor.org/rfc/rfc9113.html" target="_blank" rel="noopener">RFC 9113: HTTP/2</a>; <a href="https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/manualflowcontrol" target="_blank" rel="noopener">grpc-java: manual flow control example</a>; <a href="https://github.com/rsocket/rsocket/blob/master/Protocol.md" target="_blank" rel="noopener">RSocket protocol</a>; <a href="https://en.wikipedia.org/wiki/Little%27s_law" target="_blank" rel="noopener">Wikipedia: Little&rsquo;s law</a>. The two Java programs were run on OpenJDK 21.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/realtime/">← Real-time to the Browser</a><a class="pn-next" href="/well-rounded-engineer/kafka/">Kafka →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-the-problem-in-one-picture">The problem in one picture</a><a href="#c-reactive-streams-the-contract">Reactive Streams: the contract</a><a href="#c-run-it-a-slow-subscriber-slows-the-producer">Run it: a slow subscriber slows the producer</a><a href="#c-when-the-producer-cannot-slow-down">When the producer cannot slow down</a><a href="#c-push-pull-and-the-hybrid-in-between">Push, pull, and the hybrid in between</a><a href="#c-back-pressure-across-the-network">Back pressure across the network</a><a href="#c-the-same-idea-in-other-languages">The same idea in other languages</a><a href="#c-blocking-code-has-back-pressure-too">Blocking code has back pressure too</a><a href="#c-mistakes-that-defeat-back-pressure">Mistakes that defeat back pressure</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-choose-by-requirement">Choose by requirement</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
