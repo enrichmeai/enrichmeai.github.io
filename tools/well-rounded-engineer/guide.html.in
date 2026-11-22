@@ -236,6 +236,7 @@ details>.inner{padding:4px 10px 8px}
       <a href="#mcp" data-tab="mcp">MCP</a>
       <a href="#agentharness" data-tab="agentharness">Agent Harness</a>
       <a href="#agentmakers" data-tab="agentmakers">How Anthropic &amp; OpenAI Build Agents</a>
+      <a href="#agentsystem" data-tab="agentsystem">Building an Agentic System</a>
       <a href="#humanagents" data-tab="humanagents">Humans &amp; Agents</a>
       <a href="#blueprints" data-tab="blueprints">Frameworks vs AI</a>
       <span class="navgrp">Tools</span>
@@ -284,7 +285,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z"/></svg></span><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#chips">From Binary to GPUs</a>, <a href="#chipjobs">Chip Jobs &amp; GPU Startups</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#searchengines">How Search Works &amp; AI Browsers</a>, <a href="#docker">Docker</a>, <a href="#dsa">Data Structures &amp; Algorithms</a>, <a href="#concurrency">Concurrency</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#graphdb">Graph Databases</a>, <a href="#datastore">Choosing a Data Store</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#javathreads">How Java Threads Evolved</a>, <a href="#ionio">IO, NIO &amp; Web Servers</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#javascript">JavaScript</a>, <a href="#functional">Functional or Imperative</a>, <a href="#fetoolchain">Front-end Toolchain</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-labs" target="_blank" rel="noopener">Run the code: well-rounded-engineer-labs</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#apihistory">How APIs Evolved</a>, <a href="#graphql">GraphQL</a>, <a href="#realtime">Real-time to the Browser</a>, <a href="#reactive">Reactive &amp; Backpressure</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#banking">Banking &amp; Low Latency</a>, <a href="#spring">Spring Boot</a>, <a href="#springhistory">From spring.jar to Spring</a>, <a href="#quarkus">Quarkus</a>, <a href="#faded">Faded? Rails, Flex &amp; Grails</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3zM3 9h18M9 9v11"/></svg></span><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#teststrat">Test Strategy for Cloud Systems</a>, <a href="#review">Writing &amp; Code Review</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#privacy">Personal Data Across Services</a>, <a href="#cyber">Cybersecurity</a>, <a href="#agentsec">Agentic AI Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></span><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#patterns">SOLID &amp; Design Patterns</a>, <a href="#architecture">Architecture</a>, <a href="#quality">Quality Attributes</a>, <a href="#atob">Solution Architecture: A to B</a>, <a href="#distsys">Distributed Systems</a>, <a href="#microservices">Microservices</a>, <a href="#casestudies">Case Studies: How Tech Companies Evolved</a>, <a href="#databricks">Databricks</a>, <a href="#palantir">Palantir</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#ratelimit">Rate Limiting</a>, <a href="#specs">Specifications</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"/></svg></span><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudcost">Cloud Cost</a>, <a href="#retailcloud">Retail &amp; Hybrid Cloud</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a>, <a href="#azuredata">Data on Azure</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></span><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#neural">Neural Networks</a>, <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#aimemory">AI Memory &amp; Threads</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentmakers">How Anthropic &amp; OpenAI Build Agents</a>, <a href="#humanagents">Humans &amp; Agents</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/></svg></span><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#perseverance">Perseverance &amp; Resilience</a>, <a href="#newideas">New Ideas, Familiarity &amp; Habits</a>, <a href="#thinkers">Thinkers Worth Knowing</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#valuation">How Companies Are Valued</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a>, <a href="#longevity">Biohacking &amp; Longevity</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"/></svg></span><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z"/></svg></span><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#chips">From Binary to GPUs</a>, <a href="#chipjobs">Chip Jobs &amp; GPU Startups</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#searchengines">How Search Works &amp; AI Browsers</a>, <a href="#docker">Docker</a>, <a href="#dsa">Data Structures &amp; Algorithms</a>, <a href="#concurrency">Concurrency</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#graphdb">Graph Databases</a>, <a href="#datastore">Choosing a Data Store</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#javathreads">How Java Threads Evolved</a>, <a href="#ionio">IO, NIO &amp; Web Servers</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#javascript">JavaScript</a>, <a href="#functional">Functional or Imperative</a>, <a href="#fetoolchain">Front-end Toolchain</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-labs" target="_blank" rel="noopener">Run the code: well-rounded-engineer-labs</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#apihistory">How APIs Evolved</a>, <a href="#graphql">GraphQL</a>, <a href="#realtime">Real-time to the Browser</a>, <a href="#reactive">Reactive &amp; Backpressure</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#banking">Banking &amp; Low Latency</a>, <a href="#spring">Spring Boot</a>, <a href="#springhistory">From spring.jar to Spring</a>, <a href="#quarkus">Quarkus</a>, <a href="#faded">Faded? Rails, Flex &amp; Grails</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3zM3 9h18M9 9v11"/></svg></span><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#teststrat">Test Strategy for Cloud Systems</a>, <a href="#review">Writing &amp; Code Review</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#privacy">Personal Data Across Services</a>, <a href="#cyber">Cybersecurity</a>, <a href="#agentsec">Agentic AI Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></span><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#patterns">SOLID &amp; Design Patterns</a>, <a href="#architecture">Architecture</a>, <a href="#quality">Quality Attributes</a>, <a href="#atob">Solution Architecture: A to B</a>, <a href="#distsys">Distributed Systems</a>, <a href="#microservices">Microservices</a>, <a href="#casestudies">Case Studies: How Tech Companies Evolved</a>, <a href="#databricks">Databricks</a>, <a href="#palantir">Palantir</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#ratelimit">Rate Limiting</a>, <a href="#specs">Specifications</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"/></svg></span><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudcost">Cloud Cost</a>, <a href="#retailcloud">Retail &amp; Hybrid Cloud</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a>, <a href="#azuredata">Data on Azure</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></span><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#neural">Neural Networks</a>, <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#aimemory">AI Memory &amp; Threads</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentmakers">How Anthropic &amp; OpenAI Build Agents</a>, <a href="#agentsystem">Building an Agentic System</a>, <a href="#humanagents">Humans &amp; Agents</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/></svg></span><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#perseverance">Perseverance &amp; Resilience</a>, <a href="#newideas">New Ideas, Familiarity &amp; Habits</a>, <a href="#thinkers">Thinkers Worth Knowing</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#valuation">How Companies Are Valued</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a>, <a href="#longevity">Biohacking &amp; Longevity</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"/></svg></span><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
   <article class="card wide" id="promise"><h3>Our promise: checked knowledge, no fuss</h3>
@@ -17522,6 +17523,400 @@ answer after 3 turns: Paris is 14°C, rain; Chennai is 31°C, sun.</code></pre><
   </div>
 </section>
 
+<!-- ================= BUILDING AN AGENTIC SYSTEM ================= -->
+<section class="panel" id="p-agentsystem" data-name="Building an Agentic System">
+  <div class="panel-head"><h2>Building an agentic system: what to take care of</h2><p>A demo agent takes an afternoon; a system people can rely on takes care at every stage. What matters, in order: deciding, building, evaluating, guarding, serving (inference) and observing, where a person should be in the loop and why, and one complete use case in Spring Boot, compiled and tested.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The short answer</h3>
+    <p>An agent is a model with instructions and tools, running in a loop until a job is done (see <a href="#agentmakers">How Anthropic &amp; OpenAI Build Agents</a>). Getting that loop to run once is easy. Making it a <b>system</b> means answering six questions: should this be an agent at all? Is it built from the right parts? How do we <b>know</b> it works? What stops it doing harm? Can we run it fast and cheaply enough? And can we see what it did?</p>
+    <figure class="fig"><svg viewBox="0 0 650 150" role="img" aria-labelledby="as-t as-d"><title id="as-t">The life of an agentic system</title><desc id="as-d">Six stages from left to right: decide whether an agent is the right tool; build it from a model, tools, instructions and context; evaluate it with graders, suites and the pass@k and pass^k measures; guard it with guardrails and people in the loop; serve it, which is inference, covering speed, cost and caching; and observe it with traces, tokens and cost per task. An arrow returns from observe to evaluate: every real failure becomes a new eval task.</desc><rect class="nd" x="10" y="30" width="94" height="66" rx="6"/><text class="lb hd" x="57" y="52" text-anchor="middle">Decide</text><text class="lb mu" x="57" y="70" text-anchor="middle">agent, or</text><text class="lb mu" x="57" y="86" text-anchor="middle">simpler?</text><rect class="nd" x="116" y="30" width="94" height="66" rx="6"/><text class="lb hd" x="163" y="52" text-anchor="middle">Build</text><text class="lb mu" x="163" y="70" text-anchor="middle">model, tools,</text><text class="lb mu" x="163" y="86" text-anchor="middle">context</text><line class="ed" x1="104" y1="63" x2="114" y2="63"/><polygon class="ar" points="115,63 110,60 110,66"/><rect class="nd in" x="222" y="30" width="94" height="66" rx="6"/><text class="lb hd" x="269" y="52" text-anchor="middle">Evaluate</text><text class="lb mu" x="269" y="70" text-anchor="middle">graders,</text><text class="lb mu" x="269" y="86" text-anchor="middle">pass@k</text><line class="ed" x1="210" y1="63" x2="220" y2="63"/><polygon class="ar" points="221,63 216,60 216,66"/><rect class="nd" x="328" y="30" width="94" height="66" rx="6"/><text class="lb hd" x="375" y="52" text-anchor="middle">Guard</text><text class="lb mu" x="375" y="70" text-anchor="middle">limits,</text><text class="lb mu" x="375" y="86" text-anchor="middle">people</text><line class="ed" x1="316" y1="63" x2="326" y2="63"/><polygon class="ar" points="327,63 322,60 322,66"/><rect class="nd in" x="434" y="30" width="94" height="66" rx="6"/><text class="lb hd" x="481" y="52" text-anchor="middle">Serve</text><text class="lb mu" x="481" y="70" text-anchor="middle">inference,</text><text class="lb mu" x="481" y="86" text-anchor="middle">speed, cost</text><line class="ed" x1="422" y1="63" x2="432" y2="63"/><polygon class="ar" points="433,63 428,60 428,66"/><rect class="nd" x="540" y="30" width="94" height="66" rx="6"/><text class="lb hd" x="587" y="52" text-anchor="middle">Observe</text><text class="lb mu" x="587" y="70" text-anchor="middle">traces,</text><text class="lb mu" x="587" y="86" text-anchor="middle">cost per task</text><line class="ed" x1="528" y1="63" x2="538" y2="63"/><polygon class="ar" points="539,63 534,60 534,66"/><path class="ed acc" d="M 593 96 L 593 122 L 275 122 L 275 100" fill="none"/><polygon class="ar acc" points="275,97 271,104 279,104"/><text class="lb acc" x="434" y="138" text-anchor="middle">every real failure becomes a new eval task</text></svg><figcaption>Evaluation and inference are highlighted because this page goes deepest on them. The loop back is what makes the system improve rather than drift.</figcaption></figure>
+  </article>
+
+  <article class="card wide"><h3>1. Decide, and 2. build</h3>
+    <p><b>Decide.</b> Both Anthropic and OpenAI say to start with the simplest thing that works. OpenAI&rsquo;s guide points agents at work that has resisted automation: complex judgement, rules that are hard to maintain, or lots of unstructured data; otherwise a fixed workflow or ordinary code may be enough. Its latency guide puts it bluntly as a principle: &ldquo;Don&rsquo;t default to an LLM.&rdquo;</p>
+    <p><b>Build.</b> The parts are few, and each deserves care:</p>
+    <ul>
+      <li><b>Model:</b> start with the most capable, then try smaller ones once evals show where they still pass.</li>
+      <li><b>Tools:</b> clear names, clear parameters and good descriptions; Anthropic calls this the agent-computer interface. Business rules belong <i>inside</i> the tool, where the model cannot argue with them.</li>
+      <li><b>Instructions:</b> written from your real procedures, with what to do when information is missing.</li>
+      <li><b>Context:</b> a finite resource; models recall less as it fills (&ldquo;context rot&rdquo;), so give the agent what it needs for this step, not everything. More on <a href="#agentharness">Agent Harness</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>3. Evaluation: how you know it works</h3>
+    <p>Agents are non-deterministic: the same question can take a different path each time. So &ldquo;I tried it and it worked&rdquo; proves little. Anthropic&rsquo;s guide <i>Demystifying evals for AI agents</i> gives the vocabulary:</p>
+    <table class="eg"><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+      <tr><td>Task</td><td>One problem for the agent, with what success looks like</td></tr>
+      <tr><td>Trial</td><td>One attempt at a task; run several, because results vary</td></tr>
+      <tr><td>Grader</td><td>Logic that scores part of the result; a task can have several</td></tr>
+      <tr><td>Transcript</td><td>The full record of a trial: messages, tool calls, results (also called a trace)</td></tr>
+      <tr><td>Outcome</td><td>The final state of the world: not &ldquo;the agent said the flight is booked&rdquo;, but whether the booking exists in the database</td></tr>
+      <tr><td>Suite</td><td>A collection of tasks measuring one capability or behaviour</td></tr>
+    </tbody></table>
+    <p><b>Three kinds of grader</b>, usually combined:</p>
+    <ul>
+      <li><b>Code-based:</b> string matches, tests passing, checking which tools were called with which arguments, verifying the outcome. Fast, cheap and repeatable.</li>
+      <li><b>Model-based</b> (&ldquo;LLM as judge&rdquo;): a model scores against a rubric, for things like tone or quality with many right answers. Anthropic suggests grading each dimension with its own isolated judge, and calibrating judges against human judgement.</li>
+      <li><b>Human:</b> the gold standard, and the slowest; used to calibrate the other two.</li>
+    </ul>
+    <p><b>Two kinds of suite:</b> <i>capability</i> evals ask &ldquo;what can it do?&rdquo; and should start with a low pass rate, giving you a hill to climb; <i>regression</i> evals ask &ldquo;does it still do what it did?&rdquo; and should pass nearly 100% of the time. Capability tasks that become reliable graduate into the regression suite.</p>
+    <p><b>Getting started:</b> Anthropic says 20 to 50 simple tasks drawn from real failures is a great start. Begin with the checks you already do by hand; test cases where a behaviour should happen <i>and</i> where it should not; start every trial from a clean environment, so leftovers from one run cannot pass or fail the next.</p>
+  </article>
+
+  <article class="card wide"><h3>Run it: pass@k and pass^k</h3>
+    <p>Because results vary, Anthropic uses two measures. <b>pass@k</b> is the chance that at least one of k tries succeeds, right for tools where one good answer is enough. <b>pass^k</b> is the chance that <i>all</i> k tries succeed, right for customer-facing agents that must behave the same way every time. This program shows how far apart they drift for an agent that succeeds 75% of the time:</p>
+    <div class="snip"><pre><code># pass@k: chance at least one of k tries succeeds.  pass^k: chance all k tries succeed.
+# p is the agent's success rate on a single try, measured by running your eval.
+p = 0.75
+print(" k   pass@k   pass^k")
+for k in (1, 2, 3, 5, 10):
+    at_least_one = 1 - (1 - p) ** k
+    all_k = p ** k
+    print(f"{k:2}   {at_least_one:6.1%}   {all_k:6.1%}")</code></pre></div>
+    <p>What it printed when we ran it:</p>
+    <div class="snip"><pre><code>k   pass@k   pass^k
+ 1    75.0%    75.0%
+ 2    93.8%    56.2%
+ 3    98.4%    42.2%
+ 5    99.9%    23.7%
+10   100.0%     5.6%</code></pre></div>
+    <p>At three tries, pass^k is 42%, matching Anthropic&rsquo;s worked example: a 75% agent passes three runs in a row less than half the time. By ten tries the two measures tell opposite stories. Choose the one that matches what your users need.</p>
+  </article>
+
+  <article class="card wide"><h3>4. Guard: layers, limits and people</h3>
+    <ul>
+      <li><b>Layers.</b> OpenAI describes guardrails as layered defence: relevance and safety classifiers, PII filters, moderation, and plain rules such as blocklists and length limits, on top of ordinary authentication and access control.</li>
+      <li><b>Limits.</b> Every loop needs an exit: a maximum number of turns or tool calls, so a confused agent cannot run for ever. Spring AI, for example, caps tool calls per turn by default.</li>
+      <li><b>Least privilege.</b> Give the agent only the tools the job needs, and treat everything it reads as untrusted: text in a web page or document can carry instructions (prompt injection; see <a href="#agentsec">Agentic AI Security</a>).</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>Where a person should be involved, and why</h3>
+    <p>A human in every step defeats the point of an agent; a human in no step is a risk. The sources agree on where people belong:</p>
+    <table class="eg"><thead><tr><th>Where</th><th>Why</th></tr></thead><tbody>
+      <tr><td>Before high-risk actions: sensitive, irreversible or high-stakes ones, such as moving money, deleting data or sending messages</td><td>An undo may be impossible, and a model can be wrong or manipulated. OpenAI recommends human oversight here until confidence in the agent grows.</td></tr>
+      <tr><td>When the agent keeps failing</td><td>Past a limit on retries, handing over to a person protects the user&rsquo;s experience (OpenAI&rsquo;s &ldquo;failure thresholds&rdquo;).</td></tr>
+      <tr><td>At checkpoints and blockers in long tasks</td><td>Anthropic notes agents can pause for human feedback at checkpoints or when they hit a blocker, rather than guessing.</td></tr>
+      <tr><td>In evaluation</td><td>People calibrate the model-based graders and read transcripts; Anthropic notes human review stays crucial for checking work against the wider system&rsquo;s requirements.</td></tr>
+      <tr><td>Reviewing what is learned from production</td><td>Real failures should become new eval tasks, and deciding what &ldquo;correct&rdquo; means is a human judgement.</td></tr>
+    </tbody></table>
+    <p>Two practical rules from Spring AI&rsquo;s documentation: <b>authenticate the approver</b>, because checking that the person who decides may decide is your application&rsquo;s job; and treat a deny message as input to the model, so keep it clean. <i>Analysis:</i> keep lookups and cheap, reversible actions automatic, so people spend their attention where it changes the outcome.</p>
+  </article>
+
+  <article class="card wide"><h3>5. Serve: inference, speed and cost</h3>
+    <p><b>Inference</b> is running the model to produce an answer, and for an agent it happens on every turn of the loop, so its speed and cost multiply. Anthropic measured agents using about <b>4&times;</b> the tokens of a chat, and multi-agent systems about <b>15&times;</b>.</p>
+    <ul>
+      <li><b>Speed.</b> Measure <b>time to first token</b> (TTFT), how long before the response starts, and stream the answer so people see progress. OpenAI&rsquo;s seven principles for latency: process tokens faster (a smaller model), generate fewer tokens, use fewer input tokens, make fewer requests, parallelise, make users wait less, and don&rsquo;t default to an LLM.</li>
+      <li><b>Prompt caching.</b> Agents resend the same instructions and tool definitions on every turn. With caching, a repeated prefix is read from cache instead of reprocessed. On Anthropic&rsquo;s API a cache read costs 0.1&times; the normal input price for most models (less on some), a cache write 1.25&times; for the default 5-minute lifetime or 2&times; for one hour; the lifetime refreshes free each time the cache is used, and cache hits do not count against rate limits.</li>
+      <li><b>Batching.</b> Work that does not need an instant answer, such as nightly evals or bulk classification, can go through a batch API, processed asynchronously with results within 24 hours.</li>
+      <li><b>Routing.</b> Anthropic&rsquo;s routing pattern sends easy, common questions to smaller, cheaper models and hard ones to more capable models.</li>
+      <li><b>Self-hosting</b> moves inference onto your own GPUs, with techniques like batching and KV caches; see <a href="#llm">LLMs</a>.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>6. Observe: see what it did</h3>
+    <ul>
+      <li><b>Keep transcripts.</b> Every model call, tool call and result, so a bad outcome can be traced to the step that caused it. OpenAI&rsquo;s Agents SDK has built-in tracing; Spring AI records spans and token-usage metrics through Micrometer.</li>
+      <li><b>Measure per task, not per request:</b> success rate, cost and time per completed task, and how often a person had to step in (more on <a href="#agentharness">Agent Harness</a>). Anthropic notes that once evals exist, latency, token use and cost per task come almost for free.</li>
+      <li><b>Close the loop.</b> Each real failure becomes a new eval task, so the same mistake is caught before the next release.</li>
+    </ul>
+  </article>
+
+  <article class="card wide"><h3>A use case, built: an order-support agent in Spring Boot</h3>
+    <p>A customer writes in about an order. The agent looks the order up, explains its status, and can refund it. <b>Small refunds happen automatically; refunds over &pound;100 pause until a supervisor approves.</b> It uses Spring Boot 4.2 and Spring AI 2.1, whose tool-call confirmation is built for exactly this. Every stage above shows up in the code.</p>
+    <p><b>The dependencies</b> (<code>pom.xml</code>, abridged):</p>
+    <div class="snip"><pre data-other-version><code>&lt;parent&gt;
+  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+  &lt;version&gt;4.2.0&lt;/version&gt;
+&lt;/parent&gt;
+&lt;!-- ... --&gt;
+&lt;dependencyManagement&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-ai-bom&lt;/artifactId&gt;
+      &lt;version&gt;2.1.0&lt;/version&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+      &lt;scope&gt;import&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+&lt;dependencies&gt;
+  &lt;dependency&gt;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;&lt;/dependency&gt;
+  &lt;dependency&gt;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;&lt;/dependency&gt;
+  &lt;dependency&gt;&lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;&lt;artifactId&gt;spring-ai-starter-model-anthropic&lt;/artifactId&gt;&lt;/dependency&gt;
+  &lt;dependency&gt;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;&lt;scope&gt;test&lt;/scope&gt;&lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre></div>
+    <p><b>Build: the tools.</b> The model can only <i>ask</i> for these; the code decides what happens. The rule that a refund can never exceed what was paid lives here, where no prompt can talk around it:</p>
+    <div class="snip"><pre><code>package com.example.orderagent;
+
+import java.math.BigDecimal;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
+import org.springframework.stereotype.Component;
+
+/** The agent's tools. The model can only ask for these; this code decides what really happens. */
+@Component
+public class OrderTools {
+
+    record Order(String id, String status, BigDecimal total, BigDecimal refunded) {}
+
+    private final Map&lt;String, Order&gt; orders = new ConcurrentHashMap&lt;&gt;(Map.of(
+            "A100", new Order("A100", "delivered", new BigDecimal("40.00"), BigDecimal.ZERO),
+            "A200", new Order("A200", "delivered", new BigDecimal("450.00"), BigDecimal.ZERO)));
+
+    @Tool(description = "Look up an order's status, total and how much has already been refunded")
+    public String getOrder(@ToolParam(description = "Order id, for example A100") String orderId) {
+        Order o = orders.get(orderId);
+        return o == null ? "No order " + orderId : o.toString();
+    }
+
+    @Tool(description = "Refund part or all of an order. Refunds over 100 need a person's approval.")
+    public String refundOrder(@ToolParam(description = "Order id") String orderId,
+                              @ToolParam(description = "Amount to refund, in pounds") BigDecimal amount,
+                              @ToolParam(description = "Why the customer is owed a refund") String reason) {
+        Order o = orders.get(orderId);
+        if (o == null) return "No order " + orderId;
+        // A business rule the model cannot talk its way around: never refund more than was paid.
+        if (o.refunded().add(amount).compareTo(o.total()) &gt; 0) {
+            return "Refused: " + amount + " would exceed the order total of " + o.total();
+        }
+        orders.put(orderId, new Order(o.id(), o.status(), o.total(), o.refunded().add(amount)));
+        return "Refunded " + amount + " on " + orderId + " (" + reason + ")";
+    }
+}</code></pre></div>
+    <p><b>Guard: the person in the loop, and the agent.</b> A <code>ToolCallConfirmationPolicy</code> bean marks refunds over the limit as needing confirmation; Spring AI then pauses the loop before anything in that reply runs:</p>
+    <div class="snip"><pre><code>package com.example.orderagent;
+
+import java.math.BigDecimal;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.model.tool.ToolCallConfirmationPolicy;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AgentConfig {
+
+    static final BigDecimal APPROVAL_LIMIT = new BigDecimal("100");
+    private static final Pattern AMOUNT = Pattern.compile("\"amount\"\\s*:\\s*\"?([0-9]+(?:\\.[0-9]+)?)");
+
+    /** Human in the loop: a refund above the limit pauses the agent until a person decides. */
+    @Bean
+    ToolCallConfirmationPolicy largeRefunds() {
+        return (toolCall, toolMetadata) -&gt;
+                toolCall.name().equals("refundOrder") &amp;&amp; amountOf(toolCall.arguments()).compareTo(APPROVAL_LIMIT) &gt; 0;
+    }
+
+    static BigDecimal amountOf(String jsonArguments) {
+        Matcher m = AMOUNT.matcher(jsonArguments);
+        return m.find() ? new BigDecimal(m.group(1)) : BigDecimal.ZERO;
+    }
+
+    @Bean
+    ChatClient supportAgent(ChatClient.Builder builder, OrderTools tools) {
+        return builder
+                .defaultSystem("""
+                        You are a customer support agent for an online shop.
+                        Always look an order up before acting on it. Be brief and polite.
+                        If a refund is refused or denied, explain why to the customer.""")
+                .defaultTools(tools)
+                .build();
+    }
+}</code></pre></div>
+    <p><b>Guard and observe: limits and metrics</b> (<code>application.properties</code>):</p>
+    <div class="snip"><pre><code>spring.ai.anthropic.api-key=${ANTHROPIC_API_KEY}
+# Guardrail against runaway loops: at most 10 tool calls in one turn.
+spring.ai.tools.limits.max-total-tool-calls=10
+# Observability: Spring AI records gen_ai spans and token-usage metrics through Micrometer.
+management.endpoints.web.exposure.include=health,metrics</code></pre></div>
+    <p><b>Serve: the API, with the approval step.</b> <code>/support/chat</code> answers, or parks a paused reply and returns an approval id; <code>/support/approve/{id}</code> runs the person&rsquo;s decision and lets the agent finish:</p>
+    <div class="snip"><pre><code>package com.example.orderagent;
+
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.Message;
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.model.tool.ToolCallDecision;
+import org.springframework.ai.model.tool.ToolCallDecisions;
+import org.springframework.ai.model.tool.ToolCallingChatOptions;
+import org.springframework.ai.model.tool.ToolCallingManager;
+import org.springframework.ai.model.tool.ToolExecutionResult;
+import org.springframework.ai.support.ToolCallbacks;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/support")
+public class SupportController {
+
+    record Answer(String text, String approvalId, List&lt;String&gt; waitingFor) {}
+    private record Pending(List&lt;Message&gt; conversation, ChatResponse reply) {}
+
+    private final ChatClient agent;
+    private final ToolCallingManager toolCallingManager;
+    private final OrderTools tools;
+    // Demo only: production keeps pending approvals in a database, so they survive restarts.
+    private final Map&lt;String, Pending&gt; pending = new ConcurrentHashMap&lt;&gt;();
+
+    public SupportController(ChatClient agent, ToolCallingManager toolCallingManager, OrderTools tools) {
+        this.agent = agent;
+        this.toolCallingManager = toolCallingManager;
+        this.tools = tools;
+    }
+
+    @PostMapping("/chat")
+    public Answer chat(@RequestBody String message) {
+        ChatResponse reply = agent.prompt().user(message).call().chatResponse();
+        AssistantMessage out = reply.getResult().getOutput();
+        if (!ToolCallDecisions.isAwaitingDecision(reply)) {
+            return new Answer(out.getText(), null, List.of());
+        }
+        // The loop paused: nothing in this reply has run. Park it and ask a person.
+        String id = UUID.randomUUID().toString();
+        pending.put(id, new Pending(List.of(new UserMessage(message), out), reply));
+        List&lt;String&gt; calls = out.getToolCalls().stream().map(c -&gt; c.name() + " " + c.arguments()).toList();
+        return new Answer("This needs a supervisor's approval before it happens.", id, calls);
+    }
+
+    @PostMapping("/approve/{id}")
+    public Answer decide(@PathVariable String id, @RequestParam boolean allow) {
+        // In production, check here that the person deciding is allowed to approve refunds.
+        Pending p = pending.remove(id);
+        if (p == null) return new Answer("No pending approval " + id, null, List.of());
+        AssistantMessage reply = p.reply().getResult().getOutput();
+        List&lt;ToolCallDecision&gt; decisions = ToolCallDecisions.toolCallKeys(reply).stream()
+                .map(key -&gt; allow ? ToolCallDecision.allow(key)
+                                  : ToolCallDecision.deny(key, "A supervisor declined this refund."))
+                .toList();
+        var options = ToolCallingChatOptions.builder().toolCallbacks(ToolCallbacks.from(tools)).build();
+        ToolExecutionResult result = toolCallingManager.executeToolCalls(
+                new Prompt(p.conversation(), options), p.reply(), new ToolCallDecisions(decisions));
+        String text = agent.prompt().messages(result.conversationHistory()).call().content();
+        return new Answer(text, null, List.of());
+    }
+}</code></pre></div>
+    <p><b>Evaluate, part 1: fast, offline tests of the rules.</b> No model, no API key, runs on every build:</p>
+    <div class="snip"><pre><code>package com.example.orderagent;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import org.junit.jupiter.api.Test;
+import org.springframework.ai.chat.messages.AssistantMessage.ToolCall;
+import org.springframework.ai.model.tool.ToolCallConfirmationPolicy;
+import org.springframework.ai.tool.metadata.ToolMetadata;
+
+/** Fast, offline tests of the rules the model cannot override. No API key needed. */
+class GuardrailTest {
+
+    private final ToolCallConfirmationPolicy policy = new AgentConfig().largeRefunds();
+    private final ToolMetadata metadata = ToolMetadata.builder().build();
+
+    @Test
+    void smallRefundRunsWithoutAPerson() {
+        var call = new ToolCall("1", "function", "refundOrder", "{\"orderId\":\"A100\",\"amount\":40,\"reason\":\"late\"}");
+        assertThat(policy.requiresConfirmation(call, metadata)).isFalse();
+    }
+
+    @Test
+    void largeRefundWaitsForAPerson() {
+        var call = new ToolCall("2", "function", "refundOrder", "{\"orderId\":\"A200\",\"amount\":300,\"reason\":\"broken\"}");
+        assertThat(policy.requiresConfirmation(call, metadata)).isTrue();
+    }
+
+    @Test
+    void lookupsNeverWait() {
+        var call = new ToolCall("3", "function", "getOrder", "{\"orderId\":\"A200\"}");
+        assertThat(policy.requiresConfirmation(call, metadata)).isFalse();
+    }
+
+    @Test
+    void refundCannotExceedWhatWasPaid() {
+        var tools = new OrderTools();
+        assertThat(tools.refundOrder("A100", new BigDecimal("50"), "test")).startsWith("Refused");
+        assertThat(tools.refundOrder("A100", new BigDecimal("40"), "test")).startsWith("Refunded");
+    }
+}</code></pre></div>
+    <p><b>Evaluate, part 2: evals against the real model.</b> A code-based grader on the answer, and an outcome grader on the pause. Each runs three times, because a 75% agent would pass once by luck:</p>
+    <div class="snip"><pre><code>package com.example.orderagent;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.model.tool.ToolCallDecisions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+/**
+ * Evals against the real model: slow, cost money, and non-deterministic, so each runs several
+ * times. Only runs when ANTHROPIC_API_KEY is set.
+ */
+@SpringBootTest
+@EnabledIfEnvironmentVariable(named = "ANTHROPIC_API_KEY", matches = ".+")
+class AgentEvalTest {
+
+    @Autowired ChatClient agent;
+
+    // Code-based grader on the answer: the order's real status must appear.
+    @RepeatedTest(3)
+    void answersOrderStatusFromTheTool() {
+        String answer = agent.prompt().user("What is the status of order A100?").call().content();
+        assertThat(answer.toLowerCase()).contains("delivered");
+    }
+
+    // Outcome grader: a large refund must pause for a person, every time.
+    @RepeatedTest(3)
+    void largeRefundAlwaysPausesForApproval() {
+        var reply = agent.prompt().user("Order A200 arrived broken. Please refund 300 pounds.").call().chatResponse();
+        assertThat(ToolCallDecisions.isAwaitingDecision(reply)).isTrue();
+    }
+}</code></pre></div>
+    <p class="note">What we verified: the project compiles against Spring Boot <span data-other-version>4.2.0</span> and Spring AI <span data-other-version>2.1.0</span>, the four guardrail tests pass, and the application context starts with the agent, tools and approval flow wired (a fifth test). The two evals were skipped in our environment because they call the real model and need an <code>ANTHROPIC_API_KEY</code>; we have not run them, so treat their pass rate as yours to measure.</p>
+  </article>
+
+  <article class="card wide"><h3>Where to put your effort first, by requirement</h3>
+    <table class="eg"><thead><tr><th>If this is true for you</th><th>Invest first in</th></tr></thead><tbody>
+      <tr><td>The agent can move money, delete data or contact people</td><td>Human confirmation for those tools, and authenticated approvers</td></tr>
+      <tr><td>Customers will see its answers directly</td><td>Regression evals measured with pass^k, and a human hand-off</td></tr>
+      <tr><td>It is an internal tool where one good answer is enough</td><td>Capability evals measured with pass@k</td></tr>
+      <tr><td>It runs many turns or many requests a day</td><td>Prompt caching, routing to smaller models, and cost per task</td></tr>
+      <tr><td>It reads web pages, emails or documents from outside</td><td>Prompt-injection defences and least-privilege tools</td></tr>
+      <tr><td>Your team already runs Java and Spring</td><td>Spring AI, so the agent lives with your existing services; switching stacks has a cost</td></tr>
+    </tbody></table>
+  </article>
+
+  <article class="card"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> evaluation is the part that turns an agent demo into a product. Build the eval suite with the agent, from its first real failures, and put people exactly where an action cannot be undone.</p>
+    <p><i>The other view:</i> early on, a few hand-checked examples may teach you more than a formal suite, and heavy guardrails can make an agent too timid to be useful. Formal evals and confirmations pay off once real users and real money are involved.</p>
+  </article>
+
+  <article class="card"><h3>Where to go next</h3>
+    <ul>
+      <li>The patterns behind agents: <a href="#agentmakers">How Anthropic &amp; OpenAI Build Agents</a></li>
+      <li>Engineering the loop: <a href="#agentharness">Agent Harness</a></li>
+      <li>Security in depth: <a href="#agentsec">Agentic AI Security</a></li>
+      <li>Spring itself: <a href="#spring">Spring Boot</a></li>
+    </ul>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank" rel="noopener">Anthropic: Demystifying evals for AI agents</a>; <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic: Building effective agents</a>; <a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Anthropic: How we built our multi-agent research system</a>; <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic: Effective context engineering for AI agents</a>; <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener">Claude docs: Prompt caching</a>; <a href="https://platform.claude.com/docs/en/build-with-claude/batch-processing" target="_blank" rel="noopener">Claude docs: Batch processing</a>; <a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf" target="_blank" rel="noopener">OpenAI: A practical guide to building agents (PDF)</a>; <a href="https://platform.openai.com/docs/guides/latency-optimization" target="_blank" rel="noopener">OpenAI: Latency optimization</a>; <a href="https://docs.spring.io/spring-ai/reference/api/tools.html" target="_blank" rel="noopener">Spring AI: Tool calling</a>; <a href="https://docs.spring.io/spring-ai/reference/api/tools/tool-call-confirmation.html" target="_blank" rel="noopener">Spring AI: Tool call confirmation</a>; <a href="https://docs.spring.io/spring-ai/reference/api/testing.html" target="_blank" rel="noopener">Spring AI: Evaluation testing</a>; <a href="https://docs.spring.io/spring-ai/reference/observability/index.html" target="_blank" rel="noopener">Spring AI: Observability</a>; versions checked on Maven Central (Spring AI <span data-other-version>2.1.0</span>, built against Spring Boot <span data-other-version>4.2.0</span>), and the example compiled and tested against them.</p></article>
+
+  </div>
+</section>
+
 <!-- ================= HUMANS AND AGENTS ================= -->
 <section class="panel" id="p-humanagents" data-name="Humans &amp; Agents">
   <div class="panel-head"><h2>Humans and agents: working together, and personas</h2><p>An AI agent plans and uses tools on its own, but someone still sets the goal, owns the outcome and decides what is safe to do without asking. This page is about that relationship: how to brief an agent, how an agent should report back, how much freedom to give it, and how to build a named agent (a persona) with its own role, skills and model. Facts are linked at the end; where a card is our view, it says so and gives the other view.</p></div>
@@ -21166,8 +21561,8 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
-  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","agentsystem","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","agentsystem","humanagents","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
