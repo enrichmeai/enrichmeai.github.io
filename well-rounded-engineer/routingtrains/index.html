@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Routing & Trains with Neural Networks · Well Rounded Engineer</title>
+<meta name="description" content="How Google Maps uses a graph neural network to predict travel times, why the route itself is still found by a classic algorithm, how trains are actually…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="routingtrains" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 134 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">17</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/chips/">From Binary to GPUs</a><a href="/well-rounded-engineer/chipjobs/">Chip Jobs &amp; GPU Startups</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/searchengines/">How Search Works &amp; AI Browsers</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/functional/">Functional or Imperative</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/reactive/">Reactive &amp; Backpressure</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/quality/">Quality Attributes</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/databricks/">Databricks</a><a href="/well-rounded-engineer/palantir/">Palantir</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/ratelimit/">Rate Limiting</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp" open><summary>AI<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/routingtrains/" aria-current="page">Routing &amp; Trains with Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/aimemory/">AI Memory &amp; Threads</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/agentmakers/">How Anthropic &amp; OpenAI Build Agents</a><a href="/well-rounded-engineer/agentsystem/">Building an Agentic System</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">13</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/perseverance/">Perseverance &amp; Resilience</a><a href="/well-rounded-engineer/newideas/">New Ideas, Familiarity &amp; Habits</a><a href="/well-rounded-engineer/thinkers/">Thinkers Worth Knowing</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/valuation/">How Companies Are Valued</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a><a href="/well-rounded-engineer/longevity/">Biohacking &amp; Longevity</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>AI</span> / <span aria-current="page">Routing &amp; Trains with Neural Networks</span></p>
+<section class="panel" id="routingtrains" data-name="Routing &amp; Trains with Neural Networks">
+  <div class="panel-head"><h1>Routing and trains with neural networks</h1><p>How Google Maps uses a graph neural network to predict travel times, why the route itself is still found by a classic algorithm, how trains are actually controlled today, and where neural networks are, and are not, being trusted on the railway.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>Neural networks are very good at one part of routing: <b>predicting</b>. How long will this road take at 8 a.m.? How late will this train be? They are much less trusted at the part that keeps people safe: <b>deciding</b> that two trains must never be on the same piece of track. So in practice the two are combined: a learned model predicts, and a well-understood algorithm or certified safety system decides.</p>
+    <p>If neural networks are new to you, start with <a href="/well-rounded-engineer/neural/">Neural Networks</a>; for networks of connected things, see <a href="/well-rounded-engineer/graphdb/">Graph Databases</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-road-routing-what-google-maps-does"><h3>Road routing: what Google Maps does</h3>
+    <p>Google Maps combines live traffic with historical patterns to predict travel times. Working with Google DeepMind, it improved those predictions using a <b>graph neural network</b> (GNN), a network designed for data shaped like a graph: places joined by roads.</p>
+    <ul>
+      <li><b>The problem:</b> Maps&rsquo; predicted arrival times were already accurate for over 97% of trips, according to DeepMind. The goal was the remaining few per cent.</li>
+      <li><b>Supersegments:</b> roads are divided into &ldquo;supersegments&rdquo;, groups of adjacent road segments that share significant traffic. A first attempt trained a separate ordinary neural network for every supersegment; because supersegments vary in size, that did not scale, so the team switched to a GNN, which can model how traffic flows from one road to the next.</li>
+      <li><b>The result:</b> DeepMind reported accuracy improvements of up to 50% in cities including Berlin, Jakarta, S&atilde;o Paulo, Sydney, Tokyo and Washington D.C. The research paper, presented at CIKM 2021, reports that the deployed model cut negative arrival-time outcomes by over 40% in cities like Sydney, compared with the previous production system.</li>
+    </ul>
+    <p>The predicted times then become the <b>weights</b> on the road graph, and a shortest-path search finds the fastest route. The neural network makes the map smarter; it does not replace the route search.</p>
+  </article>
+
+  <article class="card wide" id="c-run-it-learning-predicts-the-algorithm-decides"><h3>Run it: learning predicts, the algorithm decides</h3>
+    <p>A small version of that split. A learned estimate of each road&rsquo;s travel time (here a simple average by time of day, standing in for a neural network) feeds Dijkstra&rsquo;s algorithm, the classic way to find the shortest path in a graph:</p>
+    <div class="snip"><pre><code># Learning predicts, the algorithm decides: how map routing combines the two.
+import heapq
+
+# 1. Past trips: (road, hour of day, minutes taken). Real systems learn from billions.
+history = [("ring", 8, 22), ("ring", 9, 20), ("ring", 14, 9), ("ring", 15, 8),
+           ("centre", 8, 12), ("centre", 9, 13), ("centre", 14, 11), ("centre", 15, 12)]
+
+# 2. "Learn" each road's travel time for a time of day. This tiny lookup by rush hour
+#    stands in for the graph neural network Google Maps uses.
+def predict(road, hour):
+    rush = 7 &lt;= hour &lt;= 9
+    times = [m for r, h, m in history if r == road and (7 &lt;= h &lt;= 9) == rush]
+    return sum(times) / len(times)
+
+# 3. The road network, with each road's model input. Two ways from Home to Office.
+roads = {"Home": [("A", "ring"), ("B", "centre")], "A": [("Office", "ring")],
+         "B": [("Office", "centre")], "Office": []}
+
+# 4. Dijkstra's algorithm finds the fastest route using the predicted times as weights.
+def fastest(start, goal, hour):
+    queue, seen = [(0.0, start, [start])], set()
+    while queue:
+        minutes, node, path = heapq.heappop(queue)
+        if node == goal:
+            return round(minutes), path
+        if node in seen:
+            continue
+        seen.add(node)
+        for nxt, road in roads[node]:
+            heapq.heappush(queue, (minutes + predict(road, hour), nxt, path + [nxt]))
+
+for hour in (8, 14):
+    print(f"{hour:02}:00 -&gt;", fastest("Home", "Office", hour))</code></pre></div>
+    <p>What it printed when we ran it:</p>
+    <div class="snip"><pre><code>08:00 -&gt; (25, ['Home', 'B', 'Office'])
+14:00 -&gt; (17, ['Home', 'A', 'Office'])</code></pre></div>
+    <p>At 8 a.m. the ring road is slow, so the route goes through the centre; at 2 p.m. the ring road is quicker. The route search never changed; only the predicted travel times did. That is the job a neural network does inside a routing system.</p>
+  </article>
+
+  <article class="card wide" id="c-how-trains-are-controlled-today"><h3>How trains are controlled today</h3>
+    <p>Running trains safely is mostly about keeping them apart, and that is done with signalling and train protection systems, not learning:</p>
+    <ul>
+      <li><b>Blocks.</b> Traditional signalling divides track into fixed <b>blocks</b>; only one train may be in a block at a time. <b>Communications-based train control</b> (CBTC) knows each train&rsquo;s position more precisely by radio and uses a <b>moving block</b> that travels with the train, so trains can run closer together safely. The first radio-based CBTC opened at San Francisco airport&rsquo;s people mover in 2003.</li>
+      <li><b>Movement authority.</b> In the European Train Control System (ETCS), a Radio Block Centre, specified to <b>safety integrity level 4</b> (SIL 4), the highest, generates the movement authorities that tell each train how far it may go.</li>
+      <li><b>Automatic train operation.</b> Driving can be automated in grades: in many systems (GoA2) the train drives itself but a driver is on board, as on London Underground&rsquo;s Victoria line; at <b>GoA4</b>, trains run with no staff on board at all. Driverless operation is mostly used on lines with isolated tracks, where safety is easier to ensure; fully automated mainline railways are still an area of research.</li>
+    </ul>
+    <figure class="fig"><svg viewBox="0 0 650 220" role="img" aria-labelledby="rt-t rt-d"><title id="rt-t">Where neural networks fit in running a railway</title><desc id="rt-d">Four layers. The safety layer, signalling, train protection and movement authority, is deterministic and certified to safety integrity level 4. Operation, driving, starting, stopping and doors, is automatic and rule-based. Dispatch and rescheduling, deciding which train goes first after a delay, is where learning is being researched. Prediction of delays, arrival times and demand is a natural fit for neural networks.</desc><text class="lb hd" x="20" y="18">Layer</text><text class="lb hd" x="236" y="18">What it decides, and who decides it</text><rect class="nd" x="20" y="30" width="200" height="38" rx="5"/><text class="lb hd" x="32" y="54">Safety layer</text><text class="lb" x="236" y="46">signalling, train protection, movement authority</text><text class="lb mu" x="236" y="62">deterministic, certified (SIL 4)</text><rect class="nd" x="20" y="76" width="200" height="38" rx="5"/><text class="lb hd" x="32" y="100">Operation</text><text class="lb" x="236" y="92">driving, starting, stopping, doors (ATO)</text><text class="lb mu" x="236" y="108">automatic, rule-based</text><rect class="nd in" x="20" y="122" width="200" height="38" rx="5"/><text class="lb hd" x="32" y="146">Dispatch and rescheduling</text><text class="lb" x="236" y="138">which train goes first after a delay</text><text class="lb acc" x="236" y="154">where learning is being researched</text><rect class="nd in" x="20" y="168" width="200" height="38" rx="5"/><text class="lb hd" x="32" y="192">Prediction</text><text class="lb" x="236" y="184">delays, arrival times, demand</text><text class="lb acc" x="236" y="200">a natural fit for neural networks</text></svg><figcaption><i>Analysis:</i> the closer a decision is to keeping trains apart, the more it relies on certified, predictable logic. Learning sits in the layers that advise, plan and predict.</figcaption></figure>
+  </article>
+
+  <article class="card wide" id="c-where-learning-is-being-tried-flatland"><h3>Where learning is being tried: Flatland</h3>
+    <p>The hard, unsolved part of running a railway is <b>rescheduling</b>: when a train breaks down, which of hundreds of trains should wait, re-route or go first? Swiss Federal Railways (SBB) runs the densest mixed railway traffic in the world, with more than 10,000 trains a day routed over 13,000 switches and controlled by more than 32,000 signals.</p>
+    <p>To open the problem to researchers, <b>Flatland</b>, an open-source toolkit run as a challenge on the AIcrowd platform and built around SBB&rsquo;s problem, offers a simplified grid-world railway where many trains (agents) must reach their stations. It lets people test <b>multi-agent reinforcement learning</b>, where each train learns by trial and error, against traditional <b>operations research</b>, the planning and optimisation methods railways have used for decades.</p>
+    <p>The honest result so far: in the 2020 Flatland competition, <b>the best submissions came from operations research</b>, though participants found many promising reinforcement-learning approaches, often using graph representations of the network. The organisers concluded that machine learning has potential for the problem and that key topics still need research.</p>
+  </article>
+
+  <article class="card wide" id="c-choosing-an-approach-by-requirement"><h3>Choosing an approach, by requirement</h3>
+    <table class="eg"><thead><tr><th>If this is true for you</th><th>It leans towards</th></tr></thead><tbody>
+      <tr><td>You need predictions from lots of messy historical data: travel times, delays, demand</td><td>A neural network, often a graph neural network for networks</td></tr>
+      <tr><td>You need the best route given known costs</td><td>A classic algorithm such as Dijkstra or A*, fed by those predictions</td></tr>
+      <tr><td>A wrong decision could injure people</td><td>Deterministic, certified safety systems; learning may advise but not decide</td></tr>
+      <tr><td>You must replan many vehicles after a disruption, today</td><td>Operations research methods, which still won the Flatland benchmark</td></tr>
+      <tr><td>You are researching what could work next</td><td>Reinforcement learning in a simulator such as Flatland, compared against operations research</td></tr>
+    </tbody></table>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> the winning pattern is a partnership. Let neural networks predict, let proven algorithms plan, and keep certified systems in charge of safety. That is how Google Maps works, and how railways are likely to adopt learning.</p>
+    <p><i>The other view:</i> some researchers argue learned systems will eventually plan and control better than hand-built ones, as they have in games, and that insisting on old methods holds progress back. The evidence today does not yet show that on real railways.</p>
+  </article>
+
+  <article class="card" id="c-where-to-go-next"><h3>Where to go next</h3>
+    <ul>
+      <li>How neural networks learn: <a href="/well-rounded-engineer/neural/">Neural Networks</a></li>
+      <li>Graphs and how to store them: <a href="/well-rounded-engineer/graphdb/">Graph Databases</a></li>
+      <li>Robots and control loops: <a href="/well-rounded-engineer/robotics/">Robotics</a></li>
+    </ul>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://deepmind.google/discover/blog/traffic-prediction-with-advanced-graph-neural-networks/" target="_blank" rel="noopener">Google DeepMind: Traffic prediction with advanced graph neural networks</a>; <a href="https://arxiv.org/abs/2108.11482" target="_blank" rel="noopener">Derrow-Pinion et al. (2021), ETA prediction with graph neural networks in Google Maps, arXiv</a>; <a href="https://en.wikipedia.org/wiki/Graph_neural_network" target="_blank" rel="noopener">Wikipedia: Graph neural network</a>; <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank" rel="noopener">Wikipedia: Dijkstra&rsquo;s algorithm</a>; <a href="https://en.wikipedia.org/wiki/Communications-based_train_control" target="_blank" rel="noopener">Wikipedia: Communications-based train control</a>; <a href="https://en.wikipedia.org/wiki/European_Train_Control_System" target="_blank" rel="noopener">Wikipedia: European Train Control System</a>; <a href="https://en.wikipedia.org/wiki/Automatic_train_operation" target="_blank" rel="noopener">Wikipedia: Automatic train operation</a>; <a href="https://flatland.aicrowd.com/intro.html" target="_blank" rel="noopener">Flatland: introduction</a>; <a href="https://arxiv.org/abs/2012.05893" target="_blank" rel="noopener">Mohanty et al. (2020), Flatland-RL: multi-agent reinforcement learning on trains, arXiv</a>; <a href="https://arxiv.org/abs/2103.16511" target="_blank" rel="noopener">Laurent et al. (2021), Flatland competition 2020: MAPF and MARL for efficient train coordination, arXiv</a>.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/neural/">← Neural Networks</a><a class="pn-next" href="/well-rounded-engineer/llm/">LLMs →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-road-routing-what-google-maps-does">Road routing: what Google Maps does</a><a href="#c-run-it-learning-predicts-the-algorithm-decides">Run it: learning predicts, the algorithm decides</a><a href="#c-how-trains-are-controlled-today">How trains are controlled today</a><a href="#c-where-learning-is-being-tried-flatland">Where learning is being tried: Flatland</a><a href="#c-choosing-an-approach-by-requirement">Choosing an approach, by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-where-to-go-next">Where to go next</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
