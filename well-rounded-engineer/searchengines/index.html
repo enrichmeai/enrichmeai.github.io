@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Search Works & AI Browsers · Well Rounded Engineer</title>
+<meta name="description" content="You type a few words and, in a fraction of a second, get answers drawn from billions of pages. How Google finds, stores and ranks those pages, a tiny…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="searchengines" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 128 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp" open><summary>Foundations<span class="n">17</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/chips/">From Binary to GPUs</a><a href="/well-rounded-engineer/chipjobs/">Chip Jobs &amp; GPU Startups</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/searchengines/" aria-current="page">How Search Works &amp; AI Browsers</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/functional/">Functional or Imperative</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/reactive/">Reactive &amp; Backpressure</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/quality/">Quality Attributes</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/ratelimit/">Rate Limiting</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">9</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">8</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">13</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/perseverance/">Perseverance &amp; Resilience</a><a href="/well-rounded-engineer/newideas/">New Ideas, Familiarity &amp; Habits</a><a href="/well-rounded-engineer/thinkers/">Thinkers Worth Knowing</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/valuation/">How Companies Are Valued</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a><a href="/well-rounded-engineer/longevity/">Biohacking &amp; Longevity</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Foundations</span> / <span aria-current="page">How Search Works &amp; AI Browsers</span></p>
+<section class="panel" id="searchengines" data-name="How Search Works &amp; AI Browsers">
+  <div class="panel-head"><h1>How search works, and how browsers are adding AI</h1><p>You type a few words and, in a fraction of a second, get answers drawn from billions of pages. How Google finds, stores and ranks those pages, a tiny search engine you can run, how AI Overviews changed the results page, and how browsers from Chrome to Comet are building AI in, with the risks that come with it.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>A search engine does most of its work before you ever type anything. It is constantly exploring the web, reading pages and filing what it finds in an enormous index, a bit like the index at the back of a book that says which pages mention which words. When you search, it is not reading the web at that moment; it is looking up your words in that index and deciding which of the matching pages deserve to be at the top.</p>
+    <p>Google describes this in its own documentation as <b>three stages: crawling, indexing and serving</b>, and says plainly that not every page makes it through each one. In the last two years a fourth layer has been added on top, AI that writes a summary answer, and the same AI is now moving into the browser itself.</p>
+    <figure class="fig"><svg viewBox="0 0 650 140" role="img" aria-labelledby="srch-t srch-d"><title id="srch-t">How a search engine answers a query</title><desc id="srch-d">Four stages from left to right: crawl, where Googlebot follows links and renders pages with Chrome; index, where duplicate pages are clustered and words and signals are stored; rank and serve, where the query is matched and hundreds of factors are weighed; and an AI layer, where AI Overviews and AI Mode summarise results.</desc><text class="lb hd" x="12" y="24">Before you search</text><text class="lb hd" x="332" y="24">When you search</text><rect class="nd in" x="12" y="40" width="140" height="70" rx="6"/><text class="lb hd" x="82" y="62" text-anchor="middle">Crawl</text><text class="lb mu" x="82" y="82" text-anchor="middle">follow links,</text><text class="lb mu" x="82" y="98" text-anchor="middle">render with Chrome</text><rect class="nd in" x="172" y="40" width="140" height="70" rx="6"/><text class="lb hd" x="242" y="62" text-anchor="middle">Index</text><text class="lb mu" x="242" y="82" text-anchor="middle">cluster duplicates,</text><text class="lb mu" x="242" y="98" text-anchor="middle">store words and signals</text><line class="ed" x1="152" y1="75" x2="170" y2="75"/><polygon class="ar" points="171,75 165,71 165,79"/><rect class="nd in" x="332" y="40" width="140" height="70" rx="6"/><text class="lb hd" x="402" y="62" text-anchor="middle">Rank and serve</text><text class="lb mu" x="402" y="82" text-anchor="middle">match the query,</text><text class="lb mu" x="402" y="98" text-anchor="middle">weigh hundreds of factors</text><line class="ed" x1="312" y1="75" x2="330" y2="75"/><polygon class="ar" points="331,75 325,71 325,79"/><rect class="nd out" x="492" y="40" width="140" height="70" rx="6"/><text class="lb hd" x="562" y="62" text-anchor="middle">AI layer</text><text class="lb mu" x="562" y="82" text-anchor="middle">AI Overviews and</text><text class="lb mu" x="562" y="98" text-anchor="middle">AI Mode summarise</text><line class="ed" x1="472" y1="75" x2="490" y2="75"/><polygon class="ar" points="491,75 485,71 485,79"/><text class="lb mu" x="325" y="132" text-anchor="middle">crawling and indexing run all the time; ranking and the AI layer run when you press Enter</text></svg><figcaption>Google describes Search in three stages, crawling, indexing and serving. The AI layer sits on top of the third: AI Overviews still draw on pages that went through all three.</figcaption></figure>
+  </article>
+
+  <article class="card wide" id="c-stage-one-crawling"><h3>Stage one: crawling</h3>
+    <p>There is no central register of all web pages, so Google has to keep looking for new and changed ones. It calls this <b>URL discovery</b>. Some pages it already knows; others it finds by following a link from a page it knows; others are listed by site owners in a <b>sitemap</b>.</p>
+    <p>The program that fetches pages is <b>Googlebot</b>. An algorithm decides which sites to crawl, how often and how many pages to fetch, and the crawler deliberately slows down so it does not overload a site; an HTTP 500 error, for example, means &ldquo;slow down&rdquo;. While crawling, Google <b>renders</b> the page and runs its JavaScript using a recent version of Chrome, just as your browser would, because many sites build their content with JavaScript. Site owners can keep crawlers out of parts of a site with a <code>robots.txt</code> file.</p>
+  </article>
+
+  <article class="card wide" id="c-stage-two-indexing"><h3>Stage two: indexing</h3>
+    <p>Next Google works out what each page is about, reading its text and key tags such as the <code>&lt;title&gt;</code> element and image <code>alt</code> attributes. It also groups pages with similar content into a cluster and picks the most representative one as the <b>canonical</b>, the version that may be shown in results; the others are kept as alternates, for example for mobile.</p>
+    <p>It collects <b>signals</b> about the canonical page, such as its language, the country it is relevant to and how usable it is, and stores all this in the Google index, a large database spread over thousands of computers. Again, indexing is not guaranteed: low-quality content or a <code>noindex</code> rule can keep a page out.</p>
+    <p>The core data structure behind any index like this is an <b>inverted index</b>: instead of storing &ldquo;page &rarr; words&rdquo;, it stores &ldquo;word &rarr; pages&rdquo;, so looking up a word is instant however many pages there are.</p>
+  </article>
+
+  <article class="card wide" id="c-stage-three-ranking-and-serving"><h3>Stage three: ranking and serving</h3>
+    <p>When you search, Google&rsquo;s machines look up the matching pages in the index and return the ones it judges most relevant and of the highest quality. Google says relevance is decided by <b>hundreds of factors</b>, including your location, language and device: &ldquo;bicycle repair shops&rdquo; gives different results in Paris and in Hong Kong. It also says it does not accept payment to rank pages higher; ads are shown separately.</p>
+    <p>Google publishes a guide to its ranking systems. A few that show how search has evolved:</p>
+    <table class="eg"><thead><tr><th>System</th><th>What it does</th></tr></thead><tbody>
+      <tr><td>PageRank</td><td>Judges a page&rsquo;s importance by the number and quality of links to it. It was one of Google&rsquo;s core systems at launch; Google says it has evolved a lot and is still part of the core</td></tr>
+      <tr><td>RankBrain</td><td>A machine learning system, confirmed in 2015, that helps Google understand how words relate to concepts</td></tr>
+      <tr><td>BERT</td><td>A language model applied to English searches in the US from October 2019, and to over 70 languages by December that year; it helps understand how combinations of words change meaning</td></tr>
+      <tr><td>Neural matching</td><td>Matches the concepts in a query with the concepts in pages, even when the words differ</td></tr>
+      <tr><td>Passage ranking</td><td>Identifies individual sections, or passages, of a page, so one useful section of a long page can be found</td></tr>
+      <tr><td>Freshness and spam systems</td><td>Prefer newer pages when a query needs them, and keep spam out</td></tr>
+    </tbody></table>
+  </article>
+
+  <article class="card wide" id="c-run-it-a-search-engine-in-forty-lines"><h3>Run it: a search engine in forty lines</h3>
+    <p>The real thing runs on thousands of computers, but every stage fits in a small Python program. This one crawls four pages by following links, builds an inverted index, computes PageRank with the usual damping factor of 0.85, and ranks results by combining matching words with PageRank:</p>
+    <div class="snip"><pre><code># A search engine in about 40 lines: crawl, index, rank, serve.
+import math, re
+from collections import defaultdict
+
+# 1. The "web": four pages and the links between them.
+web = {
+    "home":    ("Bicycle repair guide and shop list", ["tyres", "brakes", "shops"]),
+    "tyres":   ("How to fix a flat bicycle tyre", ["home"]),
+    "brakes":  ("Adjusting bicycle brakes safely", ["home", "tyres"]),
+    "shops":   ("Bicycle repair shops near you", ["home"]),
+}
+
+# 2. Crawl: start from one page and follow links, like Googlebot.
+seen, queue = set(), ["home"]
+while queue:
+    url = queue.pop(0)
+    if url not in seen:
+        seen.add(url)
+        queue += web[url][1]
+
+# 3. Index: an inverted index maps each word to the pages that contain it.
+index = defaultdict(set)
+for url in seen:
+    for word in re.findall(r"[a-z]+", web[url][0].lower()):
+        index[word].add(url)
+
+# 4. PageRank: a page is important if important pages link to it.
+d, rank = 0.85, {u: 1 / len(seen) for u in seen}
+for _ in range(50):
+    rank = {u: (1 - d) / len(seen) + d * sum(rank[v] / len(web[v][1])
+            for v in seen if u in web[v][1]) for u in seen}
+
+# 5. Serve: score pages by matching words (rarer words count more) times PageRank.
+def search(query):
+    scores = defaultdict(float)
+    for word in query.lower().split():
+        pages = index.get(word, set())
+        for url in pages:
+            scores[url] += math.log(len(seen) / len(pages)) + 0.1
+    return sorted(((s * rank[u], u) for u, s in scores.items()), reverse=True)
+
+print("crawled:", sorted(seen))
+print("index['bicycle']:", sorted(index["bicycle"]))
+print("pagerank:", {u: round(r, 3) for u, r in sorted(rank.items())})
+for q in ["bicycle repair", "flat tyre"]:
+    print(f"search {q!r}:", [(u, round(s, 3)) for s, u in search(q)])</code></pre></div>
+    <p>What it printed when we ran it:</p>
+    <div class="snip"><pre><code>crawled: ['brakes', 'home', 'shops', 'tyres']
+index['bicycle']: ['brakes', 'home', 'shops', 'tyres']
+pagerank: {'brakes': 0.163, 'home': 0.442, 'shops': 0.163, 'tyres': 0.232}
+search 'bicycle repair': [('home', 0.395), ('shops', 0.145), ('tyres', 0.023), ('brakes', 0.016)]
+search 'flat tyre': [('tyres', 0.69)]</code></pre></div>
+    <p>Look at the search for &ldquo;bicycle repair&rdquo;. The home page and the shops page both contain both words, so on words alone they tie. The home page wins because three pages link to it, so its PageRank is highest. That is the idea that set Google apart in its early years: <b>links are votes</b>, and votes from important pages count for more.</p>
+  </article>
+
+  <article class="card wide" id="c-ai-on-the-results-page-ai-overviews-and-ai-mode"><h3>AI on the results page: AI Overviews and AI Mode</h3>
+    <p>Google first tested AI-written answers as the Search Generative Experience in May 2023. At Google I/O in May 2024 it renamed them <b>AI Overviews</b> and launched them in the United States, then globally by October 2024. They use Google&rsquo;s Gemini models. <b>AI Mode</b> goes further, for questions that need more exploration and reasoning.</p>
+    <p>Google&rsquo;s documentation says both may use a <b>query fan-out</b> technique: issuing several related searches across subtopics and data sources to build an answer. They are built on the same index: to appear as a supporting link, a page must already be indexed and eligible to show a snippet, and Google says there are no extra requirements beyond normal search best practice. Site owners can limit what is shown with <code>nosnippet</code>, <code>data-nosnippet</code>, <code>max-snippet</code> or <code>noindex</code>.</p>
+    <p><b>What it changes:</b> a December 2024 study by Botify and DemandSphere found that when an AI Overview and a featured snippet appear together, they take up about 67% of the screen on desktop and 76% on mobile, so even the top-ranked page may not be visible without scrolling. Google says people have been visiting a greater diversity of websites with AI Overviews.</p>
+    <p><i>Analysis:</i> those two statements can both be true, and which matters more depends on whether you are a reader looking for an answer or a publisher who depends on visits.</p>
+  </article>
+
+  <article class="card wide" id="c-how-browsers-are-adding-ai"><h3>How browsers are adding AI</h3>
+    <p>The browser is where we read, shop, work and sign in, so it is a natural home for an AI assistant. Browsers are adding AI at three levels:</p>
+    <table class="eg"><thead><tr><th>Level</th><th>What it does</th><th>Examples</th></tr></thead><tbody>
+      <tr><td>Assistant in a sidebar</td><td>Summarises the page, answers questions about it, rewrites text</td><td>Microsoft Edge added Bing Chat, now Copilot, in February 2023; Brave added Leo in November 2023; Chrome added the Gemini chatbot, at first for US users on Windows in English; Firefox lets you pick a chatbot provider such as ChatGPT, Claude, Copilot, Gemini or Le Chat</td></tr>
+      <tr><td>A model on your own device</td><td>Runs AI locally, without sending the page to a server</td><td>In 2026 Chrome installed Gemini Nano, a 4 GB local model, on an unspecified number of desktops; it was criticised for doing so without telling users</td></tr>
+      <tr><td>Agentic browser</td><td>Takes actions for you: navigates, fills in forms, sends emails, buys things</td><td>Perplexity&rsquo;s Comet (July 2025, free from October 2025); OpenAI&rsquo;s ChatGPT Atlas (October 2025, macOS only); Opera Neon (2025); Dia</td></tr>
+    </tbody></table>
+    <p>The new agentic browsers, Comet, Atlas and Opera&rsquo;s, are built on <b>Chromium</b>, the open-source project behind Chrome, so the AI is what sets them apart, not the engine. The field is moving fast and not every attempt lasts: OpenAI folded Atlas into a single desktop app with ChatGPT and Codex, and the browser shut down on 9 August 2026.</p>
+  </article>
+
+  <article class="card wide" id="c-the-risks-injection-publishers-and-competition"><h3>The risks: injection, publishers and competition</h3>
+    <ul>
+      <li><b>Prompt injection.</b> An AI that reads web pages can be steered by text hidden in them, and an agentic browser can then act on those instructions with your logged-in accounts. Researchers at LayerX Security described an attack on Comet they called &ldquo;CometJacking&rdquo; that could send a user&rsquo;s personal data to an attacker&rsquo;s server. The wider problem is covered on <a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a>.</li>
+      <li><b>Publishers.</b> When the answer appears on the results page or in the browser&rsquo;s sidebar, fewer people may click through to the site that wrote it. The Associated Press noted at Atlas&rsquo;s launch that this could reduce referrals to online publishers.</li>
+      <li><b>Competition.</b> In August 2024 a US federal judge, Amit Mehta, ruled that Google held an illegal monopoly in search. In September 2025 he ruled that Google would not have to sell Chrome or Android, but barred it from exclusive search contracts and required it to share some data with competitors; parts of that ruling are under appeal by both sides.</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-choosing-how-much-ai-you-want-by-requirement"><h3>Choosing how much AI you want, by requirement</h3>
+    <table class="eg"><thead><tr><th>If this is true for you</th><th>It leans towards</th></tr></thead><tbody>
+      <tr><td>You want answers quickly and will check important ones</td><td>AI Overviews or a sidebar assistant, following the cited links when it matters</td></tr>
+      <tr><td>You must not send page content to a third party</td><td>On-device models, or a browser that lets you choose or bring your own model</td></tr>
+      <tr><td>You want repetitive web tasks done for you</td><td>An agentic browser, used first on accounts where a mistake is cheap</td></tr>
+      <tr><td>You are signed in to banking, email or work systems</td><td>Keep agent features off in that browser profile; prompt injection is not solved</td></tr>
+      <tr><td>You run a website</td><td>The same basics as always, crawlable, indexable, useful pages, plus the snippet controls if you want to limit what AI shows</td></tr>
+    </tbody></table>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> search is becoming an answer engine, and the browser is becoming an assistant. Understanding the old machinery, crawling, indexing and links as votes, is the best way to judge the new layer, because the AI still stands on that index.</p>
+    <p><i>The other view:</i> some see AI answers as a threat to the open web that search was built on, since they keep readers away from the sites that did the work; others see them as the biggest improvement to search in years. Both sides point to real evidence, and the outcome is not settled.</p>
+  </article>
+
+  <article class="card" id="c-where-to-go-next"><h3>Where to go next</h3>
+    <ul>
+      <li>Run the program above and add a fifth page that links to &ldquo;shops&rdquo;: watch the ranking change</li>
+      <li>Look at a site&rsquo;s <code>/robots.txt</code> and <code>/sitemap.xml</code></li>
+      <li>Read how the web itself works on <a href="/well-rounded-engineer/web/">Web Fundamentals</a></li>
+      <li>See how language models work on <a href="/well-rounded-engineer/llm/">LLMs</a></li>
+    </ul>
+  </article>
+
+  <article class="card wide"><p class="sources"><b>Checked against:</b> <a href="https://developers.google.com/search/docs/fundamentals/how-search-works" target="_blank" rel="noopener">Google Search Central: In-depth guide to how Google Search works</a>; <a href="https://developers.google.com/search/docs/appearance/ranking-systems-guide" target="_blank" rel="noopener">Google Search Central: A guide to Google Search ranking systems</a>; <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">Google Search Central: AI features and your website</a>; <a href="https://en.wikipedia.org/wiki/PageRank" target="_blank" rel="noopener">Wikipedia: PageRank</a>; <a href="https://en.wikipedia.org/wiki/Inverted_index" target="_blank" rel="noopener">Wikipedia: Inverted index</a>; <a href="https://en.wikipedia.org/wiki/RankBrain" target="_blank" rel="noopener">Wikipedia: RankBrain</a>; <a href="https://en.wikipedia.org/wiki/BERT_(language_model)" target="_blank" rel="noopener">Wikipedia: BERT</a>; <a href="https://en.wikipedia.org/wiki/AI_Overviews" target="_blank" rel="noopener">Wikipedia: AI Overviews</a>; <a href="https://en.wikipedia.org/wiki/AI_browser" target="_blank" rel="noopener">Wikipedia: AI browser</a>; <a href="https://en.wikipedia.org/wiki/Microsoft_Edge" target="_blank" rel="noopener">Wikipedia: Microsoft Edge</a>; <a href="https://en.wikipedia.org/wiki/Brave_Leo" target="_blank" rel="noopener">Wikipedia: Brave Leo</a>; <a href="https://en.wikipedia.org/wiki/Google_Chrome" target="_blank" rel="noopener">Wikipedia: Google Chrome</a>; <a href="https://en.wikipedia.org/wiki/Comet_(browser)" target="_blank" rel="noopener">Wikipedia: Comet</a>; <a href="https://en.wikipedia.org/wiki/ChatGPT_Atlas" target="_blank" rel="noopener">Wikipedia: ChatGPT Atlas</a>; <a href="https://en.wikipedia.org/wiki/Opera_(web_browser)" target="_blank" rel="noopener">Wikipedia: Opera</a>; <a href="https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2020)" target="_blank" rel="noopener">Wikipedia: United States v. Google LLC (2020)</a>.</p></article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/web/">← Web Fundamentals</a><a class="pn-next" href="/well-rounded-engineer/docker/">Docker →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-stage-one-crawling">Stage one: crawling</a><a href="#c-stage-two-indexing">Stage two: indexing</a><a href="#c-stage-three-ranking-and-serving">Stage three: ranking and serving</a><a href="#c-run-it-a-search-engine-in-forty-lines">Run it: a search engine in forty lines</a><a href="#c-ai-on-the-results-page-ai-overviews-and-ai-mode">AI on the results page: AI Overviews and AI Mode</a><a href="#c-how-browsers-are-adding-ai">How browsers are adding AI</a><a href="#c-the-risks-injection-publishers-and-competition">The risks: injection, publishers and competition</a><a href="#c-choosing-how-much-ai-you-want-by-requirement">Choosing how much AI you want, by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-where-to-go-next">Where to go next</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
