@@ -240,7 +240,8 @@ details>.inner{padding:4px 10px 8px}
       <a href="#agentmakers" data-tab="agentmakers">How Anthropic &amp; OpenAI Build Agents</a>
       <a href="#agentsystem" data-tab="agentsystem">Building an Agentic System</a>
       <a href="#humanagents" data-tab="humanagents">Humans &amp; Agents</a>
-      <a href="#specfactory" data-tab="specfactory">A Spec-Driven AI Factory</a>
+      <a href="#specfactory" data-tab="specfactory">Spec-Driven Development</a>
+      <a href="#guardrails" data-tab="guardrails">Standards as Guardrails</a>
       <a href="#blueprints" data-tab="blueprints">Frameworks vs AI</a>
       <span class="navgrp">Tools</span>
       <a href="#claudetools" data-tab="claudetools">Claude Code &amp; Cowork</a>
@@ -290,7 +291,7 @@ details>.inner{padding:4px 10px 8px}
   <div class="grid">
   <article class="card wide" id="guide-map"><h3>The map: the groups, in the order to learn them</h3>
     <p>Start with Foundations and work down; come back to Thinking &amp; character often. Each page ends with its levels, what to study next, code you can run where it exists, and a link to ask a question on GitHub. The story behind the guide and EnrichMeAI&rsquo;s own open-source projects sit apart, at the end of the list.</p>
-    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z"/></svg></span><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#chips">From Binary to GPUs</a>, <a href="#chipjobs">Chip Jobs &amp; GPU Startups</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#searchengines">How Search Works &amp; AI Browsers</a>, <a href="#docker">Docker</a>, <a href="#dsa">Data Structures &amp; Algorithms</a>, <a href="#concurrency">Concurrency</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#graphdb">Graph Databases</a>, <a href="#datastore">Choosing a Data Store</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#javathreads">How Java Threads Evolved</a>, <a href="#ionio">IO, NIO &amp; Web Servers</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#javascript">JavaScript</a>, <a href="#functional">Functional or Imperative</a>, <a href="#fetoolchain">Front-end Toolchain</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-labs" target="_blank" rel="noopener">Run the code: well-rounded-engineer-labs</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#apihistory">How APIs Evolved</a>, <a href="#graphql">GraphQL</a>, <a href="#realtime">Real-time to the Browser</a>, <a href="#reactive">Reactive &amp; Backpressure</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#banking">Banking &amp; Low Latency</a>, <a href="#spring">Spring Boot</a>, <a href="#springhistory">From spring.jar to Spring</a>, <a href="#quarkus">Quarkus</a>, <a href="#faded">Faded? Rails, Flex &amp; Grails</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3zM3 9h18M9 9v11"/></svg></span><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#teststrat">Test Strategy for Cloud Systems</a>, <a href="#review">Writing &amp; Code Review</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#privacy">Personal Data Across Services</a>, <a href="#cyber">Cybersecurity</a>, <a href="#agentsec">Agentic AI Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></span><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#patterns">SOLID &amp; Design Patterns</a>, <a href="#architecture">Architecture</a>, <a href="#quality">Quality Attributes</a>, <a href="#atob">Solution Architecture: A to B</a>, <a href="#distsys">Distributed Systems</a>, <a href="#microservices">Microservices</a>, <a href="#casestudies">Case Studies: How Tech Companies Evolved</a>, <a href="#databricks">Databricks</a>, <a href="#palantir">Palantir</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#ratelimit">Rate Limiting</a>, <a href="#specs">Specifications</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a>, <a href="#postmortems">Postmortems Worth Reading</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"/></svg></span><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudcost">Cloud Cost</a>, <a href="#retailcloud">Retail &amp; Hybrid Cloud</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a>, <a href="#azuredata">Data on Azure</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></span><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#neural">Neural Networks</a>, <a href="#routingtrains">Routing &amp; Trains with Neural Networks</a>, <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#aimemory">AI Memory &amp; Threads</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentmakers">How Anthropic &amp; OpenAI Build Agents</a>, <a href="#agentsystem">Building an Agentic System</a>, <a href="#humanagents">Humans &amp; Agents</a>, <a href="#specfactory">A Spec-Driven AI Factory</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/></svg></span><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#perseverance">Perseverance &amp; Resilience</a>, <a href="#newideas">New Ideas, Familiarity &amp; Habits</a>, <a href="#thinkers">Thinkers Worth Knowing</a>, <a href="#andrewng">Andrew Ng</a>, <a href="#hintonlecun">Geoffrey Hinton &amp; Yann LeCun</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#valuation">How Companies Are Valued</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a>, <a href="#longevity">Biohacking &amp; Longevity</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"/></svg></span><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
+    <div class="gmap"><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M6 6h12v12H6z"/></svg></span><span class="gmap-n">1</span> Foundations</h4><p>How computers work from the chip up, networks and the web, and the data underneath. Everything else stands on this.</p><p class="gmap-pages"><a href="#electronics">Electronics &amp; Chips</a>, <a href="#hardware">How Computers Are Built</a>, <a href="#chips">From Binary to GPUs</a>, <a href="#chipjobs">Chip Jobs &amp; GPU Startups</a>, <a href="#linux">Linux</a>, <a href="#networking">Networking</a>, <a href="#internet">How the Internet Is Tied Together</a>, <a href="#web">Web Fundamentals</a>, <a href="#searchengines">How Search Works &amp; AI Browsers</a>, <a href="#docker">Docker</a>, <a href="#dsa">Data Structures &amp; Algorithms</a>, <a href="#concurrency">Concurrency</a>, <a href="#sql">SQL Skills</a>, <a href="#database">Database Design</a>, <a href="#graphdb">Graph Databases</a>, <a href="#datastore">Choosing a Data Store</a>, <a href="#homelab">Home Lab</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><span class="gmap-n">2</span> Languages</h4><p>Java and Python learned properly first, then Kotlin, Go and Rust: how each runs, tests and fails.</p><p class="gmap-pages"><a href="#java">Java</a>, <a href="#javathreads">How Java Threads Evolved</a>, <a href="#ionio">IO, NIO &amp; Web Servers</a>, <a href="#kotlin">Kotlin</a>, <a href="#python">Python</a>, <a href="#javascript">JavaScript</a>, <a href="#functional">Functional or Imperative</a>, <a href="#fetoolchain">Front-end Toolchain</a>, <a href="#go">Go</a>, <a href="#rust">Rust</a>, <a href="#buildtools">Build Tools</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-labs" target="_blank" rel="noopener">Run the code: well-rounded-engineer-labs</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="gmap-n">3</span> Building services</h4><p>APIs, messaging and the frameworks that turn code into services.</p><p class="gmap-pages"><a href="#apis">APIs &amp; Integration</a>, <a href="#apihistory">How APIs Evolved</a>, <a href="#graphql">GraphQL</a>, <a href="#realtime">Real-time to the Browser</a>, <a href="#reactive">Reactive &amp; Backpressure</a>, <a href="#kafka">Kafka</a>, <a href="#payments">Payment Gateways</a>, <a href="#banking">Banking &amp; Low Latency</a>, <a href="#spring">Spring Boot</a>, <a href="#springhistory">From spring.jar to Spring</a>, <a href="#quarkus">Quarkus</a>, <a href="#faded">Faded? Rails, Flex &amp; Grails</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3zM3 9h18M9 9v11"/></svg></span><span class="gmap-n">4</span> User interfaces</h4><p>Designing for people: design thinking, UX, accessibility, and apps on phones, desktops and the web.</p><p class="gmap-pages"><a href="#designux">Design Thinking &amp; UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#apps">Apps: Native or Cross-platform</a>, <a href="#uihistory">UI History</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="gmap-n">5</span> Quality</h4><p>Proving it works, and that it stays fast under load.</p><p class="gmap-pages"><a href="#testing">Testing</a>, <a href="#teststrat">Test Strategy for Cloud Systems</a>, <a href="#review">Writing &amp; Code Review</a>, <a href="#performance">Performance</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="gmap-n">6</span> Security</h4><p>Building it safely, and thinking like a defender.</p><p class="gmap-pages"><a href="#security">Security</a>, <a href="#pki">Keys, Certificates &amp; SSH</a>, <a href="#privacy">Personal Data Across Services</a>, <a href="#cyber">Cybersecurity</a>, <a href="#agentsec">Agentic AI Security</a>, <a href="#oauth">OAuth &amp; OIDC</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="gmap-n">7</span> Data</h4><p>Moving, shaping and trusting data, from a file to a warehouse, on any platform.</p><p class="gmap-pages"><a href="#data">Data Engineering</a>, <a href="#datalibs">Data Libraries</a>, <a href="#dbt">dbt</a>, <a href="#dags">Airflow DAGs</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-data" target="_blank" rel="noopener">Run the code: well-rounded-engineer-data</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></span><span class="gmap-n">8</span> Architecture &amp; design</h4><p>Choosing boundaries and trade-offs you can explain.</p><p class="gmap-pages"><a href="#patterns">SOLID &amp; Design Patterns</a>, <a href="#architecture">Architecture</a>, <a href="#quality">Quality Attributes</a>, <a href="#atob">Solution Architecture: A to B</a>, <a href="#distsys">Distributed Systems</a>, <a href="#microservices">Microservices</a>, <a href="#casestudies">Case Studies: How Tech Companies Evolved</a>, <a href="#databricks">Databricks</a>, <a href="#palantir">Palantir</a>, <a href="#eventsourcing">Event Sourcing</a>, <a href="#sysdesign">System Design</a>, <a href="#ratelimit">Rate Limiting</a>, <a href="#specs">Specifications</a>, <a href="#caching">Caching</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-code" target="_blank" rel="noopener">Run the code: well-rounded-engineer-code</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span class="gmap-n">9</span> Platform &amp; operations</h4><p>Shipping safely, running containers, seeing what is happening, and keeping it up.</p><p class="gmap-pages"><a href="#devops">DevOps</a>, <a href="#kubernetes">Kubernetes</a>, <a href="#k8sdr">Kubernetes DR &amp; Best Practices</a>, <a href="#helm">Helm Charts</a>, <a href="#operators">Operators</a>, <a href="#servicemesh">Service Mesh &amp; Istio</a>, <a href="#terraform">Terraform</a>, <a href="#observability">Observability</a>, <a href="#sre">SRE</a>, <a href="#postmortems">Postmortems Worth Reading</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"/></svg></span><span class="gmap-n">10</span> Cloud providers</h4><p>What the cloud is made of, and the same jobs done on Google Cloud and AWS, side by side.</p><p class="gmap-pages"><a href="#cloudinside">How the cloud is built</a>, <a href="#cloudcompare">GCP vs AWS vs Azure</a>, <a href="#cloudcost">Cloud Cost</a>, <a href="#retailcloud">Retail &amp; Hybrid Cloud</a>, <a href="#gcpdata">Data on GCP</a>, <a href="#bigquery">BigQuery</a>, <a href="#cloudrun">Cloud Run</a>, <a href="#apigee">Apigee</a>, <a href="#awsdata">Data on AWS</a>, <a href="#azuredata">Data on Azure</a></p><p class="gmap-run"><a href="https://github.com/enrichmeai/well-rounded-engineer-fundamentals" target="_blank" rel="noopener">Run the code: well-rounded-engineer-fundamentals</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></span><span class="gmap-n">11</span> AI</h4><p>Using AI with judgement: how it works, where it helps, and the guard rails.</p><p class="gmap-pages"><a href="#neural">Neural Networks</a>, <a href="#routingtrains">Routing &amp; Trains with Neural Networks</a>, <a href="#llm">LLMs</a>, <a href="#ai">AI for Engineers</a>, <a href="#rag">RAG</a>, <a href="#aimemory">AI Memory &amp; Threads</a>, <a href="#mcp">MCP</a>, <a href="#agentharness">Agent Harness</a>, <a href="#agentmakers">How Anthropic &amp; OpenAI Build Agents</a>, <a href="#agentsystem">Building an Agentic System</a>, <a href="#humanagents">Humans &amp; Agents</a>, <a href="#specfactory">Spec-Driven Development</a>, <a href="#guardrails">Standards as Guardrails</a>, <a href="#blueprints">Frameworks vs AI</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/></svg></span><span class="gmap-n">12</span> Tools</h4><p>Specific products and services, kept apart so the concepts above stay neutral.</p><p class="gmap-pages"><a href="#claudetools">Claude Code &amp; Cowork</a>, <a href="#copilot">GitHub Copilot</a>, <a href="#agentsgcp">Agents on GCP</a>, <a href="#harness">Harness</a>, <a href="#opstools">Ops Tooling</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="gmap-n">13</span> Thinking &amp; character</h4><p>How to think clearly and live well. The part no tool replaces.</p><p class="gmap-pages"><a href="#behaviours">Behaviours</a>, <a href="#perseverance">Perseverance &amp; Resilience</a>, <a href="#newideas">New Ideas, Familiarity &amp; Habits</a>, <a href="#thinkers">Thinkers Worth Knowing</a>, <a href="#andrewng">Andrew Ng</a>, <a href="#hintonlecun">Geoffrey Hinton &amp; Yann LeCun</a>, <a href="#ways">Ways of Working</a>, <a href="#mathematics">Mathematics</a>, <a href="#valuation">How Companies Are Valued</a>, <a href="#science">Science &amp; Method</a>, <a href="#everydayscience">Everyday Science</a>, <a href="#philosophy">Philosophy</a>, <a href="#goodhuman">Being a Good Human</a>, <a href="#body">Body, Mind &amp; Nature</a>, <a href="#longevity">Biohacking &amp; Longevity</a></p></div><div class="gmap-card"><h4><span class="gmap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c2-5 6-9 13-9 0 7-4 11-9 13zM14 10h.01"/></svg></span><span class="gmap-n">14</span> Frontiers</h4><p>Ideas to understand now that may matter more later.</p><p class="gmap-pages"><a href="#quantum">Quantum Computing</a>, <a href="#robotics">Robotics</a>, <a href="#bitcoin">Bitcoin &amp; Blockchain</a>, <a href="#web3">Web 3.0</a>, <a href="#solid">Solid</a></p></div></div>
   </article>
 
   <article class="card wide" id="promise"><h3>Our promise: checked knowledge, no fuss</h3>
@@ -18272,12 +18273,12 @@ Report findings as: severity, file:line, what is wrong, the evidence.</code></pr
 
 <!-- ================= SPEC-DRIVEN AI FACTORY ================= -->
 <section class="panel" id="p-specfactory" data-name="A Spec-Driven AI Factory">
-  <div class="panel-head"><h2>A spec-driven AI factory in a human team</h2><p>Agents can now write a lot of the code. What they cannot do is decide what is worth building, or be accountable for it. A spec-driven &ldquo;factory&rdquo; puts people where judgement is needed and agents everywhere else. What it is, where people stay and why, how roles and rituals change, what goes wrong, and a Spring Boot microservice built this way, compiled and tested.</p></div>
+  <div class="panel-head"><h2>Spec-driven development in a human&ndash;AI team</h2><p>Agents can now write a lot of the code. What they cannot do is decide what is worth building, or be accountable for it. Spec-driven development puts people where judgement is needed and agents everywhere else. What it is, where people stay and why, how roles and rituals change, what goes wrong, and a Spring Boot microservice built this way, compiled and tested.</p></div>
   <div class="grid">
 
   <article class="card wide"><h3>The short answer</h3>
     <p>Write down <b>what</b> you want and how you will know it works (the <b>spec</b>) before any code. Let agents turn the spec into a plan, small tasks and code. Run <b>gates</b> that answer pass or fail: tests, a check that every requirement has a test, and a review by an agent that did not write the code. Keep people at three points: approving the spec, approving the plan, and merging.</p>
-    <p>That is the &ldquo;factory&rdquo;: a line of stations, each with an input, an output and a check. It is not a new team; it is a new way for an existing team to spend its time. <i>Our view:</i> the team ends up writing and checking more specs and less boilerplate.</p>
+    <p>Some call this an AI &ldquo;factory&rdquo;: a line of stations, each with an input, an output and a check. <i>Our view:</i> it is better seen as an ecosystem. People set and change the standards, agents work inside them, and each service stays different where it matters; the line describes the steps, not identical output. It is not a new team; it is a new way for an existing team to spend its time. <i>Our view:</i> the team ends up writing and checking more specs and less boilerplate.</p>
     <figure class="fig"><svg viewBox="0 0 650 152" role="img" aria-labelledby="sf-t sf-d"><title id="sf-t">The spec-driven factory line</title><desc id="sf-d">Seven stations from left to right: idea, the why and for whom; spec, what to build with acceptance criteria; plan, how, with rationale; tasks, small and traceable to the spec; build, agents working in parallel; gates, tests, a trace check and an independent review; merge, where a person signs. Spec, plan and merge are highlighted as the places a person approves. An arrow returns from gates to spec: a failed gate, an incident or a new need changes the spec, not just the code.</desc><rect class="nd" x="8" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="48" y="52" text-anchor="middle">Idea</text><text class="lb mu" x="48" y="70" text-anchor="middle">why, for</text><text class="lb mu" x="48" y="86" text-anchor="middle">whom</text><rect class="nd in" x="99" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="139" y="52" text-anchor="middle">Spec</text><text class="lb mu" x="139" y="70" text-anchor="middle">what +</text><text class="lb mu" x="139" y="86" text-anchor="middle">acceptance</text><line class="ed" x1="89" y1="63" x2="97" y2="63"/><polygon class="ar" points="98,63 93,60 93,66"/><rect class="nd in" x="190" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="230" y="52" text-anchor="middle">Plan</text><text class="lb mu" x="230" y="70" text-anchor="middle">how, with</text><text class="lb mu" x="230" y="86" text-anchor="middle">rationale</text><line class="ed" x1="180" y1="63" x2="188" y2="63"/><polygon class="ar" points="189,63 184,60 184,66"/><rect class="nd" x="281" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="321" y="52" text-anchor="middle">Tasks</text><text class="lb mu" x="321" y="70" text-anchor="middle">small,</text><text class="lb mu" x="321" y="86" text-anchor="middle">traceable</text><line class="ed" x1="271" y1="63" x2="279" y2="63"/><polygon class="ar" points="280,63 275,60 275,66"/><rect class="nd" x="372" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="412" y="52" text-anchor="middle">Build</text><text class="lb mu" x="412" y="70" text-anchor="middle">agents in</text><text class="lb mu" x="412" y="86" text-anchor="middle">parallel</text><line class="ed" x1="362" y1="63" x2="370" y2="63"/><polygon class="ar" points="371,63 366,60 366,66"/><rect class="nd" x="463" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="503" y="52" text-anchor="middle">Gates</text><text class="lb mu" x="503" y="70" text-anchor="middle">tests, trace,</text><text class="lb mu" x="503" y="86" text-anchor="middle">review</text><line class="ed" x1="453" y1="63" x2="461" y2="63"/><polygon class="ar" points="462,63 457,60 457,66"/><rect class="nd in" x="554" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="594" y="52" text-anchor="middle">Merge</text><text class="lb mu" x="594" y="70" text-anchor="middle">a person</text><text class="lb mu" x="594" y="86" text-anchor="middle">signs</text><line class="ed" x1="544" y1="63" x2="552" y2="63"/><polygon class="ar" points="553,63 548,60 548,66"/><path class="ed acc" d="M 594 96 L 594 124 L 139 124 L 139 100" fill="none"/><polygon class="ar acc" points="139,97 135,104 143,104"/><text class="lb acc" x="366" y="142" text-anchor="middle">a failed gate, an incident or a new need changes the spec, not just the code</text></svg><figcaption>Highlighted stations are where a person approves. Agents do the work between them; the gates decide whether the work is done.</figcaption></figure>
   </article>
 
@@ -18580,7 +18581,344 @@ spec:
       <li>Evaluating and guarding agents: <a href="#agentsystem">Building an Agentic System</a></li>
       <li>Writing specs in general: <a href="#specs">Specifications</a></li>
       <li>Specs, frameworks and generated boilerplate: <a href="#blueprints">Frameworks vs AI Boilerplate</a></li>
+      <li>Keeping agents on your standards: <a href="#guardrails">Standards as Guardrails</a></li>
       <li>Idea to production with people and agents: <a href="#idea2prod">Idea to Production</a></li>
+    </ul>
+  </article>
+
+  </div>
+</section>
+
+<!-- ================= STANDARDS AS GUARDRAILS ================= -->
+<section class="panel" id="p-guardrails" data-name="Standards as Guardrails">
+  <div class="panel-head"><h2>Standards as guardrails in a human&ndash;AI ecosystem</h2><p>Left to itself, a model writes what it has seen most often in public code, not what your team agreed. How to make agents build on your frameworks, templates and deployment standards instead: which layers to put in place, how much to specify (and where to stop), what to automate completely, and a Spring Boot example where the rules catch an agent going off the road.</p></div>
+  <div class="grid">
+
+  <article class="card wide"><h3>The short answer</h3>
+    <p>Put the team&rsquo;s standards where an agent cannot miss them and where a check can say pass or fail: in a <b>framework</b> the code builds on, in <b>templates</b> that create and deploy services, in <b>tests</b> that check the architecture, and in <b>hooks and policies</b> that refuse what breaks the rules. Then the agent spends its effort on what is different about this service, and the shared parts stay the same because they are shared, not because someone remembered.</p>
+    <p>This is an ecosystem, not a production line. People own the standards and change them as they learn; agents work inside them; the gates show where the two disagree. And the services are not copies of each other: standards fix only what should be the same everywhere, such as errors, security, logging and deployment.</p>
+    <figure class="fig"><svg viewBox="0 0 650 225" role="img" aria-labelledby="gr-t gr-d"><title id="gr-t">A human&ndash;AI ecosystem around shared standards</title><desc id="gr-d">A loop of four steps. People set and change the standards. Agents build inside them. Gates say pass or fail. People read what failed and improve a rule, and the loop returns to the start: the standards evolve.</desc><rect class="nd in" x="60" y="40" width="190" height="62" rx="6"/><text class="lb hd" x="155" y="62" text-anchor="middle">People</text><text class="lb mu" x="155" y="80" text-anchor="middle">set and change</text><text class="lb mu" x="155" y="95" text-anchor="middle">the standards</text><rect class="nd" x="400" y="40" width="190" height="62" rx="6"/><text class="lb hd" x="495" y="62" text-anchor="middle">Agents</text><text class="lb mu" x="495" y="80" text-anchor="middle">build inside</text><text class="lb mu" x="495" y="95" text-anchor="middle">them</text><rect class="nd" x="400" y="150" width="190" height="62" rx="6"/><text class="lb hd" x="495" y="172" text-anchor="middle">Gates</text><text class="lb mu" x="495" y="190" text-anchor="middle">say pass</text><text class="lb mu" x="495" y="205" text-anchor="middle">or fail</text><rect class="nd in" x="60" y="150" width="190" height="62" rx="6"/><text class="lb hd" x="155" y="172" text-anchor="middle">People</text><text class="lb mu" x="155" y="190" text-anchor="middle">read what failed,</text><text class="lb mu" x="155" y="205" text-anchor="middle">improve a rule</text><line class="ed" x1="252" y1="71" x2="396" y2="71"/><polygon class="ar" points="399,71 393,68 393,74"/><line class="ed" x1="495" y1="104" x2="495" y2="146"/><polygon class="ar" points="495,149 492,143 498,143"/><line class="ed" x1="398" y1="181" x2="254" y2="181"/><polygon class="ar" points="251,181 257,178 257,184"/><line class="ed" x1="155" y1="148" x2="155" y2="106"/><polygon class="ar" points="155,103 152,109 158,109"/><text class="lb acc" x="325" y="130" text-anchor="middle">the standards evolve</text></svg><figcaption>People own the standards and change them; agents work inside them; the gates show where the two disagree. <i>Analysis:</i> our picture of the loop.</figcaption></figure>
+  </article>
+
+  <article class="card"><h3>An ecosystem, not a factory</h3>
+    <p>In a domain with, say, half a dozen services that talk over messaging, each service does something different. What they share is the plumbing: how errors look, how they log, how they deploy, how they are secured, how they publish events. That shared part is what the standards cover. The domain logic, the part that makes each service worth having, is where people and agents should spend their thinking.</p>
+    <p><i>Our view:</i> a standard earns its place when getting it wrong in one service would hurt the others, or when the same fix would otherwise be made many times. Anything else is a choice the service team can make.</p>
+    <p class="sources">More on why a framework beats generated copies: <a href="#blueprints">Frameworks vs AI Boilerplate</a>.</p>
+  </article>
+
+  <article class="card"><h3>Why a model needs guiding</h3>
+    <p>A model fills gaps with what is common. Ask for &ldquo;an endpoint to list stock&rdquo; and the most likely answer is a controller that queries the database, prints to the console and handles its own errors: fine in a tutorial, wrong in a codebase that put data access in services and has one error format. B&ouml;ckeler also saw agents ignore instructions they had been given, and follow others too eagerly.</p>
+    <p>So instructions alone are not enough. <i>Our view:</i> write the standard down for the agent to read, and also give it something to run that fails when the standard is broken.</p>
+    <p class="sources">Source: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler, &ldquo;Understanding Spec-Driven-Development&rdquo;</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>The layers, from intent to production</h3>
+    <table class="eg"><thead><tr><th>Layer (owner)</th><th>What it fixes</th><th>How an agent meets it</th></tr></thead><tbody>
+      <tr><td>Spec and rules file <i>(Product manager (spec); tech lead (rules))</i></td><td>What this change must do; which framework and templates to use</td><td>Reads it before planning</td></tr>
+      <tr><td>Framework starter <i>(Platform team)</i></td><td>Error format, logging, security, health checks</td><td>Builds on it instead of writing plumbing</td></tr>
+      <tr><td>Service template <i>(Platform team)</i></td><td>The shape of a new service and its repository</td><td>Starts from it rather than from a blank prompt</td></tr>
+      <tr><td>Deployment template <i>(Platform team)</i></td><td>Image, Kubernetes objects, pipeline</td><td>Edits one values file, not the templates</td></tr>
+      <tr><td>Tests in the build <i>(Service team and platform team)</i></td><td>The spec&rsquo;s criteria and the architecture rules</td><td>Runs them; a failure says what to fix</td></tr>
+      <tr><td>Agent hooks <i>(Tech lead)</i></td><td>Files the agent must not write</td><td>The edit is refused, with the reason</td></tr>
+      <tr><td>Cluster admission policy <i>(Platform and security)</i></td><td>What may run at all</td><td>A non-compliant deployment is rejected</td></tr>
+    </tbody></table>
+    <p class="sources"><i>Analysis:</i> our layering. Mechanisms: <a href="https://docs.spring.io/spring-boot/reference/features/developing-auto-configuration.html" target="_blank" rel="noopener">Spring Boot: Creating your own auto-configuration (starters)</a>; <a href="https://backstage.io/docs/features/software-templates/" target="_blank" rel="noopener">Backstage: Software Templates</a> (&ldquo;load skeletons of code, template in some variables, and then publish&rdquo;); <a href="https://docs.github.com/en/actions/sharing-automations/reusing-workflows" target="_blank" rel="noopener">GitHub: Reusing workflows</a>; <a href="https://developer.hashicorp.com/terraform/language/modules" target="_blank" rel="noopener">Terraform: Modules</a> (&ldquo;write reusable modules to codify them&rdquo;); <a href="https://github.com/TNG/ArchUnit" target="_blank" rel="noopener">ArchUnit (README)</a>; <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Claude Code: Hooks reference</a>; <a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/" target="_blank" rel="noopener">Kubernetes: Validating Admission Policy</a>. Spec Kit offers presets to &ldquo;enforce organizational or regulatory standards&rdquo; (<a href="https://github.com/github/spec-kit/tree/v1.4.4" target="_blank" rel="noopener">Spec Kit README, tag <span data-other-version>v1.4.4</span></a>).</p>
+  </article>
+
+  <article class="card wide"><h3>How much to spec: striking the balance</h3>
+    <p>Specifying every service in detail before building any of them turns into planning that outlasts the work. B&ouml;ckeler doubts that &ldquo;lots of up-front spec design&rdquo; helps and prefers small, iterative steps; Martin Fowler&rsquo;s <i>Yagni</i> warns against building a &ldquo;presumptive feature&rdquo; that nobody uses yet. The balance is to specify the <b>seams</b> between services carefully, and the inside of each service only as much as its risk needs.</p>
+    <table class="eg"><thead><tr><th>If this is true for the work</th><th>How much spec</th></tr></thead><tbody>
+      <tr><td>It is a message or API other services depend on</td><td>A written contract (for events, an AsyncAPI document) agreed by producer and consumers, with contract tests</td></tr>
+      <tr><td>It handles money, personal data, security, or cannot be undone</td><td>A spec with numbered acceptance criteria, reviewed before code</td></tr>
+      <tr><td>It is logic inside one service, behind a stable contract</td><td>A few acceptance criteria; let the code and tests carry the detail</td></tr>
+      <tr><td>It is a bug, a refactor or a rename</td><td>No spec: a failing test, then the fix</td></tr>
+      <tr><td>It is a dependency or framework upgrade</td><td>No spec and, for minor versions, no person: automate it (below)</td></tr>
+      <tr><td>Nobody yet knows what users need</td><td>A spike or prototype first; spec what you learn</td></tr>
+    </tbody></table>
+    <p class="sources"><i>Analysis:</i> the table is our view, built on: Robinson&rsquo;s consumer-driven contracts, where a provider learns its obligations from what consumers actually use and receivers do &ldquo;just enough&rdquo; validation (<a href="https://martinfowler.com/articles/consumerDrivenContracts.html" target="_blank" rel="noopener">Ian Robinson, &ldquo;Consumer-Driven Contracts: A Service Evolution Pattern&rdquo;, 12 June 2006</a>); <a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener">Martin Fowler, &ldquo;Yagni&rdquo;, 26 May 2015</a>; <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler, &ldquo;Understanding Spec-Driven-Development&rdquo;</a>. BMad Method sizes its process the same way: &ldquo;Small changes go straight to build&rdquo; (<a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMad Method (README)</a>).</p>
+  </article>
+
+  <article class="card"><h3>The seam: a contract for events</h3>
+    <p>When services talk over messaging, the event is what they share. This contract, in AsyncAPI <span data-other-version>3.1.0</span>, is the only part of the stock service&rsquo;s design the order and warehouse teams need to agree on. We validated it with the AsyncAPI parser (0 errors); a copy with <code>action: publish</code> was rejected, because the specification allows only <code>send</code> and <code>receive</code>.</p>
+    <div class="snip"><pre data-other-version><code>asyncapi: 3.1.0
+info:
+  title: Stock events
+  version: 1.0.0
+  description: The seam between the stock service and the order and warehouse services. Agreed by the teams; the only part of their designs they share.
+channels:
+  stockReserved:
+    address: stock.reserved
+    messages:
+      stockReserved:
+        $ref: '#/components/messages/stockReserved'
+operations:
+  sendStockReserved:
+    action: send
+    summary: Sent once a reservation commits, never for a replayed retry.
+    channel:
+      $ref: '#/channels/stockReserved'
+components:
+  messages:
+    stockReserved:
+      payload:
+        type: object
+        required: [reservationId, sku, quantity]
+        properties:
+          reservationId: { type: string, format: uuid }
+          sku: { type: string }
+          quantity: { type: integer, minimum: 1, maximum: 100 }</code></pre></div>
+    <p>Contract tests then hold both sides to it. Spring Cloud Contract supports consumer-driven contracts, including for messaging.</p>
+    <p class="sources">Sources: <a href="https://github.com/asyncapi/spec/blob/v3.1.0/spec/asyncapi.md" target="_blank" rel="noopener">AsyncAPI specification <span data-other-version>3.1.0</span></a>; <a href="https://docs.spring.io/spring-cloud-contract/reference/" target="_blank" rel="noopener">Spring Cloud Contract reference</a>.</p>
+  </article>
+
+  <article class="card"><h3>Automate the mechanical: upgrades</h3>
+    <p>Version upgrades need no spec and little judgement, so they suit full automation. Dependabot opens &ldquo;automated pull requests that keep your dependencies updated&rdquo; from a <code>dependabot.yml</code>, and can group updates &ldquo;into fewer, targeted pull requests&rdquo;. A workflow can switch on auto-merge for patch updates, and auto-merge &ldquo;merges a pull request automatically after all required reviews and status checks pass&rdquo;. For code changes an upgrade needs, OpenRewrite&rsquo;s rewrite-spring has recipes to &ldquo;automatically apply best practices in Java Spring Boot applications&rdquo;.</p>
+    <div class="snip"><pre><code>version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"</code></pre></div>
+    <div class="snip"><pre><code>name: Dependabot auto-merge
+on: pull_request
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable auto-merge for patch updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre></div>
+    <p><i>Our view:</i> the tests and the architecture rules are what make this safe. People look at major versions and at anything the gates reject.</p>
+    <p class="sources">Sources: <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates" target="_blank" rel="noopener">GitHub: Dependabot version updates</a>; <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file" target="_blank" rel="noopener">GitHub: dependabot.yml options</a>; <a href="https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/automate-dependabot-with-actions" target="_blank" rel="noopener">GitHub: Automating Dependabot with GitHub Actions</a>; <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request" target="_blank" rel="noopener">GitHub: Automatically merging a pull request</a>; <a href="https://github.com/openrewrite/rewrite-spring" target="_blank" rel="noopener">OpenRewrite: rewrite-spring (README)</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>Example: a platform starter and its rules</h3>
+    <p>The stock reservation service from <a href="#specfactory">spec-driven development</a>, moved onto a shared <b>platform starter</b>. The starter is a Spring Boot auto-configuration that every service depends on. It brings one error format, and it ships the team&rsquo;s architecture rules as ArchUnit tests. Built on Spring Boot <span data-other-version>4.2.0</span> and ArchUnit <span data-other-version>1.5.1</span>, compiled and tested on 24 November 2026 (H2, one JVM).</p>
+    <p><b>One error format</b>, defined once in the starter:</p>
+    <div class="snip"><pre><code>/** One error format for every service: RFC 9457 problem details with a stable code. */
+@RestControllerAdvice
+public class PlatformErrors {
+    @ExceptionHandler(DomainException.class)
+    ProblemDetail domain(DomainException e) {
+        var p = ProblemDetail.forStatusAndDetail(e.status(), e.getMessage());
+        p.setProperty("code", e.code());
+        return p;
+    }
+}</code></pre></div>
+    <p>A service&rsquo;s errors then carry only their status and code, and the service has no error handler of its own:</p>
+    <div class="snip"><pre><code>    public static class InsufficientStock extends DomainException {
+        InsufficientStock() { super(HttpStatus.CONFLICT, "INSUFFICIENT_STOCK", "Not enough stock for this sku"); }
+    }</code></pre></div>
+    <p><b>The rules</b>, owned by the platform team and checked in every service&rsquo;s build:</p>
+    <div class="snip"><pre><code>/** The standards every service shares, as tests. Owned by the platform team; agents and people meet the same rules. */
+public final class PlatformRules {
+
+    public static final ArchRule CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE =
+            noClasses().that().areAnnotatedWith(org.springframework.web.bind.annotation.RestController.class)
+                    .should().dependOnClassesThat().haveFullyQualifiedName("org.springframework.jdbc.core.simple.JdbcClient")
+                    .because("data access belongs in a service, where transactions are");
+
+    public static final ArchRule ERRORS_GO_THROUGH_THE_PLATFORM =
+            classes().that().areAssignableTo(RuntimeException.class).and().resideOutsideOfPackage("com.example.platform..")
+                    .should().beAssignableTo(DomainException.class)
+                    .because("one error format for every service");
+
+    public static final ArchRule NO_OWN_ERROR_HANDLERS =
+            noClasses().that().resideOutsideOfPackage("com.example.platform..")
+                    .should().beAnnotatedWith(org.springframework.web.bind.annotation.RestControllerAdvice.class)
+                    .because("the platform already maps errors; a second handler drifts");
+
+    public static final List&lt;ArchRule&gt; ALL = List.of(
+            CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE,
+            ERRORS_GO_THROUGH_THE_PLATFORM,
+            NO_OWN_ERROR_HANDLERS,
+            GeneralCodingRules.NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS);
+
+    /** Checks every rule and reports every violation at once, so a reviewer (person or agent) sees them all. */
+    public static void check(JavaClasses service) {
+        CompositeArchRule.of(ALL).check(service);
+    }
+
+    private PlatformRules() {}
+}</code></pre></div>
+    <div class="snip"><pre><code>/** The platform's standards, checked on this service's own classes in every build. */
+class PlatformRulesTest {
+    @Test
+    void thisServiceFollowsThePlatformRules() {
+        PlatformRules.check(new ClassFileImporter()
+                .withImportOption(ImportOption.Predefined.DO_NOT_INCLUDE_TESTS)
+                .importPackages("com.example.stock"));
+    }
+}</code></pre></div>
+  </article>
+
+  <article class="card wide"><h3>The example: an agent goes off the road</h3>
+    <p>Asked for &ldquo;a quick endpoint to list stock&rdquo;, a model might write this. It compiles, and it works:</p>
+    <div class="snip"><pre><code>/** What a model might write when asked for "a quick endpoint to list stock". */
+@RestController
+@RestControllerAdvice
+class ShortcutController {
+    private final JdbcClient db;
+    ShortcutController(JdbcClient db) { this.db = db; }
+
+    static class NotFound extends RuntimeException {}
+
+    @GetMapping("/stock/{sku}")
+    Integer available(@PathVariable String sku) {
+        System.out.println("looking up " + sku);
+        return db.sql("SELECT available FROM stock WHERE sku = :sku").param("sku", sku).query(Integer.class).single();
+    }
+
+    @ExceptionHandler(NotFound.class)
+    ProblemDetail notFound() { return ProblemDetail.forStatus(HttpStatus.NOT_FOUND); }
+}</code></pre></div>
+    <p>The build refuses it. All four rules fire in one report, so the agent (or a person) sees everything to fix at once:</p>
+    <div class="snip"><pre><code>Rule '...' was violated (6 times):
+Class &lt;ShortcutController$NotFound&gt; is not assignable to com.example.platform.DomainException in (ShortcutController.java:0)
+Class &lt;ShortcutController&gt; is annotated with @RestControllerAdvice in (ShortcutController.java:0)
+Constructor &lt;ShortcutController.&lt;init&gt;(JdbcClient)&gt; has parameter of type &lt;JdbcClient&gt; in (ShortcutController.java:0)
+Field &lt;ShortcutController.db&gt; has type &lt;JdbcClient&gt; in (ShortcutController.java:0)
+Method &lt;ShortcutController.available(java.lang.String)&gt; calls method &lt;JdbcClient.sql(java.lang.String)&gt; in (ShortcutController.java:20)
+Method &lt;ShortcutController.available(java.lang.String)&gt; gets field &lt;java.lang.System.out&gt; in (ShortcutController.java:19)</code></pre></div>
+    <p>On the service as built, the same check passes: <b>10 tests, 0 failures</b> (the 9 spec tests, unchanged after the move to the starter, plus the platform rules). The violations tell the agent what to do instead: move the query into a service, throw a <code>DomainException</code>, drop the handler and the <code>System.out</code>.</p>
+  </article>
+
+  <article class="card"><h3>The example: deployment stays on the template</h3>
+    <p>The service owns one deployment file, its values:</p>
+    <div class="snip"><pre><code># The only deployment file this service owns. The platform's templates turn it into
+# the image, the Kubernetes objects and the pipeline. People and agents change values here.
+name: stock-reservation
+team: checkout
+cpuRequest: 250m
+memory: 512Mi
+replicas: { min: 2, max: 10 }
+publishes: [contracts/stock-events.asyncapi.yaml]</code></pre></div>
+    <p>Its pipeline is a call to the platform&rsquo;s reusable workflow, which every service shares:</p>
+    <div class="snip"><pre><code>name: deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    uses: example-org/platform/.github/workflows/deploy-service.yml@v3
+    with:
+      service-config: service.yaml</code></pre></div>
+    <div class="snip"><pre><code># Owned by the platform team, in example-org/platform. Every service calls it; a fix here reaches all of them.
+name: deploy-service
+on:
+  workflow_call:
+    inputs:
+      service-config:
+        required: true
+        type: string
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: mvn -B verify             # spec tests, platform rules, contract checks
+      # ...then build the image from the platform Dockerfile and render the
+      # Kubernetes objects from inputs.service-config (omitted here)</code></pre></div>
+    <p class="sources">Not run here: these workflows need the platform repository. YAML checked to parse. Source: <a href="https://docs.github.com/en/actions/sharing-automations/reusing-workflows" target="_blank" rel="noopener">GitHub: Reusing workflows</a>.</p>
+  </article>
+
+  <article class="card"><h3>The example: the agent is told, not just blocked</h3>
+    <p>A Claude Code <code>PreToolUse</code> hook refuses edits to the files the templates own. Exit code 2 blocks the edit, and the message goes back to the agent so it can choose the right path:</p>
+    <div class="snip"><pre><code>#!/bin/bash
+# PreToolUse hook for Edit|Write: deployment files come from the platform's templates.
+# The agent may change service.yaml (the values); it may not write its own Dockerfile,
+# Kubernetes manifests or deploy workflow. Exit 2 blocks the edit and tells the agent why.
+path=$(python3 -c 'import json,sys; print(json.load(sys.stdin).get("tool_input",{}).get("file_path",""))')
+case "$path" in
+  *Dockerfile*|*/k8s/*|*/helm/*|*/.github/workflows/*)
+    echo "Blocked: $path is generated from the platform templates. Change service.yaml instead, or ask the platform team to change the template." &gt;&amp;2
+    exit 2 ;;
+esac
+exit 0</code></pre></div>
+    <div class="snip"><pre><code>{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/paved-road.sh" }
+        ]
+      }
+    ]
+  }
+}</code></pre></div>
+    <p>Tested by feeding it the JSON a <code>Write</code> call sends:</p>
+    <div class="snip"><pre><code>Write Dockerfile                    -&gt; exit 2  Blocked: ... generated from the platform templates.
+Write .github/workflows/deploy.yml  -&gt; exit 2  Blocked: ...
+Write k8s/deployment.yaml           -&gt; exit 2  Blocked: ...
+Write src/.../ReservationService.java -&gt; exit 0
+Write service.yaml                  -&gt; exit 0</code></pre></div>
+    <p class="sources">Source: <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Claude Code: Hooks reference</a> (&ldquo;Exit with code 2 to block the action&rdquo;).</p>
+  </article>
+
+  <article class="card wide"><h3>The example: the last line, in the cluster</h3>
+    <p>If something non-compliant still reaches Kubernetes, a ValidatingAdmissionPolicy (stable since Kubernetes <span data-other-version>1.30</span>) can reject it. This one requires a CPU request on every container, which the autoscaler needs, and an owning team label:</p>
+    <div class="snip"><pre><code>apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: "require-cpu-request.platform.example.com"
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups: ["apps"]
+      apiVersions: ["v1"]
+      operations: ["CREATE", "UPDATE"]
+      resources: ["deployments"]
+  validations:
+  - expression: "object.spec.template.spec.containers.all(c, has(c.resources.requests) &amp;&amp; 'cpu' in c.resources.requests)"
+    message: "every container needs a CPU request, or the autoscaler has nothing to measure"
+  - expression: "has(object.metadata.labels) &amp;&amp; 'team' in object.metadata.labels"
+    message: "every Deployment names its owning team"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "require-cpu-request-binding.platform.example.com"
+spec:
+  policyName: "require-cpu-request.platform.example.com"
+  validationActions: [Deny]</code></pre></div>
+    <p class="sources">Not run against a cluster; YAML checked to parse, CEL written after the examples in <a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/" target="_blank" rel="noopener">Kubernetes: Validating Admission Policy</a>.</p>
+  </article>
+
+  <article class="card wide"><h3>What goes wrong</h3>
+    <ul>
+      <li><b>A cage instead of a road.</b> <i>Analysis:</i> if a rule cannot be changed, people and agents route around it. Every rule needs an owner and a way to propose a change.</li>
+      <li><b>Too many rules.</b> A wall of violations teaches nobody. Keep the rules to what would hurt other services or repeat a fix.</li>
+      <li><b>Templates that go stale.</b> A template nobody updates becomes the old way, copied everywhere. Version it, and let automated upgrades carry changes to every service.</li>
+      <li><b>Planning instead of building.</b> Detailed specs for every service before any runs is the trap above: spec the seams, build, learn.</li>
+      <li><b>Business rules in the shared library.</b> They tie teams&rsquo; releases together. Share infrastructure, not domain logic (see <a href="#blueprints">Frameworks vs AI Boilerplate</a>).</li>
+    </ul>
+  </article>
+
+  <article class="card"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> standards that run as code are the most practical way to keep agents aligned with a team, because they say pass or fail where a document only asks. Put them in the framework, the templates and the build, keep them few, and let people change them.</p>
+    <p><i>The other view:</i> a heavy platform costs a team to build and own, and can slow the small number of services that need to be different. For a handful of services, a rules file and a good review may be enough; build the platform when the same fix starts being made in many places.</p>
+  </article>
+
+  <article class="card"><h3>Where to go next</h3>
+    <ul>
+      <li>Specs, roles and the example service: <a href="#specfactory">Spec-Driven Development</a></li>
+      <li>Frameworks, blueprints and generated code: <a href="#blueprints">Frameworks vs AI Boilerplate</a></li>
+      <li>The harness around an agent: <a href="#agentharness">Agent Harness</a></li>
+      <li>Messaging between services: <a href="#microservices">Microservices</a></li>
     </ul>
   </article>
 
@@ -22300,8 +22638,8 @@ implementation("com.enrichmeai.culvert:data-pipeline-gcp-bigquery:&lt;version&gt
 
 <script>
 (function(){
-  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","postmortems","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","routingtrains","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","agentsystem","humanagents","specfactory","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","andrewng","hintonlecun","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
-  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","postmortems","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","routingtrains","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","agentsystem","humanagents","specfactory","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","andrewng","hintonlecun","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","postmortems","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","routingtrains","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","agentsystem","humanagents","specfactory","guardrails","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","andrewng","hintonlecun","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
+  const tabs = ["start","aiworry","idea2prod","electronics","hardware","chips","chipjobs","linux","networking","internet","web","searchengines","docker","dsa","concurrency","sql","database","graphdb","datastore","homelab","java","javathreads","ionio","kotlin","python","javascript","functional","fetoolchain","go","rust","buildtools","apis","apihistory","graphql","realtime","reactive","kafka","payments","banking","spring","springhistory","quarkus","faded","designux","accessibility","apps","uihistory","testing","teststrat","review","performance","security","pki","privacy","cyber","agentsec","oauth","data","datalibs","dbt","dags","patterns","architecture","quality","atob","distsys","microservices","casestudies","databricks","palantir","eventsourcing","sysdesign","ratelimit","specs","caching","devops","kubernetes","k8sdr","helm","operators","servicemesh","terraform","observability","sre","postmortems","cloudinside","cloudcompare","cloudcost","retailcloud","gcpdata","bigquery","cloudrun","apigee","awsdata","azuredata","neural","routingtrains","llm","ai","rag","aimemory","mcp","agentharness","agentmakers","agentsystem","humanagents","specfactory","guardrails","blueprints","claudetools","copilot","agentsgcp","harness","opstools","behaviours","perseverance","newideas","thinkers","andrewng","hintonlecun","ways","mathematics","valuation","science","everydayscience","philosophy","goodhuman","body","longevity","quantum","robotics","bitcoin","web3","solid","why","history","reading","opensource","culvert"];
   const panels = Object.fromEntries(tabs.map(t => [t, document.getElementById("p-"+t)]));
   const links = document.querySelectorAll("nav a");
   const q = document.getElementById("q");
