@@ -189,7 +189,9 @@ so that no unit is sold twice.
 - NFR-1: any number of instances can run at once. No instance keeps state in memory; the database is the record.
 
 ## Out of scope
-Expiry of abandoned reservations, and what a retry should return after its reservation was released: today it returns the released reservation (spec 002).
+- Expiry of abandoned reservations, and what a retry should return after its
+  reservation was released: today it returns the released reservation (spec 002).
+- Validating the Idempotency-Key itself (blank keys, keys over 128 characters).
 
 ## Open questions
 - [NEEDS CLARIFICATION: may one order reserve the same sku twice?] Answered by product: no, use one line with the total.</code></pre></div>
@@ -199,7 +201,8 @@ Expiry of abandoned reservations, and what a retry should return after its reser
 2. A test is written and seen failing before the code that passes it.
 3. No state in instance memory. Stock and reservations live in the database.
 4. Stock changes are one conditional UPDATE, never read-then-write.
-5. Errors are RFC 9457 problem details with a stable `code`.
+5. Domain errors (404, 409, 422) are RFC 9457 problem details with a stable `code`.
+   Malformed input gets Spring's default 400 problem detail.
 6. A human approves the spec, approves the plan, and merges. Agents do the rest.</code></pre></div>
     <p><b>3. The tasks</b>, generated from the approved plan. Each names the criteria it serves; T2 to T5 run in parallel, one agent each, in separate worktrees:</p>
     <div class="snip"><pre><code># Tasks for 001 (from plan.md; [P] = can run in parallel)
@@ -299,7 +302,7 @@ sys.exit(1 if missing or unknown else 0)</code></pre></div>
     </ul>
     <p>A gate seen only green has not been tested, so we broke both on purpose:</p>
     <ul>
-      <li>We replaced the conditional update with read-then-write, the version an agent might write first. AC-4 failed: <b>10 of the 20</b> racers bought the single unit. The service&rsquo;s connection pool is HikariCP (its start-up appears in the test log), whose default size is 10, so that is as many as could reach the database at once; any number above one is the bug.</li>
+      <li>We replaced the conditional update with read-then-write, the version an agent might write first. AC-4 failed: in our runs, <b>7 to 10 of the 20</b> racers bought the single unit. The service&rsquo;s connection pool is HikariCP (its start-up appears in the test log), whose default size of 10 caps how many could reach the database at once. Any number above one is the bug.</li>
       <li>We added an AC-9 to the final spec with no test. The trace gate failed: <code>FAIL AC-9 has no test</code>.</li>
     </ul>
     <p><b>What the independent review caught.</b> The first version updated stock before claiming the key. A reviewer agent that never saw the build raced two retries with the same key for the last unit; in its runs, some retries got a 409 for a request that had succeeded. Our tests had missed it because AC-3 only tried retries one after the other. The fix claims the key first, and AC-3 now has a race test: it failed in 3 of 3 runs on the old order and passes on the new one.</p>
@@ -345,8 +348,8 @@ spec:
   </article>
 
   <article class="card wide" id="c-one-we-run-this-website"><h3>One we run: this website</h3>
-    <p>enrichmeai.com runs a lighter version: a rules file and gates. Its <code>CLAUDE.md</code> sets four rules every session follows: verify every claim against a source before writing; done means green (the site checker at zero findings, CI green, the page looked at on a phone and a laptop); stop after three failed attempts and write up the blocker; prefer pinned documentation over open search. Hooks run the checker after every edit, a separate reviewer agent checks each change, and a person merges, because a merge to <code>main</code> is a production deploy.</p>
-    <p>This page is an example of why the reviewer step matters. It first went live without it (pull requests #233 and #234). When the review ran, it found the idempotency bug above, a paraphrase stronger than its source, and opinions not labelled as opinions; a second review of the fixes found a regression they had caused. The fixes are in pull request #235. <i>Our view:</i> skipping a gate is how a factory ships its mistakes.</p>
+    <p>enrichmeai.com uses the same idea without a spec folder per change: a rules file and gates. Its <code>CLAUDE.md</code> sets four rules every session follows: verify every claim against a source before writing; done means green (the site checker at zero findings, CI green, the page looked at on a phone and a laptop); stop after three failed attempts and write up the blocker; prefer pinned documentation over open search. Hooks run the checker after every edit, a separate reviewer agent checks each change, and a person merges, because a merge to <code>main</code> is a production deploy.</p>
+    <p>This page is an example of why the reviewer step matters. It first went live (pull requests #233 and #234) on our own checks and a green site check; the reviewer agent was not run, and the CI review produced no verdict before either merge. When the reviewer did run, it found the idempotency bug above, a paraphrase stronger than its source, and opinions not labelled as opinions; a second review found a regression the first fixes had caused. Pull request #235 lists each finding and its fix. <i>Our view:</i> skipping a gate is how a factory ships its mistakes.</p>
   </article>
 
   <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
