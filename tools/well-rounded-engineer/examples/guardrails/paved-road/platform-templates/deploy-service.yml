@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
       - run: mvn -B verify             # spec tests and platform rules
       # ...then build the image from the platform Dockerfile and render the
       # Kubernetes objects from inputs.service-config (omitted here)

@@ -60,6 +60,23 @@ that edits the reviewer gets a banner calling its verdict advisory, and the foun
 by `claude.yml` starts no workflow: close and reopen the PR to re-run the check on the new head. It checks each claim against the product's latest release tag. BLOCK fails the check, and
 no verdict fails it as NOT RUN. Wording in the founder's voice is reported, never blocked: the founder
 merges it. It does not replace running `reviewer` in the session, because that runs before the PR exists.
+**Since 2026-11-24 the local Fable review replaces this check** (§ "Actions minutes and independent review"
+below); the workflow still starts when a PR is marked ready; its verdict is no longer required.
+
+**Actions minutes and independent review (founder, 2026-11-24).** Spend as few GitHub Actions
+minutes as possible, and do the independent review locally, not through a workflow:
+- Review on a **local branch that is never pushed**: the changes combined exactly as `main` will be
+  after the merge. Launch a fresh `reviewer` agent with the per-invocation model set to **Fable**
+  (`model: fable`; the agent file's default stays Sonnet). Fix and re-review there (the three-attempt
+  rule still holds). Only then push. Record the review's verdict on the PR when it is opened.
+- Push a PR branch once, when it is ready, as a draft. No branch refreshes and no re-runs unless a
+  merge needs them. A push to a branch with no PR starts no workflow.
+- Marking a PR ready starts `Adversarial review`; GitHub will not merge a draft, so mark it ready only
+  at merge time, and cancel that run once the merge lands. The local Fable review stands in for it:
+  this replaces the CI review above and `merge-gate` step 4's PASS requirement.
+- Two PRs that touch the generated guide pages conflict with each other: merge one, regenerate the
+  other on the new `main`, push it once, merge it.
+- A merge still runs `Site check` and the Pages deploy on `main`. That is the deploy, not avoidable.
 
 **Hooks (`.claude/settings.json`, scripts in `.claude/hooks/`)** feed errors straight back:
 - **After each edit:** `site_check.py` on the edited page, stylesheet, SVG, JSON or YAML file,
@@ -75,7 +92,8 @@ merges it. It does not replace running `reviewer` in the session, because that r
   `reset --hard`, `clean -f`, recursive `rm`, cloud CLIs, `gh release|workflow|secret|variable`,
   and a `gh api` call that writes. The cases are pinned in `.claude/hooks/test-hooks.sh`.
 
-**Agents and models.** `reviewer` and `groomer` run on Sonnet. Use Opus for design work and new pages.
+**Agents and models.** `reviewer` and `groomer` run on Sonnet by default; the independent review before a
+PR is launched with the model set to Fable (§ "Actions minutes and independent review"). Use Opus for design work and new pages.
 
 **Where things for the founder go.** Anything that needs the founder (a merge, a wording ruling, DNS)
 goes on the PR or issue it belongs to, and `/groom` lists it in the Founder queue of the Site board.

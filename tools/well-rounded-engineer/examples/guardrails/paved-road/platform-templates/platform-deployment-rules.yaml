@@ -1,0 +1,29 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: "platform-deployment-rules.example.com"
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups: ["apps"]
+      apiVersions: ["v1"]
+      operations: ["CREATE", "UPDATE"]
+      resources: ["deployments"]
+  validations:
+  - expression: "object.spec.template.spec.containers.all(c, has(c.resources) && has(c.resources.requests) && 'cpu' in c.resources.requests)"
+    message: "every container needs a CPU request, or the autoscaler has nothing to measure"
+  - expression: "has(object.metadata.labels) && 'team' in object.metadata.labels"
+    message: "every Deployment names its owning team"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "platform-deployment-rules-binding.example.com"
+spec:
+  policyName: "platform-deployment-rules.example.com"
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        platform.example.com/enforce: "true"   # only namespaces the platform runs, never kube-system
