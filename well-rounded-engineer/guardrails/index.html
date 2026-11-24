@@ -194,7 +194,7 @@ public final class PlatformRules {
     public static final ArchRule CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE =
             noClasses().that().areAnnotatedWith(org.springframework.web.bind.annotation.RestController.class)
                     .or().areAnnotatedWith(org.springframework.stereotype.Controller.class)
-                    .should().dependOnClassesThat().resideInAnyPackage("org.springframework.jdbc..", "jakarta.persistence..")
+                    .should().dependOnClassesThat().resideInAnyPackage("org.springframework.jdbc..", "org.springframework.data..", "jakarta.persistence..", "javax.sql..")
                     .because("data access belongs in a service, where transactions are");
 
     public static final ArchRule SERVICE_EXCEPTIONS_GO_THROUGH_THE_PLATFORM =
@@ -335,7 +335,7 @@ jobs:
 # It catches honest mistakes; it is not a security boundary (a shell command can still write a file).
 path=$(python3 -c 'import json,sys; print(json.load(sys.stdin).get("tool_input",{}).get("file_path",""))')
 case "$path" in
-  Dockerfile|*/Dockerfile|k8s/*|*/k8s/*|helm/*|*/helm/*|.github/workflows/*|*/.github/workflows/*|.claude/*|*/.claude/*)
+  Dockerfile|*/Dockerfile|Dockerfile.*|*/Dockerfile.*|k8s/*|*/k8s/*|helm/*|*/helm/*|.github/workflows/*|*/.github/workflows/*|.claude/*|*/.claude/*)
     echo "Blocked: $path is generated from the platform templates (or guards them). Change service.yaml instead, or ask the platform team to change the template." &gt;&amp;2
     exit 2 ;;
 esac
