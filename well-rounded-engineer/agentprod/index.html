@@ -112,7 +112,7 @@
   </article>
 
   <article class="card wide" id="c-a-release-gate-you-can-run"><h3>A release gate you can run</h3>
-    <p>A short Python script that decides whether a candidate may replace the live version. Stage 1 compares eval results; stage 2 compares canary metrics with the control. These are its rules:</p>
+    <p>A short Python script, in the site&rsquo;s repository at <a href="https://github.com/enrichmeai/enrichmeai.github.io/tree/main/tools/well-rounded-engineer/examples/agentprod" target="_blank" rel="noopener">examples/agentprod</a> with its data and the commands to re-run it, that decides whether a candidate may replace the live version. Stage 1 compares eval results; stage 2 compares canary metrics with the control. These are its rules:</p>
     <div class="snip"><pre><code>RULES = {
     "regression_min": 0.95,     # the regression suite must stay this high (pass^k: every trial passes)
     "cost_growth_max": 0.20,    # cost per task may grow at most 20%
