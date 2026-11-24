@@ -27,7 +27,8 @@ edit → `reviewer` → fix (max 3 attempts) → `/compound` → PR → `merge-g
 **The four rules. They are not negotiable:**
 1. **Verify before you write.** Every factual claim about a product (a version, a number, a
    command, a licence, what works and what does not) is checked against that product's repo **at
-   its latest release tag** before it goes on a page. Every HTML, CSS or browser behaviour you rely
+   its latest release tag** before it goes on a page. A product with no tag yet is checked at a
+   commit the page pins and names, and the page says nothing is released (#237, 2026-11-24). Every HTML, CSS or browser behaviour you rely
    on is checked against § "Pinned docs". Never write from memory.
 2. **Done means green.** A task is not done until `python3 scripts/site_check.py` reports 0
    findings, the `Site check` CI run on the PR is green (cite it), and every changed page has been

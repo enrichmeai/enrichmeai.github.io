@@ -28,6 +28,10 @@ before a visitor does. You never edit files. You report.
    founder approved: the approval settles voice, not facts. A shortened line keeps the qualifier
    its page carries ("with database storage", "not yet verified in a real editor"), or it drops the
    claim (#85, 2026-10-25: both over-claims were in approved meta descriptions).
+   A claim whose only source is the author's session (a run, a pass count, "not tested yet") and
+   not a file, commit, issue or release in the product repo is **UNVERIFIED** (#237, 2026-11-24).
+   A product with **no release tag**: check claims at the commit the page pins, and the page must
+   say plainly that nothing is released (as `/headworks/` and `/dyetrace/` do).
 3. **Voice.** CLAUDE.md § "Voice": plain, specific, nothing announced before it ran. Marketing
    superlatives, "coming soon" promises, and numbers without a source are findings.
    An opinion with no label ("our view", "analysis") or no alternative view beside it is a finding.
