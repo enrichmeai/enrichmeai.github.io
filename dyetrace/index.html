@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dyetrace · journey-level observability for any Java application</title>
+<meta name="description" content="An open-source Java library that gives each journey an ID that survives HTTP, database and Kafka hops, and reports the journeys that started and never finished. No release yet: build it from source.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+    <span class="product-label">Dyetrace</span>
+    <nav class="site-nav">
+      <a href="#idea">The idea</a>
+      <a href="#choose">When it helps</a>
+      <a href="#use">Use it</a>
+      <a href="#demo">The demo</a>
+      <a href="#status">Status</a>
+    </nav>
+    <div class="spacer"></div>
+    <a href="/well-rounded-engineer/" class="header-guide" aria-label="Well Rounded Engineer: the free guide"><span class="hg-long">Well Rounded Engineer</span><span class="hg-short">Guide</span></a>
+    <a href="https://github.com/enrichmeai/dyetrace" class="btn btn-primary" style="font-size:14px">GitHub →</a>
+  </div>
+</header>
+
+<main id="main" class="container">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Open source · any Java 17+ application · no release yet</p>
+      <div class="blueprint caveat">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span>No release yet. Nothing is on Maven Central: build it from source. What this page describes is on <code>main</code> at commit <a href="https://github.com/enrichmeai/dyetrace/tree/710b919daabfa128acf5d13bc4bc270c6f2a6346">710b919</a>.</span>
+      </div>
+      <h1>Find the journeys that <span class="accent">started and never finished</span>.</h1>
+    </div>
+    <p class="hero-rail">A Java library that gives each journey (a payment, a checkout, an account opening) one ID that survives every HTTP call, database row and Kafka message it passes through, and reports the journeys that stopped.</p>
+  </div>
+
+  <div class="hero-below">
+    <p class="lede">A journey starts in one service and ends in another. Tracing follows one request, and a trace ends wherever context is not carried: at a queue, a scheduled job, an outbox table. Dyetrace carries a <strong style="font-weight:600;color:var(--color-text)">journey ID</strong> across all of them, records the marks each journey reaches, and folds the events from every service together. A message lost in the middle produces no error and no failed span. Dyetrace notices that the journey never reached its end.</p>
+    <div class="stack">
+      <div class="blueprint pad-frame">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="frame-kicker" style="margin-bottom:10px">Run the demo on your laptop</div>
+        <code style="font-size:14.5px;color:var(--color-text)">make up &amp;&amp; make verify</code>
+      </div>
+      <div class="btn-row">
+        <a href="https://github.com/enrichmeai/dyetrace" class="btn btn-primary btn-lg">Source →</a>
+        <a href="#demo" class="btn btn-secondary btn-lg">What the demo proves →</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="idea" class="section-rule">
+    <span class="name">The idea</span><span class="num">01</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">One ID, all the way</h2>
+      <p class="intro">The name comes from dye tracing in hydrology: put dye in the water at one point, and you learn where the water goes and where it stops.</p>
+    </div>
+    <div class="blueprint stage-diagram" style="margin-bottom:40px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="frame-kicker" style="margin-bottom:26px">The path of one journey</div>
+      <div class="stages s4">
+        <div class="stage">
+          <span class="role">Where it enters</span>
+          <span class="title">Start<br>the journey</span>
+          <p>Give it an ID from a business key you already have, such as a payment reference, so support can find it later.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage">
+          <span class="role">Every hop</span>
+          <span class="title">Carry<br>the ID</span>
+          <p>In a W3C <code>baggage</code> header on HTTP and Kafka, and in the database row when a message waits in an outbox.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage">
+          <span class="role">Each service</span>
+          <span class="title">Mark<br>the way</span>
+          <p>Emit an event at each point that matters: <code>order.created</code>, <code>payment.authorised</code>, then complete or fail.</p>
+        </div>
+        <div class="arrow" aria-hidden="true"><span class="right">→</span><span class="down">↓</span></div>
+        <div class="stage is-accent">
+          <span class="role">The tracker</span>
+          <span class="title">Notice<br>the silence</span>
+          <p>A journey still open after its target time is stuck. You see the last mark it reached, the service, and the traces it passed through.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Vendor-neutral by design: the core needs only the JDK, and the ID travels in an open header format. OpenTelemetry is one adapter behind a small extension interface; a different standard would be another adapter, and code that calls Dyetrace would not change.</p>
+  </div>
+
+  <div id="choose" class="section-rule">
+    <span class="name">When it helps</span><span class="num">02</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Dyetrace, or tracing on its own?</h2>
+      <p class="intro">Our view, by requirement. For many systems, distributed tracing (for example OpenTelemetry alone) is enough, and adding another library has a cost.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>If this is true for you</th><th>It leans towards</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Every step is a synchronous call inside one request</td><td>Tracing alone</td><td>One trace already covers the whole journey.</td></tr>
+          <tr><td>The journey crosses a queue, an outbox, a scheduled job or a retry later</td><td>Dyetrace</td><td>The trace ends at that hop; the journey ID is carried on.</td></tr>
+          <tr><td>You must be told when something did not happen, such as a payment that never settled</td><td>Dyetrace</td><td>Tracing records what happened. The tracker reports journeys that are open past their target.</td></tr>
+          <tr><td>Your services already use OpenTelemetry</td><td>Either; Dyetrace sits on top</td><td>The <code>dyetrace-otel</code> adapter puts the journey into OpenTelemetry baggage and onto spans, so nothing is replaced.</td></tr>
+          <tr><td>You need a journey tracker that survives restarts at production volume today</td><td>Not Dyetrace yet</td><td>The tracker keeps its state in memory, in one process (see Status).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="use" class="section-rule">
+    <span class="name">Use it</span><span class="num">03</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Three calls, in any Java application</h2>
+      <p class="intro">Plain Java, Spring, Quarkus, Jakarta EE, MicroProfile: the API is the same, because the core depends on nothing beyond the JDK.</p>
+    </div>
+    <div class="blueprint code-frame">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="strip"><span>java</span><span>Java 17 or newer</span></div>
+      <pre><div class="cmt">// where the journey enters the system</div><div><span class="tok">try</span> (JourneyScope journey = Dyetrace.start(<span class="tok">"payment"</span>, JourneyId.of(<span class="tok">"pay-"</span> + paymentRef))) {</div><div>  Dyetrace.inject(request, JdkHttp.REQUEST_SETTER);</div><div>}</div><div class="sep"></div><div class="cmt">// in another service, perhaps after a queue</div><div><span class="tok">try</span> (JourneyScope journey = Dyetrace.continueFrom(record.headers(), KafkaHeaders.GETTER)) {</div><div>  Dyetrace.mark(<span class="tok">"payment.authorised"</span>);</div><div>}</div><div class="sep"></div><div class="cmt">// where it ends</div><div>Dyetrace.complete();   <span class="cmt">// or Dyetrace.fail("declined")</span></div></pre>
+    </div>
+    <dl class="spec-list" style="margin-top:40px">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>dyetrace-core</dt>
+        <dd>The API, W3C baggage propagation, helpers for the JDK's own HTTP client and server, event JSON, and the journey tracker with Prometheus output. Depends on the JDK only.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>dyetrace-otel</dt>
+        <dd>The journey in OpenTelemetry baggage, the journey ID on the current span, events as span events, and the trace ID on every journey event. Depends on <code>opentelemetry-api</code>; works with the OpenTelemetry Java agent.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>dyetrace-slf4j</dt>
+        <dd><code>journey_id</code> and <code>journey_type</code> in the logging MDC, so every log line can be found by journey.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>dyetrace-servlet</dt>
+        <dd>A filter for any Jakarta Servlet 6 container: Tomcat, Jetty, Undertow, Spring MVC, Open Liberty.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>dyetrace-kafka</dt>
+        <dd>Kafka header propagation, a producer interceptor that adds the journey to every record, and a sink that publishes journey events to a topic.</dd>
+      </div>
+    </dl>
+    <p class="note" style="margin-top:28px">Adapters install themselves when their jar is on the classpath. A failing adapter is logged and skipped: observing a journey never breaks it.</p>
+  </div>
+
+  <div id="demo" class="section-rule">
+    <span class="name">The demo</span><span class="num">04</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">A payment journey you can break on purpose</h2>
+      <p class="intro">Six services on a local kind cluster, in the same repository: three plain Java services with no framework, one Spring Boot service with Postgres and an outbox, a journey monitor and a load generator. Traced by the OpenTelemetry agent, with Jaeger, Prometheus and Grafana.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>Switch on</th><th>Component dashboards</th><th>The journey view</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>payments silently loses 20% of messages</td><td>Stay green: no error is raised anywhere</td><td>Stuck journeys rise, each stopped at <code>payment.received</code> in payments</td></tr>
+          <tr><td>payments takes 4 s per message</td><td>Latency rises on one consumer</td><td>Journeys run longer, and go stuck once over the 10 s target</td></tr>
+          <tr><td>notifications fails half its attempts, then retries</td><td>Errors and retries</td><td>Journeys still complete: no journey alert, no false alarm</td></tr>
+          <tr><td>payments declines 5%</td><td>Normal</td><td>Failed journeys, counted by reason, not stuck</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <dl class="spec-list" style="margin-top:40px">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>You need</dt>
+        <dd>A JDK 17 or newer, Maven 3.9 or newer, Docker, kind and kubectl, and about 4 GB of memory for Docker. No Kubernetes? The same demo runs with Docker Compose.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>The proof</dt>
+        <dd><code>make verify</code> runs five acceptance checks against the running demo: one journey followed across all four services and two linked traces; a lost message reported stuck where it stopped; a flaky dependency that still completes; a decline recorded as a failure; a slow step that is stuck while over target and clears once it completes.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Where to look</dt>
+        <dd>The journey monitor lists stuck journeys and links each to its traces in Jaeger. Grafana shows the journey view above the component view, so the difference is on one screen.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div id="status" class="section-rule">
+    <span class="name">Status</span><span class="num">05</span>
+  </div>
+
+  <div class="section-body">
+    <div class="heading-row">
+      <h2 class="section-h2">Where it stands today</h2>
+      <p class="intro">What exists, its limits, and what is planned.</p>
+    </div>
+    <dl class="spec-list">
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Released</dt>
+        <dd>Nothing yet. The library and the demo are on <code>main</code>; build them with Maven. There is no hosted CI: <code>make check</code> runs every gate on your own machine.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Its limits</dt>
+        <dd>The journey tracker keeps its state in memory, in one process: right for the demo, not yet for production. With the OpenTelemetry agent, the Kafka event sink's own sends show up as extra spans in application traces. The demo's Docker Compose and kind paths are both in the repository: run <code>make verify</code> for kind, or <code>make verify MODE=compose</code> for Docker Compose.</dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Planned</dt>
+        <dd>A first release on Maven Central, and a tracker store that survives restarts. <span class="tag tag-next">planned</span></dd>
+      </div>
+      <div class="spec-row" style="padding:22px 0">
+        <dt>Licence</dt>
+        <dd>Apache 2.0. Free for any use, commercial included.</dd>
+      </div>
+    </dl>
+  </div>
+  <aside class="learn-note" aria-label="Learn the fundamentals">
+    <p><b>New to observability?</b> The free <a href="/well-rounded-engineer/observability/#c-following-a-journey-across-services">Well Rounded Engineer guide</a> explains logs, metrics, traces and following a journey across services, before you reach for any one tool, ours included.</p>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">dyetrace · no release yet · Apache-2.0 · built in the open<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+    <div class="footer-navs">
+      <nav>
+        <h4>Get it</h4>
+        <a href="https://github.com/enrichmeai/dyetrace">Source and demo on GitHub →</a>
+      </nav>
+      <nav>
+        <h4>Related</h4>
+        <a href="/well-rounded-engineer/observability/">Observability, the guide</a>
+        <a href="/culvert/">Culvert, the data-pipeline framework</a>
+        <a href="/">All products</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
