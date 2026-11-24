@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postmortems Worth Reading · Well Rounded Engineer</title>
+<meta name="description" content="Public write-ups of famous outages teach things no codebase will: how small, ordinary actions become global failures. Nine of them, each with what…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="postmortems" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 137 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">17</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/chips/">From Binary to GPUs</a><a href="/well-rounded-engineer/chipjobs/">Chip Jobs &amp; GPU Startups</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/searchengines/">How Search Works &amp; AI Browsers</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/functional/">Functional or Imperative</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/reactive/">Reactive &amp; Backpressure</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/quality/">Quality Attributes</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/databricks/">Databricks</a><a href="/well-rounded-engineer/palantir/">Palantir</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/ratelimit/">Rate Limiting</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp" open><summary>Platform &amp; operations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a><a href="/well-rounded-engineer/postmortems/" aria-current="page">Postmortems Worth Reading</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp"><summary>AI<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/routingtrains/">Routing &amp; Trains with Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/aimemory/">AI Memory &amp; Threads</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/agentmakers/">How Anthropic &amp; OpenAI Build Agents</a><a href="/well-rounded-engineer/agentsystem/">Building an Agentic System</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">15</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/perseverance/">Perseverance &amp; Resilience</a><a href="/well-rounded-engineer/newideas/">New Ideas, Familiarity &amp; Habits</a><a href="/well-rounded-engineer/thinkers/">Thinkers Worth Knowing</a><a href="/well-rounded-engineer/andrewng/">Andrew Ng</a><a href="/well-rounded-engineer/hintonlecun/">Geoffrey Hinton &amp; Yann LeCun</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/valuation/">How Companies Are Valued</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a><a href="/well-rounded-engineer/longevity/">Biohacking &amp; Longevity</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>Platform &amp; operations</span> / <span aria-current="page">Postmortems Worth Reading</span></p>
+<section class="panel" id="postmortems" data-name="Postmortems Worth Reading">
+  <div class="panel-head"><h1>Postmortems worth reading</h1><p>Public write-ups of famous outages teach things no codebase will: how small, ordinary actions become global failures. Nine of them, each with what happened, what caused it and the lesson, the patterns they share, and the rest of a well-known reading list.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>A <b>postmortem</b> is the write-up a team publishes after something goes badly wrong: what happened, why, and what they changed. The best ones are blameless, honest and specific, and reading them is one of the cheapest ways to learn from other people&rsquo;s worst days. (How to write one is on <a href="/well-rounded-engineer/sre/">SRE</a>.)</p>
+    <p>Read a few and a pattern appears: the cause is rarely exotic. It is a configuration change, a mistyped command, an unlucky timing or a forgotten piece of old code, meeting a system with nothing to stop one mistake spreading everywhere.</p>
+    <figure class="fig"><svg viewBox="0 0 650 245" role="img" aria-labelledby="pm-t pm-d"><title id="pm-t">Five patterns behind nine famous outages</title><desc id="pm-d">A change reached everything at once: CrowdStrike, Cloudflare, Fastly and Microsoft 365. A routine command did more than intended: Amazon S3 and Facebook. A rare timing hit a latent bug: AWS us-east-1 and GitHub. Old code woke up after a partial deploy: Knight Capital. Recovery tools depended on what broke: Facebook, Amazon S3 and CrowdStrike.</desc><text class="lb hd" x="20" y="18">Pattern</text><text class="lb hd" x="336" y="18">Incidents</text><rect class="nd in" x="20" y="30" width="300" height="34" rx="5"/><text class="lb hd" x="32" y="52">A change reached everything at once</text><text class="lb" x="336" y="52">CrowdStrike, Cloudflare, Fastly, Microsoft 365</text><rect class="nd" x="20" y="72" width="300" height="34" rx="5"/><text class="lb hd" x="32" y="94">A routine command did more than intended</text><text class="lb" x="336" y="94">Amazon S3, Facebook</text><rect class="nd in" x="20" y="114" width="300" height="34" rx="5"/><text class="lb hd" x="32" y="136">A rare timing hit a latent bug</text><text class="lb" x="336" y="136">AWS us-east-1, GitHub</text><rect class="nd" x="20" y="156" width="300" height="34" rx="5"/><text class="lb hd" x="32" y="178">Old code woke up after a partial deploy</text><text class="lb" x="336" y="178">Knight Capital</text><rect class="nd in" x="20" y="198" width="300" height="34" rx="5"/><text class="lb hd" x="32" y="220">Recovery tools depended on what broke</text><text class="lb" x="336" y="220">Facebook, Amazon S3, CrowdStrike</text></svg><figcaption><i>Analysis:</i> our grouping of the nine. Most of these outages were not exotic. They were ordinary changes, commands and timing, meeting a system with no limit on how far one mistake could spread.</figcaption></figure>
+  </article>
+
+  <article class="card wide" id="c-knight-capital-s-45-minutes-2012"><h3>Knight Capital&rsquo;s 45 minutes (2012)</h3>
+    <p><b>What happened:</b> On 1 August 2012, Knight Capital&rsquo;s automated order router sent millions of unintended orders: about 4 million executions in 154 stocks, more than 397 million shares, in roughly 45 minutes. The firm took a pre-tax loss of $440 million and agreed to be acquired by Getco that December.</p>
+    <p><b>The cause:</b> A technician did not copy the new Retail Liquidity Program code to one of the eight SMARS servers. The new code reused a flag that had once switched on an old, retired function called Power Peg. On the eighth server, that flag woke up the old code, whose code for recording that an order had been filled had since been changed, so it never saw orders as complete and kept sending more.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> delete dead code instead of leaving it switched off; never reuse a flag for a new meaning; verify every server got the deploy; and give automated trading a kill switch that does not depend on finding the bug first.</p>
+    <p class="sources">Read it: <a href="https://en.wikipedia.org/wiki/Knight_Capital_Group" target="_blank" rel="noopener">Wikipedia: Knight Capital Group</a></p>
+  </article>
+
+  <article class="card wide" id="c-the-amazon-s3-outage-2017"><h3>The Amazon S3 outage (2017)</h3>
+    <p><b>What happened:</b> On 28 February 2017, Amazon S3 in Northern Virginia stopped serving requests for several hours, along with other AWS services in the region that rely on it, such as new EC2 instance launches.</p>
+    <p><b>The cause:</b> While debugging a slow billing system, an engineer following an established playbook ran a command to remove a small number of servers. One input was entered incorrectly and a much larger set was removed, including servers for the index and placement subsystems. Both needed a full restart, something AWS had not done in its largest regions for many years, and it took longer than expected. AWS&rsquo;s own status dashboard could not be updated for part of the outage because it depended on S3.</p>
+    <p><b>The lesson:</b> AWS changed the tool to remove capacity more slowly, and to refuse to take any subsystem below its minimum capacity. <i>Analysis:</i> tools should protect against a wrong input, rarely used recovery paths should be rehearsed, and the dashboard that tells customers about an outage must not depend on the thing that failed.</p>
+    <p class="sources">Read it: <a href="https://aws.amazon.com/message/41926/" target="_blank" rel="noopener">AWS: Summary of the Amazon S3 service disruption</a></p>
+  </article>
+
+  <article class="card wide" id="c-github-s-43-second-partition-2018"><h3>GitHub&rsquo;s 43-second partition (2018)</h3>
+    <p><b>What happened:</b> On 21 October 2018, GitHub ran degraded for 24 hours and 11 minutes. No user data was lost, though a few seconds of writes needed manual reconciliation.</p>
+    <p><b>The cause:</b> Routine maintenance on network equipment cut the link between GitHub&rsquo;s US East Coast hub and its main East Coast data center for 43 seconds. In that window, Orchestrator, which manages GitHub&rsquo;s MySQL clusters, held a vote and failed the databases over to the West Coast. The East Coast servers had a few seconds of writes not yet copied west, and East Coast applications could not cope with the extra latency of writing across the country.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> automatic failover is itself a risky change; make sure it can only choose topologies the application can actually run on, and decide in advance whether a very short partition should trigger it at all.</p>
+    <p class="sources">Read it: <a href="https://github.blog/news-insights/company-news/oct21-post-incident-analysis/" target="_blank" rel="noopener">GitHub: October 21 post-incident analysis</a></p>
+  </article>
+
+  <article class="card wide" id="c-facebook-disappears-for-6-hours-2021"><h3>Facebook disappears for 6 hours (2021)</h3>
+    <p><b>What happened:</b> On 4 October 2021, Facebook, Instagram and WhatsApp vanished from the internet for six to seven hours.</p>
+    <p><b>The cause:</b> During routine maintenance, a command meant to assess backbone capacity took down every connection in Facebook&rsquo;s global backbone. An audit tool should have stopped it, but a bug in the tool let it through. Facebook&rsquo;s DNS servers are designed to withdraw their BGP announcements when they cannot reach the data centers, so they disappeared from the internet even though they were still running. Recovery was slow: the network outage also broke internal tools, and engineers had to get physical access to data centers built to be hard to get into.</p>
+    <p><b>The lesson:</b> Facebook credits its regular &ldquo;storm&rdquo; drills for bringing power and load back safely. <i>Analysis:</i> safety checks need testing too, and recovery access must work when the normal network does not.</p>
+    <p class="sources">Read it: <a href="https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/" target="_blank" rel="noopener">Engineering at Meta: More details about the October 4 outage</a></p>
+  </article>
+
+  <article class="card wide" id="c-fastly-s-global-outage-2021"><h3>Fastly&rsquo;s global outage (2021)</h3>
+    <p><b>What happened:</b> On 8 June 2021, websites including Reddit, Twitch, Amazon and GOV.UK briefly went down around the world.</p>
+    <p><b>The cause:</b> A software bug in Fastly&rsquo;s CDN was triggered by a customer making a perfectly valid configuration change.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> a single customer&rsquo;s legitimate input should never be able to take down a shared platform; isolate customers from one another, and test with the full range of valid configurations, not just the common ones.</p>
+    <p class="sources">Read it: <a href="https://en.wikipedia.org/wiki/Fastly" target="_blank" rel="noopener">Wikipedia: Fastly</a></p>
+  </article>
+
+  <article class="card wide" id="c-crowdstrike-channel-file-291-2024"><h3>CrowdStrike Channel File 291 (2024)</h3>
+    <p><b>What happened:</b> On 19 July 2024, about 8.5 million Windows systems crashed and could not restart, grounding flights and disrupting banks and hospitals; it has been called the largest outage in the history of IT.</p>
+    <p><b>The cause:</b> CrowdStrike&rsquo;s Falcon sensor runs inside the operating system kernel. A content update, Channel File 291, passed validation because of a bug in CrowdStrike&rsquo;s content verification software. The sensor expected 21 input fields but received 20, read memory that did not exist, and crashed the machine. Recovery was manual for many, and harder still where BitLocker recovery keys had to be typed in by hand, or were stored on servers that had themselves crashed.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> treat content and configuration updates with the same caution as code: staged rollouts to a few machines first, and validators that are tested themselves. Software in the kernel needs the strictest care, because a crash there takes the whole machine down.</p>
+    <p class="sources">Read it: <a href="https://en.wikipedia.org/wiki/2024_CrowdStrike-related_IT_outages" target="_blank" rel="noopener">Wikipedia: 2024 CrowdStrike-related IT outages</a></p>
+  </article>
+
+  <article class="card wide" id="c-aws-us-east-1-goes-dark-2025"><h3>AWS us-east-1 goes dark (2025)</h3>
+    <p><b>What happened:</b> On 19 and 20 October 2025, DynamoDB in Northern Virginia failed, followed by problems with load balancers and EC2 instance launches; impact lasted from 11:48 PM to 2:20 PM Pacific time.</p>
+    <p><b>The cause:</b> A latent race condition in DynamoDB&rsquo;s automated DNS management. One worker (&ldquo;Enactor&rdquo;) was unusually delayed, then applied a much older plan over a newer one; its check that the plan was newer had gone stale during the delay. A clean-up process then removed records, leaving the regional DynamoDB endpoint with an empty DNS record that the automation failed to repair. Many AWS services depend on DynamoDB, so the failure spread.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> automation that rewrites production needs guards against acting on stale information, and a check made at the start of a slow operation may no longer be true at the end of it.</p>
+    <p class="sources">Read it: <a href="https://aws.amazon.com/message/101925/" target="_blank" rel="noopener">AWS: Summary of the Amazon DynamoDB service disruption in us-east-1</a></p>
+  </article>
+
+  <article class="card wide" id="c-cloudflare-s-worst-outage-since-2019-2025"><h3>Cloudflare&rsquo;s worst outage since 2019 (2025)</h3>
+    <p><b>What happened:</b> On 18 November 2025, a global Cloudflare outage disrupted many major platforms; a second global outage followed on 5 December, three weeks later.</p>
+    <p><b>The cause:</b> Cloudflare attributed the November outage to a change in the configuration of a database, which caused an invalid file to be sent to all servers on its network.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> a generated file that every server loads is a single point of failure; validate it before it ships, roll it out in stages, and make servers keep the last good version when a new one is bad.</p>
+    <p class="sources">Read it: <a href="https://en.wikipedia.org/wiki/Cloudflare" target="_blank" rel="noopener">Wikipedia: Cloudflare</a></p>
+  </article>
+
+  <article class="card wide" id="c-microsoft-365-goes-down-for-a-day-2026"><h3>Microsoft 365 goes down for a day (2026)</h3>
+    <p><b>What happened:</b> Starting on 12 November 2026, most Microsoft 365 services, especially Exchange Online email, failed worldwide; services were fully restored by the morning of 14 November.</p>
+    <p><b>The cause:</b> According to Microsoft&rsquo;s root-cause summary: a previously undetected defect made networking gateway servers unresponsive under certain loads, and at peak more than 80% of them were unresponsive. A change in traffic allocation increased load and made the defect likelier to appear. Automated rollback could not help because the faulty change had been deployed months earlier, in July. The &ldquo;capacity unit&rdquo; boundaries meant to isolate failures did not, so the outage spread across regions. And as the fix went out, waiting requests stampeded the servers coming back up.</p>
+    <p><b>The lesson:</b> <i>Analysis:</i> latent defects can sit for months, so rollback is not a complete safety net; isolation boundaries must be tested, not assumed; and recovery needs traffic brought back gradually.</p>
+    <p class="sources">Read it: <a href="https://en.wikipedia.org/wiki/2026_Microsoft_365_outage" target="_blank" rel="noopener">Wikipedia: 2026 Microsoft 365 outage</a></p>
+  </article>
+
+  <article class="card wide" id="c-the-rest-of-the-list"><h3>The rest of the list</h3>
+    <p>These nine come from a reading list of twenty public postmortems shared by an engineer at Meta. The other eleven are well worth reading too; we will add a summary of each once we have checked it against the company&rsquo;s own write-up:</p>
+    <ul>
+      <li>GitLab deletes its production database (GitLab, 2017)</li>
+      <li>Coinbase stops trading for 8 hours (Coinbase, 2026)</li>
+      <li>Azure Front Door (Microsoft, 2025)</li>
+      <li>Cloudflare, 17 days later (Cloudflare, 2025)</li>
+      <li>Clerk&rsquo;s query plan flip (Clerk, 2026)</li>
+      <li>Cloudflare&rsquo;s regex outage (Cloudflare, 2019)</li>
+      <li>Roblox&rsquo;s 73-hour outage (Roblox, 2021)</li>
+      <li>Atlassian&rsquo;s two-week outage (Atlassian, 2022)</li>
+      <li>Slack&rsquo;s first Monday of the year (Slack, 2021)</li>
+      <li>Reddit&rsquo;s Pi Day outage (Reddit, 2023)</li>
+      <li>Datadog&rsquo;s multi-region outage (Datadog, 2023)</li>
+    </ul>
+  </article>
+
+  <article class="card wide" id="c-guards-these-incidents-argue-for-by-requirement"><h3>Guards these incidents argue for, by requirement</h3>
+    <table class="eg"><thead><tr><th>If this is true for your system</th><th>Guard to add first</th></tr></thead><tbody>
+      <tr><td>One change or file reaches every server</td><td>Staged rollout to a small share first, automatic halt on errors, keep the last good version</td></tr>
+      <tr><td>Engineers run commands that remove capacity or change the network</td><td>Tools that refuse dangerous inputs and limits on how much one command can change (S3, Facebook)</td></tr>
+      <tr><td>Automation rewrites production records or topology</td><td>Re-check freshness before acting; constrain failover to what applications support (AWS, GitHub)</td></tr>
+      <tr><td>Old features are switched off rather than removed</td><td>Delete dead code; never reuse flags; verify every node got the deploy (Knight)</td></tr>
+      <tr><td>You recover using your own tools and network</td><td>Out-of-band access, status pages hosted elsewhere, rehearsed recovery drills (Facebook, S3)</td></tr>
+      <tr><td>Customers can change configuration on a shared platform</td><td>Isolation between customers, and testing with every valid configuration (Fastly)</td></tr>
+    </tbody></table>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> one evening reading these will change how you review a deploy. The question to carry away is not &ldquo;could this break?&rdquo; but &ldquo;if this breaks, how far does it spread, and how do we get back?&rdquo;</p>
+    <p><i>The other view:</i> postmortems are written by the companies themselves, after the fact, and some details stay private; hindsight makes causes look more obvious than they were at the time. Read them as lessons in how systems fail, not as verdicts on the people involved.</p>
+  </article>
+
+  <article class="card" id="c-where-to-go-next"><h3>Where to go next</h3>
+    <ul>
+      <li>Writing a blameless postmortem: <a href="/well-rounded-engineer/sre/">SRE</a></li>
+      <li>Seeing failures early: <a href="/well-rounded-engineer/observability/">Observability</a></li>
+      <li>Why distributed systems fail in odd ways: <a href="/well-rounded-engineer/distsys/">Distributed Systems</a></li>
+    </ul>
+  </article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/sre/">← SRE</a><a class="pn-next" href="/well-rounded-engineer/cloudinside/">How the cloud is built →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-knight-capital-s-45-minutes-2012">Knight Capital’s 45 minutes (2012)</a><a href="#c-the-amazon-s3-outage-2017">The Amazon S3 outage (2017)</a><a href="#c-github-s-43-second-partition-2018">GitHub’s 43-second partition (2018)</a><a href="#c-facebook-disappears-for-6-hours-2021">Facebook disappears for 6 hours (2021)</a><a href="#c-fastly-s-global-outage-2021">Fastly’s global outage (2021)</a><a href="#c-crowdstrike-channel-file-291-2024">CrowdStrike Channel File 291 (2024)</a><a href="#c-aws-us-east-1-goes-dark-2025">AWS us-east-1 goes dark (2025)</a><a href="#c-cloudflare-s-worst-outage-since-2019-2025">Cloudflare’s worst outage since 2019 (2025)</a><a href="#c-microsoft-365-goes-down-for-a-day-2026">Microsoft 365 goes down for a day (2026)</a><a href="#c-the-rest-of-the-list">The rest of the list</a><a href="#c-guards-these-incidents-argue-for-by-requirement">Guards these incidents argue for, by requirement</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-where-to-go-next">Where to go next</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
