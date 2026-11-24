@@ -11,7 +11,7 @@ RULES = {
     "regression_min": 0.95,     # the regression suite must stay this high (pass^k: every trial passes)
     "cost_growth_max": 0.20,    # cost per task may grow at most 20%
     "p95_latency_max_s": 8.0,
-    "canary_min_events": 30,    # below this many errors or escalations in the canary, a ratio is noise: wait
+    "canary_min_events": 30,    # wait until the control's rate predicts this many events in the canary
     "canary_error_ratio_max": 1.10,       # canary error rate at most 10% above control
     "canary_escalation_ratio_max": 1.25,  # hand-offs to people at most 25% above control
 }
@@ -21,8 +21,30 @@ class GateError(Exception):
     """The gate cannot decide. That is a refusal, never a pass."""
 
 
+SUITES = {"regression", "capability"}
+
+
+def number(x, what):
+    if isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x) or x < 0:
+        raise GateError(f"{what} must be a finite number >= 0, got {x!r}")
+    return x
+
+
 def by_task(results):
-    return {r["task"]: r for r in results}
+    """Validate every result before any arithmetic: bad input is a refusal, not a number."""
+    out = {}
+    for r in results:
+        t = r.get("task")
+        if t in out:
+            raise GateError(f"duplicate task id {t!r}")
+        if r.get("suite") not in SUITES:
+            raise GateError(f"task {t!r} has unknown suite {r.get('suite')!r}")
+        if not isinstance(r.get("trials"), list) or not all(isinstance(x, bool) for x in r["trials"]):
+            raise GateError(f"task {t!r} trials must be a list of true/false")
+        number(r.get("cost_usd"), f"task {t!r} cost_usd")
+        number(r.get("latency_s"), f"task {t!r} latency_s")
+        out[t] = r
+    return out
 
 
 def passed(r, all_trials):
@@ -46,12 +68,17 @@ def p95(xs):
 def offline(base, cand):
     if base.keys() != cand.keys():
         raise GateError(f"task sets differ: {sorted(base.keys() ^ cand.keys())}")
+    moved = sorted(t for t in base if base[t]["suite"] != cand[t]["suite"])
+    if moved:
+        raise GateError(f"tasks changed suite: {', '.join(moved)}")
     reasons = []
     reg_b, reg_c = rate(base, "regression", True), rate(cand, "regression", True)
     cap_b, cap_c = rate(base, "capability", False), rate(cand, "capability", False)
     cost_b = sum(r["cost_usd"] for r in base.values()) / len(base)
     cost_c = sum(r["cost_usd"] for r in cand.values()) / len(cand)
     lat = p95([r["latency_s"] for r in cand.values()])
+    if cost_b == 0:
+        raise GateError("baseline cost is zero: cannot judge cost growth")
     print(f"regression pass^k  baseline {reg_b:.2f}  candidate {reg_c:.2f}")
     print(f"capability pass@k  baseline {cap_b:.2f}  candidate {cap_c:.2f}")
     print(f"cost per task      baseline ${cost_b:.4f}  candidate ${cost_c:.4f}")
@@ -71,12 +98,16 @@ def offline(base, cand):
 
 def ratio(m, key):
     can, ctl = m["canary"], m["control"]
+    for side, d in (("canary", can), ("control", ctl)):
+        number(d["requests"], f"{side} requests")
+        if not number(d[key], f"{side} {key}") <= d["requests"]:
+            raise GateError(f"{side} {key} exceed its requests")
     if can["requests"] == 0 or ctl["requests"] == 0:
         raise GateError("no canary or control traffic yet")
-    if can[key] < RULES["canary_min_events"] and ctl[key] * can["requests"] / ctl["requests"] < RULES["canary_min_events"]:
-        raise GateError(f"too few {key} to compare yet: wait for more traffic")
-    ctl_rate = max(ctl[key], 1) / ctl["requests"]   # a control with 0 events is compared as if it had 1
-    return (can[key] / can["requests"]) / ctl_rate
+    expected = ctl[key] * can["requests"] / ctl["requests"]   # what the canary would see at the control's rate
+    if expected < RULES["canary_min_events"]:
+        raise GateError(f"too few {key} expected in the canary ({expected:.0f}) to compare yet: wait for more traffic")
+    return (can[key] / can["requests"]) / (ctl[key] / ctl["requests"])
 
 
 def canary(m):
@@ -103,5 +134,6 @@ if __name__ == "__main__":
             print("PROMOTE: widen the rollout")
         else:
             print("PASS offline: start a canary on a small share of traffic")
-    except GateError as e:
-        print("CANNOT DECIDE (treated as HOLD):", e); sys.exit(2)
+    except (GateError, KeyError, ValueError, TypeError, OSError, IndexError) as e:
+        why = str(e) if isinstance(e, GateError) else f"bad input ({type(e).__name__}: {e})"
+        print("CANNOT DECIDE (treated as HOLD):", why); sys.exit(2)

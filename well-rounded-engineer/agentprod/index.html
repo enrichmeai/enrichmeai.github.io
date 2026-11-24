@@ -117,7 +117,7 @@
     "regression_min": 0.95,     # the regression suite must stay this high (pass^k: every trial passes)
     "cost_growth_max": 0.20,    # cost per task may grow at most 20%
     "p95_latency_max_s": 8.0,
-    "canary_min_events": 30,    # below this many errors or escalations in the canary, a ratio is noise: wait
+    "canary_min_events": 30,    # wait until the control's rate predicts this many events in the canary
     "canary_error_ratio_max": 1.10,       # canary error rate at most 10% above control
     "canary_escalation_ratio_max": 1.25,  # hand-offs to people at most 25% above control
 }
@@ -127,8 +127,30 @@ class GateError(Exception):
     """The gate cannot decide. That is a refusal, never a pass."""
 
 
+SUITES = {"regression", "capability"}
+
+
+def number(x, what):
+    if isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x) or x &lt; 0:
+        raise GateError(f"{what} must be a finite number &gt;= 0, got {x!r}")
+    return x
+
+
 def by_task(results):
-    return {r["task"]: r for r in results}
+    """Validate every result before any arithmetic: bad input is a refusal, not a number."""
+    out = {}
+    for r in results:
+        t = r.get("task")
+        if t in out:
+            raise GateError(f"duplicate task id {t!r}")
+        if r.get("suite") not in SUITES:
+            raise GateError(f"task {t!r} has unknown suite {r.get('suite')!r}")
+        if not isinstance(r.get("trials"), list) or not all(isinstance(x, bool) for x in r["trials"]):
+            raise GateError(f"task {t!r} trials must be a list of true/false")
+        number(r.get("cost_usd"), f"task {t!r} cost_usd")
+        number(r.get("latency_s"), f"task {t!r} latency_s")
+        out[t] = r
+    return out
 
 
 def passed(r, all_trials):
@@ -154,8 +176,8 @@ regression pass^k  baseline 1.00  candidate 1.00
 capability pass@k  baseline 0.70  candidate 0.90
 cost per task      baseline $0.0099  candidate $0.0109
 p95 latency        candidate 4.7s
-CANNOT DECIDE (treated as HOLD): too few errors to compare yet: wait for more traffic</code></pre></div>
-    <p class="sources"><i>Analysis:</i> the thresholds are examples; set yours from your success criteria. The minimum-events rule is a simple guard against noise, not a significance test. The first version of this script crashed on a control with no errors and counted an empty result as a pass; an independent review caught both.</p>
+CANNOT DECIDE (treated as HOLD): too few errors expected in the canary (2) to compare yet: wait for more traffic</code></pre></div>
+    <p class="sources"><i>Analysis:</i> the thresholds are examples; set yours from your success criteria. The minimum-events rule is a simple guard against noise, not a significance test. The folder also holds 21 unit tests, each a way to fool the gate that must end in a refusal.</p>
   </article>
 
   <article class="card" id="c-7-live-watch-learn-feed-back"><h3>7. Live: watch, learn, feed back</h3>
@@ -169,7 +191,7 @@ CANNOT DECIDE (treated as HOLD): too few errors to compare yet: wait for more tr
   </article>
 
   <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
-    <p><i>Our view:</i> the eval set is the most valuable thing you build, more than the prompt. It lets you change models, prompts and tools without guessing, and it is what a release gate stands on.</p>
+    <p><i>Our view:</i> the eval set deserves at least as much care as the prompt. It lets you change models, prompts and tools without guessing, and it is what a release gate stands on.</p>
     <p><i>The other view:</i> evals cost time to build and keep honest, and a small internal tool with a person checking every output may not need a formal gate. Match the process to what a wrong answer costs.</p>
   </article>
 
