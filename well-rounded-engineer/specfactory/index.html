@@ -61,7 +61,7 @@
 
   <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
     <p>Write down <b>what</b> you want and how you will know it works (the <b>spec</b>) before any code. Let agents turn the spec into a plan, small tasks and code. Run <b>gates</b> that answer pass or fail: tests, a check that every requirement has a test, and a review by an agent that did not write the code. Keep people at three points: approving the spec, approving the plan, and merging.</p>
-    <p>That is the &ldquo;factory&rdquo;: a line of stations, each with an input, an output and a check. It is not a new team; it is a new way for an existing team to spend its time. The team writes and checks far more specs and far less boilerplate.</p>
+    <p>That is the &ldquo;factory&rdquo;: a line of stations, each with an input, an output and a check. It is not a new team; it is a new way for an existing team to spend its time. <i>Our view:</i> the team ends up writing and checking more specs and less boilerplate.</p>
     <figure class="fig"><svg viewBox="0 0 650 152" role="img" aria-labelledby="sf-t sf-d"><title id="sf-t">The spec-driven factory line</title><desc id="sf-d">Seven stations from left to right: idea, the why and for whom; spec, what to build with acceptance criteria; plan, how, with rationale; tasks, small and traceable to the spec; build, agents working in parallel; gates, tests, a trace check and an independent review; merge, where a person signs. Spec, plan and merge are highlighted as the places a person approves. An arrow returns from gates to spec: a failed gate, an incident or a new need changes the spec, not just the code.</desc><rect class="nd" x="8" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="48" y="52" text-anchor="middle">Idea</text><text class="lb mu" x="48" y="70" text-anchor="middle">why, for</text><text class="lb mu" x="48" y="86" text-anchor="middle">whom</text><rect class="nd in" x="99" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="139" y="52" text-anchor="middle">Spec</text><text class="lb mu" x="139" y="70" text-anchor="middle">what +</text><text class="lb mu" x="139" y="86" text-anchor="middle">acceptance</text><line class="ed" x1="89" y1="63" x2="97" y2="63"/><polygon class="ar" points="98,63 93,60 93,66"/><rect class="nd in" x="190" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="230" y="52" text-anchor="middle">Plan</text><text class="lb mu" x="230" y="70" text-anchor="middle">how, with</text><text class="lb mu" x="230" y="86" text-anchor="middle">rationale</text><line class="ed" x1="180" y1="63" x2="188" y2="63"/><polygon class="ar" points="189,63 184,60 184,66"/><rect class="nd" x="281" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="321" y="52" text-anchor="middle">Tasks</text><text class="lb mu" x="321" y="70" text-anchor="middle">small,</text><text class="lb mu" x="321" y="86" text-anchor="middle">traceable</text><line class="ed" x1="271" y1="63" x2="279" y2="63"/><polygon class="ar" points="280,63 275,60 275,66"/><rect class="nd" x="372" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="412" y="52" text-anchor="middle">Build</text><text class="lb mu" x="412" y="70" text-anchor="middle">agents in</text><text class="lb mu" x="412" y="86" text-anchor="middle">parallel</text><line class="ed" x1="362" y1="63" x2="370" y2="63"/><polygon class="ar" points="371,63 366,60 366,66"/><rect class="nd" x="463" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="503" y="52" text-anchor="middle">Gates</text><text class="lb mu" x="503" y="70" text-anchor="middle">tests, trace,</text><text class="lb mu" x="503" y="86" text-anchor="middle">review</text><line class="ed" x1="453" y1="63" x2="461" y2="63"/><polygon class="ar" points="462,63 457,60 457,66"/><rect class="nd in" x="554" y="30" width="80" height="66" rx="6"/><text class="lb hd" x="594" y="52" text-anchor="middle">Merge</text><text class="lb mu" x="594" y="70" text-anchor="middle">a person</text><text class="lb mu" x="594" y="86" text-anchor="middle">signs</text><line class="ed" x1="544" y1="63" x2="552" y2="63"/><polygon class="ar" points="553,63 548,60 548,66"/><path class="ed acc" d="M 594 96 L 594 124 L 139 124 L 139 100" fill="none"/><polygon class="ar acc" points="139,97 135,104 143,104"/><text class="lb acc" x="366" y="142" text-anchor="middle">a failed gate, an incident or a new need changes the spec, not just the code</text></svg><figcaption>Highlighted stations are where a person approves. Agents do the work between them; the gates decide whether the work is done.</figcaption></figure>
   </article>
 
@@ -73,13 +73,13 @@
       <li><b>Spec-as-source:</b> people edit only the spec; the code is generated and never touched by hand.</li>
     </ul>
     <p>Every approach she found was spec-first; only some aim higher. She also separates a <b>spec</b> (about one change) from the <b>memory bank</b>: the rules that apply to every session. Spec Kit calls those rules a <i>constitution</i>, Kiro calls them <i>steering</i>, and Claude Code reads them from <code>CLAUDE.md</code>.</p>
-    <p class="sources">Source: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>.</p>
+    <p class="sources">Sources: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>; for <code>CLAUDE.md</code>, <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code: Best practices</a>.</p>
   </article>
 
   <article class="card" id="c-why-it-suits-agents"><h3>Why it suits agents</h3>
     <p>An agent stops when the work <i>looks</i> done. Anthropic&rsquo;s Claude Code guide says to give it &ldquo;something it can run that comes back pass or fail&rdquo;, otherwise, in its words, that &ldquo;makes you the test suite&rdquo;. A spec with numbered acceptance criteria turns into exactly that: one test per criterion.</p>
     <p>Spec Kit&rsquo;s templates add two habits that help: keep the spec on <i>what</i> and <i>why</i>, never <i>how</i>; and mark every gap as <code>[NEEDS CLARIFICATION: &hellip;]</code> instead of guessing. GitHub&rsquo;s announcement puts the person&rsquo;s job plainly: &ldquo;your role isn&rsquo;t just to steer. It&rsquo;s to verify.&rdquo;</p>
-    <p class="sources">Sources: <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code: Best practices</a>; <a href="https://github.com/github/spec-kit/blob/main/spec-driven.md" target="_blank" rel="noopener">Spec Kit: spec-driven.md</a>; <a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" rel="noopener">The GitHub Blog: Spec-driven development with AI, 2 September 2025</a>.</p>
+    <p class="sources">Sources: <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code: Best practices</a>; <a href="https://github.com/github/spec-kit/blob/v1.4.4/spec-driven.md" target="_blank" rel="noopener">Spec Kit: spec-driven.md</a>; <a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" rel="noopener">The GitHub Blog: Spec-driven development with AI, 2 September 2025</a>.</p>
   </article>
 
   <article class="card wide" id="c-the-stations-who-makes-who-checks"><h3>The stations: who makes, who checks</h3>
@@ -92,18 +92,18 @@
       <tr><td>Gates: results and findings</td><td>CI and hooks: tests, trace report</td><td>A fresh review agent, against the spec</td></tr>
       <tr><td>Merge: the pull request</td><td>&mdash;</td><td><b>An engineer reads the evidence and merges</b></td></tr>
     </tbody></table>
-    <p class="sources"><i>Analysis:</i> our arrangement, built from Spec Kit&rsquo;s constitution &rarr; specify &rarr; plan &rarr; tasks &rarr; implement flow (<a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub: Spec Kit (README)</a>) and Claude Code&rsquo;s worktrees and plan mode (<a href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Claude Code: Common workflows (worktrees, plan mode)</a>).</p>
+    <p class="sources"><i>Analysis:</i> our arrangement, built from Spec Kit&rsquo;s constitution &rarr; specify &rarr; plan &rarr; tasks &rarr; implement flow (<a href="https://github.com/github/spec-kit/tree/v1.4.4" target="_blank" rel="noopener">GitHub: Spec Kit README, tag <span data-other-version>v1.4.4</span></a>) and Claude Code&rsquo;s worktrees and plan mode (<a href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Claude Code: Common workflows (worktrees, plan mode)</a>).</p>
   </article>
 
   <article class="card wide" id="c-where-people-stay-and-why"><h3>Where people stay, and why</h3>
     <ul>
-      <li><b>Deciding what is worth building.</b> DORA&rsquo;s 2025 research found that a user-centric focus is &ldquo;a prerequisite for AI success&rdquo;: AI helps most when it is pointed at a clear problem. Choosing the problem is the product manager&rsquo;s job, not the agent&rsquo;s.</li>
+      <li><b>Deciding what is worth building.</b> DORA&rsquo;s 2025 research found that a user-centric focus is &ldquo;a prerequisite for AI success&rdquo;: AI helps most when it is pointed at a clear problem. <i>Our view:</i> choosing the problem stays with the product manager, not the agent.</li>
       <li><b>Answering the open questions.</b> Every <code>[NEEDS CLARIFICATION]</code> is a decision someone must own. An agent that guesses turns an assumption into code nobody chose.</li>
       <li><b>Approving the plan.</b> The plan fixes the database, the boundaries and the contracts: the decisions that are expensive to undo. A person reads it before any code exists, when changing it costs a paragraph.</li>
       <li><b>Merging.</b> Someone is accountable for what reaches users. DORA found 30% of respondents report little or no trust in AI-generated code. The answer is not blind trust but evidence: the merge is where a person reads the test output and the review, and signs.</li>
-      <li><b>Feeding back.</b> When production surprises you, a person decides whether the spec was wrong, the plan was wrong or the code was. Spec Kit calls this &ldquo;bidirectional feedback&rdquo;: incidents and metrics update the spec.</li>
+      <li><b>Feeding back.</b> When production surprises you, a person decides whether the spec was wrong, the plan was wrong or the code was. Spec Kit describes this as &ldquo;bidirectional feedback&rdquo;: incidents and metrics update the spec.</li>
     </ul>
-    <p class="sources">Sources: <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report" target="_blank" rel="noopener">Google Cloud: Announcing the 2025 DORA Report, 23 September 2025</a>; <a href="https://github.com/github/spec-kit/blob/main/spec-driven.md" target="_blank" rel="noopener">Spec Kit: spec-driven.md</a>. More on briefing and freedom levels: <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>.</p>
+    <p class="sources">Sources: <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report" target="_blank" rel="noopener">Google Cloud: Announcing the 2025 DORA Report, 23 September 2025</a>; <a href="https://github.com/github/spec-kit/blob/v1.4.4/spec-driven.md" target="_blank" rel="noopener">Spec Kit: spec-driven.md</a>. More on briefing and freedom levels: <a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a>.</p>
   </article>
 
   <article class="card wide" id="c-embedding-it-in-a-team-roles"><h3>Embedding it in a team: roles</h3>
@@ -125,7 +125,7 @@
       <li><b>Stand-up looks at the board of waiting work.</b> What is blocked on a human answer, a plan approval or a merge?</li>
       <li><b>Retros produce rules.</b> Each mistake an agent made becomes a constitution line, a hook or a test, so it cannot recur. A note in a chat does not count.</li>
     </ul>
-    <p class="sources"><i>Analysis:</i> our practice; the last point is how this site&rsquo;s own pipeline works (below).</p>
+    <p class="sources"><i>Analysis:</i> our practice; the last point is how this site&rsquo;s own pipeline works (below). <i>The other view:</i> B&ouml;ckeler argues that small, iterative steps keep a team in control better than a lot of up-front spec work, so a team might keep its rituals as they are and add only the gates.</p>
   </article>
 
   <article class="card" id="c-rolling-it-out"><h3>Rolling it out</h3>
@@ -147,22 +147,22 @@
       <tr><td>Regulated, audited or safety-relevant</td><td>Full line, with specs and approvals kept as the audit trail</td></tr>
       <tr><td>Rebuilding a legacy system</td><td>Recover the spec from the old code and its behaviour first; GitHub names legacy modernisation as a use</td></tr>
     </tbody></table>
-    <p class="sources">Sources: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>; <a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" rel="noopener">The GitHub Blog: Spec-driven development with AI, 2 September 2025</a>. BMad Method makes the same point: &ldquo;Small changes go straight to build. Complex work gets the depth it needs&rdquo; (<a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMad Method (README)</a>).</p>
+    <p class="sources"><i>Analysis:</i> the leanings are our view; the Kiro figures and the legacy use come from the sources. Sources: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>; <a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" rel="noopener">The GitHub Blog: Spec-driven development with AI, 2 September 2025</a>. BMad Method makes the same point: &ldquo;Small changes go straight to build. Complex work gets the depth it needs&rdquo; (<a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMad Method (README)</a>).</p>
   </article>
 
   <article class="card wide" id="c-tools-choose-by-requirement"><h3>Tools: choose by requirement</h3>
-    <table class="eg"><thead><tr><th>If this is true for you</th><th>Leans towards</th><th>Why (sourced)</th></tr></thead><tbody>
+    <table class="eg"><thead><tr><th>If this is true for you</th><th>Leans towards</th><th>Why</th></tr></thead><tbody>
       <tr><td>Your team uses several coding agents, or may switch</td><td>Spec Kit</td><td>A CLI that sets up workspaces for many agents; open source; latest tag <span data-other-version>v1.4.4</span>. Ships SDD plus bug-fixing and idea-assessment processes</td></tr>
       <tr><td>You want a guided Requirements &rarr; Design &rarr; Tasks flow inside the editor</td><td>Kiro</td><td>A VS Code based environment with that three-document flow and &ldquo;steering&rdquo; files (as B&ouml;ckeler describes it)</td></tr>
       <tr><td>You want product, architecture and test roles as agents, with process sized to the change</td><td>BMad Method</td><td>MIT licensed; stable line <span data-other-version>v6.12</span>, with v7 in preview alpha as of its README</td></tr>
-      <tr><td>Your team already has a strong CI and review culture</td><td>A rules file (<code>CLAUDE.md</code> or similar) plus your own gates</td><td>Switching has a cost; the gates matter more than the template. This is what the example below and this site use</td></tr>
+      <tr><td>Your team already has a strong CI and review culture</td><td>A rules file (<code>CLAUDE.md</code> or similar) plus your own gates</td><td><i>Our view:</i> switching has a cost, and the gates matter more than the template. This is what the example below and this site use</td></tr>
     </tbody></table>
-    <p class="sources">Sources: <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub: Spec Kit (README)</a>; <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>; <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMad Method (README)</a>. Tags read from each repository on 24 November 2026.</p>
+    <p class="sources">Sources: <a href="https://github.com/github/spec-kit/tree/v1.4.4" target="_blank" rel="noopener">GitHub: Spec Kit README, tag <span data-other-version>v1.4.4</span></a>; <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>; <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMad Method (README)</a>. Tags read from each repository on 24 November 2026.</p>
   </article>
 
   <article class="card wide" id="c-example-a-spring-boot-microservice-from-a-spec"><h3>Example: a Spring Boot microservice from a spec</h3>
-    <p>A <b>stock reservation service</b>: checkout calls it to hold stock for an order line, so the last unit is never sold twice. Everything below is in one Maven project on Spring Boot <span data-other-version>4.2.0</span> and Java 21, compiled and tested on 24 November 2026. It starts where a team would: with the spec, approved by product and the tech lead.</p>
-    <p><b>1. The spec</b> (<code>specs/001-reserve-stock/spec.md</code>). Six acceptance criteria, one non-functional need, one open question answered by a person:</p>
+    <p>A <b>stock reservation service</b>: checkout calls it to hold stock for an order line, so the last unit is never sold twice. Everything below is in one Maven project on Spring Boot <span data-other-version>4.2.0</span> and Java 21, compiled and tested on 24 November 2026 against an in-memory H2 database in one JVM. Running several instances against Postgres was not tested. It starts where a team would: with the spec, approved by product and the tech lead.</p>
+    <p><b>1. The spec</b> (<code>specs/001-reserve-stock/spec.md</code>). Eight acceptance criteria, one non-functional need, one open question answered by a person:</p>
     <div class="snip"><pre><code># 001 Reserve stock
 
 Owner: the product manager. Approved by: product + tech lead, before any plan.
@@ -178,36 +178,39 @@ so that no unit is sold twice.
 ## Acceptance criteria
 - AC-1: GIVEN sku A has 5 available WHEN checkout reserves 2 THEN the reply is 201 with a reservation id AND 3 remain.
 - AC-2: GIVEN sku A has 1 available WHEN checkout reserves 2 THEN the reply is 409 INSUFFICIENT_STOCK AND 1 remains.
-- AC-3: GIVEN a reservation made with Idempotency-Key k WHEN the same request is retried with k THEN the same reservation id comes back AND stock fell once.
+- AC-3: GIVEN a reservation made with Idempotency-Key k WHEN the same request is retried with k, one after the other or at the same moment THEN the same reservation id comes back AND stock fell once.
 - AC-4: GIVEN 1 unit left WHEN 20 reservations for it arrive at once THEN exactly one succeeds.
 - AC-5: GIVEN a reservation of 2 WHEN checkout releases it THEN the 2 units are available again AND a second release changes nothing.
 - AC-6: GIVEN a quantity outside 1..100 WHEN checkout reserves THEN the reply is 400.
+- AC-7: GIVEN key k was used to reserve 2 of sku A WHEN k is sent with a different sku or quantity THEN the reply is 422 IDEMPOTENCY_KEY_REUSED AND stock is unchanged.
+- AC-8: GIVEN no sku Z exists WHEN checkout reserves Z THEN the reply is 404 UNKNOWN_SKU.
 
 ## Non-functional
 - NFR-1: any number of instances can run at once. No instance keeps state in memory; the database is the record.
 
 ## Out of scope
-Expiry of abandoned reservations (spec 002).
+Expiry of abandoned reservations, and what a retry should return after its reservation was released: today it returns the released reservation (spec 002).
 
 ## Open questions
 - [NEEDS CLARIFICATION: may one order reserve the same sku twice?] Answered by product: no, use one line with the total.</code></pre></div>
     <p><b>2. The constitution</b>: rules every spec in this service obeys. Rule 1 is what makes the factory checkable; rules 3 and 4 are what make the service scale:</p>
     <div class="snip"><pre><code># Constitution (applies to every spec in this service)
-1. Every acceptance criterion has at least one test tagged with its id. The build fails otherwise.
+1. Every acceptance criterion has at least one test tagged with its id. The gate runs trace_check.py and fails otherwise.
 2. A test is written and seen failing before the code that passes it.
 3. No state in instance memory. Stock and reservations live in the database.
 4. Stock changes are one conditional UPDATE, never read-then-write.
 5. Errors are RFC 9457 problem details with a stable `code`.
 6. A human approves the spec, approves the plan, and merges. Agents do the rest.</code></pre></div>
-    <p><b>3. The tasks</b>, generated from the approved plan. Each names the criteria it serves; T2 to T4 run in parallel, one agent each, in separate worktrees:</p>
+    <p><b>3. The tasks</b>, generated from the approved plan. Each names the criteria it serves; T2 to T5 run in parallel, one agent each, in separate worktrees:</p>
     <div class="snip"><pre><code># Tasks for 001 (from plan.md; [P] = can run in parallel)
-T1      schema.sql: stock, reservation (unique idempotency_key)        AC-1..5
-T2 [P]  test AC-1, AC-2, AC-6 over HTTP; see them fail                  AC-1, AC-2, AC-6
-T3 [P]  test AC-3 retry and AC-5 release; see them fail                 AC-3, AC-5
+T1      schema.sql: stock, reservation (unique idempotency_key)        AC-1..8
+T2 [P]  tests AC-1, AC-2, AC-6, AC-8 over HTTP; see them fail          AC-1, AC-2, AC-6, AC-8
+T3 [P]  tests AC-3 retry and same-key race, AC-5 release; see fail     AC-3, AC-5
 T4 [P]  test AC-4: 20 racers, one unit; see it fail                     AC-4
-T5      ReservationService: conditional UPDATE, idempotent insert      after T1..T4
-T6      ReservationController: 201/200/409/400, problem details        after T5
-T7      gates: mvn test, trace_check.py; reviewer agent against spec   after T6</code></pre></div>
+T5 [P]  test AC-7: key reused for a different request; see it fail     AC-7
+T6      ReservationService: claim key, then conditional UPDATE         after T1..T5
+T7      ReservationController: 201/200/404/409/422/400, problem details after T6
+T8      gates: mvn test, trace_check.py; reviewer agent against spec   after T7</code></pre></div>
   </article>
 
   <article class="card wide" id="c-the-example-tests-first-then-code"><h3>The example: tests first, then code</h3>
@@ -228,30 +231,40 @@ T7      gates: mvn test, trace_check.py; reviewer agent against spec   after T6<
         }
         assertThat(service.available("A")).isZero();
     }</code></pre></div>
-    <p>The service. Stock changes in <b>one conditional <code>UPDATE</code></b>, so the database, not the Java code, decides who wins. A unique idempotency key makes a retry return the first answer, even when two instances receive the same retry at once:</p>
+    <p>The service. Stock changes in <b>one conditional <code>UPDATE</code></b>, so the database, not the Java code, decides who wins. The idempotency key is claimed <b>first</b>, through a unique index, so a second request with the same key waits for the first to finish and then gets its answer, instead of racing it for the stock (AC-3). A key reused for a different request is refused (AC-7), and an unknown sku gets a 404 (AC-8):</p>
     <div class="snip"><pre><code>    public Reservation reserve(String sku, int quantity, String idempotencyKey) {
         try {
             return tx.execute(status -&gt; {
-                Optional&lt;Reservation&gt; earlier = findByKey(idempotencyKey);      // AC-3
-                if (earlier.isPresent()) return earlier.get();
-                int changed = db.sql("""
-                        UPDATE stock SET available = available - :q
-                        WHERE sku = :sku AND available &gt;= :q""")              // AC-2, AC-4: one conditional UPDATE
-                        .param("q", quantity).param("sku", sku).update();
-                if (changed == 0) throw new InsufficientStock();
+                Optional&lt;Reservation&gt; earlier = findByKey(idempotencyKey);      // AC-3: a plain retry
+                if (earlier.isPresent()) return sameRequest(earlier.get(), sku, quantity);
+                boolean known = db.sql("SELECT COUNT(*) FROM stock WHERE sku = :sku").param("sku", sku)
+                        .query(Integer.class).single() &gt; 0;
+                if (!known) throw new UnknownSku();                           // AC-8
                 String id = UUID.randomUUID().toString();
+                // Claim the key FIRST. A second request with the same key, on any instance, now waits
+                // on the unique index until this transaction ends, instead of racing for the stock.
                 db.sql("""
                         INSERT INTO reservation (id, idempotency_key, sku, quantity, released)
                         VALUES (:id, :key, :sku, :q, FALSE)""")
                         .param("id", id).param("key", idempotencyKey)
                         .param("sku", sku).param("q", quantity).update();
+                int changed = db.sql("""
+                        UPDATE stock SET available = available - :q
+                        WHERE sku = :sku AND available &gt;= :q""")              // AC-2, AC-4: one conditional UPDATE
+                        .param("q", quantity).param("sku", sku).update();
+                if (changed == 0) throw new InsufficientStock();             // rolls back the INSERT too
                 return new Reservation(id, sku, quantity, false);
             });
         } catch (DuplicateKeyException sameKeyAtSameTime) {
-            // Two instances got the same retry at once. The unique key let one win and rolled
-            // this one back, stock change included. Answer with the winner's reservation.
-            return findByKey(idempotencyKey).orElseThrow();
+            // The same key arrived twice at once. The first one committed; answer with its reservation.
+            return sameRequest(findByKey(idempotencyKey).orElseThrow(), sku, quantity);
         }
+    }
+
+    /** AC-7: a key reused for a different request is refused, never answered with the old result. */
+    private Reservation sameRequest(Reservation earlier, String sku, int quantity) {
+        if (!earlier.sku().equals(sku) || earlier.quantity() != quantity) throw new KeyReused();
+        return earlier;
     }</code></pre></div>
     <div class="snip"><pre><code>CREATE TABLE IF NOT EXISTS stock (
   sku       VARCHAR(64) PRIMARY KEY,
@@ -264,7 +277,7 @@ CREATE TABLE IF NOT EXISTS reservation (
   quantity        INT NOT NULL,
   released        BOOLEAN NOT NULL
 );</code></pre></div>
-    <p><b>The trace gate.</b> A short script that fails the build if a criterion has no test, or a test names a criterion no spec defines. It is the cheapest check that the agent built what the spec asked for, rather than something nearby:</p>
+    <p><b>The trace gate.</b> A short script that fails the build if a criterion has no test, or a test names a criterion no spec defines. It is a cheap check that no criterion was forgotten. Its limit: it proves a tagged test exists, not that the test checks the right thing. That is the reviewer&rsquo;s job:</p>
     <div class="snip"><pre><code>"""Gate: every acceptance criterion in every spec has a test tagged with its id, and no test names an id the spec lacks."""
 import pathlib, re, sys
 
@@ -281,16 +294,17 @@ sys.exit(1 if missing or unknown else 0)</code></pre></div>
 
   <article class="card" id="c-the-example-what-the-gates-said"><h3>The example: what the gates said</h3>
     <ul>
-      <li><code>mvn test</code>: <b>6 tests, 0 failures, 0 errors</b> (read from the Surefire XML).</li>
-      <li><code>trace_check.py</code>: <b>6 criteria, 6 traced</b>.</li>
+      <li><code>mvn test</code>: <b>9 tests, 0 failures, 0 errors</b> (read from the Surefire XML, three runs).</li>
+      <li><code>trace_check.py</code>: <b>8 criteria, 8 traced</b>.</li>
     </ul>
     <p>A gate seen only green has not been tested, so we broke both on purpose:</p>
     <ul>
-      <li>We replaced the conditional update with read-then-write, the version an agent might write first. AC-4 failed: <b>10 of 20</b> racers bought the single unit.</li>
-      <li>We added an AC-7 to the spec with no test. The trace gate failed: <code>FAIL AC-7 has no test</code>.</li>
+      <li>We replaced the conditional update with read-then-write, the version an agent might write first. AC-4 failed: <b>10 of the 20</b> racers bought the single unit. The service&rsquo;s connection pool is HikariCP (its start-up appears in the test log), whose default size is 10, so that is as many as could reach the database at once; any number above one is the bug.</li>
+      <li>We added an AC-9 to the final spec with no test. The trace gate failed: <code>FAIL AC-9 has no test</code>.</li>
     </ul>
-    <p>The last gate is a review by an agent that never saw the build. Claude Code&rsquo;s guide gives the prompt: review the diff &ldquo;against SPEC.md, check every requirement is implemented and the listed edge cases have tests&rdquo;, and &ldquo;skip style&rdquo;, because a reviewer asked to find problems will always find something.</p>
-    <p class="sources">Source for the review prompt: <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code: Best practices</a>.</p>
+    <p><b>What the independent review caught.</b> The first version updated stock before claiming the key. A reviewer agent that never saw the build raced two retries with the same key for the last unit; in its runs, some retries got a 409 for a request that had succeeded. Our tests had missed it because AC-3 only tried retries one after the other. The fix claims the key first, and AC-3 now has a race test: it failed in 3 of 3 runs on the old order and passes on the new one.</p>
+    <p>That last gate is a review by an agent that never saw the build. Claude Code&rsquo;s guide gives the prompt: review the diff &ldquo;against SPEC.md, check every requirement is implemented and the listed edge cases have tests&rdquo;, and &ldquo;skip style&rdquo;, because a reviewer asked to find problems will always find something.</p>
+    <p class="sources">Sources: <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code: Best practices</a> (review prompt); <a href="https://github.com/brettwooldridge/HikariCP/blob/dev/README.md" target="_blank" rel="noopener">HikariCP: configuration (maximumPoolSize, default 10)</a>.</p>
   </article>
 
   <article class="card" id="c-the-example-how-it-scales"><h3>The example: how it scales</h3>
@@ -313,26 +327,26 @@ spec:
       target:
         type: Utilization
         averageUtilization: 60</code></pre></div>
-    <p>Point the readiness probe at <code>/actuator/health/readiness</code> so new pods get traffic only once they are ready. <i>Analysis:</i> the database becomes the limit: every replica opens its own connection pool, so replicas &times; pool size must stay below what the database accepts.</p>
+    <p>The Deployment must set a CPU request for the container, or the autoscaler has nothing to measure against. On Kubernetes, Spring Boot&rsquo;s actuator exposes <code>/actuator/health/readiness</code>; point the readiness probe at it so new pods get traffic only once they are ready. <i>Analysis:</i> the database becomes the limit: every replica opens its own connection pool, so replicas &times; pool size must stay below what the database accepts.</p>
     <p><b>The factory.</b> It scales by specs, not by agents. More specs in flight need more people approving specs and plans and merging; the parallel <code>[P]</code> tasks and per-agent worktrees take care of the rest.</p>
     <p class="sources">Sources: <a href="https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/" target="_blank" rel="noopener">Kubernetes: Horizontal Pod Autoscaling</a>; <a href="https://docs.spring.io/spring-boot/reference/actuator/endpoints.html" target="_blank" rel="noopener">Spring Boot: Actuator endpoints (liveness and readiness)</a>; <a href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Claude Code: Common workflows (worktrees, plan mode)</a>.</p>
   </article>
 
   <article class="card wide" id="c-what-goes-wrong"><h3>What goes wrong</h3>
     <ul>
-      <li><b>Too much process for small work.</b> B&ouml;ckeler felt that for a 3&ndash;5 point story, running and reviewing Spec Kit took as long as building it with plain AI help.</li>
+      <li><b>Too much process for small work.</b> B&ouml;ckeler tried Spec Kit on a 3&ndash;5 point story. It felt like overkill; she never finished it, and estimated she could have built it with plain AI help in the time spent running and reviewing Spec Kit&rsquo;s output.</li>
       <li><b>Reviewing markdown instead of code.</b> She found Spec Kit&rsquo;s files &ldquo;repetitive&rdquo; and &ldquo;tedious to review&rdquo;, and would rather review code. Keep specs short and criteria numbered.</li>
       <li><b>A false sense of control.</b> She saw agents ignore instructions (re-creating classes that already existed) and also follow a rule too eagerly. Templates are advice to a model; only gates are guarantees.</li>
       <li><b>The &ldquo;what&rdquo; and the &ldquo;how&rdquo; blur.</b> Separating functional from technical detail is hard, and she notes our profession&rsquo;s track record with user stories is not good.</li>
       <li><b>Speed without stability.</b> DORA found more AI adoption linked to lower delivery stability. A factory that ships more changes needs stronger tests, smaller batches and faster rollback, or it ships more incidents.</li>
-      <li><b>The human queue.</b> <i>Analysis:</i> agents finish in minutes; approvals take days. Watch the queue of waiting work, or it becomes the new bottleneck.</li>
+      <li><b>The human queue.</b> <i>Analysis:</i> an agent can finish a task long before a person gets to review it. Watch the queue of waiting work, or it becomes the new bottleneck.</li>
     </ul>
     <p class="sources">Sources: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl&rdquo;, 15 October 2025</a>; <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report" target="_blank" rel="noopener">Google Cloud: Announcing the 2025 DORA Report, 23 September 2025</a>.</p>
   </article>
 
   <article class="card wide" id="c-one-we-run-this-website"><h3>One we run: this website</h3>
-    <p>enrichmeai.com is built this way. Its <code>CLAUDE.md</code> sets four rules every session follows: verify every claim against a source before writing; done means green (the site checker at zero findings, CI green, the page looked at on a phone and a laptop); stop after three failed attempts and write up the blocker; prefer pinned documentation over open search. Hooks run the checker after every edit; a separate reviewer agent checks each change; and a person merges, because a merge to <code>main</code> is a production deploy.</p>
-    <p>Each mistake becomes a guard: a checker rule with a test that was first seen failing. This page went through the same line: the facts above were read from the sources linked, and the example was run, broken and run again before it was written up.</p>
+    <p>enrichmeai.com runs a lighter version: a rules file and gates. Its <code>CLAUDE.md</code> sets four rules every session follows: verify every claim against a source before writing; done means green (the site checker at zero findings, CI green, the page looked at on a phone and a laptop); stop after three failed attempts and write up the blocker; prefer pinned documentation over open search. Hooks run the checker after every edit, a separate reviewer agent checks each change, and a person merges, because a merge to <code>main</code> is a production deploy.</p>
+    <p>This page is an example of why the reviewer step matters. It first went live without it (pull requests #233 and #234). When the review ran, it found the idempotency bug above, a paraphrase stronger than its source, and opinions not labelled as opinions; a second review of the fixes found a regression they had caused. The fixes are in pull request #235. <i>Our view:</i> skipping a gate is how a factory ships its mistakes.</p>
   </article>
 
   <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
