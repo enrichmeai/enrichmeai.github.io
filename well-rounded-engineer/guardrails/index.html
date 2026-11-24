@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Standards as Guardrails · Well Rounded Engineer</title>
-<meta name="description" content="Left to itself, a model writes what it has seen most often in public code, not what your team agreed. How to make agents build on your frameworks,…">
+<meta name="description" content="A model does not know what your team agreed unless something tells it, and checks it. How to make agents build on your frameworks, templates and…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@
 <main id="main" class="eg">
 <p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>AI</span> / <span aria-current="page">Standards as Guardrails</span></p>
 <section class="panel" id="guardrails" data-name="Standards as Guardrails">
-  <div class="panel-head"><h1>Standards as guardrails in a human&ndash;AI ecosystem</h1><p>Left to itself, a model writes what it has seen most often in public code, not what your team agreed. How to make agents build on your frameworks, templates and deployment standards instead: which layers to put in place, how much to specify (and where to stop), what to automate completely, and a Spring Boot example where the rules catch an agent going off the road.</p></div>
+  <div class="panel-head"><h1>Standards as guardrails in a human&ndash;AI ecosystem</h1><p>A model does not know what your team agreed unless something tells it, and checks it. How to make agents build on your frameworks, templates and deployment standards instead: which layers to put in place, how much to specify (and where to stop), what to automate completely, and a Spring Boot example where the rules catch an agent going off the road.</p></div>
   <div class="grid">
 
   <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
@@ -72,8 +72,9 @@
   </article>
 
   <article class="card" id="c-why-a-model-needs-guiding"><h3>Why a model needs guiding</h3>
-    <p>A model fills gaps with what is common. Ask for &ldquo;an endpoint to list stock&rdquo; and the most likely answer is a controller that queries the database, prints to the console and handles its own errors: fine in a tutorial, wrong in a codebase that put data access in services and has one error format. B&ouml;ckeler also saw agents ignore instructions they had been given, and follow others too eagerly.</p>
-    <p>So instructions alone are not enough. <i>Our view:</i> write the standard down for the agent to read, and also give it something to run that fails when the standard is broken.</p>
+    <p><i>Our view:</i> a model fills gaps with what is common. Ask for &ldquo;an endpoint to list stock&rdquo; and a likely answer is a controller that queries the database, prints to the console and handles its own errors: fine in a tutorial, wrong in a codebase that put data access in services and has one error format. B&ouml;ckeler saw agents ignore instructions they had been given, and follow others too eagerly.</p>
+    <p><i>The other view:</i> a clear rules file and a good brief steer a model well most of the time, and for a small codebase may be all you need.</p>
+    <p><i>Our view:</i> so instructions alone are not enough. Write the standard down for the agent to read, and also give it something to run that fails when the standard is broken.</p>
     <p class="sources">Source: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler, &ldquo;Understanding Spec-Driven-Development&rdquo;</a>.</p>
   </article>
 
@@ -104,7 +105,7 @@
   </article>
 
   <article class="card" id="c-the-seam-a-contract-for-events"><h3>The seam: a contract for events</h3>
-    <p>When services talk over messaging, the event is what they share. This contract, in AsyncAPI <span data-other-version>3.1.0</span>, is the only part of the stock service&rsquo;s design the order and warehouse teams need to agree on. We validated it with the AsyncAPI parser (0 errors); a copy with <code>action: publish</code> was rejected, because the specification allows only <code>send</code> and <code>receive</code>.</p>
+    <p>When services talk over messaging, the event is what they share. This contract, in AsyncAPI <span data-other-version>3.1.0</span>, is the part of the stock service&rsquo;s design the order and warehouse teams would need to agree on. It is a <b>design document</b>: the example service does not publish the event yet. We checked only that it is valid AsyncAPI, with the AsyncAPI parser (0 errors); a copy with <code>action: publish</code> was rejected, because the specification allows only <code>send</code> and <code>receive</code>.</p>
     <div class="snip"><pre data-other-version><code>asyncapi: 3.1.0
 info:
   title: Stock events
@@ -132,7 +133,7 @@ components:
           reservationId: { type: string, format: uuid }
           sku: { type: string }
           quantity: { type: integer, minimum: 1, maximum: 100 }</code></pre></div>
-    <p>Contract tests then hold both sides to it. Spring Cloud Contract supports consumer-driven contracts, including for messaging.</p>
+    <p>Once the event exists, contract tests can hold both sides to it. Spring Cloud Contract offers consumer-driven contracts, and its reference has a section on messaging; the example does not include them.</p>
     <p class="sources">Sources: <a href="https://github.com/asyncapi/spec/blob/v3.1.0/spec/asyncapi.md" target="_blank" rel="noopener">AsyncAPI specification <span data-other-version>3.1.0</span></a>; <a href="https://docs.spring.io/spring-cloud-contract/reference/" target="_blank" rel="noopener">Spring Cloud Contract reference</a>.</p>
   </article>
 
@@ -165,12 +166,12 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre></div>
-    <p><i>Our view:</i> the tests and the architecture rules are what make this safe. People look at major versions and at anything the gates reject.</p>
+    <p>Two settings make this safe, and both are needed: auto-merge must be enabled for the repository, and the build and the platform rules test must be <b>required</b> status checks. Without required checks, auto-merge has nothing to wait for. GitHub&rsquo;s own example pins the third-party <code>fetch-metadata</code> action to a commit SHA; a tag is shown here for readability. <i>Our view:</i> with those in place, people look only at major versions and at anything the gates reject.</p>
     <p class="sources">Sources: <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates" target="_blank" rel="noopener">GitHub: Dependabot version updates</a>; <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file" target="_blank" rel="noopener">GitHub: dependabot.yml options</a>; <a href="https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/automate-dependabot-with-actions" target="_blank" rel="noopener">GitHub: Automating Dependabot with GitHub Actions</a>; <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request" target="_blank" rel="noopener">GitHub: Automatically merging a pull request</a>; <a href="https://github.com/openrewrite/rewrite-spring" target="_blank" rel="noopener">OpenRewrite: rewrite-spring (README)</a>.</p>
   </article>
 
   <article class="card wide" id="c-example-a-platform-starter-and-its-rules"><h3>Example: a platform starter and its rules</h3>
-    <p>The stock reservation service from <a href="/well-rounded-engineer/specfactory/">spec-driven development</a>, moved onto a shared <b>platform starter</b>. The starter is a Spring Boot auto-configuration that every service depends on. It brings one error format, and it ships the team&rsquo;s architecture rules as ArchUnit tests. Built on Spring Boot <span data-other-version>4.2.0</span> and ArchUnit <span data-other-version>1.5.1</span>, compiled and tested on 24 November 2026 (H2, one JVM).</p>
+    <p>The stock reservation service from <a href="/well-rounded-engineer/specfactory/">spec-driven development</a>, moved onto a shared <b>platform starter</b>. The starter is a Spring Boot auto-configuration that every service depends on. It brings one error format, and it ships the team&rsquo;s architecture rules as ArchUnit tests. An exception that never reaches a client can opt out with <code>@NotClientFacing</code>. Built on Spring Boot <span data-other-version>4.2.0</span> and ArchUnit <span data-other-version>1.5.1</span>, compiled and tested on 24 November 2026 (H2, one JVM).</p>
     <p><b>One error format</b>, defined once in the starter:</p>
     <div class="snip"><pre><code>/** One error format for every service: RFC 9457 problem details with a stable code. */
 @RestControllerAdvice
@@ -192,23 +193,32 @@ public final class PlatformRules {
 
     public static final ArchRule CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE =
             noClasses().that().areAnnotatedWith(org.springframework.web.bind.annotation.RestController.class)
-                    .should().dependOnClassesThat().haveFullyQualifiedName("org.springframework.jdbc.core.simple.JdbcClient")
+                    .or().areAnnotatedWith(org.springframework.stereotype.Controller.class)
+                    .should().dependOnClassesThat().resideInAnyPackage("org.springframework.jdbc..", "jakarta.persistence..")
                     .because("data access belongs in a service, where transactions are");
 
-    public static final ArchRule ERRORS_GO_THROUGH_THE_PLATFORM =
+    public static final ArchRule SERVICE_EXCEPTIONS_GO_THROUGH_THE_PLATFORM =
             classes().that().areAssignableTo(RuntimeException.class).and().resideOutsideOfPackage("com.example.platform..")
+                    .and().areNotAnnotatedWith(NotClientFacing.class)
                     .should().beAssignableTo(DomainException.class)
-                    .because("one error format for every service");
+                    .because("one error format for every service; mark internal-only exceptions @NotClientFacing");
 
     public static final ArchRule NO_OWN_ERROR_HANDLERS =
             noClasses().that().resideOutsideOfPackage("com.example.platform..")
                     .should().beAnnotatedWith(org.springframework.web.bind.annotation.RestControllerAdvice.class)
+                    .orShould().beAnnotatedWith(org.springframework.web.bind.annotation.ControllerAdvice.class)
+                    .because("the platform already maps errors; a second handler drifts");
+
+    public static final ArchRule NO_LOCAL_EXCEPTION_HANDLERS =
+            noMethods().that().areDeclaredInClassesThat().resideOutsideOfPackage("com.example.platform..")
+                    .should().beAnnotatedWith(org.springframework.web.bind.annotation.ExceptionHandler.class)
                     .because("the platform already maps errors; a second handler drifts");
 
     public static final List&lt;ArchRule&gt; ALL = List.of(
             CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE,
-            ERRORS_GO_THROUGH_THE_PLATFORM,
+            SERVICE_EXCEPTIONS_GO_THROUGH_THE_PLATFORM,
             NO_OWN_ERROR_HANDLERS,
+            NO_LOCAL_EXCEPTION_HANDLERS,
             GeneralCodingRules.NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS);
 
     /** Checks every rule and reports every violation at once, so a reviewer (person or agent) sees them all. */
@@ -249,15 +259,33 @@ class ShortcutController {
     @ExceptionHandler(NotFound.class)
     ProblemDetail notFound() { return ProblemDetail.forStatus(HttpStatus.NOT_FOUND); }
 }</code></pre></div>
-    <p>The build refuses it. All four rules fire in one report, so the agent (or a person) sees everything to fix at once:</p>
-    <div class="snip"><pre><code>Rule '...' was violated (6 times):
+    <p>So might this quieter version, which uses <code>JdbcTemplate</code> and a handler inside the controller:</p>
+    <div class="snip"><pre><code>/** The quieter shortcuts: JdbcTemplate instead of JdbcClient, and a controller-local handler. */
+@RestController
+class BypassController {
+    private final JdbcTemplate jdbc;
+    BypassController(JdbcTemplate jdbc) { this.jdbc = jdbc; }
+
+    @GetMapping("/stock-count")
+    Integer count() { return jdbc.queryForObject("SELECT COUNT(*) FROM stock", Integer.class); }
+
+    @ExceptionHandler(IllegalStateException.class)
+    String oops() { return "oops"; }
+}</code></pre></div>
+    <p>The build refuses both. All five rules fire in one report, so the agent (or a person) sees everything to fix at once:</p>
+    <div class="snip"><pre><code>Rule '...' was violated (14 times):   [package names shortened, similar lines dropped]
 Class &lt;ShortcutController$NotFound&gt; is not assignable to com.example.platform.DomainException in (ShortcutController.java:0)
 Class &lt;ShortcutController&gt; is annotated with @RestControllerAdvice in (ShortcutController.java:0)
+Constructor &lt;BypassController.&lt;init&gt;(JdbcTemplate)&gt; has parameter of type &lt;JdbcTemplate&gt; in (BypassController.java:0)
 Constructor &lt;ShortcutController.&lt;init&gt;(JdbcClient)&gt; has parameter of type &lt;JdbcClient&gt; in (ShortcutController.java:0)
+Field &lt;BypassController.jdbc&gt; has type &lt;JdbcTemplate&gt; in (BypassController.java:0)
 Field &lt;ShortcutController.db&gt; has type &lt;JdbcClient&gt; in (ShortcutController.java:0)
+Method &lt;BypassController.count()&gt; calls method &lt;JdbcTemplate.queryForObject(java.lang.String, java.lang.Class)&gt; in (BypassController.java:15)
+Method &lt;BypassController.oops()&gt; is annotated with @ExceptionHandler in (BypassController.java:18)
 Method &lt;ShortcutController.available(java.lang.String)&gt; calls method &lt;JdbcClient.sql(java.lang.String)&gt; in (ShortcutController.java:20)
-Method &lt;ShortcutController.available(java.lang.String)&gt; gets field &lt;java.lang.System.out&gt; in (ShortcutController.java:19)</code></pre></div>
-    <p>On the service as built, the same check passes: <b>10 tests, 0 failures</b> (the 9 spec tests, unchanged after the move to the starter, plus the platform rules). The violations tell the agent what to do instead: move the query into a service, throw a <code>DomainException</code>, drop the handler and the <code>System.out</code>.</p>
+Method &lt;ShortcutController.available(java.lang.String)&gt; gets field &lt;java.lang.System.out&gt; in (ShortcutController.java:19)
+Method &lt;ShortcutController.notFound()&gt; is annotated with @ExceptionHandler in (ShortcutController.java:24)</code></pre></div>
+    <p>A rule only catches what it was written to catch: the first draft of these rules missed <code>JdbcTemplate</code> and controller-local handlers until a review pointed it out. On the service as built, the same check passes: <b>10 tests, 0 failures</b> (the 9 spec tests, unchanged after the move to the starter, plus the platform rules). The violations tell the agent what to do instead: move the query into a service, throw a <code>DomainException</code>, drop the handler and the <code>System.out</code>.</p>
   </article>
 
   <article class="card" id="c-the-example-deployment-stays-on-the-template"><h3>The example: deployment stays on the template</h3>
@@ -268,8 +296,7 @@ name: stock-reservation
 team: checkout
 cpuRequest: 250m
 memory: 512Mi
-replicas: { min: 2, max: 10 }
-publishes: [contracts/stock-events.asyncapi.yaml]</code></pre></div>
+replicas: { min: 2, max: 10 }</code></pre></div>
     <p>Its pipeline is a call to the platform&rsquo;s reusable workflow, which every service shares:</p>
     <div class="snip"><pre><code>name: deploy
 on:
@@ -293,22 +320,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - run: mvn -B verify             # spec tests, platform rules, contract checks
+      - run: mvn -B verify             # spec tests and platform rules
       # ...then build the image from the platform Dockerfile and render the
       # Kubernetes objects from inputs.service-config (omitted here)</code></pre></div>
     <p class="sources">Not run here: these workflows need the platform repository. YAML checked to parse. Source: <a href="https://docs.github.com/en/actions/sharing-automations/reusing-workflows" target="_blank" rel="noopener">GitHub: Reusing workflows</a>.</p>
   </article>
 
   <article class="card" id="c-the-example-the-agent-is-told-not-just-blocked"><h3>The example: the agent is told, not just blocked</h3>
-    <p>A Claude Code <code>PreToolUse</code> hook refuses edits to the files the templates own. Exit code 2 blocks the edit, and the message goes back to the agent so it can choose the right path:</p>
+    <p>A Claude Code <code>PreToolUse</code> hook refuses edits, through the Edit and Write tools, to the files the templates own and to the hook&rsquo;s own settings. Exit code 2 blocks the edit, and the message goes back to the agent so it can choose the right path:</p>
     <div class="snip"><pre><code>#!/bin/bash
 # PreToolUse hook for Edit|Write: deployment files come from the platform's templates.
 # The agent may change service.yaml (the values); it may not write its own Dockerfile,
-# Kubernetes manifests or deploy workflow. Exit 2 blocks the edit and tells the agent why.
+# Kubernetes manifests or deploy workflow, nor the hook settings. Exit 2 blocks the edit and tells the agent why.
+# It catches honest mistakes; it is not a security boundary (a shell command can still write a file).
 path=$(python3 -c 'import json,sys; print(json.load(sys.stdin).get("tool_input",{}).get("file_path",""))')
 case "$path" in
-  *Dockerfile*|*/k8s/*|*/helm/*|*/.github/workflows/*)
-    echo "Blocked: $path is generated from the platform templates. Change service.yaml instead, or ask the platform team to change the template." &gt;&amp;2
+  Dockerfile|*/Dockerfile|k8s/*|*/k8s/*|helm/*|*/helm/*|.github/workflows/*|*/.github/workflows/*|.claude/*|*/.claude/*)
+    echo "Blocked: $path is generated from the platform templates (or guards them). Change service.yaml instead, or ask the platform team to change the template." &gt;&amp;2
     exit 2 ;;
 esac
 exit 0</code></pre></div>
@@ -325,16 +353,20 @@ exit 0</code></pre></div>
   }
 }</code></pre></div>
     <p>Tested by feeding it the JSON a <code>Write</code> call sends:</p>
-    <div class="snip"><pre><code>Write Dockerfile                    -&gt; exit 2  Blocked: ... generated from the platform templates.
-Write .github/workflows/deploy.yml  -&gt; exit 2  Blocked: ...
-Write k8s/deployment.yaml           -&gt; exit 2  Blocked: ...
-Write src/.../ReservationService.java -&gt; exit 0
-Write service.yaml                  -&gt; exit 0</code></pre></div>
+    <div class="snip"><pre><code>/repo/svc/Dockerfile                  -&gt; exit 2  Blocked: ... generated from the platform templates
+.github/workflows/deploy.yml          -&gt; exit 2  (relative paths too)
+/repo/svc/k8s/deployment.yaml         -&gt; exit 2
+/repo/svc/.claude/settings.json       -&gt; exit 2  (the guard guards itself)
+/repo/svc/docs/Dockerfile-notes.md    -&gt; exit 0
+/repo/svc/.github/dependabot.yml      -&gt; exit 0
+/repo/svc/src/.../ReservationService.java -&gt; exit 0
+/repo/svc/service.yaml                -&gt; exit 0</code></pre></div>
+    <p><i>Analysis:</i> the hook catches an honest mistake and explains it; it is not a security boundary. A shell command can still write a file. The real stops are the build and the cluster policy below.</p>
     <p class="sources">Source: <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Claude Code: Hooks reference</a> (&ldquo;Exit with code 2 to block the action&rdquo;).</p>
   </article>
 
   <article class="card wide" id="c-the-example-the-last-line-in-the-cluster"><h3>The example: the last line, in the cluster</h3>
-    <p>If something non-compliant still reaches Kubernetes, a ValidatingAdmissionPolicy (stable since Kubernetes <span data-other-version>1.30</span>) can reject it. This one requires a CPU request on every container, which the autoscaler needs, and an owning team label:</p>
+    <p>If something non-compliant still reaches Kubernetes, a ValidatingAdmissionPolicy (stable since Kubernetes <span data-other-version>1.30</span>) can reject it. This one requires a CPU request on every container (a CPU-based HorizontalPodAutoscaler measures use against the request) and an owning team label:</p>
     <div class="snip"><pre><code>apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingAdmissionPolicy
 metadata:
@@ -360,12 +392,13 @@ metadata:
 spec:
   policyName: "require-cpu-request.platform.example.com"
   validationActions: [Deny]</code></pre></div>
-    <p class="sources">Not run against a cluster; YAML checked to parse, CEL written after the examples in <a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/" target="_blank" rel="noopener">Kubernetes: Validating Admission Policy</a>.</p>
+    <p class="sources">Not run against a cluster; YAML checked to parse, CEL written after the examples in <a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/" target="_blank" rel="noopener">Kubernetes: Validating Admission Policy</a>. On CPU requests: <a href="https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/" target="_blank" rel="noopener">Kubernetes: Horizontal Pod Autoscaling</a>.</p>
   </article>
 
   <article class="card wide" id="c-what-goes-wrong"><h3>What goes wrong</h3>
     <ul>
       <li><b>A cage instead of a road.</b> <i>Analysis:</i> if a rule cannot be changed, people and agents route around it. Every rule needs an owner and a way to propose a change.</li>
+      <li><b>Rules narrower than their names.</b> A rule called &ldquo;controllers do not touch the database&rdquo; that only looks for one class is a false comfort. Test each rule against the shortcuts it is meant to stop.</li>
       <li><b>Too many rules.</b> A wall of violations teaches nobody. Keep the rules to what would hurt other services or repeat a fix.</li>
       <li><b>Templates that go stale.</b> A template nobody updates becomes the old way, copied everywhere. Version it, and let automated upgrades carry changes to every service.</li>
       <li><b>Planning instead of building.</b> Detailed specs for every service before any runs is the trap above: spec the seams, build, learn.</li>
@@ -374,7 +407,7 @@ spec:
   </article>
 
   <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
-    <p><i>Our view:</i> standards that run as code are the most practical way to keep agents aligned with a team, because they say pass or fail where a document only asks. Put them in the framework, the templates and the build, keep them few, and let people change them.</p>
+    <p><i>Our view:</i> standards that run as code are a practical way to keep agents aligned with a team, because they say pass or fail where a document only asks. Put them in the framework, the templates and the build, keep them few, and let people change them.</p>
     <p><i>The other view:</i> a heavy platform costs a team to build and own, and can slow the small number of services that need to be different. For a handful of services, a rules file and a good review may be enough; build the platform when the same fix starts being made in many places.</p>
   </article>
 
