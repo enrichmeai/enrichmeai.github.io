@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standards as Guardrails · Well Rounded Engineer</title>
+<meta name="description" content="A model does not know what your team agreed unless something tells it, and checks it. How to make agents build on your frameworks, templates and…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/well-rounded-engineer/engineer.css">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/png/enrichmeai-mark-180.png">
+<script src="/well-rounded-engineer/engineer.js" defer></script>
+</head>
+<body data-tab="guardrails" class="eg-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="eg-top">
+  <div class="eg-wrap eg-top-in">
+    <a href="/" class="wordmark eg-mark">enrichme<span class="dot">·</span>ai</a>
+    <a class="product-label" href="/well-rounded-engineer/">Well Rounded Engineer</a>
+    <nav class="eg-site" aria-label="enrichme·ai">
+      <a href="/headworks/">Headworks</a>
+      <a href="/#work">What we build</a>
+      <a href="/#writing">Writing</a>
+      <a href="https://github.com/enrichmeai">GitHub</a>
+      <a href="/#services" class="eg-site-cta">Work with us</a>
+    </nav>
+    <div class="search"><input id="q" type="search" aria-label="Search the guide" placeholder="Search 141 pages, e.g. merge" autocomplete="off"></div>
+    <button type="button" class="eg-topics-btn" aria-controls="topics" aria-expanded="false" hidden>Topics</button>
+  </div>
+</header>
+
+<div class="eg-wrap eg-layout">
+<nav class="eg-side" id="topics" aria-label="Guide sections">
+<div class="side-top"><a href="/well-rounded-engineer/">Start here</a><a href="/well-rounded-engineer/aiworry/">Worried about AI?</a><a href="/well-rounded-engineer/idea2prod/">Idea to Production</a></div>
+<details class="side-grp"><summary>Foundations<span class="n">17</span></summary><div class="side-links"><a href="/well-rounded-engineer/electronics/">Electronics &amp; Chips</a><a href="/well-rounded-engineer/hardware/">How Computers Are Built</a><a href="/well-rounded-engineer/chips/">From Binary to GPUs</a><a href="/well-rounded-engineer/chipjobs/">Chip Jobs &amp; GPU Startups</a><a href="/well-rounded-engineer/linux/">Linux</a><a href="/well-rounded-engineer/networking/">Networking</a><a href="/well-rounded-engineer/internet/">How the Internet Is Tied Together</a><a href="/well-rounded-engineer/web/">Web Fundamentals</a><a href="/well-rounded-engineer/searchengines/">How Search Works &amp; AI Browsers</a><a href="/well-rounded-engineer/docker/">Docker</a><a href="/well-rounded-engineer/dsa/">Data Structures &amp; Algorithms</a><a href="/well-rounded-engineer/concurrency/">Concurrency</a><a href="/well-rounded-engineer/sql/">SQL Skills</a><a href="/well-rounded-engineer/database/">Database Design</a><a href="/well-rounded-engineer/graphdb/">Graph Databases</a><a href="/well-rounded-engineer/datastore/">Choosing a Data Store</a><a href="/well-rounded-engineer/homelab/">Home Lab</a></div></details>
+<details class="side-grp"><summary>Languages<span class="n">11</span></summary><div class="side-links"><a href="/well-rounded-engineer/java/">Java</a><a href="/well-rounded-engineer/javathreads/">How Java Threads Evolved</a><a href="/well-rounded-engineer/ionio/">IO, NIO &amp; Web Servers</a><a href="/well-rounded-engineer/kotlin/">Kotlin</a><a href="/well-rounded-engineer/python/">Python</a><a href="/well-rounded-engineer/javascript/">JavaScript</a><a href="/well-rounded-engineer/functional/">Functional or Imperative</a><a href="/well-rounded-engineer/fetoolchain/">Front-end Toolchain</a><a href="/well-rounded-engineer/go/">Go</a><a href="/well-rounded-engineer/rust/">Rust</a><a href="/well-rounded-engineer/buildtools/">Build Tools</a></div></details>
+<details class="side-grp"><summary>Building services<span class="n">12</span></summary><div class="side-links"><a href="/well-rounded-engineer/apis/">APIs &amp; Integration</a><a href="/well-rounded-engineer/apihistory/">How APIs Evolved</a><a href="/well-rounded-engineer/graphql/">GraphQL</a><a href="/well-rounded-engineer/realtime/">Real-time to the Browser</a><a href="/well-rounded-engineer/reactive/">Reactive &amp; Backpressure</a><a href="/well-rounded-engineer/kafka/">Kafka</a><a href="/well-rounded-engineer/payments/">Payment Gateways</a><a href="/well-rounded-engineer/banking/">Banking &amp; Low Latency</a><a href="/well-rounded-engineer/spring/">Spring Boot</a><a href="/well-rounded-engineer/springhistory/">From spring.jar to Spring</a><a href="/well-rounded-engineer/quarkus/">Quarkus</a><a href="/well-rounded-engineer/faded/">Faded? Rails, Flex &amp; Grails</a></div></details>
+<details class="side-grp"><summary>User interfaces<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/designux/">Design Thinking &amp; UX</a><a href="/well-rounded-engineer/accessibility/">Accessibility</a><a href="/well-rounded-engineer/apps/">Apps: Native or Cross-platform</a><a href="/well-rounded-engineer/uihistory/">UI History</a></div></details>
+<details class="side-grp"><summary>Quality<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/testing/">Testing</a><a href="/well-rounded-engineer/teststrat/">Test Strategy for Cloud Systems</a><a href="/well-rounded-engineer/review/">Writing &amp; Code Review</a><a href="/well-rounded-engineer/performance/">Performance</a></div></details>
+<details class="side-grp"><summary>Security<span class="n">6</span></summary><div class="side-links"><a href="/well-rounded-engineer/security/">Security</a><a href="/well-rounded-engineer/pki/">Keys, Certificates &amp; SSH</a><a href="/well-rounded-engineer/privacy/">Personal Data Across Services</a><a href="/well-rounded-engineer/cyber/">Cybersecurity</a><a href="/well-rounded-engineer/agentsec/">Agentic AI Security</a><a href="/well-rounded-engineer/oauth/">OAuth &amp; OIDC</a></div></details>
+<details class="side-grp"><summary>Data<span class="n">4</span></summary><div class="side-links"><a href="/well-rounded-engineer/data/">Data Engineering</a><a href="/well-rounded-engineer/datalibs/">Data Libraries</a><a href="/well-rounded-engineer/dbt/">dbt</a><a href="/well-rounded-engineer/dags/">Airflow DAGs</a></div></details>
+<details class="side-grp"><summary>Architecture &amp; design<span class="n">14</span></summary><div class="side-links"><a href="/well-rounded-engineer/patterns/">SOLID &amp; Design Patterns</a><a href="/well-rounded-engineer/architecture/">Architecture</a><a href="/well-rounded-engineer/quality/">Quality Attributes</a><a href="/well-rounded-engineer/atob/">Solution Architecture: A to B</a><a href="/well-rounded-engineer/distsys/">Distributed Systems</a><a href="/well-rounded-engineer/microservices/">Microservices</a><a href="/well-rounded-engineer/casestudies/">Case Studies: How Tech Companies Evolved</a><a href="/well-rounded-engineer/databricks/">Databricks</a><a href="/well-rounded-engineer/palantir/">Palantir</a><a href="/well-rounded-engineer/eventsourcing/">Event Sourcing</a><a href="/well-rounded-engineer/sysdesign/">System Design</a><a href="/well-rounded-engineer/ratelimit/">Rate Limiting</a><a href="/well-rounded-engineer/specs/">Specifications</a><a href="/well-rounded-engineer/caching/">Caching</a></div></details>
+<details class="side-grp"><summary>Platform &amp; operations<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/devops/">DevOps</a><a href="/well-rounded-engineer/kubernetes/">Kubernetes</a><a href="/well-rounded-engineer/k8sdr/">Kubernetes DR &amp; Best Practices</a><a href="/well-rounded-engineer/helm/">Helm Charts</a><a href="/well-rounded-engineer/operators/">Operators</a><a href="/well-rounded-engineer/servicemesh/">Service Mesh &amp; Istio</a><a href="/well-rounded-engineer/terraform/">Terraform</a><a href="/well-rounded-engineer/observability/">Observability</a><a href="/well-rounded-engineer/sre/">SRE</a><a href="/well-rounded-engineer/postmortems/">Postmortems Worth Reading</a></div></details>
+<details class="side-grp"><summary>Cloud providers<span class="n">10</span></summary><div class="side-links"><a href="/well-rounded-engineer/cloudinside/">How the cloud is built</a><a href="/well-rounded-engineer/cloudcompare/">GCP vs AWS vs Azure</a><a href="/well-rounded-engineer/cloudcost/">Cloud Cost</a><a href="/well-rounded-engineer/retailcloud/">Retail &amp; Hybrid Cloud</a><a href="/well-rounded-engineer/gcpdata/">Data on GCP</a><a href="/well-rounded-engineer/bigquery/">BigQuery</a><a href="/well-rounded-engineer/cloudrun/">Cloud Run</a><a href="/well-rounded-engineer/apigee/">Apigee</a><a href="/well-rounded-engineer/awsdata/">Data on AWS</a><a href="/well-rounded-engineer/azuredata/">Data on Azure</a></div></details>
+<details class="side-grp" open><summary>AI<span class="n">16</span></summary><div class="side-links"><a href="/well-rounded-engineer/neural/">Neural Networks</a><a href="/well-rounded-engineer/routingtrains/">Routing &amp; Trains with Neural Networks</a><a href="/well-rounded-engineer/llm/">LLMs</a><a href="/well-rounded-engineer/ai/">AI for Engineers</a><a href="/well-rounded-engineer/rag/">RAG</a><a href="/well-rounded-engineer/aimemory/">AI Memory &amp; Threads</a><a href="/well-rounded-engineer/mcp/">MCP</a><a href="/well-rounded-engineer/agentharness/">Agent Harness</a><a href="/well-rounded-engineer/agentmakers/">How Anthropic &amp; OpenAI Build Agents</a><a href="/well-rounded-engineer/agentsystem/">Building an Agentic System</a><a href="/well-rounded-engineer/agentprod/">Agents to Production</a><a href="/well-rounded-engineer/ailead/">AI Leaders and Builders</a><a href="/well-rounded-engineer/humanagents/">Humans &amp; Agents</a><a href="/well-rounded-engineer/specfactory/">Spec-Driven Development</a><a href="/well-rounded-engineer/guardrails/" aria-current="page">Standards as Guardrails</a><a href="/well-rounded-engineer/blueprints/">Frameworks vs AI</a></div></details>
+<details class="side-grp"><summary>Tools<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/claudetools/">Claude Code &amp; Cowork</a><a href="/well-rounded-engineer/copilot/">GitHub Copilot</a><a href="/well-rounded-engineer/agentsgcp/">Agents on GCP</a><a href="/well-rounded-engineer/harness/">Harness</a><a href="/well-rounded-engineer/opstools/">Ops Tooling</a></div></details>
+<details class="side-grp"><summary>Thinking &amp; character<span class="n">15</span></summary><div class="side-links"><a href="/well-rounded-engineer/behaviours/">Behaviours</a><a href="/well-rounded-engineer/perseverance/">Perseverance &amp; Resilience</a><a href="/well-rounded-engineer/newideas/">New Ideas, Familiarity &amp; Habits</a><a href="/well-rounded-engineer/thinkers/">Thinkers Worth Knowing</a><a href="/well-rounded-engineer/andrewng/">Andrew Ng</a><a href="/well-rounded-engineer/hintonlecun/">Geoffrey Hinton &amp; Yann LeCun</a><a href="/well-rounded-engineer/ways/">Ways of Working</a><a href="/well-rounded-engineer/mathematics/">Mathematics</a><a href="/well-rounded-engineer/valuation/">How Companies Are Valued</a><a href="/well-rounded-engineer/science/">Science &amp; Method</a><a href="/well-rounded-engineer/everydayscience/">Everyday Science</a><a href="/well-rounded-engineer/philosophy/">Philosophy</a><a href="/well-rounded-engineer/goodhuman/">Being a Good Human</a><a href="/well-rounded-engineer/body/">Body, Mind &amp; Nature</a><a href="/well-rounded-engineer/longevity/">Biohacking &amp; Longevity</a></div></details>
+<details class="side-grp"><summary>Frontiers<span class="n">5</span></summary><div class="side-links"><a href="/well-rounded-engineer/quantum/">Quantum Computing</a><a href="/well-rounded-engineer/robotics/">Robotics</a><a href="/well-rounded-engineer/bitcoin/">Bitcoin &amp; Blockchain</a><a href="/well-rounded-engineer/web3/">Web 3.0</a><a href="/well-rounded-engineer/solid/">Solid</a></div></details>
+<details class="side-grp"><summary>About this guide<span class="n">3</span></summary><div class="side-links"><a href="/well-rounded-engineer/why/">Why this guide exists</a><a href="/well-rounded-engineer/history/">A brief history</a><a href="/well-rounded-engineer/reading/">Reading List</a></div></details>
+<details class="side-grp"><summary>EnrichMeAI open source<span class="n">7</span></summary><div class="side-links"><a href="/well-rounded-engineer/opensource/">Our open source</a><a href="/cistern/">Cistern</a><a href="/penstock/">Penstock</a><a href="/headworks/">Headworks</a><a href="/persona/">Persona</a><a href="/well-rounded-engineer/culvert/">Culvert</a><a href="/enrich-test-api/">enrich-test-api</a></div></details>
+</nav>
+<main id="main" class="eg">
+<p class="eg-crumb"><a href="/well-rounded-engineer/">Guide</a> / <span>AI</span> / <span aria-current="page">Standards as Guardrails</span></p>
+<section class="panel" id="guardrails" data-name="Standards as Guardrails">
+  <div class="panel-head"><h1>Standards as guardrails in a human&ndash;AI ecosystem</h1><p>A model does not know what your team agreed unless something tells it, and checks it. How to make agents build on your frameworks, templates and deployment standards instead: which layers to put in place, how much to specify (and where to stop), what to automate completely, and a Spring Boot example where the rules catch an agent going off the road.</p></div>
+  <div class="grid">
+
+  <article class="card wide" id="c-the-short-answer"><h3>The short answer</h3>
+    <p>Put the team&rsquo;s standards where an agent cannot miss them and where a check can say pass or fail: in a <b>framework</b> the code builds on, in <b>templates</b> that create and deploy services, in <b>tests</b> that check the architecture, and in <b>hooks and policies</b> that refuse what breaks the rules. Then the agent spends its effort on what is different about this service, and the shared parts stay the same because they are shared, not because someone remembered.</p>
+    <p><i>Our view:</i> this is an ecosystem, not a production line. People own the standards and change them as they learn; agents work inside them; the gates show where the two disagree. And the services are not copies of each other: standards fix only what should be the same everywhere, such as errors, security, logging and deployment.</p>
+    <figure class="fig"><svg viewBox="0 0 650 225" role="img" aria-labelledby="gr-t gr-d"><title id="gr-t">A human&ndash;AI ecosystem around shared standards</title><desc id="gr-d">A loop of four steps. People set and change the standards. Agents build inside them. Gates say pass or fail. People read what failed and improve a rule, and the loop returns to the start: the standards evolve.</desc><rect class="nd in" x="60" y="40" width="190" height="62" rx="6"/><text class="lb hd" x="155" y="62" text-anchor="middle">People</text><text class="lb mu" x="155" y="80" text-anchor="middle">set and change</text><text class="lb mu" x="155" y="95" text-anchor="middle">the standards</text><rect class="nd" x="400" y="40" width="190" height="62" rx="6"/><text class="lb hd" x="495" y="62" text-anchor="middle">Agents</text><text class="lb mu" x="495" y="80" text-anchor="middle">build inside</text><text class="lb mu" x="495" y="95" text-anchor="middle">them</text><rect class="nd" x="400" y="150" width="190" height="62" rx="6"/><text class="lb hd" x="495" y="172" text-anchor="middle">Gates</text><text class="lb mu" x="495" y="190" text-anchor="middle">say pass</text><text class="lb mu" x="495" y="205" text-anchor="middle">or fail</text><rect class="nd in" x="60" y="150" width="190" height="62" rx="6"/><text class="lb hd" x="155" y="172" text-anchor="middle">People</text><text class="lb mu" x="155" y="190" text-anchor="middle">read what failed,</text><text class="lb mu" x="155" y="205" text-anchor="middle">improve a rule</text><line class="ed" x1="252" y1="71" x2="396" y2="71"/><polygon class="ar" points="399,71 393,68 393,74"/><line class="ed" x1="495" y1="104" x2="495" y2="146"/><polygon class="ar" points="495,149 492,143 498,143"/><line class="ed" x1="398" y1="181" x2="254" y2="181"/><polygon class="ar" points="251,181 257,178 257,184"/><line class="ed" x1="155" y1="148" x2="155" y2="106"/><polygon class="ar" points="155,103 152,109 158,109"/><text class="lb acc" x="325" y="130" text-anchor="middle">the standards evolve</text></svg><figcaption>People own the standards and change them; agents work inside them; the gates show where the two disagree. <i>Analysis:</i> our picture of the loop.</figcaption></figure>
+  </article>
+
+  <article class="card" id="c-an-ecosystem-not-a-factory"><h3>An ecosystem, not a factory</h3>
+    <p>In a domain with, say, half a dozen services that talk over messaging, each service does something different. What they share is the plumbing: how errors look, how they log, how they deploy, how they are secured, how they publish events. That shared part is what the standards cover. The domain logic, the part that makes each service worth having, is where people and agents should spend their thinking.</p>
+    <p><i>Our view:</i> a standard earns its place when getting it wrong in one service would hurt the others, or when the same fix would otherwise be made many times. Anything else is a choice the service team can make.</p>
+    <p class="sources">More on why a framework beats generated copies: <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI Boilerplate</a>.</p>
+  </article>
+
+  <article class="card" id="c-why-a-model-needs-guiding"><h3>Why a model needs guiding</h3>
+    <p><i>Our view:</i> a model fills gaps with what is common. Ask for &ldquo;an endpoint to list stock&rdquo; and a likely answer is a controller that queries the database, prints to the console and handles its own errors: fine in a tutorial, wrong in a codebase that put data access in services and has one error format. B&ouml;ckeler saw agents ignore instructions they had been given, and follow others too eagerly.</p>
+    <p><i>The other view:</i> a clear rules file and a good brief steer a model well most of the time, and for a small codebase may be all you need.</p>
+    <p><i>Our view:</i> so instructions alone are not enough. Write the standard down for the agent to read, and also give it something to run that fails when the standard is broken.</p>
+    <p class="sources">Source: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler, &ldquo;Understanding Spec-Driven-Development&rdquo;</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-the-layers-from-intent-to-production"><h3>The layers, from intent to production</h3>
+    <table class="eg"><thead><tr><th>Layer (owner)</th><th>What it fixes</th><th>How an agent meets it</th></tr></thead><tbody>
+      <tr><td>Spec and rules file <i>(Product manager (spec); tech lead (rules))</i></td><td>What this change must do; which framework and templates to use</td><td>Reads it before planning</td></tr>
+      <tr><td>Framework starter <i>(Platform team)</i></td><td>Error format, logging, security, health checks</td><td>Builds on it instead of writing plumbing</td></tr>
+      <tr><td>Service template <i>(Platform team)</i></td><td>The shape of a new service and its repository</td><td>Starts from it rather than from a blank prompt</td></tr>
+      <tr><td>Deployment template <i>(Platform team)</i></td><td>Image, Kubernetes objects, pipeline</td><td>Edits one values file, not the templates</td></tr>
+      <tr><td>Tests in the build <i>(Service team and platform team)</i></td><td>The spec&rsquo;s criteria and the architecture rules</td><td>Runs them; a failure says what to fix</td></tr>
+      <tr><td>Agent hooks <i>(Tech lead)</i></td><td>Files the agent must not write</td><td>The edit is refused, with the reason</td></tr>
+      <tr><td>Cluster admission policy <i>(Platform and security)</i></td><td>What may run at all</td><td>A non-compliant deployment is rejected</td></tr>
+    </tbody></table>
+    <p class="sources"><i>Analysis:</i> our layering. Mechanisms: <a href="https://docs.spring.io/spring-boot/reference/features/developing-auto-configuration.html" target="_blank" rel="noopener">Spring Boot: Creating your own auto-configuration (starters)</a>; <a href="https://backstage.io/docs/features/software-templates/" target="_blank" rel="noopener">Backstage: Software Templates</a> (&ldquo;load skeletons of code, template in some variables, and then publish&rdquo;); <a href="https://docs.github.com/en/actions/sharing-automations/reusing-workflows" target="_blank" rel="noopener">GitHub: Reusing workflows</a>; <a href="https://developer.hashicorp.com/terraform/language/modules" target="_blank" rel="noopener">Terraform: Modules</a> (&ldquo;write reusable modules to codify them&rdquo;); <a href="https://github.com/TNG/ArchUnit" target="_blank" rel="noopener">ArchUnit (README)</a>; <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Claude Code: Hooks reference</a>; <a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/" target="_blank" rel="noopener">Kubernetes: Validating Admission Policy</a>. Spec Kit offers presets to &ldquo;enforce organizational or regulatory standards&rdquo; (<a href="https://github.com/github/spec-kit/tree/v1.4.4" target="_blank" rel="noopener">Spec Kit README, tag <span data-other-version>v1.4.4</span></a>).</p>
+  </article>
+
+  <article class="card wide" id="c-how-much-to-spec-striking-the-balance"><h3>How much to spec: striking the balance</h3>
+    <p><i>Our view:</i> specifying every service in detail before building any of them turns into planning that outlasts the work. B&ouml;ckeler doubts that &ldquo;lots of up-front spec design&rdquo; helps and prefers small, iterative steps; Martin Fowler&rsquo;s <i>Yagni</i> warns against building a &ldquo;presumptive feature&rdquo; that nobody uses yet. The balance is to specify the <b>seams</b> between services carefully, and the inside of each service only as much as its risk needs.</p>
+    <table class="eg"><thead><tr><th>If this is true for the work</th><th>How much spec</th></tr></thead><tbody>
+      <tr><td>It is a message or API other services depend on</td><td>A written contract (for events, an AsyncAPI document) agreed by producer and consumers, with contract tests</td></tr>
+      <tr><td>It handles money, personal data, security, or cannot be undone</td><td>A spec with numbered acceptance criteria, reviewed before code</td></tr>
+      <tr><td>It is logic inside one service, behind a stable contract</td><td>A few acceptance criteria; let the code and tests carry the detail</td></tr>
+      <tr><td>It is a bug, a refactor or a rename</td><td>No spec: a failing test, then the fix</td></tr>
+      <tr><td>It is a dependency or framework upgrade</td><td>No spec and, for patch versions, no person: automate it (below)</td></tr>
+      <tr><td>Nobody yet knows what users need</td><td>A spike or prototype first; spec what you learn</td></tr>
+    </tbody></table>
+    <p class="sources"><i>Analysis:</i> the table is our view, built on: Robinson&rsquo;s consumer-driven contracts, where a provider learns its obligations from what consumers actually use and receivers do &ldquo;just enough&rdquo; validation (<a href="https://martinfowler.com/articles/consumerDrivenContracts.html" target="_blank" rel="noopener">Ian Robinson, &ldquo;Consumer-Driven Contracts: A Service Evolution Pattern&rdquo;, 12 June 2006</a>); <a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener">Martin Fowler, &ldquo;Yagni&rdquo;, 26 May 2015</a>; <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Birgitta B&ouml;ckeler, &ldquo;Understanding Spec-Driven-Development&rdquo;</a>. BMad Method sizes its process the same way: &ldquo;Small changes go straight to build&rdquo; (<a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMad Method (README)</a>).</p>
+  </article>
+
+  <article class="card" id="c-the-seam-a-contract-for-events"><h3>The seam: a contract for events</h3>
+    <p>When services talk over messaging, the event is what they share. This contract, in AsyncAPI <span data-other-version>3.1.0</span>, is the part of the stock service&rsquo;s design the order and warehouse teams would need to agree on. It is a <b>design document</b>: the example service does not publish the event yet. We checked only that it is valid AsyncAPI, with the AsyncAPI parser (0 errors); a copy with <code>action: publish</code> was rejected, because the specification allows only <code>send</code> and <code>receive</code>.</p>
+    <div class="snip"><pre data-other-version><code>asyncapi: 3.1.0
+info:
+  title: Stock events
+  version: 1.0.0
+  description: The seam between the stock service and the order and warehouse services. Agreed by the teams; the only part of their designs they share.
+channels:
+  stockReserved:
+    address: stock.reserved
+    messages:
+      stockReserved:
+        $ref: '#/components/messages/stockReserved'
+operations:
+  sendStockReserved:
+    action: send
+    summary: Sent once a reservation commits, never for a replayed retry.
+    channel:
+      $ref: '#/channels/stockReserved'
+components:
+  messages:
+    stockReserved:
+      payload:
+        type: object
+        required: [reservationId, sku, quantity]
+        properties:
+          reservationId: { type: string, format: uuid }
+          sku: { type: string }
+          quantity: { type: integer, minimum: 1, maximum: 100 }</code></pre></div>
+    <p>Once the event exists, contract tests can hold both sides to it. Spring Cloud Contract offers consumer-driven contracts, and its reference has a section on messaging; the example does not include them.</p>
+    <p class="sources">Sources: <a href="https://github.com/asyncapi/spec/blob/v3.1.0/spec/asyncapi.md" target="_blank" rel="noopener">AsyncAPI specification <span data-other-version>3.1.0</span></a>; <a href="https://docs.spring.io/spring-cloud-contract/reference/" target="_blank" rel="noopener">Spring Cloud Contract reference</a>.</p>
+  </article>
+
+  <article class="card" id="c-automate-the-mechanical-upgrades"><h3>Automate the mechanical: upgrades</h3>
+    <p><i>Our view:</i> version upgrades need no spec and little judgement, so they suit automation. Dependabot opens &ldquo;automated pull requests that keep your dependencies updated&rdquo; from a <code>dependabot.yml</code>, and can group updates &ldquo;into fewer, targeted pull requests&rdquo;. A workflow can switch on auto-merge for patch updates, and auto-merge &ldquo;merges a pull request automatically after all required reviews and status checks pass&rdquo;. For code changes an upgrade needs, OpenRewrite&rsquo;s rewrite-spring has recipes to &ldquo;automatically apply best practices in Java Spring Boot applications&rdquo;.</p>
+    <div class="snip"><pre><code>version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"</code></pre></div>
+    <div class="snip"><pre><code>name: Dependabot auto-merge
+on: pull_request
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable auto-merge for patch updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre></div>
+    <p>Two settings are needed: auto-merge must be enabled for the repository, and the build and the platform rules test must be <b>required</b> status checks. Without required checks, auto-merge has nothing to wait for. The example does not include the pull-request build; add one and make it required. One caveat, not tested here: GitHub says events triggered by the <code>GITHUB_TOKEN</code> &ldquo;will not create a new workflow run&rdquo;, so a merge made this way may not start a deploy on <code>push</code>; a GitHub App token avoids that. GitHub&rsquo;s own example pins the third-party <code>fetch-metadata</code> action to a commit SHA; a tag is shown here for readability. <i>Our view:</i> with those in place, people look at minor and major versions and at anything the gates reject.</p>
+    <p class="sources">Sources: <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates" target="_blank" rel="noopener">GitHub: Dependabot version updates</a>; <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file" target="_blank" rel="noopener">GitHub: dependabot.yml options</a>; <a href="https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/automate-dependabot-with-actions" target="_blank" rel="noopener">GitHub: Automating Dependabot with GitHub Actions</a>; <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request" target="_blank" rel="noopener">GitHub: Automatically merging a pull request</a>; <a href="https://github.com/openrewrite/rewrite-spring" target="_blank" rel="noopener">OpenRewrite: rewrite-spring (README)</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-example-a-platform-starter-and-its-rules"><h3>Example: a platform starter and its rules</h3>
+    <p>The stock reservation service from <a href="/well-rounded-engineer/specfactory/">spec-driven development</a>, moved onto a shared <b>platform starter</b>. The starter is a Spring Boot auto-configuration that every service depends on. It brings one error format, and it ships the team&rsquo;s architecture rules as ArchUnit tests. An exception that never reaches a client can opt out with <code>@NotClientFacing</code>. Built on Spring Boot <span data-other-version>4.2.0</span> and ArchUnit <span data-other-version>1.5.1</span>, compiled and tested on 24 November 2026 (H2, one JVM). The code, with the commands to re-run every result on this page, is in the site&rsquo;s repository: <a href="https://github.com/enrichmeai/enrichmeai.github.io/tree/main/tools/well-rounded-engineer/examples/guardrails" target="_blank" rel="noopener">examples/guardrails</a>.</p>
+    <p><b>One error format</b>, defined once in the starter:</p>
+    <div class="snip"><pre><code>/** One error format for every service: RFC 9457 problem details with a stable code. */
+@RestControllerAdvice
+public class PlatformErrors {
+    @ExceptionHandler(DomainException.class)
+    ProblemDetail domain(DomainException e) {
+        var p = ProblemDetail.forStatusAndDetail(e.status(), e.getMessage());
+        p.setProperty("code", e.code());
+        return p;
+    }
+}</code></pre></div>
+    <p>A service&rsquo;s errors then carry only their status and code, and the service has no error handler of its own:</p>
+    <div class="snip"><pre><code>    public static class InsufficientStock extends DomainException {
+        InsufficientStock() { super(HttpStatus.CONFLICT, "INSUFFICIENT_STOCK", "Not enough stock for this sku"); }
+    }</code></pre></div>
+    <p><b>The rules</b>, owned by the platform team and checked in every service&rsquo;s build:</p>
+    <div class="snip"><pre><code>/** The standards every service shares, as tests. Owned by the platform team; agents and people meet the same rules. */
+public final class PlatformRules {
+
+    public static final ArchRule CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE =
+            noClasses().that().areAnnotatedWith(org.springframework.web.bind.annotation.RestController.class)
+                    .or().areAnnotatedWith(org.springframework.stereotype.Controller.class)
+                    .should().dependOnClassesThat().resideInAnyPackage("org.springframework.jdbc..", "org.springframework.data..", "jakarta.persistence..", "javax.sql..")
+                    .because("data access belongs in a service, where transactions are");
+
+    public static final ArchRule SERVICE_EXCEPTIONS_GO_THROUGH_THE_PLATFORM =
+            classes().that().areAssignableTo(RuntimeException.class).and().resideOutsideOfPackage("com.example.platform..")
+                    .and().areNotAnnotatedWith(NotClientFacing.class)
+                    .should().beAssignableTo(DomainException.class)
+                    .because("one error format for every service; mark internal-only exceptions @NotClientFacing");
+
+    public static final ArchRule NO_OWN_ERROR_HANDLERS =
+            noClasses().that().resideOutsideOfPackage("com.example.platform..")
+                    .should().beAnnotatedWith(org.springframework.web.bind.annotation.RestControllerAdvice.class)
+                    .orShould().beAnnotatedWith(org.springframework.web.bind.annotation.ControllerAdvice.class)
+                    .because("the platform already maps errors; a second handler drifts");
+
+    public static final ArchRule NO_LOCAL_EXCEPTION_HANDLERS =
+            noMethods().that().areDeclaredInClassesThat().resideOutsideOfPackage("com.example.platform..")
+                    .should().beAnnotatedWith(org.springframework.web.bind.annotation.ExceptionHandler.class)
+                    .because("the platform already maps errors; a second handler drifts");
+
+    public static final List&lt;ArchRule&gt; ALL = List.of(
+            CONTROLLERS_DO_NOT_TOUCH_THE_DATABASE,
+            SERVICE_EXCEPTIONS_GO_THROUGH_THE_PLATFORM,
+            NO_OWN_ERROR_HANDLERS,
+            NO_LOCAL_EXCEPTION_HANDLERS,
+            GeneralCodingRules.NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS);
+
+    /** Checks every rule and reports every violation at once, so a reviewer (person or agent) sees them all. */
+    public static void check(JavaClasses service) {
+        CompositeArchRule.of(ALL).check(service);
+    }
+
+    private PlatformRules() {}
+}</code></pre></div>
+    <div class="snip"><pre><code>/** The platform's standards, checked on this service's own classes in every build. */
+class PlatformRulesTest {
+    @Test
+    void thisServiceFollowsThePlatformRules() {
+        PlatformRules.check(new ClassFileImporter()
+                .withImportOption(ImportOption.Predefined.DO_NOT_INCLUDE_TESTS)
+                .importPackages("com.example.stock"));
+    }
+}</code></pre></div>
+  </article>
+
+  <article class="card wide" id="c-the-example-an-agent-goes-off-the-road"><h3>The example: an agent goes off the road</h3>
+    <p>Asked for &ldquo;a quick endpoint to list stock&rdquo;, a model might write this. It compiles:</p>
+    <div class="snip"><pre><code>/** What a model might write when asked for "a quick endpoint to list stock". */
+@RestController
+@RestControllerAdvice
+class ShortcutController {
+    private final JdbcClient db;
+    ShortcutController(JdbcClient db) { this.db = db; }
+
+    static class NotFound extends RuntimeException {}
+
+    @GetMapping("/stock/{sku}")
+    Integer available(@PathVariable String sku) {
+        System.out.println("looking up " + sku);
+        return db.sql("SELECT available FROM stock WHERE sku = :sku").param("sku", sku).query(Integer.class).single();
+    }
+
+    @ExceptionHandler(NotFound.class)
+    ProblemDetail notFound() { return ProblemDetail.forStatus(HttpStatus.NOT_FOUND); }
+}</code></pre></div>
+    <p>So might this quieter version, which uses <code>JdbcTemplate</code> and a handler inside the controller:</p>
+    <div class="snip"><pre><code>/** The quieter shortcuts: JdbcTemplate instead of JdbcClient, and a controller-local handler. */
+@RestController
+class BypassController {
+    private final JdbcTemplate jdbc;
+    BypassController(JdbcTemplate jdbc) { this.jdbc = jdbc; }
+
+    @GetMapping("/stock-count")
+    Integer count() { return jdbc.queryForObject("SELECT COUNT(*) FROM stock", Integer.class); }
+
+    @ExceptionHandler(IllegalStateException.class)
+    String oops() { return "oops"; }
+}</code></pre></div>
+    <p>The build refuses both. All five rules fire in one report, so the agent (or a person) sees everything to fix at once:</p>
+    <div class="snip"><pre><code>Rule '...' was violated (14 times):   [package names shortened, similar lines dropped]
+Class &lt;ShortcutController$NotFound&gt; is not assignable to com.example.platform.DomainException in (ShortcutController.java:0)
+Class &lt;ShortcutController&gt; is annotated with @RestControllerAdvice in (ShortcutController.java:0)
+Constructor &lt;BypassController.&lt;init&gt;(JdbcTemplate)&gt; has parameter of type &lt;JdbcTemplate&gt; in (BypassController.java:0)
+Constructor &lt;ShortcutController.&lt;init&gt;(JdbcClient)&gt; has parameter of type &lt;JdbcClient&gt; in (ShortcutController.java:0)
+Field &lt;BypassController.jdbc&gt; has type &lt;JdbcTemplate&gt; in (BypassController.java:0)
+Field &lt;ShortcutController.db&gt; has type &lt;JdbcClient&gt; in (ShortcutController.java:0)
+Method &lt;BypassController.count()&gt; calls method &lt;JdbcTemplate.queryForObject(java.lang.String, java.lang.Class)&gt; in (BypassController.java:15)
+Method &lt;BypassController.oops()&gt; is annotated with @ExceptionHandler in (BypassController.java:18)
+Method &lt;ShortcutController.available(java.lang.String)&gt; calls method &lt;JdbcClient.sql(java.lang.String)&gt; in (ShortcutController.java:20)
+Method &lt;ShortcutController.available(java.lang.String)&gt; gets field &lt;java.lang.System.out&gt; in (ShortcutController.java:19)
+Method &lt;ShortcutController.notFound()&gt; is annotated with @ExceptionHandler in (ShortcutController.java:24)</code></pre></div>
+    <p>A rule only catches what it was written to catch: the first draft of these rules missed <code>JdbcTemplate</code> and controller-local handlers until a review pointed it out. On the service as built, the same check passes: <b>10 tests, 0 failures</b> (the 9 spec tests plus the platform rules). The violations tell the agent what to do instead: move the query into a service, throw a <code>DomainException</code>, drop the handler and the <code>System.out</code>.</p>
+  </article>
+
+  <article class="card" id="c-the-example-deployment-stays-on-the-template"><h3>The example: deployment stays on the template</h3>
+    <p>The service owns one deployment file, its values:</p>
+    <div class="snip"><pre><code># The only deployment file this service owns. The platform's templates turn it into
+# the image, the Kubernetes objects and the pipeline. People and agents change values here.
+name: stock-reservation
+team: checkout
+cpuRequest: 250m
+memory: 512Mi
+replicas: { min: 2, max: 10 }</code></pre></div>
+    <p>Its pipeline is a call to the platform&rsquo;s reusable workflow, which every service shares:</p>
+    <div class="snip"><pre><code>name: deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    uses: example-org/platform/.github/workflows/deploy-service.yml@v3
+    with:
+      service-config: service.yaml</code></pre></div>
+    <div class="snip"><pre><code># Owned by the platform team, in example-org/platform. Every service calls it; a fix here reaches all of them.
+name: deploy-service
+on:
+  workflow_call:
+    inputs:
+      service-config:
+        required: true
+        type: string
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: mvn -B verify             # spec tests and platform rules
+      # ...then build the image from the platform Dockerfile and render the
+      # Kubernetes objects from inputs.service-config (omitted here)</code></pre></div>
+    <p class="sources">Not run here: these workflows need the platform repository. YAML checked to parse. Source: <a href="https://docs.github.com/en/actions/sharing-automations/reusing-workflows" target="_blank" rel="noopener">GitHub: Reusing workflows</a>.</p>
+  </article>
+
+  <article class="card" id="c-the-example-the-agent-is-told-not-just-blocked"><h3>The example: the agent is told, not just blocked</h3>
+    <p>A Claude Code <code>PreToolUse</code> hook refuses edits, through the Edit and Write tools, to the files the templates own and to the hook&rsquo;s own settings. Exit code 2 blocks the edit, and the message goes back to the agent so it can choose the right path:</p>
+    <div class="snip"><pre><code>#!/bin/bash
+# PreToolUse hook for Edit|Write: deployment files come from the platform's templates.
+# The agent may change service.yaml (the values); it may not write its own Dockerfile,
+# Kubernetes manifests or deploy workflow, nor the hook settings. Exit 2 blocks the edit and tells the agent why.
+# It catches honest mistakes; it is not a security boundary (a shell command can still write a file).
+path=$(python3 -c 'import json,sys; print(json.load(sys.stdin).get("tool_input",{}).get("file_path",""))') \
+  || { echo "Blocked: could not read the tool input, so the hook cannot check it." &gt;&amp;2; exit 2; }
+case "$path" in
+  Dockerfile|*/Dockerfile|Dockerfile.*|*/Dockerfile.*|k8s/*|*/k8s/*|helm/*|*/helm/*|.github/workflows/*|*/.github/workflows/*|.claude/*|*/.claude/*)
+    echo "Blocked: $path is generated from the platform templates (or guards them). Change service.yaml instead, or ask the platform team to change the template." &gt;&amp;2
+    exit 2 ;;
+esac
+exit 0</code></pre></div>
+    <div class="snip"><pre><code>{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/paved-road.sh" }
+        ]
+      }
+    ]
+  }
+}</code></pre></div>
+    <p>Tested by feeding it the JSON a <code>Write</code> call sends:</p>
+    <div class="snip"><pre><code>/repo/svc/Dockerfile                  -&gt; exit 2  Blocked: ... generated from the platform templates
+/repo/svc/Dockerfile.prod             -&gt; exit 2
+.github/workflows/deploy.yml          -&gt; exit 2  (relative paths too)
+/repo/svc/k8s/deployment.yaml         -&gt; exit 2
+/repo/svc/.claude/settings.json       -&gt; exit 2  (the guard guards itself)
+/repo/svc/docs/Dockerfile-notes.md    -&gt; exit 0
+/repo/svc/.github/dependabot.yml      -&gt; exit 0
+/repo/svc/src/.../ReservationService.java -&gt; exit 0
+/repo/svc/service.yaml                -&gt; exit 0</code></pre></div>
+    <p><i>Analysis:</i> the hook catches an honest mistake and explains it; it is not a security boundary. A shell command can still write a file. The stronger stops are the build and the cluster policy below, and the build only stops what its tests check (see &ldquo;What goes wrong&rdquo;).</p>
+    <p class="sources">Source: <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Claude Code: Hooks reference</a> (&ldquo;Exit with code 2 to block the action&rdquo;).</p>
+  </article>
+
+  <article class="card wide" id="c-the-example-the-last-line-in-the-cluster"><h3>The example: the last line, in the cluster</h3>
+    <p>If something non-compliant still reaches Kubernetes, a ValidatingAdmissionPolicy (stable since Kubernetes <span data-other-version>1.30</span>) can reject it. This one, bound only to namespaces labelled for the platform (never <code>kube-system</code>), requires a CPU request on every container (a CPU-based HorizontalPodAutoscaler measures use against the request) and an owning team label:</p>
+    <div class="snip"><pre><code>apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: "platform-deployment-rules.example.com"
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups: ["apps"]
+      apiVersions: ["v1"]
+      operations: ["CREATE", "UPDATE"]
+      resources: ["deployments"]
+  validations:
+  - expression: "object.spec.template.spec.containers.all(c, has(c.resources) &amp;&amp; has(c.resources.requests) &amp;&amp; 'cpu' in c.resources.requests)"
+    message: "every container needs a CPU request, or the autoscaler has nothing to measure"
+  - expression: "has(object.metadata.labels) &amp;&amp; 'team' in object.metadata.labels"
+    message: "every Deployment names its owning team"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "platform-deployment-rules-binding.example.com"
+spec:
+  policyName: "platform-deployment-rules.example.com"
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        platform.example.com/enforce: "true"   # only namespaces the platform runs, never kube-system</code></pre></div>
+    <p class="sources">Not run against a cluster; YAML checked to parse, CEL written after the examples in <a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/" target="_blank" rel="noopener">Kubernetes: Validating Admission Policy</a>. On CPU requests: <a href="https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/" target="_blank" rel="noopener">Kubernetes: Horizontal Pod Autoscaling</a>.</p>
+  </article>
+
+  <article class="card wide" id="c-what-goes-wrong"><h3>What goes wrong</h3>
+    <p><i>Analysis:</i> our list, from building the example above.</p>
+    <ul>
+      <li><b>A cage instead of a road.</b> If a rule cannot be changed, people and agents route around it. Every rule needs an owner and a way to propose a change.</li>
+      <li><b>Rules narrower than their names.</b> A rule called &ldquo;controllers do not touch the database&rdquo; that only looks for one class is a false comfort. Test each rule against the shortcuts it is meant to stop.</li>
+      <li><b>Escape hatches are holes too.</b> An agent that wants past the error rule can mark its exception <code>@NotClientFacing</code>. A reviewer should look at every new use, as at any exemption.</li>
+      <li><b>Rules a service can switch off.</b> The rules run because each service keeps a small test that calls them; an agent that deletes or edits that test passes the build. Run the rules from the platform&rsquo;s shared workflow as well, where a service cannot change them (the example&rsquo;s workflow does not do this yet).</li>
+      <li><b>Too many rules.</b> A wall of violations teaches nobody. Keep the rules to what would hurt other services or repeat a fix.</li>
+      <li><b>Templates that go stale.</b> A template nobody updates becomes the old way, copied everywhere. Version it, and let automated upgrades carry changes to every service.</li>
+      <li><b>Planning instead of building.</b> Detailed specs for every service before any runs is the trap above: spec the seams, build, learn.</li>
+      <li><b>Business rules in the shared library.</b> They tie teams&rsquo; releases together. Share infrastructure, not domain logic (see <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI Boilerplate</a>).</li>
+    </ul>
+  </article>
+
+  <article class="card" id="c-our-view-and-the-other-view"><h3>Our view, and the other view</h3>
+    <p><i>Our view:</i> standards that run as code are a practical way to keep agents aligned with a team, because they say pass or fail where a document only asks. Put them in the framework, the templates and the build, keep them few, and let people change them.</p>
+    <p><i>The other view:</i> a heavy platform costs a team to build and own, and can slow the small number of services that need to be different. For a handful of services, a rules file and a good review may be enough; build the platform when the same fix starts being made in many places.</p>
+  </article>
+
+  <article class="card" id="c-where-to-go-next"><h3>Where to go next</h3>
+    <ul>
+      <li>Specs, roles and the example service: <a href="/well-rounded-engineer/specfactory/">Spec-Driven Development</a></li>
+      <li>Frameworks, blueprints and generated code: <a href="/well-rounded-engineer/blueprints/">Frameworks vs AI Boilerplate</a></li>
+      <li>The harness around an agent: <a href="/well-rounded-engineer/agentharness/">Agent Harness</a></li>
+      <li>Messaging between services: <a href="/well-rounded-engineer/microservices/">Microservices</a></li>
+    </ul>
+  </article>
+
+  </div>
+</section>
+<nav class="eg-pn" aria-label="Previous and next section"><a class="pn-prev" href="/well-rounded-engineer/specfactory/">← Spec-Driven Development</a><a class="pn-next" href="/well-rounded-engineer/blueprints/">Frameworks vs AI →</a></nav>
+<p class="empty" id="empty" hidden>Nothing on this page matches.</p>
+<div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
+</main>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-short-answer">The short answer</a><a href="#c-an-ecosystem-not-a-factory">An ecosystem, not a factory</a><a href="#c-why-a-model-needs-guiding">Why a model needs guiding</a><a href="#c-the-layers-from-intent-to-production">The layers, from intent to production</a><a href="#c-how-much-to-spec-striking-the-balance">How much to spec: striking the balance</a><a href="#c-the-seam-a-contract-for-events">The seam: a contract for events</a><a href="#c-automate-the-mechanical-upgrades">Automate the mechanical: upgrades</a><a href="#c-example-a-platform-starter-and-its-rules">Example: a platform starter and its rules</a><a href="#c-the-example-an-agent-goes-off-the-road">The example: an agent goes off the road</a><a href="#c-the-example-deployment-stays-on-the-template">The example: deployment stays on the template</a><a href="#c-the-example-the-agent-is-told-not-just-blocked">The example: the agent is told, not just blocked</a><a href="#c-the-example-the-last-line-in-the-cluster">The example: the last line, in the cluster</a><a href="#c-what-goes-wrong">What goes wrong</a><a href="#c-our-view-and-the-other-view">Our view, and the other view</a><a href="#c-where-to-go-next">Where to go next</a></div></aside>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="/" class="wordmark">enrichme<span class="dot">·</span>ai</a>
+      <span class="reg">Well Rounded Engineer · more human<br>EnrichMeAI is a trading name of Good Shepherd Software Consultancy Limited,<br>registered in England &amp; Wales, company no. 09702990.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# The only deployment file this service owns. The platform's templates turn it into
+# the image, the Kubernetes objects and the pipeline. People and agents change values here.
+name: stock-reservation
+team: checkout
+cpuRequest: 250m
+memory: 512Mi
+replicas: { min: 2, max: 10 }

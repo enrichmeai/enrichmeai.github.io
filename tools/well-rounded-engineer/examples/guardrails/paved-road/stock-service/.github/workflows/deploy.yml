@@ -1,0 +1,9 @@
+name: deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    uses: example-org/platform/.github/workflows/deploy-service.yml@v3
+    with:
+      service-config: service.yaml
