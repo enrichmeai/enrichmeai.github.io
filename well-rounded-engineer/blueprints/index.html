@@ -77,6 +77,20 @@
       </tbody></table></div>
   </article>
 
+  <article class="card wide" id="c-where-spec-driven-development-fits"><h3>Where spec-driven development fits</h3>
+    <p><a href="/well-rounded-engineer/specfactory/">Spec-driven development</a> sits between the two columns above. The agent still generates the code, but from a written spec with numbered acceptance criteria, a reviewed plan and a set of standing rules (a &ldquo;constitution&rdquo;), all kept in the repo. That makes it a step up from prompted boilerplate. It does not remove the cost of owning many copies, because the shared behaviour is still generated into each project rather than kept in one place.</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Prompted boilerplate</th><th>Spec-driven generation</th><th>Framework / blueprint</th></tr></thead>
+      <tbody>
+      <tr><td>Where decisions live</td><td>In prompts nobody kept</td><td>In <code>spec.md</code>, <code>plan.md</code> and the constitution, reviewed and versioned</td><td>In framework code and docs</td></tr>
+      <tr><td>How you know it is right</td><td>Whatever the reviewer spots</td><td>One test per acceptance criterion, and a check that none is missing</td><td>The framework&rsquo;s own tests, plus tests for each slot</td></tr>
+      <tr><td>Consistency across services</td><td>Each copy differs</td><td>Better: the constitution names the conventions. But regenerating from the same spec can still give different code</td><td>Same behaviour everywhere</td></tr>
+      <tr><td>Fixing a bug or CVE in shared behaviour</td><td>Patch N copies</td><td>Still N copies of generated code</td><td>Patch once, bump versions</td></tr>
+      <tr><td>Review burden</td><td>Generated lines</td><td>Spec and plan first, then the code: often more to read</td><td>Only the business-specific part</td></tr>
+      </tbody></table></div>
+    <p><b>The best of both:</b> use a spec for the part that is unique to the business, and a framework for everything else. Put &ldquo;build on our service starter&rdquo; and &ldquo;use the shared job library&rdquo; in the constitution, so the agent fills the framework&rsquo;s slots instead of generating its own plumbing. The spec then stays short, the generated code stays small, and a fix to shared behaviour is still made once.</p>
+    <p class="note"><i>Our view:</i> spec-driven generation is slightly better than prompted boilerplate, because the decisions are written down and checked, but it is not a replacement for a framework. <i>The other view:</i> Spec Kit&rsquo;s authors see specs as the main artefact, with code &ldquo;continuously regenerated&rdquo; from them, so drift is fixed by regenerating rather than by sharing code. B&ouml;ckeler compares that aim with model-driven development, which never took off for business applications, and saw different code come out of the same spec. Sources: <a href="https://github.com/github/spec-kit/blob/main/spec-driven.md" target="_blank" rel="noopener">Spec Kit: spec-driven.md</a>; <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">B&ouml;ckeler (Thoughtworks), &ldquo;Understanding Spec-Driven-Development&rdquo;</a>.</p>
+  </article>
   <article class="card" id="c-a-cost-model-in-one-line"><h3>A cost model in one line</h3>
 <div class="snip"><pre><code>generated:  N copies × (review + security fix + upgrade + drift) per year
 framework:  build once + maintain once + N × (small version bump)
@@ -150,6 +164,7 @@ With N = 15 services, 3 framework-level fixes a year, ~1 day each:
       <li>Will this exist in more than one place for more than a few months? → <b>blueprint</b>.</li>
       <li>Does it carry security, compliance or reliability rules? → <b>blueprint</b>, even for two uses.</li>
       <li>Is it unique business logic? → <b>write it</b> (with AI help) inside the blueprint's slots.</li>
+      <li>Is it a new feature with rules to get right? → <b>write a spec</b>, and let agents fill the blueprint&rsquo;s slots from it (<a href="/well-rounded-engineer/specfactory/">Spec-Driven AI Factory</a>).</li>
       <li>Is it throwaway or exploratory? → <b>generate</b>, and delete it afterwards.</li>
       <li>Is it the same change across many repos? → <b>AI-written codemod</b>, reviewed once.</li>
     </ul>
@@ -166,7 +181,7 @@ With N = 15 services, 3 framework-level fixes a year, ~1 day each:
 <p class="empty" id="empty" hidden>Nothing on this page matches.</p>
 <div class="elsewhere" id="elsewhere" hidden aria-live="polite"></div>
 </main>
-<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-core-argument">The core argument</a><a href="#c-a-cost-model-in-one-line">A cost model in one line</a><a href="#c-when-generation-is-the-right-call">When generation is the right call</a><a href="#c-when-not-to-build-a-framework">When not to build a framework</a><a href="#c-what-a-blueprint-looks-like-in-this-stack">What a blueprint looks like in this stack</a><a href="#c-using-ai-to-build-the-framework">Using AI to build the framework</a><a href="#c-keeping-a-framework-healthy">Keeping a framework healthy</a><a href="#c-decision-guide">Decision guide</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
+<aside class="eg-toc" aria-label="On this page"><p class="toc-h">On this page</p><div class="toc-links"><a href="#c-the-core-argument">The core argument</a><a href="#c-where-spec-driven-development-fits">Where spec-driven development fits</a><a href="#c-a-cost-model-in-one-line">A cost model in one line</a><a href="#c-when-generation-is-the-right-call">When generation is the right call</a><a href="#c-when-not-to-build-a-framework">When not to build a framework</a><a href="#c-what-a-blueprint-looks-like-in-this-stack">What a blueprint looks like in this stack</a><a href="#c-using-ai-to-build-the-framework">Using AI to build the framework</a><a href="#c-keeping-a-framework-healthy">Keeping a framework healthy</a><a href="#c-decision-guide">Decision guide</a><a href="#c-levels-what-to-expect">Levels: what to expect</a><a href="#c-explore-further">Explore further</a></div></aside>
 </div>
 
 <footer class="site-footer">
