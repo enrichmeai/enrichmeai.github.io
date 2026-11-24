@@ -18820,7 +18820,7 @@ Method &lt;BypassController.oops()&gt; is annotated with @ExceptionHandler in (B
 Method &lt;ShortcutController.available(java.lang.String)&gt; calls method &lt;JdbcClient.sql(java.lang.String)&gt; in (ShortcutController.java:20)
 Method &lt;ShortcutController.available(java.lang.String)&gt; gets field &lt;java.lang.System.out&gt; in (ShortcutController.java:19)
 Method &lt;ShortcutController.notFound()&gt; is annotated with @ExceptionHandler in (ShortcutController.java:24)</code></pre></div>
-    <p>A rule only catches what it was written to catch: the first draft of these rules missed <code>JdbcTemplate</code> and controller-local handlers until a review pointed it out. On the service as built, the same check passes: <b>10 tests, 0 failures</b> (the 9 spec tests, unchanged after the move to the starter, plus the platform rules). The violations tell the agent what to do instead: move the query into a service, throw a <code>DomainException</code>, drop the handler and the <code>System.out</code>.</p>
+    <p>A rule only catches what it was written to catch: the first draft of these rules missed <code>JdbcTemplate</code> and controller-local handlers until a review pointed it out. On the service as built, the same check passes: <b>10 tests, 0 failures</b> (the 9 spec tests, with the test file unchanged by the move to the starter, plus the platform rules). The violations tell the agent what to do instead: move the query into a service, throw a <code>DomainException</code>, drop the handler and the <code>System.out</code>.</p>
   </article>
 
   <article class="card"><h3>The example: deployment stays on the template</h3>
@@ -18889,6 +18889,7 @@ exit 0</code></pre></div>
 }</code></pre></div>
     <p>Tested by feeding it the JSON a <code>Write</code> call sends:</p>
     <div class="snip"><pre><code>/repo/svc/Dockerfile                  -&gt; exit 2  Blocked: ... generated from the platform templates
+/repo/svc/Dockerfile.prod             -&gt; exit 2
 .github/workflows/deploy.yml          -&gt; exit 2  (relative paths too)
 /repo/svc/k8s/deployment.yaml         -&gt; exit 2
 /repo/svc/.claude/settings.json       -&gt; exit 2  (the guard guards itself)
@@ -18934,6 +18935,7 @@ spec:
     <ul>
       <li><b>A cage instead of a road.</b> <i>Analysis:</i> if a rule cannot be changed, people and agents route around it. Every rule needs an owner and a way to propose a change.</li>
       <li><b>Rules narrower than their names.</b> A rule called &ldquo;controllers do not touch the database&rdquo; that only looks for one class is a false comfort. Test each rule against the shortcuts it is meant to stop.</li>
+      <li><b>Escape hatches are holes too.</b> An agent that wants past the error rule can mark its exception <code>@NotClientFacing</code>. A reviewer should look at every new use, as at any exemption.</li>
       <li><b>Too many rules.</b> A wall of violations teaches nobody. Keep the rules to what would hurt other services or repeat a fix.</li>
       <li><b>Templates that go stale.</b> A template nobody updates becomes the old way, copied everywhere. Version it, and let automated upgrades carry changes to every service.</li>
       <li><b>Planning instead of building.</b> Detailed specs for every service before any runs is the trap above: spec the seams, build, learn.</li>
