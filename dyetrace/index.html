@@ -220,7 +220,7 @@
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Its limits</dt>
-        <dd>The journey tracker keeps its state in memory, in one process: right for the demo, not yet for production. With the OpenTelemetry agent, the Kafka event sink's own sends show up as extra spans in application traces. The demo's Docker Compose path has been run end to end; its kind path has not been run end to end yet.</dd>
+        <dd>The journey tracker keeps its state in memory, in one process: right for the demo, not yet for production. With the OpenTelemetry agent, the Kafka event sink's own sends show up as extra spans in application traces. The demo's Docker Compose and kind paths are both in the repository; run <code>make verify</code> to check either.</dd>
       </div>
       <div class="spec-row" style="padding:22px 0">
         <dt>Planned</dt>
