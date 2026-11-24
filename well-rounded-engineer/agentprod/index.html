@@ -67,17 +67,17 @@
 
   <article class="card" id="c-1-one-task-one-measure"><h3>1. One task, one measure</h3>
     <p>Anthropic&rsquo;s documentation starts here: &ldquo;Building a successful LLM-based application starts with clearly defining your success criteria.&rdquo; Good criteria are specific (&ldquo;accurate sentiment classification&rdquo;, not &ldquo;good performance&rdquo;) and measurable; even safety can be a number, such as fewer than 0.1% unsafe outputs in 10,000 trials.</p>
-    <p>A task like &ldquo;answer order questions and offer a refund within policy&rdquo; is a good size. &ldquo;Handle customer service&rdquo; is not.</p>
+    <p><i>Our view:</i> a task like &ldquo;answer order questions and offer a refund within policy&rdquo; is a good size; &ldquo;handle customer service&rdquo; is not.</p>
     <p class="sources">Source: <a href="https://docs.claude.com/en/docs/test-and-evaluate/develop-tests" target="_blank" rel="noopener">Claude docs: Define success criteria and build evaluations</a>.</p>
   </article>
 
   <article class="card" id="c-2-build-the-simplest-thing"><h3>2. Build the simplest thing</h3>
-    <p>&ldquo;We recommend finding the simplest solution possible, and only increasing complexity when needed,&rdquo; writes Anthropic. Often that is one model call with good instructions and two or three tools, not a team of agents. The agent should get &ldquo;ground truth&rdquo; from its environment at each step, such as tool results, rather than guessing.</p>
+    <p>&ldquo;We recommend finding the simplest solution possible, and only increasing complexity when needed,&rdquo; writes Anthropic. For many applications, it adds, &ldquo;optimizing single LLM calls with retrieval and in-context examples is usually enough&rdquo;, rather than a team of agents. The agent should get &ldquo;ground truth&rdquo; from its environment at each step, such as tool results, rather than guessing.</p>
     <p class="sources">Source: <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic: Building effective agents, 19 Dec 2024</a>.</p>
   </article>
 
   <article class="card wide" id="c-3-write-the-evals-before-improving-it"><h3>3. Write the evals before improving it</h3>
-    <p>OpenAI suggests &ldquo;writing evals before you start writing prompts&rdquo;, much like behaviour-driven development; Anthropic says &ldquo;20-50 simple tasks drawn from real failures is a great start&rdquo;. Keep two suites:</p>
+    <p>OpenAI says you might consider &ldquo;writing evals before you start writing prompts&rdquo;, much like behaviour-driven development; Anthropic says &ldquo;20-50 simple tasks drawn from real failures is a great start&rdquo;. Keep two suites:</p>
     <ul>
       <li><b>Capability evals</b> ask what the agent can do well. They &ldquo;should start at a low pass rate&rdquo;, giving a hill to climb.</li>
       <li><b>Regression evals</b> make sure changes do not break what worked. Capability tasks the agent now passes &ldquo;graduate&rdquo; into this suite, which then runs continuously &ldquo;to catch any drift&rdquo;.</li>
@@ -87,7 +87,7 @@
   </article>
 
   <article class="card wide" id="c-4-training-prompting-context-or-fine-tuning"><h3>4. &ldquo;Training&rdquo;: prompting, context or fine-tuning</h3>
-    <p>Most production agents are not trained at all in the machine-learning sense. They are shaped by instructions, examples, retrieved context and tools, measured by the evals. OpenAI describes the work as a flywheel of &ldquo;evals, prompt engineering, and fine-tuning&rdquo;, and says fine-tuning &ldquo;can be a time-consuming process&rdquo; but can make a model &ldquo;consistently format responses in a certain way or handle novel inputs&rdquo;.</p>
+    <p><i>Analysis:</i> for many agents, &ldquo;training&rdquo; means shaping them with instructions, examples, retrieved context and tools, measured by the evals, rather than changing the model&rsquo;s weights. Fine-tuning is the real alternative when that runs out. OpenAI describes the work as a flywheel of &ldquo;evals, prompt engineering, and fine-tuning&rdquo;, and says fine-tuning &ldquo;can be a time-consuming process&rdquo; but can make a model &ldquo;consistently format responses in a certain way or handle novel inputs&rdquo;.</p>
     <table class="eg"><thead><tr><th>If this is true for you</th><th>Leans towards</th></tr></thead><tbody>
       <tr><td>The agent lacks your facts (policies, products, records)</td><td>Retrieval and tools: give it the data at run time. See <a href="/well-rounded-engineer/rag/">RAG</a></td></tr>
       <tr><td>It misunderstands the job or the format</td><td>Better instructions and examples, measured by evals</td></tr>
@@ -106,7 +106,7 @@
   </article>
 
   <article class="card" id="c-6-go-live-canary-then-widen"><h3>6. Go live: canary, then widen</h3>
-    <p>Google&rsquo;s SRE workbook defines canarying as &ldquo;a partial and time-limited deployment of a change in a service and its evaluation&rdquo;, effectively an A/B test that risks &ldquo;only a small fragment of our error budget&rdquo;. For an agent, compare the canary with the control on errors, on how often it hands a case to a person, and on cost; widen only when they match.</p>
+    <p>Google&rsquo;s SRE workbook defines canarying as &ldquo;a partial and time-limited deployment of a change in a service and its evaluation&rdquo;, effectively an A/B test that risks &ldquo;only a small fragment of our error budget&rdquo;. For an agent, compare the canary with the control on errors and on how often it hands a case to a person (and watch cost); widen only when they stay within a margin you set in advance, and only once there are enough events for the comparison to mean anything.</p>
     <p>Keep the previous version deployable, and version the prompt, tools and model together, so a rollback is one switch.</p>
     <p class="sources">Source: <a href="https://sre.google/workbook/canarying-releases/" target="_blank" rel="noopener">Google SRE Workbook: Canarying releases</a>.</p>
   </article>
@@ -115,34 +115,54 @@
     <p>A short Python script that decides whether a candidate may replace the live version. Stage 1 compares eval results; stage 2 compares canary metrics with the control. These are its rules:</p>
     <div class="snip"><pre><code>RULES = {
     "regression_min": 0.95,     # the regression suite must stay this high (pass^k: every trial passes)
-    "regression_drop_max": 0.0, # and must not fall below the baseline at all
     "cost_growth_max": 0.20,    # cost per task may grow at most 20%
     "p95_latency_max_s": 8.0,
-    "canary_error_ratio_max": 1.10,   # canary error rate at most 10% above control
-    "canary_escalation_ratio_max": 1.25,
-}</code></pre></div>
-    <p>Run on <b>synthetic</b> results (a stand-in agent on 30 regression and 10 capability tasks, 3 trials each; no model was called), it holds a candidate that is better on new tasks but breaks two old ones, and rolls back a canary that passes the offline gate but hands too many cases to people:</p>
+    "canary_min_events": 30,    # below this many errors or escalations in the canary, a ratio is noise: wait
+    "canary_error_ratio_max": 1.10,       # canary error rate at most 10% above control
+    "canary_escalation_ratio_max": 1.25,  # hand-offs to people at most 25% above control
+}
+
+
+class GateError(Exception):
+    """The gate cannot decide. That is a refusal, never a pass."""
+
+
+def by_task(results):
+    return {r["task"]: r for r in results}
+
+
+def passed(r, all_trials):
+    if not r["trials"]:
+        return False                      # no results is a failure, not a pass
+    return all(r["trials"]) if all_trials else any(r["trials"])</code></pre></div>
+    <p>Run on <b>synthetic</b> results (a stand-in agent on 30 regression and 10 capability tasks, 3 trials each; no model was called), it holds a candidate that is better on new tasks but breaks two old ones, rolls back a canary that hands too many cases to people, and refuses to decide on a canary too small to judge. A gate that cannot decide says so and counts as a hold, never a pass:</p>
     <div class="snip"><pre><code>$ python3 release_gate.py baseline.json candidate_regresses.json
 regression pass^k  baseline 1.00  candidate 0.93
 capability pass@k  baseline 0.70  candidate 1.00
 cost per task      baseline $0.0099  candidate $0.0109
 p95 latency        candidate 4.6s
-HOLD (offline): regression suite 0.93 is below 0.95; regression suite fell from 1.00: now failing R07, R19
+HOLD (offline): regression suite 0.93 is below 0.95; newly failing: R07, R19
 $ python3 release_gate.py baseline.json candidate_good.json canary_bad.json
 regression pass^k  baseline 1.00  candidate 1.00
 capability pass@k  baseline 0.70  candidate 0.90
 cost per task      baseline $0.0099  candidate $0.0109
 p95 latency        candidate 4.7s
-canary vs control  error ratio 1.00  escalation-to-human ratio 1.65
-ROLL BACK (canary): canary hands 1.65x as many cases to people</code></pre></div>
-    <p class="sources"><i>Analysis:</i> the thresholds are examples; set yours from your success criteria.</p>
+canary vs control  error ratio 1.02  escalation-to-human ratio 1.65
+ROLL BACK (canary): canary hands 1.65x as many cases to people
+$ python3 release_gate.py baseline.json candidate_good.json canary_small.json
+regression pass^k  baseline 1.00  candidate 1.00
+capability pass@k  baseline 0.70  candidate 0.90
+cost per task      baseline $0.0099  candidate $0.0109
+p95 latency        candidate 4.7s
+CANNOT DECIDE (treated as HOLD): too few errors to compare yet: wait for more traffic</code></pre></div>
+    <p class="sources"><i>Analysis:</i> the thresholds are examples; set yours from your success criteria. The minimum-events rule is a simple guard against noise, not a significance test. The first version of this script crashed on a control with no errors and counted an empty result as a pass; an independent review caught both.</p>
   </article>
 
   <article class="card" id="c-7-live-watch-learn-feed-back"><h3>7. Live: watch, learn, feed back</h3>
     <ul>
       <li>Trace every run: the steps, tools, tokens and cost (see <a href="/well-rounded-engineer/observability/">Observability</a>).</li>
       <li>Sample real conversations for human review, and turn each failure into an eval task.</li>
-      <li>Re-run the evals when the model provider updates a model, even if you changed nothing.</li>
+      <li><i>Our advice:</i> re-run the evals when the model provider updates a model, even if you changed nothing.</li>
       <li>When a capability eval reaches 100%, Anthropic warns it &ldquo;tracks regressions but provides no signal for improvement&rdquo;: add harder tasks.</li>
     </ul>
     <p class="sources">Source: <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank" rel="noopener">Anthropic: Demystifying evals for AI agents, 9 Jan 2026</a>.</p>
